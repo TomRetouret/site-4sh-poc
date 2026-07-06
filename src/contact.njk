@@ -1,39 +1,24 @@
 ---
 layout: base.njk
 permalink: /contact/
-title: "Contact : parlons de votre projet - 4SH"
-description: "Un projet de logiciel sur mesure, une formation ou une question ? Parlons-en : 30 minutes avec un expert 4SH, gratuit et sans engagement. Bordeaux, Capbreton, Paris."
 ---
 <section class="contact-final sur-sombre" id="contact" style="margin-top:0">
   <div class="container">
     <nav class="fil-ariane" aria-label="Fil d'Ariane" style="color:#8b979c;padding-bottom:18px"><a href="/" style="color:#8b979c">Accueil</a> › Contact</nav>
     <div class="contact-grille">
       <div>
-        <h1 class="sec-titre">Parlons de votre <em class="accent">projet</em></h1>
-        <p class="sec-sous" style="margin-bottom:18px">30 minutes avec un expert, gratuit, sans engagement. Vous repartez avec un premier avis honnête, pas un argumentaire.</p>
+        <h1 class="sec-titre">{{ contact.h1 | safe }}</h1>
+        <p class="sec-sous" style="margin-bottom:18px">{{ contact.chapo }}</p>
         <ul class="arguments">
-          <li>Un interlocuteur dédié, de l'analyse des besoins à la maintenance</li>
-          <li>Des équipes pluridisciplinaires à Bordeaux, Capbreton et Paris</li>
-          <li>Et si le sur mesure ne se justifie pas, nous vous le dirons</li>
+          {% for a in contact.arguments %}<li>{{ a }}</li>{% endfor %}
         </ul>
         <div class="contact-coord">
-          <p><b>Par téléphone</b><br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
-          <p><b>Nos agences</b><br>{{ site.villes }}</p>
+          <p><b>{{ contact.coord_tel_titre }}</b><br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
+          <p><b>{{ contact.coord_agences_titre }}</b><br>{{ site.villes }}</p>
         </div>
       </div>
-      <form class="formulaire" onsubmit="return false">
-        <label for="nom">Votre nom</label>
-        <input id="nom" type="text" placeholder="Prénom et nom">
-        <label for="email">Votre email professionnel</label>
-        <input id="email" type="email" placeholder="prenom@entreprise.fr">
-        <label for="tel">Téléphone (optionnel)</label>
-        <input id="tel" type="tel" placeholder="06 12 34 56 78">
-        <label for="besoin">Votre besoin en quelques lignes</label>
-        <textarea id="besoin" rows="4" placeholder="Ex. : nous gérons nos tournées sur Excel et ça ne tient plus..."></textarea>
-        <p class="aide">Pas besoin de cahier des charges à ce stade. Trois phrases suffisent.</p>
-        <button class="btn btn-primary" type="submit">Envoyer ma demande</button>
-        <p class="reassurance">Réponse sous 48 h, par quelqu'un qui a lu votre message.</p>
-      </form>
+      {% set avec_tel = true %}
+      {% include "formulaire.njk" %}
     </div>
   </div>
 </section>

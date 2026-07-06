@@ -1,0 +1,16 @@
+{%- set f = site.formulaire -%}
+<form class="formulaire" onsubmit="return false">
+  <label for="nom">{{ f.label_nom }}</label>
+  <input id="nom" type="text" placeholder="{{ f.ph_nom }}">
+  <label for="email">{{ f.label_email }}</label>
+  <input id="email" type="email" placeholder="{{ f.ph_email }}">
+  {% if avec_tel %}
+  <label for="tel">{{ f.label_tel }}</label>
+  <input id="tel" type="tel" placeholder="{{ f.ph_tel }}">
+  {% endif %}
+  <label for="besoin">{{ f.label_besoin }}</label>
+  <textarea id="besoin" rows="4" placeholder="{{ f.ph_besoin }}"></textarea>
+  <p class="aide">{{ f.aide }}</p>
+  <button class="btn btn-primary" type="submit">{{ f.bouton }}</button>
+  <p class="reassurance">{{ f.reassurance }}</p>
+</form>

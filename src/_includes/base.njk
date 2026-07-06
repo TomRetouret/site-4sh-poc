@@ -93,40 +93,18 @@
         <p class="footer-titre">{{ site.nom }}</p>
         <p>{{ site.footer_accroche }}<br>{{ site.villes }}<br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
       </div>
+      {% for col in site.footer_colonnes %}
       <div>
-        <p class="footer-titre">Services</p>
+        <p class="footer-titre">{{ col.titre }}</p>
         <ul>
-          <li><a href="/logiciel-metier/">Logiciel métier</a></li>
-          <li><a href="#">Application SaaS</a></li>
-          <li><a href="#">Application mobile</a></li>
-          <li><a href="#">Hébergement &amp; maintenance</a></li>
-          <li><a href="#">Audits</a></li>
+          {% for l in col.liens %}<li><a href="{{ l.url or '#' }}">{{ l.label }}</a></li>{% endfor %}
         </ul>
       </div>
-      <div>
-        <p class="footer-titre">Formations</p>
-        <ul>
-          <li><a href="/formations/">Toutes les formations</a></li>
-          <li><a href="/formations/develop/">Develop</a></li>
-          <li><a href="/formations/design/">Design</a></li>
-          <li><a href="/formations/devops/">DevOps</a></li>
-          <li><a href="/formations/outils/">Outils</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer-titre">L'agence</p>
-        <ul>
-          <li><a href="#">Comment se passe un projet</a></li>
-          <li><a href="/references/">Références</a></li>
-          <li><a href="#">L'équipe</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="/formations/">Formations</a></li>
-        </ul>
-      </div>
+      {% endfor %}
     </div>
     <div class="footer-bas">
-      <span>© 2007-2026 4SH · Mentions légales · RGPD · Charte RSE</span>
-      <span>LinkedIn · YouTube · X</span>
+      <span>{{ site.footer_legal }}</span>
+      <span>{% for r in site.footer_reseaux %}{% if not loop.first %} · {% endif %}<a href="{{ r.url or '#' }}">{{ r.label }}</a>{% endfor %}</span>
     </div>
   </div>
 </footer>

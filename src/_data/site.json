@@ -5,6 +5,7 @@
   "telephone_lien": "+330963286273",
   "villes": "Bordeaux · Capbreton · Paris",
   "footer_accroche": "Agence de développement logiciel sur mesure depuis 2007.",
+  "clients_intro": "Ils nous confient leur métier :",
   "clients": [
     { "nom": "IZIVIA", "url": "/references/izivia-portail/" },
     { "nom": "SUD OUEST", "url": "/references/sud-ouest-socoa/" },
@@ -12,5 +13,56 @@
     { "nom": "CIN", "url": "/references/cin/" },
     { "nom": "ARRG", "url": "/references/arrg/" },
     { "nom": "BME", "url": "" }
+  ],
+  "formulaire": {
+    "label_nom": "Votre nom",
+    "ph_nom": "Prénom et nom",
+    "label_email": "Votre email professionnel",
+    "ph_email": "prenom@entreprise.fr",
+    "label_tel": "Téléphone (optionnel)",
+    "ph_tel": "06 12 34 56 78",
+    "label_besoin": "Votre besoin en quelques lignes",
+    "ph_besoin": "Ex. : nous gérons nos tournées sur Excel et ça ne tient plus...",
+    "aide": "Pas besoin de cahier des charges à ce stade. Trois phrases suffisent.",
+    "bouton": "Envoyer ma demande",
+    "reassurance": "Réponse sous 48 h, par quelqu'un qui a lu votre message."
+  },
+  "footer_colonnes": [
+    {
+      "titre": "Services",
+      "liens": [
+        { "label": "Logiciel métier", "url": "/logiciel-metier/" },
+        { "label": "Application SaaS", "url": "#" },
+        { "label": "Application mobile", "url": "#" },
+        { "label": "Hébergement & maintenance", "url": "#" },
+        { "label": "Audits", "url": "#" }
+      ]
+    },
+    {
+      "titre": "Formations",
+      "liens": [
+        { "label": "Toutes les formations", "url": "/formations/" },
+        { "label": "Develop", "url": "/formations/develop/" },
+        { "label": "Design", "url": "/formations/design/" },
+        { "label": "DevOps", "url": "/formations/devops/" },
+        { "label": "Outils", "url": "/formations/outils/" }
+      ]
+    },
+    {
+      "titre": "L'agence",
+      "liens": [
+        { "label": "Comment se passe un projet", "url": "#" },
+        { "label": "Références", "url": "/references/" },
+        { "label": "L'équipe", "url": "#" },
+        { "label": "Blog", "url": "#" },
+        { "label": "Formations", "url": "/formations/" }
+      ]
+    }
+  ],
+  "footer_legal": "© 2007-2026 4SH · Mentions légales · RGPD · Charte RSE",
+  "footer_reseaux": [
+    { "label": "LinkedIn", "url": "#" },
+    { "label": "YouTube", "url": "#" },
+    { "label": "X", "url": "#" }
   ]
 }

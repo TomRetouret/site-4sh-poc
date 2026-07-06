@@ -331,28 +331,128 @@ collections:
         fields:
           - { label: "Titre SEO", name: "meta_title", widget: "string" }
           - { label: "Description SEO", name: "meta_description", widget: "text" }
-          - { label: "Titre principal (H1)", name: "hero_surtitre", widget: "string" }
-          - { label: "Paragraphe d'introduction", name: "hero_chapo", widget: "text" }
-          - { label: "Note sous les boutons", name: "hero_note", widget: "string" }
-          - { label: "Bouton principal", name: "hero_cta_principal", widget: "string" }
-          - { label: "Bouton secondaire", name: "hero_cta_secondaire", widget: "string" }
-          - { label: "Équipe · sur-titre", name: "equipe_eyebrow", widget: "string" }
-          - { label: "Équipe · titre", name: "equipe_titre", widget: "string", hint: "Le mot accentué peut être encadré par <em class=\"accent\">...</em>." }
-          - { label: "Équipe · texte", name: "equipe_texte", widget: "text" }
-          - { label: "Équipe · photo", name: "equipe_photo", widget: "image", required: false, choose_url: true, hint: "Photo de groupe affichée en bas de l'accueil." }
-          - label: "Secteurs"
+          - { label: "Hero · titre principal (H1)", name: "hero_surtitre", widget: "string" }
+          - { label: "Hero · accroche (début)", name: "hero_accroche_debut", widget: "string", hint: "Ex. : Un logiciel qui" }
+          - { label: "Hero · accroche (mot accentué)", name: "hero_accroche_accent", widget: "string", hint: "Ex. : épouse" }
+          - { label: "Hero · accroche (fin)", name: "hero_accroche_fin", widget: "string", hint: "HTML autorisé (<br>). Ex. : vos processus,<br>pas l'inverse." }
+          - { label: "Hero · paragraphe d'introduction", name: "hero_chapo", widget: "text" }
+          - { label: "Hero · note sous les boutons", name: "hero_note", widget: "string" }
+          - { label: "Hero · bouton principal", name: "hero_cta_principal", widget: "string" }
+          - { label: "Hero · bouton secondaire", name: "hero_cta_secondaire", widget: "string" }
+          - { label: "Hero · titre de l'encart visuel", name: "hero_visuel_titre", widget: "string", hint: "Ex. : // votre logiciel métier" }
+          - label: "Hero · lignes de l'encart visuel"
+            name: "hero_visuel_lignes"
+            widget: "list"
+            fields:
+              - { label: "Clé (en italique)", name: "cle", widget: "string" }
+              - { label: "Valeur", name: "valeur", widget: "string" }
+          - { label: "Hero · badge (texte)", name: "hero_visuel_badge", widget: "string" }
+          - { label: "Hero · badge (note)", name: "hero_visuel_badge_note", widget: "string" }
+
+          - { label: "Portes · sur-titre", name: "portes_eyebrow", widget: "string" }
+          - { label: "Portes · titre", name: "portes_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
+          - { label: "Portes · sous-titre", name: "portes_sous", widget: "text" }
+          - label: "Portes d'entrée (3 blocs)"
+            name: "portes"
+            widget: "list"
+            hint: "Les pictogrammes restent fixes selon la position."
+            fields:
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Texte", name: "texte", widget: "text" }
+              - label: "Liens"
+                name: "liens"
+                widget: "list"
+                fields:
+                  - { label: "Libellé", name: "label", widget: "string" }
+                  - { label: "Lien", name: "url", widget: "string", required: false }
+              - { label: "Libellé du lien de bas de carte", name: "suite_label", widget: "string" }
+              - { label: "Lien de bas de carte", name: "suite_url", widget: "string", required: false }
+
+          - label: "Bandeau chiffres"
+            name: "chiffres"
+            widget: "list"
+            fields:
+              - { label: "Valeur affichée", name: "valeur", widget: "string", hint: "Ex. : 2007, 48h, 100%" }
+              - { label: "Valeur à animer (nombre)", name: "compte", widget: "string", required: false, hint: "Optionnel. Nombre pour l'animation de comptage, ex. : 48. Laisser vide pour un affichage figé (ex. 2007)." }
+              - { label: "Suffixe", name: "suffixe", widget: "string", required: false, hint: "Ex. : h, %" }
+              - { label: "Texte", name: "texte", widget: "string" }
+              - { label: "Note (petit texte)", name: "note", widget: "string", required: false }
+
+          - { label: "Cas client vedette · sur-titre", name: "cas_eyebrow", widget: "string" }
+          - { label: "Cas client vedette · titre", name: "cas_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
+          - { label: "Cas client vedette · sous-titre", name: "cas_sous", widget: "text" }
+          - label: "Cas client vedette"
+            name: "cas"
+            widget: "object"
+            fields:
+              - { label: "Secteur", name: "secteur", widget: "string" }
+              - { label: "Client (logo texte)", name: "client", widget: "string" }
+              - { label: "Texte du visuel", name: "visuel_texte", widget: "text" }
+              - { label: "Citation", name: "citation", widget: "text" }
+              - { label: "Auteur", name: "auteur", widget: "string" }
+              - label: "Chiffres"
+                name: "chiffres"
+                widget: "list"
+                fields:
+                  - { label: "Valeur", name: "valeur", widget: "string" }
+                  - { label: "Libellé", name: "label", widget: "string" }
+              - { label: "Libellé du bouton", name: "cta_label", widget: "string" }
+              - { label: "Lien du bouton", name: "cta_url", widget: "string", required: false }
+
+          - { label: "Méthode · sur-titre", name: "methode_eyebrow", widget: "string" }
+          - { label: "Méthode · titre", name: "methode_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
+          - { label: "Méthode · sous-titre", name: "methode_sous", widget: "text" }
+          - label: "Méthode · étapes"
+            name: "methode_etapes"
+            widget: "list"
+            fields:
+              - { label: "Numéro", name: "num", widget: "string" }
+              - { label: "Libellé (phase)", name: "label", widget: "string" }
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Texte", name: "texte", widget: "text" }
+
+          - { label: "Secteurs · sur-titre", name: "secteurs_eyebrow", widget: "string" }
+          - { label: "Secteurs · titre", name: "secteurs_titre", widget: "string", hint: "HTML autorisé." }
+          - { label: "Secteurs · sous-titre", name: "secteurs_sous", widget: "text" }
+          - label: "Secteurs (cartes)"
             name: "secteurs"
             widget: "list"
             fields:
               - { label: "Titre", name: "titre", widget: "string" }
               - { label: "Texte", name: "texte", widget: "text" }
               - { label: "Libellé du lien", name: "lien_libelle", widget: "string" }
+              - { label: "Lien", name: "url", widget: "string", required: false }
+
+          - { label: "Bandeau CTA · titre", name: "bandeau_cta_titre", widget: "string" }
+          - { label: "Bandeau CTA · texte", name: "bandeau_cta_texte", widget: "text" }
+          - { label: "Bandeau CTA · libellé du bouton", name: "bandeau_cta_label", widget: "string" }
+          - { label: "Bandeau CTA · lien du bouton", name: "bandeau_cta_url", widget: "string", required: false }
+
+          - { label: "FAQ · titre", name: "faq_titre", widget: "string" }
+          - { label: "FAQ · sous-titre", name: "faq_sous", widget: "text" }
           - label: "Questions fréquentes"
             name: "faq"
             widget: "list"
             fields:
               - { label: "Question", name: "question", widget: "string" }
               - { label: "Réponse", name: "reponse", widget: "text" }
+
+          - { label: "Équipe · sur-titre", name: "equipe_eyebrow", widget: "string" }
+          - { label: "Équipe · titre", name: "equipe_titre", widget: "string", hint: "Le mot accentué peut être encadré par <em class=\"accent\">...</em>." }
+          - { label: "Équipe · texte", name: "equipe_texte", widget: "text" }
+          - { label: "Équipe · photo", name: "equipe_photo", widget: "image", required: false, choose_url: true, hint: "Photo de groupe affichée en bas de l'accueil." }
+
+          - { label: "Contact · titre", name: "contact_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
+          - { label: "Contact · sous-titre", name: "contact_sous", widget: "text" }
+          - label: "Contact · arguments"
+            name: "contact_arguments"
+            widget: "list"
+            field: { label: "Argument", name: "item", widget: "string" }
+          - label: "Contact · pastilles visages"
+            name: "contact_visages"
+            widget: "list"
+            field: { label: "Initiales", name: "item", widget: "string" }
+          - { label: "Contact · note", name: "contact_note", widget: "string" }
 
       - name: "page_formations"
         label: "Formations (page mère)"
@@ -387,8 +487,158 @@ collections:
           - { label: "Titre principal (H1)", name: "h1", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
           - { label: "Paragraphe d'introduction", name: "chapo", widget: "text" }
 
+      - name: "logiciel_metier"
+        label: "Page Logiciel métier"
+        file: "src/_data/logiciel_metier.json"
+        preview_path: "logiciel-metier/"
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string" }
+          - { label: "Description SEO", name: "meta_description", widget: "text" }
+          - { label: "Hero · titre (H1)", name: "hero_h1", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
+          - { label: "Hero · accroche", name: "hero_chapo", widget: "text" }
+          - { label: "Hero · bouton principal (libellé)", name: "hero_cta_principal_label", widget: "string" }
+          - { label: "Hero · bouton principal (lien)", name: "hero_cta_principal_url", widget: "string", required: false }
+          - { label: "Hero · bouton secondaire (libellé)", name: "hero_cta_secondaire_label", widget: "string" }
+          - { label: "Hero · bouton secondaire (lien)", name: "hero_cta_secondaire_url", widget: "string", required: false }
+          - label: "Hero · puces (chips)"
+            name: "hero_chips"
+            widget: "list"
+            field: { label: "Puce", name: "item", widget: "string" }
+          - label: "Bandeau chiffres"
+            name: "chiffres"
+            widget: "list"
+            fields:
+              - { label: "Valeur affichée", name: "valeur", widget: "string" }
+              - { label: "Valeur à animer (nombre)", name: "compte", widget: "string", required: false }
+              - { label: "Suffixe", name: "suffixe", widget: "string", required: false }
+              - { label: "Texte", name: "texte", widget: "string" }
+              - { label: "Note", name: "note", widget: "string", required: false }
+          - { label: "Pourquoi · sur-titre", name: "pourquoi_eyebrow", widget: "string" }
+          - { label: "Pourquoi · titre", name: "pourquoi_titre", widget: "string", hint: "HTML autorisé." }
+          - label: "Pourquoi · paragraphes"
+            name: "pourquoi_paragraphes"
+            widget: "list"
+            field: { label: "Paragraphe", name: "item", widget: "text", hint: "HTML autorisé (<strong>, <a>)." }
+          - { label: "Méthode · sur-titre", name: "methode_eyebrow", widget: "string" }
+          - { label: "Méthode · titre", name: "methode_titre", widget: "string", hint: "HTML autorisé." }
+          - { label: "Méthode · sous-titre", name: "methode_sous", widget: "text" }
+          - label: "Méthode · étapes"
+            name: "methode_etapes"
+            widget: "list"
+            fields:
+              - { label: "Numéro", name: "num", widget: "string" }
+              - { label: "Libellé (phase)", name: "label", widget: "string" }
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Texte", name: "texte", widget: "text" }
+          - { label: "Stack · sur-titre", name: "socle_eyebrow", widget: "string" }
+          - { label: "Stack · titre", name: "socle_titre", widget: "string", hint: "HTML autorisé." }
+          - { label: "Stack · sous-titre", name: "socle_sous", widget: "text" }
+          - label: "Stack · cartes technologies"
+            name: "socle_cartes"
+            widget: "list"
+            fields:
+              - { label: "Logo (URL ou image)", name: "logo", widget: "image", required: false, choose_url: true }
+              - { label: "Nom", name: "nom", widget: "string" }
+              - { label: "Libellé du lien", name: "lien_label", widget: "string", required: false }
+              - { label: "Lien", name: "lien_url", widget: "string", required: false }
+          - { label: "Pour qui · sur-titre", name: "pour_qui_eyebrow", widget: "string" }
+          - { label: "Pour qui · titre", name: "pour_qui_titre", widget: "string", hint: "HTML autorisé." }
+          - label: "Pour qui · paragraphes"
+            name: "pour_qui_paragraphes"
+            widget: "list"
+            field: { label: "Paragraphe", name: "item", widget: "text", hint: "HTML autorisé." }
+          - { label: "Atouts · sur-titre", name: "atouts_eyebrow", widget: "string" }
+          - { label: "Atouts · titre", name: "atouts_titre", widget: "string", hint: "HTML autorisé." }
+          - { label: "Atouts · sous-titre", name: "atouts_sous", widget: "text" }
+          - label: "Atouts (liste)"
+            name: "atouts"
+            widget: "list"
+            fields:
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Texte", name: "texte", widget: "text" }
+          - { label: "Réalisations · sur-titre", name: "realisations_eyebrow", widget: "string" }
+          - { label: "Réalisations · titre", name: "realisations_titre", widget: "string", hint: "HTML autorisé." }
+          - label: "Réalisation vedette"
+            name: "realisations_vedette"
+            widget: "object"
+            fields:
+              - { label: "Secteur", name: "secteur", widget: "string" }
+              - { label: "Logo (texte)", name: "logo_texte", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Citation", name: "citation", widget: "text" }
+              - { label: "Auteur", name: "auteur", widget: "string" }
+              - label: "Chiffres"
+                name: "chiffres"
+                widget: "list"
+                fields:
+                  - { label: "Valeur", name: "valeur", widget: "string" }
+                  - { label: "Libellé", name: "label", widget: "string" }
+              - { label: "Libellé du bouton", name: "cta_label", widget: "string" }
+              - { label: "Lien du bouton", name: "cta_url", widget: "string", required: false }
+          - label: "Réalisations · autres cartes"
+            name: "realisations_cartes"
+            widget: "list"
+            fields:
+              - { label: "Secteur", name: "secteur", widget: "string" }
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Texte", name: "texte", widget: "text" }
+              - { label: "Lien", name: "url", widget: "string", required: false }
+          - { label: "Réalisations · titre bandeau clients", name: "realisations_clients_titre", widget: "string" }
+          - label: "Réalisations · clients (bandeau)"
+            name: "realisations_clients"
+            widget: "list"
+            field: { label: "Client", name: "item", widget: "string" }
+          - { label: "Blog · sur-titre", name: "blog_eyebrow", widget: "string" }
+          - { label: "Blog · titre", name: "blog_titre", widget: "string", hint: "HTML autorisé." }
+          - label: "Blog · articles"
+            name: "blog_articles"
+            widget: "list"
+            fields:
+              - { label: "Étiquette", name: "tag", widget: "string" }
+              - { label: "Date", name: "date", widget: "string" }
+              - { label: "Durée de lecture", name: "duree", widget: "string" }
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Lien", name: "url", widget: "string", required: false }
+              - { label: "Auteur", name: "auteur", widget: "string" }
+          - { label: "FAQ · titre", name: "faq_titre", widget: "string", hint: "HTML autorisé." }
+          - { label: "FAQ · sous-titre", name: "faq_sous", widget: "text" }
+          - label: "Questions fréquentes"
+            name: "faq"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Réponse", name: "reponse", widget: "text" }
+          - { label: "Contact · titre", name: "contact_titre", widget: "string", hint: "HTML autorisé." }
+          - { label: "Contact · sous-titre", name: "contact_sous", widget: "text" }
+          - label: "Contact · arguments"
+            name: "contact_arguments"
+            widget: "list"
+            field: { label: "Argument", name: "item", widget: "string" }
+          - label: "Contact · pastilles visages"
+            name: "contact_visages"
+            widget: "list"
+            field: { label: "Initiales", name: "item", widget: "string" }
+          - { label: "Contact · note", name: "contact_note", widget: "string" }
+          - { label: "Bouton flottant (libellé)", name: "sticky_cta_label", widget: "string" }
+
+      - name: "contact"
+        label: "Page Contact"
+        file: "src/_data/contact.json"
+        preview_path: "contact/"
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string" }
+          - { label: "Description SEO", name: "meta_description", widget: "text" }
+          - { label: "Titre (H1)", name: "h1", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
+          - { label: "Accroche", name: "chapo", widget: "text" }
+          - label: "Arguments"
+            name: "arguments"
+            widget: "list"
+            field: { label: "Argument", name: "item", widget: "string" }
+          - { label: "Titre bloc téléphone", name: "coord_tel_titre", widget: "string" }
+          - { label: "Titre bloc agences", name: "coord_agences_titre", widget: "string" }
+
       - name: "site"
-        label: "Réglages du site (pied de page, coordonnées)"
+        label: "Réglages du site (pied de page, coordonnées, formulaire)"
         file: "src/_data/site.json"
         fields:
           - { label: "Nom", name: "nom", widget: "string" }
@@ -396,12 +646,48 @@ collections:
           - { label: "Téléphone (format lien)", name: "telephone_lien", widget: "string", hint: "Sans espaces, ex. : +330963286273" }
           - { label: "Villes", name: "villes", widget: "string" }
           - { label: "Accroche du pied de page", name: "footer_accroche", widget: "text" }
+          - { label: "Intro du bandeau logos clients", name: "clients_intro", widget: "string", hint: "Ex. : Ils nous confient leur métier :" }
           - label: "Logos clients (bandeau « Ils nous confient leur métier »)"
             name: "clients"
             widget: "list"
             fields:
               - { label: "Nom", name: "nom", widget: "string" }
               - { label: "Lien (optionnel)", name: "url", widget: "string", required: false, hint: "Ex. : /references/izivia-portail/ . Laisser vide pour aucun lien." }
+          - label: "Formulaire de contact (libellés partagés)"
+            name: "formulaire"
+            widget: "object"
+            collapsed: true
+            hint: "Libellés et textes du formulaire, utilisés sur l'accueil, Logiciel métier et Contact."
+            fields:
+              - { label: "Libellé · nom", name: "label_nom", widget: "string" }
+              - { label: "Placeholder · nom", name: "ph_nom", widget: "string" }
+              - { label: "Libellé · email", name: "label_email", widget: "string" }
+              - { label: "Placeholder · email", name: "ph_email", widget: "string" }
+              - { label: "Libellé · téléphone", name: "label_tel", widget: "string" }
+              - { label: "Placeholder · téléphone", name: "ph_tel", widget: "string" }
+              - { label: "Libellé · besoin", name: "label_besoin", widget: "string" }
+              - { label: "Placeholder · besoin", name: "ph_besoin", widget: "text" }
+              - { label: "Texte d'aide", name: "aide", widget: "text" }
+              - { label: "Bouton d'envoi", name: "bouton", widget: "string" }
+              - { label: "Texte de réassurance", name: "reassurance", widget: "string" }
+          - label: "Pied de page · colonnes de liens"
+            name: "footer_colonnes"
+            widget: "list"
+            fields:
+              - { label: "Titre de la colonne", name: "titre", widget: "string" }
+              - label: "Liens"
+                name: "liens"
+                widget: "list"
+                fields:
+                  - { label: "Libellé", name: "label", widget: "string" }
+                  - { label: "Lien", name: "url", widget: "string", required: false }
+          - { label: "Pied de page · mentions légales", name: "footer_legal", widget: "string" }
+          - label: "Pied de page · réseaux sociaux"
+            name: "footer_reseaux"
+            widget: "list"
+            fields:
+              - { label: "Libellé", name: "label", widget: "string" }
+              - { label: "Lien", name: "url", widget: "string", required: false }
 
   # -----------------------------------------------------------------------
   # 7) SEO & INDEXATION  (métas par défaut, sitemap, robots.txt)

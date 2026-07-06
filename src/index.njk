@@ -8,7 +8,7 @@ permalink: /
     <div class="hero-grille">
       <div>
         <h1 class="surtitre">{{ accueil.hero_surtitre }}</h1>
-        <p class="hero-accroche">Un logiciel qui <em class="accent">épouse</em><svg class="doodle doodle-asterisque" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M13 3.5c-.4 3.2-.2 6.4.2 19M4.2 8.2c5.8 3.4 11.7 6.6 17.6 9.6M21.8 8.2C16 11.6 10.1 14.8 4.2 17.8"/></svg> vos processus,<br>pas l'inverse.</p>
+        <p class="hero-accroche">{{ accueil.hero_accroche_debut }} <em class="accent">{{ accueil.hero_accroche_accent }}</em><svg class="doodle doodle-asterisque" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M13 3.5c-.4 3.2-.2 6.4.2 19M4.2 8.2c5.8 3.4 11.7 6.6 17.6 9.6M21.8 8.2C16 11.6 10.1 14.8 4.2 17.8"/></svg> {{ accueil.hero_accroche_fin | safe }}</p>
         <p class="chapo">{{ accueil.hero_chapo }}</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#contact">{{ accueil.hero_cta_principal }}</a>
@@ -18,12 +18,10 @@ permalink: /
       </div>
       <div class="hero-visuel" aria-hidden="true">
         <div class="fenetre">
-          <span>// votre logiciel métier</span><br>
-          <i>livraison</i> : jalons tenus, démos toutes les 2 semaines<br>
-          <i>équipe</i> : UX, dev, devops, produit, dédiée<br>
-          <i>après</i> : hébergé, maintenu, évolutif
+          <span>{{ accueil.hero_visuel_titre }}</span><br>
+          {% for l in accueil.hero_visuel_lignes %}<i>{{ l.cle }}</i> : {{ l.valeur }}<br>{% endfor %}
         </div>
-        <div class="badge-projet"><span>Méthode 4D · Discover → Deploy</span><b>Depuis 2007</b></div>
+        <div class="badge-projet"><span>{{ accueil.hero_visuel_badge }}</span><b>{{ accueil.hero_visuel_badge_note }}</b></div>
       </div>
     </div>
   </div>
@@ -32,7 +30,7 @@ permalink: /
 <!-- LOGOS CLIENTS -->
 <div class="logos">
   <div class="container">
-    <p>Ils nous confient leur métier :</p>
+    <p>{{ site.clients_intro }}</p>
     <div class="marquee"><ul aria-label="Références clients">
       {% for c in site.clients %}<li>{% if c.url %}<a href="{{ c.url }}">{{ c.nom }}</a>{% else %}{{ c.nom }}{% endif %}</li>{% endfor %}
     </ul></div>
@@ -42,43 +40,22 @@ permalink: /
 <!-- 3 PORTES D'ENTRÉE -->
 <section>
   <div class="container">
-    <p class="eyebrow">Par où commencer</p>
-    <h2 class="sec-titre">Qu'est-ce qui vous <em class="accent">amène</em> ?</h2>
-    <p class="sec-sous">Trois façons de travailler ensemble, selon l'endroit où vous en êtes.</p>
+    <p class="eyebrow">{{ accueil.portes_eyebrow }}</p>
+    <h2 class="sec-titre">{{ accueil.portes_titre | safe }}</h2>
+    <p class="sec-sous">{{ accueil.portes_sous }}</p>
+    {% set porte_pictos = ["⚙", "🛡", "🎓"] %}
     <div class="portes">
+      {% for p in accueil.portes %}
       <article class="porte">
-        <div class="pictos">⚙</div><svg class="doodle mini-doodle" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="15" cy="15" r="5.5"/><path d="M15 5.5v3M15 21.5v3M5.5 15h3M21.5 15h3M8.3 8.3l2.1 2.1M19.6 19.6l2.1 2.1M21.7 8.3l-2.1 2.1M10.4 19.6l-2.1 2.1"/></svg>
-        <h3>Créer un logiciel sur mesure</h3>
-        <p>Un Excel qui craque, un process qui coûte, un outil du marché qui ne colle pas ? Nous développons l'application qui suit vos gestes réels.</p>
+        <div class="pictos">{{ porte_pictos[loop.index0] }}</div>
+        <h3>{{ p.titre }}</h3>
+        <p>{{ p.texte }}</p>
         <ul>
-          <li><a href="/logiciel-metier/">→ Logiciel métier</a></li>
-          <li><a href="#">→ Application SaaS</a></li>
-          <li><a href="#">→ Application mobile</a></li>
+          {% for l in p.liens %}<li><a href="{{ l.url or '#' }}">{{ l.label }}</a></li>{% endfor %}
         </ul>
-        <a class="suite" href="/logiciel-metier/">Découvrir le développement sur mesure</a>
+        <a class="suite" href="{{ p.suite_url or '#' }}">{{ p.suite_label }}</a>
       </article>
-      <article class="porte">
-        <div class="pictos">🛡</div><svg class="doodle mini-doodle" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M26 13.5c0 5-5 9-11 9-1.4 0-2.8-.2-4-.6L5 24l1.8-4.6C5.1 17.8 4 15.8 4 13.5c0-5 5-9 11-9s11 4 11 9z"/><path d="M10.5 13.5h.01M15 13.5h.01M19.5 13.5h.01"/></svg>
-        <h3>Faire vivre votre solution</h3>
-        <p>Votre logiciel existe déjà : nous l'hébergeons, le sécurisons, le maintenons et le faisons évoluer avec votre activité.</p>
-        <ul>
-          <li><a href="#">→ Hébergement &amp; maintenance</a></li>
-          <li><a href="#">→ Évolutions &amp; refonte</a></li>
-          <li><a href="#">→ Audits UX, sécurité, cloud</a></li>
-        </ul>
-        <a class="suite" href="#">Fiabiliser votre existant</a>
-      </article>
-      <article class="porte">
-        <div class="pictos">🎓</div><svg class="doodle mini-doodle" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 5 3 11l12 6 12-6-12-6z"/><path d="M8 14v7c4.7 3.4 9.3 3.4 14 0v-7"/><path d="M27 11v7"/></svg>
-        <h3>Former vos équipes</h3>
-        <p>Montez vos équipes en compétences sur les technologies et méthodes que nous pratiquons tous les jours en projet.</p>
-        <ul>
-          <li><a href="/formations/">→ Développement (Angular, Kotlin...)</a></li>
-          <li><a href="/formations/">→ DevOps (Kubernetes...)</a></li>
-          <li><a href="/formations/">→ Design (Figma...)</a></li>
-        </ul>
-        <a class="suite" href="/formations/">Voir les formations</a>
-      </article>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -86,33 +63,35 @@ permalink: /
 <!-- BANDEAU CHIFFRES -->
 <div class="chiffres">
   <div class="container">
-    <div><b><i>2007</i></b><svg class="doodle doodle-vague" width="96" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg><span>Année de création, du sur-mesure depuis le début</span></div>
-    <div><b><i data-compte="3">3</i></b><span>Agences en France</span><small>Bordeaux &middot; Capbreton &middot; Paris</small></div>
-    <div><b><i data-compte="48" data-suffixe="h">48h</i></b><span>Pour un premier retour</span><small>par un expert, pas un commercial</small></div>
-    <div><b><i data-compte="100" data-suffixe="%">100%</i></b><span>Conçu et maintenu en interne</span><small>une seule équipe, de A à Z</small></div>
+    {% for c in accueil.chiffres %}
+    <div>
+      <b>{% if c.compte %}<i data-compte="{{ c.compte }}"{% if c.suffixe %} data-suffixe="{{ c.suffixe }}"{% endif %}>{{ c.valeur }}</i>{% else %}<i>{{ c.valeur }}</i>{% endif %}</b>
+      {% if loop.first %}<svg class="doodle doodle-vague" width="96" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg>{% endif %}
+      <span>{{ c.texte }}</span>{% if c.note %}<small>{{ c.note }}</small>{% endif %}
+    </div>
+    {% endfor %}
   </div>
 </div>
 
 <!-- CAS CLIENT VEDETTE -->
 <section>
   <div class="container">
-    <p class="eyebrow">Nos réalisations</p>
-    <h2 class="sec-titre">La preuve par les <em class="accent">projets</em></h2>
-    <p class="sec-sous">Nos réussites racontées avec des résultats, pas des adjectifs.</p>
+    <p class="eyebrow">{{ accueil.cas_eyebrow }}</p>
+    <h2 class="sec-titre">{{ accueil.cas_titre | safe }}</h2>
+    <p class="sec-sous">{{ accueil.cas_sous }}</p>
     <div class="cas">
       <div class="cas-visuel">
-        <div class="secteur">Électromobilité</div>
-        <div class="logo-client">IZIVIA · groupe EDF</div>
-        <p>Supervision et pilotage de bornes de recharge à l'échelle nationale.</p>
+        <div class="secteur">{{ accueil.cas.secteur }}</div>
+        <div class="logo-client">{{ accueil.cas.client }}</div>
+        <p>{{ accueil.cas.visuel_texte }}</p>
       </div>
       <div class="cas-corps">
-        <blockquote>« 4SH a construit la plateforme, puis est resté pour la faire évoluer. C'est cette continuité qui fait la différence. »</blockquote>
-        <p class="auteur">[Prénom Nom], [fonction], Izivia</p>
+        <blockquote>{{ accueil.cas.citation }}</blockquote>
+        <p class="auteur">{{ accueil.cas.auteur }}</p>
         <div class="cas-chiffre">
-          <div><b>[XX 000]</b><span>bornes supervisées</span></div>
-          <div><b><i>[X]</i> ans</b><span>de collaboration continue</span></div>
+          {% for ch in accueil.cas.chiffres %}<div><b>{{ ch.valeur | safe }}</b><span>{{ ch.label }}</span></div>{% endfor %}
         </div>
-        <a class="btn btn-ghost btn-sm" href="/references/izivia-portail/">Lire le cas client</a>
+        <a class="btn btn-ghost btn-sm" href="{{ accueil.cas.cta_url or '#' }}">{{ accueil.cas.cta_label }}</a>
       </div>
     </div>
   </div>
@@ -121,14 +100,13 @@ permalink: /
 <!-- MÉTHODE 4D -->
 <section class="section-sombre">
   <div class="container">
-    <p class="eyebrow">Notre méthode 4D</p>
-    <h2 class="sec-titre">Comment se passe un projet <em class="accent">avec nous</em></h2>
-    <p class="sec-sous">Notre méthode 4D : des jalons clairs, des démos régulières, zéro flou. L'agilité n'excuse pas l'opacité.</p>
+    <p class="eyebrow">{{ accueil.methode_eyebrow }}</p>
+    <h2 class="sec-titre">{{ accueil.methode_titre | safe }}</h2>
+    <p class="sec-sous">{{ accueil.methode_sous }}</p>
     <div class="etapes">
-      <div class="etape"><span class="num">01</span><span class="num-label">Discover</span><h3>Comprendre votre métier</h3><p>Ateliers avec vos équipes terrain. On repart avec vos processus réels, pas une liste de fonctionnalités.</p></div>
-      <div class="etape"><span class="num">02</span><span class="num-label">Design</span><h3>Dessiner l'outil</h3><p>Maquettes testées avec vos utilisateurs avant d'écrire une ligne de code. Vous validez sur du concret.</p></div>
-      <div class="etape"><span class="num">03</span><span class="num-label">Develop</span><h3>Développer par jalons</h3><p>Démos toutes les deux semaines, code testé et maintenable. Vous savez toujours où en est votre projet.</p></div>
-      <div class="etape"><span class="num">04</span><span class="num-label">Deploy</span><h3>Livrer, puis rester</h3><p>Mise en production, hébergement, maintenance, évolutions. Le logiciel grandit avec votre activité.</p></div>
+      {% for e in accueil.methode_etapes %}
+      <div class="etape"><span class="num">{{ e.num }}</span><span class="num-label">{{ e.label }}</span><h3>{{ e.titre }}</h3><p>{{ e.texte }}</p></div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -136,13 +114,12 @@ permalink: /
 <!-- SECTEURS -->
 <section>
   <div class="container">
-    <p class="eyebrow">Vos métiers</p>
-    <h2 class="sec-titre">Nos secteurs</h2>
-    <p class="sec-sous">Nous parlons déjà la langue de votre métier.</p>
+    <p class="eyebrow">{{ accueil.secteurs_eyebrow }}</p>
+    <h2 class="sec-titre">{{ accueil.secteurs_titre | safe }}</h2>
+    <p class="sec-sous">{{ accueil.secteurs_sous }}</p>
     <div class="secteurs-grille">
-      {% set lien_secteur = {"Logistique":"/secteurs/logistique/","Assurance":"/secteurs/assurance/","Électromobilité":"/secteurs/electromobilite/"} %}
       {% for s in accueil.secteurs %}
-      <div class="secteur-carte"><h3>{{ s.titre }}</h3><p>{{ s.texte }}</p><a href="{{ lien_secteur[s.titre] or '#' }}">{{ s.lien_libelle }}</a></div>
+      <div class="secteur-carte"><h3>{{ s.titre }}</h3><p>{{ s.texte }}</p><a href="{{ s.url or '#' }}">{{ s.lien_libelle }}</a></div>
       {% endfor %}
     </div>
   </div>
@@ -153,10 +130,10 @@ permalink: /
   <div class="container">
     <div class="bandeau-cta">
       <div>
-        <h2>Vous hésitez entre sur mesure et logiciel du marché ?</h2>
-        <p>C'est la bonne question. En 30 minutes, un expert 4SH vous aide à y voir clair. Et si un outil standard suffit, nous vous le dirons.</p>
+        <h2>{{ accueil.bandeau_cta_titre }}</h2>
+        <p>{{ accueil.bandeau_cta_texte }}</p>
       </div>
-      <a class="btn" href="#contact">Poser la question à un expert</a>
+      <a class="btn" href="{{ accueil.bandeau_cta_url or '#contact' }}">{{ accueil.bandeau_cta_label }}</a>
     </div>
   </div>
 </section>
@@ -164,8 +141,8 @@ permalink: /
 <!-- FAQ -->
 <section style="padding-top:0">
   <div class="container">
-    <h2 class="sec-titre centre" style="text-align:center">Développement logiciel sur mesure : vos questions</h2>
-    <p class="sec-sous" style="margin:0 auto 38px;text-align:center">Les réponses que vous cherchez avant de nous appeler.</p>
+    <h2 class="sec-titre centre" style="text-align:center">{{ accueil.faq_titre }}</h2>
+    <p class="sec-sous" style="margin:0 auto 38px;text-align:center">{{ accueil.faq_sous }}</p>
     <div class="faq">
       {% for item in accueil.faq %}
       <details{% if loop.first %} open{% endif %}>
@@ -177,7 +154,7 @@ permalink: /
   </div>
 </section>
 
-<!-- ÉQUIPE (emplacements photos) -->
+<!-- ÉQUIPE (photo de groupe) -->
 <section style="padding-top:0">
   <div class="container">
     <div class="eyebrow">{{ accueil.equipe_eyebrow }}</div>
@@ -196,27 +173,15 @@ permalink: /
   <div class="container">
     <div class="contact-grille">
       <div>
-        <h2 class="sec-titre">Parlons de votre <em class="accent">projet</em></h2>
-        <p class="sec-sous" style="margin-bottom:18px">30 minutes avec un expert, gratuit, sans engagement. Vous repartez avec un premier avis honnête, pas un argumentaire.</p>
+        <h2 class="sec-titre">{{ accueil.contact_titre | safe }}</h2>
+        <p class="sec-sous" style="margin-bottom:18px">{{ accueil.contact_sous }}</p>
         <ul class="arguments">
-          <li>Un interlocuteur dédié, de l'analyse des besoins à la maintenance</li>
-          <li>Des équipes pluridisciplinaires à Bordeaux, Capbreton et Paris</li>
-          <li>Et si le sur mesure ne se justifie pas, nous vous le dirons</li>
+          {% for a in accueil.contact_arguments %}<li>{{ a }}</li>{% endfor %}
         </ul>
-        <div class="equipe-visages"><span>SA</span><span>JP</span><span>TM</span><span>+40</span></div>
-        <p style="font-size:13.5px;color:#8b979c">L'équipe 4SH, celle que vous aurez vraiment au téléphone.</p><svg class="doodle doodle-spirale" width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M27 27c0-3 4-4 6-1s0 8-5 9-11-2-12-9 5-14 13-14 16 6 16 15c0 2-.4 4-1 6"/><path d="M41.5 29.5 44 33l3.6-2"/></svg>
+        <div class="equipe-visages">{% for v in accueil.contact_visages %}<span>{{ v }}</span>{% endfor %}</div>
+        <p style="font-size:13.5px;color:#8b979c">{{ accueil.contact_note }}</p><svg class="doodle doodle-spirale" width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M27 27c0-3 4-4 6-1s0 8-5 9-11-2-12-9 5-14 13-14 16 6 16 15c0 2-.4 4-1 6"/><path d="M41.5 29.5 44 33l3.6-2"/></svg>
       </div>
-      <form class="formulaire" onsubmit="return false">
-        <label for="nom">Votre nom</label>
-        <input id="nom" type="text" placeholder="Prénom et nom">
-        <label for="email">Votre email professionnel</label>
-        <input id="email" type="email" placeholder="prenom@entreprise.fr">
-        <label for="besoin">Votre besoin en quelques lignes</label>
-        <textarea id="besoin" rows="4" placeholder="Ex. : nous gérons nos tournées sur Excel et ça ne tient plus..."></textarea>
-        <p class="aide">Pas besoin de cahier des charges à ce stade. Trois phrases suffisent.</p>
-        <button class="btn btn-primary" type="submit">Envoyer ma demande</button>
-        <p class="reassurance">Réponse sous 48 h, par quelqu'un qui a lu votre message.</p>
-      </form>
+      {% include "formulaire.njk" %}
     </div>
   </div>
 </section>

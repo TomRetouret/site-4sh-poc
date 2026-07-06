@@ -2,25 +2,123 @@
   "meta_title": "Agence de développement logiciel sur mesure - 4SH",
   "meta_description": "Créateurs et développeurs de logiciels sur mesure adaptés à vos enjeux (app, SaaS, logiciels métiers...). Parlons de votre projet : 30 minutes gratuites avec un expert 4SH.",
   "hero_surtitre": "Agence de développement logiciel sur mesure",
+  "hero_accroche_debut": "Un logiciel qui",
+  "hero_accroche_accent": "épouse",
+  "hero_accroche_fin": "vos processus,<br>pas l'inverse.",
   "hero_chapo": "Depuis 2007, nous concevons, développons et faisons vivre les applications métiers des entreprises qui ne rentrent dans aucune case. Et nous restons après la mise en production.",
   "hero_note": "30 minutes avec un expert, gratuit, sans engagement · Bordeaux, Capbreton, Paris",
   "hero_cta_principal": "Parlons de votre projet",
   "hero_cta_secondaire": "Voir nos réalisations",
-  "equipe_eyebrow": "L'équipe",
-  "equipe_titre": "Des logiciels faits par des <em class=\"accent\">gens</em>",
-  "equipe_texte": "Ceux qui conçoivent votre outil sont ceux que vous aurez au téléphone. Voici l'équipe 4SH au complet.",
-  "equipe_photo": "/uploads/equipe-4sh.jpg",
-  "secteurs": [
-    { "titre": "Logistique", "texte": "Maîtrisez chaque étape de votre supply chain : traçabilité, douane, fret.", "lien_libelle": "Logiciels logistique →" },
-    { "titre": "Assurance", "texte": "Réinventez l'assurance à l'ère du digital, de la souscription au sinistre.", "lien_libelle": "Logiciels assurance →" },
-    { "titre": "Électromobilité", "texte": "Supervision de bornes, itinérance, facturation : accélérons la transition.", "lien_libelle": "Logiciels électromobilité →" },
-    { "titre": "Éditeurs & franchises", "texte": "Renforcez votre équipe produit ou outillez votre réseau, sans recruter.", "lien_libelle": "Nos offres dédiées →" }
+  "hero_visuel_titre": "// votre logiciel métier",
+  "hero_visuel_lignes": [
+    { "cle": "livraison", "valeur": "jalons tenus, démos toutes les 2 semaines" },
+    { "cle": "équipe", "valeur": "UX, dev, devops, produit, dédiée" },
+    { "cle": "après", "valeur": "hébergé, maintenu, évolutif" }
   ],
+  "hero_visuel_badge": "Méthode 4D · Discover → Deploy",
+  "hero_visuel_badge_note": "Depuis 2007",
+  "portes_eyebrow": "Par où commencer",
+  "portes_titre": "Qu'est-ce qui vous <em class=\"accent\">amène</em> ?",
+  "portes_sous": "Trois façons de travailler ensemble, selon l'endroit où vous en êtes.",
+  "portes": [
+    {
+      "titre": "Créer un logiciel sur mesure",
+      "texte": "Un Excel qui craque, un process qui coûte, un outil du marché qui ne colle pas ? Nous développons l'application qui suit vos gestes réels.",
+      "liens": [
+        { "label": "→ Logiciel métier", "url": "/logiciel-metier/" },
+        { "label": "→ Application SaaS", "url": "#" },
+        { "label": "→ Application mobile", "url": "#" }
+      ],
+      "suite_label": "Découvrir le développement sur mesure",
+      "suite_url": "/logiciel-metier/"
+    },
+    {
+      "titre": "Faire vivre votre solution",
+      "texte": "Votre logiciel existe déjà : nous l'hébergeons, le sécurisons, le maintenons et le faisons évoluer avec votre activité.",
+      "liens": [
+        { "label": "→ Hébergement & maintenance", "url": "#" },
+        { "label": "→ Évolutions & refonte", "url": "#" },
+        { "label": "→ Audits UX, sécurité, cloud", "url": "#" }
+      ],
+      "suite_label": "Fiabiliser votre existant",
+      "suite_url": "#"
+    },
+    {
+      "titre": "Former vos équipes",
+      "texte": "Montez vos équipes en compétences sur les technologies et méthodes que nous pratiquons tous les jours en projet.",
+      "liens": [
+        { "label": "→ Développement (Angular, Kotlin...)", "url": "/formations/" },
+        { "label": "→ DevOps (Kubernetes...)", "url": "/formations/" },
+        { "label": "→ Design (Figma...)", "url": "/formations/" }
+      ],
+      "suite_label": "Voir les formations",
+      "suite_url": "/formations/"
+    }
+  ],
+  "chiffres": [
+    { "valeur": "2007", "texte": "Année de création, du sur-mesure depuis le début", "note": "" },
+    { "valeur": "3", "compte": "3", "texte": "Agences en France", "note": "Bordeaux · Capbreton · Paris" },
+    { "valeur": "48h", "compte": "48", "suffixe": "h", "texte": "Pour un premier retour", "note": "par un expert, pas un commercial" },
+    { "valeur": "100%", "compte": "100", "suffixe": "%", "texte": "Conçu et maintenu en interne", "note": "une seule équipe, de A à Z" }
+  ],
+  "cas_eyebrow": "Nos réalisations",
+  "cas_titre": "La preuve par les <em class=\"accent\">projets</em>",
+  "cas_sous": "Nos réussites racontées avec des résultats, pas des adjectifs.",
+  "cas": {
+    "secteur": "Électromobilité",
+    "client": "IZIVIA · groupe EDF",
+    "visuel_texte": "Supervision et pilotage de bornes de recharge à l'échelle nationale.",
+    "citation": "« 4SH a construit la plateforme, puis est resté pour la faire évoluer. C'est cette continuité qui fait la différence. »",
+    "auteur": "[Prénom Nom], [fonction], Izivia",
+    "chiffres": [
+      { "valeur": "[XX 000]", "label": "bornes supervisées" },
+      { "valeur": "[X] ans", "label": "de collaboration continue" }
+    ],
+    "cta_label": "Lire le cas client",
+    "cta_url": "/references/izivia-portail/"
+  },
+  "methode_eyebrow": "Notre méthode 4D",
+  "methode_titre": "Comment se passe un projet <em class=\"accent\">avec nous</em>",
+  "methode_sous": "Notre méthode 4D : des jalons clairs, des démos régulières, zéro flou. L'agilité n'excuse pas l'opacité.",
+  "methode_etapes": [
+    { "num": "01", "label": "Discover", "titre": "Comprendre votre métier", "texte": "Ateliers avec vos équipes terrain. On repart avec vos processus réels, pas une liste de fonctionnalités." },
+    { "num": "02", "label": "Design", "titre": "Dessiner l'outil", "texte": "Maquettes testées avec vos utilisateurs avant d'écrire une ligne de code. Vous validez sur du concret." },
+    { "num": "03", "label": "Develop", "titre": "Développer par jalons", "texte": "Démos toutes les deux semaines, code testé et maintenable. Vous savez toujours où en est votre projet." },
+    { "num": "04", "label": "Deploy", "titre": "Livrer, puis rester", "texte": "Mise en production, hébergement, maintenance, évolutions. Le logiciel grandit avec votre activité." }
+  ],
+  "secteurs_eyebrow": "Vos métiers",
+  "secteurs_titre": "Nos secteurs",
+  "secteurs_sous": "Nous parlons déjà la langue de votre métier.",
+  "secteurs": [
+    { "titre": "Logistique", "texte": "Maîtrisez chaque étape de votre supply chain : traçabilité, douane, fret.", "lien_libelle": "Logiciels logistique →", "url": "/secteurs/logistique/" },
+    { "titre": "Assurance", "texte": "Réinventez l'assurance à l'ère du digital, de la souscription au sinistre.", "lien_libelle": "Logiciels assurance →", "url": "/secteurs/assurance/" },
+    { "titre": "Électromobilité", "texte": "Supervision de bornes, itinérance, facturation : accélérons la transition.", "lien_libelle": "Logiciels électromobilité →", "url": "/secteurs/electromobilite/" },
+    { "titre": "Éditeurs & franchises", "texte": "Renforcez votre équipe produit ou outillez votre réseau, sans recruter.", "lien_libelle": "Nos offres dédiées →", "url": "#" }
+  ],
+  "bandeau_cta_titre": "Vous hésitez entre sur mesure et logiciel du marché ?",
+  "bandeau_cta_texte": "C'est la bonne question. En 30 minutes, un expert 4SH vous aide à y voir clair. Et si un outil standard suffit, nous vous le dirons.",
+  "bandeau_cta_label": "Poser la question à un expert",
+  "bandeau_cta_url": "#contact",
+  "faq_titre": "Développement logiciel sur mesure : vos questions",
+  "faq_sous": "Les réponses que vous cherchez avant de nous appeler.",
   "faq": [
     { "question": "Qu'est-ce qu'une agence de développement logiciel métier ?", "reponse": "Une agence de développement logiciel métier conçoit des applications sur mesure répondant aux besoins spécifiques d'une entreprise, en lien direct avec ses processus, ses utilisateurs et ses objectifs." },
     { "question": "Combien coûte un logiciel sur mesure ?", "reponse": "Le coût d'un logiciel sur mesure dépend de sa complexité, du nombre de fonctionnalités, des technologies utilisées et du niveau d'accompagnement souhaité. Chez 4SH, nous adaptons chaque projet à vos objectifs, avec une approche agile et transparente." },
     { "question": "Quel est le délai moyen de développement ?", "reponse": "Le délai dépend de la complexité du projet et du périmètre fonctionnel défini. Grâce à notre méthode 4D (Discover, Design, Develop, Deploy), nous structurons chaque phase pour garantir réactivité, qualité et visibilité tout au long du projet." },
     { "question": "Comment se passe la maintenance après livraison ?", "reponse": "Après la livraison, nous assurons une maintenance corrective, évolutive et préventive en fonction de vos besoins. Nous proposons des contrats de maintenance sur mesure, incluant support technique, mises à jour régulières, surveillance des infrastructures et accompagnement long terme." },
     { "question": "Quelles technologies utilisez-vous ?", "reponse": "Nous travaillons avec des technologies web modernes, robustes et évolutives (React, Angular, Java, Kotlin, TypeScript...) et des outils comme Kubernetes, Docker et Kafka pour assurer scalabilité, interopérabilité et fiabilité." }
-  ]
+  ],
+  "equipe_eyebrow": "L'équipe",
+  "equipe_titre": "Des logiciels faits par des <em class=\"accent\">gens</em>",
+  "equipe_texte": "Ceux qui conçoivent votre outil sont ceux que vous aurez au téléphone. Voici l'équipe 4SH au complet.",
+  "equipe_photo": "/uploads/equipe-4sh.jpg",
+  "contact_titre": "Parlons de votre <em class=\"accent\">projet</em>",
+  "contact_sous": "30 minutes avec un expert, gratuit, sans engagement. Vous repartez avec un premier avis honnête, pas un argumentaire.",
+  "contact_arguments": [
+    "Un interlocuteur dédié, de l'analyse des besoins à la maintenance",
+    "Des équipes pluridisciplinaires à Bordeaux, Capbreton et Paris",
+    "Et si le sur mesure ne se justifie pas, nous vous le dirons"
+  ],
+  "contact_visages": ["SA", "JP", "TM", "+40"],
+  "contact_note": "L'équipe 4SH, celle que vous aurez vraiment au téléphone."
 }

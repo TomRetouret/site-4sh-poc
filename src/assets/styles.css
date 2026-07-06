@@ -403,7 +403,7 @@ body{overflow-x:clip}
 @media (max-width:1024px){
   /* header solide plein largeur */
   header{top:0}
-  header .nav{height:64px;max-width:none;border-radius:0;background:#fff;box-shadow:0 2px 14px rgba(31,41,46,.08);border:none;border-bottom:1px solid var(--bordure);padding:0 20px}
+  header .nav{height:64px;max-width:none;border-radius:0;background:#fff;box-shadow:0 2px 14px rgba(31,41,46,.08);border:none;border-bottom:1px solid var(--bordure);padding:0 20px;backdrop-filter:none;-webkit-backdrop-filter:none}
   .hero{margin-top:-64px;padding-top:80px}
   .hero-grille{padding-top:90px}
 
@@ -416,8 +416,14 @@ body{overflow-x:clip}
   body.menu-ouvert{overflow:hidden}
 
   .menu>li{position:static;width:100%}
-  .menu>li>a{display:block;padding:15px 4px;font-size:17px;border-bottom:1px solid var(--bordure)}
+  .menu>li>a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 4px;font-size:17px;font-weight:600;color:var(--sombre);border-bottom:1px solid var(--bordure)}
   .menu>li>a::before{display:none}
+  /* chevron uniquement sur les entrées qui ont un sous-menu */
+  .menu>li:has(.deroulant)>a::after{content:"";flex:none;width:9px;height:9px;margin-right:6px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg) translateY(-2px);transition:transform .25s var(--ease),border-color .2s}
+  .menu>li.ouvert>a{color:var(--rouge)}
+  .menu>li.ouvert>a::after{transform:rotate(225deg) translateY(-2px);border-color:var(--rouge)}
+  /* sous-menu ouvert : léger renfoncement + fond pour hiérarchiser */
+  .menu>li.ouvert>.deroulant{background:var(--fond);border-radius:12px;padding:6px 12px 12px;margin:2px 0 6px}
 
   /* méga-menus en accordéon vertical */
   .deroulant,

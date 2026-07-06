@@ -6,3 +6,10 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Empêche l'indexation par les moteurs pendant la préprod (double sécurité avec la balise meta noindex).
+# À RETIRER lors de la mise en production réelle (et passer "indexation" à true dans src/_data/seo.json).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

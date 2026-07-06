@@ -416,6 +416,7 @@ collections:
         file: "src/_data/seo.json"
         fields:
           - { label: "URL du site (production)", name: "url", widget: "string", hint: "Sans slash final. Alimente les liens canoniques, le sitemap et le robots.txt. Ex. : https://www.4sh.fr" }
+          - { label: "Autoriser l'indexation par les moteurs", name: "indexation", widget: "boolean", default: false, hint: "Décoché = tout le site en noindex (préprod). À cocher à la mise en production." }
           - { label: "Titre par défaut", name: "titre_defaut", widget: "string", hint: "Utilisé quand une page n'a pas de titre SEO propre." }
           - { label: "Description par défaut", name: "description_defaut", widget: "text" }
           - { label: "Image de partage (Open Graph)", name: "og_image", widget: "image", choose_url: true, hint: "Image affichée lors du partage sur les réseaux sociaux." }

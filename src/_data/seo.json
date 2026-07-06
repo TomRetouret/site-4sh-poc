@@ -1,5 +1,6 @@
 {
   "url": "https://www.4sh.fr",
+  "indexation": false,
   "titre_defaut": "Agence de développement logiciel sur mesure - 4SH",
   "description_defaut": "Créateurs et développeurs de logiciels sur mesure adaptés à vos enjeux (app, SaaS, logiciels métiers...). Parlons de votre projet : 30 minutes gratuites avec un expert 4SH.",
   "og_image": "https://www.4sh.fr/assets/img/png/logo_4sh_baseline.png",

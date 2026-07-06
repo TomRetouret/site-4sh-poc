@@ -7,7 +7,7 @@
 <title>{{ title or seo.titre_defaut }}</title>
 <meta name="description" content="{{ description or seo.description_defaut }}">
 <link rel="canonical" href="{{ seo.url }}{{ page.url }}">
-{% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+{% if noindex or not seo.indexation %}<meta name="robots" content="noindex, nofollow">{% endif %}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="4SH">
 <meta property="og:title" content="{{ title or seo.titre_defaut }}">

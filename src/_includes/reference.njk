@@ -7,40 +7,45 @@ extraCss: /assets/references.css
   <div class="container">
     <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <a href="/references/">{{ libelles.reference.fil_parent }}</a> › {{ titre }}</nav>
 
-    <div class="ref-hero-detail">
-      <div>
-        <span class="eyebrow">{{ libelles.reference.eyebrow }}{% if secteurs and secteurs.length %} · {{ secteurs[0] }}{% endif %}</span>
-        {% if logo %}<div class="ref-logo-detail"><img src="{{ logo }}" alt="{{ client }}" decoding="async"></div>{% endif %}
-        <h1>{{ h1 or titre }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
-        {% if sous_titre %}<p class="chapo">{{ sous_titre }}</p>{% elif resume %}<p class="chapo">{{ resume }}</p>{% endif %}
-        {% if stats and stats.length %}
-        <div class="ref-preuve">{% for s in stats %}<div class="stat"><b>{{ s.chiffre }}</b><span>{{ s.label }}</span></div>{% endfor %}</div>
-        {% endif %}
-        <div class="ref-hero-actions">
-          {% if fiche_pdf %}<a class="btn btn-ghost btn-sm" href="{{ fiche_pdf }}" target="_blank" rel="noopener">{{ libelles.reference.telecharger }}</a>{% endif %}
-          {% if maj %}<span class="ref-maj">{{ libelles.reference.maj }} {{ maj }}</span>{% endif %}
-        </div>
-      </div>
-      <div class="ref-hero-visuel">
-        {% if image %}<img src="{{ image }}" alt="{{ titre }}" decoding="async">{% else %}<div class="ref-visuel ref-visuel--vide" style="aspect-ratio:4/3;border-radius:var(--radius)"><span class="ref-vide-nom">{{ client }}</span></div>{% endif %}
-      </div>
+    <div class="ref-topnav">
+      {% if voisins.precedent %}<a class="ref-topnav-lien ref-topnav-prec" href="{{ voisins.precedent.url }}"><span>{{ libelles.reference.prec }}</span><b>{{ voisins.precedent.data.titre }}</b></a>{% else %}<span></span>{% endif %}
+      {% if voisins.suivant %}<a class="ref-topnav-lien ref-topnav-suiv" href="{{ voisins.suivant.url }}"><span>{{ libelles.reference.suiv }}</span><b>{{ voisins.suivant.data.titre }}</b></a>{% endif %}
     </div>
+
+    <header class="ref-entete">
+      {% if logo %}<div class="ref-logo-detail"><img src="{{ logo }}" alt="{{ client }}" decoding="async"></div>{% endif %}
+      <span class="eyebrow">{{ libelles.reference.eyebrow }}{% if secteurs and secteurs.length %} · {{ secteurs[0] }}{% endif %}</span>
+      <h1>{{ h1 or titre }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
+      {% if sous_titre %}<p class="chapo">{{ sous_titre }}</p>{% elif resume %}<p class="chapo">{{ resume }}</p>{% endif %}
+
+      <div class="ref-meta">
+        {% if client %}<div class="ref-meta-bloc"><b>{{ libelles.reference.client }}</b><span>{{ client }}</span></div>{% endif %}
+        {% if secteurs and secteurs.length %}<div class="ref-meta-bloc"><b>{{ libelles.reference.secteur }}</b><div class="pills">{% for s in secteurs %}<span>{{ s }}</span>{% endfor %}</div></div>{% endif %}
+        {% if technologies and technologies.length %}<div class="ref-meta-bloc"><b>{{ libelles.reference.technologies }}</b><div class="pills">{% for t in technologies %}<span>{{ t }}</span>{% endfor %}</div></div>{% endif %}
+        {% if expertises and expertises.length %}<div class="ref-meta-bloc"><b>{{ libelles.reference.expertises }}</b><div class="pills">{% for e in expertises %}<span>{{ e }}</span>{% endfor %}</div></div>{% endif %}
+      </div>
+
+      <div class="ref-hero-actions">
+        {% if fiche_pdf %}<a class="btn btn-primary btn-sm" href="{{ fiche_pdf }}" target="_blank" rel="noopener">{{ libelles.reference.telecharger }}</a>{% endif %}
+        {% if maj %}<span class="ref-maj">{{ libelles.reference.maj }} {{ maj }}</span>{% endif %}
+      </div>
+
+      {% if stats and stats.length %}
+      <div class="ref-preuve">{% for s in stats %}<div class="stat"><b>{{ s.chiffre }}</b><span>{{ s.label }}</span></div>{% endfor %}</div>
+      {% endif %}
+    </header>
   </div>
+
+  <!-- barre d'ancres collante (générée depuis les sections du contenu) -->
+  <nav class="ref-ancres" id="ref-ancres" aria-label="Sections de la fiche" hidden>
+    <div class="container"><div class="ref-ancres-liste" id="ref-ancres-liste"></div></div>
+  </nav>
 </section>
 
-<section style="padding-top:0">
+<section class="ref-corps-wrap">
   <div class="container">
-    <div class="ref-fiche-grille">
-      <div class="ref-corps">
-        {{ content | safe }}
-      </div>
-      <aside class="ref-identite">
-        {% if client %}<div class="bloc"><b>{{ libelles.reference.client }}</b><span>{{ client }}</span></div>{% endif %}
-        {% if secteurs and secteurs.length %}<div class="bloc"><b>{{ libelles.reference.secteur }}</b><div class="pills">{% for s in secteurs %}<span>{{ s }}</span>{% endfor %}</div></div>{% endif %}
-        {% if expertises and expertises.length %}<div class="bloc"><b>{{ libelles.reference.expertises }}</b><div class="pills">{% for e in expertises %}<span>{{ e }}</span>{% endfor %}</div></div>{% endif %}
-        {% if technologies and technologies.length %}<div class="bloc"><b>{{ libelles.reference.technologies }}</b><div class="pills">{% for t in technologies %}<span>{{ t }}</span>{% endfor %}</div></div>{% endif %}
-        {% if fiche_pdf %}<div class="bloc"><a class="btn btn-primary btn-sm" href="{{ fiche_pdf }}" target="_blank" rel="noopener" style="width:100%;justify-content:center">{{ libelles.reference.telecharger }}</a></div>{% endif %}
-      </aside>
+    <div class="ref-corps">
+      {{ content | safe }}
     </div>
 
     {% if galerie and galerie.length %}
@@ -53,17 +58,6 @@ extraCss: /assets/references.css
     {% endif %}
   </div>
 </section>
-
-{% if voisins.precedent or voisins.suivant %}
-<section style="padding-top:0">
-  <div class="container">
-    <nav class="ref-voisins" aria-label="Autres réalisations">
-      {% if voisins.precedent %}<a class="ref-voisin ref-voisin--prec" href="{{ voisins.precedent.url }}"><span class="ref-voisin-label">{{ libelles.reference.prec }}</span><b>{{ voisins.precedent.data.titre }}</b></a>{% else %}<span></span>{% endif %}
-      {% if voisins.suivant %}<a class="ref-voisin ref-voisin--suiv" href="{{ voisins.suivant.url }}"><span class="ref-voisin-label">{{ libelles.reference.suiv }}</span><b>{{ voisins.suivant.data.titre }}</b></a>{% endif %}
-    </nav>
-  </div>
-</section>
-{% endif %}
 
 <section style="padding-top:0">
   <div class="container">
@@ -79,36 +73,61 @@ extraCss: /assets/references.css
 </section>
 
 <script>
-/* Sommaire ancré + scrollspy (généré depuis les H2 du contenu, sans toucher au contenu) */
 (function(){
   var corps = document.querySelector('.ref-corps');
-  var aside = document.querySelector('.ref-identite');
-  if(!corps || !aside) return;
-  var h2s = Array.prototype.slice.call(corps.querySelectorAll('h2'));
-  if(h2s.length < 2) return;
-  function slug(t){ return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
-  var nav = document.createElement('nav');
-  nav.className = 'ref-sommaire';
-  nav.setAttribute('aria-label','Sommaire de la page');
-  var html = '<p class="ref-sommaire-t">{{ libelles.reference.sommaire }}</p><ul>';
-  h2s.forEach(function(h,i){
-    if(!h.id) h.id = slug(h.textContent) || ('section-'+i);
-    html += '<li><a href="#'+h.id+'">'+h.textContent+'</a></li>';
-  });
-  nav.innerHTML = html + '</ul>';
-  aside.insertBefore(nav, aside.firstChild);
+  if(!corps) return;
 
-  var liens = {};
-  Array.prototype.slice.call(nav.querySelectorAll('a')).forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
-  if(!('IntersectionObserver' in window)) return;
-  var spy = new IntersectionObserver(function(entrees){
-    entrees.forEach(function(e){
-      if(e.isIntersecting){
-        for(var id in liens){ liens[id].removeAttribute('aria-current'); }
-        if(liens[e.target.id]) liens[e.target.id].setAttribute('aria-current','true');
+  /* 1) Points clés : regrouper les sections « Les points clés ... » en 2 colonnes (layout site actuel) */
+  var h2s = Array.prototype.slice.call(corps.querySelectorAll('h2'));
+  var pointsBlocs = h2s.filter(function(h){ return h.textContent.toLowerCase().indexOf('points cl') !== -1; });
+  if(pointsBlocs.length >= 2){
+    var grille = document.createElement('div');
+    grille.className = 'ref-points-grid';
+    pointsBlocs[0].parentNode.insertBefore(grille, pointsBlocs[0]);
+    pointsBlocs.forEach(function(h){
+      var col = document.createElement('div');
+      col.className = 'ref-points-col';
+      var node = h;
+      var suivants = [];
+      while(node){
+        var next = node.nextElementSibling;
+        suivants.push(node);
+        if(next && next.tagName === 'H2') break;
+        node = next;
       }
+      suivants.forEach(function(n){ col.appendChild(n); });
+      grille.appendChild(col);
     });
-  }, { rootMargin:'-90px 0px -70% 0px', threshold:0 });
-  h2s.forEach(function(h){ spy.observe(h); });
+  }
+
+  /* 2) Barre d'ancres : construite depuis les H2 du contenu + Galerie */
+  function slug(t){ return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+  var titresH2 = Array.prototype.slice.call(corps.querySelectorAll('h2')).filter(function(h){ return h.textContent.toLowerCase().indexOf('points cl') === -1; });
+  var ancres = [];
+  titresH2.forEach(function(h,i){ if(!h.id) h.id = slug(h.textContent) || ('section-'+i); ancres.push({id:h.id, label:h.textContent.trim()}); });
+  var galerie = document.getElementById('galerie');
+  if(galerie) ancres.push({id:'galerie', label:galerie.querySelector('h2') ? galerie.querySelector('h2').textContent.trim() : 'Galerie'});
+
+  if(ancres.length >= 2){
+    var barre = document.getElementById('ref-ancres');
+    var liste = document.getElementById('ref-ancres-liste');
+    liste.innerHTML = ancres.map(function(a){ return '<a href="#'+a.id+'">'+a.label+'</a>'; }).join('');
+    barre.hidden = false;
+
+    var liens = {};
+    Array.prototype.slice.call(liste.querySelectorAll('a')).forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+    if('IntersectionObserver' in window){
+      var cibles = ancres.map(function(a){ return document.getElementById(a.id); }).filter(Boolean);
+      var spy = new IntersectionObserver(function(entrees){
+        entrees.forEach(function(e){
+          if(e.isIntersecting){
+            for(var id in liens){ liens[id].removeAttribute('aria-current'); }
+            if(liens[e.target.id]) liens[e.target.id].setAttribute('aria-current','true');
+          }
+        });
+      }, { rootMargin:'-96px 0px -70% 0px', threshold:0 });
+      cibles.forEach(function(c){ spy.observe(c); });
+    }
+  }
 })();
 </script>

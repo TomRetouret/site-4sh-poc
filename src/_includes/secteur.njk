@@ -10,15 +10,15 @@ extraCss: /assets/secteurs.css
     <span class="eyebrow">Secteur · {{ titre }}</span>
     <h1>{{ h1 or titre }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
     {% if accroche %}<p class="accroche">{{ accroche }}</p>{% endif %}
-    <div class="hero-cta"><a class="btn btn-primary" href="/#contact">Contactez-nous</a></div>
+    <div class="hero-cta"><a class="btn btn-primary" href="/#contact">{{ libelles.secteur.cta_bouton }}</a></div>
   </div>
 </section>
 
 {% if defis and defis.length %}
 <section class="sect-bloc">
   <div class="container">
-    <p class="eyebrow">Votre contexte</p>
-    <h2>Les défis de votre métier</h2>
+    <p class="eyebrow">{{ libelles.secteur.defis_eyebrow }}</p>
+    <h2>{{ libelles.secteur.defis_titre }}</h2>
     {% if defis_intro %}<p class="intro">{{ defis_intro }}</p>{% endif %}
     <div class="sect-defis">
       {% for d in defis %}
@@ -35,8 +35,8 @@ extraCss: /assets/secteurs.css
 {% if opportunites and opportunites.length %}
 <section class="sect-bloc sect-bloc--creme">
   <div class="container">
-    <p class="eyebrow">Les leviers</p>
-    <h2>Les opportunités apportées par les outils métier</h2>
+    <p class="eyebrow">{{ libelles.secteur.opportunites_eyebrow }}</p>
+    <h2>{{ libelles.secteur.opportunites_titre }}</h2>
     {% if opportunites_intro %}<p class="intro">{{ opportunites_intro }}</p>{% endif %}
     <ul class="sect-liste">
       {% for o in opportunites %}<li>{{ o | safe }}</li>{% endfor %}
@@ -48,8 +48,8 @@ extraCss: /assets/secteurs.css
 {% if pourquoi and pourquoi.length %}
 <section class="sect-bloc">
   <div class="container">
-    <p class="eyebrow">Notre valeur</p>
-    <h2>Pourquoi 4SH ?</h2>
+    <p class="eyebrow">{{ libelles.secteur.pourquoi_eyebrow }}</p>
+    <h2>{{ libelles.secteur.pourquoi_titre }}</h2>
     <div class="sect-atouts">
       {% for a in pourquoi %}
       <div class="sect-atout">
@@ -65,8 +65,8 @@ extraCss: /assets/secteurs.css
 {% if etapes and etapes.length %}
 <section class="sect-bloc sect-bloc--sombre">
   <div class="container">
-    <p class="eyebrow">Notre approche</p>
-    <h2>Comment ?</h2>
+    <p class="eyebrow">{{ libelles.secteur.comment_eyebrow }}</p>
+    <h2>{{ libelles.secteur.comment_titre }}</h2>
     {% if comment_intro %}<p class="intro">{{ comment_intro }}</p>{% endif %}
     <div class="sect-etapes">
       {% for e in etapes %}
@@ -82,8 +82,8 @@ extraCss: /assets/secteurs.css
 {% if references and references.length %}
 <section class="sect-refs">
   <div class="container">
-    <p class="eyebrow">Ils nous font confiance</p>
-    <h2>Références clients</h2>
+    <p class="eyebrow">{{ libelles.secteur.refs_eyebrow }}</p>
+    <h2>{{ libelles.secteur.refs_titre }}</h2>
     <div class="ref-grille">
       {% for slug in references %}{% for r in collections.references %}{% if r.fileSlug == slug %}{{ carte(r) }}{% endif %}{% endfor %}{% endfor %}
     </div>
@@ -96,9 +96,9 @@ extraCss: /assets/secteurs.css
     <div class="bandeau-cta">
       <div>
         <h2>Vous avez un projet en {{ titre | lower }} ?</h2>
-        <p>Parlons-en. En 30 minutes, un expert 4SH vous aide à cadrer votre besoin, sans engagement.</p>
+        <p>{{ libelles.secteur.cta_texte }}</p>
       </div>
-      <a class="btn" href="/#contact">Contactez-nous</a>
+      <a class="btn" href="/#contact">{{ libelles.secteur.cta_bouton }}</a>
     </div>
   </div>
 </section>

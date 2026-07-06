@@ -1,0 +1,24 @@
+{%- set d = libelles.devis -%}
+<section class="contact-final sur-sombre" id="{{ devis_id or 'contact' }}"{% if devis_style %} style="{{ devis_style }}"{% endif %}>
+  <div class="container">
+    <div class="contact-grille">
+      <div>
+        <h2 class="sec-titre">{{ d.titre | safe }}</h2>
+        <p class="sec-sous" style="margin-bottom:18px">{{ d.sous }}</p>
+        <ul class="arguments">
+          {% for a in d.arguments %}<li>{{ a }}</li>{% endfor %}
+        </ul>
+      </div>
+      <form class="formulaire" onsubmit="return false">
+        <label>{{ d.label_nom }}</label>
+        <input type="text" placeholder="{{ d.ph_nom }}">
+        <label>{{ d.label_email }}</label>
+        <input type="email" placeholder="{{ d.ph_email }}">
+        <label>{{ d.label_besoin }}</label>
+        <textarea rows="3" placeholder="{{ d.ph_besoin }}"></textarea>
+        <button class="btn btn-learning" type="submit" style="width:100%;justify-content:center;margin-top:24px">{{ d.bouton }}</button>
+        <p class="reassurance">{{ d.reassurance }}</p>
+      </form>
+    </div>
+  </div>
+</section>

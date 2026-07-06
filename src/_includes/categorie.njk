@@ -14,13 +14,13 @@ permalink: "/formations/{{ page.fileSlug }}/"
         <h1>{{ h1 or ('Formations ' + nom) }}</h1>
         {% if intro %}<p class="chapo">{{ intro }}</p>{% endif %}
         <div class="hero-cta">
-          <a class="btn btn-learning" href="#catalogue">Voir les formations</a>
-          <a class="btn btn-ghost" href="#contact" style="border-color:var(--violet);color:var(--violet)">Devis sur mesure</a>
+          <a class="btn btn-learning" href="#catalogue">{{ libelles.catalogue.cta_voir }}</a>
+          <a class="btn btn-ghost" href="#contact" style="border-color:var(--violet);color:var(--violet)">{{ libelles.catalogue.cta_devis }}</a>
         </div>
       </div>
       <div class="visuel-form">
         <img src="https://www.4sh.fr/assets/img/svg/illu-learning.svg" alt="4SH Learning, formations {{ nom }}">
-        <div class="chips" style="justify-content:center"><span>Présentiel &amp; distanciel</span><span>Certifié Qualiopi</span></div>
+        <div class="chips" style="justify-content:center">{% for chip in libelles.catalogue.chips %}<span>{{ chip }}</span>{% endfor %}</div>
       </div>
     </div>
   </div>
@@ -54,30 +54,5 @@ permalink: "/formations/{{ page.fileSlug }}/"
   </div>
 </section>
 
-<!-- CONTACT / DEVIS -->
-<section class="contact-final sur-sombre" id="contact">
-  <div class="container">
-    <div class="contact-grille">
-      <div>
-        <h2 class="sec-titre">Un besoin de formation <em class="accent" style="color:#a996d6">sur mesure</em> ?</h2>
-        <p class="sec-sous" style="margin-bottom:18px">Décrivez-nous votre besoin : nombre de participants, niveau, sujets. Nous revenons vers vous avec une proposition adaptée et un devis.</p>
-        <ul class="arguments">
-          <li>Formations construites à partir de projets réels</li>
-          <li>Formateurs experts, en poste sur nos projets</li>
-          <li>Prise en charge OPCO possible, organisme Qualiopi</li>
-          <li>Jusqu'à -50 % pour une formation en intra-entreprise</li>
-        </ul>
-      </div>
-      <form class="formulaire" onsubmit="return false">
-        <label for="nom">Nom et prénom</label>
-        <input id="nom" type="text" placeholder="Prénom et nom">
-        <label for="email">Email professionnel</label>
-        <input id="email" type="email" placeholder="prenom@entreprise.fr">
-        <label for="besoin">Votre besoin</label>
-        <textarea id="besoin" rows="3" placeholder="Ex. : former 6 développeurs, niveau fondamental, en intra..."></textarea>
-        <button class="btn btn-learning" type="submit" style="width:100%;justify-content:center;margin-top:24px">Demander un devis</button>
-        <p class="reassurance">Réponse sous 48 h. Vos données sont traitées selon notre notice RGPD.</p>
-      </form>
-    </div>
-  </div>
-</section>
+<!-- CONTACT / DEVIS (mutualisé) -->
+{% include "devis.njk" %}

@@ -466,6 +466,47 @@ collections:
           - { label: "Paragraphe d'introduction", name: "chapo", widget: "text" }
           - { label: "Note", name: "note", widget: "string", hint: "Ex. : 4,71 / 5" }
           - { label: "Détail de la note", name: "note_detail", widget: "string", hint: "Ex. : 324 participant·e·s" }
+          - { label: "Hero · bouton principal (libellé)", name: "hero_cta_principal_label", widget: "string" }
+          - { label: "Hero · bouton principal (lien)", name: "hero_cta_principal_url", widget: "string", required: false }
+          - { label: "Hero · bouton secondaire (libellé)", name: "hero_cta_secondaire_label", widget: "string" }
+          - { label: "Hero · bouton secondaire (lien)", name: "hero_cta_secondaire_url", widget: "string", required: false }
+          - label: "Hero · puces (chips)"
+            name: "hero_chips"
+            widget: "list"
+            field: { label: "Puce", name: "item", widget: "string" }
+          - { label: "Catalogue · titre", name: "catalogue_titre", widget: "string", hint: "HTML autorisé." }
+          - { label: "Catalogue · sous-titre", name: "catalogue_sous", widget: "text" }
+          - { label: "Agenda · titre", name: "agenda_titre", widget: "string", hint: "HTML autorisé." }
+          - { label: "Agenda · sous-titre", name: "agenda_sous", widget: "text" }
+          - { label: "Agenda · libellé du bouton", name: "agenda_cta_label", widget: "string" }
+          - { label: "Agenda · lien du bouton", name: "agenda_cta_url", widget: "string", required: false }
+          - label: "Agenda (sessions par mois)"
+            name: "agenda"
+            widget: "list"
+            fields:
+              - { label: "Mois", name: "mois", widget: "string", hint: "Ex. : Septembre 2026" }
+              - label: "Sessions"
+                name: "sessions"
+                widget: "list"
+                fields:
+                  - { label: "Jour", name: "jour", widget: "string" }
+                  - { label: "Mois (court)", name: "mois_court", widget: "string", hint: "Ex. : Sept." }
+                  - { label: "Durée", name: "duree", widget: "string" }
+                  - { label: "Logo techno (URL ou image)", name: "logo", widget: "image", required: false, choose_url: true }
+                  - { label: "Titre de la formation", name: "titre", widget: "string" }
+                  - { label: "Catégorie (pastille)", name: "categorie", widget: "string" }
+                  - { label: "Lieu", name: "lieu", widget: "string" }
+                  - { label: "Modalité", name: "modalite", widget: "string" }
+                  - { label: "Lien d'inscription", name: "url", widget: "string", required: false }
+          - { label: "Témoignages · titre", name: "temoignages_titre", widget: "string", hint: "HTML autorisé." }
+          - label: "Témoignages"
+            name: "temoignages"
+            widget: "list"
+            fields:
+              - { label: "Citation", name: "citation", widget: "text" }
+              - { label: "Initiales (pastille)", name: "initiales", widget: "string" }
+              - { label: "Nom", name: "nom", widget: "string" }
+              - { label: "Détail (société, formation)", name: "detail", widget: "string" }
           - { label: "Titre section Pourquoi", name: "pourquoi_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
           - label: "Pourquoi choisir 4SH Learning"
             name: "pourquoi"
@@ -792,3 +833,158 @@ collections:
               - { label: "Libellé", name: "label", widget: "string" }
               - { label: "Lien", name: "url", widget: "string" }
               - { label: "Style CSS", name: "style", widget: "string", hint: "Ex. : lien-formations, ou btn btn-primary btn-sm" }
+
+  # -----------------------------------------------------------------------
+  # 9) TEXTES RÉCURRENTS (libellés partagés : titres de rubriques, blocs devis...)
+  # -----------------------------------------------------------------------
+  - name: "libelles"
+    label: "Textes récurrents (libellés)"
+    files:
+      - name: "libelles"
+        label: "Libellés & blocs partagés"
+        file: "src/_data/libelles.json"
+        fields:
+          - label: "Fiche formation"
+            name: "formation"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Sur-titre (préfixe)", name: "eyebrow", widget: "string" }
+              - { label: "Carte · titre prix", name: "prix_titre", widget: "string" }
+              - { label: "Carte · par participant", name: "par_participant", widget: "string" }
+              - { label: "Carte · promo", name: "promo", widget: "string", hint: "HTML autorisé (<b>)." }
+              - { label: "Carte · titre sessions", name: "sessions_titre", widget: "string" }
+              - { label: "Bouton inscription", name: "cta_inscription", widget: "string" }
+              - { label: "Bouton devis", name: "cta_devis", widget: "string" }
+              - { label: "Note lieu", name: "note_lieu", widget: "string" }
+              - { label: "Mot « personnes »", name: "personnes", widget: "string" }
+              - { label: "Mot « avis »", name: "avis", widget: "string" }
+              - { label: "Mot « Depuis »", name: "depuis", widget: "string" }
+              - { label: "Mot « Théorie »", name: "theorie", widget: "string" }
+              - { label: "Mot « Pratique »", name: "pratique", widget: "string" }
+              - { label: "Ancre Description", name: "ancre_description", widget: "string" }
+              - { label: "Ancre Objectifs", name: "ancre_objectifs", widget: "string" }
+              - { label: "Ancre Programme", name: "ancre_programme", widget: "string" }
+              - { label: "Ancre Formateur", name: "ancre_formateur", widget: "string" }
+              - { label: "Ancre Modalités", name: "ancre_modalites", widget: "string" }
+              - { label: "Ancre Formations liées", name: "ancre_liees", widget: "string" }
+              - { label: "Titre Description", name: "description_titre", widget: "string" }
+              - { label: "Titre Pour qui", name: "pour_qui_titre", widget: "string" }
+              - { label: "Titre Prérequis", name: "prerequis_titre", widget: "string" }
+              - { label: "Titre Objectifs", name: "objectifs_titre", widget: "string", hint: "HTML autorisé." }
+              - { label: "Titre Programme", name: "programme_titre", widget: "string" }
+              - { label: "Titre Formateur", name: "formateur_titre", widget: "string", hint: "HTML autorisé." }
+              - { label: "Titre FAQ", name: "faq_titre", widget: "string" }
+              - { label: "Titre Modalités", name: "modalites_titre", widget: "string", hint: "HTML autorisé." }
+              - { label: "Titre Autres formations", name: "autres_titre", widget: "string" }
+              - { label: "Bouton Voir toutes", name: "voir_toutes", widget: "string" }
+              - { label: "Mention « à partir de »", name: "a_partir_de", widget: "string" }
+          - label: "Modalités d'accueil (cartes)"
+            name: "modalites"
+            widget: "list"
+            fields:
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Texte", name: "texte", widget: "text" }
+          - label: "Modale pré-inscription"
+            name: "preinscription"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+              - { label: "Libellé entreprise", name: "label_entreprise", widget: "string" }
+              - { label: "Libellé email", name: "label_email", widget: "string" }
+              - { label: "Libellé téléphone", name: "label_tel", widget: "string" }
+              - { label: "Libellé nombre", name: "label_nb", widget: "string" }
+              - { label: "Bouton", name: "bouton", widget: "string" }
+              - { label: "Mention RGPD", name: "rgpd", widget: "text" }
+          - label: "Catalogue de formations"
+            name: "catalogue"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Placeholder recherche", name: "recherche_placeholder", widget: "string" }
+              - { label: "Onglet Toutes", name: "onglet_toutes", widget: "string" }
+              - { label: "Mot compteur", name: "compteur", widget: "string" }
+              - { label: "Message vide", name: "vide", widget: "text" }
+              - { label: "Bouton Voir les formations", name: "cta_voir", widget: "string" }
+              - { label: "Bouton Devis", name: "cta_devis", widget: "string" }
+              - label: "Puces (chips)"
+                name: "chips"
+                widget: "list"
+                field: { label: "Puce", name: "item", widget: "string" }
+          - label: "Fiche référence"
+            name: "reference"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+              - { label: "Fil d'Ariane (parent)", name: "fil_parent", widget: "string" }
+              - { label: "Bouton télécharger", name: "telecharger", widget: "string" }
+              - { label: "Mention mise à jour", name: "maj", widget: "string" }
+              - { label: "Libellé Client", name: "client", widget: "string" }
+              - { label: "Libellé Secteur", name: "secteur", widget: "string" }
+              - { label: "Libellé Expertises", name: "expertises", widget: "string" }
+              - { label: "Libellé Technologies", name: "technologies", widget: "string" }
+              - { label: "Titre Galerie", name: "galerie", widget: "string" }
+              - { label: "Titre sommaire", name: "sommaire", widget: "string" }
+              - { label: "Lien projet précédent", name: "prec", widget: "string" }
+              - { label: "Lien projet suivant", name: "suiv", widget: "string" }
+              - { label: "CTA · texte", name: "cta_texte", widget: "text" }
+              - { label: "CTA · bouton", name: "cta_bouton", widget: "string" }
+              - { label: "Lien toutes les réussites", name: "toutes", widget: "string" }
+          - label: "Page secteur"
+            name: "secteur"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Défis · sur-titre", name: "defis_eyebrow", widget: "string" }
+              - { label: "Défis · titre", name: "defis_titre", widget: "string" }
+              - { label: "Opportunités · sur-titre", name: "opportunites_eyebrow", widget: "string" }
+              - { label: "Opportunités · titre", name: "opportunites_titre", widget: "string" }
+              - { label: "Pourquoi · sur-titre", name: "pourquoi_eyebrow", widget: "string" }
+              - { label: "Pourquoi · titre", name: "pourquoi_titre", widget: "string" }
+              - { label: "Comment · sur-titre", name: "comment_eyebrow", widget: "string" }
+              - { label: "Comment · titre", name: "comment_titre", widget: "string" }
+              - { label: "Références · sur-titre", name: "refs_eyebrow", widget: "string" }
+              - { label: "Références · titre", name: "refs_titre", widget: "string" }
+              - { label: "Titre FAQ", name: "faq_titre", widget: "string" }
+              - { label: "CTA · titre par défaut", name: "cta_defaut_titre", widget: "string" }
+              - { label: "CTA · texte", name: "cta_texte", widget: "text" }
+              - { label: "CTA · bouton", name: "cta_bouton", widget: "string" }
+          - label: "Page liste des références"
+            name: "references_index"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Stat · projets", name: "stat_projets", widget: "string" }
+              - { label: "Stat · secteurs", name: "stat_secteurs", widget: "string" }
+              - { label: "Stat · valeur depuis", name: "stat_depuis_valeur", widget: "string" }
+              - { label: "Stat · libellé depuis", name: "stat_depuis", widget: "string" }
+              - { label: "Placeholder recherche", name: "recherche_placeholder", widget: "string" }
+              - { label: "Facette Type", name: "facette_type", widget: "string" }
+              - { label: "Facette Secteurs", name: "facette_secteurs", widget: "string" }
+              - { label: "Facette Technologies", name: "facette_technologies", widget: "string" }
+              - { label: "Mot compteur", name: "compteur", widget: "string" }
+              - { label: "Bouton réinitialiser", name: "reset", widget: "string" }
+              - { label: "Message vide", name: "vide", widget: "text" }
+              - { label: "Bouton réinitialiser (vide)", name: "vide_reset", widget: "string" }
+          - label: "Bloc devis (mutualisé)"
+            name: "devis"
+            widget: "object"
+            collapsed: true
+            hint: "Bloc « Demander un devis » réutilisé sur la page Formations, les pages catégories et les fiches formation."
+            fields:
+              - { label: "Titre", name: "titre", widget: "string", hint: "HTML autorisé." }
+              - { label: "Sous-titre", name: "sous", widget: "text" }
+              - label: "Arguments"
+                name: "arguments"
+                widget: "list"
+                field: { label: "Argument", name: "item", widget: "string" }
+              - { label: "Libellé nom", name: "label_nom", widget: "string" }
+              - { label: "Placeholder nom", name: "ph_nom", widget: "string" }
+              - { label: "Libellé email", name: "label_email", widget: "string" }
+              - { label: "Placeholder email", name: "ph_email", widget: "string" }
+              - { label: "Libellé besoin", name: "label_besoin", widget: "string" }
+              - { label: "Placeholder besoin", name: "ph_besoin", widget: "text" }
+              - { label: "Bouton", name: "bouton", widget: "string" }
+              - { label: "Réassurance", name: "reassurance", widget: "string" }

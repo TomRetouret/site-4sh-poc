@@ -1,0 +1,139 @@
+---
+layout: base.njk
+permalink: /references/
+extraCss: /assets/references.css
+---
+{% from "ref-macros.njk" import carte %}
+<section class="ref-hero">
+  <div class="container">
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Références</nav>
+    <p class="eyebrow">{{ page_references.eyebrow }}</p>
+    <h1>{{ page_references.h1 | safe }}</h1>
+    <p class="chapo">{{ page_references.chapo }}</p>
+    <div class="ref-preuve">
+      <div class="stat"><b>{{ collections.references.length }}</b><span>projets présentés</span></div>
+      <div class="stat"><b>{{ collections.referenceFiltres.secteurs.length }}</b><span>secteurs couverts</span></div>
+      <div class="stat"><b>2007</b><span>sur mesure depuis</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:16px">
+  <div class="container">
+    <div class="ref-filtres">
+      <div class="ref-recherche">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" id="ref-recherche" placeholder="Rechercher un projet, un client, une techno..." aria-label="Rechercher une référence">
+      </div>
+
+      {% if collections.referenceFiltres.typesProjet.length %}
+      <div class="ref-facette">
+        <p class="ref-facette-titre">Type de projet</p>
+        <div class="ref-chips">{% for v in collections.referenceFiltres.typesProjet %}<button class="chip" type="button" data-dim="type" data-val="{{ v | lower }}" aria-pressed="false">{{ v }}</button>{% endfor %}</div>
+      </div>
+      {% endif %}
+
+      <div class="ref-facette">
+        <p class="ref-facette-titre">Secteurs</p>
+        <div class="ref-chips">{% for s in collections.referenceFiltres.secteurs %}<button class="chip" type="button" data-dim="secteurs" data-val="{{ s | lower }}" aria-pressed="false">{{ s }}</button>{% endfor %}</div>
+      </div>
+
+      <div class="ref-facette">
+        <p class="ref-facette-titre">Technologies</p>
+        <div class="ref-chips">{% for t in collections.referenceFiltres.technologies %}<button class="chip" type="button" data-dim="technologies" data-val="{{ t | lower }}" aria-pressed="false">{{ t }}</button>{% endfor %}</div>
+      </div>
+
+      <div class="ref-barre-bas">
+        <p class="ref-compteur" aria-live="polite"><b id="ref-nb">{{ collections.references.length }}</b> références</p>
+        <button class="ref-reset" id="ref-reset" type="button" hidden>Réinitialiser les filtres</button>
+      </div>
+    </div>
+
+    <h2 class="sr-only">Liste des réalisations</h2>
+    <div class="ref-grille" id="ref-grille">
+      {% for ref in collections.references %}{{ carte(ref, une=loop.first) }}{% endfor %}
+    </div>
+    <p class="ref-vide-msg" id="ref-vide">Aucune référence ne correspond à votre sélection. <button type="button" id="ref-vide-reset">Réinitialiser</button></p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var cartes = Array.prototype.slice.call(document.querySelectorAll('#ref-grille .ref-carte'));
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.ref-chips .chip'));
+  var champ = document.getElementById('ref-recherche');
+  var nb = document.getElementById('ref-nb');
+  var vide = document.getElementById('ref-vide');
+  var grille = document.getElementById('ref-grille');
+  var reset = document.getElementById('ref-reset');
+  var videReset = document.getElementById('ref-vide-reset');
+  var sel = { type:new Set(), secteurs:new Set(), technologies:new Set() };
+  var reduit = matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  function correspond(c){
+    var q = (champ.value||'').trim().toLowerCase();
+    if (q && (c.dataset.nom||'').indexOf(q) === -1) return false;
+    for (var dim in sel){
+      if (sel[dim].size === 0) continue;
+      var vals = (c.dataset[dim]||'').split(',');
+      var ok = false;
+      sel[dim].forEach(function(v){ if (vals.indexOf(v) !== -1) ok = true; });
+      if (!ok) return false;
+    }
+    return true;
+  }
+
+  function afficheCarte(c, montre, i){
+    if (reduit){ c.style.display = montre ? '' : 'none'; return; }
+    if (montre){
+      if (c.style.display === 'none' || c.classList.contains('sortie')){
+        c.classList.remove('sortie'); c.style.display = '';
+        c.classList.add('entree');
+        var delai = Math.min(i,6)*35;
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){
+          c.style.transitionDelay = delai+'ms'; c.classList.add('jouee');
+        }); });
+        c.addEventListener('transitionend', function n(){ c.classList.remove('entree','jouee'); c.style.transitionDelay=''; c.removeEventListener('transitionend', n); });
+      }
+    } else if (c.style.display !== 'none'){
+      c.classList.add('sortie');
+      setTimeout(function(){ if (c.classList.contains('sortie')) c.style.display='none'; }, 200);
+    }
+  }
+
+  function applique(){
+    var visibles = 0, i = 0;
+    cartes.forEach(function(c){
+      var montre = correspond(c);
+      if (montre) visibles++;
+      afficheCarte(c, montre, i);
+      if (montre) i++;
+    });
+    nb.textContent = visibles;
+    vide.style.display = visibles ? 'none' : 'block';
+    grille.style.display = visibles ? '' : 'none';
+    var actif = champ.value.trim() !== '' || sel.type.size || sel.secteurs.size || sel.technologies.size;
+    reset.hidden = !actif;
+  }
+
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      var dim = chip.dataset.dim, val = chip.dataset.val;
+      if (sel[dim].has(val)){ sel[dim].delete(val); chip.setAttribute('aria-pressed','false'); }
+      else { sel[dim].add(val); chip.setAttribute('aria-pressed','true'); }
+      applique();
+    });
+  });
+  champ.addEventListener('input', applique);
+
+  function reinit(){
+    champ.value = '';
+    for (var d in sel) sel[d].clear();
+    chips.forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+    applique();
+  }
+  reset.addEventListener('click', reinit);
+  videReset.addEventListener('click', reinit);
+  applique();
+})();
+</script>

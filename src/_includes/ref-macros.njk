@@ -1,0 +1,20 @@
+{% macro carte(ref, une=false) %}
+<article class="ref-carte{% if une %} ref-carte--une{% endif %}"
+  data-secteurs="{{ ref.data.secteurs | join(',') | lower }}"
+  data-technologies="{{ ref.data.technologies | join(',') | lower }}"
+  data-type="{{ ref.data.type_projet | lower }}"
+  data-nom="{{ (ref.data.titre ~ ' ' ~ ref.data.client ~ ' ' ~ ref.data.resume ~ ' ' ~ (ref.data.technologies | join(' ')) ~ ' ' ~ (ref.data.secteurs | join(' '))) | lower }}">
+  <div class="ref-visuel{% if not ref.data.image %} ref-visuel--vide{% endif %}">
+    {% if ref.data.image %}<img src="{{ ref.data.image }}" alt="{{ ref.data.titre }}" loading="lazy" decoding="async" width="600" height="450">{% else %}<span class="ref-vide-nom">{{ ref.data.client }}</span>{% endif %}
+    <div class="ref-cartouche">{% if ref.data.logo %}<img src="{{ ref.data.logo }}" alt="{{ ref.data.client }}" loading="lazy" decoding="async">{% else %}<span class="ref-cartouche-txt">{{ ref.data.client }}</span>{% endif %}</div>
+  </div>
+  <div class="ref-carte-corps">
+    {% if ref.data.secteurs and ref.data.secteurs.length %}<span class="ref-secteur">{{ ref.data.secteurs[0] }}</span>{% endif %}
+    <h3><a href="{{ ref.url }}">{{ ref.data.titre }}</a></h3>
+    <p class="resume">{{ ref.data.resume }}</p>
+    {% if ref.data.technologies and ref.data.technologies.length %}
+    <div class="ref-tags">{% for t in ref.data.technologies %}{% if loop.index <= 4 %}<span>{{ t }}</span>{% endif %}{% endfor %}</div>
+    {% endif %}
+  </div>
+</article>
+{% endmacro %}

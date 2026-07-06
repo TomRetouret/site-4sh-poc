@@ -1,0 +1,76 @@
+---
+layout: base.njk
+permalink: "/secteurs/{{ page.fileSlug }}/"
+extraCss: /assets/secteurs.css
+---
+{% from "ref-macros.njk" import carte %}
+<section class="sect-hero">
+  <div class="container">
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <a href="/">Secteurs</a> › {{ titre }}</nav>
+    <span class="eyebrow">{{ categorie or "Secteur" }}</span>
+    {% if logo %}<div class="sect-logo"><img src="{{ logo }}" alt="{{ titre }}"></div>{% endif %}
+    <h1>{{ h1 or titre }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
+    {% if chapo %}<p class="accroche">{{ chapo }}</p>{% endif %}
+    <div class="hero-cta"><a class="btn btn-primary" href="{{ cta_url or '/#contact' }}">{{ cta_label or "Contactez-nous" }}</a></div>
+  </div>
+</section>
+
+<section class="sect-bloc">
+  <div class="container">
+    <div class="sect-libre">
+      {{ content | safe }}
+    </div>
+  </div>
+</section>
+
+{% if chiffres and chiffres.length %}
+<div class="ref-resultats">
+  <div class="container">
+    <div class="grille">
+      {% for c in chiffres %}<div class="stat"><b>{{ c.chiffre | safe }}</b><span>{{ c.label }}</span></div>{% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if references and references.length %}
+<section class="sect-refs">
+  <div class="container">
+    <p class="eyebrow">Ils nous font confiance</p>
+    <h2>Références clients</h2>
+    <div class="ref-grille">
+      {% for slug in references %}{% for r in collections.references %}{% if r.fileSlug == slug %}{{ carte(r) }}{% endif %}{% endfor %}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if faq and faq.length %}
+<section class="sect-bloc sect-bloc--creme">
+  <div class="container">
+    <div class="sect-faq">
+      <h2>Questions fréquentes</h2>
+      <div class="faq" style="margin-top:20px">
+        {% for item in faq %}
+        <details{% if loop.first %} open{% endif %}>
+          <summary>{{ item.question }}</summary>
+          <p>{{ item.reponse }}</p>
+        </details>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="sect-cta">
+  <div class="container">
+    <div class="bandeau-cta">
+      <div>
+        <h2>{{ cta_titre or "Échangeons sur votre projet" }}</h2>
+        <p>{{ cta_texte or "Parlons-en. En 30 minutes, un expert 4SH vous aide à cadrer votre besoin, sans engagement." }}</p>
+      </div>
+      <a class="btn" href="{{ cta_url or '/#contact' }}">{{ cta_label or "Contactez-nous" }}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,136 @@
+{%- from "nav-icones.njk" import navicone -%}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title or seo.titre_defaut }}</title>
+<meta name="description" content="{{ description or seo.description_defaut }}">
+<link rel="canonical" href="{{ seo.url }}{{ page.url }}">
+{% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="4SH">
+<meta property="og:title" content="{{ title or seo.titre_defaut }}">
+<meta property="og:description" content="{{ description or seo.description_defaut }}">
+<meta property="og:url" content="{{ seo.url }}{{ page.url }}">
+<meta property="og:image" content="{{ seo.og_image }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css?family=Asap:400,400i,500,600,700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"4SH","url":"https://www.4sh.fr/","foundingDate":"2007","address":[{"@type":"PostalAddress","addressLocality":"Le Haillan","postalCode":"33185"},{"@type":"PostalAddress","addressLocality":"Capbreton","postalCode":"40130"},{"@type":"PostalAddress","addressLocality":"Paris","postalCode":"75008"}],"telephone":"+33963286273"}
+</script>
+<link rel="stylesheet" href="/assets/styles.css">
+{% if learningStyles %}<link rel="stylesheet" href="/assets/learning.css">{% endif %}
+{% if catalogueStyles %}<link rel="stylesheet" href="/assets/catalogue.css">{% endif %}
+{% if extraCss %}<link rel="stylesheet" href="{{ extraCss }}">{% endif %}
+</head>
+<body class="{{ bodyClass }}">
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="/" aria-label="4SH, accueil"><img src="https://www.4sh.fr/assets/img/png/logo_4sh_baseline.png" alt="4SH, développez vos idées"></a>
+    <ul class="menu">
+      {% for item in navigation.items %}
+      {% if item.type == "lien" %}
+      <li><a href="{{ item.url or '#' }}">{{ item.label }}</a></li>
+      {% elif item.type == "menu_simple" %}
+      <li>
+        <a href="#">{{ item.label }}</a>
+        <div class="deroulant simple">
+          {% if item.titre_col %}<p class="deroulant-titre">{{ item.titre_col }}</p>{% endif %}
+          <ul>
+            {% for l in item.liens %}<li><a href="{{ l.url or '#' }}">{{ l.label }}{% if l.sous_texte %} <small>{{ l.sous_texte }}</small>{% endif %}</a></li>{% endfor %}
+          </ul>
+        </div>
+      </li>
+      {% elif item.type == "megamenu" %}
+      <li class="a-panneau">
+        <a href="#">{{ item.label }}</a>
+        <div class="deroulant menu-services{% if item.variant %} {{ item.variant }}{% endif %}" aria-label="{{ item.label }}">
+          {% if item.promo %}
+          <a class="promo-services" href="{{ item.promo.url or '#' }}">
+            <div class="promo-txt">
+              <h4>{{ item.promo.titre }}</h4>
+              <p>{{ item.promo.texte }}</p>
+            </div>
+            {% if item.promo.kpi %}<div class="promo-kpi"><b>{{ item.promo.kpi.valeur | safe }}</b><span>{{ item.promo.kpi.label }}</span></div>{% endif %}
+            {% if item.promo.lien_libelle %}<span class="promo-lien">{{ item.promo.lien_libelle }}</span>{% endif %}
+          </a>
+          {% endif %}
+          {% for col in item.colonnes %}
+          <div class="col-svc">
+            <p class="deroulant-titre">{{ col.titre }}</p>
+            <ul class="svc-list">
+              {% for l in col.liens %}<li><a class="svc-item" href="{{ l.url or '#' }}">{% if l.image or l.icone %}<span class="svc-ico">{% if l.image %}<img src="{{ l.image }}" alt="" width="24" height="24">{% else %}{{ navicone(l.icone) }}{% endif %}</span>{% endif %}<span><b>{{ l.label }}</b>{% if l.sous_texte %}<small>{{ l.sous_texte }}</small>{% endif %}</span></a></li>{% endfor %}
+            </ul>
+          </div>
+          {% endfor %}
+          {% if item.bas %}
+          <div class="services-bas">
+            <div><b>{{ item.bas.titre }}</b><span>{{ item.bas.texte }}</span></div>
+            {% if item.bas.cta_label %}<a class="btn btn-sm btn-contact" href="{{ item.bas.cta_url or '#' }}">{{ item.bas.cta_label }}</a>{% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    <div class="nav-actions">
+      {% for a in navigation.actions %}<a class="{{ a.style }}" href="{{ a.url or '#' }}">{{ a.label }}</a>{% endfor %}
+    </div>
+    <button class="burger" aria-label="Ouvrir le menu">☰</button>
+  </div>
+</header>
+
+{{ content | safe }}
+
+<footer>
+  <div class="container">
+    <div class="footer-grille">
+      <div>
+        <p class="footer-titre">{{ site.nom }}</p>
+        <p>{{ site.footer_accroche }}<br>{{ site.villes }}<br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
+      </div>
+      <div>
+        <p class="footer-titre">Services</p>
+        <ul>
+          <li><a href="/logiciel-metier/">Logiciel métier</a></li>
+          <li><a href="#">Application SaaS</a></li>
+          <li><a href="#">Application mobile</a></li>
+          <li><a href="#">Hébergement &amp; maintenance</a></li>
+          <li><a href="#">Audits</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-titre">Formations</p>
+        <ul>
+          <li><a href="/formations/">Toutes les formations</a></li>
+          <li><a href="/formations/develop/">Develop</a></li>
+          <li><a href="/formations/design/">Design</a></li>
+          <li><a href="/formations/devops/">DevOps</a></li>
+          <li><a href="/formations/outils/">Outils</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-titre">L'agence</p>
+        <ul>
+          <li><a href="#">Comment se passe un projet</a></li>
+          <li><a href="/references/">Références</a></li>
+          <li><a href="#">L'équipe</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="/formations/">Formations</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <span>© 2007-2026 4SH · Mentions légales · RGPD · Charte RSE</span>
+      <span>LinkedIn · YouTube · X</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/script.js"></script>
+</body>
+</html>

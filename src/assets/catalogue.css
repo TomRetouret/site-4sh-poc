@@ -1,0 +1,110 @@
+/* ===== compléments Formations (accent violet Learning) ===== */
+.fil-ariane{font-size:13.5px;color:var(--muted);padding:18px 0 0}
+.fil-ariane a{color:var(--muted)}
+.fil-ariane a:hover{color:var(--violet)}
+.learning em.accent{color:var(--violet)}
+.learning .eyebrow{color:var(--violet)}
+.learning .eyebrow::before{background:var(--violet)}
+.btn-learning{background:var(--violet);color:#fff;box-shadow:0 8px 24px rgba(123,106,167,.28)}
+.btn-learning:hover{background:#6a5a95;transform:translateY(-2px);box-shadow:0 14px 34px rgba(123,106,167,.35)}
+
+.hero-form{padding:34px 0 44px;background:linear-gradient(180deg,#fefefe 0%,var(--fond) 100%)}
+.hero-form .hero-grille{grid-template-columns:1.2fr .8fr;padding-top:24px;align-items:center}
+.hero-form h1{font-size:clamp(36px,4.4vw,56px);line-height:1.08;font-weight:700;color:var(--sombre);letter-spacing:-.8px;margin-bottom:16px}
+.hero-form .chapo{font-size:18px;color:var(--texte-2);margin-bottom:20px;max-width:560px}
+.hero-form .visuel-form{background:#fff;border:1px solid var(--bordure);border-radius:var(--radius);padding:34px;display:flex;flex-direction:column;align-items:center;gap:16px;box-shadow:0 24px 54px rgba(31,41,46,.10)}
+.hero-form .visuel-form img{max-height:180px}
+.meta-form{display:flex;gap:22px;flex-wrap:wrap;align-items:center;margin-bottom:24px}
+.note-etoiles{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--sombre)}
+.note-etoiles .etoiles{color:#f1a833;letter-spacing:2px}
+.note-etoiles small{color:var(--muted);font-weight:400}
+
+/* pourquoi choisir : 3 portes violettes */
+.learning .porte::before{background:var(--violet)}
+.learning .porte .pictos{background:#efe9f7;color:var(--violet)}
+
+/* barre recherche + filtres */
+.recherche{position:relative;max-width:420px;flex:1;min-width:240px}
+.recherche input{width:100%;border:1.5px solid var(--bordure);border-radius:140px;padding:13px 18px 13px 46px;font-family:inherit;font-size:15px;color:var(--texte);background:#fff;transition:border-color .2s,box-shadow .2s}
+.recherche input:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 3px #efe9f7}
+.recherche svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.barre-filtres{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:16px}
+.onglets{display:flex;gap:8px;flex-wrap:wrap}
+.onglet{border:1.5px solid var(--bordure);background:#fff;color:var(--texte);border-radius:140px;padding:9px 20px;font-family:inherit;font-size:14.5px;font-weight:600;cursor:pointer;transition:all .2s}
+.onglet:hover{border-color:var(--violet);color:var(--violet)}
+.onglet.actif{background:var(--violet);border-color:var(--violet);color:#fff}
+.ligne-outils{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:26px}
+.compteur{font-size:14px;color:var(--muted)}
+.compteur b{color:var(--sombre)}
+.lien-catalogue{font-weight:600;font-size:14.5px;color:var(--violet);display:inline-flex;align-items:center;gap:8px;border:2px solid var(--violet);border-radius:140px;padding:10px 20px;transition:all .2s;white-space:nowrap}
+.lien-catalogue:hover{background:var(--violet);color:#fff}
+
+.grille-form{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.carte-form{position:relative;background:var(--carte);border:1px solid var(--bordure);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .2s;overflow:hidden;cursor:pointer}
+.carte-form::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--violet);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.carte-form:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(31,41,46,.13);border-color:transparent}
+.carte-form:hover::before{transform:scaleX(1)}
+.carte-form .haut{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.carte-form .logo-techno{width:52px;height:52px;display:flex;align-items:center;justify-content:center}
+.carte-form .logo-techno img{max-height:46px;max-width:46px}
+.carte-form .prix{text-align:right}
+.carte-form .prix small{display:block;font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.carte-form .prix b{font-size:20px;color:var(--sombre);letter-spacing:-.5px}
+.carte-form h3{font-size:19px;color:var(--sombre);margin-bottom:6px;letter-spacing:-.3px}
+.carte-form h3 a{color:var(--sombre)}
+.carte-form:hover h3 a{color:var(--violet)}
+.carte-form h3 a::after{content:"";position:absolute;inset:0;z-index:2}
+.carte-form .cat{font-size:11.5px;text-transform:uppercase;letter-spacing:1px;color:var(--violet);font-weight:600;margin-bottom:10px}
+.carte-form p.desc{font-size:14.5px;color:var(--texte-2);flex:1;margin-bottom:16px}
+.carte-form .avis{font-size:12.5px;color:var(--muted);margin-left:6px;font-weight:400}
+.niveaux{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.niveau-chip{background:var(--fond);border:1px solid var(--bordure);border-radius:10px;padding:7px 12px;font-size:12.5px;color:var(--texte-2)}
+.niveau-chip b{display:block;color:var(--sombre);font-size:12.5px}
+.carte-form::after{content:"Voir la formation →";margin-top:14px;padding-top:14px;border-top:1px solid var(--bordure);font-size:14px;font-weight:600;color:var(--violet);transition:letter-spacing .2s var(--ease)}
+.carte-form:hover::after{letter-spacing:.3px}
+.vide{display:none;text-align:center;padding:50px 0;color:var(--muted);font-size:16px}
+
+/* AGENDA / prochaines sessions */
+.agenda{display:flex;flex-direction:column;gap:12px}
+.agenda-mois{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--violet);margin:20px 0 4px}
+.agenda-mois:first-child{margin-top:0}
+.session-ligne{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;background:#fff;border:1px solid var(--bordure);border-radius:var(--radius);padding:18px 24px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.session-ligne:hover{transform:translateX(4px);box-shadow:0 16px 34px rgba(31,41,46,.10)}
+.date-bloc{text-align:center;background:var(--fond);border-radius:12px;padding:10px 16px;min-width:80px}
+.date-bloc .jour{font-size:24px;font-weight:700;color:var(--sombre);line-height:1;letter-spacing:-1px}
+.date-bloc .mois{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--violet);font-weight:600;margin-top:4px}
+.date-bloc .duree{font-size:11.5px;color:var(--muted);margin-top:3px}
+.session-info{display:flex;align-items:center;gap:16px;min-width:0}
+.session-info .logo-mini{width:40px;height:40px;flex:none;display:flex;align-items:center;justify-content:center}
+.session-info .logo-mini img{max-height:34px;max-width:34px}
+.session-info b{color:var(--sombre);font-size:16px;display:block}
+.session-info .details{font-size:13.5px;color:var(--texte-2);display:flex;gap:14px;flex-wrap:wrap;margin-top:3px}
+.session-info .details span{display:inline-flex;align-items:center;gap:5px}
+.session-info .details svg{color:var(--violet)}
+.pastille-cat{font-size:11px;text-transform:uppercase;letter-spacing:.8px;font-weight:600;color:var(--violet);background:#efe9f7;border-radius:140px;padding:3px 10px}
+.session-ligne .cta-session{white-space:nowrap}
+
+/* Qualiopi */
+.qualiopi{background:var(--creme);border:1px solid var(--bordure);border-radius:calc(var(--radius) + 6px);padding:44px;display:grid;grid-template-columns:.35fr 1fr;gap:36px;align-items:center}
+.qualiopi .logo-q{display:flex;align-items:center;justify-content:center}
+.qualiopi .logo-q img{max-height:120px}
+.qualiopi h2{font-size:26px;color:var(--sombre);letter-spacing:-.6px;margin-bottom:12px}
+.qualiopi p{font-size:15.5px;color:var(--texte-2)}
+
+/* témoignages */
+.temoins{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.temoin{background:#fff;border:1px solid var(--bordure);border-radius:var(--radius);padding:28px}
+.temoin blockquote{font-size:16px;color:var(--sombre);line-height:1.5;margin-bottom:16px}
+.temoin blockquote::before{content:"«";font-family:var(--serif);font-style:italic;color:var(--violet);font-size:30px;line-height:0;margin-right:5px}
+.temoin .qui{display:flex;align-items:center;gap:12px}
+.temoin .pastille{width:42px;height:42px;border-radius:50%;background:var(--violet);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px}
+.temoin .qui b{display:block;color:var(--sombre);font-size:14.5px}
+.temoin .qui span{font-size:13px;color:var(--muted)}
+
+@media (max-width:960px){
+  .hero-form .hero-grille{grid-template-columns:1fr}
+  .grille-form,.temoins{grid-template-columns:1fr}
+  .qualiopi{grid-template-columns:1fr;text-align:center}
+  .session-ligne{grid-template-columns:auto 1fr;gap:14px}
+  .session-ligne .cta-session{grid-column:1 / -1;justify-self:start}
+}

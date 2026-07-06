@@ -1,0 +1,509 @@
+# =========================================================================
+#  Configuration du CMS git (Sveltia CMS, successeur de Decap CMS)
+#  Chaque modification faite dans l'admin = un commit git = une mise en ligne.
+# =========================================================================
+
+# --- Où le CMS écrit-il ? ---
+# Dépôt GitHub. Remplacez ORG/site-4sh par votre dépôt réel.
+backend:
+  name: github
+  repo: ORG/site-4sh
+  branch: main
+  # Authentification "Se connecter avec GitHub" via un petit Worker Cloudflare gratuit
+  # (https://github.com/sveltia/sveltia-cms-auth). Renseignez son URL une fois déployé :
+  # base_url: https://auth-4sh.<votre-sous-domaine>.workers.dev
+
+# Confort d'édition : brouillon "Prêt à publier" avant mise en ligne.
+publish_mode: editorial_workflow
+
+# Langue de l'interface
+locale: fr
+
+# URL du site déployé : sert aux liens "Voir sur le site" (preview_path) et à l'en-tête de l'admin.
+site_url: https://www.4sh.fr
+display_url: https://www.4sh.fr
+
+# Dossier des images uploadées par les rédacteurs
+media_folder: "src/uploads"
+public_folder: "/uploads"
+
+collections:
+  # -----------------------------------------------------------------------
+  # 1) FORMATIONS  (une fiche = un fichier ; on peut en ajouter / supprimer)
+  # -----------------------------------------------------------------------
+  - name: "formations"
+    label: "Formations"
+    label_singular: "Formation"
+    folder: "src/content/formations"
+    preview_path: "formations/{{slug}}/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{titre}} - {{niveau}} ({{categorie}})"
+    sortable_fields: ["titre", "categorie", "groupe"]
+    fields:
+      - { label: "Nom (techno)", name: "titre", widget: "string", hint: "Ex. : Angular" }
+      - { label: "Groupe (relie les niveaux d'une même techno)", name: "groupe", widget: "string", hint: "Identifiant commun à tous les niveaux, ex. : angular. Sert au regroupement au catalogue et au sélecteur de niveau." }
+      - { label: "Sous-titre", name: "sous_titre", widget: "string", required: false, hint: "Ex. : - Les fondamentaux" }
+      - label: "Catégorie"
+        name: "categorie"
+        widget: "relation"
+        collection: "categories"
+        value_field: "nom"
+        search_fields: ["nom"]
+        display_fields: ["nom"]
+        hint: "Reliée aux pages catégories existantes (Develop, Design, DevOps, Outils)."
+      - { label: "Niveau", name: "niveau", widget: "select", options: ["Essentiel", "Fondamental", "Intermédiaire", "Avancé"], required: false }
+      - { label: "Accroche (chapô)", name: "chapo", widget: "text" }
+      - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Ne pas indexer cette page (noindex)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Prix", name: "prix", widget: "string", hint: "Ex. : 2200 € HT" }
+      - { label: "Durée", name: "duree", widget: "string", required: false, hint: "Ex. : 4 jours (28h00)" }
+      - { label: "Nombre de participants", name: "participants", widget: "string", required: false, hint: "Ex. : 1 à 8" }
+      - { label: "Note", name: "note", widget: "string", required: false, hint: "Ex. : 4,89 / 5" }
+      - { label: "Nombre d'avis", name: "avis", widget: "number", required: false, value_type: "int" }
+      - { label: "Proposée depuis", name: "depuis", widget: "string", required: false, hint: "Ex. : janvier 2023" }
+      - { label: "Part de théorie (%)", name: "theorie", widget: "number", required: false, value_type: "int", min: 0, max: 100 }
+      - { label: "Part de pratique (%)", name: "pratique", widget: "number", required: false, value_type: "int", min: 0, max: 100 }
+      - { label: "Illustration / logo (URL ou image)", name: "image", widget: "image", required: false, choose_url: true }
+      - label: "Sessions à venir"
+        name: "sessions"
+        widget: "list"
+        required: false
+        field: { label: "Session", name: "session", widget: "string", hint: "Ex. : Du 15/09/2026 au 18/09/2026" }
+      - { label: "Pour qui ?", name: "pour_qui", widget: "text", required: false }
+      - label: "Prérequis"
+        name: "prerequis"
+        widget: "list"
+        required: false
+        field: { label: "Prérequis", name: "item", widget: "string" }
+      - label: "Objectifs pédagogiques"
+        name: "objectifs"
+        widget: "list"
+        required: false
+        field: { label: "Objectif", name: "item", widget: "string" }
+      - label: "Programme (chapitres)"
+        name: "programme"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Titre du chapitre", name: "titre", widget: "string" }
+          - label: "Points abordés"
+            name: "items"
+            widget: "list"
+            field: { label: "Point", name: "point", widget: "string" }
+      - label: "Formateur"
+        name: "formateur"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Nom", name: "nom", widget: "string" }
+          - { label: "Rôle", name: "role", widget: "string", required: false }
+          - { label: "Photo (URL ou image)", name: "photo", widget: "image", required: false, choose_url: true }
+          - label: "Biographie (paragraphes)"
+            name: "bio"
+            widget: "list"
+            field: { label: "Paragraphe", name: "para", widget: "text" }
+      - label: "Questions fréquentes"
+        name: "faq"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Réponse", name: "reponse", widget: "text" }
+      - { label: "Description (texte principal)", name: "body", widget: "markdown", hint: "Les paragraphes de présentation affichés en haut de la section Description." }
+
+  # -----------------------------------------------------------------------
+  # 2) RÉFÉRENCES  (projets clients / réussites)
+  # -----------------------------------------------------------------------
+  - name: "references"
+    label: "Références"
+    label_singular: "Référence"
+    folder: "src/content/references"
+    preview_path: "references/{{slug}}/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{titre}}"
+    sortable_fields: ["ordre", "titre", "client"]
+    fields:
+      - { label: "Titre du projet", name: "titre", widget: "string", hint: "Ex. : Izivia - App Mobile" }
+      - { label: "Client", name: "client", widget: "string" }
+      - { label: "Résumé (carte)", name: "resume", widget: "text", hint: "Phrase de présentation affichée sur la carte et en chapô." }
+      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int", hint: "Plus petit = affiché en premier." }
+      - { label: "Titre de la fiche (H1)", name: "h1", widget: "string", required: false, hint: "Ex. : L'application mobile" }
+      - { label: "Sous-titre", name: "sous_titre", widget: "text", required: false, hint: "Phrase affichée sous le titre de la fiche." }
+      - { label: "Lien fiche PDF", name: "fiche_pdf", widget: "string", required: false, hint: "Lien vers la fiche PDF (Drive...)." }
+      - { label: "Dernière mise à jour", name: "maj", widget: "string", required: false, hint: "Ex. : 20/04/2022" }
+      - label: "Chiffres clés (bandeau hero)"
+        name: "stats"
+        widget: "list"
+        required: false
+        hint: "Optionnel. Reprend des chiffres déjà présents dans l'étude de cas pour les mettre en avant."
+        fields:
+          - { label: "Chiffre", name: "chiffre", widget: "string", hint: "Ex. : 9 000, 200 000" }
+          - { label: "Libellé", name: "label", widget: "string", hint: "Ex. : utilisateurs, bornes de recharge" }
+      - { label: "Logo client", name: "logo", widget: "image", required: false, choose_url: true }
+      - { label: "Visuel", name: "image", widget: "image", required: false, choose_url: true }
+      - label: "Secteurs"
+        name: "secteurs"
+        widget: "list"
+        required: false
+        field: { label: "Secteur", name: "secteur", widget: "string", hint: "Ex. : Logistique, Mobilité, Assurance..." }
+      - label: "Technologies"
+        name: "technologies"
+        widget: "list"
+        required: false
+        field: { label: "Technologie", name: "techno", widget: "string", hint: "Ex. : Angular, Java, Kotlin..." }
+      - label: "Expertises"
+        name: "expertises"
+        widget: "list"
+        required: false
+        field: { label: "Expertise", name: "expertise", widget: "string", hint: "Ex. : UX, Data, Studio..." }
+      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Ne pas indexer cette page (noindex)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Lien source (site actuel)", name: "source_url", widget: "string", required: false }
+      - label: "Galerie (visuels)"
+        name: "galerie"
+        widget: "list"
+        required: false
+        field: { label: "Image", name: "image", widget: "image", choose_url: true }
+      - { label: "Étude de cas", name: "body", widget: "markdown", hint: "Sections : Entreprise et activité, Nos missions, Enjeux & Objectifs, Les points clés." }
+
+  # -----------------------------------------------------------------------
+  # 3) CATÉGORIES  (pages Develop / Design / DevOps / Outils, textes SEO dédiés)
+  # -----------------------------------------------------------------------
+  - name: "categories"
+    label: "Catégories de formation"
+    label_singular: "Catégorie"
+    folder: "src/content/categories"
+    preview_path: "formations/{{slug}}/"
+    create: false
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{nom}}"
+    fields:
+      - { label: "Nom", name: "nom", widget: "select", options: ["Develop", "Design", "DevOps", "Outils"], hint: "Doit correspondre à la catégorie des fiches formation." }
+      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Ne pas indexer cette page (noindex)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Titre principal (H1)", name: "h1", widget: "string", required: false }
+      - { label: "Introduction", name: "intro", widget: "text", required: false }
+      - label: "Questions fréquentes"
+        name: "faq"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Réponse", name: "reponse", widget: "text" }
+      - { label: "Texte SEO", name: "body", widget: "markdown", hint: "Le contenu rédactionnel affiché sous le catalogue de la catégorie." }
+
+  # -----------------------------------------------------------------------
+  # 4) SECTEURS  (pages métier : Logistique, Électromobilité, Assurance...)
+  # -----------------------------------------------------------------------
+  - name: "secteurs"
+    label: "Secteurs"
+    label_singular: "Secteur"
+    folder: "src/content/secteurs"
+    preview_path: "secteurs/{{slug}}/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{titre}}"
+    sortable_fields: ["ordre", "titre"]
+    fields:
+      - { label: "Nom du secteur", name: "titre", widget: "string" }
+      - { label: "Titre (H1)", name: "h1", widget: "string" }
+      - { label: "Accroche", name: "accroche", widget: "text" }
+      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int" }
+      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Ne pas indexer cette page (noindex)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Introduction des défis", name: "defis_intro", widget: "text", required: false }
+      - label: "Défis du métier"
+        name: "defis"
+        widget: "list"
+        required: false
+        field: { label: "Défi", name: "defi", widget: "string", hint: "Mots-clés en gras via <strong>...</strong>." }
+      - { label: "Introduction des opportunités", name: "opportunites_intro", widget: "text", required: false }
+      - label: "Opportunités"
+        name: "opportunites"
+        widget: "list"
+        required: false
+        field: { label: "Opportunité", name: "opportunite", widget: "string" }
+      - label: "Pourquoi 4SH (atouts)"
+        name: "pourquoi"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Titre", name: "titre", widget: "string" }
+          - label: "Paragraphes"
+            name: "paras"
+            widget: "list"
+            field: { label: "Paragraphe", name: "para", widget: "text" }
+      - { label: "Introduction de l'approche", name: "comment_intro", widget: "text", required: false }
+      - label: "Étapes (Comment ?)"
+        name: "etapes"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Titre", name: "titre", widget: "string" }
+          - { label: "Texte", name: "texte", widget: "text" }
+      - label: "Références clients"
+        name: "references"
+        widget: "relation"
+        required: false
+        multiple: true
+        collection: "references"
+        value_field: "{{slug}}"
+        search_fields: ["titre", "client"]
+        display_fields: ["titre"]
+        hint: "Sélectionnez les fiches références à afficher (recherche par nom)."
+
+  # -----------------------------------------------------------------------
+  # 5) CLIENTS & SOLUTIONS  (pages sous /secteurs/ : profils clients et produits 4SH)
+  # -----------------------------------------------------------------------
+  - name: "pages_secteurs"
+    label: "Clients & Solutions"
+    label_singular: "Page"
+    folder: "src/content/pages-secteurs"
+    preview_path: "secteurs/{{slug}}/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{titre}} ({{categorie}})"
+    sortable_fields: ["categorie", "ordre", "titre"]
+    fields:
+      - { label: "Titre", name: "titre", widget: "string" }
+      - { label: "Catégorie", name: "categorie", widget: "select", options: ["Client", "Solution"] }
+      - { label: "Titre (H1)", name: "h1", widget: "string" }
+      - { label: "Accroche", name: "chapo", widget: "text", required: false }
+      - { label: "Logo produit", name: "logo", widget: "image", required: false, choose_url: true }
+      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int" }
+      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Ne pas indexer cette page (noindex)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Libellé du bouton", name: "cta_label", widget: "string", required: false }
+      - { label: "Lien du bouton", name: "cta_url", widget: "string", required: false }
+      - { label: "Titre du bandeau final", name: "cta_titre", widget: "string", required: false }
+      - { label: "Texte du bandeau final", name: "cta_texte", widget: "text", required: false }
+      - label: "Chiffres clés"
+        name: "chiffres"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Chiffre", name: "chiffre", widget: "string" }
+          - { label: "Libellé", name: "label", widget: "string" }
+      - label: "Références clients"
+        name: "references"
+        widget: "relation"
+        required: false
+        multiple: true
+        collection: "references"
+        value_field: "{{slug}}"
+        search_fields: ["titre", "client"]
+        display_fields: ["titre"]
+        hint: "Sélectionnez les fiches références à afficher (recherche par nom)."
+      - label: "Questions fréquentes"
+        name: "faq"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Réponse", name: "reponse", widget: "text" }
+      - { label: "Contenu", name: "body", widget: "markdown" }
+
+  # -----------------------------------------------------------------------
+  # 6) PAGES  (contenus éditables des pages existantes)
+  # -----------------------------------------------------------------------
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "accueil"
+        label: "Page d'accueil"
+        file: "src/_data/accueil.json"
+        preview_path: ""
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string" }
+          - { label: "Description SEO", name: "meta_description", widget: "text" }
+          - { label: "Titre principal (H1)", name: "hero_surtitre", widget: "string" }
+          - { label: "Paragraphe d'introduction", name: "hero_chapo", widget: "text" }
+          - { label: "Note sous les boutons", name: "hero_note", widget: "string" }
+          - { label: "Bouton principal", name: "hero_cta_principal", widget: "string" }
+          - { label: "Bouton secondaire", name: "hero_cta_secondaire", widget: "string" }
+          - { label: "Équipe · sur-titre", name: "equipe_eyebrow", widget: "string" }
+          - { label: "Équipe · titre", name: "equipe_titre", widget: "string", hint: "Le mot accentué peut être encadré par <em class=\"accent\">...</em>." }
+          - { label: "Équipe · texte", name: "equipe_texte", widget: "text" }
+          - { label: "Équipe · photo", name: "equipe_photo", widget: "image", required: false, choose_url: true, hint: "Photo de groupe affichée en bas de l'accueil." }
+          - label: "Secteurs"
+            name: "secteurs"
+            widget: "list"
+            fields:
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Texte", name: "texte", widget: "text" }
+              - { label: "Libellé du lien", name: "lien_libelle", widget: "string" }
+          - label: "Questions fréquentes"
+            name: "faq"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Réponse", name: "reponse", widget: "text" }
+
+      - name: "page_formations"
+        label: "Formations (page mère)"
+        file: "src/_data/page_formations.json"
+        preview_path: "formations/"
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string" }
+          - { label: "Description SEO", name: "meta_description", widget: "text" }
+          - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+          - { label: "Titre principal (H1)", name: "h1", widget: "string", hint: "Le mot accentué peut être encadré par <em class=\"accent\">...</em>." }
+          - { label: "Paragraphe d'introduction", name: "chapo", widget: "text" }
+          - { label: "Note", name: "note", widget: "string", hint: "Ex. : 4,71 / 5" }
+          - { label: "Détail de la note", name: "note_detail", widget: "string", hint: "Ex. : 324 participant·e·s" }
+          - { label: "Titre section Pourquoi", name: "pourquoi_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
+          - label: "Pourquoi choisir 4SH Learning"
+            name: "pourquoi"
+            widget: "list"
+            fields:
+              - { label: "Titre", name: "titre", widget: "string" }
+              - { label: "Texte", name: "texte", widget: "text" }
+          - { label: "Titre bloc Qualiopi", name: "qualiopi_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
+          - { label: "Texte bloc Qualiopi", name: "qualiopi_texte", widget: "text" }
+
+      - name: "page_references"
+        label: "Références (page mère)"
+        file: "src/_data/page_references.json"
+        preview_path: "references/"
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string" }
+          - { label: "Description SEO", name: "meta_description", widget: "text" }
+          - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+          - { label: "Titre principal (H1)", name: "h1", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
+          - { label: "Paragraphe d'introduction", name: "chapo", widget: "text" }
+
+      - name: "site"
+        label: "Réglages du site (pied de page, coordonnées)"
+        file: "src/_data/site.json"
+        fields:
+          - { label: "Nom", name: "nom", widget: "string" }
+          - { label: "Téléphone affiché", name: "telephone_affiche", widget: "string" }
+          - { label: "Téléphone (format lien)", name: "telephone_lien", widget: "string", hint: "Sans espaces, ex. : +330963286273" }
+          - { label: "Villes", name: "villes", widget: "string" }
+          - { label: "Accroche du pied de page", name: "footer_accroche", widget: "text" }
+          - label: "Logos clients (bandeau « Ils nous confient leur métier »)"
+            name: "clients"
+            widget: "list"
+            fields:
+              - { label: "Nom", name: "nom", widget: "string" }
+              - { label: "Lien (optionnel)", name: "url", widget: "string", required: false, hint: "Ex. : /references/izivia-portail/ . Laisser vide pour aucun lien." }
+
+  # -----------------------------------------------------------------------
+  # 7) SEO & INDEXATION  (métas par défaut, sitemap, robots.txt)
+  # -----------------------------------------------------------------------
+  - name: "seo"
+    label: "SEO & indexation"
+    files:
+      - name: "seo"
+        label: "Réglages SEO"
+        file: "src/_data/seo.json"
+        fields:
+          - { label: "URL du site (production)", name: "url", widget: "string", hint: "Sans slash final. Alimente les liens canoniques, le sitemap et le robots.txt. Ex. : https://www.4sh.fr" }
+          - { label: "Titre par défaut", name: "titre_defaut", widget: "string", hint: "Utilisé quand une page n'a pas de titre SEO propre." }
+          - { label: "Description par défaut", name: "description_defaut", widget: "text" }
+          - { label: "Image de partage (Open Graph)", name: "og_image", widget: "image", choose_url: true, hint: "Image affichée lors du partage sur les réseaux sociaux." }
+          - { label: "Contenu du robots.txt", name: "robots_txt", widget: "text", hint: "Règles d'indexation. La ligne Sitemap est ajoutée automatiquement." }
+
+  # -----------------------------------------------------------------------
+  # 8) MENU (navigation principale : textes, liens, ordre, colonnes, icônes)
+  # -----------------------------------------------------------------------
+  - name: "navigation"
+    label: "Menu (navigation)"
+    files:
+      - name: "menu"
+        label: "Menu principal"
+        file: "src/_data/navigation.json"
+        fields:
+          - label: "Entrées du menu"
+            name: "items"
+            widget: "list"
+            typeKey: "type"
+            hint: "Glissez-déposez pour réordonner. Ajoutez une entrée : lien simple, méga-menu ou menu déroulant."
+            types:
+              - name: "lien"
+                label: "Lien simple"
+                fields:
+                  - { label: "Libellé", name: "label", widget: "string" }
+                  - { label: "Lien", name: "url", widget: "string" }
+              - name: "menu_simple"
+                label: "Menu déroulant (liste)"
+                fields:
+                  - { label: "Libellé", name: "label", widget: "string" }
+                  - { label: "Titre de la colonne", name: "titre_col", widget: "string", required: false }
+                  - label: "Liens"
+                    name: "liens"
+                    widget: "list"
+                    fields:
+                      - { label: "Libellé", name: "label", widget: "string" }
+                      - { label: "Sous-texte", name: "sous_texte", widget: "string", required: false }
+                      - { label: "Lien", name: "url", widget: "string", required: false }
+              - name: "megamenu"
+                label: "Méga-menu (colonnes)"
+                fields:
+                  - { label: "Libellé", name: "label", widget: "string" }
+                  - { label: "Variante", name: "variant", widget: "select", required: false, options: ["", "menu-secteurs"], hint: "Laisser vide en général." }
+                  - label: "Bloc promo (encart de gauche)"
+                    name: "promo"
+                    widget: "object"
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { label: "Titre", name: "titre", widget: "string" }
+                      - { label: "Texte", name: "texte", widget: "text", required: false }
+                      - { label: "Libellé du lien", name: "lien_libelle", widget: "string", required: false }
+                      - { label: "Lien", name: "url", widget: "string", required: false }
+                      - label: "Chiffre clé (optionnel)"
+                        name: "kpi"
+                        widget: "object"
+                        required: false
+                        fields:
+                          - { label: "Valeur", name: "valeur", widget: "string" }
+                          - { label: "Libellé", name: "label", widget: "string" }
+                  - label: "Colonnes"
+                    name: "colonnes"
+                    widget: "list"
+                    fields:
+                      - { label: "Titre de la colonne", name: "titre", widget: "string" }
+                      - label: "Liens"
+                        name: "liens"
+                        widget: "list"
+                        fields:
+                          - { label: "Libellé", name: "label", widget: "string" }
+                          - { label: "Sous-texte", name: "sous_texte", widget: "string", required: false }
+                          - { label: "Lien", name: "url", widget: "string", required: false }
+                          - { label: "Icône", name: "icone", widget: "select", required: false, options: ["ecran", "cloud", "mobile", "design", "serveurs", "refonte", "audit", "logistique", "eclair", "bouclier", "editeur", "cloud-plus", "reseau", "megaphone", "hub", "graph", "batterie"], hint: "Jeu d'icônes 4SH. Ignoré si une image est fournie." }
+                          - { label: "Image (remplace l'icône)", name: "image", widget: "image", required: false, choose_url: true }
+                  - label: "Encart bas de menu"
+                    name: "bas"
+                    widget: "object"
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { label: "Titre", name: "titre", widget: "string" }
+                      - { label: "Texte", name: "texte", widget: "text", required: false }
+                      - { label: "Libellé du bouton", name: "cta_label", widget: "string", required: false }
+                      - { label: "Lien du bouton", name: "cta_url", widget: "string", required: false }
+          - label: "Boutons d'action (à droite)"
+            name: "actions"
+            widget: "list"
+            fields:
+              - { label: "Libellé", name: "label", widget: "string" }
+              - { label: "Lien", name: "url", widget: "string" }
+              - { label: "Style CSS", name: "style", widget: "string", hint: "Ex. : lien-formations, ou btn btn-primary btn-sm" }

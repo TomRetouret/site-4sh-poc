@@ -1,0 +1,114 @@
+---
+layout: base.njk
+permalink: "/references/{{ page.fileSlug }}/"
+extraCss: /assets/references.css
+---
+<section class="ref-detail">
+  <div class="container">
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <a href="/references/">Nos réussites</a> › {{ titre }}</nav>
+
+    <div class="ref-hero-detail">
+      <div>
+        <span class="eyebrow">Réalisation{% if secteurs and secteurs.length %} · {{ secteurs[0] }}{% endif %}</span>
+        {% if logo %}<div class="ref-logo-detail"><img src="{{ logo }}" alt="{{ client }}" decoding="async"></div>{% endif %}
+        <h1>{{ h1 or titre }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
+        {% if sous_titre %}<p class="chapo">{{ sous_titre }}</p>{% elif resume %}<p class="chapo">{{ resume }}</p>{% endif %}
+        {% if stats and stats.length %}
+        <div class="ref-preuve">{% for s in stats %}<div class="stat"><b>{{ s.chiffre }}</b><span>{{ s.label }}</span></div>{% endfor %}</div>
+        {% endif %}
+        <div class="ref-hero-actions">
+          {% if fiche_pdf %}<a class="btn btn-ghost btn-sm" href="{{ fiche_pdf }}" target="_blank" rel="noopener">Télécharger la fiche</a>{% endif %}
+          {% if maj %}<span class="ref-maj">Dernière mise à jour : {{ maj }}</span>{% endif %}
+        </div>
+      </div>
+      <div class="ref-hero-visuel">
+        {% if image %}<img src="{{ image }}" alt="{{ titre }}" decoding="async">{% else %}<div class="ref-visuel ref-visuel--vide" style="aspect-ratio:4/3;border-radius:var(--radius)"><span class="ref-vide-nom">{{ client }}</span></div>{% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="ref-fiche-grille">
+      <div class="ref-corps">
+        {{ content | safe }}
+      </div>
+      <aside class="ref-identite">
+        {% if client %}<div class="bloc"><b>Client</b><span>{{ client }}</span></div>{% endif %}
+        {% if secteurs and secteurs.length %}<div class="bloc"><b>Secteur</b><div class="pills">{% for s in secteurs %}<span>{{ s }}</span>{% endfor %}</div></div>{% endif %}
+        {% if expertises and expertises.length %}<div class="bloc"><b>Nos expertises</b><div class="pills">{% for e in expertises %}<span>{{ e }}</span>{% endfor %}</div></div>{% endif %}
+        {% if technologies and technologies.length %}<div class="bloc"><b>Technologies</b><div class="pills">{% for t in technologies %}<span>{{ t }}</span>{% endfor %}</div></div>{% endif %}
+        {% if fiche_pdf %}<div class="bloc"><a class="btn btn-primary btn-sm" href="{{ fiche_pdf }}" target="_blank" rel="noopener" style="width:100%;justify-content:center">Télécharger la fiche</a></div>{% endif %}
+      </aside>
+    </div>
+
+    {% if galerie and galerie.length %}
+    <div class="ref-galerie" id="galerie">
+      <h2>Galerie</h2>
+      <div class="grille">
+        {% for img in galerie %}<figure><img src="{{ img }}" alt="{{ titre }}, visuel {{ loop.index }}" loading="lazy" decoding="async"></figure>{% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{% if voisins.precedent or voisins.suivant %}
+<section style="padding-top:0">
+  <div class="container">
+    <nav class="ref-voisins" aria-label="Autres réalisations">
+      {% if voisins.precedent %}<a class="ref-voisin ref-voisin--prec" href="{{ voisins.precedent.url }}"><span class="ref-voisin-label">← Projet précédent</span><b>{{ voisins.precedent.data.titre }}</b></a>{% else %}<span></span>{% endif %}
+      {% if voisins.suivant %}<a class="ref-voisin ref-voisin--suiv" href="{{ voisins.suivant.url }}"><span class="ref-voisin-label">Projet suivant →</span><b>{{ voisins.suivant.data.titre }}</b></a>{% endif %}
+    </nav>
+  </div>
+</section>
+{% endif %}
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="bandeau-cta">
+      <div>
+        <h2>Un projet{% if secteurs and secteurs.length %} en {{ secteurs[0] | lower }}{% endif %} en tête ?</h2>
+        <p>Parlons-en. En 30 minutes, un expert 4SH vous aide à cadrer votre besoin, sans engagement.</p>
+      </div>
+      <a class="btn" href="/#contact">Parlons de votre projet</a>
+    </div>
+    <div class="centre" style="margin-top:26px"><a class="btn btn-ghost btn-sm" href="/references/">← Toutes nos réussites</a></div>
+  </div>
+</section>
+
+<script>
+/* Sommaire ancré + scrollspy (généré depuis les H2 du contenu, sans toucher au contenu) */
+(function(){
+  var corps = document.querySelector('.ref-corps');
+  var aside = document.querySelector('.ref-identite');
+  if(!corps || !aside) return;
+  var h2s = Array.prototype.slice.call(corps.querySelectorAll('h2'));
+  if(h2s.length < 2) return;
+  function slug(t){ return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+  var nav = document.createElement('nav');
+  nav.className = 'ref-sommaire';
+  nav.setAttribute('aria-label','Sommaire de la page');
+  var html = '<p class="ref-sommaire-t">Sur cette page</p><ul>';
+  h2s.forEach(function(h,i){
+    if(!h.id) h.id = slug(h.textContent) || ('section-'+i);
+    html += '<li><a href="#'+h.id+'">'+h.textContent+'</a></li>';
+  });
+  nav.innerHTML = html + '</ul>';
+  aside.insertBefore(nav, aside.firstChild);
+
+  var liens = {};
+  Array.prototype.slice.call(nav.querySelectorAll('a')).forEach(function(a){ liens[a.getAttribute('href').slice(1)] = a; });
+  if(!('IntersectionObserver' in window)) return;
+  var spy = new IntersectionObserver(function(entrees){
+    entrees.forEach(function(e){
+      if(e.isIntersecting){
+        for(var id in liens){ liens[id].removeAttribute('aria-current'); }
+        if(liens[e.target.id]) liens[e.target.id].setAttribute('aria-current','true');
+      }
+    });
+  }, { rootMargin:'-90px 0px -70% 0px', threshold:0 });
+  h2s.forEach(function(h){ spy.observe(h); });
+})();
+</script>

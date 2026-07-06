@@ -1,0 +1,53 @@
+<div class="barre-filtres">
+  <div class="recherche">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input type="search" id="recherche" placeholder="Rechercher une formation (Angular, Docker, Figma...)" aria-label="Rechercher une formation">
+  </div>
+</div>
+<div class="ligne-outils">
+  <div class="onglets" role="tablist" aria-label="Catégories de formation">
+    <a class="onglet{% if not categorieActive %} actif{% endif %}" href="/formations/">Toutes</a>
+    <a class="onglet{% if categorieActive == 'Develop' %} actif{% endif %}" href="/formations/develop/">Develop</a>
+    <a class="onglet{% if categorieActive == 'Design' %} actif{% endif %}" href="/formations/design/">Design</a>
+    <a class="onglet{% if categorieActive == 'DevOps' %} actif{% endif %}" href="/formations/devops/">DevOps</a>
+    <a class="onglet{% if categorieActive == 'Outils' %} actif{% endif %}" href="/formations/outils/">Outils</a>
+  </div>
+  <p class="compteur"><b id="nb-resultats">0</b> formations</p>
+</div>
+
+<div class="grille-form" id="grille-form">
+  {% for g in collections.formationsParGroupe %}{% if not categorieActive or g.categorie == categorieActive %}
+  <article class="carte-form" data-nom="{{ g.titre | lower }}">
+    <div class="haut"><span class="logo-techno">{% if g.image %}<img src="{{ g.image }}" alt="{{ g.titre }}">{% endif %}</span><span class="prix"><small>à partir de</small><b>{{ g.prixMin }} €</b></span></div>
+    <span class="cat">{{ g.categorie }}</span>
+    <h3><a href="{{ g.url }}">{{ g.titre }}{% if g.avis %} <span class="avis">({{ g.avis }} avis)</span>{% endif %}</a></h3>
+    <p class="desc">{{ g.chapo }}</p>
+    <div class="niveaux">{% for n in g.niveaux %}<span class="niveau-chip"><b>{{ n.niveau }}</b>{{ n.duree | striptags }}</span>{% endfor %}</div>
+  </article>
+  {% endif %}{% endfor %}
+</div>
+<p class="vide" id="etat-vide">Aucune formation ne correspond à votre recherche. Essayez un autre mot-clé.</p>
+
+<script>
+(function(){
+  var cartes = Array.prototype.slice.call(document.querySelectorAll('#grille-form .carte-form'));
+  var champ = document.getElementById('recherche');
+  var vide = document.getElementById('etat-vide');
+  var nb = document.getElementById('nb-resultats');
+  var grille = document.getElementById('grille-form');
+  function applique(){
+    var q = (champ.value || '').trim().toLowerCase();
+    var visibles = 0;
+    cartes.forEach(function(c){
+      var montre = (q === '') || (c.dataset.nom.indexOf(q) !== -1);
+      c.style.display = montre ? '' : 'none';
+      if(montre) visibles++;
+    });
+    nb.textContent = visibles;
+    vide.style.display = visibles ? 'none' : 'block';
+    grille.style.display = visibles ? '' : 'none';
+  }
+  champ.addEventListener('input', applique);
+  applique();
+})();
+</script>

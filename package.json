@@ -1,0 +1,15 @@
+{
+  "name": "site-4sh",
+  "version": "1.0.0",
+  "description": "Site 4SH (refonte) - Eleventy + CMS git (Decap / Sveltia).",
+  "scripts": {
+    "start": "eleventy --serve",
+    "dev": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

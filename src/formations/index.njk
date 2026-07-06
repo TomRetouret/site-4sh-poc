@@ -1,0 +1,214 @@
+---
+layout: base.njk
+bodyClass: learning
+learningStyles: true
+catalogueStyles: true
+permalink: /formations/
+---
+<div class="hero-form">
+  <div class="container">
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Formations en informatique</nav>
+    <div class="hero-grille">
+      <div>
+        <span class="eyebrow">{{ page_formations.eyebrow }}</span>
+        <h1>{{ page_formations.h1 | safe }}</h1>
+        <p class="chapo">{{ page_formations.chapo }}</p>
+        <div class="meta-form">
+          <span class="note-etoiles"><span class="etoiles">★★★★★</span> {{ page_formations.note }} <small>· {{ page_formations.note_detail }}</small></span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-learning" href="#catalogue">Découvrir les formations</a>
+          <a class="btn btn-ghost" href="#contact" style="border-color:var(--violet);color:var(--violet)">Devis sur mesure</a>
+        </div>
+      </div>
+      <div class="visuel-form">
+        <img src="https://www.4sh.fr/assets/img/svg/illu-learning.svg" alt="4SH Learning, formations en informatique">
+        <div class="chips" style="justify-content:center"><span>Présentiel &amp; distanciel</span><span>Certifié Qualiopi</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POURQUOI CHOISIR 4SH LEARNING -->
+<section style="padding:80px 0 0">
+  <div class="container">
+    <h2 class="sec-titre">{{ page_formations.pourquoi_titre | safe }}</h2>
+    <div class="portes" style="margin-top:44px">
+      <div class="porte">
+        <div class="pictos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>{{ page_formations.pourquoi[0].titre }}</h3>
+        <p>{{ page_formations.pourquoi[0].texte }}</p>
+      </div>
+      <div class="porte">
+        <div class="pictos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>{{ page_formations.pourquoi[1].titre }}</h3>
+        <p>{{ page_formations.pourquoi[1].texte }}</p>
+      </div>
+      <div class="porte">
+        <div class="pictos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M3 20h2M12 4v16M4 4h16v10H4z"/></svg></div>
+        <h3>{{ page_formations.pourquoi[2].titre }}</h3>
+        <p>{{ page_formations.pourquoi[2].texte }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOGUE + RECHERCHE + FILTRES -->
+<section id="catalogue" style="padding-top:80px">
+  <div class="container">
+    <h2 class="sec-titre">Catalogue de <em class="accent">formations</em></h2>
+    <p class="sec-sous">Cherchez une technologie ou choisissez une catégorie.</p>
+    {% include "catalogue-grille.njk" %}
+  </div>
+</section>
+
+<!-- AGENDA / PROCHAINES SESSIONS -->
+<section id="agenda" style="padding-top:0">
+  <div class="container">
+    <h2 class="sec-titre">Nos prochaines <em class="accent">sessions</em></h2>
+    <p class="sec-sous">Les dates ouvertes à l'inscription, en présentiel ou à distance. Une autre date vous conviendrait mieux ? Demandez une session sur mesure.</p>
+
+    <div class="agenda">
+      <p class="agenda-mois">Septembre 2026</p>
+
+      <div class="session-ligne">
+        <div class="date-bloc"><div class="jour">15</div><div class="mois">Sept.</div><div class="duree">4 jours</div></div>
+        <div class="session-info">
+          <span class="logo-mini"><img src="https://www.4sh.fr/assets/img/svg/trainings/logo-technos/angular.svg" alt="Angular"></span>
+          <div>
+            <b>Angular - Fondamental <span class="pastille-cat">Develop</span></b>
+            <div class="details"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Bordeaux</span><span>Présentiel &amp; distanciel</span></div>
+          </div>
+        </div>
+        <a class="btn btn-learning btn-sm cta-session" href="/formations/angular-fondamental/">S'inscrire</a>
+      </div>
+
+      <div class="session-ligne">
+        <div class="date-bloc"><div class="jour">22</div><div class="mois">Sept.</div><div class="duree">2 jours</div></div>
+        <div class="session-info">
+          <span class="logo-mini"><img src="https://www.4sh.fr/assets/img/svg/trainings/logo-technos/kubernetes.svg" alt="Kubernetes"></span>
+          <div>
+            <b>Kubernetes - Fondamental <span class="pastille-cat">DevOps</span></b>
+            <div class="details"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Paris</span><span>Présentiel</span></div>
+          </div>
+        </div>
+        <a class="btn btn-learning btn-sm cta-session" href="/formations/kubernetes-fondamental/">S'inscrire</a>
+      </div>
+
+      <p class="agenda-mois">Octobre 2026</p>
+
+      <div class="session-ligne">
+        <div class="date-bloc"><div class="jour">06</div><div class="mois">Oct.</div><div class="duree">1 jour</div></div>
+        <div class="session-info">
+          <span class="logo-mini"><img src="https://www.4sh.fr/assets/img/svg/trainings/logo-technos/figma.svg" alt="Figma"></span>
+          <div>
+            <b>Figma - Essentiel <span class="pastille-cat">Design</span></b>
+            <div class="details"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> À distance</span><span>Distanciel</span></div>
+          </div>
+        </div>
+        <a class="btn btn-learning btn-sm cta-session" href="/formations/figma-essentiel/">S'inscrire</a>
+      </div>
+
+      <div class="session-ligne">
+        <div class="date-bloc"><div class="jour">13</div><div class="mois">Oct.</div><div class="duree">4 jours</div></div>
+        <div class="session-info">
+          <span class="logo-mini"><img src="https://www.4sh.fr/assets/img/svg/trainings/logo-technos/java.svg" alt="Java"></span>
+          <div>
+            <b>Java - Fondamental <span class="pastille-cat">Develop</span></b>
+            <div class="details"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Bordeaux</span><span>Présentiel &amp; distanciel</span></div>
+          </div>
+        </div>
+        <a class="btn btn-learning btn-sm cta-session" href="/formations/java-fondamental/">S'inscrire</a>
+      </div>
+
+      <p class="agenda-mois">Novembre 2026</p>
+
+      <div class="session-ligne">
+        <div class="date-bloc"><div class="jour">04</div><div class="mois">Nov.</div><div class="duree">1/2 j</div></div>
+        <div class="session-info">
+          <span class="logo-mini"><img src="https://www.4sh.fr/assets/img/svg/trainings/logo-technos/git.svg" alt="Git"></span>
+          <div>
+            <b>Git - Essentiel <span class="pastille-cat">Outils</span></b>
+            <div class="details"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Capbreton</span><span>Présentiel</span></div>
+          </div>
+        </div>
+        <a class="btn btn-learning btn-sm cta-session" href="/formations/git-essentiel/">S'inscrire</a>
+      </div>
+
+      <div class="session-ligne">
+        <div class="date-bloc"><div class="jour">18</div><div class="mois">Nov.</div><div class="duree">2 jours</div></div>
+        <div class="session-info">
+          <span class="logo-mini"><img src="https://www.4sh.fr/assets/img/svg/trainings/logo-technos/docker.svg" alt="Docker"></span>
+          <div>
+            <b>Docker - Fondamental <span class="pastille-cat">DevOps</span></b>
+            <div class="details"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Paris</span><span>Présentiel &amp; distanciel</span></div>
+          </div>
+        </div>
+        <a class="btn btn-learning btn-sm cta-session" href="/formations/docker-fondamental/">S'inscrire</a>
+      </div>
+    </div>
+    <div class="centre" style="margin-top:34px"><a class="btn btn-ghost" href="#contact" style="border-color:var(--violet);color:var(--violet)">Demander une autre date</a></div>
+  </div>
+</section>
+
+<!-- QUALIOPI -->
+<section style="padding-top:0">
+  <div class="container">
+    <div class="qualiopi">
+      <div class="logo-q"><img src="https://www.4sh.fr/assets/img/png/logo-qualiopi.png" alt="Logo Qualiopi"></div>
+      <div>
+        <h2>{{ page_formations.qualiopi_titre | safe }}</h2>
+        <p>{{ page_formations.qualiopi_texte }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section style="padding-top:0">
+  <div class="container">
+    <h2 class="sec-titre">Ils ont suivi <em class="accent">nos formations</em></h2>
+    <div class="temoins">
+      <div class="temoin">
+        <blockquote>Formation très concrète, animée par un formateur qui code au quotidien. On repart avec des réflexes directement applicables.</blockquote>
+        <div class="qui"><span class="pastille">[XX]</span><div><b>[Prénom Nom]</b><span>[Société] · Formation Angular</span></div></div>
+      </div>
+      <div class="temoin">
+        <blockquote>Le bon équilibre théorie / pratique, et une vraie capacité à adapter le contenu à notre contexte métier.</blockquote>
+        <div class="qui"><span class="pastille">[XX]</span><div><b>[Prénom Nom]</b><span>[Société] · Formation Kubernetes</span></div></div>
+      </div>
+      <div class="temoin">
+        <blockquote>Organisation sans faille, de l'inscription au certificat. Nous reformerons nos équipes avec 4SH.</blockquote>
+        <div class="qui"><span class="pastille">[XX]</span><div><b>[Prénom Nom]</b><span>[Société] · Formation Figma</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / DEVIS -->
+<section class="contact-final sur-sombre" id="contact">
+  <div class="container">
+    <div class="contact-grille">
+      <div>
+        <h2 class="sec-titre">Un besoin de formation <em class="accent" style="color:#a996d6">sur mesure</em> ?</h2>
+        <p class="sec-sous" style="margin-bottom:18px">Décrivez-nous votre besoin : nombre de participants, niveau, sujets. Nous revenons vers vous avec une proposition adaptée et un devis.</p>
+        <ul class="arguments">
+          <li>Formations construites à partir de projets réels</li>
+          <li>Formateurs experts, en poste sur nos projets</li>
+          <li>Prise en charge OPCO possible, organisme Qualiopi</li>
+          <li>Jusqu'à -50 % pour une formation en intra-entreprise</li>
+        </ul>
+      </div>
+      <form class="formulaire" id="devis" onsubmit="return false">
+        <label for="nom">Nom et prénom</label>
+        <input id="nom" type="text" placeholder="Prénom et nom">
+        <label for="email">Email professionnel</label>
+        <input id="email" type="email" placeholder="prenom@entreprise.fr">
+        <label for="besoin">Votre besoin</label>
+        <textarea id="besoin" rows="3" placeholder="Ex. : former 6 développeurs à Angular, niveau fondamental, en intra..."></textarea>
+        <button class="btn btn-learning" type="submit" style="width:100%;justify-content:center;margin-top:24px">Demander un devis</button>
+        <p class="reassurance">Réponse sous 48 h. Vos données sont traitées selon notre notice RGPD.</p>
+      </form>
+    </div>
+  </div>
+</section>

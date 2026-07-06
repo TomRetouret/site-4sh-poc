@@ -1,0 +1,87 @@
+{
+  "items": [
+    {
+      "type": "megamenu",
+      "label": "Nos services",
+      "variant": "",
+      "promo": {
+        "titre": "Un logiciel qui épouse vos processus, pas l'inverse",
+        "texte": "Conçu, développé, hébergé et maintenu par une seule équipe. Depuis 2007.",
+        "lien_libelle": "Découvrir notre approche →",
+        "url": "/logiciel-metier/"
+      },
+      "colonnes": [
+        {
+          "titre": "Concevoir",
+          "liens": [
+            { "label": "Logiciel métier", "sous_texte": "L'outil qui suit vos processus réels", "url": "/logiciel-metier/", "icone": "ecran" },
+            { "label": "Application SaaS", "sous_texte": "Lancer et faire grandir votre plateforme", "url": "", "icone": "cloud" },
+            { "label": "Application mobile", "sous_texte": "iOS et Android, une seule équipe", "url": "", "icone": "mobile" },
+            { "label": "Design UX / UI", "sous_texte": "Des écrans que vos équipes adoptent", "url": "", "icone": "design" }
+          ]
+        },
+        {
+          "titre": "Faire vivre votre logiciel",
+          "liens": [
+            { "label": "Hébergement & maintenance", "sous_texte": "Disponible, sécurisé, à jour", "url": "", "icone": "serveurs" },
+            { "label": "Faire évoluer un existant", "sous_texte": "Reprise, refonte, nouvelles fonctionnalités", "url": "", "icone": "refonte" },
+            { "label": "Audits UX, sécurité, cloud", "sous_texte": "Un état des lieux, des actions concrètes", "url": "", "icone": "audit" }
+          ]
+        }
+      ],
+      "bas": { "titre": "Besoin d'aide pour choisir ?", "texte": "On vous aide à trouver la bonne approche.", "cta_label": "Contact", "cta_url": "/contact/" }
+    },
+    {
+      "type": "megamenu",
+      "label": "Secteurs",
+      "variant": "menu-secteurs",
+      "promo": {
+        "titre": "Votre métier a ses règles. Nos logiciels aussi.",
+        "texte": "On connaît déjà le vocabulaire, les contraintes et les enjeux de votre secteur.",
+        "lien_libelle": "Voir nos réalisations →",
+        "url": "/references/",
+        "kpi": { "valeur": "[XXX]<i>+</i>", "label": "projets livrés depuis 2007" }
+      },
+      "colonnes": [
+        {
+          "titre": "Votre secteur",
+          "liens": [
+            { "label": "Logistique & supply chain", "sous_texte": "Traçabilité, flux, entrepôts", "url": "/secteurs/logistique/", "icone": "logistique" },
+            { "label": "Électromobilité", "sous_texte": "Recharge, supervision, mobilité", "url": "/secteurs/electromobilite/", "icone": "eclair" },
+            { "label": "Assurance", "sous_texte": "Sinistres, conformité, souscription", "url": "/secteurs/assurance/", "icone": "bouclier" },
+            { "label": "Éditeurs de logiciels", "sous_texte": "Plateformes SaaS et distribution", "url": "/secteurs/edition-de-logiciel/", "icone": "editeur" },
+            { "label": "Fournisseur de services tech", "sous_texte": "Partenaire technique et TMA", "url": "/secteurs/fournisseur-de-services-technologiques/", "icone": "cloud-plus" },
+            { "label": "Franchises & réseaux", "sous_texte": "Piloter un réseau multi-sites", "url": "/secteurs/franchise/", "icone": "reseau" }
+          ]
+        },
+        {
+          "titre": "Nos solutions 4SH",
+          "liens": [
+            { "label": "Celebrads", "sous_texte": "Communication et campagnes", "url": "/secteurs/celebrads/", "icone": "megaphone" },
+            { "label": "Hubit", "sous_texte": "Plateforme de services connectés", "url": "/secteurs/hubit/", "icone": "hub" },
+            { "label": "4PM / 4Track", "sous_texte": "Pilotage et suivi de projet", "url": "/secteurs/4pm/", "icone": "graph" },
+            { "label": "Simulateur de bornes", "sous_texte": "Dimensionner la recharge", "url": "/secteurs/simulateur-de-bornes/", "icone": "batterie" }
+          ]
+        }
+      ],
+      "bas": { "titre": "Vous ne voyez pas votre secteur ?", "texte": "On s'adapte à votre métier, parlons-en.", "cta_label": "Contact", "cta_url": "/contact/" }
+    },
+    { "type": "lien", "label": "Réalisations", "url": "/references/" },
+    {
+      "type": "menu_simple",
+      "label": "L'agence",
+      "titre_col": "Qui nous sommes",
+      "liens": [
+        { "label": "Comment se passe un projet", "sous_texte": "Notre méthode 4D, jalon par jalon", "url": "" },
+        { "label": "L'équipe", "sous_texte": "", "url": "" },
+        { "label": "Nos engagements", "sous_texte": "", "url": "" },
+        { "label": "Nos agences (Bordeaux, Capbreton, Paris)", "sous_texte": "", "url": "" },
+        { "label": "Le blog", "sous_texte": "", "url": "" }
+      ]
+    }
+  ],
+  "actions": [
+    { "label": "Formations", "url": "/formations/", "style": "lien-formations" },
+    { "label": "Parlons de votre projet", "url": "/contact/", "style": "btn btn-primary btn-sm" }
+  ]
+}

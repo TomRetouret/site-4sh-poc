@@ -1,0 +1,16 @@
+{
+  "nom": "4SH",
+  "url": "https://www.4sh.fr",
+  "telephone_affiche": "+33 (0)9 63 28 62 73",
+  "telephone_lien": "+330963286273",
+  "villes": "Bordeaux · Capbreton · Paris",
+  "footer_accroche": "Agence de développement logiciel sur mesure depuis 2007.",
+  "clients": [
+    { "nom": "IZIVIA", "url": "/references/izivia-portail/" },
+    { "nom": "SUD OUEST", "url": "/references/sud-ouest-socoa/" },
+    { "nom": "FILHET-ALLARD", "url": "/references/filhet-allard/" },
+    { "nom": "CIN", "url": "/references/cin/" },
+    { "nom": "ARRG", "url": "/references/arrg/" },
+    { "nom": "BME", "url": "" }
+  ]
+}

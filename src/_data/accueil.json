@@ -1,0 +1,26 @@
+{
+  "meta_title": "Agence de développement logiciel sur mesure - 4SH",
+  "meta_description": "Créateurs et développeurs de logiciels sur mesure adaptés à vos enjeux (app, SaaS, logiciels métiers...). Parlons de votre projet : 30 minutes gratuites avec un expert 4SH.",
+  "hero_surtitre": "Agence de développement logiciel sur mesure",
+  "hero_chapo": "Depuis 2007, nous concevons, développons et faisons vivre les applications métiers des entreprises qui ne rentrent dans aucune case. Et nous restons après la mise en production.",
+  "hero_note": "30 minutes avec un expert, gratuit, sans engagement · Bordeaux, Capbreton, Paris",
+  "hero_cta_principal": "Parlons de votre projet",
+  "hero_cta_secondaire": "Voir nos réalisations",
+  "equipe_eyebrow": "L'équipe",
+  "equipe_titre": "Des logiciels faits par des <em class=\"accent\">gens</em>",
+  "equipe_texte": "Ceux qui conçoivent votre outil sont ceux que vous aurez au téléphone. Voici l'équipe 4SH au complet.",
+  "equipe_photo": "/uploads/equipe-4sh.jpg",
+  "secteurs": [
+    { "titre": "Logistique", "texte": "Maîtrisez chaque étape de votre supply chain : traçabilité, douane, fret.", "lien_libelle": "Logiciels logistique →" },
+    { "titre": "Assurance", "texte": "Réinventez l'assurance à l'ère du digital, de la souscription au sinistre.", "lien_libelle": "Logiciels assurance →" },
+    { "titre": "Électromobilité", "texte": "Supervision de bornes, itinérance, facturation : accélérons la transition.", "lien_libelle": "Logiciels électromobilité →" },
+    { "titre": "Éditeurs & franchises", "texte": "Renforcez votre équipe produit ou outillez votre réseau, sans recruter.", "lien_libelle": "Nos offres dédiées →" }
+  ],
+  "faq": [
+    { "question": "Qu'est-ce qu'une agence de développement logiciel métier ?", "reponse": "Une agence de développement logiciel métier conçoit des applications sur mesure répondant aux besoins spécifiques d'une entreprise, en lien direct avec ses processus, ses utilisateurs et ses objectifs." },
+    { "question": "Combien coûte un logiciel sur mesure ?", "reponse": "Le coût d'un logiciel sur mesure dépend de sa complexité, du nombre de fonctionnalités, des technologies utilisées et du niveau d'accompagnement souhaité. Chez 4SH, nous adaptons chaque projet à vos objectifs, avec une approche agile et transparente." },
+    { "question": "Quel est le délai moyen de développement ?", "reponse": "Le délai dépend de la complexité du projet et du périmètre fonctionnel défini. Grâce à notre méthode 4D (Discover, Design, Develop, Deploy), nous structurons chaque phase pour garantir réactivité, qualité et visibilité tout au long du projet." },
+    { "question": "Comment se passe la maintenance après livraison ?", "reponse": "Après la livraison, nous assurons une maintenance corrective, évolutive et préventive en fonction de vos besoins. Nous proposons des contrats de maintenance sur mesure, incluant support technique, mises à jour régulières, surveillance des infrastructures et accompagnement long terme." },
+    { "question": "Quelles technologies utilisez-vous ?", "reponse": "Nous travaillons avec des technologies web modernes, robustes et évolutives (React, Angular, Java, Kotlin, TypeScript...) et des outils comme Kubernetes, Docker et Kafka pour assurer scalabilité, interopérabilité et fiabilité." }
+  ]
+}

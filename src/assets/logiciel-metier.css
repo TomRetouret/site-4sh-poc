@@ -52,6 +52,7 @@
 .blog-carte:hover h3 a{color:var(--rouge)}
 .blog-auteur{font-size:13px;color:var(--texte-2)}
 @media (max-width:960px){.socle,.atouts,.realisations,.blog-grille,.etapes.cinq{grid-template-columns:1fr 1fr}}
+@media (min-width:961px) and (max-width:1024px){.socle,.atouts,.etapes.cinq{grid-template-columns:repeat(3,1fr)}}
 
 /* --- v5 : relief & preuve (comité boosté) --- */
 .section-sombre{background:var(--sombre);color:#b9c3c8;position:relative;overflow:hidden;padding:96px 0}

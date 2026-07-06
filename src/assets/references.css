@@ -175,6 +175,17 @@
 @media (max-width:640px){
   .ref-grille{grid-template-columns:1fr}
   .ref-galerie .grille{grid-template-columns:1fr}
+  /* cibles tactiles + anti-zoom iOS */
+  .chip{min-height:44px}
+  .ref-recherche input{font-size:16px}
+  /* galerie : planches à plat au doigt */
+  .ref-galerie figure:nth-child(odd),.ref-galerie figure:nth-child(even){transform:none}
+}
+/* fiche détail en mobile : remonter l'identité, masquer le sommaire ancré latéral */
+@media (max-width:960px){
+  .ref-fiche-grille{display:flex;flex-direction:column}
+  .ref-identite{order:-1}
+  .ref-sommaire{display:none}
 }
 
 /* ============================================================

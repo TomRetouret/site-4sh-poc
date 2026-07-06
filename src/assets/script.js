@@ -64,6 +64,68 @@
   document.documentElement.addEventListener('mouseenter', function () { point.style.opacity = anneau.style.opacity = '1'; });
 })();
 
+/* Menu mobile : burger + méga-menus en accordéon (bascule à 1024px) */
+(function () {
+  var nav = document.querySelector('header .nav');
+  var burger = document.querySelector('.burger');
+  var menu = document.querySelector('.menu');
+  if (!nav || !burger || !menu) return;
+  var actions = nav.querySelector('.nav-actions');
+
+  menu.id = menu.id || 'menu-principal';
+  burger.setAttribute('aria-controls', menu.id);
+  burger.setAttribute('aria-expanded', 'false');
+
+  var MQ = matchMedia('(max-width:1024px)');
+
+  // En mobile, on rapatrie les boutons d'action (Contact...) DANS le panneau ;
+  // en desktop, on les remet à leur place initiale (avant le burger).
+  function placerActions() {
+    if (!actions) return;
+    if (MQ.matches) { if (actions.parentNode !== menu) menu.appendChild(actions); }
+    else if (actions.parentNode !== nav) nav.insertBefore(actions, burger);
+  }
+
+  function ouvrir() {
+    document.body.classList.add('menu-ouvert');
+    burger.setAttribute('aria-expanded', 'true');
+    burger.setAttribute('aria-label', 'Fermer le menu');
+  }
+  function fermer() {
+    document.body.classList.remove('menu-ouvert');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Ouvrir le menu');
+    menu.querySelectorAll('li.ouvert').forEach(function (li) { li.classList.remove('ouvert'); });
+  }
+
+  burger.addEventListener('click', function () {
+    document.body.classList.contains('menu-ouvert') ? fermer() : ouvrir();
+  });
+
+  // Accordéon : en mobile, un clic sur un item porteur de sous-menu déplie au lieu de naviguer
+  menu.addEventListener('click', function (e) {
+    if (!MQ.matches) return;
+    var lien = e.target.closest('.menu > li > a');
+    if (!lien) return;
+    var li = lien.parentElement;
+    if (!li.querySelector('.deroulant')) return; // lien simple : navigation normale
+    e.preventDefault();
+    li.classList.toggle('ouvert');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!document.body.classList.contains('menu-ouvert')) return;
+    if (e.target.closest('.menu') || e.target.closest('.burger')) return;
+    fermer();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-ouvert')) { fermer(); burger.focus(); }
+  });
+
+  placerActions();
+  MQ.addEventListener('change', function () { fermer(); placerActions(); });
+})();
+
 /* Compteurs animés (bandeau chiffres), déclenchés au scroll, respecte reduced-motion */
 (function () {
   var nums = document.querySelectorAll('[data-compte]');

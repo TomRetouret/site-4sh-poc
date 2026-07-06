@@ -4,14 +4,12 @@
 # =========================================================================
 
 # --- Où le CMS écrit-il ? ---
-# Dépôt GitHub. Remplacez ORG/site-4sh par votre dépôt réel.
 backend:
   name: github
-  repo: ORG/site-4sh
+  repo: TomRetouret/site-4sh
   branch: main
-  # Authentification "Se connecter avec GitHub" via un petit Worker Cloudflare gratuit
-  # (https://github.com/sveltia/sveltia-cms-auth). Renseignez son URL une fois déployé :
-  # base_url: https://auth-4sh.<votre-sous-domaine>.workers.dev
+  # Authentification "Se connecter avec GitHub" via le Worker Cloudflare sveltia-cms-auth.
+  base_url: https://sveltia-cms-auth.tom-retouret.workers.dev
 
 # Confort d'édition : brouillon "Prêt à publier" avant mise en ligne.
 publish_mode: editorial_workflow

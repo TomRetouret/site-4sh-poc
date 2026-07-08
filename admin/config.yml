@@ -319,6 +319,24 @@ collections:
       - { label: "Contenu", name: "body", widget: "markdown" }
 
   # -----------------------------------------------------------------------
+  # 5bis) GLOSSAIRE  (un terme = une entrée ; affichés sur la page /glossaire/)
+  # -----------------------------------------------------------------------
+  - name: "glossaire"
+    label: "Glossaire"
+    label_singular: "Terme"
+    folder: "src/content/glossaire"
+    preview_path: "glossaire/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{terme}}"
+    sortable_fields: ["terme"]
+    fields:
+      - { label: "Terme", name: "terme", widget: "string", hint: "Le classement A-Z est automatique d'après le terme." }
+      - { label: "Définition", name: "definition", widget: "text" }
+
+  # -----------------------------------------------------------------------
   # 6) PAGES  (contenus éditables des pages existantes)
   # -----------------------------------------------------------------------
   - name: "pages"
@@ -527,6 +545,21 @@ collections:
           - { label: "Sur-titre", name: "eyebrow", widget: "string" }
           - { label: "Titre principal (H1)", name: "h1", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
           - { label: "Paragraphe d'introduction", name: "chapo", widget: "text" }
+
+      - name: "page_glossaire"
+        label: "Glossaire (page)"
+        file: "src/_data/page_glossaire.json"
+        preview_path: "glossaire/"
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string" }
+          - { label: "Description SEO", name: "meta_description", widget: "text" }
+          - { label: "Sur-titre", name: "eyebrow", widget: "string" }
+          - { label: "Titre principal (H1)", name: "h1", widget: "string" }
+          - { label: "Paragraphe d'introduction", name: "chapo", widget: "text" }
+          - { label: "Bandeau final · titre", name: "cta_titre", widget: "string" }
+          - { label: "Bandeau final · texte", name: "cta_texte", widget: "text" }
+          - { label: "Bandeau final · libellé du bouton", name: "cta_label", widget: "string" }
+          - { label: "Bandeau final · lien du bouton", name: "cta_url", widget: "string", required: false }
 
       - name: "logiciel_metier"
         label: "Page Logiciel métier"

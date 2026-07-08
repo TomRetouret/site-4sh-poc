@@ -1,0 +1,57 @@
+---
+layout: base.njk
+permalink: /glossaire/
+extraCss: /assets/glossaire.css
+---
+{%- set alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"] -%}
+{%- set lettresPresentes = "" -%}
+{%- for g in collections.glossaireGroupes %}{% set lettresPresentes = lettresPresentes + g.lettre %}{% endfor -%}
+
+<section class="glo-hero">
+  <div class="container">
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Glossaire</nav>
+    <p class="eyebrow">{{ page_glossaire.eyebrow }}</p>
+    <h1>{{ page_glossaire.h1 }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
+    <p class="chapo">{{ page_glossaire.chapo }}</p>
+  </div>
+</section>
+
+<nav class="glo-alpha" aria-label="Index alphabétique">
+  <div class="container">
+    <ul>
+      {% for L in alphabet %}
+      {% if L in lettresPresentes %}<li><a href="#lettre-{{ L }}">{{ L }}</a></li>{% else %}<li><span aria-disabled="true">{{ L }}</span></li>{% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+<section class="glo-corps">
+  <div class="container">
+    {% for g in collections.glossaireGroupes %}
+    <div class="glo-groupe" id="lettre-{{ g.lettre }}">
+      <h2 class="glo-lettre">{{ g.lettre }}</h2>
+      <dl class="glo-liste">
+        {% for t in g.termes %}
+        <div class="glo-item">
+          <dt>{{ t.terme }}</dt>
+          <dd>{{ t.definition }}</dd>
+        </div>
+        {% endfor %}
+      </dl>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="bandeau-cta">
+      <div>
+        <h2>{{ page_glossaire.cta_titre }}</h2>
+        <p>{{ page_glossaire.cta_texte }}</p>
+      </div>
+      <a class="btn" href="{{ page_glossaire.cta_url or '/contact/' }}">{{ page_glossaire.cta_label }}</a>
+    </div>
+  </div>
+</section>

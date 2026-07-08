@@ -1,0 +1,37 @@
+/* ============================================================
+   Glossaire 4SH - page unique (abécédaire + définitions)
+   ============================================================ */
+.glo-hero{padding:30px 0 8px}
+.glo-hero .fil-ariane{font-size:13.5px;color:var(--muted);padding:0 0 16px}
+.glo-hero .fil-ariane a{color:var(--muted)}
+.glo-hero .fil-ariane a:hover{color:var(--rouge-fonce)}
+.glo-hero .eyebrow{color:var(--rouge-fonce)}
+.glo-hero h1{font-size:clamp(34px,4.4vw,54px);line-height:1.05;color:var(--sombre);letter-spacing:-1px;margin:6px 0 14px}
+.glo-hero h1 .doodle{color:var(--rouge);margin-left:8px;vertical-align:-4px}
+.glo-hero .chapo{font-size:18px;color:var(--texte);max-width:720px}
+
+/* abécédaire collant */
+.glo-alpha{position:sticky;top:0;z-index:20;background:var(--carte);border-top:1px solid var(--bordure);border-bottom:1px solid var(--bordure);margin-top:24px}
+.glo-alpha ul{list-style:none;display:flex;flex-wrap:wrap;gap:4px;padding:12px 0;margin:0}
+.glo-alpha li{margin:0}
+.glo-alpha a,.glo-alpha span{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;font-weight:600;font-size:15px;transition:background .18s var(--ease),color .18s var(--ease)}
+.glo-alpha a{color:var(--rouge-fonce);background:var(--rouge-pale)}
+.glo-alpha a:hover{background:var(--rouge);color:#fff}
+.glo-alpha span{color:var(--bordure);cursor:default}
+.glo-alpha a:focus-visible{outline:2px solid var(--rouge);outline-offset:2px}
+
+/* corps */
+.glo-corps{padding:46px 0 0}
+.glo-groupe{scroll-margin-top:70px;margin-bottom:40px}
+.glo-lettre{font-family:var(--serif);font-style:italic;font-size:clamp(40px,6vw,64px);color:var(--rouge);line-height:1;margin:0 0 18px;border-bottom:1px solid var(--bordure);padding-bottom:10px}
+.glo-liste{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:22px 40px}
+.glo-item{break-inside:avoid}
+.glo-item dt{font-size:18px;font-weight:700;color:var(--sombre);letter-spacing:-.2px;margin-bottom:6px}
+.glo-item dd{margin:0;font-size:15px;line-height:1.6;color:var(--texte)}
+
+@media (max-width:820px){
+  .glo-liste{grid-template-columns:1fr;gap:22px}
+}
+@media (max-width:480px){
+  .glo-alpha a,.glo-alpha span{width:32px;height:32px;font-size:14px}
+}

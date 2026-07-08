@@ -55,6 +55,7 @@
         { "label": "Références", "url": "/references/" },
         { "label": "L'équipe", "url": "#" },
         { "label": "Blog", "url": "#" },
+        { "label": "Glossaire", "url": "/glossaire/" },
         { "label": "Formations", "url": "/formations/" }
       ]
     }

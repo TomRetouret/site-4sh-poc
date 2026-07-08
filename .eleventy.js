@@ -73,6 +73,30 @@ module.exports = function (eleventyConfig) {
     return { secteurs: uniq("secteurs"), technologies: uniq("technologies"), typesProjet: uniqStr("type_projet") };
   });
 
+  // Glossaire : termes lus sur le disque (fiable même en permalink:false), groupés par lettre
+  eleventyConfig.addCollection("glossaireGroupes", () => {
+    const fs = require("fs");
+    const path = require("path");
+    const matter = require("gray-matter");
+    const dir = path.join(__dirname, "src", "content", "glossaire");
+    const norm = (s) => (s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase();
+    let fichiers = [];
+    try { fichiers = fs.readdirSync(dir).filter((f) => f.endsWith(".md")); } catch (e) { return []; }
+    const termes = fichiers
+      .map((f) => {
+        const g = matter(fs.readFileSync(path.join(dir, f), "utf8"));
+        return { terme: g.data.terme, definition: g.data.definition };
+      })
+      .filter((t) => t.terme)
+      .sort((a, b) => norm(a.terme).localeCompare(norm(b.terme)));
+    const groupes = {};
+    termes.forEach((t) => {
+      const L = norm(t.terme).charAt(0);
+      (groupes[L] = groupes[L] || []).push(t);
+    });
+    return Object.keys(groupes).sort().map((L) => ({ lettre: L, termes: groupes[L] }));
+  });
+
   return {
     dir: {
       input: "src",

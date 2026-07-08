@@ -35,7 +35,7 @@ extraCss: /assets/glossaire.css
         {% for t in g.termes %}
         <div class="glo-item">
           <dt>{{ t.terme }}</dt>
-          <dd>{{ t.definition }}</dd>
+          <dd>{{ t.definition | safe }}</dd>
         </div>
         {% endfor %}
       </dl>

@@ -334,7 +334,7 @@ collections:
     sortable_fields: ["terme"]
     fields:
       - { label: "Terme", name: "terme", widget: "string", hint: "Le classement A-Z est automatique d'après le terme." }
-      - { label: "Définition", name: "definition", widget: "text" }
+      - { label: "Définition", name: "definition", widget: "text", hint: "Maillage interne : insérez un lien en plein texte avec cette syntaxe : <a href='/formations/angular-fondamental/'>Angular</a>. Mettez le lien sur un mot-clé de la phrase, vers une page pertinente du site." }
 
   # -----------------------------------------------------------------------
   # 6) PAGES  (contenus éditables des pages existantes)

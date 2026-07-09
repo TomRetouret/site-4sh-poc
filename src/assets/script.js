@@ -150,3 +150,81 @@
   }, { threshold: 0.5 });
   nums.forEach(function (el) { obs.observe(el); });
 })();
+
+/* Carrousels : défilement auto discret, bullets d'état cliquables,
+   pause au survol/focus, pas de bouton pause, respect de prefers-reduced-motion. */
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-carrousel]').forEach(function (car) {
+    var piste = car.querySelector('.car-piste');
+    var dotsWrap = car.querySelector('.car-dots');
+    if (!piste || !dotsWrap) return;
+    var slides = Array.prototype.slice.call(piste.children);
+    if (slides.length < 2) return;
+    var i = 0, timer = null;
+
+    slides.forEach(function (s, k) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Aller à l\'élément ' + (k + 1));
+      b.addEventListener('click', function () { i = k; go(); relance(); });
+      dotsWrap.appendChild(b);
+    });
+
+    var verrou = false;
+    function pas() {
+      var gap = parseFloat(getComputedStyle(piste).gap) || 0;
+      return slides[0].getBoundingClientRect().width + gap;
+    }
+    function maxScroll() { return piste.scrollWidth - piste.clientWidth - 2; }
+    function majDots() {
+      Array.prototype.forEach.call(dotsWrap.children, function (d, k) {
+        d.setAttribute('aria-current', k === i ? 'true' : 'false');
+      });
+    }
+    function aller() {
+      verrou = true;
+      piste.scrollTo({ left: Math.min(i * pas(), maxScroll() + 2), behavior: reduce ? 'auto' : 'smooth' });
+      majDots();
+      setTimeout(function () { verrou = false; }, 700);
+    }
+    function suivant() { i = (i * pas() >= maxScroll()) ? 0 : i + 1; aller(); }
+    function jouer() { if (!reduce && !timer) timer = setInterval(suivant, 4800); }
+    function stop() { clearInterval(timer); timer = null; }
+    function relance() { stop(); jouer(); }
+
+    var st;
+    piste.addEventListener('scroll', function () {
+      if (verrou) return;
+      clearTimeout(st);
+      st = setTimeout(function () {
+        i = Math.min(slides.length - 1, Math.round(piste.scrollLeft / pas()));
+        majDots();
+      }, 120);
+    }, { passive: true });
+
+    majDots(); jouer();
+    car.addEventListener('mouseenter', stop);
+    car.addEventListener('mouseleave', jouer);
+    car.addEventListener('focusin', stop);
+    car.addEventListener('focusout', jouer);
+    var rt;
+    addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(aller, 150); });
+  });
+})();
+
+/* CTA flottant : apparaît après le hero, masqué près du bloc contact */
+(function () {
+  var cta = document.getElementById('sticky-cta');
+  if (!cta) return;
+  var contact = document.getElementById('contact');
+  function maj() {
+    var passeHero = window.scrollY > 640;
+    var contactVisible = false;
+    if (contact) { var r = contact.getBoundingClientRect(); contactVisible = r.top < innerHeight && r.bottom > 0; }
+    cta.classList.toggle('visible', passeHero && !contactVisible);
+  }
+  addEventListener('scroll', maj, { passive: true });
+  addEventListener('resize', maj);
+  maj();
+})();

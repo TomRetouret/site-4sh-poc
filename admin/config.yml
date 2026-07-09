@@ -396,19 +396,20 @@ collections:
               - { label: "Texte", name: "texte", widget: "string" }
               - { label: "Note (petit texte)", name: "note", widget: "string", required: false }
 
-          - { label: "Cas client vedette · sur-titre", name: "cas_eyebrow", widget: "string" }
-          - { label: "Cas client vedette · titre", name: "cas_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
-          - { label: "Cas client vedette · sous-titre", name: "cas_sous", widget: "text" }
-          - label: "Cas client vedette"
-            name: "cas"
-            widget: "object"
+          - { label: "Réalisations · sur-titre", name: "cas_eyebrow", widget: "string" }
+          - { label: "Réalisations · titre", name: "cas_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
+          - { label: "Réalisations · sous-titre", name: "cas_sous", widget: "text" }
+          - label: "Réalisations (carrousel de cas)"
+            name: "realisations"
+            widget: "list"
+            hint: "Chaque cas défile dans le carrousel. Reprend la carte projet (chiffres + avis)."
             fields:
               - { label: "Secteur", name: "secteur", widget: "string" }
               - { label: "Client (logo texte)", name: "client", widget: "string" }
               - { label: "Texte du visuel", name: "visuel_texte", widget: "text" }
-              - { label: "Citation", name: "citation", widget: "text" }
-              - { label: "Auteur", name: "auteur", widget: "string" }
-              - label: "Chiffres"
+              - { label: "Citation / avis client", name: "citation", widget: "text" }
+              - { label: "Auteur de l'avis", name: "auteur", widget: "string" }
+              - label: "Chiffres du projet"
                 name: "chiffres"
                 widget: "list"
                 fields:
@@ -416,6 +417,8 @@ collections:
                   - { label: "Libellé", name: "label", widget: "string" }
               - { label: "Libellé du bouton", name: "cta_label", widget: "string" }
               - { label: "Lien du bouton", name: "cta_url", widget: "string", required: false }
+          - { label: "Réalisations · bouton (libellé)", name: "realisations_cta_label", widget: "string" }
+          - { label: "Réalisations · bouton (lien)", name: "realisations_cta_url", widget: "string", required: false }
 
           - { label: "Méthode · sur-titre", name: "methode_eyebrow", widget: "string" }
           - { label: "Méthode · titre", name: "methode_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
@@ -441,10 +444,16 @@ collections:
               - { label: "Libellé du lien", name: "lien_libelle", widget: "string" }
               - { label: "Lien", name: "url", widget: "string", required: false }
 
-          - { label: "Bandeau CTA · titre", name: "bandeau_cta_titre", widget: "string" }
-          - { label: "Bandeau CTA · texte", name: "bandeau_cta_texte", widget: "text" }
-          - { label: "Bandeau CTA · libellé du bouton", name: "bandeau_cta_label", widget: "string" }
-          - { label: "Bandeau CTA · lien du bouton", name: "bandeau_cta_url", widget: "string", required: false }
+          - { label: "Technos · sur-titre", name: "technos_eyebrow", widget: "string" }
+          - { label: "Technos · titre", name: "technos_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">)." }
+          - { label: "Technos · sous-titre", name: "technos_sous", widget: "text" }
+          - label: "Technos (nuage de mots)"
+            name: "technos"
+            widget: "list"
+            hint: "Chaque techno est un lien cliquable (maillage interne)."
+            fields:
+              - { label: "Nom", name: "nom", widget: "string" }
+              - { label: "Lien", name: "url", widget: "string", required: false }
 
           - { label: "FAQ · titre", name: "faq_titre", widget: "string" }
           - { label: "FAQ · sous-titre", name: "faq_sous", widget: "text" }

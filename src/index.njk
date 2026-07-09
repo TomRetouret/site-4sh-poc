@@ -2,8 +2,8 @@
 layout: base.njk
 permalink: /
 ---
-<!-- HERO -->
-<div class="hero sur-sombre">
+<!-- HERO (option « fondu intégré » : photo full-bleed en duotone) -->
+<div class="hero sur-sombre{% if accueil.equipe_photo %} hero--photo{% endif %}">
   <div class="container">
     <div class="hero-grille">
       <div>
@@ -16,6 +16,7 @@ permalink: /
         </div>
         <p class="hero-note">{{ accueil.hero_note }}</p>
       </div>
+      {% if not accueil.equipe_photo %}
       <div class="hero-visuel" aria-hidden="true">
         <div class="fenetre">
           <span>{{ accueil.hero_visuel_titre }}</span><br>
@@ -23,21 +24,26 @@ permalink: /
         </div>
         <div class="badge-projet"><span>{{ accueil.hero_visuel_badge }}</span><b>{{ accueil.hero_visuel_badge_note }}</b></div>
       </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if accueil.equipe_photo %}
+  <figure class="hero-photo">
+    <img src="{{ accueil.equipe_photo }}" alt="{{ accueil.equipe_titre | striptags }}" width="1200" height="800" fetchpriority="high" decoding="async">
+  </figure>
+  {% endif %}
+  <!-- LOGOS CLIENTS (ancrés en bas du hero, pour tenir dans le 1er écran) -->
+  <div class="logos">
+    <div class="container">
+      <p>{{ site.clients_intro }}</p>
+      <div class="marquee"><ul aria-label="Références clients">
+        {% for c in site.clients %}<li>{% if c.url %}<a href="{{ c.url }}">{{ c.nom }}</a>{% else %}{{ c.nom }}{% endif %}</li>{% endfor %}
+      </ul></div>
     </div>
   </div>
 </div>
 
-<!-- LOGOS CLIENTS -->
-<div class="logos">
-  <div class="container">
-    <p>{{ site.clients_intro }}</p>
-    <div class="marquee"><ul aria-label="Références clients">
-      {% for c in site.clients %}<li>{% if c.url %}<a href="{{ c.url }}">{{ c.nom }}</a>{% else %}{{ c.nom }}{% endif %}</li>{% endfor %}
-    </ul></div>
-  </div>
-</div>
-
-<!-- 3 PORTES D'ENTRÉE -->
+<!-- 3 PORTES D'ENTRÉE (design conservé) -->
 <section>
   <div class="container">
     <p class="eyebrow">{{ accueil.portes_eyebrow }}</p>
@@ -73,26 +79,19 @@ permalink: /
   </div>
 </div>
 
-<!-- CAS CLIENT VEDETTE -->
+<!-- SECTEURS (carrousel) -->
 <section>
   <div class="container">
-    <p class="eyebrow">{{ accueil.cas_eyebrow }}</p>
-    <h2 class="sec-titre">{{ accueil.cas_titre | safe }}</h2>
-    <p class="sec-sous">{{ accueil.cas_sous }}</p>
-    <div class="cas">
-      <div class="cas-visuel">
-        <div class="secteur">{{ accueil.cas.secteur }}</div>
-        <div class="logo-client">{{ accueil.cas.client }}</div>
-        <p>{{ accueil.cas.visuel_texte }}</p>
+    <p class="eyebrow">{{ accueil.secteurs_eyebrow }}</p>
+    <h2 class="sec-titre">{{ accueil.secteurs_titre | safe }}</h2>
+    <p class="sec-sous">{{ accueil.secteurs_sous }}</p>
+    <div class="carrousel car--secteurs" data-carrousel aria-label="Secteurs">
+      <div class="car-piste">
+        {% for s in accueil.secteurs %}
+        <div class="secteur-carte"><h3>{{ s.titre }}</h3><p>{{ s.texte }}</p><a href="{{ s.url or '#' }}">{{ s.lien_libelle }}</a></div>
+        {% endfor %}
       </div>
-      <div class="cas-corps">
-        <blockquote>{{ accueil.cas.citation }}</blockquote>
-        <p class="auteur">{{ accueil.cas.auteur }}</p>
-        <div class="cas-chiffre">
-          {% for ch in accueil.cas.chiffres %}<div><b>{{ ch.valeur | safe }}</b><span>{{ ch.label }}</span></div>{% endfor %}
-        </div>
-        <a class="btn btn-ghost btn-sm" href="{{ accueil.cas.cta_url or '#' }}">{{ accueil.cas.cta_label }}</a>
-      </div>
+      <div class="car-dots"></div>
     </div>
   </div>
 </section>
@@ -111,29 +110,46 @@ permalink: /
   </div>
 </section>
 
-<!-- SECTEURS -->
+<!-- RÉALISATIONS (carrousel de cas, carte conservée) -->
 <section>
   <div class="container">
-    <p class="eyebrow">{{ accueil.secteurs_eyebrow }}</p>
-    <h2 class="sec-titre">{{ accueil.secteurs_titre | safe }}</h2>
-    <p class="sec-sous">{{ accueil.secteurs_sous }}</p>
-    <div class="secteurs-grille">
-      {% for s in accueil.secteurs %}
-      <div class="secteur-carte"><h3>{{ s.titre }}</h3><p>{{ s.texte }}</p><a href="{{ s.url or '#' }}">{{ s.lien_libelle }}</a></div>
-      {% endfor %}
+    <p class="eyebrow">{{ accueil.cas_eyebrow }}</p>
+    <h2 class="sec-titre">{{ accueil.cas_titre | safe }}</h2>
+    <p class="sec-sous">{{ accueil.cas_sous }}</p>
+    <div class="carrousel car--real" data-carrousel aria-label="Réalisations">
+      <div class="car-piste">
+        {% for r in accueil.realisations %}
+        <div class="cas">
+          <div class="cas-visuel">
+            <div class="secteur">{{ r.secteur }}</div>
+            <div class="logo-client">{{ r.client }}</div>
+            <p>{{ r.visuel_texte }}</p>
+          </div>
+          <div class="cas-corps">
+            <blockquote>{{ r.citation }}</blockquote>
+            <p class="auteur">{{ r.auteur }}</p>
+            <div class="cas-chiffre">
+              {% for ch in r.chiffres %}<div><b>{{ ch.valeur | safe }}</b><span>{{ ch.label }}</span></div>{% endfor %}
+            </div>
+            <a class="btn btn-ghost btn-sm" href="{{ r.cta_url or '#' }}">{{ r.cta_label }}</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="car-dots"></div>
     </div>
+    <div class="centre" style="margin-top:28px"><a class="btn btn-primary" href="{{ accueil.realisations_cta_url or '/references/' }}">{{ accueil.realisations_cta_label }}</a></div>
   </div>
 </section>
 
-<!-- BANDEAU CTA -->
+<!-- TECHNOS (nuage de mots) -->
 <section style="padding-top:0">
   <div class="container">
-    <div class="bandeau-cta">
-      <div>
-        <h2>{{ accueil.bandeau_cta_titre }}</h2>
-        <p>{{ accueil.bandeau_cta_texte }}</p>
-      </div>
-      <a class="btn" href="{{ accueil.bandeau_cta_url or '#contact' }}">{{ accueil.bandeau_cta_label }}</a>
+    <p class="eyebrow">{{ accueil.technos_eyebrow }}</p>
+    <h2 class="sec-titre">{{ accueil.technos_titre | safe }}</h2>
+    <p class="sec-sous">{{ accueil.technos_sous }}</p>
+    <div class="techno-nuage">
+      {% for t in accueil.technos %}<a class="techno-tag" href="{{ t.url or '#' }}">{{ t.nom }}</a>{% endfor %}
     </div>
   </div>
 </section>
@@ -152,23 +168,12 @@ permalink: /
       {% endfor %}
     </div>
   </div>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for item in accueil.faq %}{"@type":"Question","name":{{ item.question | dump | safe }},"acceptedAnswer":{"@type":"Answer","text":{{ item.reponse | dump | safe }}}}{% if not loop.last %},{% endif %}{% endfor %}]}
+  </script>
 </section>
 
-<!-- ÉQUIPE (photo de groupe) -->
-<section style="padding-top:0">
-  <div class="container">
-    <div class="eyebrow">{{ accueil.equipe_eyebrow }}</div>
-    <h2 class="sec-titre">{{ accueil.equipe_titre | safe }}</h2>
-    <p class="sec-sous">{{ accueil.equipe_texte }}</p>
-    {% if accueil.equipe_photo %}
-    <figure class="equipe-photo">
-      <img src="{{ accueil.equipe_photo }}" alt="L'équipe 4SH réunie" loading="lazy" decoding="async">
-    </figure>
-    {% endif %}
-  </div>
-</section>
-
-<!-- CONTACT FINAL -->
+<!-- CONTACT FINAL (bloc conservé) -->
 <section class="contact-final sur-sombre" id="contact">
   <div class="container">
     <div class="contact-grille">
@@ -180,8 +185,14 @@ permalink: /
         </ul>
         <div class="equipe-visages">{% for v in accueil.contact_visages %}<span>{{ v }}</span>{% endfor %}</div>
         <p style="font-size:13.5px;color:#8b979c">{{ accueil.contact_note }}</p><svg class="doodle doodle-spirale" width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M27 27c0-3 4-4 6-1s0 8-5 9-11-2-12-9 5-14 13-14 16 6 16 15c0 2-.4 4-1 6"/><path d="M41.5 29.5 44 33l3.6-2"/></svg>
+        <div class="contact-coord">
+          <p><b>Par téléphone</b><br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
+          <p><b>Nos agences</b><br>{{ site.villes }}</p>
+        </div>
       </div>
       {% include "formulaire.njk" %}
     </div>
   </div>
 </section>
+
+<a class="btn btn-primary sticky-cta" href="#contact" id="sticky-cta">{{ accueil.hero_cta_principal }}</a>

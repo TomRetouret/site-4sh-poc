@@ -1,11 +1,11 @@
 {
   "meta_title": "Agence de développement logiciel sur mesure - 4SH",
-  "meta_description": "Créateurs et développeurs de logiciels sur mesure adaptés à vos enjeux (app, SaaS, logiciels métiers...). Parlons de votre projet : 30 minutes gratuites avec un expert 4SH.",
+  "meta_description": "4SH, agence de développement de logiciels sur mesure depuis 2007 : logiciels métiers, applications web et mobiles, maintenance. Bordeaux et Capbreton.",
   "hero_surtitre": "Agence de développement logiciel sur mesure",
   "hero_accroche_debut": "Un logiciel qui",
   "hero_accroche_accent": "épouse",
   "hero_accroche_fin": "vos processus,<br>pas l'inverse.",
-  "hero_chapo": "Depuis 2007, nous concevons, développons et faisons vivre les applications métiers des entreprises qui ne rentrent dans aucune case. Et nous restons après la mise en production.",
+  "hero_chapo": "Depuis 2007, 4SH est l'agence de développement de logiciels sur mesure des entreprises qui ne rentrent dans aucune case : on conçoit, on développe et on fait vivre votre logiciel métier, et on reste après la mise en production.",
   "hero_note": "30 minutes avec un expert, gratuit, sans engagement · Bordeaux, Capbreton ou à distance",
   "hero_cta_principal": "Parlons de votre projet",
   "hero_cta_secondaire": "Voir nos réalisations",
@@ -27,12 +27,12 @@
   "hero_visuel_badge": "Méthode 4D · Discover → Deploy",
   "hero_visuel_badge_note": "Depuis 2007",
   "portes_eyebrow": "Par où commencer",
-  "portes_titre": "Quel prestation est faite pour <em class=\"accent\">vous</em> ?",
+  "portes_titre": "Quelle prestation est faite pour <em class=\"accent\">vous</em> ?",
   "portes_sous": "Trois façons de travailler ensemble, selon l'endroit où vous en êtes.",
   "portes": [
     {
       "titre": "Créer un logiciel sur mesure",
-      "texte": "Un Excel qui craque, un process qui coûte, un outil du marché qui ne colle pas ? Nous développons l'application qui suit vos gestes réels.",
+      "texte": "Un Excel qui craque, un outil du marché qui ne colle pas ? On développe le logiciel métier sur mesure qui suit vos gestes réels.",
       "liens": [
         {
           "label": "→ Logiciel métier",
@@ -123,7 +123,7 @@
   ],
   "cas_eyebrow": "Nos réalisations",
   "cas_titre": "La preuve par les <em class=\"accent\">projets</em>",
-  "cas_sous": "Nos réussites racontées avec des résultats, pas des adjectifs.",
+  "cas_sous": "Nos projets de développement sur mesure, racontés avec des résultats, pas des adjectifs.",
   "cas": {
     "secteur": "Électromobilité",
     "client": "IZIVIA · groupe EDF",
@@ -143,9 +143,52 @@
     "cta_label": "Lire le cas client",
     "cta_url": "/references/izivia-portail/"
   },
+  "realisations": [
+    {
+      "secteur": "Électromobilité",
+      "client": "IZIVIA · groupe EDF",
+      "visuel_texte": "Supervision et pilotage de bornes de recharge à l'échelle nationale.",
+      "citation": "[Témoignage client à compléter, 1 à 2 phrases.]",
+      "auteur": "[Prénom Nom], [fonction], Izivia",
+      "chiffres": [
+        { "valeur": "200 000", "label": "bornes supervisées" },
+        { "valeur": "2014", "label": "année de début de collaboration" }
+      ],
+      "cta_label": "Lire le cas client",
+      "cta_url": "/references/izivia-portail/"
+    },
+    {
+      "secteur": "[Secteur]",
+      "client": "[Client]",
+      "visuel_texte": "[Une phrase de présentation du projet.]",
+      "citation": "[Témoignage client à compléter.]",
+      "auteur": "[Prénom Nom], [fonction], [Client]",
+      "chiffres": [
+        { "valeur": "[X] ans", "label": "de collaboration" },
+        { "valeur": "[XX] 000", "label": "dossiers / mois" }
+      ],
+      "cta_label": "Lire le cas client",
+      "cta_url": "/references/"
+    },
+    {
+      "secteur": "[Secteur]",
+      "client": "[Client]",
+      "visuel_texte": "[Une phrase de présentation du projet.]",
+      "citation": "[Témoignage client à compléter.]",
+      "auteur": "[Prénom Nom], [fonction], [Client]",
+      "chiffres": [
+        { "valeur": "[XX]", "label": "applications livrées" },
+        { "valeur": "depuis 20XX", "label": "partenariat" }
+      ],
+      "cta_label": "Lire le cas client",
+      "cta_url": "/references/"
+    }
+  ],
+  "realisations_cta_label": "Voir toutes nos références",
+  "realisations_cta_url": "/references/",
   "methode_eyebrow": "Notre méthode 4D",
   "methode_titre": "Comment se passe un projet <em class=\"accent\">avec nous</em>",
-  "methode_sous": "Notre méthode 4D : des jalons clairs, des démos régulières, zéro flou. L'agilité n'excuse pas l'opacité.",
+  "methode_sous": "De la première idée à la mise en production, voici comment se déroule un projet de développement sur mesure avec 4SH : des jalons clairs, des démos régulières, zéro flou.",
   "methode_etapes": [
     {
       "num": "01",
@@ -173,60 +216,91 @@
     }
   ],
   "secteurs_eyebrow": "Vos métiers",
-  "secteurs_titre": "Nos secteurs",
-  "secteurs_sous": "Nous parlons déjà la langue de votre métier.",
+  "secteurs_titre": "On connaît déjà <em class=\"accent\">votre métier</em>",
+  "secteurs_sous": "On a déjà développé des logiciels sur mesure dans votre secteur : on gagne du temps ensemble dès la première réunion.",
   "secteurs": [
     {
       "titre": "Logistique",
-      "texte": "Maîtrisez chaque étape de votre supply chain : traçabilité, douane, fret.",
-      "lien_libelle": "Logiciels logistique →",
+      "texte": "Vos flux ne s'arrêtent jamais, votre logiciel non plus. On sait ce que temps réel veut dire dans un entrepôt.",
+      "lien_libelle": "Nos projets logistique →",
       "url": "/secteurs/logistique/"
     },
     {
       "titre": "Assurance",
-      "texte": "Réinventez l'assurance à l'ère du digital, de la souscription au sinistre.",
-      "lien_libelle": "Logiciels assurance →",
+      "texte": "Entre réglementation, contrats et parcours client, il vous faut un outil rigoureux qui reste simple à utiliser.",
+      "lien_libelle": "Nos projets assurance →",
       "url": "/secteurs/assurance/"
     },
     {
       "titre": "Électromobilité",
-      "texte": "Supervision de bornes, itinérance, facturation : accélérons la transition.",
-      "lien_libelle": "Logiciels électromobilité →",
+      "texte": "Superviser des bornes, remonter des données, piloter à distance : on connaît les enjeux d'un parc connecté.",
+      "lien_libelle": "Nos projets mobilité →",
       "url": "/secteurs/electromobilite/"
     },
     {
-      "titre": "Éditeurs & franchises",
-      "texte": "Renforcez votre équipe produit ou outillez votre réseau, sans recruter.",
-      "lien_libelle": "Nos offres dédiées →",
-      "url": "#"
+      "titre": "Industrie",
+      "texte": "Vos process sont spécifiques et vos outils souvent trop rigides. On construit le logiciel qui colle à votre atelier.",
+      "lien_libelle": "Parlons de votre projet →",
+      "url": "/contact/"
+    },
+    {
+      "titre": "Santé",
+      "texte": "Données sensibles, hébergement certifié, traçabilité : on travaille avec vos exigences, pas contre elles.",
+      "lien_libelle": "Parlons de votre projet →",
+      "url": "/contact/"
+    },
+    {
+      "titre": "Finance",
+      "texte": "Sécurité, conformité et fiabilité ne se négocient pas. On développe des outils solides, pensés pour durer.",
+      "lien_libelle": "Parlons de votre projet →",
+      "url": "/contact/"
     }
+  ],
+  "technos_eyebrow": "Les technos",
+  "technos_titre": "Les bonnes technos, pour les <em class=\"accent\">bonnes raisons</em>",
+  "technos_sous": "On choisit chaque technologie selon votre projet de développement sur mesure, jamais par habitude.",
+  "technos": [
+    { "nom": "Java", "url": "/formations/java-fondamental/" },
+    { "nom": "Kotlin", "url": "/formations/kotlin-fondamental/" },
+    { "nom": "Spring", "url": "/formations/spring-rest-jpa/" },
+    { "nom": "Angular", "url": "/formations/angular-fondamental/" },
+    { "nom": "TypeScript", "url": "/formations/ts-fondamental/" },
+    { "nom": "JavaScript", "url": "/formations/javascript/" },
+    { "nom": "Docker", "url": "/formations/docker-fondamental/" },
+    { "nom": "Kubernetes", "url": "/formations/kubernetes-fondamental/" },
+    { "nom": "Terraform", "url": "/formations/terraform/" },
+    { "nom": "Kafka", "url": "/formations/kafka/" },
+    { "nom": "MongoDB", "url": "/formations/mongodb-fondamental/" },
+    { "nom": "SQL", "url": "/formations/sql/" },
+    { "nom": "Git", "url": "/formations/git-fondamental/" },
+    { "nom": "Figma", "url": "/formations/figma-fondamental/" }
   ],
   "bandeau_cta_titre": "Vous hésitez entre sur mesure et logiciel du marché ?",
   "bandeau_cta_texte": "C'est la bonne question. En 30 minutes, un expert 4SH vous aide à y voir clair. Et si un outil standard suffit, nous vous le dirons.",
   "bandeau_cta_label": "Poser la question à un expert",
   "bandeau_cta_url": "#contact",
-  "faq_titre": "Développement logiciel sur mesure : vos questions",
-  "faq_sous": "Les réponses que vous cherchez avant de nous appeler.",
+  "faq_titre": "Les questions qu'on nous pose souvent",
+  "faq_sous": "Le développement d'un logiciel sur mesure soulève des questions. Voici nos réponses avant de nous appeler.",
   "faq": [
     {
-      "question": "Qu'est-ce qu'une agence de développement logiciel métier ?",
-      "reponse": "Une agence de développement logiciel métier conçoit des applications sur mesure répondant aux besoins spécifiques d'une entreprise, en lien direct avec ses processus, ses utilisateurs et ses objectifs."
-    },
-    {
       "question": "Combien coûte un logiciel sur mesure ?",
-      "reponse": "Le coût d'un logiciel sur mesure dépend de sa complexité, du nombre de fonctionnalités, des technologies utilisées et du niveau d'accompagnement souhaité. Chez 4SH, nous adaptons chaque projet à vos objectifs, avec une approche agile et transparente."
+      "reponse": "Ça dépend du périmètre, et c'est justement pour ça qu'on commence par en parler. Après un premier échange, on vous donne une estimation claire, sans engagement. Vous savez où vous mettez les pieds avant de décider."
     },
     {
-      "question": "Quel est le délai moyen de développement ?",
-      "reponse": "Le délai dépend de la complexité du projet et du périmètre fonctionnel défini. Grâce à notre méthode 4D (Discover, Design, Develop, Deploy), nous structurons chaque phase pour garantir réactivité, qualité et visibilité tout au long du projet."
+      "question": "En combien de temps voit-on quelque chose de concret ?",
+      "reponse": "On vous répond sous 48h après votre premier contact. Côté projet, vous voyez les premières maquettes en quelques semaines et une version testable rapidement, grâce à nos itérations courtes."
     },
     {
-      "question": "Comment se passe la maintenance après livraison ?",
-      "reponse": "Après la livraison, nous assurons une maintenance corrective, évolutive et préventive en fonction de vos besoins. Nous proposons des contrats de maintenance sur mesure, incluant support technique, mises à jour régulières, surveillance des infrastructures et accompagnement long terme."
+      "question": "Que se passe-t-il après la livraison ?",
+      "reponse": "On ne disparaît pas. On assure la maintenance, les évolutions et la sécurité dans la durée. Nos clients restent avec nous des années, c'est notre meilleur indicateur."
     },
     {
       "question": "Quelles technologies utilisez-vous ?",
-      "reponse": "Nous travaillons avec des technologies web modernes, robustes et évolutives (React, Angular, Java, Kotlin, TypeScript...) et des outils comme Kubernetes, Docker et Kafka pour assurer scalabilité, interopérabilité et fiabilité."
+      "reponse": "On maîtrise un large éventail de technos modernes et éprouvées (Angular, Java, Kotlin, TypeScript, Docker, Kubernetes...), et on choisit selon votre contexte, pas selon nos préférences. L'objectif : un outil durable, que vos équipes ou d'autres pourront reprendre."
+    },
+    {
+      "question": "Sur mesure ou logiciel du marché : comment savoir ?",
+      "reponse": "Si un outil du marché couvre votre besoin, on vous le dira honnêtement. Le sur mesure prend tout son sens quand vos processus sont spécifiques et qu'aucune solution existante ne les respecte vraiment."
     }
   ],
   "equipe_eyebrow": "L'équipe",
@@ -237,7 +311,7 @@
   "contact_sous": "30 minutes avec un expert, gratuit, sans engagement. Vous repartez avec un premier avis honnête, pas un argumentaire.",
   "contact_arguments": [
     "Un interlocuteur dédié, de l'analyse des besoins à la maintenance",
-    "Des équipes pluridisciplinaires à Bordeaux, Capbreton et Paris",
+    "Des équipes pluridisciplinaires à Bordeaux et Capbreton",
     "Et si le sur mesure ne se justifie pas, nous vous le dirons"
   ],
   "contact_visages": [

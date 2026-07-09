@@ -85,7 +85,7 @@ Le simulateur s'intègre facilement à vos outils et pipelines existants, y comp
 
 ## Ils testent leurs bornes avec 4SH
 
-IZIVIA - Simulation de milliers de bornes en conditions réelles pour valider la plateforme de supervision avant déploiement national. Résultat : une mise en production sécurisée et sans incident majeur.
+EDF business service - Simulation de milliers de bornes en conditions réelles pour valider la plateforme de supervision avant déploiement national. Résultat : une mise en production sécurisée et sans incident majeur.
 
 D'autres acteurs majeurs de l'électromobilité font confiance à 4SH pour fiabiliser leurs infrastructures.
 

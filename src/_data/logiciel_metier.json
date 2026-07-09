@@ -68,7 +68,7 @@
     "logo_texte": "SIMAR",
     "description": "Système Informatique Maritime et Aérien de La Réunion : traçabilité des marchandises, du quai au fret aérien.",
     "citation": "Une traçabilité pensée avec les équipes terrain, sur un métier réglementé et exigeant.",
-    "auteur": "[Prénom Nom], [fonction], Infoport",
+    "auteur": "",
     "chiffres": [
       { "valeur": "100 %", "label": "des flux tracés" },
       { "valeur": "Maritime + aérien", "label": "un seul outil" }
@@ -78,10 +78,10 @@
   },
   "realisations_cartes": [
     { "secteur": "CIN · Fret aérien", "titre": "Application web de fret aérien", "texte": "Réponse opérationnelle aux obligations douanières de traçabilité, de prise en charge et de sûreté / sécurité sur le fret aérien des aéroports de Paris.", "url": "/references/cin/" },
-    { "secteur": "Izivia · Électromobilité", "titre": "Supervision de bornes de recharge", "texte": "Plateforme de pilotage et de supervision d'un large parc de bornes de recharge, construite et opérée par 4SH.", "url": "/references/izivia-portail/" }
+    { "secteur": "EDF business service · Électromobilité", "titre": "Supervision de bornes de recharge", "texte": "Plateforme de pilotage et de supervision d'un large parc de bornes de recharge, construite et opérée par 4SH.", "url": "/references/izivia-portail/" }
   ],
   "realisations_clients_titre": "Ils nous font confiance",
-  "realisations_clients": ["IZIVIA", "SUD OUEST", "FILHET-ALLARD", "CIN", "INFOPORT", "ARRG", "BME"],
+  "realisations_clients": ["EDF business service", "SUD OUEST", "FILHET-ALLARD", "CIN", "INFOPORT", "ARRG", "BME"],
   "blog_eyebrow": "Le blog",
   "blog_titre": "Nos experts vous <em class=\"accent\">parlent</em>",
   "blog_articles": [

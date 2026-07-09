@@ -89,7 +89,9 @@ header .nav{pointer-events:auto;display:flex;align-items:center;gap:8px;height:7
 /* ---------- hero sombre plein écran (accueil) ---------- */
 .hero{position:relative;background:var(--sombre);color:#fff;padding:110px 0 90px;margin-top:-94px;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 90% 80% at 60% 20%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 90% 80% at 60% 20%,#000 30%,transparent 75%)}
-.hero::after{content:"";position:absolute;width:600px;height:600px;right:-190px;top:-180px;background:radial-gradient(circle,rgba(234,38,49,.18),transparent 65%);filter:blur(10px);z-index:1}
+.hero::after{content:"";position:absolute;width:600px;height:600px;right:-190px;top:-180px;background:radial-gradient(circle,rgba(234,38,49,.18),transparent 65%);filter:blur(10px);z-index:1;animation:hero-halo 16s ease-in-out infinite}
+/* halo du hero : dérive/pulsation très lente et discrète (transform/opacity uniquement) */
+@keyframes hero-halo{0%,100%{opacity:.8;transform:translate(0,0) scale(1)}50%{opacity:1;transform:translate(-16px,10px) scale(1.05)}}
 .hero .container{position:relative;z-index:3}
 .hero-grille{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding-top:120px}
 .surtitre{font-size:13.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#ff5a63;margin-bottom:22px;display:flex;align-items:center;gap:12px}
@@ -198,6 +200,13 @@ section{padding:110px 0}
 .cas-chiffre{display:flex;gap:38px;margin-bottom:28px}
 .cas-chiffre div b{font-size:32px;color:var(--rouge);display:block;letter-spacing:-1px}
 .cas-chiffre div span{font-size:13.5px;color:var(--texte-2)}
+/* variante carte réalisation avec vrai screenshot produit */
+.cas--image .cas-visuel{padding:0;justify-content:flex-end;min-height:340px;background:var(--sombre)}
+.cas--image .cas-visuel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
+.cas--image .cas-visuel::after{width:auto;height:auto;right:auto;bottom:auto;border:0;border-radius:0;inset:0;background:linear-gradient(0deg,rgba(15,22,28,.94) 5%,rgba(15,22,28,.4) 38%,rgba(15,22,28,0) 68%)}
+.cas--image .cas-visuel figcaption{position:relative;z-index:1;padding:26px 30px;display:flex;flex-direction:column;gap:3px}
+.cas--image .cas-visuel .logo-client{font-size:23px;margin-bottom:0}
+.cas-desc{font-size:16px;line-height:1.6;color:var(--texte-2);margin-bottom:24px}
 
 /* ---------- méthode : étapes numérotées ---------- */
 .etapes{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--bordure)}
@@ -549,3 +558,64 @@ body{overflow-x:clip}
 .sticky-cta.visible{opacity:1;visibility:visible;transform:none}
 @media (max-width:600px){.sticky-cta{right:12px;bottom:12px}}
 @media (prefers-reduced-motion:reduce){.sticky-cta{transition:none}}
+
+/* ============================================================
+   Pack "motion" v3 : micro-animations sobres (griffe = le trait qui se pose)
+   Principe : uniquement transform/opacity, tout tombe sous prefers-reduced-motion.
+   ============================================================ */
+
+/* (3) Halo qui naît du CTA principal au survol : anneau rouge qui se propage puis s'efface */
+.btn-primary{position:relative}
+.btn-primary::before{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid var(--rouge);opacity:0;transform:scale(1);pointer-events:none}
+.btn-primary:hover::before,.btn-primary:focus-visible::before{animation:cta-halo .62s var(--ease)}
+@keyframes cta-halo{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(1.28)}}
+
+/* (13) CTA flottant : entrée avec un léger rebond (overshoot via courbe ressort).
+   position:fixed réaffirmé ici car .btn-primary (halo) le suit dans la cascade. */
+.sticky-cta{position:fixed;transform:translateY(120%);transition:opacity .35s var(--ease),transform .5s cubic-bezier(.34,1.56,.64,1),visibility .35s}
+
+/* (12) Tags techno : le rouge se remplit depuis le bas au survol */
+.techno-tag{position:relative;overflow:hidden;z-index:0}
+.techno-tag::before{content:"";position:absolute;inset:0;background:var(--rouge);transform:scaleY(0);transform-origin:bottom;transition:transform .28s var(--ease);z-index:-1}
+.techno-tag:hover,.techno-tag:focus-visible{color:#fff;border-color:var(--rouge)}
+.techno-tag:hover::before,.techno-tag:focus-visible::before{transform:scaleY(1)}
+
+/* (10) FAQ : ouverture en hauteur fluide (navigateurs récents) + contenu qui glisse (partout) */
+.faq details p{animation:faq-in .34s var(--ease)}
+@keyframes faq-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@supports (interpolate-size:allow-keywords){
+  html{interpolate-size:allow-keywords}
+  .faq details::details-content{height:0;overflow:clip;transition:height .34s var(--ease),content-visibility .34s allow-discrete;content-visibility:hidden}
+  .faq details[open]::details-content{height:auto;content-visibility:visible}
+  .faq details[open] p{animation:none}
+}
+
+/* (2) Le mot-clé en serif italique s'écrit de gauche à droite à l'apparition */
+.reveal em.accent{clip-path:inset(0 100% 0 -8%)}
+.vu em.accent{clip-path:inset(0 -8% 0 -8%);transition:clip-path .75s var(--ease) .2s}
+
+/* (1) Doodles : le trait se dessine (état initial ; l'anim est armée en JS via .doodle-anim) */
+.doodle-anim path{stroke-dashoffset:var(--dash,0);transition:stroke-dashoffset .9s var(--ease)}
+.doodle-anim.vu path{stroke-dashoffset:0}
+
+/* (7) Header qui se condense au scroll */
+header .nav{transition:height .28s var(--ease),box-shadow .28s var(--ease),background .28s}
+header.scrolled .nav{height:60px;box-shadow:0 12px 40px rgba(31,41,46,.18);background:rgba(255,255,255,.95)}
+
+/* (15) Transitions de page douces (fondu natif, navigateurs compatibles ; sinon navigation normale) */
+@view-transition{navigation:auto}
+
+/* Garde-fous accessibilité : on fige tous les nouveaux effets si l'utilisateur réduit les animations */
+@media (prefers-reduced-motion:reduce){
+  .hero::after{animation:none}
+  .btn-primary:hover::before,.btn-primary:focus-visible::before{animation:none}
+  .techno-tag::before{transition:none}
+  .faq details p{animation:none}
+  .vu em.accent,.reveal em.accent{clip-path:none;transition:none}
+  .doodle-anim path,.doodle-anim.vu path{transition:none;stroke-dashoffset:0}
+  header .nav{transition:none}
+  .sticky-cta{transition:none}
+}
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+}

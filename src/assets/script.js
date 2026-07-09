@@ -213,6 +213,46 @@
   });
 })();
 
+/* (1) Doodles qui se dessinent : on arme chaque tracé (dasharray = longueur) puis on
+   le déroule quand le doodle entre dans l'écran. Respecte prefers-reduced-motion. */
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var doodles = document.querySelectorAll('.doodle');
+  if (!doodles.length || reduce) return;
+  function armer(svg) {
+    var paths = svg.querySelectorAll('path');
+    paths.forEach(function (p) {
+      var len;
+      try { len = p.getTotalLength(); } catch (e) { return; }
+      if (!len) return;
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = len;
+    });
+    svg.classList.add('doodle-anim');
+  }
+  function tracer(svg) {
+    svg.classList.add('vu');
+    svg.querySelectorAll('path').forEach(function (p) { p.style.strokeDashoffset = '0'; });
+  }
+  doodles.forEach(armer);
+  if (!('IntersectionObserver' in window)) { doodles.forEach(tracer); return; }
+  var obs = new IntersectionObserver(function (entrees) {
+    entrees.forEach(function (e) {
+      if (e.isIntersecting) { tracer(e.target); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.6, rootMargin: '0px 0px -30px 0px' });
+  doodles.forEach(function (d) { obs.observe(d); });
+})();
+
+/* (7) Header qui se condense légèrement au scroll (ombre + hauteur réduite) */
+(function () {
+  var header = document.querySelector('header');
+  if (!header) return;
+  function maj() { header.classList.toggle('scrolled', window.scrollY > 8); }
+  addEventListener('scroll', maj, { passive: true });
+  maj();
+})();
+
 /* CTA flottant : apparaît après le hero, masqué près du bloc contact */
 (function () {
   var cta = document.getElementById('sticky-cta');

@@ -1,10 +1,10 @@
 ---
-titre: "Izivia - Professionnel"
-client: "Izivia"
+titre: "EDF business service - Professionnel"
+client: "EDF business service"
 ordre: 4
 h1: "Professionnel"
 sous_titre: "Application sous forme de portail professionnel pour la gestion de parc de voitures électriques."
-resume: "Portail professionnel pour la gestion de parc de voitures électriques, conçu pour Izivia, filiale du groupe EDF."
+resume: "Portail professionnel pour la gestion de parc de voitures électriques, conçu pour EDF business service, filiale du groupe EDF."
 logo: "https://www.4sh.fr/assets/img/png/references/izivia/logo-izivia.png"
 image: "https://www.4sh.fr/assets/img/png/references/izivia/ref-izivia-portail.png"
 secteurs:
@@ -28,22 +28,22 @@ galerie:
   - "https://www.4sh.fr/assets/img/png/references/izivia/ref-izivia-3.png"
 fiche_pdf: "https://drive.google.com/file/d/1l0Ds6ZXikNIhebY6Vrk14OuHi2fmtI4j/view"
 maj: "20/06/2022"
-meta_title: "App pour la gestion de voitures électriques pour Izivia par 4SH"
+meta_title: "App pour la gestion de voitures électriques pour EDF business service par 4SH"
 meta_description: "Création par l'agence experte en développement 4SH d'une application sous forme de portail professionnel pour la gestion de parc de voitures électriques."
 source_url: "https://www.4sh.fr/references/izivia-portail.html"
 ---
 ## Entreprise et activité
 
-Izivia, filiale du groupe EDF, est propriétaire et exploitant de l'un des réseaux de bornes de charge rapide présents sur les autoroutes françaises, pour les véhicules électriques. Créée en 1998, elle est aujourd'hui le leader français de la recharge de véhicules électriques.
+EDF business service, filiale du groupe EDF, est propriétaire et exploitant de l'un des réseaux de bornes de charge rapide présents sur les autoroutes françaises, pour les véhicules électriques. Créée en 1998, elle est aujourd'hui le leader français de la recharge de véhicules électriques.
 
-Izivia propose 200 000 bornes de recharge pour environ 766 000 charges en 1 an.
+EDF business service propose 200 000 bornes de recharge pour environ 766 000 charges en 1 an.
 
 ## Nos missions
 
-Depuis 2014, 4SH a collaboré avec Izivia sur :
+Depuis 2014, 4SH a collaboré avec EDF business service sur :
 
 - Conception, développement et validation d'applications web et mobiles (Discover, Design, Develop, Deploy).
-- Accompagnement dans la montée en compétence des collaborateurs Izivia (4SH Learning).
+- Accompagnement dans la montée en compétence des collaborateurs EDF business service (4SH Learning).
 - Déploiement et maintien en conditions opérationnelles de l'application dans une infrastructure K8S (4SH Facility).
 - Audit global d'introspection sur la méthodologie, les outils et les technologies utilisées sur l'ensemble des projets (4SH Digital).
 - Mise en place d'ateliers UX pour élaborer l'ergonomie de la solution avec les utilisateurs finaux (4SH UX).

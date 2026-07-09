@@ -40,7 +40,7 @@
         "texte": "On connaît déjà le vocabulaire, les contraintes et les enjeux de votre secteur.",
         "lien_libelle": "Voir nos réalisations →",
         "url": "/references/",
-        "kpi": { "valeur": "[XXX]<i>+</i>", "label": "projets livrés depuis 2007" }
+        "kpi": { "valeur": "18", "label": "réalisations publiées" }
       },
       "colonnes": [
         {

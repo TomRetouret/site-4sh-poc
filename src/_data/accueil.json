@@ -124,64 +124,48 @@
   "cas_eyebrow": "Nos réalisations",
   "cas_titre": "La preuve par les <em class=\"accent\">projets</em>",
   "cas_sous": "Nos projets de développement sur mesure, racontés avec des résultats, pas des adjectifs.",
-  "cas": {
-    "secteur": "Électromobilité",
-    "client": "IZIVIA · groupe EDF",
-    "visuel_texte": "Supervision et pilotage de bornes de recharge à l'échelle nationale.",
-    "citation": "Lorem ipsum dolor sit amet consequir »",
-    "auteur": "[Prénom Nom], [fonction], Izivia",
-    "chiffres": [
-      {
-        "valeur": "200 000",
-        "label": "bornes supervisées"
-      },
-      {
-        "valeur": "2014",
-        "label": "année de début de collaboration"
-      }
-    ],
-    "cta_label": "Lire le cas client",
-    "cta_url": "/references/izivia-portail/"
-  },
   "realisations": [
     {
-      "secteur": "Électromobilité",
-      "client": "IZIVIA · groupe EDF",
-      "visuel_texte": "Supervision et pilotage de bornes de recharge à l'échelle nationale.",
-      "citation": "[Témoignage client à compléter, 1 à 2 phrases.]",
-      "auteur": "[Prénom Nom], [fonction], Izivia",
+      "secteur": "Mobilité",
+      "client": "EDF business service · filiale du groupe EDF",
+      "image": "https://www.4sh.fr/assets/img/png/references/izivia/ref-izivia-portail.png",
+      "visuel_texte": "Portail professionnel de gestion de parc de véhicules électriques : supervision en temps réel des bornes, abonnements, suivi des consommations et facturation.",
+      "citation": "",
+      "auteur": "",
       "chiffres": [
-        { "valeur": "200 000", "label": "bornes supervisées" },
-        { "valeur": "2014", "label": "année de début de collaboration" }
+        { "valeur": "200 000", "label": "bornes de recharge" },
+        { "valeur": "766 000", "label": "charges par an" }
       ],
       "cta_label": "Lire le cas client",
       "cta_url": "/references/izivia-portail/"
     },
     {
-      "secteur": "[Secteur]",
-      "client": "[Client]",
-      "visuel_texte": "[Une phrase de présentation du projet.]",
-      "citation": "[Témoignage client à compléter.]",
-      "auteur": "[Prénom Nom], [fonction], [Client]",
+      "secteur": "Assurance",
+      "client": "Filhet-Allard",
+      "image": "https://www.4sh.fr/assets/img/png/references/fa/ref-fa-1.png",
+      "visuel_texte": "Refonte graphique et technique de l'extranet Santé et Prévoyance : espaces Assuré, Entreprise et Gestionnaire pour un courtier en assurance.",
+      "citation": "",
+      "auteur": "",
       "chiffres": [
-        { "valeur": "[X] ans", "label": "de collaboration" },
-        { "valeur": "[XX] 000", "label": "dossiers / mois" }
+        { "valeur": "600 000", "label": "assurés sur l'extranet" },
+        { "valeur": "Depuis 2017", "label": "de collaboration" }
       ],
       "cta_label": "Lire le cas client",
-      "cta_url": "/references/"
+      "cta_url": "/references/filhet-allard/"
     },
     {
-      "secteur": "[Secteur]",
-      "client": "[Client]",
-      "visuel_texte": "[Une phrase de présentation du projet.]",
-      "citation": "[Témoignage client à compléter.]",
-      "auteur": "[Prénom Nom], [fonction], [Client]",
+      "secteur": "Presse",
+      "client": "Groupe Sud Ouest",
+      "image": "https://www.4sh.fr/assets/img/png/references/sudouest/ref-sudouest-socoa.png",
+      "visuel_texte": "Outil sur mesure de calcul automatique de la rémunération des pigistes et correspondants, avec moteur d'analyse des articles publiés.",
+      "citation": "",
+      "auteur": "",
       "chiffres": [
-        { "valeur": "[XX]", "label": "applications livrées" },
-        { "valeur": "depuis 20XX", "label": "partenariat" }
+        { "valeur": "300 000", "label": "exemplaires par jour" },
+        { "valeur": "2,2 millions", "label": "de lecteurs quotidiens" }
       ],
       "cta_label": "Lire le cas client",
-      "cta_url": "/references/"
+      "cta_url": "/references/sud-ouest-socoa/"
     }
   ],
   "realisations_cta_label": "Voir toutes nos références",

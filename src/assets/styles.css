@@ -208,6 +208,32 @@ section{padding:110px 0}
 .cas--image .cas-visuel .logo-client{font-size:23px;margin-bottom:0}
 .cas-desc{font-size:16px;line-height:1.6;color:var(--texte-2);margin-bottom:24px}
 
+/* ---------- bloc « derniers articles du blog » (accueil, discret) ---------- */
+.blog-tete{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:30px}
+.blog-tout{font-weight:600;font-size:15px;color:var(--texte);white-space:nowrap}
+.blog-tout:hover{color:var(--rouge)}
+.doodle-fleche-mini{color:var(--rouge);opacity:.75;vertical-align:middle;margin-left:2px}
+.blog-grille{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.blog-carte{display:flex;flex-direction:column;background:var(--carte);border:1px solid var(--bordure);border-radius:var(--radius);overflow:hidden;box-shadow:0 6px 20px rgba(31,41,46,.05);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.blog-carte:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(31,41,46,.11)}
+.blog-carte-lien{display:flex;flex-direction:column;flex:1;color:inherit}
+.blog-img{display:block;aspect-ratio:16/10;overflow:hidden;background:var(--fond)}
+.blog-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s var(--ease)}
+.blog-carte:hover .blog-img img{transform:scale(1.04)}
+.blog-corps{display:flex;flex-direction:column;gap:8px;padding:20px 22px 16px;flex:1}
+.blog-cat{font-size:11.5px;text-transform:uppercase;letter-spacing:1.2px;font-weight:600;color:var(--muted)}
+.blog-titre{font-size:18px;line-height:1.3;font-weight:600;color:var(--sombre);letter-spacing:-.2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.blog-carte:hover .blog-titre{color:var(--rouge)}
+.blog-meta{font-size:13px;color:var(--muted);margin-top:auto}
+.blog-auteur{display:flex;align-items:center;gap:10px;padding:12px 22px;border-top:1px solid var(--bordure)}
+.blog-auteur img{width:30px;height:30px;border-radius:50%;flex:none;object-fit:cover;background:var(--fond)}
+.blog-auteur-txt{display:flex;flex-direction:column;line-height:1.25;font-size:13.5px}
+.blog-auteur-txt a{color:var(--texte);font-weight:600}
+.blog-auteur-txt a:hover{color:var(--rouge)}
+.blog-auteur-txt small{color:var(--muted);font-size:12px}
+@media (max-width:900px){.blog-grille{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.blog-grille{grid-template-columns:1fr}}
+
 /* ---------- méthode : étapes numérotées ---------- */
 .etapes{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--bordure)}
 .etape{background:var(--carte);padding:36px 28px 42px;position:relative;border-right:1px solid var(--bordure);transition:background .25s}
@@ -530,6 +556,12 @@ body{overflow-x:clip}
 .car-dots button:hover{background:var(--muted)}
 .car-dots button[aria-current="true"]{background:var(--rouge);transform:scale(1.25)}
 .car-dots button:focus-visible{outline:2px solid var(--rouge);outline-offset:2px}
+/* barre de contrôle : flèches discrètes précédent/suivant encadrant les bullets */
+.car-ctrl{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:24px}
+.car-ctrl .car-dots{margin-top:0}
+.car-nav{width:34px;height:34px;flex:none;display:inline-flex;align-items:center;justify-content:center;padding:0;border:1px solid var(--bordure);border-radius:50%;background:transparent;color:var(--muted);cursor:pointer;transition:color .2s var(--ease),border-color .2s var(--ease),transform .2s var(--ease)}
+.car-nav:hover{color:var(--rouge);border-color:var(--rouge);transform:translateY(-1px)}
+.car-nav:focus-visible{outline:2px solid var(--rouge);outline-offset:2px}
 
 /* nuage de technos */
 .techno-nuage{display:flex;flex-wrap:wrap;gap:9px;max-width:860px}

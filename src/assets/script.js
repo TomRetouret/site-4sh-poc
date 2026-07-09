@@ -167,9 +167,27 @@
       var b = document.createElement('button');
       b.type = 'button';
       b.setAttribute('aria-label', 'Aller à l\'élément ' + (k + 1));
-      b.addEventListener('click', function () { i = k; go(); relance(); });
+      b.addEventListener('click', function () { i = k; aller(); relance(); });
       dotsWrap.appendChild(b);
     });
+
+    // Barre de contrôle discrète : flèche précédent + bullets + flèche suivant
+    function fleche(dir, label) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'car-nav car-nav--' + dir;
+      b.setAttribute('aria-label', label);
+      b.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="' + (dir === 'prev' ? 'M15 6l-6 6 6 6' : 'M9 6l6 6-6 6') + '"/></svg>';
+      return b;
+    }
+    var avPrev = fleche('prev', 'Éléments précédents');
+    var avNext = fleche('next', 'Éléments suivants');
+    var ctrl = document.createElement('div');
+    ctrl.className = 'car-ctrl';
+    dotsWrap.parentNode.insertBefore(ctrl, dotsWrap);
+    ctrl.appendChild(avPrev); ctrl.appendChild(dotsWrap); ctrl.appendChild(avNext);
+    avPrev.addEventListener('click', function () { precedent(); relance(); });
+    avNext.addEventListener('click', function () { suivant(); relance(); });
 
     var verrou = false;
     function pas() {
@@ -189,6 +207,7 @@
       setTimeout(function () { verrou = false; }, 700);
     }
     function suivant() { i = (i * pas() >= maxScroll()) ? 0 : i + 1; aller(); }
+    function precedent() { i = (i <= 0) ? slides.length - 1 : i - 1; aller(); }
     function jouer() { if (!reduce && !timer) timer = setInterval(suivant, 4800); }
     function stop() { clearInterval(timer); timer = null; }
     function relance() { stop(); jouer(); }

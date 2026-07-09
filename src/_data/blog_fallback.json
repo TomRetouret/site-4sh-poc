@@ -1,0 +1,50 @@
+[
+  {
+    "titre": "Tester vos idées grâce au prototype basse fidélité",
+    "url": "https://blog.4sh.fr/2026/01/13/prototype-basse-fidelite/",
+    "date": "2026-01-13T08:00:00+01:00",
+    "date_affichee": "13 janvier 2026",
+    "duree": "6 min",
+    "image": "https://i0.wp.com/blog.4sh.fr/wp-content/uploads/2026/01/Prototype-basse-fidelite.png?resize=740%2C500&ssl=1",
+    "categorie": "Design",
+    "categorie_slug": "studio",
+    "auteur": {
+      "nom": "Julie Provenzano",
+      "role": "Lead UX Designer",
+      "avatar": "https://secure.gravatar.com/avatar/d975c03a15a65c47727b86611d8025cb37bc57c3a11a7d8f2f0a7bb30306fa2f?s=80&d=identicon&r=g",
+      "url": "https://blog.4sh.fr/author/julieprovenzanof8126177d3/"
+    }
+  },
+  {
+    "titre": "Détecter les points de friction UX",
+    "url": "https://blog.4sh.fr/2026/01/06/points-friction-ux/",
+    "date": "2026-01-06T09:00:00+01:00",
+    "date_affichee": "6 janvier 2026",
+    "duree": "5 min",
+    "image": "https://i0.wp.com/blog.4sh.fr/wp-content/uploads/2025/12/Points-friction-UX.png?resize=740%2C500&ssl=1",
+    "categorie": "Design",
+    "categorie_slug": "studio",
+    "auteur": {
+      "nom": "Julie Provenzano",
+      "role": "Lead UX Designer",
+      "avatar": "https://secure.gravatar.com/avatar/d975c03a15a65c47727b86611d8025cb37bc57c3a11a7d8f2f0a7bb30306fa2f?s=80&d=identicon&r=g",
+      "url": "https://blog.4sh.fr/author/julieprovenzanof8126177d3/"
+    }
+  },
+  {
+    "titre": "Pourquoi les micro-interactions transforment l'expérience utilisateur",
+    "url": "https://blog.4sh.fr/2025/12/10/micro-interactions-experience-utilisateur/",
+    "date": "2025-12-10T08:00:00+01:00",
+    "date_affichee": "10 décembre 2025",
+    "duree": "7 min",
+    "image": "https://i0.wp.com/blog.4sh.fr/wp-content/uploads/2025/12/Gemini_Generated_Image_wpuq7nwpuq7nwpuq.png?resize=740%2C500&ssl=1",
+    "categorie": "Design",
+    "categorie_slug": "studio",
+    "auteur": {
+      "nom": "Vincent Marques",
+      "role": "Designer UX/UI & Intégrateur",
+      "avatar": "https://secure.gravatar.com/avatar/a8f02f0734c3202af396de496544710471d2cdd7837e3db54886307bf286aca7?s=80&d=identicon&r=g",
+      "url": "https://blog.4sh.fr/author/vincentmarques53eea63294/"
+    }
+  }
+]

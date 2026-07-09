@@ -4,7 +4,7 @@
   "hero_surtitre": "Agence de développement logiciel sur mesure",
   "hero_accroche_debut": "Un logiciel qui",
   "hero_accroche_accent": "épouse",
-  "hero_accroche_fin": "vos processus,<br>pas l'inverse.",
+  "hero_accroche_fin": "vos processus<br>.",
   "hero_chapo": "Depuis 2007, 4SH est l'agence de développement de logiciels sur mesure des entreprises qui ne rentrent dans aucune case : on conçoit, on développe et on fait vivre votre logiciel métier, et on reste après la mise en production.",
   "hero_note": "30 minutes avec un expert, gratuit, sans engagement · Bordeaux, Capbreton ou à distance",
   "hero_cta_principal": "Parlons de votre projet",
@@ -124,25 +124,6 @@
   "cas_eyebrow": "Nos réalisations",
   "cas_titre": "La preuve par les <em class=\"accent\">projets</em>",
   "cas_sous": "Nos projets de développement sur mesure, racontés avec des résultats, pas des adjectifs.",
-  "cas": {
-    "secteur": "Électromobilité",
-    "client": "IZIVIA · groupe EDF",
-    "visuel_texte": "Supervision et pilotage de bornes de recharge à l'échelle nationale.",
-    "citation": "Lorem ipsum dolor sit amet consequir »",
-    "auteur": "[Prénom Nom], [fonction], Izivia",
-    "chiffres": [
-      {
-        "valeur": "200 000",
-        "label": "bornes supervisées"
-      },
-      {
-        "valeur": "2014",
-        "label": "année de début de collaboration"
-      }
-    ],
-    "cta_label": "Lire le cas client",
-    "cta_url": "/references/izivia-portail/"
-  },
   "realisations": [
     {
       "secteur": "Électromobilité",
@@ -151,8 +132,14 @@
       "citation": "[Témoignage client à compléter, 1 à 2 phrases.]",
       "auteur": "[Prénom Nom], [fonction], Izivia",
       "chiffres": [
-        { "valeur": "200 000", "label": "bornes supervisées" },
-        { "valeur": "2014", "label": "année de début de collaboration" }
+        {
+          "valeur": "200 000",
+          "label": "bornes supervisées"
+        },
+        {
+          "valeur": "2014",
+          "label": "année de début de collaboration"
+        }
       ],
       "cta_label": "Lire le cas client",
       "cta_url": "/references/izivia-portail/"
@@ -164,8 +151,14 @@
       "citation": "[Témoignage client à compléter.]",
       "auteur": "[Prénom Nom], [fonction], [Client]",
       "chiffres": [
-        { "valeur": "[X] ans", "label": "de collaboration" },
-        { "valeur": "[XX] 000", "label": "dossiers / mois" }
+        {
+          "valeur": "[X] ans",
+          "label": "de collaboration"
+        },
+        {
+          "valeur": "[XX] 000",
+          "label": "dossiers / mois"
+        }
       ],
       "cta_label": "Lire le cas client",
       "cta_url": "/references/"
@@ -177,8 +170,14 @@
       "citation": "[Témoignage client à compléter.]",
       "auteur": "[Prénom Nom], [fonction], [Client]",
       "chiffres": [
-        { "valeur": "[XX]", "label": "applications livrées" },
-        { "valeur": "depuis 20XX", "label": "partenariat" }
+        {
+          "valeur": "[XX]",
+          "label": "applications livrées"
+        },
+        {
+          "valeur": "depuis 20XX",
+          "label": "partenariat"
+        }
       ],
       "cta_label": "Lire le cas client",
       "cta_url": "/references/"
@@ -260,25 +259,63 @@
   "technos_titre": "Les bonnes technos, pour les <em class=\"accent\">bonnes raisons</em>",
   "technos_sous": "On choisit chaque technologie selon votre projet de développement sur mesure, jamais par habitude.",
   "technos": [
-    { "nom": "Java", "url": "/formations/java-fondamental/" },
-    { "nom": "Kotlin", "url": "/formations/kotlin-fondamental/" },
-    { "nom": "Spring", "url": "/formations/spring-rest-jpa/" },
-    { "nom": "Angular", "url": "/formations/angular-fondamental/" },
-    { "nom": "TypeScript", "url": "/formations/ts-fondamental/" },
-    { "nom": "JavaScript", "url": "/formations/javascript/" },
-    { "nom": "Docker", "url": "/formations/docker-fondamental/" },
-    { "nom": "Kubernetes", "url": "/formations/kubernetes-fondamental/" },
-    { "nom": "Terraform", "url": "/formations/terraform/" },
-    { "nom": "Kafka", "url": "/formations/kafka/" },
-    { "nom": "MongoDB", "url": "/formations/mongodb-fondamental/" },
-    { "nom": "SQL", "url": "/formations/sql/" },
-    { "nom": "Git", "url": "/formations/git-fondamental/" },
-    { "nom": "Figma", "url": "/formations/figma-fondamental/" }
+    {
+      "nom": "Java",
+      "url": "/formations/java-fondamental/"
+    },
+    {
+      "nom": "Kotlin",
+      "url": "/formations/kotlin-fondamental/"
+    },
+    {
+      "nom": "Spring",
+      "url": "/formations/spring-rest-jpa/"
+    },
+    {
+      "nom": "Angular",
+      "url": "/formations/angular-fondamental/"
+    },
+    {
+      "nom": "TypeScript",
+      "url": "/formations/ts-fondamental/"
+    },
+    {
+      "nom": "JavaScript",
+      "url": "/formations/javascript/"
+    },
+    {
+      "nom": "Docker",
+      "url": "/formations/docker-fondamental/"
+    },
+    {
+      "nom": "Kubernetes",
+      "url": "/formations/kubernetes-fondamental/"
+    },
+    {
+      "nom": "Terraform",
+      "url": "/formations/terraform/"
+    },
+    {
+      "nom": "Kafka",
+      "url": "/formations/kafka/"
+    },
+    {
+      "nom": "MongoDB",
+      "url": "/formations/mongodb-fondamental/"
+    },
+    {
+      "nom": "SQL",
+      "url": "/formations/sql/"
+    },
+    {
+      "nom": "Git",
+      "url": "/formations/git-fondamental/"
+    },
+    {
+      "nom": "Figma",
+      "url": "/formations/figma-fondamental/"
+    }
   ],
-  "bandeau_cta_titre": "Vous hésitez entre sur mesure et logiciel du marché ?",
-  "bandeau_cta_texte": "C'est la bonne question. En 30 minutes, un expert 4SH vous aide à y voir clair. Et si un outil standard suffit, nous vous le dirons.",
-  "bandeau_cta_label": "Poser la question à un expert",
-  "bandeau_cta_url": "#contact",
   "faq_titre": "Les questions qu'on nous pose souvent",
   "faq_sous": "Le développement d'un logiciel sur mesure soulève des questions. Voici nos réponses avant de nous appeler.",
   "faq": [
@@ -320,5 +357,28 @@
     "TM",
     "+40"
   ],
-  "contact_note": "L'équipe 4SH, celle que vous aurez vraiment au téléphone."
+  "contact_note": "L'équipe 4SH, celle que vous aurez vraiment au téléphone.",
+  "cas": {
+    "secteur": "Électromobilité",
+    "client": "IZIVIA · groupe EDF",
+    "visuel_texte": "Supervision et pilotage de bornes de recharge à l'échelle nationale.",
+    "citation": "Lorem ipsum dolor sit amet consequir »",
+    "auteur": "[Prénom Nom], [fonction], Izivia",
+    "chiffres": [
+      {
+        "valeur": "200 000",
+        "label": "bornes supervisées"
+      },
+      {
+        "valeur": "2014",
+        "label": "année de début de collaboration"
+      }
+    ],
+    "cta_label": "Lire le cas client",
+    "cta_url": "/references/izivia-portail/"
+  },
+  "bandeau_cta_titre": "Vous hésitez entre sur mesure et logiciel du marché ?",
+  "bandeau_cta_texte": "C'est la bonne question. En 30 minutes, un expert 4SH vous aide à y voir clair. Et si un outil standard suffit, nous vous le dirons.",
+  "bandeau_cta_label": "Poser la question à un expert",
+  "bandeau_cta_url": "#contact"
 }

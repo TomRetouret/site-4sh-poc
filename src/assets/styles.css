@@ -54,7 +54,7 @@ header .nav{pointer-events:auto;display:flex;align-items:center;gap:8px;height:7
 .logo span{font-size:9.5px;color:var(--texte-2);letter-spacing:.5px;margin-top:2px}
 .menu{display:flex;align-items:center;gap:2px;flex:1}
 .menu>li{list-style:none;position:relative}
-.menu>li>a{display:block;padding:24px 14px;color:var(--texte);font-weight:500;font-size:15.5px;position:relative}
+.menu>li>a{display:block;padding:10px 16px;border-radius:100px;color:var(--texte);font-weight:500;font-size:15.5px;position:relative;transition:background .18s var(--ease),color .18s}
 .menu>li>a::before{content:"";position:absolute;left:14px;right:100%;bottom:16px;height:2px;background:var(--rouge);transition:right .25s var(--ease)}
 .menu>li:hover>a::before,.menu>li>a.actif::before{right:14px}
 .menu>li:hover>a,.menu>li>a.actif{color:var(--rouge)}
@@ -445,6 +445,17 @@ header .nav{position:relative}
 .menu-secteurs .promo-kpi b i{font-family:var(--serif);font-style:italic;color:#ff5a63;font-weight:600}
 .menu-secteurs .promo-kpi span{display:block;font-size:13px;color:#c4ccd0;margin-top:6px}
 .menu-secteurs .promo-lien{margin-top:16px}
+
+/* ---------- menu « signature » : pastille active, icône inversée, promo enrichie ---------- */
+.menu>li>a::before{display:none}
+.menu>li:hover>a,.menu>li:focus-within>a,.menu>li>a.actif{background:var(--rouge-pale);color:var(--rouge)}
+.menu-services .svc-item:hover .svc-ico{background:var(--rouge);border-color:var(--rouge);color:#fff}
+.menu-services .promo-services em.accent{color:#ff5a63;font-style:italic}
+.menu-services .promo-lien{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--sombre);padding:11px 18px;border-radius:100px;font-size:13.5px;align-self:flex-start;transition:transform .2s var(--ease),color .2s}
+.menu-services .promo-services:hover .promo-lien{color:var(--sombre);transform:translateX(3px)}
+.menu-services .promo-stats{position:relative;z-index:1;display:flex;gap:24px;margin-top:16px}
+.menu-services .promo-stats b{display:block;font-family:var(--serif);font-style:italic;font-weight:600;color:#fff;font-size:20px;line-height:1}
+.menu-services .promo-stats span{display:block;color:#8a969b;font-size:11px;margin-top:4px}
 
 /* --- v5 partagé : sections sombres, profondeur cartes, motion étapes (home + inner) --- */
 .section-sombre{background:var(--sombre);color:#b9c3c8;position:relative;overflow:hidden;padding:96px 0}

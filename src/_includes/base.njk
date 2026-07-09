@@ -51,11 +51,12 @@
           {% if item.promo %}
           <a class="promo-services" href="{{ item.promo.url or '#' }}">
             <div class="promo-txt">
-              <h4>{{ item.promo.titre }}</h4>
+              <h4>{{ item.promo.titre | safe }}</h4>
               <p>{{ item.promo.texte }}</p>
             </div>
             {% if item.promo.kpi %}<div class="promo-kpi"><b>{{ item.promo.kpi.valeur | safe }}</b><span>{{ item.promo.kpi.label }}</span></div>{% endif %}
-            {% if item.promo.lien_libelle %}<span class="promo-lien">{{ item.promo.lien_libelle }}</span>{% endif %}
+            {% if item.promo.stats %}<div class="promo-stats">{% for s in item.promo.stats %}<div><b>{{ s.valeur | safe }}</b><span>{{ s.label }}</span></div>{% endfor %}</div>{% endif %}
+            {% if item.promo.lien_libelle %}<span class="promo-lien">{{ item.promo.lien_libelle }} →</span>{% endif %}
           </a>
           {% endif %}
           {% for col in item.colonnes %}

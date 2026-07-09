@@ -104,7 +104,7 @@
       "compte": "3",
       "suffixe": "",
       "texte": "Agences en France",
-      "note": "Bordeaux · Capbreton · Paris"
+      "note": "Bordeaux (Le Haillan) · Bordeaux centre · Capbreton"
     },
     {
       "valeur": "48h",
@@ -128,16 +128,16 @@
     "secteur": "Électromobilité",
     "client": "IZIVIA · groupe EDF",
     "visuel_texte": "Supervision et pilotage de bornes de recharge à l'échelle nationale.",
-    "citation": "« 4SH a construit la plateforme, puis est resté pour la faire évoluer. C'est cette continuité qui fait la différence. »",
+    "citation": "Lorem ipsum dolor sit amet consequir »",
     "auteur": "[Prénom Nom], [fonction], Izivia",
     "chiffres": [
       {
-        "valeur": "[XX 000]",
+        "valeur": "200 000",
         "label": "bornes supervisées"
       },
       {
-        "valeur": "[X] ans",
-        "label": "de collaboration continue"
+        "valeur": "2014",
+        "label": "année de début de collaboration"
       }
     ],
     "cta_label": "Lire le cas client",

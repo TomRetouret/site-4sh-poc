@@ -1,18 +1,35 @@
 {
   "nom": "4SH",
-  "url": "https://www.4sh.fr",
   "telephone_affiche": "+33 (0)9 63 28 62 73",
   "telephone_lien": "+330963286273",
-  "villes": "Bordeaux · Capbreton · Paris",
+  "villes": "Bordeaux (Le Haillan) · Bordeaux centre · Capbreton",
   "footer_accroche": "Agence de développement logiciel sur mesure depuis 2007.",
   "clients_intro": "Ils nous confient leur métier :",
   "clients": [
-    { "nom": "IZIVIA", "url": "/references/izivia-portail/" },
-    { "nom": "SUD OUEST", "url": "/references/sud-ouest-socoa/" },
-    { "nom": "FILHET-ALLARD", "url": "/references/filhet-allard/" },
-    { "nom": "CIN", "url": "/references/cin/" },
-    { "nom": "ARRG", "url": "/references/arrg/" },
-    { "nom": "BME", "url": "" }
+    {
+      "nom": "IZIVIA",
+      "url": "/references/izivia-portail/"
+    },
+    {
+      "nom": "SUD OUEST",
+      "url": "/references/sud-ouest-socoa/"
+    },
+    {
+      "nom": "FILHET-ALLARD",
+      "url": "/references/filhet-allard/"
+    },
+    {
+      "nom": "CIN",
+      "url": "/references/cin/"
+    },
+    {
+      "nom": "ARRG",
+      "url": "/references/arrg/"
+    },
+    {
+      "nom": "BME",
+      "url": ""
+    }
   ],
   "formulaire": {
     "label_nom": "Votre nom",
@@ -31,39 +48,93 @@
     {
       "titre": "Services",
       "liens": [
-        { "label": "Logiciel métier", "url": "/logiciel-metier/" },
-        { "label": "Application SaaS", "url": "#" },
-        { "label": "Application mobile", "url": "#" },
-        { "label": "Hébergement & maintenance", "url": "#" },
-        { "label": "Audits", "url": "#" }
+        {
+          "label": "Logiciel métier",
+          "url": "/logiciel-metier/"
+        },
+        {
+          "label": "Application SaaS",
+          "url": "#"
+        },
+        {
+          "label": "Application mobile",
+          "url": "#"
+        },
+        {
+          "label": "Hébergement & maintenance",
+          "url": "#"
+        },
+        {
+          "label": "Audits",
+          "url": "#"
+        }
       ]
     },
     {
       "titre": "Formations",
       "liens": [
-        { "label": "Toutes les formations", "url": "/formations/" },
-        { "label": "Develop", "url": "/formations/develop/" },
-        { "label": "Design", "url": "/formations/design/" },
-        { "label": "DevOps", "url": "/formations/devops/" },
-        { "label": "Outils", "url": "/formations/outils/" }
+        {
+          "label": "Toutes les formations",
+          "url": "/formations/"
+        },
+        {
+          "label": "Develop",
+          "url": "/formations/develop/"
+        },
+        {
+          "label": "Design",
+          "url": "/formations/design/"
+        },
+        {
+          "label": "DevOps",
+          "url": "/formations/devops/"
+        },
+        {
+          "label": "Outils",
+          "url": "/formations/outils/"
+        }
       ]
     },
     {
       "titre": "L'agence",
       "liens": [
-        { "label": "Comment se passe un projet", "url": "#" },
-        { "label": "Références", "url": "/references/" },
-        { "label": "L'équipe", "url": "#" },
-        { "label": "Blog", "url": "#" },
-        { "label": "Glossaire", "url": "/glossaire/" },
-        { "label": "Formations", "url": "/formations/" }
+        {
+          "label": "Comment se passe un projet",
+          "url": "#"
+        },
+        {
+          "label": "Références",
+          "url": "/references/"
+        },
+        {
+          "label": "L'équipe",
+          "url": "#"
+        },
+        {
+          "label": "Blog",
+          "url": "#"
+        },
+        {
+          "label": "Glossaire",
+          "url": "/glossaire/"
+        },
+        {
+          "label": "Formations",
+          "url": "/formations/"
+        }
       ]
     }
   ],
   "footer_legal": "© 2007-2026 4SH · Mentions légales · RGPD · Charte RSE",
   "footer_reseaux": [
-    { "label": "LinkedIn", "url": "#" },
-    { "label": "YouTube", "url": "#" },
-    { "label": "X", "url": "#" }
-  ]
+    {
+      "label": "LinkedIn",
+      "url": "#"
+    },
+    {
+      "label": "YouTube",
+      "url": "#"
+    }
+  ],
+  "url": "https://www.4sh.fr"
 }

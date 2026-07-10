@@ -1,7 +1,7 @@
 ---
 titre: "Tests Front End"
 groupe: "tests-front-end"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Develop"
 niveau: "Fondamental"
 chapo: "Assurez la fiabilité de votre application grâce aux tests front end."

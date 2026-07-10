@@ -24,7 +24,7 @@ extraCss: /assets/secteurs.css
       {% for d in defis %}
       <div class="sect-defi">
         <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
-        <p>{{ d | safe }}</p>
+        <p>{{ d | accent | safe }}</p>
       </div>
       {% endfor %}
     </div>
@@ -39,7 +39,7 @@ extraCss: /assets/secteurs.css
     <h2>{{ libelles.secteur.opportunites_titre }}</h2>
     {% if opportunites_intro %}<p class="intro">{{ opportunites_intro }}</p>{% endif %}
     <ul class="sect-liste">
-      {% for o in opportunites %}<li>{{ o | safe }}</li>{% endfor %}
+      {% for o in opportunites %}<li>{{ o | accent | safe }}</li>{% endfor %}
     </ul>
   </div>
 </section>
@@ -54,7 +54,7 @@ extraCss: /assets/secteurs.css
       {% for a in pourquoi %}
       <div class="sect-atout">
         <h3>{{ a.titre }}</h3>
-        {% for p in a.paras %}<p>{{ p | safe }}</p>{% endfor %}
+        {% for p in a.paras %}<p>{{ p | accent | safe }}</p>{% endfor %}
       </div>
       {% endfor %}
     </div>
@@ -91,14 +91,4 @@ extraCss: /assets/secteurs.css
 </section>
 {% endif %}
 
-<section class="sect-cta">
-  <div class="container">
-    <div class="bandeau-cta">
-      <div>
-        <h2>Vous avez un projet en {{ titre | lower }} ?</h2>
-        <p>{{ libelles.secteur.cta_texte }}</p>
-      </div>
-      <a class="btn" href="/#contact">{{ libelles.secteur.cta_bouton }}</a>
-    </div>
-  </div>
-</section>
+{% include "contact-etendu.njk" %}

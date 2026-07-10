@@ -11,7 +11,7 @@ permalink: /formations/
     <div class="hero-grille">
       <div>
         <span class="eyebrow">{{ page_formations.eyebrow }}</span>
-        <h1>{{ page_formations.h1 | safe }}</h1>
+        <h1>{{ page_formations.h1 | accent | safe }}</h1>
         <p class="chapo">{{ page_formations.chapo }}</p>
         <div class="meta-form">
           <span class="note-etoiles"><span class="etoiles">★★★★★</span> {{ page_formations.note }} <small>· {{ page_formations.note_detail }}</small></span>
@@ -32,7 +32,7 @@ permalink: /formations/
 <!-- POURQUOI CHOISIR 4SH LEARNING -->
 <section style="padding:80px 0 0">
   <div class="container">
-    <h2 class="sec-titre">{{ page_formations.pourquoi_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ page_formations.pourquoi_titre | accent | safe }}</h2>
     {% set pourquoi_pictos = [
       '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
       '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
@@ -41,7 +41,7 @@ permalink: /formations/
     <div class="portes" style="margin-top:44px">
       {% for p in page_formations.pourquoi %}
       <div class="porte">
-        <div class="pictos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{{ pourquoi_pictos[loop.index0] | safe }}</svg></div>
+        <div class="pictos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{{ pourquoi_pictos[loop.index0] | accent | safe }}</svg></div>
         <h3>{{ p.titre }}</h3>
         <p>{{ p.texte }}</p>
       </div>
@@ -53,7 +53,7 @@ permalink: /formations/
 <!-- CATALOGUE + RECHERCHE + FILTRES -->
 <section id="catalogue" style="padding-top:80px">
   <div class="container">
-    <h2 class="sec-titre">{{ page_formations.catalogue_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ page_formations.catalogue_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ page_formations.catalogue_sous }}</p>
     {% include "catalogue-grille.njk" %}
   </div>
@@ -62,7 +62,7 @@ permalink: /formations/
 <!-- AGENDA / PROCHAINES SESSIONS -->
 <section id="agenda" style="padding-top:0">
   <div class="container">
-    <h2 class="sec-titre">{{ page_formations.agenda_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ page_formations.agenda_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ page_formations.agenda_sous }}</p>
 
     <div class="agenda">
@@ -93,7 +93,7 @@ permalink: /formations/
     <div class="qualiopi">
       <div class="logo-q"><img src="https://www.4sh.fr/assets/img/png/logo-qualiopi.png" alt="Logo Qualiopi"></div>
       <div>
-        <h2>{{ page_formations.qualiopi_titre | safe }}</h2>
+        <h2>{{ page_formations.qualiopi_titre | accent | safe }}</h2>
         <p>{{ page_formations.qualiopi_texte }}</p>
       </div>
     </div>
@@ -103,7 +103,7 @@ permalink: /formations/
 <!-- TÉMOIGNAGES -->
 <section style="padding-top:0">
   <div class="container">
-    <h2 class="sec-titre">{{ page_formations.temoignages_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ page_formations.temoignages_titre | accent | safe }}</h2>
     <div class="temoins">
       {% for t in page_formations.temoignages %}
       <div class="temoin">

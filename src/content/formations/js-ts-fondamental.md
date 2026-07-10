@@ -1,7 +1,7 @@
 ---
 titre: "JavaScript / TypeScript"
 groupe: "js-ts"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Develop"
 niveau: "Fondamental"
 chapo: "Améliorez vos compétences en JavaScript / TypeScript avec l'aide de nos experts !"

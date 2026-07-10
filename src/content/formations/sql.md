@@ -1,7 +1,7 @@
 ---
 titre: "SQL"
 groupe: "sql"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Develop"
 niveau: "Fondamental"
 chapo: "Apprenez ce langage de communication avec les bases de données."

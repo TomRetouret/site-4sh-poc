@@ -1,7 +1,7 @@
 ---
 titre: "Angular"
 groupe: "angular"
-sous_titre: "- Perfectionnement"
+sous_titre: "Perfectionnement"
 categorie: "Develop"
 niveau: "Avancé"
 chapo: "Formez-vous au framework Angular et créez des applications web dynamiques et complexes."

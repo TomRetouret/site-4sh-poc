@@ -1,0 +1,115 @@
+---
+layout: base.njk
+permalink: /notre-demarche/
+extraCss: /assets/logiciel-metier.css
+---
+{%- set d = notre_demarche -%}
+
+<!-- HERO INTERNE -->
+<div class="hero-interne">
+  <div class="container">
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; L'agence &rsaquo; Notre démarche</nav>
+    <div class="hero-grille">
+      <div>
+        <p class="eyebrow">{{ d.hero_eyebrow }}</p>
+        <h1>{{ d.hero_h1 | accent | safe }}</h1>
+        <p class="chapo" style="font-size:18px;color:var(--texte-2);margin-bottom:26px">{{ d.hero_chapo }}</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="{{ d.hero_cta_principal_url or '#contact' }}">{{ d.hero_cta_principal_label }}</a>
+          <a class="btn btn-ghost" href="{{ d.hero_cta_secondaire_url or '#methode' }}">{{ d.hero_cta_secondaire_label }}</a>
+        </div>
+        <div class="chips">
+          {% for chip in d.hero_chips %}<span>{{ chip }}</span>{% endfor %}
+        </div>
+      </div>
+      <div class="schema-craft" aria-hidden="true">
+        <svg viewBox="0 0 480 270" fill="none" font-family="Asap,sans-serif">
+          <rect x="18" y="26" width="130" height="66" rx="12" stroke="#494849" stroke-width="1.6"/>
+          <text x="83" y="55" text-anchor="middle" fill="#1f292e" font-size="15" font-weight="600">Votre idée</text>
+          <text x="83" y="76" text-anchor="middle" fill="#767676" font-size="12">besoin, objectifs</text>
+          <rect x="178" y="118" width="130" height="66" rx="12" stroke="#494849" stroke-width="1.6"/>
+          <text x="243" y="147" text-anchor="middle" fill="#1f292e" font-size="15" font-weight="600">4D &#38; UX</text>
+          <text x="243" y="168" text-anchor="middle" fill="#767676" font-size="12">conception itérative</text>
+          <rect x="332" y="26" width="130" height="66" rx="12" stroke="#ea2631" stroke-width="1.8"/>
+          <text x="397" y="55" text-anchor="middle" fill="#1f292e" font-size="15" font-weight="600">Mise en production</text>
+          <text x="397" y="76" text-anchor="middle" fill="#767676" font-size="12">livrée, maintenue</text>
+          <path d="M118 96c18 26 34 38 56 46" stroke="#494849" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M164 136l10 7-12 4" stroke="#494849" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M312 146c26-8 44-24 58-46" stroke="#494849" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M362 106l8-8 3 12" stroke="#494849" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="240" y="228" text-anchor="middle" fill="#ea2631" font-size="17" font-family="Fraunces,Georgia,serif" font-style="italic">un cadre commun, du début à la fin</text>
+          <path d="M290 240c10 6 24 6 38-2" stroke="#ea2631" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PREUVE CHIFFRÉE -->
+<section style="padding:0">
+  <div class="chiffres">
+    <div class="container">
+      {% for c in d.chiffres %}
+      <div><b{% if c.compte %} data-compte="{{ c.compte }}"{% if c.suffixe %} data-suffixe="{{ c.suffixe }}"{% endif %}{% endif %}>{{ c.valeur }}</b><span>{{ c.texte }}</span>{% if c.note %}<small>{{ c.note }}</small>{% endif %}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- MÉTHODE 4D -->
+<section id="methode">
+  <div class="container">
+    <p class="eyebrow">{{ d.methode_eyebrow }}</p>
+    <h2 class="sec-titre">{{ d.methode_titre | accent | safe }}</h2>
+    <p class="sec-sous">{{ d.methode_sous }}</p>
+    <div class="etapes">
+      {% for e in d.methode_etapes %}
+      <div class="etape"><span class="num">{{ e.num }}</span><span class="num-label">{{ e.label }}</span><h3>{{ e.titre }}</h3><p>{{ e.texte }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- DÉMARCHE UX -->
+<section style="padding-top:0">
+  <div class="container">
+    <p class="eyebrow">{{ d.ux_eyebrow }}</p>
+    <h2 class="sec-titre">{{ d.ux_titre | accent | safe }}</h2>
+    <p class="sec-sous">{{ d.ux_sous }}</p>
+    <div class="atouts" style="grid-template-columns:repeat(3,1fr)">
+      {% for e in d.ux_etapes %}
+      <div class="atout"><span class="n">{{ loop.index }}</span><h3>{{ e.titre }}</h3><p>{{ e.texte }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- NOS ENGAGEMENTS -->
+<section style="padding-top:0">
+  <div class="container">
+    <p class="eyebrow">{{ d.engagements_eyebrow }}</p>
+    <h2 class="sec-titre">{{ d.engagements_titre | accent | safe }}</h2>
+    <p class="sec-sous">{{ d.engagements_sous }}</p>
+    <div class="atouts" style="grid-template-columns:repeat(4,1fr)">
+      {% for a in d.engagements %}
+      <div class="atout"><span class="n">{{ loop.index }}</span><h3>{{ a.titre }}</h3><p>{{ a.texte }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- NOS DISPOSITIFS -->
+<section style="padding-top:0">
+  <div class="container">
+    <p class="eyebrow">{{ d.dispositifs_eyebrow }}</p>
+    <h2 class="sec-titre">{{ d.dispositifs_titre | accent | safe }}</h2>
+    <p class="sec-sous">{{ d.dispositifs_sous }}</p>
+    <div class="offres-liees">
+      {% for disp in d.dispositifs %}
+      <div class="col-carte"><h3>{{ disp.titre }}</h3><p style="font-size:15px;color:var(--texte-2)">{{ disp.texte }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "contact-etendu.njk" %}

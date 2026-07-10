@@ -1,7 +1,7 @@
 ---
 titre: "JavaScript / TypeScript"
 groupe: "js-ts"
-sous_titre: "- Perfectionnement"
+sous_titre: "Perfectionnement"
 categorie: "Develop"
 niveau: "Avancé"
 chapo: "Améliorez vos compétences en JavaScript / TypeScript avec l'aide de nos experts !"

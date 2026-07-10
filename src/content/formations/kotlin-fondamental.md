@@ -1,7 +1,7 @@
 ---
 titre: "Kotlin"
 groupe: "kotlin"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Develop"
 niveau: "Fondamental"
 chapo: "Apprenez l'utilisation de ce langage de programmation orienté objet."

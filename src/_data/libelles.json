@@ -22,19 +22,28 @@
     "description_titre": "Description de la formation",
     "pour_qui_titre": "Pour qui ?",
     "prerequis_titre": "Prérequis",
-    "objectifs_titre": "Objectifs <em class=\"accent\">pédagogiques</em>",
+    "objectifs_titre": "Objectifs *pédagogiques*",
     "programme_titre": "Programme de la formation",
-    "formateur_titre": "Votre <em class=\"accent\">formateur</em>",
+    "formateur_titre": "Votre *formateur*",
     "faq_titre": "Vos questions sur la formation",
-    "modalites_titre": "Modalités <em class=\"accent\">d'accueil</em>",
+    "modalites_titre": "Modalités *d'accueil*",
     "autres_titre": "Les autres formations",
     "voir_toutes": "Voir toutes les formations",
     "a_partir_de": "à partir de"
   },
   "modalites": [
-    { "titre": "Café offert", "texte": "Accueil autour d'un café à chaque session." },
-    { "titre": "Déjeuner inclus", "texte": "Repas du midi compris dans le tarif de la formation." },
-    { "titre": "Parking", "texte": "Stationnement disponible sur nos sites." }
+    {
+      "titre": "Café offert",
+      "texte": "Accueil autour d'un café à chaque session."
+    },
+    {
+      "titre": "Déjeuner inclus",
+      "texte": "Repas du midi compris dans le tarif de la formation."
+    },
+    {
+      "titre": "Parking",
+      "texte": "Stationnement disponible sur nos sites."
+    }
   ],
   "preinscription": {
     "eyebrow": "Pré-inscription",
@@ -52,7 +61,10 @@
     "vide": "Aucune formation ne correspond à votre recherche. Essayez un autre mot-clé.",
     "cta_voir": "Voir les formations",
     "cta_devis": "Devis sur mesure",
-    "chips": ["Présentiel & distanciel", "Certifié Qualiopi"]
+    "chips": [
+      "Présentiel & distanciel",
+      "Certifié Qualiopi"
+    ]
   },
   "reference": {
     "eyebrow": "Réalisation",

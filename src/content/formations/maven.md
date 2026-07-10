@@ -1,7 +1,7 @@
 ---
 titre: "Maven"
 groupe: "maven"
-sous_titre: "- Les essentiels"
+sous_titre: "Les essentiels"
 categorie: "Outils"
 niveau: "Essentiel"
 chapo: "Optimisez votre construction de projet Java avec cet outil d'aide à la construction."

@@ -1,7 +1,7 @@
 ---
 titre: "HTML / CSS"
 groupe: "html-css"
-sous_titre: "- Les essentiels"
+sous_titre: "Les essentiels"
 categorie: "Develop"
 niveau: "Essentiel"
 chapo: "Apprenez l'utilisation de ces langages qui sont la base de la structure d'une application web."

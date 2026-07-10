@@ -1,7 +1,7 @@
 ---
 titre: "Gradle"
 groupe: "gradle"
-sous_titre: "- Les essentiels"
+sous_titre: "Les essentiels"
 categorie: "Outils"
 niveau: "Essentiel"
 chapo: "Construisez vos projets Java, Kotlin et plus encore avec ce moteur de production."

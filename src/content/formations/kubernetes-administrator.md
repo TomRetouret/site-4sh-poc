@@ -1,7 +1,7 @@
 ---
 titre: "Kubernetes Administrator"
 groupe: "kubernetes-administrator"
-sous_titre: "- Avancé"
+sous_titre: "Avancé"
 categorie: "DevOps"
 niveau: "Avancé"
 chapo: "Découvrez l'orchestration de conteneurs pour vos acteurs cloud."

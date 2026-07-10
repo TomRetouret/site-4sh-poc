@@ -1,7 +1,7 @@
 ---
 titre: "Supervision Prometheus"
 groupe: "supervision-prometheus"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "DevOps"
 niveau: "Fondamental"
 chapo: "Découvrez un ensemble de techniques pour l'analyse, le contrôle et la surveillance des données d'un projet."

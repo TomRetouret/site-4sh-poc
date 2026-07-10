@@ -65,18 +65,8 @@ extraCss: /assets/references.css
 </section>
 {% endif %}
 
-<section style="padding-top:0">
-  <div class="container">
-    <div class="bandeau-cta">
-      <div>
-        <h2>Un projet{% if secteurs and secteurs.length %} en {{ secteurs[0] | lower }}{% endif %} en tête ?</h2>
-        <p>{{ libelles.reference.cta_texte }}</p>
-      </div>
-      <a class="btn" href="/#contact">{{ libelles.reference.cta_bouton }}</a>
-    </div>
-    <div class="centre" style="margin-top:26px"><a class="btn btn-ghost btn-sm" href="/references/">{{ libelles.reference.toutes }}</a></div>
-  </div>
-</section>
+<div class="container"><div class="centre" style="margin:8px 0 40px"><a class="btn btn-ghost btn-sm" href="/references/">{{ libelles.reference.toutes }}</a></div></div>
+{% include "contact-etendu.njk" %}
 
 <script>
 /* Sommaire ancré + scrollspy (généré depuis les H2 du contenu, sans toucher au contenu) */

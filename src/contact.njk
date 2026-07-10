@@ -7,14 +7,14 @@ permalink: /contact/
     <nav class="fil-ariane" aria-label="Fil d'Ariane" style="color:#8b979c;padding-bottom:18px"><a href="/" style="color:#8b979c">Accueil</a> › Contact</nav>
     <div class="contact-grille">
       <div>
-        <h1 class="sec-titre">{{ contact.h1 | safe }}</h1>
+        <h1 class="sec-titre">{{ contact.h1 | accent | safe }}</h1>
         <p class="sec-sous" style="margin-bottom:18px">{{ contact.chapo }}</p>
         <ul class="arguments">
-          {% for a in contact.arguments %}<li>{{ a }}</li>{% endfor %}
+          {% for a in site.contact.arguments %}<li>{{ a }}</li>{% endfor %}
         </ul>
         <div class="contact-coord">
-          <p><b>{{ contact.coord_tel_titre }}</b><br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
-          <p><b>{{ contact.coord_agences_titre }}</b><br>{{ site.villes }}</p>
+          <p><b>{{ site.contact.coord_tel_titre }}</b><br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
+          <p><b>{{ site.contact.coord_agences_titre }}</b><br>{{ site.villes }}</p>
         </div>
       </div>
       {% set avec_tel = true %}

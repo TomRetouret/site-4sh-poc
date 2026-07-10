@@ -1,7 +1,7 @@
 ---
 titre: "Jira Cloud"
 groupe: "jira"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Outils"
 niveau: "Fondamental"
 chapo: "Découvrez tous les secrets de cet outil de ticketing pour votre gestion de projet agile."

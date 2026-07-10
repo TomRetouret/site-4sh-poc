@@ -1,7 +1,7 @@
 ---
 titre: "Git"
 groupe: "git"
-sous_titre: "- Les essentiels"
+sous_titre: "Les essentiels"
 categorie: "Outils"
 niveau: "Essentiel"
 chapo: "Maitrisez ce puissant outil de versionning open-source pour vos projets."

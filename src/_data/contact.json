@@ -1,13 +1,6 @@
 {
   "meta_title": "Contact : parlons de votre projet - 4SH",
   "meta_description": "Un projet de logiciel sur mesure, une formation ou une question ? Parlons-en : 30 minutes avec un expert 4SH, gratuit et sans engagement. Bordeaux, Capbreton, Paris.",
-  "h1": "Parlons de votre <em class=\"accent\">projet</em>",
-  "chapo": "30 minutes avec un expert, gratuit, sans engagement. Vous repartez avec un premier avis honnête, pas un argumentaire.",
-  "arguments": [
-    "Un interlocuteur dédié, de l'analyse des besoins à la maintenance",
-    "Des équipes pluridisciplinaires à Bordeaux, Capbreton et Paris",
-    "Et si le sur mesure ne se justifie pas, nous vous le dirons"
-  ],
-  "coord_tel_titre": "Par téléphone",
-  "coord_agences_titre": "Nos agences"
+  "h1": "Parlons de votre *projet*",
+  "chapo": "30 minutes avec un expert, gratuit, sans engagement. Vous repartez avec un premier avis honnête, pas un argumentaire."
 }

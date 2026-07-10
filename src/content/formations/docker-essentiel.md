@@ -1,7 +1,7 @@
 ---
 titre: "Docker"
 groupe: "docker"
-sous_titre: "- Les essentiels"
+sous_titre: "Les essentiels"
 categorie: "DevOps"
 niveau: "Essentiel"
 chapo: "Packagez et organisez vos applications et leurs dépendances au sein de conteneurs."

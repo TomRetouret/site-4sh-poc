@@ -1,7 +1,7 @@
 ---
 titre: "Kotlin : asynchronicité avec les coroutines"
 groupe: "kotlin-coroutines-async"
-sous_titre: "- Intermédiaire"
+sous_titre: "Intermédiaire"
 categorie: "Develop"
 niveau: "Intermédiaire"
 chapo: "Maîtrisez l'asynchronicité en Kotlin grâce aux coroutines."

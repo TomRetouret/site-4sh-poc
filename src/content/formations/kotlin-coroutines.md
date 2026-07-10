@@ -1,7 +1,7 @@
 ---
 titre: "Kotlin Coroutines"
 groupe: "kotlin-coroutines"
-sous_titre: "- Avancé"
+sous_titre: "Avancé"
 categorie: "Develop"
 niveau: "Avancé"
 chapo: "Maîtrisez les fonctionnalités avancées des Kotlin Coroutines pour écrire un code asynchrone performant et maintenable."

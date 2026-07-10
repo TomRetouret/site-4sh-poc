@@ -11,7 +11,7 @@ extraCss: /assets/logiciel-metier.css
     <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; <a href="#">Développement sur mesure</a> &rsaquo; Logiciel métier</nav>
     <div class="hero-grille">
       <div>
-        <h1>{{ lm.hero_h1 | safe }}</h1>
+        <h1>{{ lm.hero_h1 | accent | safe }}</h1>
         <p class="chapo" style="font-size:18px;color:var(--texte-2);margin-bottom:26px">{{ lm.hero_chapo }}</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="{{ lm.hero_cta_principal_url or '#contact' }}">{{ lm.hero_cta_principal_label }}</a>
@@ -59,9 +59,9 @@ extraCss: /assets/logiciel-metier.css
 <section>
   <div class="container">
     <p class="eyebrow">{{ lm.pourquoi_eyebrow }}</p>
-    <h2 class="sec-titre">{{ lm.pourquoi_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ lm.pourquoi_titre | accent | safe }}</h2>
     <div class="prose">
-      {% for p in lm.pourquoi_paragraphes %}<p>{{ p | safe }}</p>{% endfor %}
+      {% for p in lm.pourquoi_paragraphes %}<p>{{ p | accent | safe }}</p>{% endfor %}
     </div>
   </div>
 </section>
@@ -70,7 +70,7 @@ extraCss: /assets/logiciel-metier.css
 <section style="padding-top:0">
   <div class="container">
     <p class="eyebrow">{{ lm.methode_eyebrow }}</p>
-    <h2 class="sec-titre">{{ lm.methode_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ lm.methode_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ lm.methode_sous }}</p>
     <div class="etapes cinq">
       {% for e in lm.methode_etapes %}
@@ -84,7 +84,7 @@ extraCss: /assets/logiciel-metier.css
 <section class="section-sombre">
   <div class="container">
     <p class="eyebrow">{{ lm.socle_eyebrow }}</p>
-    <h2 class="sec-titre">{{ lm.socle_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ lm.socle_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ lm.socle_sous }}</p>
     <div class="socle">
       {% for s in lm.socle_cartes %}
@@ -98,9 +98,9 @@ extraCss: /assets/logiciel-metier.css
 <section>
   <div class="container">
     <p class="eyebrow">{{ lm.pour_qui_eyebrow }}</p>
-    <h2 class="sec-titre">{{ lm.pour_qui_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ lm.pour_qui_titre | accent | safe }}</h2>
     <div class="prose">
-      {% for p in lm.pour_qui_paragraphes %}<p>{{ p | safe }}</p>{% endfor %}
+      {% for p in lm.pour_qui_paragraphes %}<p>{{ p | accent | safe }}</p>{% endfor %}
     </div>
   </div>
 </section>
@@ -109,7 +109,7 @@ extraCss: /assets/logiciel-metier.css
 <section style="padding-top:0">
   <div class="container">
     <p class="eyebrow">{{ lm.atouts_eyebrow }}</p>
-    <h2 class="sec-titre">{{ lm.atouts_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ lm.atouts_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ lm.atouts_sous }}</p>
     <div class="atouts">
       {% for a in lm.atouts %}
@@ -123,7 +123,7 @@ extraCss: /assets/logiciel-metier.css
 <section style="padding-top:0" id="realisations">
   <div class="container">
     <p class="eyebrow">{{ lm.realisations_eyebrow }}</p>
-    <h2 class="sec-titre">{{ lm.realisations_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ lm.realisations_titre | accent | safe }}</h2>
     {% set v = lm.realisations_vedette %}
     <div class="cas" style="margin-top:24px;margin-bottom:22px">
       <div class="cas-visuel">
@@ -134,7 +134,7 @@ extraCss: /assets/logiciel-metier.css
       <div class="cas-corps">
         {% if v.citation %}<blockquote>{{ v.citation }}</blockquote>{% if v.auteur %}<p class="auteur">{{ v.auteur }}</p>{% endif %}{% endif %}
         <div class="cas-chiffre">
-          {% for ch in v.chiffres %}<div><b>{{ ch.valeur | safe }}</b><span>{{ ch.label }}</span></div>{% endfor %}
+          {% for ch in v.chiffres %}<div><b>{{ ch.valeur | accent | safe }}</b><span>{{ ch.label }}</span></div>{% endfor %}
         </div>
         <a class="btn btn-ghost btn-sm" href="{{ v.cta_url or '#' }}">{{ v.cta_label }}</a>
       </div>
@@ -160,7 +160,7 @@ extraCss: /assets/logiciel-metier.css
 <section style="padding-top:0">
   <div class="container">
     <p class="eyebrow">{{ lm.blog_eyebrow }}</p>
-    <h2 class="sec-titre">{{ lm.blog_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ lm.blog_titre | accent | safe }}</h2>
     <div class="blog-grille">
       {% for a in lm.blog_articles %}
       <article class="blog-carte">
@@ -176,7 +176,7 @@ extraCss: /assets/logiciel-metier.css
 <!-- FAQ -->
 <section style="padding-top:0">
   <div class="container">
-    <h2 class="sec-titre" style="text-align:center">{{ lm.faq_titre | safe }}</h2>
+    <h2 class="sec-titre" style="text-align:center">{{ lm.faq_titre | accent | safe }}</h2>
     <p class="sec-sous" style="margin:0 auto 38px;text-align:center">{{ lm.faq_sous }}</p>
     <div class="faq">
       {% for item in lm.faq %}
@@ -189,22 +189,7 @@ extraCss: /assets/logiciel-metier.css
   </div>
 </section>
 
-<!-- CONTACT FINAL -->
-<section class="contact-final sur-sombre" id="contact">
-  <div class="container">
-    <div class="contact-grille">
-      <div>
-        <h2 class="sec-titre">{{ lm.contact_titre | safe }}</h2>
-        <p class="sec-sous" style="margin-bottom:18px">{{ lm.contact_sous }}</p>
-        <ul class="arguments">
-          {% for a in lm.contact_arguments %}<li>{{ a }}</li>{% endfor %}
-        </ul>
-        <div class="equipe-visages">{% for v in lm.contact_visages %}<span>{{ v }}</span>{% endfor %}</div>
-        <p style="font-size:13.5px;color:#8b979c">{{ lm.contact_note }}</p>
-      </div>
-      {% include "formulaire.njk" %}
-    </div>
-  </div>
-</section>
+<!-- CONTACT FINAL (bloc mutualisé, piloté par Réglages du site) -->
+{% include "contact-etendu.njk" %}
 
 <a class="btn btn-primary sticky-cta" href="#contact">{{ lm.sticky_cta_label }}</a>

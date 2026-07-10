@@ -11,8 +11,8 @@ backend:
   # Authentification "Se connecter avec GitHub" via le Worker Cloudflare sveltia-cms-auth.
   base_url: https://sveltia-cms-auth.tom-retouret.workers.dev
 
-# Confort d'édition : brouillon "Prêt à publier" avant mise en ligne.
-publish_mode: editorial_workflow
+# Note : sur localhost, Sveltia propose automatiquement l'édition locale (dossier du projet).
+# Le workflow éditorial (publish_mode) n'est pas encore supporté par Sveltia : on publie directement.
 
 # Langue de l'interface
 locale: fr
@@ -41,7 +41,7 @@ collections:
     summary: "{{titre}} - {{niveau}} ({{categorie}})"
     sortable_fields: ["titre", "categorie", "groupe"]
     fields:
-      - { label: "Nom (techno)", name: "titre", widget: "string", hint: "Ex. : Angular", required: false }
+      - { label: "Nom (techno)", name: "titre", widget: "string", hint: "Ex. : Angular", required: true }
       - { label: "Groupe (relie les niveaux d'une même techno)", name: "groupe", widget: "string", hint: "Identifiant commun à tous les niveaux, ex. : angular. Sert au regroupement au catalogue et au sélecteur de niveau.", required: false }
       - { label: "Sous-titre", name: "sous_titre", widget: "string", required: false, hint: "Ex. : - Les fondamentaux" }
       - label: "Catégorie"
@@ -53,10 +53,10 @@ collections:
         display_fields: ["nom"]
         hint: "Reliée aux pages catégories existantes (Develop, Design, DevOps, Outils)."
       - { label: "Niveau", name: "niveau", widget: "select", options: ["Essentiel", "Fondamental", "Intermédiaire", "Avancé"], required: false }
-      - { label: "Accroche (chapô)", name: "chapo", widget: "text", required: false }
+      - { label: "Accroche (phrase d'intro)", name: "chapo", widget: "text", required: false }
       - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false }
       - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-      - { label: "Ne pas indexer cette page (noindex)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
       - { label: "Prix", name: "prix", widget: "string", hint: "Ex. : 2200 € HT", required: false }
       - { label: "Durée", name: "duree", widget: "string", required: false, hint: "Ex. : 4 jours (28h00)" }
       - { label: "Nombre de participants", name: "participants", widget: "string", required: false, hint: "Ex. : 1 à 8" }
@@ -108,6 +108,8 @@ collections:
       - label: "Questions fréquentes"
         name: "faq"
         widget: "list"
+        summary: "{{fields.question}}"
+        collapsed: true
         required: false
         fields:
           - { label: "Question", name: "question", widget: "string", required: false }
@@ -129,11 +131,11 @@ collections:
     summary: "{{titre}}"
     sortable_fields: ["ordre", "titre", "client"]
     fields:
-      - { label: "Titre du projet", name: "titre", widget: "string", hint: "Ex. : Izivia - App Mobile", required: false }
+      - { label: "Titre du projet", name: "titre", widget: "string", hint: "Ex. : Izivia - App Mobile", required: true }
       - { label: "Client", name: "client", widget: "string", required: false }
       - { label: "Résumé (carte)", name: "resume", widget: "text", hint: "Phrase de présentation affichée sur la carte et en chapô.", required: false }
       - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int", hint: "Plus petit = affiché en premier." }
-      - { label: "Titre de la fiche (H1)", name: "h1", widget: "string", required: false, hint: "Ex. : L'application mobile" }
+      - { label: "Titre de la fiche (grand titre visible)", name: "h1", widget: "string", required: true, hint: "Ex. : L'application mobile" }
       - { label: "Sous-titre", name: "sous_titre", widget: "text", required: false, hint: "Phrase affichée sous le titre de la fiche." }
       - { label: "Lien fiche PDF", name: "fiche_pdf", widget: "string", required: false, hint: "Lien vers la fiche PDF (Drive...)." }
       - { label: "Dernière mise à jour", name: "maj", widget: "string", required: false, hint: "Ex. : 20/04/2022" }
@@ -164,7 +166,7 @@ collections:
         field: { label: "Expertise", name: "expertise", widget: "string", hint: "Ex. : UX, Data, Studio...", required: false }
       - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
       - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-      - { label: "Ne pas indexer cette page (noindex)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
       - { label: "Lien source (site actuel)", name: "source_url", widget: "string", required: false }
       - label: "Galerie (visuels)"
         name: "galerie"
@@ -189,12 +191,14 @@ collections:
       - { label: "Nom", name: "nom", widget: "select", options: ["Develop", "Design", "DevOps", "Outils"], hint: "Doit correspondre à la catégorie des fiches formation.", required: false }
       - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
       - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-      - { label: "Ne pas indexer cette page (noindex)", name: "noindex", widget: "boolean", required: false, default: false }
-      - { label: "Titre principal (H1)", name: "h1", widget: "string", required: false }
+      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", required: true }
       - { label: "Introduction", name: "intro", widget: "text", required: false }
       - label: "Questions fréquentes"
         name: "faq"
         widget: "list"
+        summary: "{{fields.question}}"
+        collapsed: true
         required: false
         fields:
           - { label: "Question", name: "question", widget: "string", required: false }
@@ -217,12 +221,12 @@ collections:
     sortable_fields: ["ordre", "titre"]
     fields:
       - { label: "Nom du secteur", name: "titre", widget: "string", required: false }
-      - { label: "Titre (H1)", name: "h1", widget: "string", required: false }
+      - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", required: true }
       - { label: "Accroche", name: "accroche", widget: "text", required: false }
       - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int" }
       - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
       - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-      - { label: "Ne pas indexer cette page (noindex)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
       - { label: "Introduction des défis", name: "defis_intro", widget: "text", required: false }
       - label: "Défis du métier"
         name: "defis"
@@ -281,13 +285,13 @@ collections:
     fields:
       - { label: "Titre", name: "titre", widget: "string", required: false }
       - { label: "Catégorie", name: "categorie", widget: "select", options: ["Client", "Solution"], required: false }
-      - { label: "Titre (H1)", name: "h1", widget: "string", required: false }
+      - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", required: true }
       - { label: "Accroche", name: "chapo", widget: "text", required: false }
       - { label: "Logo produit", name: "logo", widget: "image", required: false, choose_url: true }
       - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int" }
       - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
       - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-      - { label: "Ne pas indexer cette page (noindex)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
       - { label: "Libellé du bouton", name: "cta_label", widget: "string", required: false }
       - { label: "Lien du bouton", name: "cta_url", widget: "string", required: false }
       - { label: "Titre du bandeau final", name: "cta_titre", widget: "string", required: false }
@@ -295,6 +299,8 @@ collections:
       - label: "Chiffres clés"
         name: "chiffres"
         widget: "list"
+        summary: "{{fields.valeur}} · {{fields.texte}}"
+        collapsed: true
         required: false
         fields:
           - { label: "Chiffre", name: "chiffre", widget: "string", required: false }
@@ -312,6 +318,8 @@ collections:
       - label: "Questions fréquentes"
         name: "faq"
         widget: "list"
+        summary: "{{fields.question}}"
+        collapsed: true
         required: false
         fields:
           - { label: "Question", name: "question", widget: "string", required: false }
@@ -335,6 +343,61 @@ collections:
     fields:
       - { label: "Terme", name: "terme", widget: "string", hint: "Le classement A-Z est automatique d'après le terme.", required: false }
       - { label: "Définition", name: "definition", widget: "text", hint: "Maillage interne : insérez un lien en plein texte avec cette syntaxe : <a href='/formations/angular-fondamental/'>Angular</a>. Mettez le lien sur un mot-clé de la phrase, vers une page pertinente du site.", required: false }
+
+  # -----------------------------------------------------------------------
+  # 5 bis) TECHNOLOGIES  (fiches sous « Expertises techniques »)
+  # -----------------------------------------------------------------------
+  - name: "technologies"
+    label: "Technologies"
+    label_singular: "Technologie"
+    folder: "src/content/technologies"
+    preview_path: "expertises-techniques/{{slug}}/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{nom}}"
+    sortable_fields: ["ordre", "nom"]
+    fields:
+      - { label: "Nom", name: "nom", widget: "string", hint: "Ex. : Java", required: true }
+      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int", hint: "Plus petit = affiché en premier sur la page mère." }
+      - { label: "Famille d'offre (code couleur)", name: "famille", widget: "select", options: ["build", "run", "formation"], default: "build", hint: "build = rouge (dev), run = cyan (infra), formation = violet.", required: false }
+      - { label: "Logo (URL ou image)", name: "logo", widget: "image", required: false, choose_url: true }
+      - { label: "Accroche courte (carte de la page mère)", name: "accroche_courte", widget: "text", required: false }
+      - { label: "Titre (H1)", name: "h1", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+      - { label: "Introduction (hero)", name: "intro", widget: "text", required: false }
+      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Pourquoi · titre", name: "pourquoi_titre", widget: "string", hint: "Pour mettre un mot en avant, encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+      - { label: "Pourquoi · sous-titre", name: "pourquoi_intro", widget: "text", required: false }
+      - label: "Atouts (numérotés automatiquement)"
+        name: "atouts"
+        widget: "list"
+        summary: "{{fields.titre}}"
+        collapsed: true
+        fields:
+          - { label: "Titre", name: "titre", widget: "string", required: false }
+          - { label: "Texte", name: "texte", widget: "text", required: false }
+      - label: "Références clients"
+        name: "references"
+        widget: "list"
+        summary: "{{fields.titre}}"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Titre", name: "titre", widget: "string", required: false }
+          - { label: "Lien (optionnel)", name: "lien", widget: "string", required: false }
+          - { label: "Texte", name: "texte", widget: "text", required: false }
+      - label: "Formations liées"
+        name: "formations"
+        widget: "list"
+        summary: "{{fields.titre}}"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Titre", name: "titre", widget: "string", required: false }
+          - { label: "Lien", name: "url", widget: "string", required: false }
+      - { label: "Communauté & écosystème", name: "body", widget: "markdown", hint: "Texte affiché dans la section sombre « Communauté et écosystème ».", required: false }
 
   # -----------------------------------------------------------------------
   # 6) PAGES  (contenus éditables des pages existantes)
@@ -368,11 +431,13 @@ collections:
           - { label: "Hero · badge (note)", name: "hero_visuel_badge_note", widget: "string", required: false }
 
           - { label: "Portes · sur-titre", name: "portes_eyebrow", widget: "string", required: false }
-          - { label: "Portes · titre", name: "portes_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">).", required: false }
+          - { label: "Portes · titre", name: "portes_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - { label: "Portes · sous-titre", name: "portes_sous", widget: "text", required: false }
           - label: "Portes d'entrée (3 blocs)"
             name: "portes"
             widget: "list"
+            summary: "{{fields.titre}}"
+            collapsed: true
             hint: "Les pictogrammes restent fixes selon la position."
             fields:
               - { label: "Titre", name: "titre", widget: "string", required: false }
@@ -389,6 +454,8 @@ collections:
           - label: "Bandeau chiffres"
             name: "chiffres"
             widget: "list"
+            summary: "{{fields.valeur}} · {{fields.texte}}"
+            collapsed: true
             fields:
               - { label: "Valeur affichée", name: "valeur", widget: "string", hint: "Ex. : 2007, 48h, 100%", required: false }
               - { label: "Valeur à animer (nombre)", name: "compte", widget: "string", required: false, hint: "Optionnel. Nombre pour l'animation de comptage, ex. : 48. Laisser vide pour un affichage figé (ex. 2007)." }
@@ -396,12 +463,42 @@ collections:
               - { label: "Texte", name: "texte", widget: "string", required: false }
               - { label: "Note (petit texte)", name: "note", widget: "string", required: false }
 
+          - { label: "Secteurs · sur-titre", name: "secteurs_eyebrow", widget: "string", required: false }
+          - { label: "Secteurs · titre", name: "secteurs_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - { label: "Secteurs · sous-titre", name: "secteurs_sous", widget: "text", required: false }
+          - label: "Secteurs (cartes)"
+            name: "secteurs"
+            widget: "list"
+            summary: "{{fields.titre}}"
+            collapsed: true
+            fields:
+              - { label: "Titre", name: "titre", widget: "string", required: false }
+              - { label: "Texte", name: "texte", widget: "text", required: false }
+              - { label: "Libellé du lien", name: "lien_libelle", widget: "string", required: false }
+              - { label: "Lien", name: "url", widget: "string", required: false }
+
+          - { label: "Méthode · sur-titre", name: "methode_eyebrow", widget: "string", required: false }
+          - { label: "Méthode · titre", name: "methode_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - { label: "Méthode · sous-titre", name: "methode_sous", widget: "text", required: false }
+          - label: "Méthode · étapes"
+            name: "methode_etapes"
+            widget: "list"
+            summary: "{{fields.num}} · {{fields.titre}}"
+            collapsed: true
+            fields:
+              - { label: "Numéro", name: "num", widget: "string", required: false }
+              - { label: "Libellé (phase)", name: "label", widget: "string", required: false }
+              - { label: "Titre", name: "titre", widget: "string", required: false }
+              - { label: "Texte", name: "texte", widget: "text", required: false }
+
           - { label: "Réalisations · sur-titre", name: "cas_eyebrow", widget: "string", required: false }
-          - { label: "Réalisations · titre", name: "cas_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">).", required: false }
+          - { label: "Réalisations · titre", name: "cas_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - { label: "Réalisations · sous-titre", name: "cas_sous", widget: "text", required: false }
           - label: "Réalisations (carrousel de cas)"
             name: "realisations"
             widget: "list"
+            summary: "{{fields.client}}"
+            collapsed: true
             hint: "Chaque cas défile dans le carrousel. Reprend la carte projet (chiffres + avis)."
             fields:
               - { label: "Secteur", name: "secteur", widget: "string", required: false }
@@ -413,6 +510,8 @@ collections:
               - label: "Chiffres du projet"
                 name: "chiffres"
                 widget: "list"
+                summary: "{{fields.valeur}} · {{fields.texte}}"
+                collapsed: true
                 required: false
                 fields:
                   - { label: "Valeur", name: "valeur", widget: "string", required: false }
@@ -422,36 +521,14 @@ collections:
           - { label: "Réalisations · bouton (libellé)", name: "realisations_cta_label", widget: "string", required: false }
           - { label: "Réalisations · bouton (lien)", name: "realisations_cta_url", widget: "string", required: false }
 
-          - { label: "Méthode · sur-titre", name: "methode_eyebrow", widget: "string", required: false }
-          - { label: "Méthode · titre", name: "methode_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">).", required: false }
-          - { label: "Méthode · sous-titre", name: "methode_sous", widget: "text", required: false }
-          - label: "Méthode · étapes"
-            name: "methode_etapes"
-            widget: "list"
-            fields:
-              - { label: "Numéro", name: "num", widget: "string", required: false }
-              - { label: "Libellé (phase)", name: "label", widget: "string", required: false }
-              - { label: "Titre", name: "titre", widget: "string", required: false }
-              - { label: "Texte", name: "texte", widget: "text", required: false }
-
-          - { label: "Secteurs · sur-titre", name: "secteurs_eyebrow", widget: "string", required: false }
-          - { label: "Secteurs · titre", name: "secteurs_titre", widget: "string", hint: "HTML autorisé.", required: false }
-          - { label: "Secteurs · sous-titre", name: "secteurs_sous", widget: "text", required: false }
-          - label: "Secteurs (cartes)"
-            name: "secteurs"
-            widget: "list"
-            fields:
-              - { label: "Titre", name: "titre", widget: "string", required: false }
-              - { label: "Texte", name: "texte", widget: "text", required: false }
-              - { label: "Libellé du lien", name: "lien_libelle", widget: "string", required: false }
-              - { label: "Lien", name: "url", widget: "string", required: false }
-
           - { label: "Technos · sur-titre", name: "technos_eyebrow", widget: "string", required: false }
-          - { label: "Technos · titre", name: "technos_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">).", required: false }
+          - { label: "Technos · titre", name: "technos_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - { label: "Technos · sous-titre", name: "technos_sous", widget: "text", required: false }
           - label: "Technos (nuage de mots)"
             name: "technos"
             widget: "list"
+            summary: "{{fields.nom}}"
+            collapsed: true
             hint: "Chaque techno est un lien cliquable (maillage interne)."
             fields:
               - { label: "Nom", name: "nom", widget: "string", required: false }
@@ -462,26 +539,17 @@ collections:
           - label: "Questions fréquentes"
             name: "faq"
             widget: "list"
+            summary: "{{fields.question}}"
+            collapsed: true
             fields:
               - { label: "Question", name: "question", widget: "string", required: false }
               - { label: "Réponse", name: "reponse", widget: "text", required: false }
 
           - { label: "Équipe · sur-titre", name: "equipe_eyebrow", widget: "string", required: false }
-          - { label: "Équipe · titre", name: "equipe_titre", widget: "string", hint: "Le mot accentué peut être encadré par <em class=\"accent\">...</em>.", required: false }
+          - { label: "Équipe · titre", name: "equipe_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - { label: "Équipe · texte", name: "equipe_texte", widget: "text", required: false }
           - { label: "Équipe · photo", name: "equipe_photo", widget: "image", required: false, choose_url: true, hint: "Photo de groupe affichée en bas de l'accueil." }
-
-          - { label: "Contact · titre", name: "contact_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">).", required: false }
-          - { label: "Contact · sous-titre", name: "contact_sous", widget: "text", required: false }
-          - label: "Contact · arguments"
-            name: "contact_arguments"
-            widget: "list"
-            field: { label: "Argument", name: "item", widget: "string", required: false }
-          - label: "Contact · pastilles visages"
-            name: "contact_visages"
-            widget: "list"
-            field: { label: "Initiales", name: "item", widget: "string", required: false }
-          - { label: "Contact · note", name: "contact_note", widget: "string", required: false }
+          # Le bloc de contact en bas de page est désormais commun à tout le site : voir « Réglages du site » > Bloc contact.
 
       - name: "page_formations"
         label: "Formations (page mère)"
@@ -491,7 +559,7 @@ collections:
           - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
           - { label: "Sur-titre", name: "eyebrow", widget: "string", required: false }
-          - { label: "Titre principal (H1)", name: "h1", widget: "string", hint: "Le mot accentué peut être encadré par <em class=\"accent\">...</em>.", required: false }
+          - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: true }
           - { label: "Paragraphe d'introduction", name: "chapo", widget: "text", required: false }
           - { label: "Note", name: "note", widget: "string", hint: "Ex. : 4,71 / 5", required: false }
           - { label: "Détail de la note", name: "note_detail", widget: "string", hint: "Ex. : 324 participant·e·s", required: false }
@@ -499,13 +567,13 @@ collections:
           - { label: "Hero · bouton principal (lien)", name: "hero_cta_principal_url", widget: "string", required: false }
           - { label: "Hero · bouton secondaire (libellé)", name: "hero_cta_secondaire_label", widget: "string", required: false }
           - { label: "Hero · bouton secondaire (lien)", name: "hero_cta_secondaire_url", widget: "string", required: false }
-          - label: "Hero · puces (chips)"
+          - label: "Hero · étiquettes (petits mots-clés)"
             name: "hero_chips"
             widget: "list"
             field: { label: "Puce", name: "item", widget: "string", required: false }
-          - { label: "Catalogue · titre", name: "catalogue_titre", widget: "string", hint: "HTML autorisé.", required: false }
+          - { label: "Catalogue · titre", name: "catalogue_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - { label: "Catalogue · sous-titre", name: "catalogue_sous", widget: "text", required: false }
-          - { label: "Agenda · titre", name: "agenda_titre", widget: "string", hint: "HTML autorisé.", required: false }
+          - { label: "Agenda · titre", name: "agenda_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - { label: "Agenda · sous-titre", name: "agenda_sous", widget: "text", required: false }
           - { label: "Agenda · libellé du bouton", name: "agenda_cta_label", widget: "string", required: false }
           - { label: "Agenda · lien du bouton", name: "agenda_cta_url", widget: "string", required: false }
@@ -527,7 +595,7 @@ collections:
                   - { label: "Lieu", name: "lieu", widget: "string", required: false }
                   - { label: "Modalité", name: "modalite", widget: "string", required: false }
                   - { label: "Lien d'inscription", name: "url", widget: "string", required: false }
-          - { label: "Témoignages · titre", name: "temoignages_titre", widget: "string", hint: "HTML autorisé.", required: false }
+          - { label: "Témoignages · titre", name: "temoignages_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - label: "Témoignages"
             name: "temoignages"
             widget: "list"
@@ -536,14 +604,14 @@ collections:
               - { label: "Initiales (pastille)", name: "initiales", widget: "string", required: false }
               - { label: "Nom", name: "nom", widget: "string", required: false }
               - { label: "Détail (société, formation)", name: "detail", widget: "string", required: false }
-          - { label: "Titre section Pourquoi", name: "pourquoi_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">).", required: false }
+          - { label: "Titre section Pourquoi", name: "pourquoi_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - label: "Pourquoi choisir 4SH Learning"
             name: "pourquoi"
             widget: "list"
             fields:
               - { label: "Titre", name: "titre", widget: "string", required: false }
               - { label: "Texte", name: "texte", widget: "text", required: false }
-          - { label: "Titre bloc Qualiopi", name: "qualiopi_titre", widget: "string", hint: "HTML autorisé (<em class=\"accent\">).", required: false }
+          - { label: "Titre bloc Qualiopi", name: "qualiopi_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - { label: "Texte bloc Qualiopi", name: "qualiopi_texte", widget: "text", required: false }
 
       - name: "page_references"
@@ -554,7 +622,7 @@ collections:
           - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
           - { label: "Sur-titre", name: "eyebrow", widget: "string", required: false }
-          - { label: "Titre principal (H1)", name: "h1", widget: "string", hint: "HTML autorisé (<em class=\"accent\">).", required: false }
+          - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: true }
           - { label: "Paragraphe d'introduction", name: "chapo", widget: "text", required: false }
 
       - name: "page_glossaire"
@@ -565,10 +633,34 @@ collections:
           - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
           - { label: "Sur-titre", name: "eyebrow", widget: "string", required: false }
-          - { label: "Titre principal (H1)", name: "h1", widget: "string", required: false }
+          - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", required: true }
           - { label: "Paragraphe d'introduction", name: "chapo", widget: "text", required: false }
           - { label: "Bandeau final · titre", name: "cta_titre", widget: "string", required: false }
           - { label: "Bandeau final · texte", name: "cta_texte", widget: "text", required: false }
+          - { label: "Bandeau final · libellé du bouton", name: "cta_label", widget: "string", required: false }
+          - { label: "Bandeau final · lien du bouton", name: "cta_url", widget: "string", required: false }
+
+      - name: "page_technologies"
+        label: "Expertises techniques (page mère)"
+        file: "src/_data/page_technologies.json"
+        preview_path: "expertises-techniques/"
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+          - { label: "Sur-titre", name: "hero_eyebrow", widget: "string", required: false }
+          - { label: "Titre principal (grand titre visible)", name: "hero_titre", widget: "string", hint: "Pour mettre un mot en avant, encadrez-le d'astérisques. Ex. : votre *performance*", required: false }
+          - { label: "Introduction", name: "hero_intro", widget: "text", required: false }
+          - { label: "Technos phares · titre", name: "phares_titre", widget: "string", hint: "Les cartes phares reprennent automatiquement les fiches Technologies (par ordre).", required: false }
+          - { label: "Autres technos · intro", name: "autres_intro", widget: "text", required: false }
+          - label: "Autres technologies (logos)"
+            name: "autres"
+            widget: "list"
+            summary: "{{fields.nom}}"
+            collapsed: true
+            fields:
+              - { label: "Nom", name: "nom", widget: "string", required: false }
+              - { label: "Logo (URL ou image)", name: "logo", widget: "image", required: false, choose_url: true }
+          - { label: "Bandeau final · titre", name: "cta_titre", widget: "string", required: false }
           - { label: "Bandeau final · libellé du bouton", name: "cta_label", widget: "string", required: false }
           - { label: "Bandeau final · lien du bouton", name: "cta_url", widget: "string", required: false }
 
@@ -579,19 +671,21 @@ collections:
         fields:
           - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-          - { label: "Hero · titre (H1)", name: "hero_h1", widget: "string", hint: "HTML autorisé (<em class=\"accent\">).", required: false }
+          - { label: "Hero · titre (H1)", name: "hero_h1", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: true }
           - { label: "Hero · accroche", name: "hero_chapo", widget: "text", required: false }
           - { label: "Hero · bouton principal (libellé)", name: "hero_cta_principal_label", widget: "string", required: false }
           - { label: "Hero · bouton principal (lien)", name: "hero_cta_principal_url", widget: "string", required: false }
           - { label: "Hero · bouton secondaire (libellé)", name: "hero_cta_secondaire_label", widget: "string", required: false }
           - { label: "Hero · bouton secondaire (lien)", name: "hero_cta_secondaire_url", widget: "string", required: false }
-          - label: "Hero · puces (chips)"
+          - label: "Hero · étiquettes (petits mots-clés)"
             name: "hero_chips"
             widget: "list"
             field: { label: "Puce", name: "item", widget: "string", required: false }
           - label: "Bandeau chiffres"
             name: "chiffres"
             widget: "list"
+            summary: "{{fields.valeur}} · {{fields.texte}}"
+            collapsed: true
             fields:
               - { label: "Valeur affichée", name: "valeur", widget: "string", required: false }
               - { label: "Valeur à animer (nombre)", name: "compte", widget: "string", required: false }
@@ -599,50 +693,56 @@ collections:
               - { label: "Texte", name: "texte", widget: "string", required: false }
               - { label: "Note", name: "note", widget: "string", required: false }
           - { label: "Pourquoi · sur-titre", name: "pourquoi_eyebrow", widget: "string", required: false }
-          - { label: "Pourquoi · titre", name: "pourquoi_titre", widget: "string", hint: "HTML autorisé.", required: false }
+          - { label: "Pourquoi · titre", name: "pourquoi_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - label: "Pourquoi · paragraphes"
             name: "pourquoi_paragraphes"
             widget: "list"
             field: { label: "Paragraphe", name: "item", widget: "text", hint: "HTML autorisé (<strong>, <a>).", required: false }
           - { label: "Méthode · sur-titre", name: "methode_eyebrow", widget: "string", required: false }
-          - { label: "Méthode · titre", name: "methode_titre", widget: "string", hint: "HTML autorisé.", required: false }
+          - { label: "Méthode · titre", name: "methode_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - { label: "Méthode · sous-titre", name: "methode_sous", widget: "text", required: false }
           - label: "Méthode · étapes"
             name: "methode_etapes"
             widget: "list"
+            summary: "{{fields.num}} · {{fields.titre}}"
+            collapsed: true
             fields:
               - { label: "Numéro", name: "num", widget: "string", required: false }
               - { label: "Libellé (phase)", name: "label", widget: "string", required: false }
               - { label: "Titre", name: "titre", widget: "string", required: false }
               - { label: "Texte", name: "texte", widget: "text", required: false }
-          - { label: "Stack · sur-titre", name: "socle_eyebrow", widget: "string", required: false }
-          - { label: "Stack · titre", name: "socle_titre", widget: "string", hint: "HTML autorisé.", required: false }
-          - { label: "Stack · sous-titre", name: "socle_sous", widget: "text", required: false }
-          - label: "Stack · cartes technologies"
+          - { label: "Technologies · sur-titre", name: "socle_eyebrow", widget: "string", required: false }
+          - { label: "Technologies · titre", name: "socle_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - { label: "Technologies · sous-titre", name: "socle_sous", widget: "text", required: false }
+          - label: "Technologies · cartes"
             name: "socle_cartes"
             widget: "list"
+            summary: "{{fields.nom}}"
+            collapsed: true
             fields:
               - { label: "Logo (URL ou image)", name: "logo", widget: "image", required: false, choose_url: true }
               - { label: "Nom", name: "nom", widget: "string", required: false }
               - { label: "Libellé du lien", name: "lien_label", widget: "string", required: false }
               - { label: "Lien", name: "lien_url", widget: "string", required: false }
           - { label: "Pour qui · sur-titre", name: "pour_qui_eyebrow", widget: "string", required: false }
-          - { label: "Pour qui · titre", name: "pour_qui_titre", widget: "string", hint: "HTML autorisé.", required: false }
+          - { label: "Pour qui · titre", name: "pour_qui_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - label: "Pour qui · paragraphes"
             name: "pour_qui_paragraphes"
             widget: "list"
-            field: { label: "Paragraphe", name: "item", widget: "text", hint: "HTML autorisé.", required: false }
+            field: { label: "Paragraphe", name: "item", widget: "text", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - { label: "Atouts · sur-titre", name: "atouts_eyebrow", widget: "string", required: false }
-          - { label: "Atouts · titre", name: "atouts_titre", widget: "string", hint: "HTML autorisé.", required: false }
+          - { label: "Atouts · titre", name: "atouts_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - { label: "Atouts · sous-titre", name: "atouts_sous", widget: "text", required: false }
           - label: "Atouts (liste)"
             name: "atouts"
             widget: "list"
+            summary: "{{fields.titre}}"
+            collapsed: true
             fields:
               - { label: "Titre", name: "titre", widget: "string", required: false }
               - { label: "Texte", name: "texte", widget: "text", required: false }
           - { label: "Réalisations · sur-titre", name: "realisations_eyebrow", widget: "string", required: false }
-          - { label: "Réalisations · titre", name: "realisations_titre", widget: "string", hint: "HTML autorisé.", required: false }
+          - { label: "Réalisations · titre", name: "realisations_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - label: "Réalisation vedette"
             name: "realisations_vedette"
             widget: "object"
@@ -655,6 +755,8 @@ collections:
               - label: "Chiffres"
                 name: "chiffres"
                 widget: "list"
+                summary: "{{fields.valeur}} · {{fields.texte}}"
+                collapsed: true
                 fields:
                   - { label: "Valeur", name: "valeur", widget: "string", required: false }
                   - { label: "Libellé", name: "label", widget: "string", required: false }
@@ -663,6 +765,8 @@ collections:
           - label: "Réalisations · autres cartes"
             name: "realisations_cartes"
             widget: "list"
+            summary: "{{fields.titre}}"
+            collapsed: true
             fields:
               - { label: "Secteur", name: "secteur", widget: "string", required: false }
               - { label: "Titre", name: "titre", widget: "string", required: false }
@@ -674,10 +778,12 @@ collections:
             widget: "list"
             field: { label: "Client", name: "item", widget: "string", required: false }
           - { label: "Blog · sur-titre", name: "blog_eyebrow", widget: "string", required: false }
-          - { label: "Blog · titre", name: "blog_titre", widget: "string", hint: "HTML autorisé.", required: false }
+          - { label: "Blog · titre", name: "blog_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - label: "Blog · articles"
             name: "blog_articles"
             widget: "list"
+            summary: "{{fields.titre}}"
+            collapsed: true
             fields:
               - { label: "Étiquette", name: "tag", widget: "string", required: false }
               - { label: "Date", name: "date", widget: "string", required: false }
@@ -685,26 +791,176 @@ collections:
               - { label: "Titre", name: "titre", widget: "string", required: false }
               - { label: "Lien", name: "url", widget: "string", required: false }
               - { label: "Auteur", name: "auteur", widget: "string", required: false }
-          - { label: "FAQ · titre", name: "faq_titre", widget: "string", hint: "HTML autorisé.", required: false }
+          - { label: "FAQ · titre", name: "faq_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
           - { label: "FAQ · sous-titre", name: "faq_sous", widget: "text", required: false }
           - label: "Questions fréquentes"
             name: "faq"
             widget: "list"
+            summary: "{{fields.question}}"
+            collapsed: true
             fields:
               - { label: "Question", name: "question", widget: "string", required: false }
               - { label: "Réponse", name: "reponse", widget: "text", required: false }
-          - { label: "Contact · titre", name: "contact_titre", widget: "string", hint: "HTML autorisé.", required: false }
-          - { label: "Contact · sous-titre", name: "contact_sous", widget: "text", required: false }
-          - label: "Contact · arguments"
-            name: "contact_arguments"
-            widget: "list"
-            field: { label: "Argument", name: "item", widget: "string", required: false }
-          - label: "Contact · pastilles visages"
-            name: "contact_visages"
-            widget: "list"
-            field: { label: "Initiales", name: "item", widget: "string", required: false }
-          - { label: "Contact · note", name: "contact_note", widget: "string", required: false }
+          # Le bloc de contact en bas de page est commun à tout le site : voir « Réglages du site » > Bloc contact.
           - { label: "Bouton flottant (libellé)", name: "sticky_cta_label", widget: "string", required: false }
+
+      - name: "notre_demarche"
+        label: "Page Notre démarche"
+        file: "src/_data/notre_demarche.json"
+        preview_path: "notre-demarche/"
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+          - { label: "Hero · sur-titre", name: "hero_eyebrow", widget: "string", required: false }
+          - { label: "Hero · titre (H1)", name: "hero_h1", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: true }
+          - { label: "Hero · accroche", name: "hero_chapo", widget: "text", required: false }
+          - { label: "Hero · bouton principal (libellé)", name: "hero_cta_principal_label", widget: "string", required: false }
+          - { label: "Hero · bouton principal (lien)", name: "hero_cta_principal_url", widget: "string", required: false }
+          - { label: "Hero · bouton secondaire (libellé)", name: "hero_cta_secondaire_label", widget: "string", required: false }
+          - { label: "Hero · bouton secondaire (lien)", name: "hero_cta_secondaire_url", widget: "string", required: false }
+          - label: "Hero · étiquettes (petits mots-clés)"
+            name: "hero_chips"
+            widget: "list"
+            field: { label: "Puce", name: "item", widget: "string", required: false }
+          - label: "Bandeau chiffres"
+            name: "chiffres"
+            widget: "list"
+            summary: "{{fields.valeur}} · {{fields.texte}}"
+            collapsed: true
+            fields:
+              - { label: "Valeur affichée", name: "valeur", widget: "string", required: false }
+              - { label: "Valeur à animer (nombre)", name: "compte", widget: "string", required: false }
+              - { label: "Suffixe", name: "suffixe", widget: "string", required: false }
+              - { label: "Texte", name: "texte", widget: "string", required: false }
+              - { label: "Note", name: "note", widget: "string", required: false }
+          - { label: "Méthode 4D · sur-titre", name: "methode_eyebrow", widget: "string", required: false }
+          - { label: "Méthode 4D · titre", name: "methode_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - { label: "Méthode 4D · sous-titre", name: "methode_sous", widget: "text", required: false }
+          - label: "Méthode 4D · étapes"
+            name: "methode_etapes"
+            widget: "list"
+            summary: "{{fields.num}} · {{fields.titre}}"
+            collapsed: true
+            fields:
+              - { label: "Numéro", name: "num", widget: "string", required: false }
+              - { label: "Libellé (phase)", name: "label", widget: "string", required: false }
+              - { label: "Titre", name: "titre", widget: "string", required: false }
+              - { label: "Texte", name: "texte", widget: "text", required: false }
+          - { label: "Démarche UX · sur-titre", name: "ux_eyebrow", widget: "string", required: false }
+          - { label: "Démarche UX · titre", name: "ux_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - { label: "Démarche UX · sous-titre", name: "ux_sous", widget: "text", required: false }
+          - label: "Démarche UX · étapes (numérotées automatiquement)"
+            name: "ux_etapes"
+            widget: "list"
+            summary: "{{fields.titre}}"
+            collapsed: true
+            fields:
+              - { label: "Titre", name: "titre", widget: "string", required: false }
+              - { label: "Texte", name: "texte", widget: "text", required: false }
+          - { label: "Engagements · sur-titre", name: "engagements_eyebrow", widget: "string", required: false }
+          - { label: "Engagements · titre", name: "engagements_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - { label: "Engagements · sous-titre", name: "engagements_sous", widget: "text", required: false }
+          - label: "Engagements (numérotés automatiquement)"
+            name: "engagements"
+            widget: "list"
+            summary: "{{fields.titre}}"
+            collapsed: true
+            fields:
+              - { label: "Titre", name: "titre", widget: "string", required: false }
+              - { label: "Texte", name: "texte", widget: "text", required: false }
+          - { label: "Dispositifs · sur-titre", name: "dispositifs_eyebrow", widget: "string", required: false }
+          - { label: "Dispositifs · titre", name: "dispositifs_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - { label: "Dispositifs · sous-titre", name: "dispositifs_sous", widget: "text", required: false }
+          - label: "Dispositifs (cartes)"
+            name: "dispositifs"
+            widget: "list"
+            summary: "{{fields.titre}}"
+            collapsed: true
+            fields:
+              - { label: "Titre", name: "titre", widget: "string", required: false }
+              - { label: "Texte", name: "texte", widget: "text", required: false }
+
+      - name: "notre_entreprise"
+        label: "Page Notre entreprise"
+        file: "src/_data/notre_entreprise.json"
+        preview_path: "notre-entreprise/"
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+          - { label: "Hero · sur-titre", name: "hero_eyebrow", widget: "string", required: false }
+          - { label: "Hero · titre (H1)", name: "hero_h1", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: true }
+          - { label: "Hero · accroche", name: "hero_chapo", widget: "text", required: false }
+          - { label: "Hero · bouton principal (libellé)", name: "hero_cta_principal_label", widget: "string", required: false }
+          - { label: "Hero · bouton principal (lien)", name: "hero_cta_principal_url", widget: "string", required: false }
+          - { label: "Hero · bouton secondaire (libellé)", name: "hero_cta_secondaire_label", widget: "string", required: false }
+          - { label: "Hero · bouton secondaire (lien)", name: "hero_cta_secondaire_url", widget: "string", required: false }
+          - label: "Hero · étiquettes (petits mots-clés)"
+            name: "hero_chips"
+            widget: "list"
+            field: { label: "Puce", name: "item", widget: "string", required: false }
+          - { label: "À propos · sur-titre", name: "apropos_eyebrow", widget: "string", required: false }
+          - { label: "À propos · titre", name: "apropos_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - label: "À propos · paragraphes"
+            name: "apropos_paragraphes"
+            widget: "list"
+            summary: "{{fields.item}}"
+            collapsed: true
+            field: { label: "Paragraphe", name: "item", widget: "text", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - label: "Bandeau chiffres"
+            name: "chiffres"
+            widget: "list"
+            summary: "{{fields.valeur}} · {{fields.texte}}"
+            collapsed: true
+            fields:
+              - { label: "Valeur affichée", name: "valeur", widget: "string", required: false }
+              - { label: "Valeur à animer (nombre)", name: "compte", widget: "string", required: false }
+              - { label: "Suffixe", name: "suffixe", widget: "string", required: false }
+              - { label: "Texte", name: "texte", widget: "string", required: false }
+          - { label: "Culture tech · sur-titre", name: "culture_eyebrow", widget: "string", required: false }
+          - { label: "Culture tech · titre", name: "culture_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - { label: "Culture tech · sous-titre", name: "culture_sous", widget: "text", required: false }
+          - label: "Culture tech · cartes"
+            name: "culture_cartes"
+            widget: "list"
+            summary: "{{fields.titre}}"
+            collapsed: true
+            fields:
+              - { label: "Titre", name: "titre", widget: "string", required: false }
+              - { label: "Texte", name: "texte", widget: "text", required: false }
+          - { label: "Valeurs · sur-titre", name: "valeurs_eyebrow", widget: "string", required: false }
+          - { label: "Valeurs · titre", name: "valeurs_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - label: "Valeurs (cartes)"
+            name: "valeurs"
+            widget: "list"
+            summary: "{{fields.titre}}"
+            collapsed: true
+            fields:
+              - { label: "Titre", name: "titre", widget: "string", required: false }
+              - { label: "Texte", name: "texte", widget: "text", required: false }
+          - { label: "Équipe · sur-titre", name: "equipe_eyebrow", widget: "string", required: false }
+          - { label: "Équipe · titre", name: "equipe_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - { label: "Équipe · sous-titre", name: "equipe_sous", widget: "text", required: false }
+          - label: "Équipe · métiers"
+            name: "equipe_metiers"
+            widget: "list"
+            summary: "{{fields.nom}}"
+            collapsed: true
+            field: { label: "Métier", name: "nom", widget: "string", required: false }
+          - { label: "Recrutement · titre", name: "recrutement_titre", widget: "string", required: false }
+          - { label: "Recrutement · texte", name: "recrutement_texte", widget: "text", required: false }
+          - { label: "Recrutement · bouton (libellé)", name: "recrutement_cta_label", widget: "string", required: false }
+          - { label: "Recrutement · bouton (lien)", name: "recrutement_cta_url", widget: "string", required: false }
+          - { label: "Agences · sur-titre", name: "agences_eyebrow", widget: "string", required: false }
+          - { label: "Agences · titre", name: "agences_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - { label: "Agences · sous-titre", name: "agences_sous", widget: "text", required: false }
+          - label: "Agences (cartes)"
+            name: "agences"
+            widget: "list"
+            summary: "{{fields.ville}}"
+            collapsed: true
+            fields:
+              - { label: "Ville", name: "ville", widget: "string", required: false }
+              - { label: "Adresse", name: "adresse", widget: "text", hint: "Retour à la ligne = nouvelle ligne dans l'adresse.", required: false }
 
       - name: "contact"
         label: "Page Contact"
@@ -713,14 +969,9 @@ collections:
         fields:
           - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-          - { label: "Titre (H1)", name: "h1", widget: "string", hint: "HTML autorisé (<em class=\"accent\">).", required: false }
+          - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: true }
           - { label: "Accroche", name: "chapo", widget: "text", required: false }
-          - label: "Arguments"
-            name: "arguments"
-            widget: "list"
-            field: { label: "Argument", name: "item", widget: "string", required: false }
-          - { label: "Titre bloc téléphone", name: "coord_tel_titre", widget: "string", required: false }
-          - { label: "Titre bloc agences", name: "coord_agences_titre", widget: "string", required: false }
+          # Arguments et intitulés des coordonnées : voir « Réglages du site » > Bloc contact (communs à tout le site).
 
       - name: "site"
         label: "Réglages du site (pied de page, coordonnées, formulaire)"
@@ -729,7 +980,28 @@ collections:
           - { label: "Nom", name: "nom", widget: "string", required: false }
           - { label: "Téléphone affiché", name: "telephone_affiche", widget: "string", required: false }
           - { label: "Téléphone (format lien)", name: "telephone_lien", widget: "string", hint: "Sans espaces, ex. : +330963286273", required: false }
-          - { label: "Villes", name: "villes", widget: "string", required: false }
+          - { label: "Villes (ligne « Nos agences »)", name: "villes", widget: "string", required: false }
+          - label: "Bloc contact (bas de page, commun à tout le site)"
+            name: "contact"
+            widget: "object"
+            collapsed: true
+            summary: "Bloc contact commun"
+            hint: "Le grand bloc « Parlons de votre projet » affiché en bas de l'accueil, des pages et de la page Contact."
+            fields:
+              - { label: "Titre", name: "titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, en italique), encadrez-le d'astérisques. Ex. : Parlons de votre *projet*", required: false }
+              - { label: "Sous-titre", name: "sous", widget: "text", required: false }
+              - label: "Arguments (liste à puces)"
+                name: "arguments"
+                widget: "list"
+                summary: "{{fields.item}}"
+                field: { label: "Argument", name: "item", widget: "string", required: false }
+              - label: "Pastilles visages (initiales)"
+                name: "visages"
+                widget: "list"
+                field: { label: "Initiales", name: "item", widget: "string", required: false }
+              - { label: "Note sous les pastilles", name: "note", widget: "string", required: false }
+              - { label: "Intitulé bloc téléphone", name: "coord_tel_titre", widget: "string", required: false }
+              - { label: "Intitulé bloc agences", name: "coord_agences_titre", widget: "string", required: false }
           - { label: "Accroche du pied de page", name: "footer_accroche", widget: "text", required: false }
           - { label: "Intro du bandeau logos clients", name: "clients_intro", widget: "string", hint: "Ex. : Ils nous confient leur métier :", required: false }
           - label: "Logos clients (bandeau « Ils nous confient leur métier »)"
@@ -915,11 +1187,11 @@ collections:
               - { label: "Titre Description", name: "description_titre", widget: "string", required: false }
               - { label: "Titre Pour qui", name: "pour_qui_titre", widget: "string", required: false }
               - { label: "Titre Prérequis", name: "prerequis_titre", widget: "string", required: false }
-              - { label: "Titre Objectifs", name: "objectifs_titre", widget: "string", hint: "HTML autorisé.", required: false }
+              - { label: "Titre Objectifs", name: "objectifs_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
               - { label: "Titre Programme", name: "programme_titre", widget: "string", required: false }
-              - { label: "Titre Formateur", name: "formateur_titre", widget: "string", hint: "HTML autorisé.", required: false }
+              - { label: "Titre Formateur", name: "formateur_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
               - { label: "Titre FAQ", name: "faq_titre", widget: "string", required: false }
-              - { label: "Titre Modalités", name: "modalites_titre", widget: "string", hint: "HTML autorisé.", required: false }
+              - { label: "Titre Modalités", name: "modalites_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
               - { label: "Titre Autres formations", name: "autres_titre", widget: "string", required: false }
               - { label: "Bouton Voir toutes", name: "voir_toutes", widget: "string", required: false }
               - { label: "Mention « à partir de »", name: "a_partir_de", widget: "string", required: false }
@@ -1018,7 +1290,7 @@ collections:
             collapsed: true
             hint: "Bloc « Demander un devis » réutilisé sur la page Formations, les pages catégories et les fiches formation."
             fields:
-              - { label: "Titre", name: "titre", widget: "string", hint: "HTML autorisé.", required: false }
+              - { label: "Titre", name: "titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
               - { label: "Sous-titre", name: "sous", widget: "text", required: false }
               - label: "Arguments"
                 name: "arguments"

@@ -35,7 +35,7 @@ extraCss: /assets/glossaire.css
         {% for t in g.termes %}
         <div class="glo-item">
           <dt>{{ t.terme }}</dt>
-          <dd>{{ t.definition | safe }}</dd>
+          <dd>{{ t.definition | accent | safe }}</dd>
         </div>
         {% endfor %}
       </dl>
@@ -44,14 +44,4 @@ extraCss: /assets/glossaire.css
   </div>
 </section>
 
-<section style="padding-top:0">
-  <div class="container">
-    <div class="bandeau-cta">
-      <div>
-        <h2>{{ page_glossaire.cta_titre }}</h2>
-        <p>{{ page_glossaire.cta_texte }}</p>
-      </div>
-      <a class="btn" href="{{ page_glossaire.cta_url or '/contact/' }}">{{ page_glossaire.cta_label }}</a>
-    </div>
-  </div>
-</section>
+{% include "contact-etendu.njk" %}

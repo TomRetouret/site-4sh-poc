@@ -1,7 +1,7 @@
 ---
 titre: "Confluence Cloud"
 groupe: "confluence-cloud"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Outils"
 niveau: "Fondamental"
 chapo: "Apprenez à documenter vos applications avec cet outil collaboratif."

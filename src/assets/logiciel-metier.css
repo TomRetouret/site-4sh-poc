@@ -1,8 +1,9 @@
 /* compléments spécifiques page interne */
 .fil-ariane{font-size:13.5px;color:var(--muted);padding:18px 0 0}
 .fil-ariane a{color:var(--muted)}
-.fil-ariane a:hover{color:var(--rouge)}
-.hero-interne{padding:34px 0 44px;background:linear-gradient(180deg,#fefefe 0%,var(--fond) 100%)}
+.fil-ariane a:hover{color:var(--accent)}
+.hero-interne{margin-top:-94px;padding:118px 0 44px;background:linear-gradient(180deg,#fefefe 0%,var(--fond) 100%)}
+@media (max-width:960px){.hero-interne{margin-top:-64px;padding-top:80px}}
 .hero-interne .hero-grille{grid-template-columns:1.25fr .75fr;padding-top:24px}
 .hero-interne .hero-visuel{background:var(--sombre);border-color:transparent;backdrop-filter:none}
 .hero-interne h1{font-size:clamp(38px,4.6vw,58px);line-height:1.1;font-weight:700;color:var(--sombre);letter-spacing:-.8px;margin-bottom:18px}
@@ -32,13 +33,13 @@
 .atouts{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
 .atout{background:var(--carte);border:1px solid var(--bordure);border-radius:var(--radius);padding:26px 22px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .atout:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(31,41,46,.1)}
-.atout .n{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:11px;background:var(--rouge-pale);color:var(--rouge);font-family:var(--serif);font-style:italic;font-weight:600;font-size:19px;margin-bottom:14px}
+.atout .n{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:11px;background:var(--accent-pale);color:var(--accent);font-family:var(--serif);font-style:italic;font-weight:600;font-size:19px;margin-bottom:14px}
 .atout h3{font-size:16.5px;color:var(--sombre);margin-bottom:6px;letter-spacing:-.2px}
 .atout p{font-size:14px;color:var(--texte-2)}
 .realisations{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .real-carte{background:var(--carte);border:1px solid var(--bordure);border-radius:var(--radius);padding:30px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .real-carte:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(31,41,46,.1)}
-.real-carte .secteur{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;color:var(--rouge);font-weight:600;margin-bottom:8px}
+.real-carte .secteur{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent);font-weight:600;margin-bottom:8px}
 .real-carte h3{font-size:20px;color:var(--sombre);margin-bottom:10px}
 .real-carte p{font-size:15px;color:var(--texte-2);margin-bottom:16px}
 .real-carte a{font-weight:600;font-size:14.5px}
@@ -46,10 +47,10 @@
 .blog-carte{background:var(--carte);border:1px solid var(--bordure);border-radius:var(--radius);padding:26px;transition:transform .3s var(--ease),box-shadow .3s var(--ease);display:flex;flex-direction:column}
 .blog-carte:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(31,41,46,.1)}
 .blog-meta{font-size:12.5px;color:var(--muted);margin-bottom:10px}
-.blog-meta .tag{color:var(--rouge);font-weight:600}
+.blog-meta .tag{color:var(--accent);font-weight:600}
 .blog-carte h3{font-size:17.5px;color:var(--sombre);margin-bottom:16px;line-height:1.3;flex:1}
 .blog-carte h3 a{color:var(--sombre)}
-.blog-carte:hover h3 a{color:var(--rouge)}
+.blog-carte:hover h3 a{color:var(--accent)}
 .blog-auteur{font-size:13px;color:var(--texte-2)}
 @media (max-width:960px){.socle,.atouts,.realisations,.blog-grille,.etapes.cinq{grid-template-columns:1fr 1fr}}
 @media (min-width:961px) and (max-width:1024px){.socle,.atouts,.etapes.cinq{grid-template-columns:repeat(3,1fr)}}
@@ -91,7 +92,7 @@
 .atout.vu .n{transform:scale(1);opacity:1}
 .atout:hover .n{transform:rotate(-6deg) scale(1.08)}
 .real-carte,.blog-carte{position:relative;overflow:hidden}
-.real-carte::before,.blog-carte::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--rouge);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.real-carte::before,.blog-carte::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
 .real-carte:hover::before,.blog-carte:hover::before{transform:scaleX(1)}
 @media (prefers-reduced-motion:reduce){
   .schema-craft path{stroke-dashoffset:0!important;transition:none}
@@ -99,3 +100,35 @@
   .etape.reveal .num,.atout.reveal .n{transform:none!important;opacity:1!important;transition:none}
   .socle-carte img{filter:none}
 }
+
+/* ===== Expertises techniques : page mère + fiches technologie ===== */
+.techno-blason{background:var(--carte);border:1px solid var(--bordure);border-radius:var(--radius);padding:40px;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px rgba(31,41,46,.08)}
+.techno-blason img{max-height:150px;width:auto}
+.techno-blason svg{width:160px;height:160px}
+/* technos phares (page mère) */
+.phares{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:26px}
+.phare-carte{position:relative;background:var(--carte);border:1px solid var(--bordure);border-radius:var(--radius);padding:26px 22px;display:flex;flex-direction:column;align-items:flex-start;transition:transform .3s var(--ease),box-shadow .3s var(--ease);box-shadow:0 6px 20px rgba(31,41,46,.05);overflow:hidden}
+.phare-carte::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.phare-carte:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(31,41,46,.13)}
+.phare-carte:hover::before{transform:scaleX(1)}
+.phare-logo{height:52px;display:flex;align-items:center;margin-bottom:16px}
+.phare-logo img{max-height:46px;max-width:80px;width:auto}
+.phare-carte h3{font-size:18px;color:var(--sombre);margin-bottom:6px;letter-spacing:-.3px}
+.phare-carte p{font-size:14px;color:var(--texte-2);flex:1;margin-bottom:14px}
+.phare-carte a{font-weight:600;font-size:14px;color:var(--accent)}
+/* autres technos (grille de tuiles logos) */
+.autres-technos{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:22px}
+.techno-tuile{display:flex;align-items:center;gap:12px;background:var(--carte);border:1px solid var(--bordure);border-radius:14px;padding:14px 16px;font-size:14.5px;color:var(--texte);transition:border-color .2s,transform .2s var(--ease)}
+.techno-tuile:hover{border-color:var(--accent);transform:translateY(-3px)}
+.techno-tuile img{width:30px;height:30px;object-fit:contain;flex:none}
+/* carte formation cliquable (fiche techno) */
+.socle-carte .socle-lien{display:inline-block;margin-top:10px;font-size:14px;font-weight:600;color:var(--accent)}
+/* prose sur fond sombre (communauté & écosystème) */
+.prose--sombre{max-width:760px;font-size:16.5px;color:#b9c3c8}
+.prose--sombre p{margin-bottom:14px}
+.prose--sombre a{color:var(--accent-clair)}
+.prose--sombre ul{list-style:none;margin:6px 0}
+.prose--sombre li{padding:7px 0 7px 22px;position:relative}
+.prose--sombre li::before{content:"→";position:absolute;left:0;color:var(--accent-clair)}
+@media (max-width:960px){.phares{grid-template-columns:1fr 1fr}.techno-blason{display:none}}
+@media (min-width:961px) and (max-width:1024px){.phares{grid-template-columns:repeat(3,1fr)}}

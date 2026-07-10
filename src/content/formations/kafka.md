@@ -1,7 +1,7 @@
 ---
 titre: "Kafka"
 groupe: "kafka"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Develop"
 niveau: "Fondamental"
 chapo: "Gérez vos événements en temps réel avec cette solution open source."

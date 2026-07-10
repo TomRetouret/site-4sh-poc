@@ -1,7 +1,7 @@
 ---
 titre: "Kubernetes"
 groupe: "kubernetes"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "DevOps"
 niveau: "Fondamental"
 chapo: "Découvrez l'orchestration de conteneurs pour vos acteurs cloud."

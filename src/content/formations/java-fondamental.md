@@ -1,7 +1,7 @@
 ---
 titre: "Java"
 groupe: "java"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Develop"
 niveau: "Fondamental"
 chapo: "Tout savoir sur ce langage de programmation multiplateforme orienté objet."

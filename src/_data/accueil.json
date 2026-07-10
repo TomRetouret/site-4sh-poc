@@ -4,9 +4,9 @@
   "hero_surtitre": "Agence de développement logiciel sur mesure",
   "hero_accroche_debut": "Un logiciel qui",
   "hero_accroche_accent": "épouse",
-  "hero_accroche_fin": "vos processus,<br>pas l'inverse.",
+  "hero_accroche_fin": "vos processus",
   "hero_chapo": "Depuis 2007, 4SH est l'agence de développement de logiciels sur mesure des entreprises qui ne rentrent dans aucune case : on conçoit, on développe et on fait vivre votre logiciel métier, et on reste après la mise en production.",
-  "hero_note": "30 minutes avec un expert, gratuit, sans engagement · Bordeaux, Capbreton ou à distance",
+  "hero_note": "30 minutes avec un expert · Bordeaux, Capbreton ou à distance",
   "hero_cta_principal": "Parlons de votre projet",
   "hero_cta_secondaire": "Voir nos réalisations",
   "hero_visuel_titre": "// votre logiciel métier",
@@ -27,7 +27,7 @@
   "hero_visuel_badge": "Méthode 4D · Discover → Deploy",
   "hero_visuel_badge_note": "Depuis 2007",
   "portes_eyebrow": "Par où commencer",
-  "portes_titre": "Quelle prestation est faite pour <em class=\"accent\">vous</em> ?",
+  "portes_titre": "Quelle prestation est faite pour *vous* ?",
   "portes_sous": "Trois façons de travailler ensemble, selon l'endroit où vous en êtes.",
   "portes": [
     {
@@ -47,7 +47,7 @@
           "url": "#"
         }
       ],
-      "suite_label": "Découvrir le développement sur mesure",
+      "suite_label": "Découvrir nos offres de développement sur mesure",
       "suite_url": "/logiciel-metier/"
     },
     {
@@ -67,7 +67,7 @@
           "url": "#"
         }
       ],
-      "suite_label": "Fiabiliser votre existant",
+      "suite_label": "Découvrir nos offres de MCO",
       "suite_url": "#"
     },
     {
@@ -87,7 +87,7 @@
           "url": "/formations/"
         }
       ],
-      "suite_label": "Voir les formations",
+      "suite_label": "Découvrir nos formations",
       "suite_url": "/formations/"
     }
   ],
@@ -122,7 +122,7 @@
     }
   ],
   "cas_eyebrow": "Nos réalisations",
-  "cas_titre": "La preuve par les <em class=\"accent\">projets</em>",
+  "cas_titre": "La preuve par les *projets*",
   "cas_sous": "Nos projets de développement sur mesure, racontés avec des résultats, pas des adjectifs.",
   "realisations": [
     {
@@ -133,8 +133,14 @@
       "citation": "",
       "auteur": "",
       "chiffres": [
-        { "valeur": "200 000", "label": "bornes de recharge" },
-        { "valeur": "766 000", "label": "charges par an" }
+        {
+          "valeur": "200 000",
+          "label": "bornes de recharge"
+        },
+        {
+          "valeur": "766 000",
+          "label": "charges par an"
+        }
       ],
       "cta_label": "Lire le cas client",
       "cta_url": "/references/izivia-portail/"
@@ -147,8 +153,14 @@
       "citation": "",
       "auteur": "",
       "chiffres": [
-        { "valeur": "600 000", "label": "assurés sur l'extranet" },
-        { "valeur": "Depuis 2017", "label": "de collaboration" }
+        {
+          "valeur": "600 000",
+          "label": "assurés sur l'extranet"
+        },
+        {
+          "valeur": "Depuis 2017",
+          "label": "de collaboration"
+        }
       ],
       "cta_label": "Lire le cas client",
       "cta_url": "/references/filhet-allard/"
@@ -161,8 +173,14 @@
       "citation": "",
       "auteur": "",
       "chiffres": [
-        { "valeur": "300 000", "label": "exemplaires par jour" },
-        { "valeur": "2,2 millions", "label": "de lecteurs quotidiens" }
+        {
+          "valeur": "300 000",
+          "label": "exemplaires par jour"
+        },
+        {
+          "valeur": "2,2 millions",
+          "label": "de lecteurs quotidiens"
+        }
       ],
       "cta_label": "Lire le cas client",
       "cta_url": "/references/sud-ouest-socoa/"
@@ -171,7 +189,7 @@
   "realisations_cta_label": "Voir toutes nos références",
   "realisations_cta_url": "/references/",
   "methode_eyebrow": "Notre méthode 4D",
-  "methode_titre": "Comment se passe un projet <em class=\"accent\">avec nous</em>",
+  "methode_titre": "Comment se passe un projet *avec nous*",
   "methode_sous": "De la première idée à la mise en production, voici comment se déroule un projet de développement sur mesure avec 4SH : des jalons clairs, des démos régulières, zéro flou.",
   "methode_etapes": [
     {
@@ -200,7 +218,7 @@
     }
   ],
   "secteurs_eyebrow": "Vos métiers",
-  "secteurs_titre": "On connaît déjà <em class=\"accent\">votre métier</em>",
+  "secteurs_titre": "On connaît déjà *votre métier*",
   "secteurs_sous": "On a déjà développé des logiciels sur mesure dans votre secteur : on gagne du temps ensemble dès la première réunion.",
   "secteurs": [
     {
@@ -241,28 +259,66 @@
     }
   ],
   "technos_eyebrow": "Les technos",
-  "technos_titre": "Les bonnes technos, pour les <em class=\"accent\">bonnes raisons</em>",
+  "technos_titre": "Les bonnes technos, pour les *bonnes raisons*",
   "technos_sous": "On choisit chaque technologie selon votre projet de développement sur mesure, jamais par habitude.",
   "technos": [
-    { "nom": "Java", "url": "/formations/java-fondamental/" },
-    { "nom": "Kotlin", "url": "/formations/kotlin-fondamental/" },
-    { "nom": "Spring", "url": "/formations/spring-rest-jpa/" },
-    { "nom": "Angular", "url": "/formations/angular-fondamental/" },
-    { "nom": "TypeScript", "url": "/formations/ts-fondamental/" },
-    { "nom": "JavaScript", "url": "/formations/javascript/" },
-    { "nom": "Docker", "url": "/formations/docker-fondamental/" },
-    { "nom": "Kubernetes", "url": "/formations/kubernetes-fondamental/" },
-    { "nom": "Terraform", "url": "/formations/terraform/" },
-    { "nom": "Kafka", "url": "/formations/kafka/" },
-    { "nom": "MongoDB", "url": "/formations/mongodb-fondamental/" },
-    { "nom": "SQL", "url": "/formations/sql/" },
-    { "nom": "Git", "url": "/formations/git-fondamental/" },
-    { "nom": "Figma", "url": "/formations/figma-fondamental/" }
+    {
+      "nom": "Java",
+      "url": "/expertises-techniques/java/"
+    },
+    {
+      "nom": "Kotlin",
+      "url": "/expertises-techniques/kotlin/"
+    },
+    {
+      "nom": "Spring",
+      "url": "/formations/spring-rest-jpa/"
+    },
+    {
+      "nom": "Angular",
+      "url": "/expertises-techniques/angular/"
+    },
+    {
+      "nom": "TypeScript",
+      "url": "/formations/ts-fondamental/"
+    },
+    {
+      "nom": "JavaScript",
+      "url": "/formations/javascript/"
+    },
+    {
+      "nom": "Docker",
+      "url": "/formations/docker-fondamental/"
+    },
+    {
+      "nom": "Kubernetes",
+      "url": "/expertises-techniques/kubernetes/"
+    },
+    {
+      "nom": "Terraform",
+      "url": "/formations/terraform/"
+    },
+    {
+      "nom": "Kafka",
+      "url": "/formations/kafka/"
+    },
+    {
+      "nom": "MongoDB",
+      "url": "/formations/mongodb-fondamental/"
+    },
+    {
+      "nom": "SQL",
+      "url": "/formations/sql/"
+    },
+    {
+      "nom": "Git",
+      "url": "/formations/git-fondamental/"
+    },
+    {
+      "nom": "Figma",
+      "url": "/formations/figma-fondamental/"
+    }
   ],
-  "bandeau_cta_titre": "Vous hésitez entre sur mesure et logiciel du marché ?",
-  "bandeau_cta_texte": "C'est la bonne question. En 30 minutes, un expert 4SH vous aide à y voir clair. Et si un outil standard suffit, nous vous le dirons.",
-  "bandeau_cta_label": "Poser la question à un expert",
-  "bandeau_cta_url": "#contact",
   "faq_titre": "Les questions qu'on nous pose souvent",
   "faq_sous": "Le développement d'un logiciel sur mesure soulève des questions. Voici nos réponses avant de nous appeler.",
   "faq": [
@@ -288,21 +344,7 @@
     }
   ],
   "equipe_eyebrow": "L'équipe",
-  "equipe_titre": "Des logiciels faits par des <em class=\"accent\">talents</em>",
+  "equipe_titre": "Des logiciels faits par des *talents*",
   "equipe_texte": "Ceux qui conçoivent votre outil sont ceux que vous aurez au téléphone. Voici l'équipe 4SH au complet.",
-  "equipe_photo": "/uploads/equipe-4sh.jpg",
-  "contact_titre": "Parlons de votre <em class=\"accent\">projet</em>",
-  "contact_sous": "30 minutes avec un expert, gratuit, sans engagement. Vous repartez avec un premier avis honnête, pas un argumentaire.",
-  "contact_arguments": [
-    "Un interlocuteur dédié, de l'analyse des besoins à la maintenance",
-    "Des équipes pluridisciplinaires à Bordeaux et Capbreton",
-    "Et si le sur mesure ne se justifie pas, nous vous le dirons"
-  ],
-  "contact_visages": [
-    "SA",
-    "JP",
-    "TM",
-    "+40"
-  ],
-  "contact_note": "L'équipe 4SH, celle que vous aurez vraiment au téléphone."
+  "equipe_photo": "/uploads/equipe-4sh.jpg"
 }

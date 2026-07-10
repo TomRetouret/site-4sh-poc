@@ -8,7 +8,7 @@ permalink: /
     <div class="hero-grille">
       <div>
         <h1 class="surtitre">{{ accueil.hero_surtitre }}</h1>
-        <p class="hero-accroche">{{ accueil.hero_accroche_debut }} <em class="accent">{{ accueil.hero_accroche_accent }}</em><svg class="doodle doodle-asterisque" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M13 3.5c-.4 3.2-.2 6.4.2 19M4.2 8.2c5.8 3.4 11.7 6.6 17.6 9.6M21.8 8.2C16 11.6 10.1 14.8 4.2 17.8"/></svg> {{ accueil.hero_accroche_fin | safe }}</p>
+        <p class="hero-accroche">{{ accueil.hero_accroche_debut }} <em class="accent">{{ accueil.hero_accroche_accent }}</em><svg class="doodle doodle-asterisque" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M13 3.5c-.4 3.2-.2 6.4.2 19M4.2 8.2c5.8 3.4 11.7 6.6 17.6 9.6M21.8 8.2C16 11.6 10.1 14.8 4.2 17.8"/></svg> {{ accueil.hero_accroche_fin | accent | safe }}</p>
         <p class="chapo">{{ accueil.hero_chapo }}</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#contact">{{ accueil.hero_cta_principal }}</a>
@@ -29,7 +29,7 @@ permalink: /
   </div>
   {% if accueil.equipe_photo %}
   <figure class="hero-photo">
-    <img src="{{ accueil.equipe_photo }}" alt="{{ accueil.equipe_titre | striptags }}" width="1200" height="800" fetchpriority="high" decoding="async">
+    <img src="{{ accueil.equipe_photo }}" alt="{{ accueil.equipe_titre | accent | striptags }}" width="1200" height="800" fetchpriority="high" decoding="async">
   </figure>
   {% endif %}
   <!-- LOGOS CLIENTS (ancrés en bas du hero, pour tenir dans le 1er écran) -->
@@ -47,12 +47,13 @@ permalink: /
 <section>
   <div class="container">
     <p class="eyebrow">{{ accueil.portes_eyebrow }}</p>
-    <h2 class="sec-titre">{{ accueil.portes_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ accueil.portes_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ accueil.portes_sous }}</p>
     {% set porte_pictos = ["⚙", "🛡", "🎓"] %}
+    {% set porte_familles = ["famille-build", "famille-run", "famille-formation"] %}
     <div class="portes">
       {% for p in accueil.portes %}
-      <article class="porte">
+      <article class="porte {{ porte_familles[loop.index0] }}">
         <div class="pictos">{{ porte_pictos[loop.index0] }}</div>
         <h3>{{ p.titre }}</h3>
         <p>{{ p.texte }}</p>
@@ -83,7 +84,7 @@ permalink: /
 <section>
   <div class="container">
     <p class="eyebrow">{{ accueil.secteurs_eyebrow }}</p>
-    <h2 class="sec-titre">{{ accueil.secteurs_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ accueil.secteurs_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ accueil.secteurs_sous }}</p>
     <div class="carrousel car--secteurs" data-carrousel aria-label="Secteurs">
       <div class="car-piste">
@@ -100,7 +101,7 @@ permalink: /
 <section class="section-sombre">
   <div class="container">
     <p class="eyebrow">{{ accueil.methode_eyebrow }}</p>
-    <h2 class="sec-titre">{{ accueil.methode_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ accueil.methode_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ accueil.methode_sous }}</p>
     <div class="etapes">
       {% for e in accueil.methode_etapes %}
@@ -114,7 +115,7 @@ permalink: /
 <section>
   <div class="container">
     <p class="eyebrow">{{ accueil.cas_eyebrow }}</p>
-    <h2 class="sec-titre">{{ accueil.cas_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ accueil.cas_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ accueil.cas_sous }}</p>
     <div class="carrousel car--real" data-carrousel aria-label="Réalisations">
       <div class="car-piste">
@@ -131,7 +132,7 @@ permalink: /
             {% if r.citation %}<blockquote>{{ r.citation }}</blockquote>{% if r.auteur %}<p class="auteur">{{ r.auteur }}</p>{% endif %}{% endif %}
             {% if r.visuel_texte %}<p class="cas-desc">{{ r.visuel_texte }}</p>{% endif %}
             <div class="cas-chiffre">
-              {% for ch in r.chiffres %}<div><b>{{ ch.valeur | safe }}</b><span>{{ ch.label }}</span></div>{% endfor %}
+              {% for ch in r.chiffres %}<div><b>{{ ch.valeur | accent | safe }}</b><span>{{ ch.label }}</span></div>{% endfor %}
             </div>
             <a class="btn btn-ghost btn-sm" href="{{ r.cta_url or '#' }}">{{ r.cta_label }}</a>
           </div>
@@ -148,7 +149,7 @@ permalink: /
 <section style="padding-top:0">
   <div class="container">
     <p class="eyebrow">{{ accueil.technos_eyebrow }}</p>
-    <h2 class="sec-titre">{{ accueil.technos_titre | safe }}</h2>
+    <h2 class="sec-titre">{{ accueil.technos_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ accueil.technos_sous }}</p>
     <div class="techno-nuage">
       {% for t in accueil.technos %}<a class="techno-tag" href="{{ t.url or '#' }}">{{ t.nom }}</a>{% endfor %}
@@ -207,24 +208,5 @@ permalink: /
 </section>
 {% endif %}
 
-<!-- CONTACT FINAL (bloc conservé) -->
-<section class="contact-final sur-sombre" id="contact">
-  <div class="container">
-    <div class="contact-grille">
-      <div>
-        <h2 class="sec-titre">{{ accueil.contact_titre | safe }}</h2>
-        <p class="sec-sous" style="margin-bottom:18px">{{ accueil.contact_sous }}</p>
-        <ul class="arguments">
-          {% for a in accueil.contact_arguments %}<li>{{ a }}</li>{% endfor %}
-        </ul>
-        <div class="equipe-visages">{% for v in accueil.contact_visages %}<span>{{ v }}</span>{% endfor %}</div>
-        <p style="font-size:13.5px;color:#8b979c">{{ accueil.contact_note }}</p><svg class="doodle doodle-spirale" width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M27 27c0-3 4-4 6-1s0 8-5 9-11-2-12-9 5-14 13-14 16 6 16 15c0 2-.4 4-1 6"/><path d="M41.5 29.5 44 33l3.6-2"/></svg>
-        <div class="contact-coord">
-          <p><b>Par téléphone</b><br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
-          <p><b>Nos agences</b><br>{{ site.villes }}</p>
-        </div>
-      </div>
-      {% include "formulaire.njk" %}
-    </div>
-  </div>
-</section>
+<!-- CONTACT FINAL (bloc étendu mutualisé) -->
+{% include "contact-etendu.njk" %}

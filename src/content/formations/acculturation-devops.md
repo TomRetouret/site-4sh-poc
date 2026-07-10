@@ -1,7 +1,7 @@
 ---
 titre: "Acculturation au DevOps"
 groupe: "acculturation-devops"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "DevOps"
 niveau: "Fondamental"
 chapo: "La culture DevOps est une approche agile favorisant une meilleure collaboration entre les équipes de développement et d'exploitation."

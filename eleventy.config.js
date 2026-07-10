@@ -4,6 +4,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "admin": "admin" });
   eleventyConfig.addPassthroughCopy({ "src/uploads": "uploads" });
 
+  // Filtre "accent" : le rédacteur écrit *mot* dans le CMS, le site affiche <em class="accent">mot</em>.
+  // Objectif : plus aucune balise HTML à taper à la main dans les champs de titre.
+  eleventyConfig.addFilter("accent", (s) =>
+    s == null ? "" : String(s).replace(/\*([^*\n]+)\*/g, '<em class="accent">$1</em>')
+  );
+
   // Rang d'affichage des niveaux de formation
   const RANG_NIVEAU = { "Essentiel": 1, "Fondamental": 2, "Intermédiaire": 3, "Avancé": 4 };
   const rang = (n) => RANG_NIVEAU[n] || 9;
@@ -56,6 +62,13 @@ module.exports = function (eleventyConfig) {
       .sort((a, b) => (a.data.ordre || 99) - (b.data.ordre || 99) || (a.data.titre || "").localeCompare(b.data.titre || ""));
   });
 
+  // Technologies (une fiche = un fichier Markdown), triées par ordre d'affichage
+  eleventyConfig.addCollection("technologies", (collectionApi) => {
+    return collectionApi
+      .getFilteredByGlob("src/content/technologies/*.md")
+      .sort((a, b) => (a.data.ordre || 99) - (b.data.ordre || 99));
+  });
+
   // Valeurs uniques pour les filtres de la page Références
   eleventyConfig.addCollection("referenceFiltres", (collectionApi) => {
     const items = collectionApi.getFilteredByGlob("src/content/references/*.md");
@@ -64,12 +77,7 @@ module.exports = function (eleventyConfig) {
       items.forEach((it) => (it.data[key] || []).forEach((v) => set.add(v)));
       return Array.from(set).sort((a, b) => a.localeCompare(b));
     };
-    const uniqStr = (key) => {
-      const set = new Set();
-      items.forEach((it) => { if (it.data[key]) set.add(it.data[key]); });
-      return Array.from(set).sort((a, b) => a.localeCompare(b));
-    };
-    return { secteurs: uniq("secteurs"), technologies: uniq("technologies"), typesProjet: uniqStr("type_projet") };
+    return { secteurs: uniq("secteurs"), technologies: uniq("technologies") };
   });
 
   // Glossaire : termes lus sur le disque (fiable même en permalink:false), groupés par lettre

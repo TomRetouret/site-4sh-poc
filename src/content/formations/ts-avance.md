@@ -1,7 +1,7 @@
 ---
 titre: "TypeScript"
 groupe: "typescript"
-sous_titre: "- Perfectionnement"
+sous_titre: "Perfectionnement"
 categorie: "Develop"
 niveau: "Avancé"
 chapo: "Développez vos compétences en TypeScript !"

@@ -1,7 +1,7 @@
 ---
 titre: "MongoDB"
 groupe: "mongodb"
-sous_titre: "- Perfectionnement"
+sous_titre: "Perfectionnement"
 categorie: "Develop"
 niveau: "Avancé"
 chapo: "Développez vos compétences sur l'utilisation de cette base de donnée orientée document."

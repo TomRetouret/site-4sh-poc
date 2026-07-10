@@ -1,7 +1,7 @@
 ---
 titre: "Python"
 groupe: "python"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Develop"
 niveau: "Fondamental"
 chapo: "Apprenez Python, un langage puissant et polyvalent, pour développer des applications, automatiser des tâches et analyser des données."

@@ -27,6 +27,7 @@
 </head>
 <body class="{{ bodyClass }}">
 
+{% if not hideHeader %}
 <header>
   <div class="container nav">
     <a class="logo" href="/" aria-label="4SH, accueil"><img src="https://www.4sh.fr/assets/img/png/logo_4sh_baseline.png" alt="4SH, développez vos idées"></a>
@@ -51,16 +52,16 @@
           {% if item.promo %}
           <a class="promo-services" href="{{ item.promo.url or '#' }}">
             <div class="promo-txt">
-              <h4>{{ item.promo.titre | safe }}</h4>
+              <h4>{{ item.promo.titre | accent | safe }}</h4>
               <p>{{ item.promo.texte }}</p>
             </div>
-            {% if item.promo.kpi %}<div class="promo-kpi"><b>{{ item.promo.kpi.valeur | safe }}</b><span>{{ item.promo.kpi.label }}</span></div>{% endif %}
-            {% if item.promo.stats %}<div class="promo-stats">{% for s in item.promo.stats %}<div><b>{{ s.valeur | safe }}</b><span>{{ s.label }}</span></div>{% endfor %}</div>{% endif %}
+            {% if item.promo.kpi %}<div class="promo-kpi"><b>{{ item.promo.kpi.valeur | accent | safe }}</b><span>{{ item.promo.kpi.label }}</span></div>{% endif %}
+            {% if item.promo.stats %}<div class="promo-stats">{% for s in item.promo.stats %}<div><b>{{ s.valeur | accent | safe }}</b><span>{{ s.label }}</span></div>{% endfor %}</div>{% endif %}
             {% if item.promo.lien_libelle %}<span class="promo-lien">{{ item.promo.lien_libelle }} →</span>{% endif %}
           </a>
           {% endif %}
           {% for col in item.colonnes %}
-          <div class="col-svc">
+          <div class="col-svc{% if col.classe %} {{ col.classe }}{% endif %}">
             <p class="deroulant-titre">{{ col.titre }}</p>
             <ul class="svc-list">
               {% for l in col.liens %}<li><a class="svc-item" href="{{ l.url or '#' }}">{% if l.image or l.icone %}<span class="svc-ico">{% if l.image %}<img src="{{ l.image }}" alt="" width="24" height="24">{% else %}{{ navicone(l.icone) }}{% endif %}</span>{% endif %}<span><b>{{ l.label }}</b>{% if l.sous_texte %}<small>{{ l.sous_texte }}</small>{% endif %}</span></a></li>{% endfor %}
@@ -84,6 +85,7 @@
     <button class="burger" aria-label="Ouvrir le menu">☰</button>
   </div>
 </header>
+{% endif %}
 
 {{ content | safe }}
 

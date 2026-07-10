@@ -1,7 +1,7 @@
 ---
 titre: "Jira Cloud"
 groupe: "jira"
-sous_titre: "- Perfectionnement"
+sous_titre: "Perfectionnement"
 categorie: "Outils"
 niveau: "Avancé"
 chapo: "Découvrez tous les secrets de cet outil de ticketing pour votre gestion de projet agile."

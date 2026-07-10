@@ -2,7 +2,6 @@
 <article class="ref-carte{% if une %} ref-carte--une{% endif %}"
   data-secteurs="{{ ref.data.secteurs | join(',') | lower }}"
   data-technologies="{{ ref.data.technologies | join(',') | lower }}"
-  data-type="{{ ref.data.type_projet | lower }}"
   data-nom="{{ (ref.data.titre ~ ' ' ~ ref.data.client ~ ' ' ~ ref.data.resume ~ ' ' ~ (ref.data.technologies | join(' ')) ~ ' ' ~ (ref.data.secteurs | join(' '))) | lower }}">
   <div class="ref-visuel{% if not ref.data.image %} ref-visuel--vide{% endif %}">
     {% if ref.data.image %}<img src="{{ ref.data.image }}" alt="{{ ref.data.titre }}" loading="lazy" decoding="async" width="600" height="450">{% else %}<span class="ref-vide-nom">{{ ref.data.client }}</span>{% endif %}

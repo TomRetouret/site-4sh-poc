@@ -4,34 +4,33 @@ permalink: /references/
 extraCss: /assets/references.css
 ---
 {% from "ref-macros.njk" import carte %}
-<section class="ref-hero">
+<div class="ref-hero">
   <div class="container">
     <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Références</nav>
     <p class="eyebrow">{{ page_references.eyebrow }}</p>
-    <h1>{{ page_references.h1 | safe }}</h1>
+    <h1>{{ page_references.h1 | accent | safe }}</h1>
     <p class="chapo">{{ page_references.chapo }}</p>
-    <div class="ref-preuve">
-      <div class="stat"><b>{{ collections.references.length }}</b><span>{{ libelles.references_index.stat_projets }}</span></div>
-      <div class="stat"><b>{{ collections.referenceFiltres.secteurs.length }}</b><span>{{ libelles.references_index.stat_secteurs }}</span></div>
-      <div class="stat"><b>{{ libelles.references_index.stat_depuis_valeur }}</b><span>{{ libelles.references_index.stat_depuis }}</span></div>
+  </div>
+</div>
+
+<!-- PREUVE CHIFFRÉE (bande signature) -->
+<section style="padding:0">
+  <div class="chiffres">
+    <div class="container ref-chiffres">
+      <div><b>{{ collections.references.length }}</b><span>{{ libelles.references_index.stat_projets }}</span></div>
+      <div><b>{{ collections.referenceFiltres.secteurs.length }}</b><span>{{ libelles.references_index.stat_secteurs }}</span></div>
+      <div><b><i>{{ libelles.references_index.stat_depuis_valeur }}</i></b><span>{{ libelles.references_index.stat_depuis }}</span></div>
     </div>
   </div>
 </section>
 
-<section style="padding-top:16px">
+<section>
   <div class="container">
-    <div class="ref-filtres">
+    <div class="ref-filtres ref-filtres--panel">
       <div class="ref-recherche">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         <input type="search" id="ref-recherche" placeholder="{{ libelles.references_index.recherche_placeholder }}" aria-label="Rechercher une référence">
       </div>
-
-      {% if collections.referenceFiltres.typesProjet.length %}
-      <div class="ref-facette">
-        <p class="ref-facette-titre">{{ libelles.references_index.facette_type }}</p>
-        <div class="ref-chips">{% for v in collections.referenceFiltres.typesProjet %}<button class="chip" type="button" data-dim="type" data-val="{{ v | lower }}" aria-pressed="false">{{ v }}</button>{% endfor %}</div>
-      </div>
-      {% endif %}
 
       <div class="ref-facette">
         <p class="ref-facette-titre">{{ libelles.references_index.facette_secteurs }}</p>

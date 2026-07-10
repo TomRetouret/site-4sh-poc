@@ -1,7 +1,7 @@
 ---
 titre: "Java"
 groupe: "java"
-sous_titre: "- Perfectionnement"
+sous_titre: "Perfectionnement"
 categorie: "Develop"
 niveau: "Avancé"
 chapo: "Tout savoir sur ce langage de programmation multiplateforme orienté objet."

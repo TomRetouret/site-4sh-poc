@@ -1,0 +1,52 @@
+---
+layout: base.njk
+permalink: /404.html
+title: "Page introuvable (404) — 4SH"
+description: "La page demandée n'existe plus ou a changé d'adresse. Revenez à l'accueil ou explorez le site 4SH."
+noindex: true
+extraCss: /assets/404.css
+bodyClass: p404
+hideHeader: true
+---
+<section class="p404">
+  <div class="container">
+    <p class="eyebrow">Erreur 404</p>
+
+    <h1 class="sr-only">404 — Cette page a perdu le fil</h1>
+
+    <div class="p404-scene" aria-hidden="true">
+      <span class="p404-chiffre c1">4</span>
+      <span class="p404-zero">
+        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- le zéro / la prise murale -->
+          <circle class="p404-ring" cx="100" cy="140" r="66" stroke="currentColor" stroke-width="16"/>
+          <rect class="p404-slot" x="84" y="120" width="12" height="30" rx="4" fill="currentColor"/>
+          <rect class="p404-slot" x="104" y="120" width="12" height="30" rx="4" fill="currentColor"/>
+          <!-- le câble débranché qui pendouille -->
+          <g class="p404-plug">
+            <path class="p404-cable" d="M100 20 C 100 48, 138 54, 150 84 C 158 104, 150 120, 150 150" stroke="var(--accent-clair)" stroke-width="7" stroke-linecap="round"/>
+            <rect class="p404-fiche" x="138" y="150" width="24" height="30" rx="7" fill="var(--accent-clair)"/>
+            <rect x="143" y="180" width="5" height="12" rx="2.5" fill="var(--accent-clair)"/>
+            <rect x="152" y="180" width="5" height="12" rx="2.5" fill="var(--accent-clair)"/>
+          </g>
+          <!-- étincelles aux 3 couleurs de famille -->
+          <g class="p404-sparks">
+            <circle class="spark s-build" cx="150" cy="150" r="4" fill="#ea2631"/>
+            <circle class="spark s-run" cx="150" cy="150" r="4" fill="#0097a7"/>
+            <circle class="spark s-form" cx="150" cy="150" r="4" fill="#7b6aa7"/>
+          </g>
+        </svg>
+      </span>
+      <span class="p404-chiffre c2">4</span>
+    </div>
+
+    <h2 class="p404-titre">Cette page a <em class="accent">perdu le fil</em>.</h2>
+    <p class="p404-chapo">Erreur 404 : la page demandée n'existe plus ou a changé d'adresse. Pas de panique, on vous rebranche à l'essentiel.</p>
+
+    <div class="p404-cta">
+      <a class="btn btn-primary" href="/">Retour à l'accueil</a>
+      <a class="btn btn-ghost" href="/contact/">Nous contacter</a>
+    </div>
+    <p class="p404-secours">Ou explorez <a href="/references/">nos réalisations</a>.</p>
+  </div>
+</section>

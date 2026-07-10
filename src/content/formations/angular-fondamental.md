@@ -1,7 +1,7 @@
 ---
 titre: "Angular"
 groupe: "angular"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Develop"
 niveau: "Fondamental"
 chapo: "Formez-vous au framework Angular et créez des applications web dynamiques et complexes."

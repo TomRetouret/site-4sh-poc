@@ -5,118 +5,285 @@
       "label": "Prestations",
       "variant": "",
       "promo": {
-        "titre": "Un logiciel qui <em class=\"accent\">épouse</em> vos processus",
+        "titre": "Un logiciel qui *épouse* vos processus",
         "texte": "Conception, développement, run : une seule équipe, de la première idée à la production.",
         "lien_libelle": "Notre méthode 4D",
         "url": "/logiciel-metier/",
         "stats": [
-          { "valeur": "2007", "label": "depuis" },
-          { "valeur": "150+", "label": "projets livrés" }
+          {
+            "valeur": "2007",
+            "label": "depuis"
+          },
+          {
+            "valeur": "150+",
+            "label": "projets livrés"
+          }
         ]
       },
       "colonnes": [
         {
           "titre": "Concevoir & développer",
           "liens": [
-            { "label": "Logiciel métier sur mesure", "sous_texte": "Votre outil, vos processus", "url": "/logiciel-metier/", "icone": "ecran" },
-            { "label": "Application SaaS", "sous_texte": "Plateforme web évolutive", "url": "", "icone": "cloud" },
-            { "label": "Application mobile", "sous_texte": "iOS, Android, cross-platform", "url": "", "icone": "mobile" },
-            { "label": "Product & design UX / UI", "sous_texte": "Des écrans que vos équipes adoptent", "url": "", "icone": "design" }
+            {
+              "label": "Logiciel métier sur mesure",
+              "sous_texte": "Votre outil, vos processus",
+              "url": "/logiciel-metier/",
+              "icone": "ecran"
+            },
+            {
+              "label": "Application SaaS",
+              "sous_texte": "Plateforme web évolutive",
+              "url": "",
+              "icone": "cloud"
+            },
+            {
+              "label": "Application mobile",
+              "sous_texte": "iOS, Android, cross-platform",
+              "url": "",
+              "icone": "mobile"
+            },
+            {
+              "label": "Product & design UX / UI",
+              "sous_texte": "Des écrans que vos équipes adoptent",
+              "url": "",
+              "icone": "design"
+            }
           ]
         },
         {
           "titre": "Faire vivre & auditer",
+          "classe": "col-run",
           "liens": [
-            { "label": "Hébergement & MCO", "sous_texte": "Maintien en condition opérationnelle", "url": "", "icone": "serveurs" },
-            { "label": "Sécurité", "sous_texte": "Protection et conformité", "url": "", "icone": "bouclier" },
-            { "label": "Data", "sous_texte": "Pipelines, pilotage, valeur", "url": "", "icone": "data" },
-            { "label": "Audits UX, sécurité & cloud", "sous_texte": "Un état des lieux, des actions concrètes", "url": "", "icone": "audit" }
+            {
+              "label": "Hébergement & MCO",
+              "sous_texte": "Maintien en condition opérationnelle",
+              "url": "",
+              "icone": "serveurs"
+            },
+            {
+              "label": "Sécurité",
+              "sous_texte": "Protection et conformité",
+              "url": "",
+              "icone": "bouclier"
+            },
+            {
+              "label": "Data",
+              "sous_texte": "Pipelines, pilotage, valeur",
+              "url": "",
+              "icone": "data"
+            },
+            {
+              "label": "Audits UX, sécurité & cloud",
+              "sous_texte": "Un état des lieux, des actions concrètes",
+              "url": "",
+              "icone": "audit"
+            }
           ]
         }
       ],
-      "bas": { "titre": "Un doute sur l'approche ?", "texte": "30 minutes avec un expert, gratuit, sans engagement.", "cta_label": "Parlons-en", "cta_url": "/contact/" }
+      "bas": {
+        "titre": "Un doute sur l'approche ?",
+        "texte": "30 minutes avec un expert, gratuit, sans engagement.",
+        "cta_label": "Parlons-en",
+        "cta_url": "/contact/"
+      }
     },
     {
       "type": "megamenu",
       "label": "Secteurs",
       "variant": "menu-secteurs",
       "promo": {
-        "titre": "Votre métier a ses <em class=\"accent\">règles</em>. Nos logiciels aussi.",
+        "titre": "Votre métier a ses *règles*. Nos logiciels aussi.",
         "texte": "On connaît déjà le vocabulaire, les contraintes et les enjeux de votre secteur.",
         "lien_libelle": "Voir le cas EDF business service",
         "url": "/references/izivia-portail/",
-        "kpi": { "valeur": "200 000", "label": "bornes supervisées, EDF business service" }
+        "kpi": {
+          "valeur": "200 000",
+          "label": "bornes supervisées, EDF business service"
+        }
       },
       "colonnes": [
         {
           "titre": "Votre secteur",
           "liens": [
-            { "label": "Logistique & supply chain", "sous_texte": "Traçabilité, flux, entrepôts", "url": "/secteurs/logistique/", "icone": "logistique" },
-            { "label": "Électromobilité", "sous_texte": "Recharge, supervision, mobilité", "url": "/secteurs/electromobilite/", "icone": "eclair" },
-            { "label": "Assurance", "sous_texte": "Souscription, gestion, sinistre", "url": "/secteurs/assurance/", "icone": "bouclier" },
-            { "label": "Édition de logiciel", "sous_texte": "Renfort produit, outillage réseau", "url": "/secteurs/edition-de-logiciel/", "icone": "editeur" }
+            {
+              "label": "Logistique & supply chain",
+              "sous_texte": "Traçabilité, flux, entrepôts",
+              "url": "/secteurs/logistique/",
+              "icone": "logistique"
+            },
+            {
+              "label": "Électromobilité",
+              "sous_texte": "Recharge, supervision, mobilité",
+              "url": "/secteurs/electromobilite/",
+              "icone": "eclair"
+            },
+            {
+              "label": "Assurance",
+              "sous_texte": "Souscription, gestion, sinistre",
+              "url": "/secteurs/assurance/",
+              "icone": "bouclier"
+            },
+            {
+              "label": "Édition de logiciel",
+              "sous_texte": "Renfort produit, outillage réseau",
+              "url": "/secteurs/edition-de-logiciel/",
+              "icone": "editeur"
+            },
+            {
+              "label": "Fournisseur de services technologiques",
+              "sous_texte": "Plateformes et services connectés",
+              "url": "/secteurs/fournisseur-de-services-technologiques/",
+              "icone": "hub"
+            },
+            {
+              "label": "Franchise",
+              "sous_texte": "Réseau, pilotage, cohérence",
+              "url": "/secteurs/franchise/",
+              "icone": "editeur"
+            }
           ]
         },
         {
           "titre": "Nos solutions 4SH",
           "liens": [
-            { "label": "Celebrads", "sous_texte": "Communication et campagnes", "url": "/secteurs/celebrads/", "icone": "megaphone" },
-            { "label": "Hubit", "sous_texte": "Plateforme de services connectés", "url": "/secteurs/hubit/", "icone": "hub" },
-            { "label": "4PM / 4Track", "sous_texte": "Pilotage et suivi de projet", "url": "/secteurs/4pm/", "icone": "graph" },
-            { "label": "Simulateur de bornes", "sous_texte": "Dimensionner la recharge", "url": "/secteurs/simulateur-de-bornes/", "icone": "batterie" }
+            {
+              "label": "Celebrads",
+              "sous_texte": "Communication et campagnes",
+              "url": "/secteurs/celebrads/",
+              "icone": "megaphone"
+            },
+            {
+              "label": "Hubit",
+              "sous_texte": "Plateforme de services connectés",
+              "url": "/secteurs/hubit/",
+              "icone": "hub"
+            },
+            {
+              "label": "4PM / 4Track",
+              "sous_texte": "Pilotage et suivi de projet",
+              "url": "/secteurs/4pm/",
+              "icone": "graph"
+            },
+            {
+              "label": "Simulateur de bornes",
+              "sous_texte": "Dimensionner la recharge",
+              "url": "/secteurs/simulateur-de-bornes/",
+              "icone": "batterie"
+            }
           ]
         }
       ],
-      "bas": { "titre": "Vous ne voyez pas votre secteur ?", "texte": "On s'adapte à votre métier, parlons-en.", "cta_label": "Contact", "cta_url": "/contact/" }
+      "bas": {
+        "titre": "Vous ne voyez pas votre secteur ?",
+        "texte": "On s'adapte à votre métier, parlons-en.",
+        "cta_label": "Contact",
+        "cta_url": "/contact/"
+      }
     },
     {
       "type": "megamenu",
       "label": "Technologies",
       "variant": "",
       "promo": {
-        "titre": "Les bonnes <em class=\"accent\">technos</em>, pour les bonnes raisons",
+        "titre": "Les bonnes *technos*, pour les bonnes raisons",
         "texte": "On choisit chaque technologie selon votre projet, jamais par habitude.",
-        "lien_libelle": "Voir nos réalisations",
-        "url": "/references/"
+        "lien_libelle": "Toutes nos expertises techniques",
+        "url": "/expertises-techniques/"
       },
       "colonnes": [
         {
           "titre": "Langages & back",
           "liens": [
-            { "label": "Java", "sous_texte": "Robuste, éprouvé, pérenne", "url": "", "icone": "code" },
-            { "label": "Kotlin", "sous_texte": "Moderne, concis, sûr", "url": "", "icone": "code" },
-            { "label": "Spring", "sous_texte": "Socle applicatif solide", "url": "", "icone": "serveurs" }
+            {
+              "label": "Java",
+              "sous_texte": "Robuste, éprouvé, pérenne",
+              "url": "/expertises-techniques/java/",
+              "icone": "code"
+            },
+            {
+              "label": "Kotlin",
+              "sous_texte": "Moderne, concis, sûr",
+              "url": "/expertises-techniques/kotlin/",
+              "icone": "code"
+            },
+            {
+              "label": "Kubernetes",
+              "sous_texte": "Déploiement scalable",
+              "url": "/expertises-techniques/kubernetes/",
+              "icone": "cloud"
+            }
           ]
         },
         {
-          "titre": "Front, cloud & data",
+          "titre": "Front & mobile",
           "liens": [
-            { "label": "Angular & React Native", "sous_texte": "Web et mobile réactifs", "url": "", "icone": "mobile" },
-            { "label": "Kubernetes & Docker", "sous_texte": "Déploiement scalable", "url": "", "icone": "cloud" },
-            { "label": "Data & IA", "sous_texte": "Pilotage, prédiction, valeur", "url": "", "icone": "graph" }
+            {
+              "label": "Angular",
+              "sous_texte": "Interfaces web dynamiques",
+              "url": "/expertises-techniques/angular/",
+              "icone": "code"
+            },
+            {
+              "label": "React Native",
+              "sous_texte": "Mobile iOS et Android",
+              "url": "/expertises-techniques/react-native/",
+              "icone": "mobile"
+            },
+            {
+              "label": "Toutes nos technologies",
+              "sous_texte": "Langages, outils, cloud, data",
+              "url": "/expertises-techniques/",
+              "icone": "graph"
+            }
           ]
         }
       ],
-      "bas": { "titre": "Une techno en tête ?", "texte": "On vous dit si elle sert vraiment votre projet.", "cta_label": "Parlons-en", "cta_url": "/contact/" }
+      "bas": {
+        "titre": "Une techno en tête ?",
+        "texte": "On vous dit si elle sert vraiment votre projet.",
+        "cta_label": "Parlons-en",
+        "cta_url": "/contact/"
+      }
     },
-    { "type": "lien", "label": "Réalisations", "url": "/references/" },
+    {
+      "type": "lien",
+      "label": "Réalisations",
+      "url": "/references/"
+    },
     {
       "type": "menu_simple",
       "label": "L'agence",
       "titre_col": "La méthode & l'agence",
       "liens": [
-        { "label": "Méthode 4D", "sous_texte": "De Discover à Deploy", "url": "" },
-        { "label": "Démarche UX", "sous_texte": "Ateliers, tests utilisateurs", "url": "" },
-        { "label": "Nos engagements", "sous_texte": "Qualité, durée, transparence", "url": "" },
-        { "label": "À propos", "sous_texte": "L'agence et son histoire", "url": "" },
-        { "label": "L'équipe", "sous_texte": "Ceux qui conçoivent votre outil", "url": "" },
-        { "label": "Nos agences", "sous_texte": "Bordeaux, Capbreton, Paris", "url": "" },
-        { "label": "Le blog", "sous_texte": "Nos articles et retours d'expérience", "url": "https://blog.4sh.fr/" }
+        {
+          "label": "Notre démarche",
+          "sous_texte": "Méthode 4D, UX, engagements",
+          "url": "/notre-demarche/"
+        },
+        {
+          "label": "Notre entreprise",
+          "sous_texte": "Histoire, équipe, valeurs, agences",
+          "url": "/notre-entreprise/"
+        },
+        {
+          "label": "Le blog",
+          "sous_texte": "Nos articles et retours d'expérience",
+          "url": "https://blog.4sh.fr/"
+        }
       ]
     }
   ],
   "actions": [
-    { "label": "Formations", "url": "/formations/", "style": "lien-formations" },
-    { "label": "Parlons de votre projet", "url": "/contact/", "style": "btn btn-primary btn-sm" }
+    {
+      "label": "Formations",
+      "url": "/formations/",
+      "style": "lien-formations"
+    },
+    {
+      "label": "Parlons de votre projet",
+      "url": "/contact/",
+      "style": "btn btn-primary btn-sm"
+    }
   ]
 }

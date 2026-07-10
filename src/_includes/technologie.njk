@@ -1,0 +1,83 @@
+---
+layout: base.njk
+---
+<!-- HERO INTERNE -->
+<div class="hero-interne">
+  <div class="container">
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; <a href="/expertises-techniques/">Expertises techniques</a> &rsaquo; {{ nom }}</nav>
+    <div class="hero-grille">
+      <div>
+        <p class="eyebrow">Expertise technique</p>
+        <h1>{{ h1 | accent | safe }}</h1>
+        <p class="chapo" style="font-size:18px;color:var(--texte-2);margin-bottom:26px">{{ intro }}</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="/contact/">Contactez-nous</a>
+          {% if formations and formations.length %}<a class="btn btn-ghost" href="#formations">Nos formations</a>{% endif %}
+        </div>
+      </div>
+      {% if logo %}
+      <div class="techno-blason" aria-hidden="true">
+        <img src="{{ logo }}" alt="{{ nom }}" loading="eager" decoding="async">
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- POURQUOI -->
+<section>
+  <div class="container">
+    <p class="eyebrow">{{ pourquoi_eyebrow or ("Pourquoi " + nom + " ?") }}</p>
+    {% if pourquoi_titre %}<h2 class="sec-titre">{{ pourquoi_titre | accent | safe }}</h2>{% endif %}
+    {% if pourquoi_intro %}<p class="sec-sous">{{ pourquoi_intro }}</p>{% endif %}
+    <div class="atouts" style="grid-template-columns:repeat(4,1fr)">
+      {% for a in atouts %}
+      <div class="atout"><span class="n">{{ loop.index }}</span><h3>{{ a.titre }}</h3><p>{{ a.texte }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- RÉFÉRENCES CLIENTS -->
+{% if references and references.length %}
+<section style="padding-top:0">
+  <div class="container">
+    <p class="eyebrow">Références clients</p>
+    <div class="realisations">
+      {% for r in references %}
+      <div class="real-carte">
+        <h3>{{ r.titre }}</h3>
+        <p>{{ r.texte }}</p>
+        {% if r.lien %}<a href="{{ r.lien }}">Voir la référence →</a>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- COMMUNAUTÉ & ÉCOSYSTÈME (corps markdown) -->
+{% if content %}
+<section class="section-sombre sur-sombre">
+  <div class="container">
+    <p class="eyebrow">Communauté et écosystème</p>
+    <div class="prose prose--sombre">{{ content | safe }}</div>
+  </div>
+</section>
+{% endif %}
+
+<!-- NOS FORMATIONS -->
+{% if formations and formations.length %}
+<section id="formations">
+  <div class="container">
+    <p class="eyebrow">Nos formations</p>
+    <div class="socle" style="grid-template-columns:repeat(3,1fr)">
+      {% for f in formations %}
+      <a class="socle-carte" href="{{ f.url or '#' }}"><h3>{{ f.titre }}</h3><span class="socle-lien">Découvrir →</span></a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% include "contact-etendu.njk" %}

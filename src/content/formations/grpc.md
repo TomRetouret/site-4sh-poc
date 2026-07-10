@@ -1,7 +1,7 @@
 ---
 titre: "gRPC"
 groupe: "grpc"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Develop"
 niveau: "Fondamental"
 chapo: "Apprenez à utiliser la communication inter-service grâce à cet outil open-source."

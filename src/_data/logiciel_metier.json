@@ -1,7 +1,7 @@
 {
   "meta_title": "Logiciel métier : développement sur mesure pour entreprise - 4SH",
   "meta_description": "Gagnez en productivité avec un logiciel métier conçu sur mesure. 4SH développe vos outils spécifiques adaptés à vos processus métier.",
-  "hero_h1": "Développement de logiciels <em class=\"accent\">métier</em> sur mesure",
+  "hero_h1": "Développement de logiciels *métier* sur mesure",
   "hero_chapo": "Votre entreprise est unique, votre logiciel métier doit l'être aussi. Nous développons des solutions sur mesure qui répondent exactement à vos besoins, améliorent votre productivité et simplifient votre quotidien.",
   "hero_cta_principal_label": "Décrire mon besoin",
   "hero_cta_principal_url": "#contact",
@@ -14,55 +14,136 @@
     "Bordeaux · Capbreton · Paris"
   ],
   "chiffres": [
-    { "valeur": "2007", "texte": "année de création", "note": "du sur-mesure depuis le début" },
-    { "valeur": "3", "compte": "3", "texte": "agences en France", "note": "Bordeaux · Capbreton · Paris" },
-    { "valeur": "48h", "compte": "48", "suffixe": "h", "texte": "pour un premier retour", "note": "par un expert, pas un commercial" },
-    { "valeur": "100%", "compte": "100", "suffixe": "%", "texte": "conçu et maintenu en interne", "note": "une seule équipe, de A à Z" }
+    {
+      "valeur": "2007",
+      "texte": "année de création",
+      "note": "du sur-mesure depuis le début"
+    },
+    {
+      "valeur": "3",
+      "compte": "3",
+      "texte": "agences en France",
+      "note": "Bordeaux · Capbreton · Paris"
+    },
+    {
+      "valeur": "48h",
+      "compte": "48",
+      "suffixe": "h",
+      "texte": "pour un premier retour",
+      "note": "par un expert, pas un commercial"
+    },
+    {
+      "valeur": "100%",
+      "compte": "100",
+      "suffixe": "%",
+      "texte": "conçu et maintenu en interne",
+      "note": "une seule équipe, de A à Z"
+    }
   ],
   "pourquoi_eyebrow": "Le sur-mesure",
-  "pourquoi_titre": "Pourquoi opter pour un <em class=\"accent\">logiciel métier</em> ?",
+  "pourquoi_titre": "Pourquoi opter pour un *logiciel métier* ?",
   "pourquoi_paragraphes": [
     "Un <strong>logiciel métier</strong> est une solution spécifiquement conçue pour répondre aux besoins d'un secteur ou d'un métier donné. Contrairement aux logiciels génériques, il s'intègre parfaitement à vos processus, réduit les tâches manuelles et améliore la productivité. C'est un véritable levier de performance, pensé pour évoluer avec votre entreprise.",
     "Plutôt qu'un outil standardisé, choisissez une solution qui vous ressemble : un <strong>logiciel sur mesure</strong>. C'est un investissement stratégique pour structurer vos données, automatiser vos tâches répétitives et sécuriser vos flux métiers.",
     "Cette même approche personnalisée s'applique à nos services de <a href=\"#\">développement d'applications mobiles sur mesure</a> et de <a href=\"#\">développement SaaS sur mesure</a>, idéals pour créer une plateforme accessible en ligne, évolutive et parfaitement adaptée à vos besoins."
   ],
   "methode_eyebrow": "Notre méthode",
-  "methode_titre": "Un <em class=\"accent\">accompagnement</em> sur mesure",
+  "methode_titre": "Un *accompagnement* sur mesure",
   "methode_sous": "De l'analyse des besoins à la maintenance continue, nous vous accompagnons à chaque étape de la création de votre logiciel métier.",
   "methode_etapes": [
-    { "num": "01", "label": "Cadrage", "titre": "Analyse des besoins", "texte": "Nous écoutons vos enjeux pour comprendre votre métier, vos process et identifier les leviers d'optimisation." },
-    { "num": "02", "label": "Design", "titre": "Conception et prototypage", "texte": "Nos expert·es UX/UI modélisent une solution intuitive et adaptée à vos usages, via des maquettes fonctionnelles." },
-    { "num": "03", "label": "Build", "titre": "Développement", "texte": "Architecture évolutive, code maintenable et tests automatisés : nos équipes développent avec rigueur." },
-    { "num": "04", "label": "Deploy", "titre": "Déploiement et intégration", "texte": "Mise en production, intégration dans votre SI et formation de vos utilisateurs pour un démarrage en douceur." },
-    { "num": "05", "label": "Run", "titre": "Support et maintenance", "texte": "Support réactif, correctifs et nouvelles fonctionnalités : votre logiciel évolue avec vous." }
+    {
+      "num": "01",
+      "label": "Cadrage",
+      "titre": "Analyse des besoins",
+      "texte": "Nous écoutons vos enjeux pour comprendre votre métier, vos process et identifier les leviers d'optimisation."
+    },
+    {
+      "num": "02",
+      "label": "Design",
+      "titre": "Conception et prototypage",
+      "texte": "Nos expert·es UX/UI modélisent une solution intuitive et adaptée à vos usages, via des maquettes fonctionnelles."
+    },
+    {
+      "num": "03",
+      "label": "Build",
+      "titre": "Développement",
+      "texte": "Architecture évolutive, code maintenable et tests automatisés : nos équipes développent avec rigueur."
+    },
+    {
+      "num": "04",
+      "label": "Deploy",
+      "titre": "Déploiement et intégration",
+      "texte": "Mise en production, intégration dans votre SI et formation de vos utilisateurs pour un démarrage en douceur."
+    },
+    {
+      "num": "05",
+      "label": "Run",
+      "titre": "Support et maintenance",
+      "texte": "Support réactif, correctifs et nouvelles fonctionnalités : votre logiciel évolue avec vous."
+    }
   ],
   "socle_eyebrow": "Stack technique",
-  "socle_titre": "Un <em class=\"accent\">socle</em> technologique",
+  "socle_titre": "Un *socle* technologique",
   "socle_sous": "Des technologies modernes, robustes et éprouvées pour un code solide et durable.",
   "socle_cartes": [
-    { "logo": "https://www.4sh.fr/assets/img/svg/java.svg", "nom": "Java", "lien_label": "En savoir plus →", "lien_url": "#" },
-    { "logo": "https://www.4sh.fr/assets/img/svg/kotlin.svg", "nom": "Kotlin", "lien_label": "En savoir plus →", "lien_url": "#" },
-    { "logo": "https://www.4sh.fr/assets/img/svg/angular.svg", "nom": "Angular", "lien_label": "En savoir plus →", "lien_url": "#" },
-    { "logo": "https://www.4sh.fr/assets/img/svg/kubernetes.svg", "nom": "Kubernetes", "lien_label": "En savoir plus →", "lien_url": "#" }
+    {
+      "logo": "https://www.4sh.fr/assets/img/svg/java.svg",
+      "nom": "Java",
+      "lien_label": "En savoir plus →",
+      "lien_url": "/expertises-techniques/java/"
+    },
+    {
+      "logo": "https://www.4sh.fr/assets/img/svg/kotlin.svg",
+      "nom": "Kotlin",
+      "lien_label": "En savoir plus →",
+      "lien_url": "/expertises-techniques/kotlin/"
+    },
+    {
+      "logo": "https://www.4sh.fr/assets/img/svg/angular.svg",
+      "nom": "Angular",
+      "lien_label": "En savoir plus →",
+      "lien_url": "/expertises-techniques/angular/"
+    },
+    {
+      "logo": "https://www.4sh.fr/assets/img/svg/kubernetes.svg",
+      "nom": "Kubernetes",
+      "lien_label": "En savoir plus →",
+      "lien_url": "/expertises-techniques/kubernetes/"
+    }
   ],
   "pour_qui_eyebrow": "Cas d'usage",
-  "pour_qui_titre": "Pour <em class=\"accent\">qui</em> ?",
+  "pour_qui_titre": "Pour *qui* ?",
   "pour_qui_paragraphes": [
     "Nos <strong>logiciels métiers</strong> s'adressent à toutes les structures, de la start-up aux grands groupes. Nous travaillons avec des PME, ETI et grandes entreprises dans des secteurs variés : industrie, logistique, mobilité électrique, assurance et bien d'autres.",
     "Quel que soit votre secteur d'activité, notre approche sur mesure garantit une solution 100 % alignée avec vos enjeux spécifiques."
   ],
   "atouts_eyebrow": "Nos atouts",
-  "atouts_titre": "Pourquoi choisir <em class=\"accent\">4SH</em> ?",
+  "atouts_titre": "Pourquoi choisir *4SH* ?",
   "atouts_sous": "Un partenaire engagé et à l'écoute de vos objectifs métiers.",
   "atouts": [
-    { "titre": "+15 ans d'expertise", "texte": "En développement de logiciels métiers." },
-    { "titre": "Équipes pluridisciplinaires", "texte": "UX, tech, devops, produit." },
-    { "titre": "Approche centrée utilisateur", "texte": "Pour des outils réellement adoptés." },
-    { "titre": "Méthodologie agile", "texte": "Et transparente, avec des livraisons itératives." },
-    { "titre": "Relation de proximité", "texte": "Un interlocuteur dédié vous accompagne." }
+    {
+      "titre": "+15 ans d'expertise",
+      "texte": "En développement de logiciels métiers."
+    },
+    {
+      "titre": "Équipes pluridisciplinaires",
+      "texte": "UX, tech, devops, produit."
+    },
+    {
+      "titre": "Approche centrée utilisateur",
+      "texte": "Pour des outils réellement adoptés."
+    },
+    {
+      "titre": "Méthodologie agile",
+      "texte": "Et transparente, avec des livraisons itératives."
+    },
+    {
+      "titre": "Relation de proximité",
+      "texte": "Un interlocuteur dédié vous accompagne."
+    }
   ],
   "realisations_eyebrow": "Réalisations",
-  "realisations_titre": "Ils ont un <em class=\"accent\">logiciel métier</em> fait pour eux",
+  "realisations_titre": "Ils ont un *logiciel métier* fait pour eux",
   "realisations_vedette": {
     "secteur": "Infoport · Fret maritime",
     "logo_texte": "SIMAR",
@@ -70,40 +151,85 @@
     "citation": "Une traçabilité pensée avec les équipes terrain, sur un métier réglementé et exigeant.",
     "auteur": "",
     "chiffres": [
-      { "valeur": "100 %", "label": "des flux tracés" },
-      { "valeur": "Maritime + aérien", "label": "un seul outil" }
+      {
+        "valeur": "100 %",
+        "label": "des flux tracés"
+      },
+      {
+        "valeur": "Maritime + aérien",
+        "label": "un seul outil"
+      }
     ],
     "cta_label": "Voir la référence",
     "cta_url": "/references/infoport/"
   },
   "realisations_cartes": [
-    { "secteur": "CIN · Fret aérien", "titre": "Application web de fret aérien", "texte": "Réponse opérationnelle aux obligations douanières de traçabilité, de prise en charge et de sûreté / sécurité sur le fret aérien des aéroports de Paris.", "url": "/references/cin/" },
-    { "secteur": "EDF business service · Électromobilité", "titre": "Supervision de bornes de recharge", "texte": "Plateforme de pilotage et de supervision d'un large parc de bornes de recharge, construite et opérée par 4SH.", "url": "/references/izivia-portail/" }
+    {
+      "secteur": "CIN · Fret aérien",
+      "titre": "Application web de fret aérien",
+      "texte": "Réponse opérationnelle aux obligations douanières de traçabilité, de prise en charge et de sûreté / sécurité sur le fret aérien des aéroports de Paris.",
+      "url": "/references/cin/"
+    },
+    {
+      "secteur": "EDF business service · Électromobilité",
+      "titre": "Supervision de bornes de recharge",
+      "texte": "Plateforme de pilotage et de supervision d'un large parc de bornes de recharge, construite et opérée par 4SH.",
+      "url": "/references/izivia-portail/"
+    }
   ],
   "realisations_clients_titre": "Ils nous font confiance",
-  "realisations_clients": ["EDF business service", "SUD OUEST", "FILHET-ALLARD", "CIN", "INFOPORT", "ARRG", "BME"],
-  "blog_eyebrow": "Le blog",
-  "blog_titre": "Nos experts vous <em class=\"accent\">parlent</em>",
-  "blog_articles": [
-    { "tag": "Design · UX", "date": "11 février 2025", "duree": "5 min", "titre": "Pourquoi réaliser un audit UX ?", "url": "#", "auteur": "Julie Provenzano, Lead UX Designer" },
-    { "tag": "Cloud & Data", "date": "14 novembre 2024", "duree": "8 min", "titre": "Simple hébergement vs Maintien en Condition Opérationnelle (MCO) : quel choix pour votre entreprise ?", "url": "#", "auteur": "Mehdi Thubert, Responsable du Système d'Information" },
-    { "tag": "Développement", "date": "18 juillet 2023", "duree": "6 min", "titre": "Logiciel sur mesure VS logiciel clé en main : lequel choisir ?", "url": "#", "auteur": "Blandine Hardiviller, Responsable marketing & communication" }
+  "realisations_clients": [
+    "EDF business service",
+    "SUD OUEST",
+    "FILHET-ALLARD",
+    "CIN",
+    "INFOPORT",
+    "ARRG",
+    "BME"
   ],
-  "faq_titre": "Logiciel métier : vos <em class=\"accent\">questions</em>",
+  "blog_eyebrow": "Le blog",
+  "blog_titre": "Nos experts vous *parlent*",
+  "blog_articles": [
+    {
+      "tag": "Design · UX",
+      "date": "11 février 2025",
+      "duree": "5 min",
+      "titre": "Pourquoi réaliser un audit UX ?",
+      "url": "#",
+      "auteur": "Julie Provenzano, Lead UX Designer"
+    },
+    {
+      "tag": "Cloud & Data",
+      "date": "14 novembre 2024",
+      "duree": "8 min",
+      "titre": "Simple hébergement vs Maintien en Condition Opérationnelle (MCO) : quel choix pour votre entreprise ?",
+      "url": "#",
+      "auteur": "Mehdi Thubert, Responsable du Système d'Information"
+    },
+    {
+      "tag": "Développement",
+      "date": "18 juillet 2023",
+      "duree": "6 min",
+      "titre": "Logiciel sur mesure VS logiciel clé en main : lequel choisir ?",
+      "url": "#",
+      "auteur": "Blandine Hardiviller, Responsable marketing & communication"
+    }
+  ],
+  "faq_titre": "Logiciel métier : vos *questions*",
   "faq_sous": "Ce que les décideurs nous demandent avant de lancer leur projet.",
   "faq": [
-    { "question": "Pourquoi développer un logiciel sur mesure plutôt qu'utiliser une solution existante ?", "reponse": "Les solutions existantes ne couvrent souvent qu'une partie de vos besoins, ou imposent des processus contraignants. Un logiciel sur mesure s'adapte à votre métier, vos utilisateurs et vos objectifs. Il est évolutif, sécurisé et pensé pour améliorer vos performances." },
-    { "question": "Comment impliquer mes équipes dans le projet ?", "reponse": "Impliquer les futurs utilisateurs dès l'analyse des besoins est essentiel. Nous organisons des ateliers de co-conception, des tests utilisateurs et des démos régulières pour garantir l'adoption du logiciel et son adéquation avec vos pratiques métier." },
-    { "question": "Mon logiciel pourra-t-il évoluer ?", "reponse": "Oui, c'est un des avantages clés du sur mesure. Votre logiciel est conçu avec une architecture évolutive, permettant l'ajout de nouvelles fonctionnalités, l'intégration de services tiers ou des montées en charge sans tout recommencer." }
+    {
+      "question": "Pourquoi développer un logiciel sur mesure plutôt qu'utiliser une solution existante ?",
+      "reponse": "Les solutions existantes ne couvrent souvent qu'une partie de vos besoins, ou imposent des processus contraignants. Un logiciel sur mesure s'adapte à votre métier, vos utilisateurs et vos objectifs. Il est évolutif, sécurisé et pensé pour améliorer vos performances."
+    },
+    {
+      "question": "Comment impliquer mes équipes dans le projet ?",
+      "reponse": "Impliquer les futurs utilisateurs dès l'analyse des besoins est essentiel. Nous organisons des ateliers de co-conception, des tests utilisateurs et des démos régulières pour garantir l'adoption du logiciel et son adéquation avec vos pratiques métier."
+    },
+    {
+      "question": "Mon logiciel pourra-t-il évoluer ?",
+      "reponse": "Oui, c'est un des avantages clés du sur mesure. Votre logiciel est conçu avec une architecture évolutive, permettant l'ajout de nouvelles fonctionnalités, l'intégration de services tiers ou des montées en charge sans tout recommencer."
+    }
   ],
-  "contact_titre": "Besoin d'un <em class=\"accent\">logiciel métier</em> ?",
-  "contact_sous": "Parlons de votre projet. 30 minutes avec un expert, sans engagement, pour un premier avis honnête sur votre besoin.",
-  "contact_arguments": [
-    "Un interlocuteur dédié qui comprend votre métier",
-    "Une approche 100 % alignée avec vos enjeux",
-    "Un partenaire engagé, de l'analyse à la maintenance"
-  ],
-  "contact_visages": ["SA", "JP", "TM", "+40"],
-  "contact_note": "L'équipe 4SH, celle que vous aurez vraiment au téléphone.",
   "sticky_cta_label": "Parlons de votre projet"
 }

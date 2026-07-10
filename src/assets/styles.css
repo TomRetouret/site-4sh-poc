@@ -18,11 +18,23 @@
   --sombre:#1f292e;        /* sections sombres / footer */
   --sombre-2:#2b3a41;
   --violet:#7b6aa7;        /* Formations (Learning) */
+  --cyan:#0097a7;          /* RUN : hébergement, maintenance, sécurité */
+  /* Accent de famille : ROUGE par défaut (site + Build). Une classe de famille le surcharge. */
+  --accent:var(--rouge);
+  --accent-texte:var(--rouge);   /* petit texte (sur-titre) : version lisible de l'accent */
+  --accent-pale:var(--rouge-pale);
+  --accent-fonce:var(--rouge-fonce);
+  --accent-clair:#ff5a63;        /* version éclaircie pour fonds sombres */
   --bordure:#e6e6e6;
   --radius:18px;
   --serif:"Fraunces",Georgia,serif;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
+/* --- Familles d'offre : seul l'accent change ; le CTA reste rouge (action) et le header reste rouge (chrome). */
+/* Utilisable sur le <body> (page entière) OU sur un bloc / une carte (portée locale). --- */
+.famille-build{--accent:var(--rouge);--accent-texte:var(--rouge);--accent-pale:var(--rouge-pale);--accent-fonce:var(--rouge-fonce);--accent-clair:#ff5a63}
+.famille-run{--accent:#0097a7;--accent-texte:#007a8a;--accent-pale:#e0f4f6;--accent-fonce:#00838f;--accent-clair:#34b3c2}
+.learning,.famille-formation{--accent:var(--violet);--accent-texte:var(--violet);--accent-pale:#efe9f7;--accent-fonce:#5f4f8a;--accent-clair:#a08fc9}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--fond);color:var(--texte);font-family:Asap,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -32,8 +44,8 @@ a{color:var(--rouge);text-decoration:none}
 .container{max-width:1200px;margin:0 auto;padding:0 28px}
 
 /* ---------- accent typographique (mot-clé des titres) ---------- */
-em.accent{font-family:var(--serif);font-style:italic;font-weight:600;color:var(--rouge);letter-spacing:0}
-.sur-sombre em.accent{color:#ff5a63}
+em.accent{font-family:var(--serif);font-style:italic;font-weight:600;color:var(--accent);letter-spacing:0}
+.sur-sombre em.accent{color:var(--accent-clair)}
 
 /* ---------- boutons (pill, comme le site actuel) ---------- */
 .btn{position:relative;display:inline-flex;align-items:center;gap:.55em;border-radius:140px;padding:16px 32px;font-weight:600;font-size:16px;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s,color .2s,border-color .2s;border:2px solid transparent}
@@ -52,8 +64,8 @@ header .nav{pointer-events:auto;display:flex;align-items:center;gap:8px;height:7
 .logo img{height:42px;width:auto;display:block}
 .logo b{font-size:28px;color:var(--rouge);letter-spacing:-1px}
 .logo span{font-size:9.5px;color:var(--texte-2);letter-spacing:.5px;margin-top:2px}
-.menu{display:flex;align-items:center;gap:2px;flex:1}
-.menu>li{list-style:none;position:relative}
+.menu{display:flex;align-items:stretch;gap:2px;flex:1;align-self:stretch}
+.menu>li{list-style:none;position:relative;display:flex;align-items:center}
 .menu>li>a{display:block;padding:10px 16px;border-radius:100px;color:var(--texte);font-weight:500;font-size:15.5px;position:relative;transition:background .18s var(--ease),color .18s}
 .menu>li>a::before{content:"";position:absolute;left:14px;right:100%;bottom:16px;height:2px;background:var(--rouge);transition:right .25s var(--ease)}
 .menu>li:hover>a::before,.menu>li>a.actif::before{right:14px}
@@ -95,7 +107,7 @@ header .nav{pointer-events:auto;display:flex;align-items:center;gap:8px;height:7
 .hero .container{position:relative;z-index:3}
 .hero-grille{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding-top:120px}
 .surtitre{font-size:13.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#ff5a63;margin-bottom:22px;display:flex;align-items:center;gap:12px}
-.surtitre::before{content:"";width:34px;height:2px;background:var(--rouge);display:inline-block}
+.surtitre::before{display:none}
 .hero-accroche{font-size:clamp(44px,6.2vw,84px);line-height:1.02;font-weight:700;color:#fff;letter-spacing:-2.5px;margin-bottom:26px}
 .hero p.chapo{font-size:19px;color:#b9c3c8;max-width:560px;margin-bottom:34px;line-height:1.65}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
@@ -159,24 +171,24 @@ section{padding:110px 0}
 .sec-sous{font-size:18px;color:var(--texte-2);max-width:660px;margin-bottom:52px}
 .centre{text-align:center}
 .centre .sec-sous{margin-left:auto;margin-right:auto}
-.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--rouge);margin-bottom:14px;display:flex;align-items:center;gap:12px}
-.eyebrow::before{content:"";width:34px;height:2px;background:var(--rouge)}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent-texte);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{display:none}
 
 /* ---------- portes d'entrée ---------- */
 .portes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .porte{position:relative;background:var(--carte);border-radius:var(--radius);padding:36px 32px;border:1px solid var(--bordure);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .2s;display:flex;flex-direction:column;overflow:hidden}
-.porte::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--rouge);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.porte::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
 .porte:hover{box-shadow:0 24px 54px rgba(31,41,46,.13);transform:translateY(-6px);border-color:transparent}
 .porte:hover::before{transform:scaleX(1)}
-.porte .pictos{width:52px;height:52px;border-radius:14px;background:var(--rouge-pale);color:var(--rouge);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;transition:transform .35s var(--ease)}
+.porte .pictos{width:52px;height:52px;border-radius:14px;background:var(--accent-pale);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;transition:transform .35s var(--ease)}
 .porte:hover .pictos{transform:rotate(-6deg) scale(1.08)}
 .porte h3{font-size:23px;color:var(--sombre);margin-bottom:10px;letter-spacing:-.4px}
 .porte p{font-size:15.5px;color:var(--texte-2);flex:1}
 .porte ul{list-style:none;margin:16px 0 20px;font-size:14.5px}
 .porte ul li{padding:4px 0}
 .porte ul a{color:var(--texte);font-weight:500;transition:color .15s,padding-left .2s var(--ease)}
-.porte ul a:hover{color:var(--rouge);padding-left:4px}
-.porte .suite{font-weight:600;font-size:15px}
+.porte ul a:hover{color:var(--accent);padding-left:4px}
+.porte .suite{font-weight:600;font-size:15px;color:var(--accent)}
 
 /* ---------- bandeau chiffres XXL ---------- */
 .chiffres{background:var(--sombre);color:#fff;padding:84px 0;position:relative;overflow:hidden}
@@ -233,6 +245,19 @@ section{padding:110px 0}
 .blog-auteur-txt small{color:var(--muted);font-size:12px}
 @media (max-width:900px){.blog-grille{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.blog-grille{grid-template-columns:1fr}}
+
+/* ---------- parallaxe douce au scroll sur les visuels (CSS scroll-driven, natif) ----------
+   Les images sont surdimensionnées (120%) puis translatées au fil du scroll : l'effet reste
+   couvert (pas de bord vide). Activé seulement sur desktop, navigateurs compatibles, et
+   hors prefers-reduced-motion. Repli : image fixe, aucun mouvement. */
+@keyframes parallaxe-visuel{from{transform:translateY(-7%)}to{transform:translateY(7%)}}
+@supports (animation-timeline: view()){
+  @media (min-width:961px) and (prefers-reduced-motion: no-preference){
+    .blog-img{position:relative}
+    .cas--image .cas-visuel img,
+    .blog-img img{position:absolute;top:-12%;left:0;bottom:auto;width:100%;height:124%;object-fit:cover;will-change:transform;animation:parallaxe-visuel linear both;animation-timeline:view()}
+  }
+}
 
 /* ---------- méthode : étapes numérotées ---------- */
 .etapes{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--bordure)}
@@ -372,7 +397,7 @@ header .nav{position:relative}
 .doodle-spirale{color:#f4f5f7;display:block;margin-top:26px}
 .porte{isolation:isolate}
 .mini-doodle{position:absolute;top:24px;right:24px;color:#c9ccd0;transition:color .25s}
-.porte:hover .mini-doodle{color:var(--rouge)}
+.porte:hover .mini-doodle{color:var(--accent)}
 
 /* ---------- v3 : emplacements photos équipe ---------- */
 .equipe-grille{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
@@ -419,11 +444,13 @@ header .nav{position:relative}
 .menu-services .svc-list{list-style:none;display:flex;flex-direction:column;gap:4px}
 .menu-services .svc-item{display:flex;gap:13px;align-items:center;padding:11px;border-radius:14px;transition:background .15s,box-shadow .2s,transform .2s var(--ease)}
 .menu-services .svc-item:hover{background:#fff;box-shadow:0 10px 26px rgba(31,41,46,.09);transform:translateY(-1px)}
-.menu-services .svc-ico{flex:none;width:46px;height:46px;border-radius:13px;background:#fff;border:1px solid var(--bordure);box-shadow:0 4px 10px rgba(31,41,46,.06);display:flex;align-items:center;justify-content:center;color:var(--rouge);transition:transform .25s var(--ease)}
+.menu-services .svc-ico{flex:none;width:46px;height:46px;border-radius:13px;background:#fff;border:1px solid var(--bordure);box-shadow:0 4px 10px rgba(31,41,46,.06);display:flex;align-items:center;justify-content:center;color:var(--accent);transition:transform .25s var(--ease)}
+/* Colonne RUN du méga-menu : teinte cyan (hébergement, maintenance, sécurité) */
+.menu-services .col-run{--accent:var(--cyan)}
 .menu-services .svc-item:hover .svc-ico{transform:scale(1.06)}
 .menu-services .svc-item b{display:block;font-size:15.5px;color:var(--sombre);font-weight:600;line-height:1.2}
 .menu-services .svc-item small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px;font-weight:400}
-.menu-services .svc-item:hover b{color:var(--rouge)}
+.menu-services .svc-item:hover b{color:var(--accent)}
 .menu-services .services-bas{grid-column:2 / -1;grid-row:2;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 12px 4px;border-top:1px solid var(--bordure)}
 .menu-services .services-bas b{display:block;color:var(--sombre);font-size:16px;letter-spacing:-.2px}
 .menu-services .services-bas span{color:var(--muted);font-size:14px}
@@ -449,7 +476,7 @@ header .nav{position:relative}
 /* ---------- menu « signature » : pastille active, icône inversée, promo enrichie ---------- */
 .menu>li>a::before{display:none}
 .menu>li:hover>a,.menu>li:focus-within>a,.menu>li>a.actif{background:var(--rouge-pale);color:var(--rouge)}
-.menu-services .svc-item:hover .svc-ico{background:var(--rouge);border-color:var(--rouge);color:#fff}
+.menu-services .svc-item:hover .svc-ico{background:var(--accent);border-color:var(--accent);color:#fff}
 .menu-services .promo-services em.accent{color:#ff5a63;font-style:italic}
 .menu-services .promo-lien{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--sombre);padding:11px 18px;border-radius:100px;font-size:13.5px;align-self:flex-start;transition:transform .2s var(--ease),color .2s}
 .menu-services .promo-services:hover .promo-lien{color:var(--sombre);transform:translateX(3px)}
@@ -463,7 +490,7 @@ header .nav{position:relative}
 .section-sombre .container{position:relative}
 .section-sombre .sec-titre{color:#fff}
 .section-sombre .sec-sous{color:#b9c3c8}
-.section-sombre .eyebrow{color:#ff7b82}
+.section-sombre .eyebrow{color:var(--accent-clair)}
 .section-sombre .etapes{border-color:rgba(255,255,255,.12)}
 .section-sombre .etape{background:rgba(255,255,255,.04);border-right-color:rgba(255,255,255,.12)}
 .section-sombre .etape:hover{background:rgba(255,255,255,.08)}
@@ -501,7 +528,7 @@ body{overflow-x:clip}
   body.menu-ouvert .menu{transform:none}
   body.menu-ouvert{overflow:hidden}
 
-  .menu>li{position:static;width:100%}
+  .menu>li{position:static;width:100%;display:block}
   .menu>li>a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 4px;font-size:17px;font-weight:600;color:var(--sombre);border-bottom:1px solid var(--bordure)}
   .menu>li>a::before{display:none}
   /* chevron uniquement sur les entrées qui ont un sous-menu */

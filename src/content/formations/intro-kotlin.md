@@ -1,7 +1,7 @@
 ---
 titre: "Introduction au langage Kotlin"
 groupe: "intro-kotlin"
-sous_titre: "- Débutant"
+sous_titre: "Débutant"
 categorie: "Develop"
 niveau: "Essentiel"
 chapo: "Apprenez les bases du langage Kotlin."

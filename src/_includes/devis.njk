@@ -3,7 +3,7 @@
   <div class="container">
     <div class="contact-grille">
       <div>
-        <h2 class="sec-titre">{{ d.titre | safe }}</h2>
+        <h2 class="sec-titre">{{ d.titre | accent | safe }}</h2>
         <p class="sec-sous" style="margin-bottom:18px">{{ d.sous }}</p>
         <ul class="arguments">
           {% for a in d.arguments %}<li>{{ a }}</li>{% endfor %}

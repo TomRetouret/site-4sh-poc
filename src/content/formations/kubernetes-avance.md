@@ -1,7 +1,7 @@
 ---
 titre: "Kubernetes"
 groupe: "kubernetes"
-sous_titre: "- Perfectionnement"
+sous_titre: "Perfectionnement"
 categorie: "DevOps"
 niveau: "Avancé"
 chapo: "Découvrez l'orchestration de conteneurs pour vos acteurs cloud."

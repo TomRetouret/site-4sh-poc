@@ -1,7 +1,7 @@
 ---
 titre: "IntelliJ Idea"
 groupe: "intellij"
-sous_titre: "- Les essentiels"
+sous_titre: "Les essentiels"
 categorie: "Outils"
 niveau: "Essentiel"
 chapo: "Développez votre connaissance de ce puissant IDE spécialisé dans l'écriture de code."

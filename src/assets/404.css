@@ -1,0 +1,82 @@
+/* ============================================================
+   Page 404 · « La page a perdu le fil »
+   Concept motion : le 0 central est une prise dont le câble a sauté.
+   CSS/SVG pur, animation one-shot au chargement, fallback reduced-motion.
+   ============================================================ */
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.p404{
+  min-height:100vh;               /* plein écran, sans header sur cette page */
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;
+  padding:80px 0;
+  background:var(--sombre);
+  color:#b9c3c8;
+  position:relative;overflow:hidden;
+}
+/* trame de points + halo, comme les sections sombres du site */
+.p404::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(180deg,transparent,#000,transparent);-webkit-mask-image:linear-gradient(180deg,transparent,#000,transparent)}
+.p404::after{content:"";position:absolute;width:620px;height:620px;border-radius:50%;top:-220px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(234,38,49,.18),transparent 62%);pointer-events:none}
+.p404 .container{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+
+.p404 .eyebrow{color:var(--accent-clair);justify-content:center}
+
+/* --- le grand 404 --- */
+.p404-scene{display:flex;align-items:center;justify-content:center;gap:clamp(6px,1.4vw,20px);margin:6px 0 30px;color:#fff;line-height:1}
+.p404-chiffre{font-size:clamp(120px,22vw,240px);font-weight:700;letter-spacing:-6px}
+.p404-zero{display:block;width:clamp(110px,19vw,210px);color:#fff}
+.p404-zero svg{display:block;width:100%;height:auto;overflow:visible}
+
+/* --- texte --- */
+.p404-titre{font-size:clamp(26px,3.4vw,40px);color:#fff;letter-spacing:-.6px;margin-bottom:12px}
+.p404-titre em.accent{color:var(--accent-clair)}
+.p404-chapo{font-size:17px;color:#b9c3c8;max-width:520px;margin:0 auto 30px}
+.p404-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.p404-secours{margin-top:22px;font-size:14px;color:#8b979c}
+.p404-secours a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.p404-secours a:hover{color:var(--accent-clair)}
+.p404 .btn:focus-visible,.p404-secours a:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:8px}
+
+/* ============================================================
+   MOTION (one-shot au chargement)
+   ============================================================ */
+@keyframes p404-rise{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes p404-draw{to{stroke-dashoffset:0}}
+@keyframes p404-swing{0%{transform:rotate(0)}35%{transform:rotate(-9deg)}65%{transform:rotate(5deg)}100%{transform:rotate(0)}}
+@keyframes p404-idle{0%,100%{transform:rotate(0)}50%{transform:rotate(1.5deg)}}
+@keyframes p404-spark1{0%{opacity:0;transform:translate(0,0) scale(.3)}25%{opacity:1}100%{opacity:0;transform:translate(-20px,-16px) scale(1)}}
+@keyframes p404-spark2{0%{opacity:0;transform:translate(0,0) scale(.3)}25%{opacity:1}100%{opacity:0;transform:translate(4px,-24px) scale(1)}}
+@keyframes p404-spark3{0%{opacity:0;transform:translate(0,0) scale(.3)}25%{opacity:1}100%{opacity:0;transform:translate(22px,-12px) scale(1)}}
+
+/* entrée échelonnée des chiffres puis du texte */
+.p404-chiffre,.p404-zero,.p404-titre,.p404-chapo,.p404-cta{opacity:0;animation:p404-rise .55s var(--ease) both}
+.p404-chiffre.c1{animation-delay:0s}
+.p404-zero{animation-delay:.16s}
+.p404-chiffre.c2{animation-delay:.08s}
+.p404-titre{animation-delay:1.35s}
+.p404-chapo{animation-delay:1.45s}
+.p404-cta{animation-delay:1.55s}
+
+/* le câble se dessine, puis la fiche décroche, puis oscille doucement */
+.p404-cable{stroke-dasharray:320;stroke-dashoffset:320;animation:p404-draw .7s var(--ease) .55s forwards}
+.p404-plug{transform-box:fill-box;transform-origin:6% 4%;animation:p404-swing .75s cubic-bezier(.34,1.56,.64,1) 1.2s both,p404-idle 4.5s ease-in-out 2.1s infinite}
+.p404-sparks .spark{opacity:0;transform-box:fill-box;transform-origin:center}
+.p404-sparks .s-build{animation:p404-spark1 .6s var(--ease) 1.3s both}
+.p404-sparks .s-run{animation:p404-spark2 .6s var(--ease) 1.36s both}
+.p404-sparks .s-form{animation:p404-spark3 .6s var(--ease) 1.42s both}
+
+@media (max-width:960px){
+  .p404{margin-top:-64px;padding-top:120px}
+}
+
+/* ============================================================
+   Accessibilité : on fige le mouvement, on garde la mise en scène
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  .p404-chiffre,.p404-zero,.p404-titre,.p404-chapo,.p404-cta{opacity:1;transform:none;animation:none}
+  .p404-cable{stroke-dashoffset:0;animation:none}
+  .p404-plug{animation:none;transform:rotate(4deg)}   /* fiche figée en position « décrochée » */
+  .p404-sparks{display:none}
+  .p404::after{background:radial-gradient(circle,rgba(234,38,49,.14),transparent 62%)}
+}

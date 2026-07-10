@@ -1,7 +1,7 @@
 ---
 titre: "Terraform"
 groupe: "terraform"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "DevOps"
 niveau: "Fondamental"
 chapo: "Automatisez la construction de vos infrastructures de ressources réseaux et machines virtuelles."

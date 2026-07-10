@@ -1,7 +1,7 @@
 ---
 titre: "Git"
 groupe: "git"
-sous_titre: "- Perfectionnement"
+sous_titre: "Perfectionnement"
 categorie: "Outils"
 niveau: "Avancé"
 chapo: "Maitrisez ce puissant outil de versionning open-source pour vos projets."

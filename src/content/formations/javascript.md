@@ -1,7 +1,7 @@
 ---
 titre: "JavaScript"
 groupe: "javascript"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Develop"
 niveau: "Fondamental"
 chapo: "Maîtrisez les bases de JavaScript et développez des applications dynamiques et performantes."

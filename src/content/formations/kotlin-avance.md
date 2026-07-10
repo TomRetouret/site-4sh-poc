@@ -1,7 +1,7 @@
 ---
 titre: "Kotlin"
 groupe: "kotlin"
-sous_titre: "- Perfectionnement"
+sous_titre: "Perfectionnement"
 categorie: "Develop"
 niveau: "Avancé"
 chapo: "Apprenez l'utilisation de ce langage de programmation orienté objet."

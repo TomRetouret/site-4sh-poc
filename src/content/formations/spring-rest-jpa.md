@@ -1,7 +1,7 @@
 ---
 titre: "Spring / REST / JPA"
 groupe: "spring-rest-jpa"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Develop"
 niveau: "Fondamental"
 chapo: "Maitrisez ces outils qui vont vous aider dans le développement de vos applications Java."

@@ -1,0 +1,21 @@
+<!-- Bloc contact étendu (repris de l'accueil), réutilisable en fin de page interne -->
+<section class="contact-final sur-sombre" id="contact">
+  <div class="container">
+    <div class="contact-grille">
+      <div>
+        <h2 class="sec-titre">{{ site.contact.titre | accent | safe }}</h2>
+        <p class="sec-sous" style="margin-bottom:18px">{{ site.contact.sous }}</p>
+        <ul class="arguments">
+          {% for a in site.contact.arguments %}<li>{{ a }}</li>{% endfor %}
+        </ul>
+        <div class="equipe-visages">{% for v in site.contact.visages %}<span>{{ v }}</span>{% endfor %}</div>
+        <p style="font-size:13.5px;color:#8b979c">{{ site.contact.note }}</p><svg class="doodle doodle-spirale" width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M27 27c0-3 4-4 6-1s0 8-5 9-11-2-12-9 5-14 13-14 16 6 16 15c0 2-.4 4-1 6"/><path d="M41.5 29.5 44 33l3.6-2"/></svg>
+        <div class="contact-coord">
+          <p><b>{{ site.contact.coord_tel_titre }}</b><br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
+          <p><b>{{ site.contact.coord_agences_titre }}</b><br>{{ site.villes }}</p>
+        </div>
+      </div>
+      {% include "formulaire.njk" %}
+    </div>
+  </div>
+</section>

@@ -1,7 +1,7 @@
 ---
 titre: "Figma"
 groupe: "figma"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Design"
 niveau: "Fondamental"
 chapo: "Développez vos compétences sur l'utilisation de ce puissant logiciel de design et prototypage."

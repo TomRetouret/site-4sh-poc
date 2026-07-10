@@ -8,7 +8,8 @@
 .btn-learning{background:var(--violet);color:#fff;box-shadow:0 8px 24px rgba(123,106,167,.28)}
 .btn-learning:hover{background:#6a5a95;transform:translateY(-2px);box-shadow:0 14px 34px rgba(123,106,167,.35)}
 
-.hero-form{padding:34px 0 44px;background:linear-gradient(180deg,#fefefe 0%,var(--fond) 100%)}
+.hero-form{margin-top:-94px;padding:118px 0 44px;background:linear-gradient(180deg,#fefefe 0%,var(--fond) 100%)}
+@media (max-width:960px){.hero-form{margin-top:-64px;padding-top:80px}}
 .hero-form .hero-grille{grid-template-columns:1.2fr .8fr;padding-top:24px;align-items:center}
 .hero-form h1{font-size:clamp(36px,4.4vw,56px);line-height:1.08;font-weight:700;color:var(--sombre);letter-spacing:-.8px;margin-bottom:16px}
 .hero-form .chapo{font-size:18px;color:var(--texte-2);margin-bottom:20px;max-width:560px}

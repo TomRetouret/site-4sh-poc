@@ -2,7 +2,25 @@
   "nom": "4SH",
   "telephone_affiche": "+33 (0)9 63 28 62 73",
   "telephone_lien": "+330963286273",
-  "villes": "Bordeaux (Le Haillan) · Bordeaux centre · Capbreton",
+  "villes": "Bordeaux · Capbreton · Paris",
+  "contact": {
+    "titre": "Parlons de votre *projet*",
+    "sous": "30 minutes avec un expert, gratuit, sans engagement. Vous repartez avec un premier avis honnête, pas un argumentaire.",
+    "arguments": [
+      "Un interlocuteur dédié, de l'analyse des besoins à la maintenance",
+      "Des équipes pluridisciplinaires à Bordeaux, Capbreton et Paris",
+      "Et si le sur mesure ne se justifie pas, nous vous le dirons"
+    ],
+    "visages": [
+      "SA",
+      "JP",
+      "TM",
+      "+40"
+    ],
+    "note": "L'équipe 4SH, celle que vous aurez vraiment au téléphone.",
+    "coord_tel_titre": "Par téléphone",
+    "coord_agences_titre": "Nos agences"
+  },
   "footer_accroche": "Agence de développement logiciel sur mesure depuis 2007.",
   "clients_intro": "Ils nous confient leur métier :",
   "clients": [
@@ -100,7 +118,7 @@
       "liens": [
         {
           "label": "Comment se passe un projet",
-          "url": "#"
+          "url": "/notre-demarche/"
         },
         {
           "label": "Références",
@@ -108,11 +126,11 @@
         },
         {
           "label": "L'équipe",
-          "url": "#"
+          "url": "/notre-entreprise/"
         },
         {
           "label": "Blog",
-          "url": "#"
+          "url": "https://blog.4sh.fr/"
         },
         {
           "label": "Glossaire",
@@ -129,11 +147,11 @@
   "footer_reseaux": [
     {
       "label": "LinkedIn",
-      "url": "#"
+      "url": "https://www.linkedin.com/company/4sh-france/"
     },
     {
       "label": "YouTube",
-      "url": "#"
+      "url": "https://www.youtube.com/channel/UCVHyJe5yzBizDzxvaNDUAGQ"
     }
   ],
   "url": "https://www.4sh.fr"

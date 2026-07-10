@@ -1,7 +1,7 @@
 ---
 titre: "Les signaux avec Angular"
 groupe: "signaux-angular"
-sous_titre: "- Avancé"
+sous_titre: "Avancé"
 categorie: "Develop"
 niveau: "Avancé"
 chapo: "Formez-vous au framework Angular et créez des applications web dynamiques et complexes."

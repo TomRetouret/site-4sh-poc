@@ -27,7 +27,7 @@ extraCss: /assets/secteurs.css
 <div class="ref-resultats">
   <div class="container">
     <div class="grille">
-      {% for c in chiffres %}<div class="stat"><b>{{ c.chiffre | safe }}</b><span>{{ c.label }}</span></div>{% endfor %}
+      {% for c in chiffres %}<div class="stat"><b>{{ c.chiffre | accent | safe }}</b><span>{{ c.label }}</span></div>{% endfor %}
     </div>
   </div>
 </div>
@@ -63,14 +63,4 @@ extraCss: /assets/secteurs.css
 </section>
 {% endif %}
 
-<section class="sect-cta">
-  <div class="container">
-    <div class="bandeau-cta">
-      <div>
-        <h2>{{ cta_titre or libelles.secteur.cta_defaut_titre }}</h2>
-        <p>{{ cta_texte or libelles.secteur.cta_texte }}</p>
-      </div>
-      <a class="btn" href="{{ cta_url or '/#contact' }}">{{ cta_label or libelles.secteur.cta_bouton }}</a>
-    </div>
-  </div>
-</section>
+{% include "contact-etendu.njk" %}

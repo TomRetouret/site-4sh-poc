@@ -1,7 +1,7 @@
 ---
 titre: "Introduction Kotlin Multiplatform"
 groupe: "kotlin-multiplatform"
-sous_titre: "- Intermédiaire"
+sous_titre: "Intermédiaire"
 categorie: "Develop"
 niveau: "Intermédiaire"
 chapo: "Maîtrisez les fondamentaux de Kotlin Multiplatform (KMP)."

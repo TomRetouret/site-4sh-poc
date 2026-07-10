@@ -1,7 +1,7 @@
 ---
 titre: "TypeScript"
 groupe: "typescript"
-sous_titre: "- Les fondamentaux"
+sous_titre: "Les fondamentaux"
 categorie: "Develop"
 niveau: "Fondamental"
 chapo: "Développez vos compétences en TypeScript !"

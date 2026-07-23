@@ -1,0 +1,136 @@
+{
+  "items": [
+    {
+      "type": "megamenu",
+      "label": "Services",
+      "variant": "",
+      "promo": {
+        "titre": "Software that *fits* your processes",
+        "texte": "Design, development, run: one team, from the first idea to production.",
+        "lien_libelle": "Our 4D method",
+        "url": "/logiciel-metier/",
+        "stats": [
+          { "valeur": "2007", "label": "since" },
+          { "valeur": "150+", "label": "projects delivered" }
+        ]
+      },
+      "colonnes": [
+        {
+          "titre": "Design & build",
+          "liens": [
+            { "label": "Custom business software", "sous_texte": "Your tool, your processes", "url": "/logiciel-metier/", "icone": "ecran" },
+            { "label": "SaaS application", "sous_texte": "Scalable web platform", "url": "", "icone": "cloud" },
+            { "label": "Mobile application", "sous_texte": "iOS, Android, cross-platform", "url": "", "icone": "mobile" },
+            { "label": "Product & UX / UI design", "sous_texte": "Screens your teams adopt", "url": "", "icone": "design" }
+          ]
+        },
+        {
+          "titre": "Run & audit",
+          "classe": "col-run",
+          "liens": [
+            { "label": "Hosting & maintenance", "sous_texte": "Operational condition upkeep", "url": "", "icone": "serveurs" },
+            { "label": "Security", "sous_texte": "Protection and compliance", "url": "", "icone": "bouclier" },
+            { "label": "Data", "sous_texte": "Pipelines, steering, value", "url": "", "icone": "data" },
+            { "label": "UX, security & cloud audits", "sous_texte": "A clear assessment, concrete actions", "url": "", "icone": "audit" }
+          ]
+        }
+      ],
+      "bas": {
+        "titre": "Not sure which approach?",
+        "texte": "30 free minutes with an expert, no strings attached.",
+        "cta_label": "Let's talk",
+        "cta_url": "/contact/"
+      }
+    },
+    {
+      "type": "megamenu",
+      "label": "Industries",
+      "variant": "menu-secteurs",
+      "promo": {
+        "titre": "Your business has its *rules*. So does our software.",
+        "texte": "We already know the vocabulary, constraints and stakes of your industry.",
+        "lien_libelle": "See the EDF business service case",
+        "url": "/references/izivia-portail/",
+        "kpi": { "valeur": "200,000", "label": "charge points supervised, EDF business service" }
+      },
+      "colonnes": [
+        {
+          "titre": "Your industry",
+          "liens": [
+            { "label": "Logistics & supply chain", "sous_texte": "Traceability, flows, warehouses", "url": "/secteurs/logistique/", "icone": "logistique" },
+            { "label": "E-mobility", "sous_texte": "Charging, supervision, mobility", "url": "/secteurs/electromobilite/", "icone": "eclair" },
+            { "label": "Insurance", "sous_texte": "Underwriting, management, claims", "url": "/secteurs/assurance/", "icone": "bouclier" },
+            { "label": "Software publishing", "sous_texte": "Product reinforcement, network tooling", "url": "/secteurs/edition-de-logiciel/", "icone": "editeur" },
+            { "label": "Technology service provider", "sous_texte": "Connected platforms and services", "url": "/secteurs/fournisseur-de-services-technologiques/", "icone": "hub" },
+            { "label": "Franchise", "sous_texte": "Network, steering, consistency", "url": "/secteurs/franchise/", "icone": "editeur" }
+          ]
+        },
+        {
+          "titre": "Our 4SH solutions",
+          "liens": [
+            { "label": "Celebrads", "sous_texte": "Communication and campaigns", "url": "/secteurs/celebrads/", "icone": "megaphone" },
+            { "label": "Hubit", "sous_texte": "Connected services platform", "url": "/secteurs/hubit/", "icone": "hub" },
+            { "label": "4PM / 4Track", "sous_texte": "Project steering and tracking", "url": "/secteurs/4pm/", "icone": "graph" },
+            { "label": "Charge point simulator", "sous_texte": "Size your charging setup", "url": "/secteurs/simulateur-de-bornes/", "icone": "batterie" }
+          ]
+        }
+      ],
+      "bas": {
+        "titre": "Don't see your industry?",
+        "texte": "We adapt to your business, let's talk.",
+        "cta_label": "Contact",
+        "cta_url": "/contact/"
+      }
+    },
+    {
+      "type": "megamenu",
+      "label": "Technologies",
+      "variant": "",
+      "promo": {
+        "titre": "The right *tech*, for the right reasons",
+        "texte": "We pick each technology to fit your project, never out of habit.",
+        "lien_libelle": "All our technical expertise",
+        "url": "/en/tech-expertise/"
+      },
+      "colonnes": [
+        {
+          "titre": "Languages & back-end",
+          "liens": [
+            { "label": "Java", "sous_texte": "Robust, proven, durable", "url": "/expertises-techniques/java/", "icone": "code" },
+            { "label": "Kotlin", "sous_texte": "Modern, concise, safe", "url": "/expertises-techniques/kotlin/", "icone": "code" },
+            { "label": "Kubernetes", "sous_texte": "Scalable deployment", "url": "/expertises-techniques/kubernetes/", "icone": "cloud" }
+          ]
+        },
+        {
+          "titre": "Front-end & mobile",
+          "liens": [
+            { "label": "Angular", "sous_texte": "Dynamic web interfaces", "url": "/expertises-techniques/angular/", "icone": "code" },
+            { "label": "React Native", "sous_texte": "iOS and Android mobile", "url": "/expertises-techniques/react-native/", "icone": "mobile" },
+            { "label": "All our technologies", "sous_texte": "Languages, tools, cloud, data", "url": "/en/tech-expertise/", "icone": "graph" }
+          ]
+        }
+      ],
+      "bas": {
+        "titre": "Got a technology in mind?",
+        "texte": "We'll tell you if it truly serves your project.",
+        "cta_label": "Let's talk",
+        "cta_url": "/contact/"
+      }
+    },
+    { "type": "lien", "label": "Case studies", "url": "/references/" },
+    {
+      "type": "menu_simple",
+      "label": "Company",
+      "titre_col": "Method & company",
+      "liens": [
+        { "label": "Our approach", "sous_texte": "4D method, UX, commitments", "url": "/notre-demarche/" },
+        { "label": "Our company", "sous_texte": "Story, team, values, offices", "url": "/en/company/" },
+        { "label": "The blog", "sous_texte": "Our articles and field feedback", "url": "https://blog.4sh.fr/" }
+      ]
+    }
+  ],
+  "actions": [
+    { "label": "Training", "url": "/en/training/", "style": "lien-formations" },
+    { "label": "Let's talk about your project", "url": "/contact/", "style": "btn btn-primary btn-sm" }
+  ]
+}

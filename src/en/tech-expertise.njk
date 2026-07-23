@@ -1,0 +1,63 @@
+---
+layout: base.njk
+permalink: /en/tech-expertise/
+altUrl: /expertises-techniques/
+extraCss: /assets/logiciel-metier.css
+dataKey: page_technologies
+---
+{% set page_technologies = en.page_technologies %}{% set site = en.site %}{% set libelles = en.libelles %}
+{%- set p = page_technologies -%}
+
+<!-- HERO INTERNE -->
+<div class="hero-interne">
+  <div class="container">
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; Expertises techniques</nav>
+    <div class="hero-grille">
+      <div>
+        <p class="eyebrow">{{ p.hero_eyebrow }}</p>
+        <h1>{{ p.hero_titre | accent | safe }}</h1>
+        <p class="chapo" style="font-size:18px;color:var(--texte-2);margin-bottom:26px">{{ p.hero_intro }}</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="/contact/">Parlons de votre projet</a>
+        </div>
+      </div>
+      <div class="techno-blason" aria-hidden="true">
+        <svg viewBox="0 0 200 200" fill="none" stroke="#ea2631" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M60 70 40 100l20 30M140 70l20 30-20 30M112 55 88 145"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TECHNOS PHARES -->
+<section>
+  <div class="container">
+    <h2 class="sec-titre">{{ p.phares_titre | accent | safe }}</h2>
+    <div class="phares">
+      {% for t in collections.technologies %}
+      <article class="phare-carte {{ 'famille-' + t.data.famille if t.data.famille }}">
+        {% if t.data.logo %}<span class="phare-logo"><img src="{{ t.data.logo }}" alt="{{ t.data.nom }}" loading="lazy" decoding="async"></span>{% endif %}
+        <h3>{{ t.data.nom }}</h3>
+        <p>{{ t.data.accroche_courte }}</p>
+        <a href="{{ t.url }}">En savoir plus →</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- AUTRES TECHNOS -->
+<section style="padding-top:0">
+  <div class="container">
+    <p class="sec-sous" style="max-width:none">{{ p.autres_intro }}</p>
+    <div class="autres-technos">
+      {% for a in p.autres %}
+      <div class="techno-tuile">{% if a.logo %}<img src="{{ a.logo }}" alt="{{ a.nom }}" loading="lazy" decoding="async">{% endif %}<span>{{ a.nom }}</span></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+{% include "contact-etendu.njk" %}

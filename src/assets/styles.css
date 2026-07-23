@@ -689,3 +689,11 @@ header.scrolled .nav{height:60px;box-shadow:0 12px 40px rgba(31,41,46,.18);backg
 @media (prefers-reduced-motion:reduce){
   ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
 }
+
+/* Sélecteur de langue (i18n) */
+.lang-switch{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border:1.5px solid var(--bordure);border-radius:140px;font-size:13.5px;font-weight:600;letter-spacing:.4px;color:var(--texte-2);background:transparent;transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease)}
+.lang-switch svg{width:16px;height:16px;color:var(--muted);transition:color .18s var(--ease)}
+.lang-switch:hover{border-color:var(--sombre);color:var(--sombre);background:#fff}
+.lang-switch:hover svg{color:var(--sombre)}
+.lang-switch:focus-visible{outline:2px solid var(--sombre);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.lang-switch,.lang-switch svg{transition:none}}

@@ -409,7 +409,7 @@ collections:
         label: "Page d'accueil"
         file: "src/_data/accueil.json"
         preview_path: ""
-        fields:
+        fields: &f_accueil
           - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
           - { label: "Hero · titre principal (H1)", name: "hero_surtitre", widget: "string", required: false }
@@ -555,7 +555,7 @@ collections:
         label: "Formations (page mère)"
         file: "src/_data/page_formations.json"
         preview_path: "formations/"
-        fields:
+        fields: &f_page_formations
           - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
           - { label: "Sur-titre", name: "eyebrow", widget: "string", required: false }
@@ -644,7 +644,7 @@ collections:
         label: "Expertises techniques (page mère)"
         file: "src/_data/page_technologies.json"
         preview_path: "expertises-techniques/"
-        fields:
+        fields: &f_page_technologies
           - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
           - { label: "Sur-titre", name: "hero_eyebrow", widget: "string", required: false }
@@ -884,7 +884,7 @@ collections:
         label: "Page Notre entreprise"
         file: "src/_data/notre_entreprise.json"
         preview_path: "notre-entreprise/"
-        fields:
+        fields: &f_notre_entreprise
           - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
           - { label: "Hero · sur-titre", name: "hero_eyebrow", widget: "string", required: false }
@@ -976,7 +976,7 @@ collections:
       - name: "site"
         label: "Réglages du site (pied de page, coordonnées, formulaire)"
         file: "src/_data/site.json"
-        fields:
+        fields: &f_site
           - { label: "Nom", name: "nom", widget: "string", required: false }
           - { label: "Téléphone affiché", name: "telephone_affiche", widget: "string", required: false }
           - { label: "Téléphone (format lien)", name: "telephone_lien", widget: "string", hint: "Sans espaces, ex. : +330963286273", required: false }
@@ -1055,7 +1055,7 @@ collections:
       - name: "seo"
         label: "Réglages SEO"
         file: "src/_data/seo.json"
-        fields:
+        fields: &f_seo
           - { label: "URL du site (production)", name: "url", widget: "string", hint: "Sans slash final. Alimente les liens canoniques, le sitemap et le robots.txt. Ex. : https://www.4sh.fr", required: false }
           - { label: "Autoriser l'indexation par les moteurs", name: "indexation", widget: "boolean", default: false, hint: "Décoché = tout le site en noindex (préprod). À cocher à la mise en production.", required: false }
           - { label: "Titre par défaut", name: "titre_defaut", widget: "string", hint: "Utilisé quand une page n'a pas de titre SEO propre.", required: false }
@@ -1072,7 +1072,7 @@ collections:
       - name: "menu"
         label: "Menu principal"
         file: "src/_data/navigation.json"
-        fields:
+        fields: &f_navigation
           - label: "Entrées du menu"
             name: "items"
             widget: "list"
@@ -1159,7 +1159,7 @@ collections:
       - name: "libelles"
         label: "Libellés & blocs partagés"
         file: "src/_data/libelles.json"
-        fields:
+        fields: &f_libelles
           - label: "Fiche formation"
             name: "formation"
             widget: "object"
@@ -1304,3 +1304,49 @@ collections:
               - { label: "Placeholder besoin", name: "ph_besoin", widget: "text", required: false }
               - { label: "Bouton", name: "bouton", widget: "string", required: false }
               - { label: "Réassurance", name: "reassurance", widget: "string", required: false }
+
+  # -----------------------------------------------------------------------
+  # 10) PAGES (ENGLISH)  -  version anglaise du site (pilote i18n, URL /en/)
+  #     Réutilise les mêmes définitions de champs que les pages FR (ancres YAML).
+  #     Les libellés de champs restent en français, mais les VALEURS se saisissent
+  #     en anglais. Le corps éditorial est à traduire ici.
+  # -----------------------------------------------------------------------
+  - name: "pages_en"
+    label: "🇬🇧 Pages (English)"
+    files:
+      - name: "en_accueil"
+        label: "Home (EN) - /en/"
+        file: "src/_data/en/accueil.json"
+        preview_path: "en/"
+        fields: *f_accueil
+      - name: "en_page_formations"
+        label: "Training page (EN) - /en/training/"
+        file: "src/_data/en/page_formations.json"
+        preview_path: "en/training/"
+        fields: *f_page_formations
+      - name: "en_page_technologies"
+        label: "Technical expertise page (EN) - /en/tech-expertise/"
+        file: "src/_data/en/page_technologies.json"
+        preview_path: "en/tech-expertise/"
+        fields: *f_page_technologies
+      - name: "en_notre_entreprise"
+        label: "Company page (EN) - /en/company/"
+        file: "src/_data/en/notre_entreprise.json"
+        preview_path: "en/company/"
+        fields: *f_notre_entreprise
+      - name: "en_site"
+        label: "Site settings (EN) - footer, contact, form"
+        file: "src/_data/en/site.json"
+        fields: *f_site
+      - name: "en_navigation"
+        label: "Menu (EN)"
+        file: "src/_data/en/navigation.json"
+        fields: *f_navigation
+      - name: "en_seo"
+        label: "SEO (EN)"
+        file: "src/_data/en/seo.json"
+        fields: *f_seo
+      - name: "en_libelles"
+        label: "Shared labels (EN)"
+        file: "src/_data/en/libelles.json"
+        fields: *f_libelles

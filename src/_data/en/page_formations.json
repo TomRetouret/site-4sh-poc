@@ -1,0 +1,57 @@
+{
+  "meta_title": "IT training courses by 4SH",
+  "meta_description": "Boost your company and support your teams in building their skills with 4SH's IT training courses, a Qualiopi-certified organisation.",
+  "eyebrow": "4SH Learning",
+  "h1": "Our *IT* training courses",
+  "chapo": "Our 4SH Learning programme supports your teams in building their skills. Our goal: to transfer the skills that let you regain control of your business developments, with consistent quality on-site and remotely.",
+  "note": "4.71 / 5",
+  "note_detail": "324 participants",
+  "hero_cta_principal_label": "Explore the courses",
+  "hero_cta_principal_url": "#catalogue",
+  "hero_cta_secondaire_label": "Custom quote",
+  "hero_cta_secondaire_url": "#contact",
+  "hero_chips": ["On-site & remote", "Qualiopi certified"],
+  "catalogue_titre": "*Training* catalogue",
+  "catalogue_sous": "Search for a technology or pick a category.",
+  "agenda_titre": "Our next *sessions*",
+  "agenda_sous": "The dates open for registration, on-site or remote. Would another date suit you better? Request a custom session.",
+  "agenda_cta_label": "Request another date",
+  "agenda_cta_url": "#contact",
+  "agenda": [
+    {
+      "mois": "September 2026",
+      "sessions": [
+        { "jour": "15", "mois_court": "Sep.", "duree": "4 days", "logo": "https://www.4sh.fr/assets/img/svg/trainings/logo-technos/angular.svg", "titre": "Angular - Fundamentals", "categorie": "Develop", "lieu": "Bordeaux", "modalite": "On-site & remote", "url": "/formations/angular-fondamental/" },
+        { "jour": "22", "mois_court": "Sep.", "duree": "2 days", "logo": "https://www.4sh.fr/assets/img/svg/trainings/logo-technos/kubernetes.svg", "titre": "Kubernetes - Fundamentals", "categorie": "DevOps", "lieu": "Paris", "modalite": "On-site", "url": "/formations/kubernetes-fondamental/" }
+      ]
+    },
+    {
+      "mois": "October 2026",
+      "sessions": [
+        { "jour": "06", "mois_court": "Oct.", "duree": "1 day", "logo": "https://www.4sh.fr/assets/img/svg/trainings/logo-technos/figma.svg", "titre": "Figma - Essentials", "categorie": "Design", "lieu": "Remote", "modalite": "Remote", "url": "/formations/figma-essentiel/" },
+        { "jour": "13", "mois_court": "Oct.", "duree": "4 days", "logo": "https://www.4sh.fr/assets/img/svg/trainings/logo-technos/java.svg", "titre": "Java - Fundamentals", "categorie": "Develop", "lieu": "Bordeaux", "modalite": "On-site & remote", "url": "/formations/java-fondamental/" }
+      ]
+    },
+    {
+      "mois": "November 2026",
+      "sessions": [
+        { "jour": "04", "mois_court": "Nov.", "duree": "½ day", "logo": "https://www.4sh.fr/assets/img/svg/trainings/logo-technos/git.svg", "titre": "Git - Essentials", "categorie": "Tools", "lieu": "Capbreton", "modalite": "On-site", "url": "/formations/git-essentiel/" },
+        { "jour": "18", "mois_court": "Nov.", "duree": "2 days", "logo": "https://www.4sh.fr/assets/img/svg/trainings/logo-technos/docker.svg", "titre": "Docker - Fundamentals", "categorie": "DevOps", "lieu": "Paris", "modalite": "On-site & remote", "url": "/formations/docker-fondamental/" }
+      ]
+    }
+  ],
+  "temoignages_titre": "They took *our courses*",
+  "temoignages": [
+    { "citation": "A very hands-on course, led by a trainer who codes every day. You leave with reflexes you can apply right away.", "initiales": "[XX]", "nom": "[First Last]", "detail": "[Company] · Angular course" },
+    { "citation": "The right balance of theory and practice, and a real ability to adapt the content to our business context.", "initiales": "[XX]", "nom": "[First Last]", "detail": "[Company] · Kubernetes course" },
+    { "citation": "Flawless organisation, from registration to certificate. We'll train our teams with 4SH again.", "initiales": "[XX]", "nom": "[First Last]", "detail": "[Company] · Figma course" }
+  ],
+  "pourquoi_titre": "Why choose *4SH Learning*?",
+  "pourquoi": [
+    { "titre": "Industrialise your software production", "texte": "Tool-focused courses, designed to make your teams autonomous and productive." },
+    { "titre": "Learn from our field experts", "texte": "Experienced trainers, active on our projects, who pass on real-world practices." },
+    { "titre": "Let's build your project together", "texte": "Collaborative workshops tailored to your context, up to fully custom in-company training." }
+  ],
+  "qualiopi_titre": "4SH is a *Qualiopi*-certified training organisation",
+  "qualiopi_texte": "By choosing 4SH, you choose a provider that makes it a point of honour to stand out through its commitment to excellence and transparency. The Qualiopi certification reflects our dedication to delivering training of impeccable quality, matching the current needs of the job market. The quality certification was granted under the category \"Training actions\"."
+}

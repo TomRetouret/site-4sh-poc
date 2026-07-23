@@ -1,0 +1,8 @@
+{
+  "url": "https://www.4sh.fr",
+  "indexation": false,
+  "titre_defaut": "Custom software development agency - 4SH",
+  "description_defaut": "Designers and developers of tailor-made software built around your challenges (apps, SaaS, business software). Let's talk about your project: 30 free minutes with a 4SH expert.",
+  "og_image": "https://www.4sh.fr/assets/img/png/logo_4sh_baseline.png",
+  "robots_txt": "User-agent: *\nAllow: /"
+}

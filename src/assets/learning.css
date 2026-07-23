@@ -10,7 +10,12 @@
 
 .hero-detail{margin-top:-94px;padding:116px 0 40px;background:linear-gradient(180deg,#fefefe 0%,var(--fond) 100%)}
 @media (max-width:960px){.hero-detail{margin-top:-64px;padding-top:80px}}
-.detail-grille{display:grid;grid-template-columns:1.55fr .95fr;gap:44px;align-items:start;padding-top:20px}
+.detail-tete{padding-top:20px;margin-bottom:8px}
+.detail-grille{display:grid;grid-template-columns:1.55fr .95fr;gap:44px;align-items:start}
+/* le contenu et la carte partagent la même rangée : la carte sticky reste visible tout au long du scroll du contenu */
+.detail-main{grid-column:1;grid-row:1;min-width:0}
+/* la colonne carte s'étire sur toute la hauteur du contenu : la carte sticky a ainsi de la course pour rester visible pendant tout le scroll */
+.detail-aside{grid-column:2;grid-row:1;align-self:stretch}
 .hero-detail h1{font-size:clamp(32px,4vw,50px);line-height:1.08;font-weight:700;color:var(--sombre);letter-spacing:-.7px;margin-bottom:14px}
 .hero-detail .chapo{font-size:18px;color:var(--texte-2);margin-bottom:22px;max-width:600px}
 
@@ -54,10 +59,10 @@
 .telechargements svg{color:var(--violet);flex:none}
 .note-lieu{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.5}
 
-/* nav ancres sticky */
-.ancres{position:sticky;top:82px;z-index:40;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-top:1px solid var(--bordure);border-bottom:1px solid var(--bordure)}
-.ancres .container{display:flex;gap:6px;overflow-x:auto}
-.ancres a{padding:16px 16px;font-size:14.5px;font-weight:500;color:var(--texte-2);white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s}
+/* nav ancres sticky (dans la colonne de contenu) */
+.ancres{position:sticky;top:82px;z-index:40;margin:26px 0 4px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-top:1px solid var(--bordure);border-bottom:1px solid var(--bordure)}
+.ancres-inner{display:flex;flex-wrap:wrap;gap:2px 4px}
+.ancres a{padding:13px 12px;font-size:14px;font-weight:500;color:var(--texte-2);white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s}
 .ancres a:hover,.ancres a.actif{color:var(--violet);border-color:var(--violet)}
 
 /* corps */
@@ -102,7 +107,7 @@
 
 /* formations liées / autres */
 .liees{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.autres{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.autres{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .mini-form{background:#fff;border:1px solid var(--bordure);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
 .mini-form:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(31,41,46,.1)}
 .mini-form img{height:36px;width:36px;object-fit:contain}
@@ -121,7 +126,9 @@
 
 @media (max-width:1024px){
   .detail-grille{grid-template-columns:1fr}
+  .detail-main,.detail-aside{grid-column:auto;grid-row:auto}
   .carte-inscription{position:static}
+  .autres{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:960px){
   .meta-grille,.modalites,.liees{grid-template-columns:1fr}

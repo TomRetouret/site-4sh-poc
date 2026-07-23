@@ -1,0 +1,215 @@
+---
+layout: base.njk
+permalink: /en/
+altUrl: /
+dataKey: accueil
+---
+{% set accueil = en.accueil %}{% set site = en.site %}{% set libelles = en.libelles %}
+<!-- HERO (option « fondu intégré » : photo full-bleed en duotone) -->
+<div class="hero sur-sombre{% if accueil.equipe_photo %} hero--photo{% endif %}">
+  <div class="container">
+    <div class="hero-grille">
+      <div>
+        <h1 class="surtitre">{{ accueil.hero_surtitre }}</h1>
+        <p class="hero-accroche">{{ accueil.hero_accroche_debut }} <em class="accent">{{ accueil.hero_accroche_accent }}</em><svg class="doodle doodle-asterisque" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M13 3.5c-.4 3.2-.2 6.4.2 19M4.2 8.2c5.8 3.4 11.7 6.6 17.6 9.6M21.8 8.2C16 11.6 10.1 14.8 4.2 17.8"/></svg> {{ accueil.hero_accroche_fin | accent | safe }}</p>
+        <p class="chapo">{{ accueil.hero_chapo }}</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#contact">{{ accueil.hero_cta_principal }}</a>
+          <a class="btn btn-ghost" href="/references/">{{ accueil.hero_cta_secondaire }}</a><svg class="doodle doodle-fleche" width="92" height="58" viewBox="0 0 92 58" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M88 6C74 34 48 47 12 48"/><path d="M22 40.5 11.5 48l11 5.5"/></svg>
+        </div>
+        <p class="hero-note">{{ accueil.hero_note }}</p>
+      </div>
+      {% if not accueil.equipe_photo %}
+      <div class="hero-visuel" aria-hidden="true">
+        <div class="fenetre">
+          <span>{{ accueil.hero_visuel_titre }}</span><br>
+          {% for l in accueil.hero_visuel_lignes %}<i>{{ l.cle }}</i> : {{ l.valeur }}<br>{% endfor %}
+        </div>
+        <div class="badge-projet"><span>{{ accueil.hero_visuel_badge }}</span><b>{{ accueil.hero_visuel_badge_note }}</b></div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if accueil.equipe_photo %}
+  <figure class="hero-photo">
+    <img src="{{ accueil.equipe_photo }}" alt="{{ accueil.equipe_titre | accent | striptags }}" width="1200" height="800" fetchpriority="high" decoding="async">
+  </figure>
+  {% endif %}
+  <!-- LOGOS CLIENTS (ancrés en bas du hero, pour tenir dans le 1er écran) -->
+  <div class="logos">
+    <div class="container">
+      <p>{{ site.clients_intro }}</p>
+      <div class="marquee"><ul aria-label="Références clients">
+        {% for c in site.clients %}<li>{% if c.url %}<a href="{{ c.url }}">{{ c.nom }}</a>{% else %}{{ c.nom }}{% endif %}</li>{% endfor %}
+      </ul></div>
+    </div>
+  </div>
+</div>
+
+<!-- 3 PORTES D'ENTRÉE (design conservé) -->
+<section>
+  <div class="container">
+    <p class="eyebrow">{{ accueil.portes_eyebrow }}</p>
+    <h2 class="sec-titre">{{ accueil.portes_titre | accent | safe }}</h2>
+    <p class="sec-sous">{{ accueil.portes_sous }}</p>
+    {% set porte_pictos = ["⚙", "🛡", "🎓"] %}
+    {% set porte_familles = ["famille-build", "famille-run", "famille-formation"] %}
+    <div class="portes">
+      {% for p in accueil.portes %}
+      <article class="porte {{ porte_familles[loop.index0] }}">
+        <div class="pictos">{{ porte_pictos[loop.index0] }}</div>
+        <h3>{{ p.titre }}</h3>
+        <p>{{ p.texte }}</p>
+        <ul>
+          {% for l in p.liens %}<li><a href="{{ l.url or '#' }}">{{ l.label }}</a></li>{% endfor %}
+        </ul>
+        <a class="suite" href="{{ p.suite_url or '#' }}">{{ p.suite_label }}</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- BANDEAU CHIFFRES -->
+<div class="chiffres">
+  <div class="container">
+    {% for c in accueil.chiffres %}
+    <div>
+      <b>{% if c.compte %}<i data-compte="{{ c.compte }}"{% if c.suffixe %} data-suffixe="{{ c.suffixe }}"{% endif %}>{{ c.valeur }}</i>{% else %}<i>{{ c.valeur }}</i>{% endif %}</b>
+      {% if loop.first %}<svg class="doodle doodle-vague" width="96" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg>{% endif %}
+      <span>{{ c.texte }}</span>{% if c.note %}<small>{{ c.note }}</small>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- SECTEURS (carrousel) -->
+<section>
+  <div class="container">
+    <p class="eyebrow">{{ accueil.secteurs_eyebrow }}</p>
+    <h2 class="sec-titre">{{ accueil.secteurs_titre | accent | safe }}</h2>
+    <p class="sec-sous">{{ accueil.secteurs_sous }}</p>
+    <div class="carrousel car--secteurs" data-carrousel aria-label="Secteurs">
+      <div class="car-piste">
+        {% for s in accueil.secteurs %}
+        <div class="secteur-carte"><h3>{{ s.titre }}</h3><p>{{ s.texte }}</p><a href="{{ s.url or '#' }}">{{ s.lien_libelle }}</a></div>
+        {% endfor %}
+      </div>
+      <div class="car-dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTHODE 4D -->
+<section class="section-sombre">
+  <div class="container">
+    <p class="eyebrow">{{ accueil.methode_eyebrow }}</p>
+    <h2 class="sec-titre">{{ accueil.methode_titre | accent | safe }}</h2>
+    <p class="sec-sous">{{ accueil.methode_sous }}</p>
+    <div class="etapes">
+      {% for e in accueil.methode_etapes %}
+      <div class="etape"><span class="num">{{ e.num }}</span><span class="num-label">{{ e.label }}</span><h3>{{ e.titre }}</h3><p>{{ e.texte }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- RÉALISATIONS (carrousel de cas, carte conservée) -->
+<section>
+  <div class="container">
+    <p class="eyebrow">{{ accueil.cas_eyebrow }}</p>
+    <h2 class="sec-titre">{{ accueil.cas_titre | accent | safe }}</h2>
+    <p class="sec-sous">{{ accueil.cas_sous }}</p>
+    <div class="carrousel car--real" data-carrousel aria-label="Réalisations">
+      <div class="car-piste">
+        {% for r in accueil.realisations %}
+        <div class="cas{% if r.image %} cas--image{% endif %}">
+          <figure class="cas-visuel">
+            {% if r.image %}<img src="{{ r.image }}" alt="{{ r.client }}, {{ r.secteur }}" loading="lazy" decoding="async">{% endif %}
+            <figcaption>
+              <span class="secteur">{{ r.secteur }}</span>
+              <span class="logo-client">{{ r.client }}</span>
+            </figcaption>
+          </figure>
+          <div class="cas-corps">
+            {% if r.citation %}<blockquote>{{ r.citation }}</blockquote>{% if r.auteur %}<p class="auteur">{{ r.auteur }}</p>{% endif %}{% endif %}
+            {% if r.visuel_texte %}<p class="cas-desc">{{ r.visuel_texte }}</p>{% endif %}
+            <div class="cas-chiffre">
+              {% for ch in r.chiffres %}<div><b>{{ ch.valeur | accent | safe }}</b><span>{{ ch.label }}</span></div>{% endfor %}
+            </div>
+            <a class="btn btn-ghost btn-sm" href="{{ r.cta_url or '#' }}">{{ r.cta_label }}</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="car-dots"></div>
+    </div>
+    <div class="centre" style="margin-top:28px"><a class="btn btn-primary" href="{{ accueil.realisations_cta_url or '/references/' }}">{{ accueil.realisations_cta_label }}</a></div>
+  </div>
+</section>
+
+<!-- TECHNOS (nuage de mots) -->
+<section style="padding-top:0">
+  <div class="container">
+    <p class="eyebrow">{{ accueil.technos_eyebrow }}</p>
+    <h2 class="sec-titre">{{ accueil.technos_titre | accent | safe }}</h2>
+    <p class="sec-sous">{{ accueil.technos_sous }}</p>
+    <div class="techno-nuage">
+      {% for t in accueil.technos %}<a class="techno-tag" href="{{ t.url or '#' }}">{{ t.nom }}</a>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:0">
+  <div class="container">
+    <h2 class="sec-titre centre" style="text-align:center">{{ accueil.faq_titre }}</h2>
+    <p class="sec-sous" style="margin:0 auto 38px;text-align:center">{{ accueil.faq_sous }}</p>
+    <div class="faq">
+      {% for item in accueil.faq %}
+      <details{% if loop.first %} open{% endif %}>
+        <summary>{{ item.question }}</summary>
+        <p>{{ item.reponse }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for item in accueil.faq %}{"@type":"Question","name":{{ item.question | dump | safe }},"acceptedAnswer":{"@type":"Answer","text":{{ item.reponse | dump | safe }}}}{% if not loop.last %},{% endif %}{% endfor %}]}
+  </script>
+</section>
+
+<!-- DERNIERS ARTICLES DU BLOG (récupérés au build, discret) -->
+{% if blog and blog.length %}
+<section class="blog-accueil">
+  <div class="container">
+    <div class="blog-tete">
+      <h2 class="sec-titre">Nos derniers <em class="accent">articles</em></h2>
+      <a class="blog-tout" href="https://blog.4sh.fr/">Tout le blog</a><svg class="doodle doodle-fleche-mini" width="54" height="20" viewBox="0 0 54 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 10c18 0 34 0 48 0"/><path d="M44 4l7 6-7 6"/></svg>
+    </div>
+    <div class="blog-grille">
+      {% for a in blog %}
+      <article class="blog-carte">
+        <a class="blog-carte-lien" href="{{ a.url }}">
+          {% if a.image %}<span class="blog-img"><img src="{{ a.image }}" alt="" loading="lazy" decoding="async"></span>{% endif %}
+          <span class="blog-corps">
+            {% if a.categorie %}<span class="blog-cat">{{ a.categorie }}</span>{% endif %}
+            <span class="blog-titre">{{ a.titre }}</span>
+            <span class="blog-meta">{{ a.date_affichee }}{% if a.duree %} · {{ a.duree }}{% endif %}</span>
+          </span>
+        </a>
+        {% if a.auteur %}
+        <div class="blog-auteur">
+          {% if a.auteur.avatar %}<img src="{{ a.auteur.avatar }}" alt="" width="30" height="30" loading="lazy" decoding="async">{% endif %}
+          <span class="blog-auteur-txt">{% if a.auteur.url %}<a href="{{ a.auteur.url }}">{{ a.auteur.nom }}</a>{% else %}{{ a.auteur.nom }}{% endif %}{% if a.auteur.role %}<small>{{ a.auteur.role }}</small>{% endif %}</span>
+        </div>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- CONTACT FINAL (bloc étendu mutualisé) -->
+{% include "contact-etendu.njk" %}

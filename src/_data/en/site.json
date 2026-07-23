@@ -1,0 +1,81 @@
+{
+  "nom": "4SH",
+  "telephone_affiche": "+33 (0)9 63 28 62 73",
+  "telephone_lien": "+330963286273",
+  "villes": "Bordeaux · Capbreton · Paris",
+  "contact": {
+    "titre": "Let's talk about your *project*",
+    "sous": "30 minutes with an expert, free, no strings attached. You leave with an honest first opinion, not a sales pitch.",
+    "arguments": [
+      "One dedicated contact, from needs analysis to maintenance",
+      "Multidisciplinary teams in Bordeaux, Capbreton and Paris",
+      "And if custom software isn't the right call, we'll tell you"
+    ],
+    "visages": ["SA", "JP", "TM", "+40"],
+    "note": "The 4SH team, the one you'll actually have on the phone.",
+    "coord_tel_titre": "By phone",
+    "coord_agences_titre": "Our offices"
+  },
+  "footer_accroche": "Custom software development agency since 2007.",
+  "clients_intro": "They trust us with their business:",
+  "clients": [
+    { "nom": "EDF business service", "url": "/references/izivia-portail/" },
+    { "nom": "SUD OUEST", "url": "/references/sud-ouest-socoa/" },
+    { "nom": "FILHET-ALLARD", "url": "/references/filhet-allard/" },
+    { "nom": "CIN", "url": "/references/cin/" },
+    { "nom": "ARRG", "url": "/references/arrg/" },
+    { "nom": "BME", "url": "" }
+  ],
+  "formulaire": {
+    "label_nom": "Your name",
+    "ph_nom": "First and last name",
+    "label_email": "Your work email",
+    "ph_email": "firstname@company.com",
+    "label_tel": "Phone (optional)",
+    "ph_tel": "06 12 34 56 78",
+    "label_besoin": "Your need in a few lines",
+    "ph_besoin": "e.g.: we run our rounds on Excel and it no longer holds up...",
+    "aide": "No need for a spec sheet at this stage. Three sentences are enough.",
+    "bouton": "Send my request",
+    "reassurance": "Reply within 48h, from someone who has read your message."
+  },
+  "footer_colonnes": [
+    {
+      "titre": "Services",
+      "liens": [
+        { "label": "Business software", "url": "/logiciel-metier/" },
+        { "label": "SaaS application", "url": "#" },
+        { "label": "Mobile application", "url": "#" },
+        { "label": "Hosting & maintenance", "url": "#" },
+        { "label": "Audits", "url": "#" }
+      ]
+    },
+    {
+      "titre": "Training",
+      "liens": [
+        { "label": "All training courses", "url": "/en/training/" },
+        { "label": "Develop", "url": "/formations/develop/" },
+        { "label": "Design", "url": "/formations/design/" },
+        { "label": "DevOps", "url": "/formations/devops/" },
+        { "label": "Tools", "url": "/formations/outils/" }
+      ]
+    },
+    {
+      "titre": "Company",
+      "liens": [
+        { "label": "How a project unfolds", "url": "/notre-demarche/" },
+        { "label": "Case studies", "url": "/references/" },
+        { "label": "The team", "url": "/en/company/" },
+        { "label": "Blog", "url": "https://blog.4sh.fr/" },
+        { "label": "Glossary", "url": "/glossaire/" },
+        { "label": "Training", "url": "/en/training/" }
+      ]
+    }
+  ],
+  "footer_legal": "© 2007-2026 4SH · Legal notice · GDPR · CSR charter",
+  "footer_reseaux": [
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/company/4sh-france/" },
+    { "label": "YouTube", "url": "https://www.youtube.com/channel/UCVHyJe5yzBizDzxvaNDUAGQ" }
+  ],
+  "url": "https://www.4sh.fr"
+}

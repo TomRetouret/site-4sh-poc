@@ -1,12 +1,16 @@
 {%- from "nav-icones.njk" import navicone -%}
+{%- if lang == "en" -%}{% set navigation = en.navigation %}{% set site = en.site %}{% set seo = en.seo %}{%- endif -%}
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ lang or 'fr' }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title or seo.titre_defaut }}</title>
 <meta name="description" content="{{ description or seo.description_defaut }}">
 <link rel="canonical" href="{{ seo.url }}{{ page.url }}">
+{% if altUrl %}<link rel="alternate" hreflang="{{ lang or 'fr' }}" href="{{ seo.url }}{{ page.url }}">
+<link rel="alternate" hreflang="{{ 'fr' if lang == 'en' else 'en' }}" href="{{ seo.url }}{{ altUrl }}">
+<link rel="alternate" hreflang="x-default" href="{{ seo.url }}{{ altUrl if lang == 'en' else page.url }}">{% endif %}
 {% if noindex or not seo.indexation %}<meta name="robots" content="noindex, nofollow">{% endif %}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="4SH">
@@ -30,7 +34,7 @@
 {% if not hideHeader %}
 <header>
   <div class="container nav">
-    <a class="logo" href="/" aria-label="4SH, accueil"><img src="https://www.4sh.fr/assets/img/png/logo_4sh_baseline.png" alt="4SH, développez vos idées"></a>
+    <a class="logo" href="{{ '/en/' if lang == 'en' else '/' }}" aria-label="4SH"><img src="https://www.4sh.fr/assets/img/png/logo_4sh_baseline.png" alt="4SH, développez vos idées"></a>
     <ul class="menu">
       {% for item in navigation.items %}
       {% if item.type == "lien" %}
@@ -80,6 +84,7 @@
       {% endfor %}
     </ul>
     <div class="nav-actions">
+      {% if altUrl %}<a class="lang-switch" href="{{ altUrl }}" hreflang="{{ 'fr' if lang == 'en' else 'en' }}" aria-label="{{ 'Voir la version française' if lang == 'en' else 'View the English version' }}" title="{{ 'Version française' if lang == 'en' else 'English version' }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg><span>{{ 'FR' if lang == 'en' else 'EN' }}</span></a>{% endif %}
       {% for a in navigation.actions %}<a class="{{ a.style }}" href="{{ a.url or '#' }}">{{ a.label }}</a>{% endfor %}
     </div>
     <button class="burger" aria-label="Ouvrir le menu">☰</button>

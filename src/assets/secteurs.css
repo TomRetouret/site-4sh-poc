@@ -133,11 +133,11 @@ body{counter-reset:sectbloc}
 
 /* ---- SECTION "COMMENT ?" EN FOND SOMBRE (temps fort) ---- */
 .sect-bloc--sombre{background:var(--sombre);background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:20px 20px;color:#fff}
-.sect-bloc--sombre .eyebrow{color:#ff5a63}
+.sect-bloc--sombre .eyebrow{color:var(--coeur)}
 .sect-bloc--sombre h2{color:#fff}
 .sect-bloc--sombre .intro{color:#c9d2d6}
 .sect-bloc--sombre .sect-etape{border-top-color:rgba(255,255,255,.14)}
-.sect-bloc--sombre .sect-etape::before{color:#ff5a63}
+.sect-bloc--sombre .sect-etape::before{color:var(--coeur)}
 .sect-bloc--sombre .sect-etape h3{color:#fff}
 .sect-bloc--sombre .sect-etape p{color:#b9c3c8}
 

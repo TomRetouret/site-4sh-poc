@@ -977,4 +977,5 @@ footer h5,footer .footer-titre{font-family:var(--mono);letter-spacing:.22em;font
 .lang-switch:hover{border-color:var(--sombre);color:var(--sombre);background:#fff}
 .lang-switch:hover svg{color:var(--sombre)}
 .lang-switch:focus-visible{outline:2px solid var(--sombre);outline-offset:2px}
+.lang-switch{border-radius:0;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
 @media (prefers-reduced-motion:reduce){.lang-switch,.lang-switch svg{transition:none}}

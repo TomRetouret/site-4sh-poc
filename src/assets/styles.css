@@ -851,12 +851,56 @@ footer h5,footer .footer-titre{font-family:var(--mono);letter-spacing:.22em;font
   transition:width .25s var(--ease),height .25s var(--ease),background .2s,opacity .3s,transform .3s var(--ease)}
 .curseur-anneau.grossi{transform:translate(-50%,-50%) rotate(45deg)}
 
+/* ---------- couche Ares v2 : alignement complet sur le moodboard ---------- */
+/* typo display Michroma (esprit Eurostile/TRON) : rares libellés techniques en capitales */
+@keyframes blink{50%{opacity:0}}
+.eyebrow::before,.surtitre::before{animation:blink 1.1s steps(1) infinite}
+.etape .num-label{font-family:var(--display,"Michroma","Asap",sans-serif);font-size:10px;letter-spacing:.3em}
+.chiffres span{font-family:"Michroma","Asap",sans-serif;font-size:10.5px;letter-spacing:.22em;line-height:1.7}
+.footer-eol{font-family:"Michroma","Asap",sans-serif;font-size:9.5px}
+
+/* boutons des zones sombres : biseautés à 45°, glow au survol (drop-shadow suit le biseau) */
+.hero .btn,.contact-final .btn,.section-sombre .btn{border-radius:0;
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.hero .btn-primary,.contact-final .btn-primary,.section-sombre .btn-primary{box-shadow:none;
+  filter:drop-shadow(0 6px 18px rgba(234,38,49,.35))}
+.hero .btn-primary:hover,.contact-final .btn-primary:hover{transform:translateY(-2px);
+  filter:drop-shadow(0 8px 22px rgba(234,38,49,.5)) drop-shadow(0 0 14px rgba(234,38,49,.45))}
+
+/* portes : immatriculation PRG-0X en mono (aucun contenu CMS modifié) */
+.portes{counter-reset:prg}
+.porte{counter-increment:prg}
+.porte::after{content:"PRG-0" counter(prg);position:absolute;top:18px;right:20px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:#aeb8bd;transition:color .2s}
+.porte:hover::after{color:var(--accent)}
+
+/* data rail du hero : micro-données mono sous la note */
+.hero-rail{display:flex;gap:22px;flex-wrap:wrap;margin-top:10px;font-family:var(--mono);
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7d8a90}
+.hero-rail b{color:var(--coeur);font-weight:400}
+
+/* trace de circuit (méthode 4D) : se dessine à l'entrée en écran via .doodle */
+.circuit-trace{display:block;width:min(560px,70%);height:auto;margin:-26px 0 34px;color:var(--coeur);
+  filter:drop-shadow(0 0 4px rgba(234,38,49,.55));overflow:visible}
+
+/* scanline sur les visuels de réalisations */
+.cas-visuel::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;opacity:0;z-index:2;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--coeur) 30%,var(--coeur-blanc) 50%,var(--coeur) 70%,transparent);
+  box-shadow:0 0 14px rgba(255,90,99,.8)}
+.cas:hover .cas-visuel::before{animation:scanline 1.2s var(--ease)}
+
+/* CTA flottant : pulsation Rumble discrète */
+.sticky-cta.visible{animation:pulse-w 2.4s var(--ease) infinite}
+
 /* garde-fous : tout le pack Ares se fige en reduced-motion */
 @media (prefers-reduced-motion:reduce){
   .gridfloor i{animation:none}
   .blog-carte:hover .blog-img::after{animation:none;opacity:0}
   .hero .reveal,.chiffres .reveal,.section-sombre .reveal,.contact-final .reveal{transition:none;transform:none;opacity:1}
   .curseur-anneau{transition:none}
+  .eyebrow::before,.surtitre::before{animation:none}
+  .cas:hover .cas-visuel::before{animation:none;opacity:0}
+  .sticky-cta.visible{animation:none}
 }
 @media (max-width:900px){
   .gridfloor{height:110px}

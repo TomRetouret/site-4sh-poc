@@ -114,3 +114,10 @@
   .session-info b{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
   .qualiopi{padding:26px}
 }
+
+/* ---------- couche « TRON: Ares » (Circuit, déclinée violet via --accent) ---------- */
+.learning .eyebrow::before{background:none}
+.learning .porte::before{background:linear-gradient(90deg,var(--accent) 0 32%,transparent 32% 38%,var(--accent) 38% 46%,transparent 46% 82%,var(--accent) 82% 100%)}
+.carte-form{border-radius:0;clip-path:polygon(0 0,calc(100% - var(--cut,16px)) 0,100% var(--cut,16px),100% 100%,var(--cut,16px) 100%,0 calc(100% - var(--cut,16px)))}
+.carte-form::before{height:3px;background:linear-gradient(90deg,var(--accent) 0 32%,transparent 32% 38%,var(--accent) 38% 46%,transparent 46% 82%,var(--accent) 82% 100%)}
+.carte-form .cat{font-family:var(--mono);letter-spacing:.18em}

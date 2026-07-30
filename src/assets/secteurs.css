@@ -183,3 +183,4 @@ body{counter-reset:sectbloc}
 /* cartes défis / atouts → Circuit : coins coupés, filet staccato */
 .sect-defi,.sect-atout{border-radius:0;clip-path:polygon(0 0,calc(100% - var(--cut,16px)) 0,100% var(--cut,16px),100% 100%,var(--cut,16px) 100%,0 calc(100% - var(--cut,16px)))}
 .sect-defi::before,.sect-atout::before{background:linear-gradient(90deg,var(--accent) 0 32%,transparent 32% 38%,var(--accent) 38% 46%,transparent 46% 82%,var(--accent) 82% 100%)}
+.sect-hero .sect-logo,.sect-libre h2 + ul li{border-radius:0}

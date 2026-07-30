@@ -132,3 +132,9 @@
 .prose--sombre li::before{content:"→";position:absolute;left:0;color:var(--accent-clair)}
 @media (max-width:960px){.phares{grid-template-columns:1fr 1fr}.techno-blason{display:none}}
 @media (min-width:961px) and (max-width:1024px){.phares{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- couche « TRON: Ares » v4 ---------- */
+.col-carte,.techno-blason,.techno-tuile,.chips span{border-radius:0}
+.socle-carte,.atout,.real-carte,.blog-carte,.phare-carte{border-radius:0;
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+.atout .n{border-radius:0}

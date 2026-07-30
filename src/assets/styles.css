@@ -903,6 +903,51 @@ footer h5,footer .footer-titre{font-family:var(--mono);letter-spacing:.22em;font
 /* CTA flottant : pulsation Rumble discrète */
 .sticky-cta.visible{animation:pulse-w 2.4s var(--ease) infinite}
 
+/* ---------- couche Ares v4 : unification totale (boutons, cartes, décor) ---------- */
+/* 1. BOUTONS : tous biseautés, plus aucune pilule d'action */
+.btn,.menu-services .btn-contact{border-radius:0;
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.btn-sm{clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+.btn-primary{box-shadow:none;filter:drop-shadow(0 6px 18px rgba(234,38,49,.32))}
+.btn-primary:hover,.btn-primary:focus-visible{box-shadow:none;
+  filter:drop-shadow(0 8px 22px rgba(234,38,49,.45)) drop-shadow(0 0 14px rgba(234,38,49,.4))}
+.lien-formations{border-radius:0;
+  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+.lang-switch{border-radius:0;
+  clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+.sticky-cta{box-shadow:none;filter:drop-shadow(0 10px 24px rgba(234,38,49,.4))}
+.car-nav{border-radius:0}
+
+/* 2. CARTES ET PANNEAUX : coins coupés 2/4 ou angles droits, plus d'arrondis */
+.cas{border-radius:0;
+  clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px))}
+.faq details{border-radius:0;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
+.etapes{border-radius:0}
+.porte .pictos{border-radius:0}
+.hero-visuel,.equipe-photo img,.hero-equipe img,.schema-craft,.photo-cadre,.menu-carte{border-radius:0}
+/* méga-menus : panneaux carrés, liseré staccato en tête (pas de clip : préserve le pont de survol) */
+.deroulant,.a-panneau .deroulant{border-radius:0;
+  background-image:linear-gradient(90deg,var(--rouge) 0 22%,transparent 22% 26%,var(--rouge) 26% 31%,transparent 31% 58%,var(--rouge) 58% 94%,transparent 94% 97%,var(--rouge) 97% 100%);
+  background-repeat:no-repeat;background-size:100% 2px;background-position:top}
+.deroulant ul a,.menu-services .svc-item,.menu-services .svc-ico{border-radius:0}
+.menu-services .promo-services{border-radius:0}
+.menu>li>a{border-radius:0}
+.blog-auteur img{border-radius:50%} /* les visages restent ronds : humain vs machine */
+
+/* 3. DÉCOR : heros internes clairs = trame grille + staccato plein bord en pied */
+.hero-interne,.hero-detail,.hero-form,.ref-hero,.glo-hero{position:relative}
+.hero-interne::after,.hero-detail::after,.hero-form::after,.ref-hero::after,.glo-hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:56px 56px;opacity:.5;
+  -webkit-mask-image:radial-gradient(ellipse 62% 90% at 82% 8%,#000 25%,transparent 72%);
+          mask-image:radial-gradient(ellipse 62% 90% at 82% 8%,#000 25%,transparent 72%)}
+.hero-interne::before,.hero-detail::before,.hero-form::before,.ref-hero::before,.glo-hero::before{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;pointer-events:none;opacity:.5;
+  background:linear-gradient(90deg,var(--accent) 0 14%,transparent 14% 18%,var(--accent) 18% 23%,transparent 23% 34%,var(--accent) 34% 71%,transparent 71% 75%,var(--accent) 75% 78%,transparent 78% 92%,var(--accent) 92% 100%)}
+.hero-interne .container,.hero-detail .container,.hero-form .container,.ref-hero .container,.glo-hero .container{position:relative;z-index:1}
+
 /* garde-fous : tout le pack Ares se fige en reduced-motion */
 @media (prefers-reduced-motion:reduce){
   .gridfloor i{animation:none}

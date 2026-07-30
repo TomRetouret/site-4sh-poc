@@ -830,10 +830,21 @@ footer h5,footer .footer-titre{font-family:var(--mono);letter-spacing:.22em;font
 .menu-services .promo-services{background:linear-gradient(160deg,#1a242b,var(--noir-laque))}
 .menu-secteurs .promo-services{background:linear-gradient(155deg,#4a1e27,var(--noir-laque))}
 
+/* cas clients : le label secteur passe du vert hérité au cœur chaud mono */
+.cas-visuel .secteur{color:var(--coeur);font-family:var(--mono);letter-spacing:.2em;text-shadow:0 0 8px rgba(255,90,99,.4)}
+
+/* cartes des sections sombres (socle technos, technos phares, tuiles) : panneaux laqués */
+.section-sombre .socle-carte,.section-sombre .phare-carte,.section-sombre .techno-tuile{
+  border-radius:0;background:var(--noir-laque-2);border-color:#1c262c}
+.section-sombre .socle-carte:hover,.section-sombre .phare-carte:hover,.section-sombre .techno-tuile:hover{
+  border-color:rgba(234,38,49,.5)}
+
 /* ---------- LOT-04 : motion signature ---------- */
 /* pop en escalier dans les zones sombres (le clair garde le reveal doux : contraste voulu) */
 .hero .reveal,.chiffres .reveal,.section-sombre .reveal,.contact-final .reveal{
-  transform:translateY(14px);transition-duration:.28s;transition-timing-function:steps(2,end)}
+  transition-duration:.28s;transition-timing-function:steps(2,end)}
+.hero .reveal:not(.vu),.chiffres .reveal:not(.vu),.section-sombre .reveal:not(.vu),.contact-final .reveal:not(.vu){
+  transform:translateY(14px)}
 
 /* scanline au survol des visuels */
 .blog-img{position:relative}

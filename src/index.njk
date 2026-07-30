@@ -15,6 +15,7 @@ permalink: /
           <a class="btn btn-ghost" href="/references/">{{ accueil.hero_cta_secondaire }}</a><svg class="doodle doodle-fleche" width="92" height="58" viewBox="0 0 92 58" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M88 6C74 34 48 47 12 48"/><path d="M22 40.5 11.5 48l11 5.5"/></svg>
         </div>
         <p class="hero-note">{{ accueil.hero_note }}</p>
+        <p class="hero-rail" aria-hidden="true"><span><b>SYS://</b>BUILD·RUN·LEARN</span><span><b>LOC/</b>BDX·CBT·PAR</span><span><b>EXP/</b>2007→2026</span><span><b>CRT/</b>QUALIOPI</span></p>
       </div>
       {% if not accueil.equipe_photo %}
       <div class="hero-visuel" aria-hidden="true">
@@ -32,6 +33,7 @@ permalink: /
     <img src="{{ accueil.equipe_photo }}" alt="{{ accueil.equipe_titre | accent | striptags }}" width="1200" height="800" fetchpriority="high" decoding="async">
   </figure>
   {% endif %}
+  <div class="gridfloor" aria-hidden="true"><i></i></div>
   <!-- LOGOS CLIENTS (ancrés en bas du hero, pour tenir dans le 1er écran) -->
   <div class="logos">
     <div class="container">
@@ -103,6 +105,7 @@ permalink: /
     <p class="eyebrow">{{ accueil.methode_eyebrow }}</p>
     <h2 class="sec-titre">{{ accueil.methode_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ accueil.methode_sous }}</p>
+    <svg class="doodle circuit-trace" viewBox="0 0 560 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M2 50 H120 L152 22 H300 L324 44 H430 L448 30 H558"/><path d="M2 12 H86 L104 28 H210"/><circle cx="558" cy="30" r="3" fill="currentColor" stroke="none"/><circle cx="210" cy="28" r="3" fill="currentColor" stroke="none"/></svg>
     <div class="etapes">
       {% for e in accueil.methode_etapes %}
       <div class="etape"><span class="num">{{ e.num }}</span><span class="num-label">{{ e.label }}</span><h3>{{ e.titre }}</h3><p>{{ e.texte }}</p></div>

@@ -21,6 +21,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css?family=Asap:400,400i,500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"4SH","url":"https://www.4sh.fr/","foundingDate":"2007","address":[{"@type":"PostalAddress","addressLocality":"Le Haillan","postalCode":"33185"},{"@type":"PostalAddress","addressLocality":"Capbreton","postalCode":"40130"},{"@type":"PostalAddress","addressLocality":"Paris","postalCode":"75008"}],"telephone":"+33963286273"}
 </script>
@@ -112,6 +114,7 @@
     </div>
     <div class="footer-bas">
       <span>{{ site.footer_legal }}</span>
+      <span class="footer-eol" aria-hidden="true"><b>END-OF-LINE</b></span>
       <span>{% for r in site.footer_reseaux %}{% if not loop.first %} · {% endif %}<a href="{{ r.url or '#' }}">{{ r.label }}</a>{% endfor %}</span>
     </div>
   </div>

@@ -15,8 +15,9 @@
   color:#b9c3c8;
   position:relative;overflow:hidden;
 }
-/* trame de points + halo, comme les sections sombres du site */
-.p404::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(180deg,transparent,#000,transparent);-webkit-mask-image:linear-gradient(180deg,transparent,#000,transparent)}
+/* Red Grid : fond laqué + grille rouge, comme le hero refondu */
+.p404{background:linear-gradient(180deg,var(--sombre) 0%,var(--noir-laque) 100%)}
+.p404::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 70% at 50% 45%,#000 30%,transparent 78%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 45%,#000 30%,transparent 78%)}
 .p404::after{content:"";position:absolute;width:620px;height:620px;border-radius:50%;top:-220px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(234,38,49,.18),transparent 62%);pointer-events:none}
 .p404 .container{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
 
@@ -37,6 +38,8 @@
 .p404-secours a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 .p404-secours a:hover{color:var(--accent-clair)}
 .p404 .btn:focus-visible,.p404-secours a:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:8px}
+.p404 .btn-ghost{color:#c9d2d7}
+.p404 .btn-ghost:hover{border-color:#fff;color:#fff}
 
 /* ============================================================
    MOTION (one-shot au chargement)
@@ -48,6 +51,13 @@
 @keyframes p404-spark1{0%{opacity:0;transform:translate(0,0) scale(.3)}25%{opacity:1}100%{opacity:0;transform:translate(-20px,-16px) scale(1)}}
 @keyframes p404-spark2{0%{opacity:0;transform:translate(0,0) scale(.3)}25%{opacity:1}100%{opacity:0;transform:translate(4px,-24px) scale(1)}}
 @keyframes p404-spark3{0%{opacity:0;transform:translate(0,0) scale(.3)}25%{opacity:1}100%{opacity:0;transform:translate(22px,-12px) scale(1)}}
+
+/* glitch « derez » : les chiffres tremblent une fois en escalier, à cœur chaud */
+@keyframes p404-derez{0%{transform:translate(0,0)}25%{transform:translate(-3px,2px)}50%{transform:translate(3px,-2px)}75%{transform:translate(-2px,-1px)}100%{transform:translate(0,0)}}
+.p404-chiffre{text-shadow:var(--glow-sm)}
+.p404-scene:hover .p404-chiffre{animation:p404-derez .3s steps(2) 2}
+.p404-plug{filter:drop-shadow(0 0 6px rgba(255,90,99,.7))}
+.p404-titre em.accent{text-shadow:var(--glow-sm)}
 
 /* entrée échelonnée des chiffres puis du texte */
 .p404-chiffre,.p404-zero,.p404-titre,.p404-chapo,.p404-cta{opacity:0;animation:p404-rise .55s var(--ease) both}
@@ -74,6 +84,7 @@
    Accessibilité : on fige le mouvement, on garde la mise en scène
    ============================================================ */
 @media (prefers-reduced-motion:reduce){
+  .p404-scene:hover .p404-chiffre{animation:none}
   .p404-chiffre,.p404-zero,.p404-titre,.p404-chapo,.p404-cta{opacity:1;transform:none;animation:none}
   .p404-cable{stroke-dashoffset:0;animation:none}
   .p404-plug{animation:none;transform:rotate(4deg)}   /* fiche figée en position « décrochée » */

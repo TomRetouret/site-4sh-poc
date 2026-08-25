@@ -133,11 +133,11 @@ body{counter-reset:sectbloc}
 
 /* ---- SECTION "COMMENT ?" EN FOND SOMBRE (temps fort) ---- */
 .sect-bloc--sombre{background:var(--sombre);background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:20px 20px;color:#fff}
-.sect-bloc--sombre .eyebrow{color:var(--coeur)}
+.sect-bloc--sombre .eyebrow{color:#ff5a63}
 .sect-bloc--sombre h2{color:#fff}
 .sect-bloc--sombre .intro{color:#c9d2d6}
 .sect-bloc--sombre .sect-etape{border-top-color:rgba(255,255,255,.14)}
-.sect-bloc--sombre .sect-etape::before{color:var(--coeur)}
+.sect-bloc--sombre .sect-etape::before{color:#ff5a63}
 .sect-bloc--sombre .sect-etape h3{color:#fff}
 .sect-bloc--sombre .sect-etape p{color:#b9c3c8}
 
@@ -171,16 +171,3 @@ body{counter-reset:sectbloc}
   .sect-defi:hover .ic{transform:none}
   .sect-hero h1 .doodle path{animation:none;stroke-dashoffset:0}
 }
-
-/* ---------- couche « TRON: Ares » ---------- */
-/* hero secteur → Red Grid : laqué, grille rouge, titre à cœur chaud, CTA biseauté */
-.sect-hero{background:linear-gradient(180deg,var(--sombre) 0%,var(--noir-laque) 100%)}
-.sect-hero::before{background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:56px 56px}
-.sect-hero em.accent{text-shadow:var(--glow-sm)}
-.sect-hero .btn{border-radius:0;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
-.sect-hero .btn-primary{box-shadow:none;filter:drop-shadow(0 6px 18px rgba(234,38,49,.35))}
-.sect-hero .btn-primary:hover{transform:translateY(-2px);filter:drop-shadow(0 8px 22px rgba(234,38,49,.5)) drop-shadow(0 0 14px rgba(234,38,49,.45))}
-/* cartes défis / atouts → Circuit : coins coupés, filet staccato */
-.sect-defi,.sect-atout{border-radius:0;clip-path:polygon(0 0,calc(100% - var(--cut,16px)) 0,100% var(--cut,16px),100% 100%,var(--cut,16px) 100%,0 calc(100% - var(--cut,16px)))}
-.sect-defi::before,.sect-atout::before{background:linear-gradient(90deg,var(--accent) 0 32%,transparent 32% 38%,var(--accent) 38% 46%,transparent 46% 82%,var(--accent) 82% 100%)}
-.sect-hero .sect-logo,.sect-libre h2 + ul li{border-radius:0}

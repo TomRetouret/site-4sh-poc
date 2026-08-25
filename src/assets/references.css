@@ -256,16 +256,3 @@
   .ref-galerie figure{transform:none}
   .ref-galerie figure:hover,.ref-galerie figure:hover img,.ref-corps h2 + ul li:hover{transform:none}
 }
-
-/* ---------- couche « TRON: Ares » (Circuit) ---------- */
-.ref-carte{border-radius:0;clip-path:polygon(0 0,calc(100% - var(--cut,16px)) 0,100% var(--cut,16px),100% 100%,var(--cut,16px) 100%,0 calc(100% - var(--cut,16px)))}
-.ref-carte::before{height:3px;background:linear-gradient(90deg,var(--accent) 0 32%,transparent 32% 38%,var(--accent) 38% 46%,transparent 46% 82%,var(--accent) 82% 100%)}
-.ref-carte:hover{border-color:rgba(234,38,49,.35)}
-.ref-tags li{font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;font-size:10px}
-
-/* ---------- couche « TRON: Ares » v4 ---------- */
-.ref-filtres--panel,.ref-recherche input,.ref-galerie figure,.ref-corps h2 + ul li,.ref-temoignage,.ref-badge-collab{border-radius:0}
-.chip{border-radius:0;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px)}
-.ref-hero-visuel{border-radius:0;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px))}
-.ref-hero-visuel img{border-radius:0}
-.ref-identite{border-radius:0;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}

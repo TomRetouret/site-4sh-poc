@@ -114,20 +114,3 @@
   .session-info b{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
   .qualiopi{padding:26px}
 }
-
-/* ---------- couche « TRON: Ares » (Circuit, déclinée violet via --accent) ---------- */
-.learning .eyebrow::before{background:none}
-.learning .porte::before{background:linear-gradient(90deg,var(--accent) 0 32%,transparent 32% 38%,var(--accent) 38% 46%,transparent 46% 82%,var(--accent) 82% 100%)}
-.carte-form{border-radius:0;clip-path:polygon(0 0,calc(100% - var(--cut,16px)) 0,100% var(--cut,16px),100% 100%,var(--cut,16px) 100%,0 calc(100% - var(--cut,16px)))}
-.carte-form::before{height:3px;background:linear-gradient(90deg,var(--accent) 0 32%,transparent 32% 38%,var(--accent) 38% 46%,transparent 46% 82%,var(--accent) 82% 100%)}
-.carte-form .cat{font-family:var(--mono);letter-spacing:.18em}
-
-/* ---------- couche « TRON: Ares » v4 ---------- */
-.hero-form .visuel-form{border-radius:0;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px))}
-.recherche input{border-radius:0}
-.onglet{border-radius:0;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
-.lien-catalogue{border-radius:0;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
-.session-ligne,.qualiopi,.temoin{border-radius:0}
-.qualiopi{clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px))}
-.temoin{clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
-.session-ligne:hover{border-color:var(--accent)}

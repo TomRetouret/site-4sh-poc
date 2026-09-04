@@ -133,19 +133,27 @@
   "agences": [
     {
       "ville": "Le Haillan",
-      "adresse": "2 rue Edmond Rostand\n33185 Le Haillan"
+      "adresse": "2 rue Edmond Rostand\n33185 Le Haillan",
+      "carte_url": "https://maps.app.goo.gl/3y16XjW6fmYh425F9"
     },
     {
       "ville": "Bordeaux",
-      "adresse": "7 rue Esmangard\n33800 Bordeaux"
+      "adresse": "7 rue Esmangard\n33800 Bordeaux",
+      "carte_url": "https://maps.app.goo.gl/xZtfUb2nE8CJKTWa8"
     },
     {
       "ville": "Capbreton",
-      "adresse": "2 rue du Barrasquit\n40130 Capbreton"
+      "adresse": "2 rue du Barrasquit\n40130 Capbreton",
+      "carte_url": "https://maps.app.goo.gl/NKgwXZ4hie75ep8M8"
     },
     {
       "ville": "Paris",
-      "adresse": "6 place de la Madeleine\n75008 Paris"
+      "adresse": "6 place de la Madeleine\n75008 Paris",
+      "carte_url": "https://goo.gl/maps/Fw7vuuGnaLpK7n9dA"
     }
-  ]
+  ],
+  "rse_titre": "Notre engagement RSE",
+  "rse_texte": "4SH formalise ses engagements environnementaux, sociaux et de gouvernance dans une charte RSE.",
+  "rse_cta_label": "Consulter notre charte RSE",
+  "rse_cta_url": "https://drive.google.com/file/d/1JOFetCo1BX1ivMkoVkspNnBN1SN0zlCs/view"
 }

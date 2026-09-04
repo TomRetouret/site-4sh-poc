@@ -48,6 +48,8 @@ faq:
     reponse: "La formation Git avancé est conçue pour les utilisateurs ayant déjà une maîtrise des fondamentaux de Git, comme la configuration d'un dépôt, le fonctionnement des branches et la navigation dans le graphe Git. Elle s'adresse à des professionnels ou équipes cherchant à perfectionner leurs pratiques pour améliorer leur collaboration et leur productivité au travail."
   - question: "Quelle est la différence entre les niveaux de formation proposés ?"
     reponse: "4SH propose plusieurs niveaux de formations Git : Essentiel, Fondamental et Avancé. La formation Git avancé se concentre sur des fonctionnalités et stratégies complexes, comme les workflows collaboratifs, le rebase interactif ou encore la gestion avancée des dépôts. Elle s'adresse aux participants souhaitant aller au-delà des notions de base pour adopter des pratiques adaptées aux projets en entreprise."
+programme_pdf: "https://drive.google.com/file/d/1l8XTu1lxvpwwckw2Voj-bVAWLXgU56Qb/view"
+programme_pdf_poids: "709 Ko"
 ---
 La formation Git - Avancé offre une compréhension approfondie des concepts et du fonctionnement de Git, adaptée à des utilisateurs ayant déjà utilisé Git et souhaitant solidifier et enrichir leurs connaissances sur ce DVCS.
 

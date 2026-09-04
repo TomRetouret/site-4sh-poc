@@ -9,19 +9,13 @@ extraCss: /assets/secteurs.css
     <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <a href="/">Secteurs</a> › {{ titre }}</nav>
     <span class="eyebrow">{{ categorie or "Secteur" }}</span>
     {% if logo %}<div class="sect-logo"><img src="{{ logo }}" alt="{{ titre }}"></div>{% endif %}
-    <h1>{{ h1 or titre }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
+    <h1>{{ (h1 or titre) | accent | safe }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
     {% if chapo %}<p class="accroche">{{ chapo }}</p>{% endif %}
     <div class="hero-cta"><a class="btn btn-primary" href="{{ cta_url or '/#contact' }}">{{ cta_label or libelles.secteur.cta_bouton }}</a></div>
   </div>
 </section>
 
-<section class="sect-bloc">
-  <div class="container">
-    <div class="sect-libre">
-      {{ content | safe }}
-    </div>
-  </div>
-</section>
+{{ content | blocs(collections.references, page.url) | safe }}
 
 {% if chiffres and chiffres.length %}
 <div class="ref-resultats">
@@ -33,16 +27,36 @@ extraCss: /assets/secteurs.css
 </div>
 {% endif %}
 
-{% if references and references.length %}
+{% set refs_haut = page.url | refsMisesEnAvant %}
+{% set refs_bas = references | sansRefs(refs_haut) %}
+{% if refs_bas and refs_bas.length %}
 <section class="sect-refs">
   <div class="container">
     <p class="eyebrow">{{ libelles.secteur.refs_eyebrow }}</p>
     <h2>{{ libelles.secteur.refs_titre }}</h2>
     <div class="ref-grille">
-      {% for slug in references %}{% for r in collections.references %}{% if r.fileSlug == slug %}{{ carte(r) }}{% endif %}{% endfor %}{% endfor %}
+      {% for slug in refs_bas %}{% for r in collections.references %}{% if r.fileSlug == slug %}{{ carte(r) }}{% endif %}{% endfor %}{% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
+
+{% if faq and faq.length %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for item in faq %}
+    {
+      "@type": "Question",
+      "name": {{ item.question | dump | safe }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ item.reponse | dump | safe }} }
+    }{% if not loop.last %},{% endif %}
+    {%- endfor %}
+  ]
+}
+</script>
 {% endif %}
 
 {% if faq and faq.length %}

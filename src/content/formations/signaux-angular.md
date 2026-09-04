@@ -47,6 +47,8 @@ programme:
   - titre: "Alternative à computed()"
     items: ["Présentation de LinkedSignal() et cas d'utilisation.", "Exemples de code avec et sans LinkedSignal()."]
 faq: []
+programme_pdf: "https://drive.google.com/file/d/1Mf6hifu2mhmpuDxeDONdlkMBqaTa6RKC/view"
+programme_pdf_poids: "720 Ko"
 ---
 Les signaux avec Angular sont une fonctionnalité avancée qui permet de gérer la réactivité et la détection des changements de manière efficace. Cette formation se concentre sur l'utilisation des signaux pour améliorer les performances et simplifier le code dans les applications Angular.
 

@@ -54,6 +54,8 @@ faq:
     reponse: "Oui, la formation couvre l'intégration de Terraform dans des pipelines d'intégration continue et de déploiement continu (CI/CD). Les participants apprendront à automatiser le déploiement et la gestion des infrastructures, assurant ainsi des déploiements rapides et cohérents."
   - question: "Les participants apprendront-ils à créer des modules réutilisables et à utiliser Terragrunt ?"
     reponse: "Absolument, la formation aborde la création de modules réutilisables pour favoriser la modularisation du code et l'utilisation de Terragrunt. Cela permet de simplifier la gestion des projets Terraform, d'améliorer la maintenabilité et de rendre les infrastructures plus scalables et faciles à gérer."
+programme_pdf: "https://drive.google.com/file/d/1nz56vQzVz_UKWzDMYINQ6Lpubk8JC1bN/view"
+programme_pdf_poids: "750 Ko"
 ---
 Terraform est un outil fondamental dans le domaine de l'Infrastructure as Code (IaC) pour la gestion et le déploiement automatisé des infrastructures. Cette formation sur Terraform vise à fournir aux ingénieurs système, aux administrateurs réseau et aux développeurs les compétences nécessaires pour maîtriser cet outil et tirer parti de ses capacités pour automatiser le déploiement et la gestion des infrastructures.
 

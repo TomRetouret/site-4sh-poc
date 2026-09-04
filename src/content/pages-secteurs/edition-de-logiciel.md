@@ -117,3 +117,7 @@ La continuité des intervenants favorise la capitalisation et la montée en expe
 
 Au-delà des ressources, nous nous engageons sur des objectifs mesurables : qualité, performance, respect des délais, satisfaction utilisateur.
 Notre approche est orientée impact business.
+
+## Fiche de référence
+
+[Acteos, logistique et TMS : télécharger la fiche](https://drive.google.com/file/d/1C13ZJqw_53kF-0quH0imaVHmkX-Rs1XB/view)

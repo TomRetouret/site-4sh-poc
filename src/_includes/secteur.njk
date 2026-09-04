@@ -8,7 +8,7 @@ extraCss: /assets/secteurs.css
   <div class="container">
     <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <a href="/">Secteurs</a> › {{ titre }}</nav>
     <span class="eyebrow">Secteur · {{ titre }}</span>
-    <h1>{{ h1 or titre }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
+    <h1>{{ (h1 or titre) | accent | safe }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
     {% if accroche %}<p class="accroche">{{ accroche }}</p>{% endif %}
     <div class="hero-cta"><a class="btn btn-primary" href="/#contact">{{ libelles.secteur.cta_bouton }}</a></div>
   </div>

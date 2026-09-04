@@ -1,0 +1,195 @@
+# =========================================================================
+#  Redirections 301 : anciennes URLs de www.4sh.fr -> refonte Eleventy
+#  Format Netlify. Première règle qui matche = règle appliquée.
+#  Copié tel quel dans dist/ par eleventy.config.js (addPassthroughCopy).
+#  Généré le 03/09/2026 à partir du crawl complet de www.4sh.fr (128 pages).
+# =========================================================================
+
+# --- Accueil -------------------------------------------------------------
+/index.html                                          /                                          301!
+
+# --- Contact (les 3 formulaires fusionnent sur une page unique) ----------
+/contact.html                                        /contact/                                  301!
+/contact/question.html                               /contact/                                  301!
+/contact/demo.html                                   /contact/                                  301!
+
+# --- Anciens hubs d'offre (il n'y a plus de page /prestations/) ---------
+/build.html                                          /prestations/logiciel-metier/              301!
+/run.html                                            /prestations/hebergement/                  301!
+/developpement-sur-mesure.html                       /prestations/logiciel-metier/              301!
+/expertise-produit.html                              /prestations/product-management/           301!
+/audits.html                                         /prestations/audit-ux/                     301!
+
+# --- Prestations : concevoir & développer --------------------------------
+/developpement-sur-mesure/logiciel-metier.html       /prestations/logiciel-metier/              301!
+/logiciel-metier/                                    /prestations/logiciel-metier/              301!
+/developpement-sur-mesure/application-mobile.html    /prestations/application-mobile/           301!
+/developpement-sur-mesure/application-saas.html      /prestations/application-saas/             301!
+/build/strategy.html                                 /prestations/digital-strategy/             301!
+/build/ux-design.html                                /prestations/ux-design/                    301!
+/build/ui-design.html                                /prestations/ui-design/                    301!
+
+# --- Prestations : expertise produit ------------------------------------
+/expertise-produit/product-design.html               /prestations/product-design/               301!
+/expertise-produit/product-management.html           /prestations/product-management/           301!
+/product-design.html                                 /prestations/product-design/               301!
+/product-management.html                             /prestations/product-management/           301!
+
+# --- Prestations : faire vivre ------------------------------------------
+/build/maintenance-evolutive.html                    /prestations/maintenance-evolutive/        301!
+/run/maintenance-corrective.html                     /prestations/maintenance-corrective/       301!
+/run/hebergement.html                                /prestations/hebergement/                  301!
+/run/securite.html                                   /prestations/securite/                     301!
+/run/data.html                                       /prestations/data/                         301!
+
+# --- Prestations : audits ------------------------------------------------
+/audits/audit-ux.html                                /prestations/audit-ux/                     301!
+/audits/audit-cloud.html                             /prestations/audit-cloud/                  301!
+
+# --- Pages SEO d'août et juillet 2026 : slugs annoncés par l'agence ------
+/developpement-sur-mesure/application-saas-paris.html /prestations/application-saas-paris/       301!
+/developpement-sur-mesure/application-saas-bordeaux.html /prestations/application-saas-bordeaux/    301!
+/developpement-sur-mesure/application-saas-lyon.html /prestations/application-saas-lyon/        301!
+/developpement-sur-mesure/application-mobile-paris.html /prestations/application-mobile-paris/     301!
+/developpement-sur-mesure/application-mobile-bordeaux.html /prestations/application-mobile-bordeaux/  301!
+/developpement-sur-mesure/application-mobile-lyon.html /prestations/application-mobile-lyon/      301!
+/build/transformation-digitale.html                  /prestations/transformation-digitale/      301!
+/transformation-digitale.html                        /prestations/transformation-digitale/      301!
+
+# --- Intelligence artificielle ------------------------------------------
+/ia.html                                             /intelligence-artificielle/                301!
+
+# --- Secteurs ------------------------------------------------------------
+/secteurs/logistique.html                            /secteurs/logistique/                      301!
+/secteurs/electromobilite.html                       /secteurs/electromobilite/                 301!
+/secteurs/assurance.html                             /secteurs/assurance/                       301!
+/secteurs/edition-de-logiciel.html                   /secteurs/edition-de-logiciel/             301!
+/secteurs/fournisseur-de-services-technologiques.html /secteurs/fournisseur-de-services-technologiques/ 301!
+/secteurs/franchise.html                             /secteurs/franchise/                       301!
+/secteurs/celebrads.html                             /secteurs/celebrads/                       301!
+/secteurs/hubit.html                                 /secteurs/hubit/                           301!
+/secteurs/4pm.html                                   /secteurs/4pm/                             301!
+/secteurs/4track.html                                /secteurs/4track/                          301!
+/secteurs/4desk.html                                 /secteurs/4desk/                           301!
+/secteurs/simulateur-de-bornes.html                  /secteurs/simulateur-de-bornes/            301!
+
+# --- Expertises techniques ----------------------------------------------
+/expertises-techniques.html                          /expertises-techniques/                    301!
+/expertises-techniques/java.html                     /expertises-techniques/java/               301!
+/expertises-techniques/kotlin.html                   /expertises-techniques/kotlin/             301!
+/expertises-techniques/angular.html                  /expertises-techniques/angular/            301!
+/expertises-techniques/kubernetes.html               /expertises-techniques/kubernetes/         301!
+/expertises-techniques/react-native.html             /expertises-techniques/react-native/       301!
+
+# --- Guides éditoriaux techno (fusionnés dans les fiches expertises) -----
+/learning/formations/develop/angular/                /expertises-techniques/angular/            301!
+/learning/formations/develop/java/                   /expertises-techniques/java/               301!
+/learning/formations/develop/js/                     /expertises-techniques/javascript/         301!
+/learning/formations/develop/mongo/                  /expertises-techniques/mongodb/            301!
+/learning/formations/devops/kubernetes/              /expertises-techniques/kubernetes/         301!
+/learning/formations/design/figma/                   /expertises-techniques/figma/              301!
+
+# --- Formations : catalogue et catégories -------------------------------
+/learning/formations/                                /formations/                               301!
+/learning/formations/develop/                        /formations/develop/                       301!
+/learning/formations/design/                         /formations/design/                        301!
+/learning/formations/devops/                         /formations/devops/                        301!
+/learning/formations/outils/                         /formations/outils/                        301!
+
+# --- Formations : fiches (la catégorie disparait de l'URL) ---------------
+/learning/formations/develop/angular-fondamental.html      /formations/angular-fondamental/     301!
+/learning/formations/develop/angular-avance.html           /formations/angular-avance/          301!
+/learning/formations/develop/signaux-angular-avance.html   /formations/signaux-angular/         301!
+/learning/formations/develop/java-fondamental.html         /formations/java-fondamental/        301!
+/learning/formations/develop/java-avance.html              /formations/java-avance/             301!
+/learning/formations/develop/kotlin-fondamental.html       /formations/kotlin-fondamental/      301!
+/learning/formations/develop/kotlin-avance.html            /formations/kotlin-avance/           301!
+/learning/formations/develop/kotlin-cor-avance.html        /formations/kotlin-coroutines/       301!
+/learning/formations/develop/js-ts-fondamental.html        /formations/js-ts-fondamental/       301!
+/learning/formations/develop/html-essentiel.html           /formations/html-css/                301!
+/learning/formations/develop/sql-fondamental.html          /formations/sql/                     301!
+/learning/formations/develop/kafka-fondamental.html        /formations/kafka/                   301!
+/learning/formations/develop/grpc-fondamental.html         /formations/grpc/                    301!
+/learning/formations/develop/spring-fondamental.html       /formations/spring-rest-jpa/         301!
+/learning/formations/devops/kubernetes-fondamental.html    /formations/kubernetes-fondamental/  301!
+/learning/formations/devops/kubernetes-avance.html         /formations/kubernetes-avance/       301!
+/learning/formations/devops/kubernetes-admin-avance.html   /formations/kubernetes-administrator/ 301!
+/learning/formations/devops/docker-essentiel.html          /formations/docker-essentiel/        301!
+/learning/formations/devops/docker-fondamental.html        /formations/docker-fondamental/      301!
+/learning/formations/devops/terraform-fondamental.html     /formations/terraform/               301!
+/learning/formations/devops/supervision-fondamental.html   /formations/supervision-prometheus/  301!
+/learning/formations/devops/acc-devops-fondamental.html    /formations/acculturation-devops/    301!
+/learning/formations/design/figma-fondamental.html         /formations/figma-fondamental/       301!
+/learning/formations/outils/git-fondamental.html           /formations/git-fondamental/         301!
+/learning/formations/outils/git-avance.html                /formations/git-avance/              301!
+/learning/formations/outils/gradle-essentiel.html          /formations/gradle/                  301!
+/learning/formations/outils/gradle-avance.html             /formations/gradle/                  301!
+/learning/formations/outils/maven-essentiel.html           /formations/maven/                   301!
+/learning/formations/outils/intellij-essentiel.html        /formations/intellij/                301!
+/learning/formations/outils/jira-fondamental.html          /formations/jira-fondamental/        301!
+/learning/formations/outils/jira-avance.html               /formations/jira-avance/             301!
+/learning/formations/outils/confluence-fondamental.html    /formations/confluence-cloud/        301!
+/learning/formations/design/figma-essentiel.html     /formations/figma-essentiel/               301!
+/learning/formations/develop/intro-kotlin-essentiel.html /formations/intro-kotlin/                  301!
+/learning/formations/develop/js-fondamental.html     /formations/javascript/                    301!
+/learning/formations/develop/js-ts-avance.html       /formations/js-ts-avance/                  301!
+/learning/formations/develop/kotlin-asynchronicite-coroutines-fondamental.html /formations/kotlin-coroutines-async/       301!
+/learning/formations/develop/kotlin-multiplatform-fondamental.html /formations/kotlin-multiplatform/          301!
+/learning/formations/develop/mongodb-essentiel.html  /formations/mongodb-essentiel/             301!
+/learning/formations/develop/mongodb-fondamental.html /formations/mongodb-fondamental/           301!
+/learning/formations/develop/mongodb-avance.html     /formations/mongodb-avance/                301!
+/learning/formations/develop/python-fondamental.html /formations/python/                        301!
+/learning/formations/develop/tests-frontend-fondamental.html /formations/tests-front-end/               301!
+/learning/formations/develop/ts-fondamental.html     /formations/ts-fondamental/                301!
+/learning/formations/develop/ts-avance.html          /formations/ts-avance/                     301!
+/learning/formations/outils/git-essentiel.html       /formations/git-essentiel/                 301!
+
+# --- Références ---------------------------------------------------------
+/references.html                                     /references/                               301!
+/references/timetobeem.html                          /references/timetobeem/                     301!
+/references/arkhe-migration-k8s.html                 /references/arkhe-migration-k8s/            301!
+/references/arkhe-new-boa.html                       /references/arkhe-new-boa/                  301!
+/references/cirad.html                               /references/cirad/                          301!
+/references/sud-ouest-socoa.html                     /references/sud-ouest-socoa/                301!
+/references/cin.html                                 /references/cin/                            301!
+/references/beclm.html                               /references/beclm/                          301!
+/references/beclm-ia.html                            /references/beclm-ia/                      301!
+/references/edfbs-app-mobile.html                    /references/izivia-app-mobile/              301!
+/references/edfbs-portail.html                       /references/izivia-portail/                 301!
+/references/naxos.html                               /references/naxos/                          301!
+/references/infoport.html                            /references/infoport/                       301!
+/references/filhet-allard.html                       /references/filhet-allard/                  301!
+/references/arrg.html                                /references/arrg/                           301!
+/references/marenov.html                             /references/marenov/                        301!
+/references/cfluide.html                             /references/cfluide/                        301!
+/references/tekcar.html                              /references/tekcar/                         301!
+/references/dianatrans.html                          /references/dianatrans/                     301!
+
+# --- L'agence (pages fusionnées) ----------------------------------------
+/methode.html                                        /notre-demarche/                           301!
+/conception-ux.html                                  /notre-demarche/                           301!
+/engagements.html                                    /notre-demarche/                           301!
+/nous-connaitre.html                                 /notre-entreprise/                         301!
+/nous-connaitre/equipe.html                          /notre-entreprise/                         301!
+/nous-connaitre/agences.html                         /notre-entreprise/                         301!
+/carriere.html                                       /notre-entreprise/                         301!
+
+# --- Éditorial ----------------------------------------------------------
+/podcasts.html                                       /podcasts/                                 301!
+
+# --- Pages légales ------------------------------------------------------
+/mentions-legales.html                               /mentions-legales/                         301!
+/rgpd.html                                           /rgpd/                                     301!
+
+# =========================================================================
+#  Filets de sécurité : placés en DERNIER, ils n'attrapent que ce qui
+#  n'a pas déjà été redirigé par une règle ci-dessus.
+# =========================================================================
+/learning/formations/*                               /formations/                               301
+/learning/*                                          /formations/                               301
+/build/*                                             /prestations/logiciel-metier/              301
+/run/*                                               /prestations/hebergement/                  301
+/audits/*                                            /prestations/audit-ux/                     301
+/developpement-sur-mesure/*                          /prestations/logiciel-metier/              301
+/expertise-produit/*                                 /prestations/product-management/           301
+/nous-connaitre/*                                    /notre-entreprise/                         301

@@ -57,6 +57,8 @@ faq:
     reponse: "Oui, la formation inclut des démonstrations en direct ainsi que des travaux pratiques (TP). Ces exercices vous permettent de mettre immédiatement en application les concepts abordés et de vous familiariser rapidement avec les fonctionnalités d'IntelliJ IDEA."
   - question: "Puis-je suivre cette formation à distance ?"
     reponse: "Absolument ! La formation est disponible en présentiel et à distance. Vous pouvez choisir le format qui convient le mieux à vos besoins et à votre emploi du temps, tout en bénéficiant du même contenu pédagogique et de l'accompagnement du formateur."
+programme_pdf: "https://drive.google.com/file/d/1wWmclTl9TzbXsvXZhMJUjCs_lXjflJ3z/view"
+programme_pdf_poids: "722 Ko"
 ---
 IntelliJ Idea est un IDE (environnement de développement intégré), c'est-à-dire un logiciel spécialisé dans l'écriture de code. Au fil des ans, il s'est imposé comme une référence dans le monde Java et plus globalement des langages de programmation autour de la JVM. Il supporte également de nombreux autres langages tels que Javascript, HTML, CSS, TypeScript, sans conteste un des arguments forts expliquant sa popularité. Il propose par ailleurs des fonctionnalités avancées pour aider les développeurs dans leur travail quotidien.
 

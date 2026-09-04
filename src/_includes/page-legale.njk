@@ -1,0 +1,19 @@
+---
+layout: base.njk
+extraCss: /assets/secteurs.css
+---
+<section class="sect-hero">
+  <div class="container">
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; {{ titre }}</nav>
+    <h1>{{ (h1 or titre) | accent | safe }}</h1>
+    {% if maj %}<p class="accroche">Dernière mise à jour : {{ maj }}</p>{% endif %}
+  </div>
+</section>
+
+<section class="sect-bloc">
+  <div class="container">
+    <div class="sect-libre" style="max-width:820px">
+      {{ content | safe }}
+    </div>
+  </div>
+</section>

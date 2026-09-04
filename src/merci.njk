@@ -1,0 +1,25 @@
+---
+layout: base.njk
+permalink: /merci/
+extraCss: /assets/secteurs.css
+noindex: true
+eleventyExcludeFromCollections: true
+---
+{%- set m = libelles.merci -%}
+<section class="sect-hero">
+  <div class="container">
+    <span class="eyebrow">{{ m.eyebrow }}</span>
+    <h1>{{ m.h1 | accent | safe }}</h1>
+    <p class="accroche">{{ m.chapo }}</p>
+    <div class="hero-cta"><a class="btn btn-primary" href="{{ m.retour_url }}">{{ m.retour_label }}</a></div>
+  </div>
+</section>
+
+<section class="sect-bloc">
+  <div class="container">
+    <p class="eyebrow eyebrow--simple">{{ m.liens_titre }}</p>
+    <div class="sect-defis" style="margin-top:14px">
+      {% for l in m.liens %}<a class="sect-defi sect-defi--lien" href="{{ l.url }}"><h2>{{ l.label }}</h2><span class="socle-lien">Découvrir &rarr;</span></a>{% endfor %}
+    </div>
+  </div>
+</section>

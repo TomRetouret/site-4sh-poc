@@ -47,6 +47,8 @@ faq:
     reponse: "Cette formation Docker de 4SH s'adresse aux développeurs, administrateurs systèmes et professionnels de l'informatique souhaitant comprendre et maîtriser les bases de Docker pour le développement, le déploiement et la gestion des applications en conteneurs."
   - question: "Comment se déroule la formation Docker ?"
     reponse: "La formation Docker se déroule sur une demi-journée (3h30), alternant 65 % de théorie et 35 % de pratique. Ce format intensif permet aux participants d'acquérir rapidement les fondamentaux et de les mettre en application à travers des exercices concrets encadrés par un formateur expert."
+programme_pdf: "https://drive.google.com/file/d/11GiA4oYyL7VQfeoXu0ypz_GZEUhQh29N/view"
+programme_pdf_poids: "695 Ko"
 ---
 Docker est une plateforme de conteneurisation très populaire dans le secteur du développement d'applications. Cet outil permet de packager, distribuer et gérer les applications et leurs dépendances au sein de conteneurs. Grâce à sa capacité à offrir une infrastructure légère et portable, Docker facilite le déploiement d'applications dans divers environnements de production ou de réseau.
 

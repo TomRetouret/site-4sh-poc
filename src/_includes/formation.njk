@@ -39,6 +39,17 @@ permalink: "/formations/{{ page.fileSlug }}/"
           <a class="btn btn-ghost" href="#devis" style="width:100%;justify-content:center;border-color:var(--violet);color:var(--violet)">{{ libelles.formation.cta_devis }}</a>
           <p class="note-lieu">{{ libelles.formation.note_lieu }}</p>
         </div>
+
+        {% if programme_pdf or site.documents.qualiopi_url or site.documents.cgv_url %}
+        <div class="carte-inscription" style="margin-top:16px">
+          <div class="sessions">{{ libelles.formation.documents_titre }}</div>
+          <ul style="list-style:none;padding:0;margin:8px 0 0;font-size:14.5px;line-height:1.9">
+            {% if programme_pdf %}<li><a href="{{ programme_pdf }}" target="_blank" rel="noopener">{{ libelles.formation.programme_pdf_label }}{% if programme_pdf_poids %} (PDF, {{ programme_pdf_poids }}){% endif %}</a></li>{% endif %}
+            {% if site.documents.qualiopi_url %}<li><a href="{{ site.documents.qualiopi_url }}" target="_blank" rel="noopener">{{ site.documents.qualiopi_label }}</a></li>{% endif %}
+            {% if site.documents.cgv_url %}<li><a href="{{ site.documents.cgv_url }}" target="_blank" rel="noopener">{{ site.documents.cgv_label }}</a></li>{% endif %}
+          </ul>
+        </div>
+        {% endif %}
       </aside>
 
       <!-- colonne gauche : caractéristiques + tout le contenu de la fiche -->
@@ -210,17 +221,32 @@ permalink: "/formations/{{ page.fileSlug }}/"
     <span class="eyebrow">{{ libelles.preinscription.eyebrow }}</span>
     <h3>Formation {{ titre }}{% if niveau %} - {{ niveau }}{% endif %}</h3>
     {% if duree %}<p style="font-size:14px;color:var(--muted);margin-bottom:8px">{{ duree | accent | safe }}</p>{% endif %}
-    <form onsubmit="return false">
+    <form class="formulaire-modale" name="preinscription-formation" method="POST" action="/merci/" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="preinscription-formation">
+      <input type="hidden" name="formation" value="{{ titre }}{% if niveau %} - {{ niveau }}{% endif %}">
+      <input type="hidden" name="page" value="{{ page.url }}">
+      {# le type de demande est connu ici : pré-inscription à une formation #}
+      <input type="hidden" name="sujet" value="{{ site.formulaire.sujet_defaut_formation }}">
+      <input type="hidden" name="destinataire" value="{% for s in site.formulaire.sujets %}{% if s.label == site.formulaire.sujet_defaut_formation %}{{ s.email }}{% endif %}{% endfor %}">
+      <p hidden><label>Ne pas remplir <input name="bot-field"></label></p>
+
       <label for="m-entreprise">{{ libelles.preinscription.label_entreprise }}</label>
-      <input id="m-entreprise" type="text" required>
+      <input id="m-entreprise" name="entreprise" type="text" required>
       <label for="m-email">{{ libelles.preinscription.label_email }}</label>
-      <input id="m-email" type="email" required>
+      <input id="m-email" name="email" type="email" required>
       <label for="m-tel">{{ libelles.preinscription.label_tel }}</label>
-      <input id="m-tel" type="tel" required>
-      <label for="m-nb">{{ libelles.preinscription.label_nb }}</label>
-      <select id="m-nb"><option>1 participant</option><option>2 participants</option><option>3 participants</option><option>4 participants</option><option>5 participants</option><option>6 participants</option><option>7 participants</option><option>8 participants</option></select>
+      <input id="m-tel" name="telephone" type="tel" required>
+      <label id="m-nb-label" for="m-nb">{{ libelles.preinscription.label_nb }}</label>
+      <div class="champ-select" data-dropdown>
+        <select id="m-nb" name="participants">
+          <option>1 participant</option><option>2 participants</option><option>3 participants</option><option>4 participants</option><option>5 participants</option><option>6 participants</option><option>7 participants</option><option>8 participants</option>
+        </select>
+      </div>
+
+      {% set rgpd_id = "rgpd-modale" %}
+      {% include "case-rgpd.njk" %}
+
       <button class="btn btn-learning" type="submit" style="width:100%;justify-content:center;margin-top:22px">{{ libelles.preinscription.bouton }}</button>
-      <p class="reassurance" style="margin-top:12px;text-align:center;font-size:12.5px;color:var(--muted)">{{ libelles.preinscription.rgpd }}</p>
     </form>
   </div>
 </div>

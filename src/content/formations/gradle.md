@@ -39,6 +39,8 @@ faq:
     reponse: "La formation Gradle de 4SH est une formation courte et intensive qui dure 1/2 journée (soit 3h30). Elle est conçue pour des groupes de 1 à 8 participants, garantissant un accompagnement personnalisé. Le programme combine 60 % de théorie pour comprendre les bases et les concepts fondamentaux, et 40 % de pratique pour appliquer ces notions directement dans des cas concrets. Vous pouvez suivre cette formation en présentiel ou à distance, selon vos préférences."
   - question: "Cette formation Gradle me permettra-t-elle de créer un build pour une application Java ?"
     reponse: "Oui, cette formation Gradle vous apprendra à créer et configurer des builds pour des applications Java. Vous découvrirez comment automatiser des tâches essentielles, comme la compilation du code, la gestion des fichiers de configuration (build.gradle) et l'exécution de tests. À l'issue de la session, vous serez capable de mettre en place des builds efficaces et adaptés à vos projets Java, tout en maîtrisant les concepts clés de Gradle."
+programme_pdf: "https://drive.google.com/file/d/154G8lEPq9c36ZVnQs2uQyTYLaI9I-wnn/view"
+programme_pdf_poids: "702 Ko"
 ---
 La formation Gradle vous initie à l'utilisation de cet outil de fabrication des livrables qui permet d'écrire les dépendances et d'automatiser la construction de projets logiciels. Gradle s'impose comme une solution incontournable dans le développement d'applications Java et Android.
 

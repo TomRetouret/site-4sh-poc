@@ -15,7 +15,7 @@
           <p><b>{{ site.contact.coord_agences_titre }}</b><br>{{ site.villes }}</p>
         </div>
       </div>
-      {% include "formulaire.njk" %}
+      {% set form_id = "contact-bandeau" %}{% set sujet_id = "sujet-bandeau" %}{% set rgpd_id = "rgpd-bandeau" %}{% include "formulaire.njk" %}
     </div>
   </div>
 </section>

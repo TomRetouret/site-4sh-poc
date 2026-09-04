@@ -1,16 +1,26 @@
 {%- set f = site.formulaire -%}
-<form class="formulaire" onsubmit="return false">
-  <label for="nom">{{ f.label_nom }}</label>
-  <input id="nom" type="text" placeholder="{{ f.ph_nom }}">
-  <label for="email">{{ f.label_email }}</label>
-  <input id="email" type="email" placeholder="{{ f.ph_email }}">
+{%- set fid = form_id or "contact-general" -%}
+<form class="formulaire" name="{{ fid }}" method="POST" action="/merci/" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="{{ fid }}">
+  <input type="hidden" name="page" value="{{ page.url }}">
+  <p hidden><label>Ne pas remplir <input name="bot-field"></label></p>
+
+  {% include "champ-sujet.njk" %}
+
+  <label for="{{ fid }}-nom">{{ f.label_nom }}</label>
+  <input id="{{ fid }}-nom" name="nom" type="text" placeholder="{{ f.ph_nom }}" required>
+  <label for="{{ fid }}-email">{{ f.label_email }}</label>
+  <input id="{{ fid }}-email" name="email" type="email" placeholder="{{ f.ph_email }}" required>
   {% if avec_tel %}
-  <label for="tel">{{ f.label_tel }}</label>
-  <input id="tel" type="tel" placeholder="{{ f.ph_tel }}">
+  <label for="{{ fid }}-tel">{{ f.label_tel }}</label>
+  <input id="{{ fid }}-tel" name="telephone" type="tel" placeholder="{{ f.ph_tel }}">
   {% endif %}
-  <label for="besoin">{{ f.label_besoin }}</label>
-  <textarea id="besoin" rows="4" placeholder="{{ f.ph_besoin }}"></textarea>
-  <p class="aide">{{ f.aide }}</p>
+  <label for="{{ fid }}-besoin">{{ f.label_besoin }}</label>
+  <textarea id="{{ fid }}-besoin" name="besoin" rows="4" placeholder="{{ f.ph_besoin }}" required></textarea>
+  <p class="aide" id="{{ fid }}-aide">{{ f.aide }}</p>
+
+  {% include "case-rgpd.njk" %}
+
   <button class="btn btn-primary" type="submit">{{ f.bouton }}</button>
   <p class="reassurance">{{ f.reassurance }}</p>
 </form>

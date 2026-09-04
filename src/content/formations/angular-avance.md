@@ -80,6 +80,8 @@ faq:
     reponse: "Oui, la formation est constamment mise à jour pour inclure les dernières versions et mises à jour d'Angular, afin que vous appreniez les fonctionnalités et les pratiques les plus récentes."
   - question: "Dois-je installer quelque chose sur mon ordinateur ?"
     reponse: "Oui, avant de commencer la formation, vous devrez installer certains outils et logiciels. Une liste détaillée des prérequis vous sera fournie avant le début de la formation."
+programme_pdf: "https://drive.google.com/file/d/1BS95uQFl9P9tl9MkaAMg0J6MwdR5Pocl/view"
+programme_pdf_poids: "724 Ko"
 ---
 Angular est un framework open source développé par Google, basé sur TypeScript et les technologies standards du web, permettant de créer des applications web dynamiques et complexes. Il simplifie le processus de développement en fournissant une structure robuste, des fonctionnalités avancées et des outils pour créer des Single Page Applications évolutives et maintenables, ce qui en fait un choix privilégié pour les projets d'entreprise.
 

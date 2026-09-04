@@ -48,6 +48,8 @@ faq:
     reponse: "Oui, cette formation de développement est conçue pour les débutants, aucune expérience préalable avec les bases de données NoSQL n'est nécessaire. Les concepts sont expliqués de manière claire et progressive."
   - question: "Quels sont les prérequis pour cette formation MongoDB ?"
     reponse: "Pour suivre cette formation informatique, il n'y a pas de prérequis. Avoir des notions en développement logiciel peut être utile, mais n'est pas obligatoire."
+programme_pdf: "https://drive.google.com/file/d/1p_loVvXCNre7b9-qr6b8rF03O75pdPrN/view"
+programme_pdf_poids: "695 Ko"
 ---
 MongoDB représente une base de données orientée document, éditée par MongoDB Inc. Actuellement, elle figure parmi les bases de données les plus populaires à l'échelle mondiale.
 

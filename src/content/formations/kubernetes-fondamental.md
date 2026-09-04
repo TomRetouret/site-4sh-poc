@@ -61,6 +61,8 @@ faq:
     reponse: "Non, cette formation est axée sur les fondamentaux de Kubernetes. Pour des aspects plus avancés, il est recommandé de suivre une formation dédiée aux fonctionnalités avancées de Kubernetes."
   - question: "Quels sont les prérequis pour cette formation ?"
     reponse: "Pour suivre cette formation, il est nécessaire de savoir utiliser les commandes de base d'un système Linux. Avoir des connaissances en conteneurisation et Docker est également un avantage."
+programme_pdf: "https://drive.google.com/file/d/19W6hBQ-L3L8et4sqbbvS-dqkIm01xKHC/view"
+programme_pdf_poids: "743 Ko"
 ---
 Kubernetes s'est imposé comme la solution d'orchestration de conteneurs dominante sur le marché, soutenue par tous les grands acteurs du cloud (Amazon, Google, Microsoft, OVH...).
 

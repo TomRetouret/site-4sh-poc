@@ -50,6 +50,8 @@ formateur:
   bio:
     - "Damien, passionné de développement et de transmission de savoir, donne des formations depuis 2013. Actuellement, il travaille pour un acteur majeur de la mobilité électrique en France, avec plus de 170 000 utilisateurs et des collections de données dépassant les 10 millions de documents."
     - "Son expérience l'a amené à traiter des problématiques de gestion de la volumétrie des données et de conception de modèles de données. Damien dispense également la formation IntelliJ et les formations MongoDB."
+programme_pdf: "https://drive.google.com/file/d/1yXmQDpkr3tlQPjpi6Up5KjodlfTPzQm6/view"
+programme_pdf_poids: "719 Ko"
 ---
 Git est un logiciel de gestion de version décentralisé. Son usage est extrêmement répandu, que ce soit dans le monde de l'industrie comme celui de l'open source. C'est un outil très puissant, utilisé au quotidien, mais qu'il convient de maîtriser pour éviter d'en faire un mauvais usage.
 

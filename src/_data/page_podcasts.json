@@ -1,0 +1,185 @@
+{
+  "meta_title": "Vision Tech, le podcast de 4SH",
+  "meta_description": "Vision Tech, le podcast de 4SH : parcours, métiers et coulisses du développement logiciel. Disponible sur Spotify, Deezer et Apple Podcasts.",
+  "eyebrow": "Podcast",
+  "h1": "*Vision Tech*, le podcast de 4SH",
+  "chapo": "Parcours, métiers et coulisses du développement logiciel. Notre podcast Vision Tech est disponible sur les plateformes d'écoute.",
+  "plateformes": [
+    {
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/6Q2FTeWDhNrOBYLHGoRRp8"
+    },
+    {
+      "label": "Deezer",
+      "url": "https://www.deezer.com/fr/show/1001319511"
+    },
+    {
+      "label": "Apple Podcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/vision-tech/id1775412242"
+    }
+  ],
+  "episodes": [
+    {
+      "date": "30 juin 2025",
+      "duree": "21:47",
+      "titre": "La tech, ce n'est pas que pour les devs",
+      "resume": "Marie-Laure KLEIN nous partage comment elle a su se faire une place dans le monde de la tech, sans passer par la case développement.",
+      "spotify": "https://open.spotify.com/episode/2l52vPbTAB1CuHJNYFVjIn",
+      "deezer": "https://link.deezer.com/s/30lUC9cukDP9lGmiSqEOf",
+      "apple": "https://vision-tech.short.gy/tech-pas-que-dev"
+    },
+    {
+      "date": "16 juin 2025",
+      "duree": "21:11",
+      "titre": "Du terrain au bureau : gérer un projet comme un match de handball",
+      "resume": "Nous avons reçu Lucas, pilote de projet chez 4SH et joueur de handball. Il nous raconte son parcours et ce que le sport collectif apporte à la conduite de projet.",
+      "spotify": "https://open.spotify.com/episode/3NjSW4n9ANQ5sMg7FuAdSv",
+      "deezer": "https://dzr.page.link/yAdWu2VfFaKwce3H7",
+      "apple": "https://vision-tech.short.gy/handball-pilote-projet"
+    },
+    {
+      "date": "26 mai 2025",
+      "duree": "33:08",
+      "titre": "Entreprendre dans la tech B2B : témoignage du CEO de LegalySpace",
+      "resume": "Nous avons reçu Vincent DREYFUS, fondateur et dirigeant de LegalySpace, une solution SaaS spécialisée dans la signature électronique.",
+      "spotify": "https://open.spotify.com/episode/1w0T9iYHinbCFRSa3plW9U",
+      "deezer": "https://dzr.page.link/BNE5cmJnEpereaVp6",
+      "apple": "https://vision-tech.short.gy/temoignage-legalyspace"
+    },
+    {
+      "date": "12 mai 2025",
+      "duree": "24:00",
+      "titre": "Du bug à la punchline : Ctrl+Z n'existe pas sur scène",
+      "resume": "Nous avons reçu Mathieu BRISEBOURG, Tech Lead chez 4SH le jour et improvisateur sur scène la nuit. On parle de créativité et d'improvisation.",
+      "spotify": "https://open.spotify.com/episode/03Oo72VUD2ifVeNkSVUdNJ",
+      "deezer": "https://dzr.page.link/cEuQGW2CibsBF66Y6",
+      "apple": "https://vision-tech.short.gy/bug-punchline"
+    },
+    {
+      "date": "28 avril 2025",
+      "duree": "23:42",
+      "titre": "Oser changer de voie : le pari réussi d'une reconversion dans la tech",
+      "resume": "On explore le sujet passionnant, et parfois intimidant, de la reconversion professionnelle. Audrey nous partage son parcours.",
+      "spotify": "https://open.spotify.com/episode/4UKPgvsOhHqu5jCjFp8HBc",
+      "deezer": "https://dzr.page.link/ynFwrcZyJ98LRq1S6",
+      "apple": "https://vision-tech.short.gy/reconversion-pro"
+    },
+    {
+      "date": "14 avril 2025",
+      "duree": "34:00",
+      "titre": "IA et développement logiciel : menace ou opportunité ?",
+      "resume": "Nous accueillons Baptiste Rousseau, directeur du campus de Holberton School Bordeaux, pour une conversation sur la place de l'IA dans le métier.",
+      "spotify": "https://open.spotify.com/episode/6TRuEkfTnFTWQEcbm76T9T",
+      "deezer": "https://dzr.page.link/CRSshhMKAUbYdCjY6",
+      "apple": "https://vision-tech.short.gy/ia-dev"
+    },
+    {
+      "date": "31 mars 2025",
+      "duree": "29:35",
+      "titre": "Conférences et meetups : des coulisses à la scène, l'envers du décor",
+      "resume": "Nous avons accueilli Frédéric CAMBLOR, passionné du monde de la tech et Tech Lead chez 4SH. Il nous dévoile son parcours de conférencier.",
+      "spotify": "https://open.spotify.com/episode/14zgVJtnqazYVJTd39LETW",
+      "deezer": "https://dzr.page.link/ij1s1w6iJnPEq2YM9",
+      "apple": "https://vision-tech.short.gy/conferences"
+    },
+    {
+      "date": "17 mars 2025",
+      "duree": "20:31",
+      "titre": "Les femmes dans la tech : invisibles ou inarrêtables ?",
+      "resume": "Pourquoi y a-t-il encore si peu de femmes dans le développement ? Quels défis rencontrent-elles au quotidien ? Comment l'industrie peut-elle évoluer ?",
+      "spotify": "https://open.spotify.com/episode/1zIdlQ78ClCIUfq6Zv9udS",
+      "deezer": "https://dzr.page.link/4kZqX5RznyHN6D6E8",
+      "apple": "https://vision-tech.short.gy/femmes-dans-la-tech"
+    },
+    {
+      "date": "3 mars 2025",
+      "duree": "17:19",
+      "titre": "Le rôle de la maintenance logicielle dans la vie des applications",
+      "resume": "Nous explorons le rôle de la maintenance logicielle dans la vie des applications.",
+      "spotify": "https://open.spotify.com/episode/0NgBblSZ1hBZaNKPb92fsJ",
+      "deezer": "https://dzr.page.link/Mheys85nvV2uPooN7",
+      "apple": "https://vision-tech.short.gy/role-maintenance-logiciel"
+    },
+    {
+      "date": "17 février 2025",
+      "duree": "23:58",
+      "titre": "Les défis du Product Owner : au-delà du backlog",
+      "resume": "Nous plongeons dans le rôle du Product Owner avec Simon AUDRIX, à travers une série de questions ciblées.",
+      "spotify": "https://open.spotify.com/episode/2Qv45dPnQ9LeD4ov3uweRM",
+      "deezer": "https://deezer.page.link/Gj48yEwYedLUrCtx5",
+      "apple": "https://vision-tech.short.gy/defis-product-owner"
+    },
+    {
+      "date": "3 février 2025",
+      "duree": "38:10",
+      "titre": "Les clés de l'accessibilité numérique",
+      "resume": "Nous explorons l'accessibilité web avec Héléna ESCODA, Product Owner, et Florian MOREL, ingénieur développeur.",
+      "spotify": "https://open.spotify.com/episode/795IuvLDBa4s79oDdadrKk",
+      "deezer": "https://dzr.page.link/ubwmS2W2G6QjPqdz5",
+      "apple": "https://vision-tech.short.gy/accessibilite-numerique"
+    },
+    {
+      "date": "20 janvier 2025",
+      "duree": "14:03",
+      "titre": "Exploration des frameworks front",
+      "resume": "Clément PONDEPEYRE, ingénieur développeur chez 4SH, partage son expertise sur les frameworks front, de React à Angular.",
+      "spotify": "https://open.spotify.com/episode/668NB2qQW4HIkloolrqaYf",
+      "deezer": "https://dzr.page.link/vRLizcXSMD5LdD337",
+      "apple": "https://vision-tech.short.gy/frameworks-front"
+    },
+    {
+      "date": "6 janvier 2025",
+      "duree": "23:58",
+      "titre": "Qu'est-ce que le DevOps ?",
+      "resume": "Nous accueillons Transley RODRIGUES, ingénieur DevOps chez 4SH. Il partage son parcours professionnel et explique le métier.",
+      "spotify": "https://open.spotify.com/episode/6ocGeOyfELuSYCwAYicr2w",
+      "deezer": "https://deezer.page.link/x2jqHc1c6VA2vnWA6",
+      "apple": "https://vision-tech.short.gy/dev-ops"
+    },
+    {
+      "date": "16 décembre 2024",
+      "duree": "25:34",
+      "titre": "Les secrets d'une expérience utilisateur réussie avec une Lead UX",
+      "resume": "Nous partons à la rencontre de Julie PROVENZANO, Lead UX chez 4SH, pour découvrir les coulisses de l'UX.",
+      "spotify": "https://open.spotify.com/episode/6gtjRb7lpHjXv3PeWhGSNH",
+      "deezer": "https://dzr.page.link/Ty6Rc5gyJB3atxFH6",
+      "apple": "https://vision-tech.short.gy/secrets-ux"
+    },
+    {
+      "date": "2 décembre 2024",
+      "duree": "16:31",
+      "titre": "Garantir l'excellence dans la formation professionnelle avec Qualiopi",
+      "resume": "Nous plongeons au cœur de la certification Qualiopi, un label essentiel pour les organismes de formation.",
+      "spotify": "https://open.spotify.com/episode/66A4oc4SFmVMGCcDwI6LVP",
+      "deezer": "https://dzr.page.link/atuFVwEkesYXNXtF7",
+      "apple": "https://vision-tech.short.gy/formation-qualiopi"
+    },
+    {
+      "date": "4 novembre 2024",
+      "duree": "19:59",
+      "titre": "Allier expertise technique et formation : retour d'expérience d'un Tech Lead formateur",
+      "resume": "Damien RICCIO, Technical Leader et formateur chez 4SH, partage son expérience des deux rôles.",
+      "spotify": "https://open.spotify.com/episode/3GYa3etWaW5rzzvjpFWuGt",
+      "deezer": "https://deezer.page.link/xdA82wKuw2kxRUqv5",
+      "apple": "https://vision-tech.short.gy/expertise-technique-formation"
+    },
+    {
+      "date": "21 octobre 2024",
+      "duree": "15:42",
+      "titre": "De stagiaire à pilote de projets : un parcours inspirant",
+      "resume": "Nous embarquons avec Aline SAVREUX, qui partage son parcours : de ses débuts en tant que stagiaire chez 4SH à son poste actuel.",
+      "spotify": "https://open.spotify.com/episode/5ZUIuLUy1sTZW5MIpAe2AU",
+      "deezer": "https://deezer.page.link/We7TLyTxine7heA7A",
+      "apple": "https://vision-tech.short.gy/stagiaire-to-pilote"
+    },
+    {
+      "date": "15 octobre 2024",
+      "duree": "22:50",
+      "titre": "L'innovation technologique au service de la logistique",
+      "resume": "Nous explorons comment l'innovation technologique transforme le secteur de la logistique avec Thomas GONZALEZ, Technical Leader.",
+      "spotify": "https://open.spotify.com/episode/7aHRBdAiUH8yHx3BTeIuBT",
+      "deezer": "https://deezer.page.link/vCc8sSKXFEkeYypcA",
+      "apple": "https://vision-tech.short.gy/innovation-service-logistique"
+    }
+  ]
+}

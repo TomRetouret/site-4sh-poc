@@ -44,6 +44,8 @@ faq:
     reponse: "Cette formation gRPC s'adresse principalement aux développeurs d'applications web ayant des connaissances de base sur le protocole HTTP et des notions en Java ou Kotlin. Les participants apprendront à configurer des serveurs et des clients gRPC, à exploiter les Protocol Buffers pour la sérialisation, et à mettre en place des communications inter-services performantes. Les concepts théoriques sont accompagnés d'exercices pratiques, rendant la formation accessible même aux profils ayant peu d'expérience avec les RPC."
   - question: "Où et comment se déroule la formation gRPC ?"
     reponse: "La formation gRPC est disponible en présentiel et à distance via des outils collaboratifs. Sur une durée d'une journée (7 heures), les sessions alternent entre théorie et pratique, permettant aux participants de travailler sur des cas concrets avec gRPC Java et gRPC Kotlin. Cette flexibilité de format garantit une expérience d'apprentissage adaptée aux besoins des équipes et des individus."
+programme_pdf: "https://drive.google.com/file/d/1aB3vho8MSuGCAnmvCepiu8kSUe3_vEMt/view"
+programme_pdf_poids: "708 Ko"
 ---
 gRPC est un framework RPC (Remote Procedure Call) open source développé par Google. Lancé en 2015, il offre une communication inter-services efficace et polyglotte grâce à la sérialisation binaire basée sur les Protocol Buffers.
 

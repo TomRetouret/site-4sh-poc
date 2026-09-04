@@ -1,0 +1,9 @@
+{# Case de consentement RGPD, à la charte. Le lien vers la notice est injecté dans la phrase. #}
+{%- set f = site.formulaire -%}
+{% if f.rgpd_texte %}
+{%- set idsuf = rgpd_id or "rgpd" -%}
+<label class="case" for="{{ idsuf }}">
+  <input id="{{ idsuf }}" name="rgpd" type="checkbox" required>
+  <span class="case-texte">{{ f.rgpd_texte | replace(f.rgpd_lien_label, '<a href="' + (f.rgpd_url or '/rgpd/') + '" target="_blank" rel="noopener">' + f.rgpd_lien_label + '</a>') | safe }}</span>
+</label>
+{% endif %}

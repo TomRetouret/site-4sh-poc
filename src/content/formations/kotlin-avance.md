@@ -75,6 +75,8 @@ faq:
     reponse: "Oui, la formation Kotlin avancé inclut des cas pratiques et des exercices concrets pour appliquer les concepts techniques, permettant aux participants d'acquérir des compétences directement utiles dans leur travail."
   - question: "La formation convient-elle à des développeurs de différents niveaux d'expérience ?"
     reponse: "La formation Kotlin avancé est adaptée aux développeurs ayant déjà des bases techniques et souhaitant approfondir leurs connaissances en architecture et conception technique."
+programme_pdf: "https://drive.google.com/file/d/1nNgS-uFIMbwbOv2YY4E-iaoWVCVa4XXu/view"
+programme_pdf_poids: "710 Ko"
 ---
 Kotlin est un langage de programmation moderne développé par JetBrains. Ce langage statiquement typé peut être exécuté sur la JVM et est complètement interopérable avec Java. Il offre une syntaxe concise et des fonctionnalités modernes qui facilitent le développement d'applications, comme une meilleure gestion de la nullité, des capacités d'extensions et une API très riche sur les collections.
 

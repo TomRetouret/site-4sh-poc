@@ -36,7 +36,7 @@
       "liens": [
         {
           "label": "→ Logiciel métier",
-          "url": "/logiciel-metier/"
+          "url": "/prestations/logiciel-metier/"
         },
         {
           "label": "→ Application SaaS",
@@ -48,7 +48,7 @@
         }
       ],
       "suite_label": "Découvrir nos offres de développement sur mesure",
-      "suite_url": "/logiciel-metier/"
+      "suite_url": "/prestations/logiciel-metier/"
     },
     {
       "titre": "Faire vivre votre solution",

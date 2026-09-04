@@ -91,6 +91,8 @@ faq:
     reponse: "Oui, la formation Spring mêle 55% de théorie et 45% de pratique sur une durée de 28 heures (réparti sur 4 jours). La formation propose donc de nombreux exercices pratiques et cas concrets, permettant aux participants de mettre en œuvre les concepts appris et de développer des compétences directement applicables en entreprise. Nos formations peuvent être dispensées en présentiel en entreprise selon le lieu géographique de votre société ou à distance en ligne."
   - question: "Quels aspects de l'écosystème Spring seront abordés ?"
     reponse: "La formation Spring inclut des modules clés de l'écosystème Spring, tels que Spring Boot pour le démarrage rapide de projets, Spring Security pour sécuriser les applications, ainsi que les bases de REST API et JPA pour la gestion des données et des services web."
+programme_pdf: "https://drive.google.com/file/d/10VmUv5tx3YoRJsxXm4Sf1kj7iJ82LbA9/view"
+programme_pdf_poids: "763 Ko"
 ---
 Spring est un framework Java, décrit comme un conteneur léger, qui permet d'exécuter une application. Il fournit un ensemble de modules afin d'en faciliter le développement et le test. Il s'appuie sur trois principes fondamentaux : l'inversion de contrôle qui permet l'injection de dépendance, la programmation orientée aspect et l'abstraction de framework tiers.
 

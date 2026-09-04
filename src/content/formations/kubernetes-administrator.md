@@ -39,6 +39,8 @@ programme:
     items: ["Les bases", "Le démarrage du cluster", "Le monitoring : Metrics server, Prometheus, les outils de logs"]
   - titre: "Sécurité K8S"
     items: ["Accéder à l'API", "Build d'images sécurisées", "Authentification et autorisations : les plugins d'authentifications, les services accounts, les RBAC", "Network policies"]
+programme_pdf: "https://drive.google.com/file/d/16VxyqJOmLwJfnKuDXvZShFyXLADXkN7j/view"
+programme_pdf_poids: "740 Ko"
 ---
 Kubernetes est la solution d'orchestration de conteneurs qui a réussi à s'imposer sur le marché, supportée par tous les acteurs cloud (Amazon, Google, Microsoft, OVH, ...).
 

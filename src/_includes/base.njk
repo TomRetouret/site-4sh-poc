@@ -111,12 +111,13 @@
       {% endfor %}
     </div>
     <div class="footer-bas">
-      <span>{{ site.footer_legal }}</span>
-      <span>{% for r in site.footer_reseaux %}{% if not loop.first %} · {% endif %}<a href="{{ r.url or '#' }}">{{ r.label }}</a>{% endfor %}</span>
+      <span>{{ site.footer_legal }}{% for l in site.footer_liens_legaux %} &middot; <a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</span>
+      <span>{% for r in site.footer_reseaux %}{% if not loop.first %} · {% endif %}<a href="{{ r.url or '#' }}" target="_blank" rel="noopener">{{ r.label }}</a>{% endfor %}{% if site.footer_formations_liens and site.footer_formations_liens.length %} &middot; {{ site.footer_formations_titre }} {% for l in site.footer_formations_liens %}{% if not loop.first %}, {% endif %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a>{% endfor %}{% endif %}</span>
     </div>
   </div>
 </footer>
 
 <script src="/assets/script.js"></script>
+<script src="/assets/formulaires.js" defer></script>
 </body>
 </html>

@@ -5,7 +5,7 @@ ordre: 1
 h1: "Développement complet et maintien de la solution BeCLM"
 sous_titre: "Le concept BeCLM propose aux entreprises de tous secteurs d'activité, une nouvelle façon de gérer leur conformité réglementaire."
 resume: "Développement complet et maintien de la solution BeCLM, avec des briques d'intelligence artificielle au service de la conformité réglementaire et du KYC."
-logo: "https://www.4sh.fr/assets/img/svg/logo-beclm-white.svg"
+logo: "https://www.4sh.fr/assets/img/png/references/beclm/logo-beclm.png"
 image: "https://www.4sh.fr/assets/img/png/references/beclm/ref-beclm.png"
 secteurs:
   - "Conformité réglementaire"

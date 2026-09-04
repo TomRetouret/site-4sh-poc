@@ -11,8 +11,9 @@ permalink: "/formations/{{ page.fileSlug }}/"
     <div class="hero-grille">
       <div>
         <span class="eyebrow">4SH Learning</span>
-        <h1>{{ h1 or ('Formations ' + nom) }}</h1>
+        <h1>{{ (h1 or ('Formations ' + nom)) | accent | safe }}</h1>
         {% if intro %}<p class="chapo">{{ intro }}</p>{% endif %}
+        {% if site.documents.catalogue_url %}<p style="font-size:14.5px"><a href="{{ site.documents.catalogue_url }}" target="_blank" rel="noopener">{{ site.documents.catalogue_label }}</a></p>{% endif %}
         <div class="hero-cta">
           <a class="btn btn-learning" href="#catalogue">{{ libelles.catalogue.cta_voir }}</a>
           <a class="btn btn-ghost" href="#contact" style="border-color:var(--violet);color:var(--violet)">{{ libelles.catalogue.cta_devis }}</a>

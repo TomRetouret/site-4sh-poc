@@ -44,6 +44,8 @@ programme:
     items: ["Bonnes pratiques de collaboration"]
   - titre: "Conclusion"
     items: ["Synthèse et perspectives"]
+programme_pdf: "https://drive.google.com/file/d/1WKL3S66WP2Nu-VIXWQ650J5XD5yBrTaW/view"
+programme_pdf_poids: "695 Ko"
 ---
 Figma est un outil de design collaboratif utilisé principalement pour concevoir et prototyper des interfaces digitales. Cette formation a pour objectif de permettre à des Product Owners, Product Managers et UI/UX/Product Designers de découvrir les fonctionnalités clés de Figma et de se projeter sur l'utilisation de l'outil.
 

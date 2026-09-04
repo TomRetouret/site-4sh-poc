@@ -66,6 +66,8 @@ programme:
   - titre: "Fonctionnement interne des coroutines"
     items: ["Coroutine, continuation et state machine", "Comprendre le fonctionnement des continuation par l'exemple", "Les implications sur le quotidien : debug et profiling"]
 faq: []
+programme_pdf: "https://drive.google.com/file/d/15ALfacgzs98WWOJsaypBivKMmWgDfzhN/view"
+programme_pdf_poids: "703 Ko"
 ---
 Kotlin est un langage de programmation moderne développé par JetBrains. Ce langage statiquement typé peut être exécuté sur la JVM et est complètement interopérable avec Java. Il offre une syntaxe concise et des fonctionnalités modernes qui facilitent le développement d'applications, comme une meilleure gestion de la nullité, des capacités d'extensions et une API très riche sur les collections.
 

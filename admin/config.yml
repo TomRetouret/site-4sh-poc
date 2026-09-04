@@ -57,6 +57,8 @@ collections:
       - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false }
       - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
       - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Programme de la formation (PDF)", name: "programme_pdf", widget: "string", required: false, hint: "Lien vers le PDF du programme." }
+      - { label: "Poids du PDF du programme", name: "programme_pdf_poids", widget: "string", required: false, hint: "Ex. : 724 Ko" }
       - { label: "Prix", name: "prix", widget: "string", hint: "Ex. : 2200 € HT", required: false }
       - { label: "Durée", name: "duree", widget: "string", required: false, hint: "Ex. : 4 jours (28h00)" }
       - { label: "Nombre de participants", name: "participants", widget: "string", required: false, hint: "Ex. : 1 à 8" }
@@ -327,6 +329,62 @@ collections:
       - { label: "Contenu", name: "body", widget: "markdown", required: false }
 
   # -----------------------------------------------------------------------
+  # 5ter) PRESTATIONS  (une page d'offre = un fichier ; sous /prestations/)
+  # -----------------------------------------------------------------------
+  - name: "pages_prestations"
+    label: "Prestations"
+    label_singular: "Prestation"
+    folder: "src/content/prestations"
+    preview_path: "prestations/{{slug}}/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{titre}} ({{famille_label}})"
+    sortable_fields: ["ordre", "titre", "famille_label"]
+    fields:
+      - { label: "Nom court de la prestation", name: "titre", widget: "string", required: true }
+      - { label: "Famille", name: "famille_label", widget: "select", options: ["Concevoir & développer", "Faire vivre & auditer"], required: false }
+      - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", required: true, hint: "Mettre un mot entre *astérisques* pour l'accentuer en rouge." }
+      - { label: "Accroche", name: "chapo", widget: "text", required: false }
+      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int" }
+      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Libellé du bouton", name: "cta_label", widget: "string", required: false }
+      - { label: "Lien du bouton", name: "cta_url", widget: "string", required: false, default: "/contact/" }
+      - { label: "URL de la page d'origine (pour mémoire)", name: "source_url", widget: "string", required: false }
+      - label: "Chiffres clés"
+        name: "chiffres"
+        widget: "list"
+        summary: "{{fields.chiffre}} · {{fields.label}}"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Chiffre", name: "chiffre", widget: "string", required: false }
+          - { label: "Libellé", name: "label", widget: "string", required: false }
+      - label: "Références clients"
+        name: "references"
+        widget: "relation"
+        required: false
+        multiple: true
+        collection: "references"
+        value_field: "{{slug}}"
+        search_fields: ["titre", "client"]
+        display_fields: ["titre"]
+        hint: "Sélectionnez les fiches références à afficher (recherche par nom)."
+      - label: "Questions fréquentes"
+        name: "faq"
+        widget: "list"
+        summary: "{{fields.question}}"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string", required: false }
+          - { label: "Réponse", name: "reponse", widget: "text", required: false }
+      - { label: "Contenu", name: "body", widget: "markdown", required: false }
+
+  # -----------------------------------------------------------------------
   # 5bis) GLOSSAIRE  (un terme = une entrée ; affichés sur la page /glossaire/)
   # -----------------------------------------------------------------------
   - name: "glossaire"
@@ -388,6 +446,10 @@ collections:
           - { label: "Titre", name: "titre", widget: "string", required: false }
           - { label: "Lien (optionnel)", name: "lien", widget: "string", required: false }
           - { label: "Texte", name: "texte", widget: "text", required: false }
+      - { label: "Guide · surtitre du bloc de contenu", name: "corps_eyebrow", widget: "string", required: false, hint: "Ex. : Guide, ou Communauté et écosystème." }
+      - { label: "Guide · titre du bloc de contenu", name: "corps_titre", widget: "string", required: false }
+      - { label: "Guide · afficher le bloc sur fond sombre", name: "corps_sombre", widget: "boolean", required: false, default: false }
+      - { label: "Guide · URL de la page d'origine (pour mémoire)", name: "guide_source_url", widget: "string", required: false }
       - label: "Formations liées"
         name: "formations"
         widget: "list"
@@ -952,6 +1014,10 @@ collections:
           - { label: "Recrutement · bouton (lien)", name: "recrutement_cta_url", widget: "string", required: false }
           - { label: "Agences · sur-titre", name: "agences_eyebrow", widget: "string", required: false }
           - { label: "Agences · titre", name: "agences_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+          - { label: "RSE · titre", name: "rse_titre", widget: "string", required: false }
+          - { label: "RSE · texte", name: "rse_texte", widget: "text", required: false }
+          - { label: "RSE · libellé du bouton", name: "rse_cta_label", widget: "string", required: false }
+          - { label: "RSE · lien de la charte", name: "rse_cta_url", widget: "string", required: false }
           - { label: "Agences · sous-titre", name: "agences_sous", widget: "text", required: false }
           - label: "Agences (cartes)"
             name: "agences"
@@ -972,6 +1038,101 @@ collections:
           - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: true }
           - { label: "Accroche", name: "chapo", widget: "text", required: false }
           # Arguments et intitulés des coordonnées : voir « Réglages du site » > Bloc contact (communs à tout le site).
+
+      - name: "page_podcasts"
+        label: "Podcasts (Vision Tech)"
+        file: "src/_data/page_podcasts.json"
+        preview_path: "podcasts/"
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+          - { label: "Surtitre", name: "eyebrow", widget: "string", required: false }
+          - { label: "Titre principal (H1)", name: "h1", widget: "string", required: false }
+          - { label: "Accroche", name: "chapo", widget: "text", required: false }
+          - label: "Plateformes d'écoute"
+            name: "plateformes"
+            widget: "list"
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Nom", name: "label", widget: "string", required: false }
+              - { label: "Lien", name: "url", widget: "string", required: false }
+          - label: "Épisodes"
+            name: "episodes"
+            widget: "list"
+            summary: "{{fields.date}} · {{fields.titre}}"
+            collapsed: true
+            fields:
+              - { label: "Date", name: "date", widget: "string", required: false }
+              - { label: "Durée", name: "duree", widget: "string", required: false }
+              - { label: "Titre", name: "titre", widget: "string", required: false }
+              - { label: "Résumé", name: "resume", widget: "text", required: false }
+              - { label: "Lien Spotify", name: "spotify", widget: "string", required: false }
+              - { label: "Lien Deezer", name: "deezer", widget: "string", required: false }
+              - { label: "Lien Apple Podcasts", name: "apple", widget: "string", required: false }
+
+      - name: "page_ia"
+        label: "Intelligence artificielle"
+        file: "src/intelligence-artificielle.md"
+        preview_path: "intelligence-artificielle/"
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+          - { label: "Nom de la page", name: "titre", widget: "hidden", default: "Intelligence artificielle" }
+          - { label: "Gabarit", name: "layout", widget: "hidden", default: "page-libre.njk" }
+          - { label: "Adresse de la page", name: "permalink", widget: "hidden", default: "/intelligence-artificielle/" }
+          - { label: "Surtitre", name: "eyebrow", widget: "string", required: false }
+          - { label: "Titre principal (H1)", name: "h1", widget: "string", required: false }
+          - { label: "Accroche", name: "chapo", widget: "text", required: false }
+          - { label: "Libellé du bouton", name: "cta_label", widget: "string", required: false }
+          - { label: "Lien du bouton", name: "cta_url", widget: "string", required: false }
+          - { label: "Afficher le bloc contact en bas de page", name: "contact_final", widget: "boolean", required: false, default: true }
+          - label: "Références clients"
+            name: "references"
+            widget: "relation"
+            required: false
+            multiple: true
+            collection: "references"
+            value_field: "{{slug}}"
+            search_fields: ["titre", "client"]
+            display_fields: ["titre"]
+          - label: "Questions fréquentes"
+            name: "faq"
+            widget: "list"
+            summary: "{{fields.question}}"
+            collapsed: true
+            required: false
+            fields:
+              - { label: "Question", name: "question", widget: "string", required: false }
+              - { label: "Réponse", name: "reponse", widget: "text", required: false }
+          - { label: "Contenu", name: "body", widget: "markdown", required: false }
+
+      - name: "page_mentions_legales"
+        label: "Mentions légales"
+        file: "src/mentions-legales.md"
+        preview_path: "mentions-legales/"
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+          - { label: "Gabarit", name: "layout", widget: "hidden", default: "page-legale.njk" }
+          - { label: "Adresse de la page", name: "permalink", widget: "hidden", default: "/mentions-legales/" }
+          - { label: "Nom de la page", name: "titre", widget: "string", required: false }
+          - { label: "Titre principal (H1)", name: "h1", widget: "string", required: false }
+          - { label: "Date de mise à jour", name: "maj", widget: "string", required: false }
+          - { label: "Contenu", name: "body", widget: "markdown", required: false }
+
+      - name: "page_rgpd"
+        label: "Notice d'informations RGPD"
+        file: "src/rgpd.md"
+        preview_path: "rgpd/"
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+          - { label: "Gabarit", name: "layout", widget: "hidden", default: "page-legale.njk" }
+          - { label: "Adresse de la page", name: "permalink", widget: "hidden", default: "/rgpd/" }
+          - { label: "Nom de la page", name: "titre", widget: "string", required: false }
+          - { label: "Titre principal (H1)", name: "h1", widget: "string", required: false }
+          - { label: "Date de mise à jour", name: "maj", widget: "string", required: false }
+          - { label: "Contenu", name: "body", widget: "markdown", required: false }
 
       - name: "site"
         label: "Réglages du site (pied de page, coordonnées, formulaire)"
@@ -1025,6 +1186,21 @@ collections:
               - { label: "Libellé · besoin", name: "label_besoin", widget: "string", required: false }
               - { label: "Placeholder · besoin", name: "ph_besoin", widget: "text", required: false }
               - { label: "Texte d'aide", name: "aide", widget: "text", required: false }
+              - { label: "Formulaire · libellé du champ sujet", name: "label_sujet", widget: "string", required: false }
+              - { label: "Formulaire · texte par défaut du champ sujet", name: "ph_sujet", widget: "string", required: false }
+              - label: "Formulaire · types de demande et destinataires"
+                name: "sujets"
+                widget: "list"
+                summary: "{{fields.label}} vers {{fields.email}}"
+                required: false
+                hint: "Chaque type de demande part à l'adresse indiquée en face. Un seul destinataire par type."
+                fields:
+                  - { label: "Type de demande (ce que voit le visiteur)", name: "label", widget: "string" }
+                  - { label: "Adresse de destination", name: "email", widget: "string", hint: "Ex. : commerce@4sh.fr" }
+              - { label: "Formulaire · type pré-sélectionné sur les formulaires formation", name: "sujet_defaut_formation", widget: "string", required: false, hint: "Doit correspondre exactement à l'un des types ci-dessus." }
+              - { label: "Formulaire · phrase de consentement RGPD", name: "rgpd_texte", widget: "text", required: false }
+              - { label: "Formulaire · mots à transformer en lien RGPD", name: "rgpd_lien_label", widget: "string", required: false }
+              - { label: "Formulaire · lien de la notice RGPD", name: "rgpd_url", widget: "string", required: false }
               - { label: "Bouton d'envoi", name: "bouton", widget: "string", required: false }
               - { label: "Texte de réassurance", name: "reassurance", widget: "string", required: false }
           - label: "Pied de page · colonnes de liens"
@@ -1039,16 +1215,47 @@ collections:
                   - { label: "Libellé", name: "label", widget: "string", required: false }
                   - { label: "Lien", name: "url", widget: "string", required: false }
           - { label: "Pied de page · mentions légales", name: "footer_legal", widget: "string", required: false }
+          - label: "Pied de page · liens légaux"
+            name: "footer_liens_legaux"
+            widget: "list"
+            summary: "{{fields.label}}"
+            required: false
+            fields:
+              - { label: "Libellé", name: "label", widget: "string", required: false }
           - label: "Pied de page · réseaux sociaux"
             name: "footer_reseaux"
             widget: "list"
+            summary: "{{fields.label}}"
+            required: false
             fields:
               - { label: "Libellé", name: "label", widget: "string", required: false }
               - { label: "Lien", name: "url", widget: "string", required: false }
-
-  # -----------------------------------------------------------------------
-  # 7) SEO & INDEXATION  (métas par défaut, sitemap, robots.txt)
-  # -----------------------------------------------------------------------
+          - { label: "Pied de page · intitulé « nos formations sur »", name: "footer_formations_titre", widget: "string", required: false }
+          - label: "Pied de page · plateformes de formation"
+            name: "footer_formations_liens"
+            widget: "list"
+            summary: "{{fields.label}}"
+            required: false
+            fields:
+              - { label: "Libellé", name: "label", widget: "string", required: false }
+              - { label: "Lien", name: "url", widget: "string", required: false }
+          - label: "Documents téléchargeables"
+            name: "documents"
+            widget: "object"
+            collapsed: true
+            required: false
+            fields:
+              - { label: "Charte RSE · libellé", name: "charte_rse_label", widget: "string", required: false }
+              - { label: "Charte RSE · lien", name: "charte_rse_url", widget: "string", required: false }
+              - { label: "Certification Qualiopi · libellé", name: "qualiopi_label", widget: "string", required: false }
+              - { label: "Certification Qualiopi · lien", name: "qualiopi_url", widget: "string", required: false }
+              - { label: "CGV · libellé", name: "cgv_label", widget: "string", required: false }
+              - { label: "CGV · lien", name: "cgv_url", widget: "string", required: false }
+              - { label: "Catalogue de formations · libellé", name: "catalogue_label", widget: "string", required: false }
+              - { label: "Catalogue de formations · lien", name: "catalogue_url", widget: "string", required: false }
+              - { label: "Politique d'accessibilité · libellé", name: "accessibilite_label", widget: "string", required: false }
+              - { label: "Politique d'accessibilité · lien", name: "accessibilite_url", widget: "string", required: false }
+              - { label: "Lien", name: "url", widget: "string", required: false }
   - name: "seo"
     label: "SEO & indexation"
     files:

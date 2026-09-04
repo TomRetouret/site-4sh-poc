@@ -55,6 +55,8 @@ formateur:
   bio:
     - "Frédéric, notre formateur pour la formation Docker Fondamentaux, possède plus de 20 ans d'expérience en développement logiciel, avec un focus particulier en tant que Tech Lead. Ses projets variés dans le secteur de la logistique lui ont permis d'acquérir une expertise solide et diversifiée. Il maîtrise de nombreuses technologies, notamment JavaScript, TypeScript, Git et Maven."
     - "Contributeur actif à la communauté des développeurs, il participe à des projets open source comme Voxxrin. Il a été président du Bordeaux Java User Group pendant trois ans et est le créateur de BDX I/O. Frédéric dispense également les formations Java Avancé, JavaScript / TypeScript, Git Fondamentaux et Angular Fondamentaux."
+programme_pdf: "https://drive.google.com/file/d/1SgRH0xLDOQmnBWU8Pev1ht6wcf6FLGb-/view"
+programme_pdf_poids: "698 Ko"
 ---
 Docker est l'outil incontournable pour travailler avec des conteneurs, qui permettent d'exécuter des applications dans des environnements isolés et reproductibles. Cette formation, destinée à des développeurs ou à des ingénieurs système, a pour objectif de transmettre les compétences nécessaires pour construire, déployer et maintenir des conteneurs, en s'appuyant sur l'outillage Docker.
 

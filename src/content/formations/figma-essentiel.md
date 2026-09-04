@@ -43,6 +43,8 @@ faq:
     reponse: "Oui, la formation Figma - Les Essentiels est conçue pour les débutants. Aucun prérequis en design n'est nécessaire, et les concepts de base seront expliqués de manière claire et progressive."
   - question: "Dois-je acheter une licence Figma pour assister à la formation ?"
     reponse: "Non, il n'est pas nécessaire d'acheter une licence Figma pour assister à la formation. Figma propose une version gratuite qui est suffisante pour suivre tous les modules de la formation."
+programme_pdf: "https://drive.google.com/file/d/1JuiA8XSGwAHD4ynt1LShp-g6aw5DQrYb/view"
+programme_pdf_poids: "682 Ko"
 ---
 Figma est un outil de conception graphique et de prototypage en ligne utilisé principalement pour la création d'interfaces utilisateur (UI) et d'expériences utilisateur (UX). Il se distingue par ses fonctionnalités de collaboration en temps réel, permettant aux designers et aux équipes de travailler simultanément sur un même projet.
 

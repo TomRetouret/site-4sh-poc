@@ -40,6 +40,8 @@ programme:
   - titre: "Interopérabilité avec un existant"
     items: ["Fichiers de déclaration, declaration merging", "Function overloading", "triple slash references", "tsconfig (sourcemaps, strictness levels, target, project reference, etc.)"]
 faq: []
+programme_pdf: "https://drive.google.com/file/d/1gx40Npzp7jc4NZNVkOHl9vHxjZwZzYMe/view"
+programme_pdf_poids: "719 Ko"
 ---
 La formation TypeScript - Les Fondamentaux est une introduction complète de deux jours au langage TypeScript, conçue pour les développeurs souhaitant améliorer leurs compétences en typage statique et en développement JavaScript moderne.
 

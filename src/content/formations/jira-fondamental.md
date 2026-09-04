@@ -43,6 +43,8 @@ faq:
     reponse: "Oui, la formation Jira est finançable par votre OPCO (Opérateur de Compétences), car elle est certifiée Qualiopi. Ce dispositif vous permet de bénéficier d'un financement adapté en fonction de votre branche professionnelle et de vos besoins en formation. Que vous soyez salarié en entreprise ou employeur, rapprochez-vous de votre OPCO pour connaître les modalités de prise en charge et optimiser le coût de cette formation."
   - question: "Jira peut-il être utilisé avec Confluence pour une gestion de projet encore plus efficace ?"
     reponse: "Absolument. Jira, en complément de Confluence, forme un duo puissant pour les équipes pratiquant le management agile. Lors de la formation, vous découvrirez comment ces outils s'intègrent pour centraliser la documentation et faciliter le suivi des tâches. Vous apprendrez à exploiter ces synergies pour optimiser la collaboration au sein de votre entreprise et gérer vos projets de manière encore plus fluide. La durée d'une journée suffit pour aborder les fondamentaux de cet outil."
+programme_pdf: "https://drive.google.com/file/d/1wIbxD8QEX7oDS3lAMgpMz3OIMugPdF-e/view"
+programme_pdf_poids: "702 Ko"
 ---
 Jira, conçu par Atlassian, est un outil de gestion des tickets destiné aux équipes de développement dans un sens large. Il regroupe tous les éléments nécessaires à la gestion de projets, incluant la planification, le suivi, les livraisons et les rapports. Son objectif est d'aider les équipes à adopter une approche agile.
 

@@ -25,12 +25,12 @@
       "titre": "Build custom software",
       "texte": "An Excel sheet cracking under pressure, an off-the-shelf tool that doesn't fit? We build the custom business software that follows how you actually work.",
       "liens": [
-        { "label": "→ Business software", "url": "/logiciel-metier/" },
+        { "label": "→ Business software", "url": "/prestations/logiciel-metier/" },
         { "label": "→ SaaS application", "url": "#" },
         { "label": "→ Mobile application", "url": "#" }
       ],
       "suite_label": "Explore our custom development services",
-      "suite_url": "/logiciel-metier/"
+      "suite_url": "/prestations/logiciel-metier/"
     },
     {
       "titre": "Keep your solution alive",

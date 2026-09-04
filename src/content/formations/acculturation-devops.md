@@ -44,6 +44,8 @@ programme:
     items: ["L'automatisation dans DevOps", "Les outils DevOps pour la CI et la CD"]
   - titre: "La mesure et l'amélioration continue"
     items: ["La mesure du succès de DevOps", "Le dashboard DevOps", "Enjeux sécurité : Supply Chain Attack, Shadow IT & Infrastructure as Code (IaC) Threats"]
+programme_pdf: "https://drive.google.com/file/d/1Z89Q0u9-fAIjQoU2F5WgrZniDK9FzWaW/view"
+programme_pdf_poids: "773 Ko"
 ---
 Cette formation explore les principes, méthodologies et outils permettant d'améliorer la collaboration entre les équipes de développement et d'exploitation dans le but d'améliorer la qualité, la sécurité et le time to market.
 

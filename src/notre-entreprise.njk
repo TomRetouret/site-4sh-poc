@@ -124,10 +124,22 @@ extraCss: /assets/logiciel-metier.css
     <p class="sec-sous">{{ e.agences_sous }}</p>
     <div class="socle">
       {% for a in e.agences %}
-      <div class="socle-carte"><h3>{{ a.ville }}</h3><p style="font-size:14.5px;color:var(--texte-2)">{{ a.adresse | replace("\n", "<br>") | accent | safe }}</p></div>
+      <div class="socle-carte"><h3>{{ a.ville }}</h3><p style="font-size:14.5px;color:var(--texte-2)">{{ a.adresse | replace("\n", "<br>") | accent | safe }}</p>{% if a.carte_url %}<a class="socle-lien" href="{{ a.carte_url }}" target="_blank" rel="noopener">Voir sur la carte &rarr;</a>{% endif %}</div>
       {% endfor %}
     </div>
   </div>
 </section>
+
+{% if e.rse_cta_url %}
+<section style="padding-top:0">
+  <div class="container">
+    <div class="sect-libre" style="max-width:820px">
+      <h2 class="sec-titre">{{ e.rse_titre }}</h2>
+      <p class="sec-sous">{{ e.rse_texte }}</p>
+      <p><a class="btn btn-ghost" href="{{ e.rse_cta_url }}" target="_blank" rel="noopener">{{ e.rse_cta_label }}</a></p>
+    </div>
+  </div>
+</section>
+{% endif %}
 
 {% include "contact-etendu.njk" %}

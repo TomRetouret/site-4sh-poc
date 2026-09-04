@@ -50,6 +50,8 @@ formateur:
   bio:
     - "Damien, passionné de développement informatique et de transmission de connaissances, a débuté comme formateur en 2013 pour 4SH, une activité qui le motive toujours autant."
     - "Actuellement, il travaille pour un acteur majeur de la mobilité électrique en France, gérant des bases de données à grande échelle, avec plus de 170 000 utilisateurs et des collections dépassant 10 millions de documents. Grâce à cette expérience, il maîtrise des problématiques complexes comme la gestion de la volumétrie des données et la conception optimale de modèles en base."
+programme_pdf: "https://drive.google.com/file/d/15IFr_elNuF7bRJtj1Mtod9OxImtQ4qBN/view"
+programme_pdf_poids: "758 Ko"
 ---
 La formation MongoDB avancé offre une maîtrise approfondie des fonctionnalités complexes de cette base de données orientée document. Sur 5 jours, les participants explorent des sujets avancés tels que les agrégations, la gestion des index, la réplication, le sharding et l'optimisation des performances.
 

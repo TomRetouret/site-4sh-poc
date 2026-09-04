@@ -62,6 +62,8 @@ faq:
     reponse: "Oui, la formation inclut un focus sur les bonnes pratiques en JavaScript et TypeScript, permettant aux participants d'améliorer leur code en matière de lisibilité, de performance et de maintenabilité."
   - question: "Y a-t-il des opportunités de découvrir des outils et des technologies utilisés dans l'industrie ?"
     reponse: "Absolument, la formation couvre des outils couramment utilisés comme Git et Maven, et permet aux participants de se familiariser avec des technologies de pointe tout en développant leurs compétences pour des projets professionnels."
+programme_pdf: "https://drive.google.com/file/d/1rWsWLGa4qNPGWflfqfW7vLumheu5be87/view"
+programme_pdf_poids: "731 Ko"
 ---
 JavaScript est le langage de programmation de facto pour le développement web, et ses usages sont en constante progression depuis des années. Auparavant cantonné à une exécution dans les navigateurs, le langage se popularise également sur le serveur avec NodeJS et, plus récemment, avec les pratiques de Server Side Rendering portées par des frameworks Frontend. TypeScript, le complément parfait à JavaScript, offre un typage statique optionnel, simplifie le développement et améliore la maintenance des projets à grande échelle.
 

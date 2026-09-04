@@ -49,6 +49,8 @@ faq:
     reponse: "La formation Maven est conçue pour les développeurs souhaitant comprendre les fondamentaux de cet outil indispensable dans la gestion des dépendances et le build de projets Java. Adaptée aux débutants, elle convient aussi bien aux salariés d'une entreprise qu'aux indépendants qui souhaitent renforcer leurs compétences. Aucun prérequis n'est nécessaire, ce qui permet à tous les niveaux de tirer pleinement parti des modules proposés."
   - question: "La formation Maven peut-elle se suivre à distance ?"
     reponse: "Oui, toutes nos formations, y compris la formation Maven, sont disponibles en présentiel ou à distance. Vous pouvez ainsi apprendre à votre rythme et selon les sessions proposées par 4SH. Les sessions en ligne offrent les mêmes avantages qu'en présentiel, avec des supports complets, des exercices pratiques, et une mise en application immédiate dans vos projets Java, pour une durée de 3h30."
+programme_pdf: "https://drive.google.com/file/d/1yYvEtFJW-RSYOCs4HvkFCZIIFvmiyR3p/view"
+programme_pdf_poids: "703 Ko"
 ---
 Maven est un outil d'aide à la construction d'un projet Java et la gestion de ses dépendances, incontournable pour les développeurs souhaitant structurer efficacement leurs applications.
 

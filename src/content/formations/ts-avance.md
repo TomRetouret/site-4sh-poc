@@ -41,6 +41,8 @@ programme:
     items: ["Conditional types", "Recursive types", "infer keyword"]
   - titre: "Unofficial TypeScript features"
     items: ["Decorators", "JSX/TSX", "enums"]
+programme_pdf: "https://drive.google.com/file/d/1_Zg99-MiqQZTYvBJjQZjNCCrUpJnuYzJ/view"
+programme_pdf_poids: "723 Ko"
 ---
 La formation TypeScript - Avancé est un programme intensif de deux jours conçu pour les développeurs ayant déjà une expérience avec TypeScript et souhaitant approfondir leurs compétences en typage avancé et en intégration avec des projets complexes.
 

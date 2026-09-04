@@ -64,6 +64,8 @@ faq:
     reponse: "Oui, cette formation est spécialement conçue pour couvrir les aspects avancés de Kubernetes, incluant des pratiques de déploiement, de gestion de clusters et des techniques avancées de sécurité et de scalabilité."
   - question: "Quels sont les prérequis pour cette formation ?"
     reponse: "Il est recommandé d'avoir une connaissance de base de Kubernetes et une expérience pratique avec Docker. La maîtrise des commandes de base d'un système Linux est également nécessaire."
+programme_pdf: "https://drive.google.com/file/d/1INdxvy02rJMrytb-jDe9KdEcf6Nq43Yk/view"
+programme_pdf_poids: "756 Ko"
 ---
 Kubernetes est la solution d'orchestration de conteneurs qui a réussi à s'imposer sur le marché, supportée par tous les acteurs cloud (Amazon, Google, Microsoft, OVH). Cette formation a pour objectif d'approfondir les connaissances afin de permettre à des développeurs d'applications ou des ingénieurs système de configurer et maintenir des applications dans Kubernetes.
 

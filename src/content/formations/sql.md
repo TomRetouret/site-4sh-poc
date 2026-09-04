@@ -52,6 +52,8 @@ faq:
     reponse: "La formation SQL dure une journée (7 heures) et alterne 55 % de théorie avec 45 % de pratique. Elle est proposée en présentiel ou à distance, selon le lieu de votre entreprise. Animée par un formateur expérimenté, cette formation combine théorie et pratique, offrant une immersion complète dans les bases de ce langage. Vous apprendrez à interagir avec des bases de données relationnelles en réalisant des requêtes sur des cas concrets, adaptés à vos besoins professionnels."
   - question: "À qui s'adresse cette formation SQL et que vais-je apprendre ?"
     reponse: "Cette formation SQL s'adresse aux professionnels techniques ou fonctionnels souhaitant apprendre les fondamentaux du langage SQL. Que vous soyez développeur, analyste, ou membre d'une équipe en entreprise, vous découvrirez comment lire, modifier et gérer des données efficacement grâce à des exercices pratiques et un apprentissage des requêtes simples et complexes. Aucun prérequis technique spécifique n'est nécessaire pour suivre cette formation."
+programme_pdf: "https://drive.google.com/file/d/1D0BxtZQdt5-WnMBkX1p_3Z2WUDH32e0z/view"
+programme_pdf_poids: "705 Ko"
 ---
 Le SQL (Structured Query Language) est un langage permettant de communiquer avec une base de données. Créé dans les années 70 et mis à l'échelle dans les années 80, SQL fait partie des principaux langages de requêtage de données.
 

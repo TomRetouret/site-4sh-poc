@@ -71,6 +71,8 @@ programme:
 faq:
   - question: "Que reçoivent les participants à la fin de la formation ?"
     reponse: "À la fin de la formation Python Fondamental, chaque participant recevra une grille d'évaluation des compétences, une attestation de fin de formation et un certificat de réalisation."
+programme_pdf: "https://drive.google.com/file/d/1Wmfieu1phOuvu49X0NEWvqQMj1wkwO0B/view"
+programme_pdf_poids: "794 Ko"
 ---
 Python est un langage de programmation polyvalent, interprété et orienté objet. Il fait partie des langages les plus populaires au monde, reconnu pour sa simplicité et sa lisibilité.
 

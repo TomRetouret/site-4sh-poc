@@ -34,6 +34,8 @@ programme:
     items: ["Présentation de Vitest (configuration, comparaison avec Jest, intégration TS/Vite, coverage)", "Tester des fonctions pures : tests simples, aux limites, property based testing", "Tester des composants UI avec Testing Library (render, queries, events, tests async)", "Mocking (modules, timers, hooks custom, stores)", "Spécificités avec votre framework : Angular, Vue ou React", "Coverage & intégration CI (rapport, seuils, GitHub Actions)", "Structurer les tests dans un projet réel"]
   - titre: "Tests end-to-end avec Playwright"
     items: ["Présentation de Playwright (comparaison avec Cypress, Puppeteer)", "Installation et configuration (Test Runner, browsers, headless mode)", "Structure d'un test E2E (page model, navigation, assertions, fixtures, sélecteurs robustes)", "Scénarios utilisateur courants (login/logout, formulaires, validation, navigation)", "Screenshots, vidéos, debug interactif", "Mock d'API avec Playwright (route interception, fixtures, réponses simulées)", "Spécificités avec votre framework : Angular, Vue ou React", "Tests parallèles & configuration CI (GitHub, tests par navigateur, reporting)"]
+programme_pdf: "https://drive.google.com/file/d/1kcftfgi9Ec2-TzRC7G4YKRWx7Gbh4bcJ/view"
+programme_pdf_poids: "726 Ko"
 ---
 Assurer la fiabilité d'une application frontend passe aujourd'hui par une stratégie de tests robuste et bien maîtrisée. Cette formation vous propose d'adopter les bons réflexes pour tester efficacement vos interfaces web, depuis la logique métier jusqu'aux parcours utilisateurs les plus critiques.
 

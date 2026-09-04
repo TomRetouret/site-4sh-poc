@@ -208,7 +208,10 @@
     }
     function suivant() { i = (i * pas() >= maxScroll()) ? 0 : i + 1; aller(); }
     function precedent() { i = (i <= 0) ? slides.length - 1 : i - 1; aller(); }
-    function jouer() { if (!reduce && !timer) timer = setInterval(suivant, 4800); }
+    // défilement automatique : actif sur l'accueil, coupé dans le corps des
+    // pages (data-carrousel-auto="off") pour ne pas bouger sous les yeux du lecteur
+    var auto = car.getAttribute('data-carrousel-auto') !== 'off';
+    function jouer() { if (auto && !reduce && !timer) timer = setInterval(suivant, 4800); }
     function stop() { clearInterval(timer); timer = null; }
     function relance() { stop(); jouer(); }
 

@@ -44,6 +44,8 @@ formateur:
   bio:
     - "Damien est un développeur passionné par son métier et profondément attaché à la transmission du savoir. Il a commencé à enseigner chez 4SH dès 2013, une activité qu'il poursuit aujourd'hui avec la même énergie et le même enthousiasme."
     - "Actuellement, il met son expertise au service d'un acteur majeur de la mobilité électrique en France, où il pilote la gestion de bases de données à grande échelle : plus de 170 000 utilisateurs et plus de 10 millions de documents au quotidien. Cette expérience lui a permis de développer une maîtrise approfondie des problématiques de volumétrie, d'optimisation des modèles de données et de conception d'architectures performantes et fiables."
+programme_pdf: "https://drive.google.com/file/d/1ZF9MVTDfphelZWE-O7VBjoL71Ll3LrVN/view"
+programme_pdf_poids: "713 Ko"
 ---
 MongoDB est une base de données orientée document, éditée par MongoDB Inc. C'est aujourd'hui l'une des bases de données les plus utilisées au monde. L'approche orientée document diffère de l'approche classique des bases de données relationnelles.
 

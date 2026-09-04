@@ -2,51 +2,77 @@
   "items": [
     {
       "type": "megamenu",
-      "label": "Prestations",
+      "label": "Prestations & IA",
       "variant": "",
-      "promo": {
-        "titre": "Un logiciel qui *épouse* vos processus",
-        "texte": "Conception, développement, run : une seule équipe, de la première idée à la production.",
-        "lien_libelle": "Notre méthode 4D",
-        "url": "/logiciel-metier/",
-        "stats": [
-          {
-            "valeur": "2007",
-            "label": "depuis"
-          },
-          {
-            "valeur": "150+",
-            "label": "projets livrés"
-          }
-        ]
-      },
       "colonnes": [
+        {
+          "titre": "Concevoir avec l'IA",
+          "classe": "col-ia",
+          "liens": [
+            {
+              "label": "Notre approche de l'IA",
+              "sous_texte": "Par où commencer",
+              "url": "/intelligence-artificielle/",
+              "icone": "graph"
+            }
+          ],
+          "_liens_a_venir": [
+            {
+              "label": "Logiciel métier avec IA",
+              "sous_texte": "L'IA là où elle sert vraiment",
+              "url": "/intelligence-artificielle/logiciel-metier-ia/",
+              "icone": "hub"
+            },
+            {
+              "label": "Application IA sur mesure",
+              "sous_texte": "Web, mobile, SaaS",
+              "url": "/intelligence-artificielle/developpement-application-ia/",
+              "icone": "code"
+            },
+            {
+              "label": "Agent IA métier",
+              "sous_texte": "Autonome, jamais sans contrôle",
+              "url": "/intelligence-artificielle/agent-ia/",
+              "icone": "reseau"
+            },
+            {
+              "label": "Recherche documentaire & RAG",
+              "sous_texte": "Vos documents, sans invention",
+              "url": "/intelligence-artificielle/rag-recherche-documentaire/",
+              "icone": "audit"
+            }
+          ]
+        },
         {
           "titre": "Concevoir & développer",
           "liens": [
             {
               "label": "Logiciel métier sur mesure",
               "sous_texte": "Votre outil, vos processus",
-              "url": "/logiciel-metier/",
+              "url": "/prestations/logiciel-metier/",
               "icone": "ecran"
             },
             {
               "label": "Application SaaS",
               "sous_texte": "Plateforme web évolutive",
-              "url": "",
+              "url": "/prestations/application-saas/",
               "icone": "cloud"
             },
             {
               "label": "Application mobile",
               "sous_texte": "iOS, Android, cross-platform",
-              "url": "",
+              "url": "/prestations/application-mobile/",
               "icone": "mobile"
             },
             {
               "label": "Product & design UX / UI",
               "sous_texte": "Des écrans que vos équipes adoptent",
-              "url": "",
+              "url": "/prestations/product-design/",
               "icone": "design"
+            },
+            {
+              "label": "Transformation digitale",
+              "url": "/prestations/transformation-digitale/"
             }
           ]
         },
@@ -57,25 +83,25 @@
             {
               "label": "Hébergement & MCO",
               "sous_texte": "Maintien en condition opérationnelle",
-              "url": "",
+              "url": "/prestations/hebergement/",
               "icone": "serveurs"
             },
             {
               "label": "Sécurité",
               "sous_texte": "Protection et conformité",
-              "url": "",
+              "url": "/prestations/securite/",
               "icone": "bouclier"
             },
             {
               "label": "Data",
               "sous_texte": "Pipelines, pilotage, valeur",
-              "url": "",
+              "url": "/prestations/data/",
               "icone": "data"
             },
             {
               "label": "Audits UX, sécurité & cloud",
               "sous_texte": "Un état des lieux, des actions concrètes",
-              "url": "",
+              "url": "/prestations/audit-ux/",
               "icone": "audit"
             }
           ]
@@ -170,6 +196,18 @@
               "sous_texte": "Dimensionner la recharge",
               "url": "/secteurs/simulateur-de-bornes/",
               "icone": "batterie"
+            },
+            {
+              "label": "4Track",
+              "sous_texte": "Suivi des temps et rentabilité",
+              "url": "/secteurs/4track/",
+              "icone": "graph"
+            },
+            {
+              "label": "4Desk",
+              "sous_texte": "Ticketing et support client",
+              "url": "/secteurs/4desk/",
+              "icone": "audit"
             }
           ]
         }
@@ -285,5 +323,6 @@
       "url": "/contact/",
       "style": "btn btn-primary btn-sm"
     }
-  ]
+  ],
+  "_note": "_liens_a_venir : liens du cocon IA dont la page n'est pas encore rédigée. Les remettre dans 'liens' au fur et à mesure de la publication (vague 1 du cocon sémantique IA)."
 }

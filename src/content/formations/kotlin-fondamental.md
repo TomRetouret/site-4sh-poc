@@ -84,6 +84,8 @@ faq:
     reponse: "La formation est surtout recommandée aux développeurs ayant déjà des bases en programmation, notamment en Java, car elle se concentre sur les spécificités et les avantages de Kotlin. Une connaissance de base en programmation facilitera la compréhension des concepts."
   - question: "Quels outils et supports sont utilisés durant la formation ?"
     reponse: "La formation Kotlin s'appuie sur des cours théoriques, des démonstrations en direct et des travaux pratiques. Les participants utiliseront un environnement de développement intégré (IDE) compatible avec Kotlin, tel qu'IntelliJ IDEA, pour appliquer immédiatement les notions abordées."
+programme_pdf: "https://drive.google.com/file/d/1FGrPsy9-GTzxeOnb2iFjJcKJtoxM8h04/view"
+programme_pdf_poids: "765 Ko"
 ---
 Kotlin est un langage de programmation moderne développé par JetBrains. Ce langage statiquement typé peut être exécuté sur la JVM et est complètement interopérable avec Java. Il offre une syntaxe concise et des fonctionnalités modernes qui facilitent le développement d'applications, comme une meilleure gestion de la nullité, des capacités d'extensions et une API très riche sur les collections.
 

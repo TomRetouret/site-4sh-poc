@@ -73,6 +73,8 @@ faq:
     reponse: "Oui, le contenu pédagogique est régulièrement actualisé pour intégrer les nouvelles versions du JDK et les évolutions du langage. Vous bénéficiez ainsi d'un apprentissage aligné sur les standards et bonnes pratiques actuelles du développement Java."
   - question: "Faut-il installer des outils avant le début de la formation ?"
     reponse: "Oui, avant la première session, il est nécessaire d'installer le JDK, un environnement de développement intégré (IDE) tel qu'IntelliJ IDEA ou Eclipse, ainsi que Maven pour la gestion de projets. Une liste complète des prérequis et des instructions d'installation vous sera transmise en amont."
+programme_pdf: "https://drive.google.com/file/d/1oFPJrcsNUN5spfheQ2lxBaY6sANtrL9p/view"
+programme_pdf_poids: "880 Ko"
 ---
 Java est un langage de programmation orienté objet et multiplateforme, classé parmi les plus utilisés au monde selon l'indice Tiobe. En constante évolution, il dispose d'un écosystème riche et dynamique, qui en fait un choix privilégié pour concevoir des applications performantes, sécurisées et durables. Ce langage polyvalent permet de créer des applications mobiles Android, des solutions d'entreprise déployées sur serveurs ou conteneurs, des applications web, des outils cloud et big data, ainsi que des programmes desktop ou IoT.
 

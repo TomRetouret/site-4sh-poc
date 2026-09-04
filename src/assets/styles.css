@@ -457,11 +457,19 @@ header .nav{position:relative}
 .menu-services .btn-contact{background:var(--sombre);color:#fff;border-color:transparent}
 .menu-services .btn-contact:hover{background:#000;transform:translateY(-2px)}
 .menu-services .btn-contact::after{content:""}
+/* Colonne IA (menu "Prestations & IA") : elle occupe la place laissee par le bloc promo,
+   donc le bandeau bas repasse en pleine largeur pour ne pas laisser un trou sous elle.
+   Le decalage en colonne 2 ne vaut plus que pour les panneaux qui ont encore un promo. */
+.menu-services .services-bas{grid-column:1 / -1}
+.menu-services .promo-services ~ .services-bas{grid-column:2 / -1}
+.menu-services .col-ia{--accent:var(--cyan);border-right:1px solid var(--bordure);padding-right:26px}
+.menu-services .col-ia .deroulant-titre{color:var(--cyan)}
 @media (max-width:960px){
   .a-panneau .deroulant.menu-services{grid-template-columns:1fr}
   .menu-services .promo-services{grid-row:auto;grid-column:auto;min-height:180px}
   .menu-services .col-svc{grid-row:auto}
   .menu-services .services-bas{grid-column:auto;grid-row:auto;flex-direction:column;align-items:flex-start}
+  .menu-services .col-ia{border-right:none;padding-right:0}
 }
 
 /* ---------- v4 : variante Secteurs (teinte distincte + chiffre de preuve) ---------- */
@@ -697,3 +705,138 @@ header.scrolled .nav{height:60px;box-shadow:0 12px 40px rgba(31,41,46,.18);backg
 .lang-switch:hover svg{color:var(--sombre)}
 .lang-switch:focus-visible{outline:2px solid var(--sombre);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.lang-switch,.lang-switch svg{transition:none}}
+
+/* =========================================================================
+   FORMULAIRES : dropdown sur mesure et case à cocher
+   Les deux suivent --accent, donc rouge par défaut, cyan sur les pages RUN
+   et violet sur les pages Formations, sans code en plus.
+   ========================================================================= */
+
+/* --- champ select : habillage commun au natif et au composant ------------ */
+.champ-select{position:relative}
+.champ-select select{
+  width:100%;border:1.5px solid #d5d5d5;border-radius:12px;padding:13px 44px 13px 15px;
+  font-family:inherit;font-size:15px;color:var(--texte);background:#fff;
+  -webkit-appearance:none;appearance:none;cursor:pointer;
+  transition:border-color .2s,box-shadow .2s;
+}
+.champ-select::after{
+  content:"";position:absolute;right:17px;top:50%;width:9px;height:9px;pointer-events:none;
+  border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+  transform:translateY(-70%) rotate(45deg);transition:border-color .18s var(--ease);
+}
+.champ-select select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-pale)}
+.champ-select select:focus + .fleche,.champ-select:focus-within::after{border-color:var(--accent)}
+
+/* --- composant sur mesure (remplace le natif quand le JS est actif) ------ */
+.select-perso{position:relative;font-size:15px}
+.select-perso .declencheur{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border:1.5px solid #d5d5d5;border-radius:12px;padding:13px 15px;background:#fff;
+  font-family:inherit;font-size:15px;color:var(--texte);text-align:left;cursor:pointer;
+  transition:border-color .2s,box-shadow .2s;
+}
+.select-perso .declencheur:hover{border-color:#bdbdbd}
+.select-perso .declencheur[aria-expanded="true"],
+.select-perso .declencheur:focus-visible{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-pale)}
+.select-perso .declencheur .valeur{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.select-perso .declencheur[data-vide="oui"] .valeur{color:var(--muted)}
+.select-perso .declencheur .chevron{
+  flex:0 0 auto;width:9px;height:9px;margin-right:3px;
+  border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+  transform:translateY(-2px) rotate(45deg);
+  transition:transform .2s var(--ease),border-color .18s var(--ease);
+}
+.select-perso .declencheur:hover .chevron,
+.select-perso .declencheur[aria-expanded="true"] .chevron{border-color:var(--accent)}
+.select-perso .declencheur[aria-expanded="true"] .chevron{transform:translateY(2px) rotate(-135deg)}
+
+.select-perso .liste{
+  position:absolute;z-index:40;top:calc(100% + 8px);left:0;right:0;
+  margin:0;padding:6px;list-style:none;background:#fff;
+  border:1px solid var(--bordure);border-radius:14px;
+  box-shadow:0 18px 44px rgba(31,41,46,.16);
+  max-height:266px;overflow-y:auto;
+  opacity:0;transform:translateY(-6px);visibility:hidden;
+  transition:opacity .16s var(--ease),transform .16s var(--ease),visibility .16s;
+}
+.select-perso.ouvert .liste{opacity:1;transform:none;visibility:visible}
+.select-perso .liste li{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 12px;border-radius:10px;cursor:pointer;color:var(--texte);line-height:1.35;
+  transition:background .12s,color .12s;
+}
+.select-perso .liste li:hover,.select-perso .liste li.survol{background:var(--accent-pale);color:var(--accent-fonce)}
+.select-perso .liste li[aria-selected="true"]{font-weight:600;color:var(--accent-fonce)}
+.select-perso .liste li .puce{
+  flex:0 0 auto;width:16px;height:16px;border-radius:50%;
+  border:1.5px solid #cfcfcf;position:relative;transition:border-color .12s;
+}
+.select-perso .liste li[aria-selected="true"] .puce{border-color:var(--accent)}
+.select-perso .liste li[aria-selected="true"] .puce::after{
+  content:"";position:absolute;inset:3px;border-radius:50%;background:var(--accent);
+}
+.select-perso select{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* --- case à cocher ------------------------------------------------------- */
+.case{
+  display:grid;grid-template-columns:auto 1fr;gap:11px;align-items:start;
+  font-size:12.5px;line-height:1.6;color:var(--muted);cursor:pointer;margin-top:10px;
+}
+.case input{
+  -webkit-appearance:none;appearance:none;flex:0 0 auto;
+  width:19px;height:19px;margin:0;border:1.5px solid #cfcfcf;border-radius:6px;
+  background:#fff;cursor:pointer;position:relative;
+  transition:background .16s var(--ease),border-color .16s var(--ease),box-shadow .16s var(--ease);
+}
+.case input::after{
+  content:"";position:absolute;left:50%;top:47%;width:5.5px;height:10px;
+  border-right:2.2px solid #fff;border-bottom:2.2px solid #fff;
+  transform:translate(-50%,-58%) rotate(40deg) scale(.4);transform-origin:center;
+  opacity:0;transition:opacity .14s var(--ease),transform .18s var(--ease);
+}
+.case input:hover{border-color:var(--accent)}
+.case input:checked{background:var(--accent);border-color:var(--accent)}
+.case input:checked::after{opacity:1;transform:translate(-50%,-58%) rotate(40deg) scale(1)}
+.case input:focus-visible{outline:none;box-shadow:0 0 0 3px var(--accent-pale)}
+.case a{color:var(--accent-texte);text-decoration:underline;text-underline-offset:2px}
+.case a:hover{color:var(--accent-fonce)}
+.case-texte{padding-top:1px;min-width:0}
+
+/* La case vit toujours dans .formulaire, une carte blanche, y compris quand
+   celle-ci est posée dans une section sombre : pas de variante « sur-sombre »,
+   sinon le lien de la notice RGPD devient blanc sur blanc. */
+.formulaire .case{color:var(--muted)}
+.formulaire .case a{color:var(--accent-texte)}
+
+@media (max-width:640px){
+  .champ-select select,.select-perso .declencheur{font-size:16px}
+  .select-perso .liste{max-height:220px}
+}
+
+/* les champs cachés Netlify occupent la première position : on rétablit
+   la marge haute du premier intitulé visible du formulaire */
+.formulaire > label:first-of-type{margin-top:0}
+
+/* ============================================================
+   COMPOSANTS COMMUNS
+   Définis ici pour être disponibles sur TOUTES les pages : ils
+   étaient jusqu'ici enfermés dans secteurs.css ou logiciel-metier.css
+   et manquaient donc sur /contact/, /formations/ et les catégories.
+   ============================================================ */
+.fil-ariane{font-size:13.5px;color:var(--muted);padding:16px 0 26px}
+.fil-ariane a{color:var(--muted);text-decoration:none}
+.fil-ariane a:hover{color:var(--rouge);text-decoration:underline}
+.sur-sombre .fil-ariane,.section-sombre .fil-ariane{color:#9aa5aa}
+.sur-sombre .fil-ariane a,.section-sombre .fil-ariane a{color:#9aa5aa}
+.sur-sombre .fil-ariane a:hover,.section-sombre .fil-ariane a:hover{color:#fff}
+
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.chips span{background:#fff;border:1px solid var(--bordure);border-radius:140px;padding:7px 16px;font-size:13.5px;color:var(--texte-2)}
+.sur-sombre .chips span,.section-sombre .chips span{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);color:#c9d2d6}
+
+.prose{max-width:760px;font-size:16.5px}
+.prose p{line-height:1.7;margin:0 0 16px;color:var(--texte-2)}
+.prose p:last-child{margin-bottom:0}
+.prose a{color:var(--rouge-fonce);text-decoration:underline;text-underline-offset:2px}
+.prose strong,.prose b{color:var(--sombre)}

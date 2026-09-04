@@ -81,6 +81,8 @@ faq:
     reponse: "Oui, la formation Java - Les Fondamentaux est conçue pour les débutants, bien qu'une compréhension basique de la programmation soit utile. Les concepts sont expliqués de manière claire et progressive."
   - question: "Quels logiciels dois-je installer avant de commencer la formation ?"
     reponse: "Avant de débuter la formation, il est nécessaire d'installer un JDK (Java Development Kit), un IDE comme Eclipse ou IntelliJ IDEA, et d'autres outils spécifiques qui seront listés dans les instructions préalables à la formation."
+programme_pdf: "https://drive.google.com/file/d/1_3zmjV7z598U2GRRbgrDd7emCHG-qYSU/view"
+programme_pdf_poids: "802 Ko"
 ---
 Java est un langage de programmation multi-plateforme et orienté objet. Il est largement utilisé aujourd'hui, dans le top 5 de l'indice Tiobe.
 

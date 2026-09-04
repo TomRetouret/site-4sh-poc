@@ -45,6 +45,8 @@ programme:
   - titre: "JavaScript au quotidien"
     items: ["Sucres syntaxiques", "Arrays", "Dates", "Manipulation du DOM"]
 faq: []
+programme_pdf: "https://drive.google.com/file/d/1HnFTTna7szDej_Ul4QtJhaZnfQ4Lv468/view"
+programme_pdf_poids: "723 Ko"
 ---
 Plongez dans le monde du développement web avec notre formation JavaScript Fondamental ! Ce programme intensif de trois jours est conçu pour transformer les débutants en développeurs JavaScript compétents et confiants.
 

@@ -45,6 +45,8 @@ programme:
     items: ["Intégrer manuellement la librairie dans un projet TypeScript", "Compiler et distribuer automatiquement la librairie", "Comprendre les contraintes du code Kotlin en JS", "Bonnes pratiques d'interopérabilité"]
   - titre: "Bibliothèques essentielles"
     items: ["Sérialisation avec KotlinX Serialization", "Requêtes réseau avec Ktor", "Gestion des dates avec KotlinX DateTime", "Bases de données avec SQLDelight", "Opérations sur les fichiers avec KotlinX IO"]
+programme_pdf: "https://drive.google.com/file/d/1Rmk9t8pWBwdyPcQIG5G7IrPYKefSXEY4/view"
+programme_pdf_poids: "680 Ko"
 ---
 Kotlin Multiplatform est une technologie permettant de réutiliser jusqu'à 100% de votre code entre Android, iOS, web et desktop, offrant ainsi aux équipes de développement la possibilité d'éviter les duplications de code tout en maintenant une expérience utilisateur native optimale sur chaque plateforme. De nombreuses entreprises ont adopté cette technologie et partagent désormais plus de 80% de leur logique applicative entre iOS et Android, ce qui leur permet de déployer de nouvelles fonctionnalités simultanément sur les deux plateformes tout en conservant la flexibilité de personnaliser certains aspects en fonction des spécificités de chaque environnement.
 

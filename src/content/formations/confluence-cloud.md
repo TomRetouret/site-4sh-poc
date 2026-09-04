@@ -46,6 +46,8 @@ faq:
     reponse: "Oui, la formation Confluence de 4SH inclut des modules sur la création et la structuration des espaces, ainsi que l'organisation des pages pour un accès simple et intuitif aux documents. Les participants apprendront à organiser efficacement le contenu pour une gestion de connaissances optimale."
   - question: "Cette formation aborde-t-elle la personnalisation de Confluence et ses intégrations avec d'autres outils ?"
     reponse: "Absolument, la formation explore les options de personnalisation de Confluence et ses intégrations avec d'autres outils Atlassian (comme Jira), permettant aux équipes de configurer l'outil selon leurs besoins spécifiques et de maximiser la collaboration au sein de leur organisation."
+programme_pdf: "https://drive.google.com/file/d/1Rn6gYmrInNyuMpUTLdz3QtAKHNLJzgM6/view"
+programme_pdf_poids: "708 Ko"
 ---
 Confluence est un outil de documentation collaboratif conçu par Atlassian. Il permet de créer des espaces documentaires partagés.
 

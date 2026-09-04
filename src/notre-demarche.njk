@@ -57,7 +57,7 @@ extraCss: /assets/logiciel-metier.css
 </section>
 
 <!-- MÉTHODE 4D -->
-<section id="methode">
+<section class="section-sombre" id="methode">
   <div class="container">
     <p class="eyebrow">{{ d.methode_eyebrow }}</p>
     <h2 class="sec-titre">{{ d.methode_titre | accent | safe }}</h2>
@@ -90,10 +90,13 @@ extraCss: /assets/logiciel-metier.css
     <p class="eyebrow">{{ d.engagements_eyebrow }}</p>
     <h2 class="sec-titre">{{ d.engagements_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ d.engagements_sous }}</p>
-    <div class="atouts" style="grid-template-columns:repeat(4,1fr)">
-      {% for a in d.engagements %}
-      <div class="atout"><span class="n">{{ loop.index }}</span><h3>{{ a.titre }}</h3><p>{{ a.texte }}</p></div>
-      {% endfor %}
+    <div class="carrousel car--blocs" data-carrousel data-carrousel-auto="off" aria-label="Nos engagements">
+      <div class="car-piste">
+        {% for a in d.engagements %}
+        <div class="atout"><span class="n">{{ loop.index }}</span><h3>{{ a.titre }}</h3><p>{{ a.texte }}</p></div>
+        {% endfor %}
+      </div>
+      <div class="car-dots"></div>
     </div>
   </div>
 </section>

@@ -63,6 +63,8 @@ faq:
     reponse: "Absolument, la formation inclut des exercices pratiques basés sur des cas d'usage réels, pour permettre aux participants de comprendre et appliquer les concepts clés de Kafka dans des conditions proches de la production."
   - question: "Comment se déroule la formation Kafka en termes de durée et de format ?"
     reponse: "La formation Kafka se déroule sur une durée de 2 jours (soit 14 heures) et combine 55 % de théorie et 45 % de pratique. Elle peut être suivie en présentiel dans vos locaux ou à distance via des sessions en ligne en visio."
+programme_pdf: "https://drive.google.com/file/d/1MwCrTIsAbzEyB2ABezMcJn4dngDNT0HX/view"
+programme_pdf_poids: "729 Ko"
 ---
 Apache Kafka est une solution open source créée pour les besoins de LinkedIn en 2011 comme réponse technique à la problématique d'ingestion des données en temps réel.
 

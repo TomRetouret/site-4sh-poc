@@ -55,6 +55,8 @@ faq:
     reponse: "La formation Git se déroule sur 2 jours (14h00) et combine 60 % de théorie et 40 % de pratique. Ce format équilibré permet d'acquérir à la fois les bases théoriques de l'utilisation de Git et de s'exercer à travers des cas concrets. Notre formateur peut dispenser cette formation à distance, ou en présentiel, au sein de votre entreprise selon votre lieu."
   - question: "Cette formation Git est-elle adaptée à mon niveau ?"
     reponse: "La formation Git - Les fondamentaux s'adresse aux professionnels ayant déjà des bases dans l'utilisation de Git, acquises via la formation Git - Les essentiels ou une expérience préalable. Pour les personnes n'ayant jamais utilisé Git, il est recommandé de commencer par la formation Git - Les essentiels, qui aborde les notions de base nécessaires pour aborder ce niveau plus avancé."
+programme_pdf: "https://drive.google.com/file/d/1QO4OTbeM_VzVAAUlcqXSj59qeRob33r-/view"
+programme_pdf_poids: "719 Ko"
 ---
 La formation Git - Les fondamentaux est conçue pour enseigner l'utilisation efficace de Git, un système de contrôle de version décentralisé (DVCS) orienté vers la rapidité, l'efficacité et la légèreté. En permettant la gestion de gros projets avec une grande souplesse dans le workflow de contribution, Git est devenu incontournable dans le domaine du développement logiciel.
 

@@ -36,6 +36,8 @@ programme:
     items: ["Concepts de responsive design", "Application des media queries pour adapter le design"]
   - titre: "Conclusion"
     items: []
+programme_pdf: "https://drive.google.com/file/d/18HZCJsYBI8zt7AWbcXGPFWGISLxe659V/view"
+programme_pdf_poids: "715 Ko"
 ---
 Découvrez les bases du développement web avec notre formation HTML/CSS - Les Essentiels. Conçue pour les débutants et ceux souhaitant acquérir une maîtrise rapide des outils de structuration et de stylisation des pages web, cette formation vous permettra de comprendre la structure HTML5 pour organiser le contenu d'une page web et d'utiliser CSS3 pour créer des designs élégants et adaptatifs.
 

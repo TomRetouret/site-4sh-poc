@@ -3,31 +3,92 @@ nom: "React Native"
 ordre: 5
 famille: "build"
 logo: "https://www.4sh.fr/assets/img/svg/trainings/logo-technos/react-native.svg"
-accroche_courte: "Développez vos idées en applications mobiles robustes."
-h1: "Développement React Native : donnez vie à vos *applications mobiles*"
-intro: "Développez vos idées en applications mobiles robustes et multiplateformes grâce à React Native."
-meta_title: "React Native : app mobile hybride iOS & Android – 4SH"
-meta_description: "React Native permet à 4SH de créer des apps mobiles sur mesure, multiplateformes, rapides à déployer et maintenables."
+accroche_courte: "Une seule base de code pour iOS et Android."
+h1: "Développement React Native : applications mobiles *cross-platform* iOS et Android"
+intro: "Le développement React Native permet de couvrir iOS et Android avec une seule base de code, sans sacrifier l'expérience utilisateur. Nous accompagnons les entreprises de la première version au produit installé sur des dizaines de milliers de téléphones."
+meta_title: "Développement React Native : app iOS et Android | 4SH"
+meta_description: "Développement React Native par 4SH : applications mobiles cross-platform iOS et Android. Expo, TypeScript, New Architecture. MVP, refonte ou migration native."
+requete_cible: "développement react native"
+source_confluence: "https://4sh-toolkit.atlassian.net/wiki/spaces/4SHWEB/pages/2478342210"
 source_url: "https://www.4sh.fr/expertises-techniques/react-native.html"
-pourquoi_titre: "Pourquoi utiliser *React Native* ?"
+pourquoi_eyebrow: "Pourquoi React Native ?"
+pourquoi_titre: "Pourquoi développer votre application en *React Native* ?"
+pourquoi_intro: "Le choix d'une techno mobile engage plusieurs années. Voici pourquoi React Native tient la route sur la durée."
+corps_eyebrow: "Notre expertise"
+corps_titre: "React Native *chez 4SH*"
+faq_titre: "FAQ : développement *React Native*"
 atouts:
-  - titre: "Développement multiplateforme"
-    texte: "Une base de code unique pour iOS et Android, ce qui réduit les coûts et accélère le développement. Plus besoin de maintenir deux versions distinctes de votre application."
-  - titre: "Performance optimale"
-    texte: "React Native permet d'obtenir des performances proches des applications natives grâce à son utilisation d'éléments natifs et à son moteur JavaScript performant."
-  - titre: "Compatible Apple et Google Store"
-    texte: "Les contraintes appliquées par les stores sur les applications hybrides sont de plus en plus fortes. React Native, en utilisant des composants natifs, sort de ces contraintes."
-  - titre: "Communauté active et avenir garanti"
-    texte: "La vaste communauté de développeurs React Native partage constamment des améliorations et des solutions aux défis rencontrés, assurant ainsi une évolution constante du framework. Utilisé par des entreprises de renom telles que Facebook, Instagram, et Airbnb, React Native prouve sa robustesse et sa fiabilité à grande échelle."
+  - titre: "Une seule base de code pour iOS et Android"
+    texte: "React Native partage un même code entre iOS et Android. Vous développez une fois, vous livrez sur les deux plateformes, avec des mises à jour synchronisées. Moins de coûts, moins de divergences entre versions, un produit cohérent partout."
+  - titre: "Un rendu proche du natif"
+    texte: "React Native s'appuie sur les composants natifs des plateformes. Avec le moteur Hermes et la New Architecture (Fabric, TurboModules), les performances et la fluidité se rapprochent du natif, y compris sur des interfaces animées et des écrans denses."
+  - titre: "Un écosystème mûr et une grande communauté"
+    texte: "React Native est utilisé en production par Meta, Instagram, Shopify, Discord ou Microsoft. Cet usage à grande échelle nourrit un écosystème riche et une communauté active, gage de pérennité et de solutions éprouvées."
+  - titre: "Un time-to-market et des coûts maîtrisés"
+    texte: "Développer une fois pour deux plateformes raccourcit le délai de mise sur le marché et réduit le budget global. Vous mettez votre application entre les mains de vos utilisateurs plus tôt, sur iOS comme sur Android."
 references:
-  - titre: "IZIVIA - Électromobilité"
-    lien: "https://play.google.com/store/apps/details?id=com.izivia.izivia"
-    texte: "L'efficacité du développement web appliquée au mobile : React Native nous permet d'avoir une seule technologie pour toutes nos plateformes, avec un écosystème riche et des outils puissants comme Mapbox pour un rendu cartographique avancé."
+  - titre: "Izivia - Électromobilité"
+    lien: "/references/izivia-app-mobile/"
+    texte: "Dans l'électromobilité, l'application grand public d'Izivia donne accès à un large réseau de points de recharge, avec un rendu cartographique avancé via Mapbox, en React Native."
   - titre: "Naxos - Immobilier"
-    lien: "https://play.google.com/store/apps/details?id=fr.naxos.marguerite.guyhoquet.mobile"
-    texte: "L'écosystème riche de React Native nous a permis un gain d'efficacité et ainsi une réduction du Time to Market ! Le client voulait des interfaces au plus proche de l'expérience native, le choix de React Native était parfait !"
+    lien: "/references/naxos/"
+    texte: "Nous avons développé pour Naxos une application mobile cross-platform en React Native."
 formations: []
+faq:
+  - question: "React Native ou développement natif, que choisir ?"
+    reponse: "Le natif se justifie quand vous avez besoin de performances graphiques extrêmes ou d'un accès matériel très poussé. Pour l'immense majorité des applications métier et grand public, React Native offre une expérience proche du natif à moindre coût, avec une seule base de code. Nous vous conseillons selon votre projet."
+  - question: "React Native ou Flutter ?"
+    reponse: "Les deux permettent le cross-platform. React Native s'appuie sur JavaScript et TypeScript, un écosystème très répandu et facile à recruter, et s'intègre naturellement avec le web. C'est notre choix par défaut, mais nous en discutons selon votre contexte et vos équipes."
+  - question: "Les applications React Native sont-elles performantes ?"
+    reponse: "Oui. Avec le moteur Hermes et la New Architecture, React Native atteint un niveau de fluidité proche du natif sur la grande majorité des usages. La performance dépend surtout de la qualité des développements, et c'est là que se joue notre travail."
+  - question: "Combien coûte le développement d'une application React Native ?"
+    reponse: "Développer une fois pour iOS et Android réduit le budget par rapport à deux applications natives. Le prix dépend ensuite du périmètre fonctionnel, des intégrations et du back-office. Nous vous remettons une fourchette précise après le cadrage."
+  - question: "Peut-on migrer une application native existante vers React Native ?"
+    reponse: "Oui, et souvent par étapes. Nous pouvons cohabiter avec l'existant et migrer écran par écran, pour réunir vos deux applications natives sous une seule technologie sans tout réécrire d'un coup."
+  - question: "Publiez-vous l'application sur l'App Store et Google Play ?"
+    reponse: "Oui. Nous gérons la préparation, la publication sur les deux stores et les mises à jour, y compris les livraisons over-the-air via CodePush quand c'est pertinent."
 ---
-Nos articles récents :
+
+Notre maîtrise de React Native s'inscrit dans l'ensemble de [nos expertises techniques](/expertises-techniques/), mobilisées selon les besoins de chaque projet. Ce n'est pas un ajout récent à notre catalogue : c'est une techno que nos équipes mobile pratiquent au quotidien.
+
+### Une stack moderne et outillée
+
+Nous travaillons avec la stack actuelle de l'écosystème : Expo pour accélérer le développement, TypeScript pour un code typé, React Navigation pour les parcours, Reanimated pour les animations fluides. Côté état, Redux Toolkit ou Zustand selon le projet, et TanStack Query pour la donnée. Les tests s'appuient sur Detox et Maestro, et nous industrialisons les livraisons avec EAS et CodePush.
+
+### Une intégration backend maîtrisée
+
+Une application mobile ne vit pas seule. Nous connectons vos applications React Native à un backend solide grâce à notre expertise en [développement Java](/expertises-techniques/java/) avec Spring Boot ou en [développement Kotlin](/expertises-techniques/kotlin/). Nous pouvons ainsi couvrir l'ensemble du projet avec une seule équipe.
+
+## Quels types d'applications développons-nous en React Native ?
+
+React Native s'adapte à des projets très différents, de la création d'une première version à la refonte complète d'une [application mobile sur mesure](/prestations/application-mobile/). Voici les projets que nous menons le plus souvent.
+
+### Applications grand public (B2C)
+
+Pour toucher un large public sur iOS et Android, React Native offre le meilleur compromis entre qualité d'expérience et coût de développement.
+
+### Applications métier (B2B et B2E)
+
+Nous outillons vos équipes et vos partenaires avec des applications métier, connectées à votre système d'information et pensées pour un usage professionnel quotidien.
+
+### Applications géolocalisées
+
+React Native gère très bien la cartographie et la géolocalisation. Pour Izivia, dans l'[électromobilité](/secteurs/electromobilite/), nous avons réuni toutes les plateformes derrière une seule technologie, avec un rendu cartographique avancé via Mapbox.
+
+### MVP et produits en lancement
+
+Pour valider une idée vite et à budget maîtrisé, React Native est idéal : un premier produit minimum viable sur les deux plateformes, prêt à évoluer.
+
+### Refonte et migration native vers React Native
+
+Vous maintenez deux applications natives coûteuses en parallèle ? Nous migrons progressivement vers React Native pour réunir vos développements sous une seule technologie.
+
+## Notre veille technique React Native
+
+Nos équipes partagent leurs pratiques sur le blog 4SH :
 
 - [Les bonnes pratiques pour intégrer une application avec React Native](https://blog.4sh.fr/2025/02/06/les-bonnes-pratiques-pour-integrer-une-application-avec-react-native/)
+
+## Un projet d'application mobile en React Native ?
+
+Échangeons sur votre projet. [Contactez nos experts mobile](/contact/).

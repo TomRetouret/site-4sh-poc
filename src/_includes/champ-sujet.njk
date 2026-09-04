@@ -1,0 +1,22 @@
+{#
+  Choix du type de demande.
+  Rendu natif (accessible, capté par Netlify Forms même sans JavaScript),
+  transformé en liste déroulante à la charte par assets/formulaires.js.
+  Chaque option porte l'adresse de destination : le script recopie celle de
+  l'option choisie dans le champ caché "destinataire", que la fonction
+  Netlify de routage lit à la réception.
+#}
+{%- set f = site.formulaire -%}
+{%- set idsuf = sujet_id or "sujet" -%}
+{% if f.sujets and f.sujets.length %}
+<label id="{{ idsuf }}-label" for="{{ idsuf }}">{{ f.label_sujet }}</label>
+<div class="champ-select" data-dropdown>
+  <select id="{{ idsuf }}" name="sujet" required>
+    <option value="" {% if not sujet_defaut %}selected{% endif %} disabled>{{ f.ph_sujet }}</option>
+    {% for s in f.sujets %}
+    <option value="{{ s.label }}" data-email="{{ s.email }}"{% if sujet_defaut and s.label == sujet_defaut %} selected{% endif %}>{{ s.label }}</option>
+    {% endfor %}
+  </select>
+</div>
+<input type="hidden" name="destinataire" value="{% if sujet_defaut %}{% for s in f.sujets %}{% if s.label == sujet_defaut %}{{ s.email }}{% endif %}{% endfor %}{% endif %}">
+{% endif %}

@@ -60,7 +60,32 @@
     "ph_besoin": "Ex. : nous gérons nos tournées sur Excel et ça ne tient plus...",
     "aide": "Pas besoin de cahier des charges à ce stade. Trois phrases suffisent.",
     "bouton": "Envoyer ma demande",
-    "reassurance": "Réponse sous 48 h, par quelqu'un qui a lu votre message."
+    "reassurance": "Réponse sous 48 h, par quelqu'un qui a lu votre message.",
+    "label_sujet": "Votre demande",
+    "ph_sujet": "Merci de sélectionner un sujet",
+    "sujets": [
+      {
+        "label": "J'ai un projet numérique",
+        "email": "contact@4sh.fr"
+      },
+      {
+        "label": "Je souhaite me former",
+        "email": "contact@4sh.fr"
+      },
+      {
+        "label": "Je souhaite une démo de la solution",
+        "email": "contact@4sh.fr"
+      },
+      {
+        "label": "J'ai besoin de renseignements",
+        "email": "contact@4sh.fr"
+      }
+    ],
+    "rgpd_texte": "J'ai pris connaissance de la notice d'informations RGPD et j'autorise 4SH à m'envoyer des informations.",
+    "rgpd_lien_label": "notice d'informations RGPD",
+    "rgpd_url": "/rgpd/",
+    "_note_sujets": "ADRESSES À RENSEIGNER : les 4 destinataires sont provisoirement sur contact@4sh.fr. Chaque sujet peut recevoir sa propre adresse, la demande part alors directement au bon interlocuteur.",
+    "sujet_defaut_formation": "Je souhaite me former"
   },
   "footer_colonnes": [
     {
@@ -68,23 +93,23 @@
       "liens": [
         {
           "label": "Logiciel métier",
-          "url": "/logiciel-metier/"
+          "url": "/prestations/logiciel-metier/"
         },
         {
           "label": "Application SaaS",
-          "url": "#"
+          "url": "/prestations/application-saas/"
         },
         {
           "label": "Application mobile",
-          "url": "#"
+          "url": "/prestations/application-mobile/"
         },
         {
-          "label": "Hébergement & maintenance",
-          "url": "#"
+          "label": "Hébergement & MCO",
+          "url": "/prestations/hebergement/"
         },
         {
           "label": "Audits",
-          "url": "#"
+          "url": "/prestations/audit-ux/"
         }
       ]
     },
@@ -133,17 +158,17 @@
           "url": "https://blog.4sh.fr/"
         },
         {
-          "label": "Glossaire",
-          "url": "/glossaire/"
+          "label": "Podcasts",
+          "url": "/podcasts/"
         },
         {
-          "label": "Formations",
-          "url": "/formations/"
+          "label": "Glossaire",
+          "url": "/glossaire/"
         }
       ]
     }
   ],
-  "footer_legal": "© 2007-2026 4SH · Mentions légales · RGPD · Charte RSE",
+  "footer_legal": "© 2007-2026 4SH",
   "footer_reseaux": [
     {
       "label": "LinkedIn",
@@ -152,7 +177,48 @@
     {
       "label": "YouTube",
       "url": "https://www.youtube.com/channel/UCVHyJe5yzBizDzxvaNDUAGQ"
+    },
+    {
+      "label": "X",
+      "url": "https://twitter.com/4sh_france"
+    },
+    {
+      "label": "Behance",
+      "url": "https://www.behance.net/4sh-france"
     }
   ],
-  "url": "https://www.4sh.fr"
+  "url": "https://www.4sh.fr",
+  "footer_liens_legaux": [
+    {
+      "label": "Mentions légales",
+      "url": "/mentions-legales/"
+    },
+    {
+      "label": "Notice d'informations RGPD",
+      "url": "/rgpd/"
+    },
+    {
+      "label": "Notre charte RSE",
+      "url": "https://drive.google.com/file/d/1JOFetCo1BX1ivMkoVkspNnBN1SN0zlCs/view"
+    }
+  ],
+  "footer_formations_titre": "Retrouvez nos formations sur :",
+  "footer_formations_liens": [
+    {
+      "label": "Topformation",
+      "url": "https://www.topformation.fr/formations/4sh/"
+    }
+  ],
+  "documents": {
+    "charte_rse_label": "Notre charte RSE",
+    "charte_rse_url": "https://drive.google.com/file/d/1JOFetCo1BX1ivMkoVkspNnBN1SN0zlCs/view",
+    "qualiopi_label": "Certification Qualiopi (PDF, 210 Ko)",
+    "qualiopi_url": "https://drive.google.com/file/d/1wYeDUX4-2dm5xIFdckPDb5_ETmU7GNrC/view",
+    "cgv_label": "Conditions générales de vente",
+    "cgv_url": "https://drive.google.com/file/d/1mkrzyEtiJvC9djN1fp9xZJvIZV8tIB6-/view",
+    "catalogue_label": "Télécharger notre catalogue",
+    "catalogue_url": "https://drive.google.com/file/d/1Dfm_MtS9eIAXpIptHMN2205O0Z9msKfT/view",
+    "accessibilite_label": "Télécharger la politique d'accessibilité de 4SH (PDF)",
+    "accessibilite_url": "https://drive.google.com/file/d/1wdF44lBtUmr39Kx5KA2jXBRqy8zqERbL/view"
+  }
 }

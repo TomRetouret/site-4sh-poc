@@ -48,6 +48,8 @@ programme:
     items: ["Opérateurs de transformation (map, filter, etc.)", "Opérateurs de combinaison (zip, combine, merge)", "Opérateurs de contrôle d'erreur et de complétion", "Opérateurs de contexte et de buffer"]
   - titre: "Les tests avec des coroutines"
     items: ["TestCoroutineDispatcher et TestCoroutineScope", "Simulation du temps avec runBlockingTest", "Techniques avancées pour tester le code asynchrone", "Bonnes pratiques et pièges à éviter"]
+programme_pdf: "https://drive.google.com/file/d/1Mp33DjpiL0TjbmMngU4wSm40p6EXGl0q/view"
+programme_pdf_poids: "675 Ko"
 ---
 Les coroutines Kotlin constituent une solution pour la programmation asynchrone, offrant un mécanisme léger qui permet de suspendre l'exécution d'une fonction sans bloquer le thread sous-jacent, ce qui facilite l'écriture de code asynchrone de manière séquentielle et plus lisible.
 

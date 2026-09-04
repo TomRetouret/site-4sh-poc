@@ -67,6 +67,8 @@ faq:
     reponse: "Oui, la formation JavaScript est accessible aux personnes débutant en programmation, même si une connaissance de base des concepts informatiques facilitera la prise en main."
   - question: "Quels outils sont nécessaires avant la formation ?"
     reponse: "Avant le démarrage, une liste complète des outils et prérequis vous sera transmise afin de préparer votre environnement de travail. L'équipe formatrice vous accompagnera si besoin dans leur installation."
+programme_pdf: "https://drive.google.com/file/d/1u-h46f_UZQGVozCwMh56sdFRdniDVBmr/view"
+programme_pdf_poids: "737 Ko"
 ---
 JavaScript est aujourd'hui le langage incontournable du développement web, utilisé aussi bien côté navigateur que côté serveur grâce à Node.js et, plus récemment, les pratiques de Server Side Rendering portées par des frameworks Front End.
 

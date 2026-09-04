@@ -33,6 +33,7 @@ formations:
     url: "/formations/kotlin-avance/"
   - titre: "Kotlin Coroutines - Avancé"
     url: "/formations/kotlin-coroutines/"
+corps_sombre: true
 ---
 En tant qu'experts de Kotlin, nous sommes activement impliqués dans la communauté Kotlin.
 

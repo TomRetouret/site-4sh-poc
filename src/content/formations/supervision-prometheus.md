@@ -62,6 +62,8 @@ faq:
     reponse: "Cette formation de Prometheus Supervision couvre les principes de base de la supervision de conteneurs avec Prometheus, en explorant ses composants essentiels tels que Grafana, kube-state-metrics et node-exporter. Les participants apprendront à déployer et configurer Prometheus, à comprendre les différents types de métriques et à utiliser le langage PromQL pour interroger les données. La formation inclut également la visualisation des métriques et la configuration des alertes afin de garantir une surveillance proactive des infrastructures."
   - question: "La formation Supervision Prometheus est-elle adaptée à tous les niveaux ?"
     reponse: "La formation Prometheus s'adresse à des professionnels ayant déjà une bonne maîtrise des concepts avancés de Kubernetes et des outils comme Helm. Les participants apprendront à configurer des systèmes complexes de supervision tout en développant des compétences pratiques sur PromQL, la gestion des alertes et la visualisation des données."
+programme_pdf: "https://drive.google.com/file/d/1EtfFn0gsI74SabxGUPuwbdxduPY_aIN-/view"
+programme_pdf_poids: "810 Ko"
 ---
 Prometheus est un pilier essentiel dans l'écosystème des outils de surveillance et d'alerte pour les infrastructures modernes. Cette formation sur Prometheus vise à doter les ingénieurs système et les administrateurs réseau des compétences nécessaires pour déployer, configurer et maintenir efficacement des systèmes de surveillance basés sur Prometheus.
 

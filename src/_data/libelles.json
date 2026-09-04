@@ -29,7 +29,9 @@
     "modalites_titre": "Modalités *d'accueil*",
     "autres_titre": "Les autres formations",
     "voir_toutes": "Voir toutes les formations",
-    "a_partir_de": "à partir de"
+    "a_partir_de": "à partir de",
+    "documents_titre": "Documents",
+    "programme_pdf_label": "Programme de la formation"
   },
   "modalites": [
     {
@@ -130,5 +132,29 @@
     "ph_besoin": "Ex. : former 6 développeurs, niveau fondamental, en intra...",
     "bouton": "Demander un devis",
     "reassurance": "Réponse sous 48 h. Vos données sont traitées selon notre notice RGPD."
+  },
+  "merci": {
+    "meta_title": "Merci, votre demande est envoyée - 4SH",
+    "meta_description": "Votre demande a bien été transmise à l'équipe 4SH.",
+    "eyebrow": "Demande envoyée",
+    "h1": "Merci, c'est *bien reçu*",
+    "chapo": "Votre demande est transmise à l'interlocuteur concerné. Vous recevrez une réponse sous 48 heures, par quelqu'un qui aura lu votre message.",
+    "retour_label": "Retour à l'accueil",
+    "retour_url": "/",
+    "liens_titre": "En attendant",
+    "liens": [
+      {
+        "label": "Nos réalisations",
+        "url": "/references/"
+      },
+      {
+        "label": "Comment se passe un projet",
+        "url": "/notre-demarche/"
+      },
+      {
+        "label": "Nos formations",
+        "url": "/formations/"
+      }
+    ]
   }
 }

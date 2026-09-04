@@ -11,7 +11,12 @@
       "Multidisciplinary teams in Bordeaux, Capbreton and Paris",
       "And if custom software isn't the right call, we'll tell you"
     ],
-    "visages": ["SA", "JP", "TM", "+40"],
+    "visages": [
+      "SA",
+      "JP",
+      "TM",
+      "+40"
+    ],
     "note": "The 4SH team, the one you'll actually have on the phone.",
     "coord_tel_titre": "By phone",
     "coord_agences_titre": "Our offices"
@@ -19,12 +24,30 @@
   "footer_accroche": "Custom software development agency since 2007.",
   "clients_intro": "They trust us with their business:",
   "clients": [
-    { "nom": "EDF business service", "url": "/references/izivia-portail/" },
-    { "nom": "SUD OUEST", "url": "/references/sud-ouest-socoa/" },
-    { "nom": "FILHET-ALLARD", "url": "/references/filhet-allard/" },
-    { "nom": "CIN", "url": "/references/cin/" },
-    { "nom": "ARRG", "url": "/references/arrg/" },
-    { "nom": "BME", "url": "" }
+    {
+      "nom": "EDF business service",
+      "url": "/references/izivia-portail/"
+    },
+    {
+      "nom": "SUD OUEST",
+      "url": "/references/sud-ouest-socoa/"
+    },
+    {
+      "nom": "FILHET-ALLARD",
+      "url": "/references/filhet-allard/"
+    },
+    {
+      "nom": "CIN",
+      "url": "/references/cin/"
+    },
+    {
+      "nom": "ARRG",
+      "url": "/references/arrg/"
+    },
+    {
+      "nom": "BME",
+      "url": ""
+    }
   ],
   "formulaire": {
     "label_nom": "Your name",
@@ -37,45 +60,165 @@
     "ph_besoin": "e.g.: we run our rounds on Excel and it no longer holds up...",
     "aide": "No need for a spec sheet at this stage. Three sentences are enough.",
     "bouton": "Send my request",
-    "reassurance": "Reply within 48h, from someone who has read your message."
+    "reassurance": "Reply within 48h, from someone who has read your message.",
+    "label_sujet": "Your enquiry",
+    "ph_sujet": "Please select a subject",
+    "sujets": [
+      {
+        "label": "I have a software project",
+        "email": "contact@4sh.fr"
+      },
+      {
+        "label": "I am looking for training",
+        "email": "contact@4sh.fr"
+      },
+      {
+        "label": "I would like a product demo",
+        "email": "contact@4sh.fr"
+      },
+      {
+        "label": "I need some information",
+        "email": "contact@4sh.fr"
+      }
+    ],
+    "rgpd_texte": "I have read the GDPR privacy notice and allow 4SH to send me information.",
+    "rgpd_lien_label": "GDPR privacy notice",
+    "rgpd_url": "/rgpd/",
+    "_note_sujets": "ADRESSES À RENSEIGNER : les 4 destinataires sont provisoirement sur contact@4sh.fr. Chaque sujet peut recevoir sa propre adresse, la demande part alors directement au bon interlocuteur.",
+    "sujet_defaut_formation": "I am looking for training"
   },
   "footer_colonnes": [
     {
       "titre": "Services",
       "liens": [
-        { "label": "Business software", "url": "/logiciel-metier/" },
-        { "label": "SaaS application", "url": "#" },
-        { "label": "Mobile application", "url": "#" },
-        { "label": "Hosting & maintenance", "url": "#" },
-        { "label": "Audits", "url": "#" }
+        {
+          "label": "Business software",
+          "url": "/prestations/logiciel-metier/"
+        },
+        {
+          "label": "SaaS application",
+          "url": "#"
+        },
+        {
+          "label": "Mobile application",
+          "url": "#"
+        },
+        {
+          "label": "Hosting & maintenance",
+          "url": "#"
+        },
+        {
+          "label": "Audits",
+          "url": "#"
+        }
       ]
     },
     {
       "titre": "Training",
       "liens": [
-        { "label": "All training courses", "url": "/en/training/" },
-        { "label": "Develop", "url": "/formations/develop/" },
-        { "label": "Design", "url": "/formations/design/" },
-        { "label": "DevOps", "url": "/formations/devops/" },
-        { "label": "Tools", "url": "/formations/outils/" }
+        {
+          "label": "All training courses",
+          "url": "/en/training/"
+        },
+        {
+          "label": "Develop",
+          "url": "/formations/develop/"
+        },
+        {
+          "label": "Design",
+          "url": "/formations/design/"
+        },
+        {
+          "label": "DevOps",
+          "url": "/formations/devops/"
+        },
+        {
+          "label": "Tools",
+          "url": "/formations/outils/"
+        }
       ]
     },
     {
       "titre": "Company",
       "liens": [
-        { "label": "How a project unfolds", "url": "/notre-demarche/" },
-        { "label": "Case studies", "url": "/references/" },
-        { "label": "The team", "url": "/en/company/" },
-        { "label": "Blog", "url": "https://blog.4sh.fr/" },
-        { "label": "Glossary", "url": "/glossaire/" },
-        { "label": "Training", "url": "/en/training/" }
+        {
+          "label": "How a project unfolds",
+          "url": "/notre-demarche/"
+        },
+        {
+          "label": "Case studies",
+          "url": "/references/"
+        },
+        {
+          "label": "The team",
+          "url": "/en/company/"
+        },
+        {
+          "label": "Blog",
+          "url": "https://blog.4sh.fr/"
+        },
+        {
+          "label": "Glossary",
+          "url": "/glossaire/"
+        },
+        {
+          "label": "Training",
+          "url": "/en/training/"
+        }
       ]
     }
   ],
-  "footer_legal": "© 2007-2026 4SH · Legal notice · GDPR · CSR charter",
+  "footer_legal": "© 2007-2026 4SH",
   "footer_reseaux": [
-    { "label": "LinkedIn", "url": "https://www.linkedin.com/company/4sh-france/" },
-    { "label": "YouTube", "url": "https://www.youtube.com/channel/UCVHyJe5yzBizDzxvaNDUAGQ" }
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/company/4sh-france/"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/channel/UCVHyJe5yzBizDzxvaNDUAGQ"
+    },
+    {
+      "label": "X",
+      "url": "https://twitter.com/4sh_france"
+    },
+    {
+      "label": "Behance",
+      "url": "https://www.behance.net/4sh-france"
+    }
   ],
-  "url": "https://www.4sh.fr"
+  "url": "https://www.4sh.fr",
+  "footer_liens_legaux": [
+    {
+      "label": "Legal notice",
+      "url": "/mentions-legales/"
+    },
+    {
+      "label": "GDPR privacy notice",
+      "url": "/rgpd/"
+    },
+    {
+      "label": "Our CSR charter",
+      "url": "https://drive.google.com/file/d/1JOFetCo1BX1ivMkoVkspNnBN1SN0zlCs/view"
+    }
+  ],
+  "footer_formations_titre": "Find our training courses on:",
+  "footer_formations_liens": [
+    {
+      "label": "Topformation",
+      "url": "https://www.topformation.fr/formations/4sh/"
+    }
+  ],
+  "documents": {
+    "charte_rse_label": "Notre charte RSE",
+    "charte_rse_url": "https://drive.google.com/file/d/1JOFetCo1BX1ivMkoVkspNnBN1SN0zlCs/view",
+    "qualiopi_label": "Certification Qualiopi (PDF, 210 Ko)",
+    "qualiopi_url": "https://drive.google.com/file/d/1wYeDUX4-2dm5xIFdckPDb5_ETmU7GNrC/view",
+    "cgv_label": "Conditions générales de vente",
+    "cgv_url": "https://drive.google.com/file/d/1mkrzyEtiJvC9djN1fp9xZJvIZV8tIB6-/view",
+    "catalogue_label": "Télécharger notre catalogue",
+    "catalogue_url": "https://drive.google.com/file/d/1Dfm_MtS9eIAXpIptHMN2205O0Z9msKfT/view",
+    "accessibilite_label": "Télécharger la politique d'accessibilité de 4SH (PDF)",
+    "accessibilite_url": "https://drive.google.com/file/d/1wdF44lBtUmr39Kx5KA2jXBRqy8zqERbL/view"
+  }
 }

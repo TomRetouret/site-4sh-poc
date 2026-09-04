@@ -62,6 +62,8 @@ programme:
     items: ["Encapsulation dans un projet multi-module", "Utilisation des Opt-ins pour une encapsulation fine", "Bonnes pratiques de développement en Kotlin", "Utilisation efficace d'IntelliJ IDEA"]
   - titre: "Jour 2 - Tests en Kotlin"
     items: ["Écrire des tests en Kotlin", "Frameworks de test (JUnit, Kotest, etc.)", "Mocks et tests de propriétés", "Tests concis et expressifs"]
+programme_pdf: "https://drive.google.com/file/d/17J-OPj94SQkR7oFfOOubgOBspOo2Kld_/view"
+programme_pdf_poids: "783 Ko"
 ---
 Kotlin est un langage de programmation moderne, concis et pragmatique, qui permet de partager du code au travers de différentes plateformes (ex: mobile, web, desktop). Développé par JetBrains, ce langage multiplateforme à typage statique garantit la sécurité du code grâce à son système de types. Conçu pour améliorer la productivité des développeurs, Kotlin offre une excellente interopérabilité avec Java et d'autres langages, tout en proposant de nombreuses fonctionnalités avancées comme les coroutines pour la programmation asynchrone.
 

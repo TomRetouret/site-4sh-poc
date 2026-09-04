@@ -11,7 +11,7 @@ extraCss: /assets/references.css
       <div>
         <span class="eyebrow">{{ libelles.reference.eyebrow }}{% if secteurs and secteurs.length %} · {{ secteurs[0] }}{% endif %}</span>
         {% if logo %}<div class="ref-logo-detail"><img src="{{ logo }}" alt="{{ client }}" decoding="async"></div>{% endif %}
-        <h1>{{ h1 or titre }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
+        <h1>{{ (h1 or titre) | accent | safe }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
         {% if sous_titre %}<p class="chapo">{{ sous_titre }}</p>{% elif resume %}<p class="chapo">{{ resume }}</p>{% endif %}
         {% if stats and stats.length %}
         <div class="ref-preuve">{% for s in stats %}<div class="stat"><b>{{ s.chiffre }}</b><span>{{ s.label }}</span></div>{% endfor %}</div>

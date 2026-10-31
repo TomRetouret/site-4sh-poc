@@ -1,0 +1,177 @@
+/* ============================================================
+   4SH · Mouvement (phase 2)
+   Chargée APRÈS charte.css. Pour tout couper : retirer la ligne
+   de cette feuille et celle de mouvement.js dans base.njk.
+
+   Grammaire (charte v1.1, page « Mouvement ») :
+   - courbe de décélération unique : cubic-bezier(0.2, 0, 0, 1) ;
+   - tracé de gauche à droite : départ 300 ms, dernier palier 900 ms,
+     losange allumé à 1 050 ms ;
+   - losange du menu : glisse vers l'élément visé en 200 ms ;
+   - jamais de boucle, de parallaxe ni de compteur qui défile ;
+   - entrées au défilement une seule fois par élément (levée de la
+     règle « rien au défilement » pour la phase 2) ;
+   - propriétés animées : transform, opacity, stroke-dashoffset,
+     clip-path, uniquement ; durées de 200 à 1 100 ms ;
+   - prefers-reduced-motion : état final affiché directement.
+
+   Amélioration progressive : rien n'est masqué tant que
+   mouvement.js n'a pas posé la classe .mv sur <html>, et le script
+   ne la pose que si IntersectionObserver est disponible.
+   ============================================================ */
+
+:root{
+  --mv-courbe:cubic-bezier(0.2,0,0,1);
+  --mv-entree:600ms;   /* titres et cartes */
+  --mv-bloc:800ms;     /* chiffres clés */
+  --mv-trace:600ms;    /* tracés et plans : 300 -> 900 ms */
+  --mv-survol:200ms;
+}
+
+/* ---------- 1. Entrées au défilement (une fois par élément) ---------- */
+
+/* Titres, chapeaux, sous-titres : glissement court de gauche à droite */
+html.mv .mv-e{
+  transition:
+    opacity var(--mv-entree) var(--mv-courbe) var(--mv-delai,0ms),
+    transform var(--mv-entree) var(--mv-courbe) var(--mv-delai,0ms)!important;
+}
+html.mv .mv-e:not(.mv-vu){opacity:0!important}
+html.mv .mv-glisse:not(.mv-vu){transform:translate3d(-16px,0,0)!important}
+
+/* Cartes et étapes : montée courte */
+html.mv .mv-monte:not(.mv-vu){transform:translate3d(0,16px,0)!important}
+
+/* Barre d'offre de l'étiquette (24 x 4) : se trace après le texte */
+html.mv .mv-glisse .barre{
+  transform-origin:left center;
+  transition:transform 400ms var(--mv-courbe) calc(var(--mv-delai,0ms) + 200ms);
+}
+html.mv .mv-glisse:not(.mv-vu) .barre{transform:scaleX(0)}
+
+/* Chiffres clés : le bloc (filet + chiffre) se révèle de gauche à droite,
+   le chiffre apparaît d'un coup, il ne défile jamais */
+html.mv .mv-bloc{
+  transition:clip-path var(--mv-bloc) var(--mv-courbe) var(--mv-delai,0ms)!important;
+  clip-path:inset(-24px -24px -24px -24px);
+}
+html.mv .mv-bloc:not(.mv-vu){clip-path:inset(-24px 100% -24px -24px)}
+
+/* ---------- 2. Plans et tracés de marque ---------- */
+
+/* Plans pleins (hero, bloc contact) : le plan monte ses paliers de gauche
+   à droite (300 -> 900 ms), puis le losange blanc s'allume (1 050 ms) */
+html.mv .mv-plan{
+  transition:clip-path var(--mv-trace) var(--mv-courbe) 300ms!important;
+  clip-path:inset(0 0 0 0);
+}
+html.mv .mv-plan:not(.mv-vu){clip-path:inset(0 100% 0 0)}
+
+/* Tracé encre de la méthode 4D : se dessine (stroke-dashoffset) */
+html.mv .mv-trace > path:first-child{
+  transition:stroke-dashoffset var(--mv-trace) var(--mv-courbe) 300ms;
+}
+html.mv .mv-trace:not(.mv-vu) > path:first-child{stroke-dashoffset:var(--mv-long,0)}
+
+/* Losange : s'allume en dernier, ne tourne pas, ne bouge pas */
+html.mv .mv-plan > path:last-child,
+html.mv .mv-trace > path:last-child{
+  transition:opacity 200ms var(--mv-courbe) 850ms;
+}
+html.mv .mv-plan:not(.mv-vu) > path:last-child,
+html.mv .mv-trace:not(.mv-vu) > path:last-child{opacity:0}
+
+/* ---------- 3. Losange du menu : glisse vers l'entrée survolée ---------- */
+.mv-losange{
+  position:absolute;left:0;top:50%;
+  width:8px;height:8px;
+  background:var(--accent);
+  pointer-events:none;
+  opacity:0;
+  transform:translate3d(0,0,0) rotate(45deg); /* forme du losange, fixe */
+  transition:
+    transform var(--mv-survol) var(--mv-courbe),
+    opacity var(--mv-survol) var(--mv-courbe);
+  z-index:1;
+}
+.mv-losange.mv-allume{opacity:1}
+.mv-losange.mv-sur-place{transition:opacity var(--mv-survol) var(--mv-courbe)}
+.mv-losange.mv-immediat{transition:none}
+@media (min-width:1025px){
+  /* Le losange mobile prend le relais du losange fixe de l'entrée active */
+  html.mv-menu .menu>li>a.actif::after,
+  html.mv-menu .menu>li>a[aria-current="page"]::after,
+  html.mv-menu .lien-formations.actif::after{opacity:0}
+}
+@media (max-width:1024px){.mv-losange{display:none}}
+
+/* ---------- 4. Méga-menus et menus simples : ouverture ---------- */
+@media (min-width:1025px){
+  .menu>li:hover>.deroulant,
+  .menu>li:focus-within>.deroulant{animation:mv-deroule 200ms var(--mv-courbe) both}
+  .menu>li:hover>.deroulant>*,
+  .menu>li:focus-within>.deroulant>*{animation:mv-deroule-contenu 300ms var(--mv-courbe) both}
+  .menu>li:hover>.deroulant>:nth-child(2),
+  .menu>li:focus-within>.deroulant>:nth-child(2){animation-delay:40ms}
+  .menu>li:hover>.deroulant>:nth-child(3),
+  .menu>li:focus-within>.deroulant>:nth-child(3){animation-delay:80ms}
+  .menu>li:hover>.deroulant>:nth-child(n+4),
+  .menu>li:focus-within>.deroulant>:nth-child(n+4){animation-delay:120ms}
+}
+@keyframes mv-deroule{from{opacity:0;transform:translate3d(0,-6px,0)}to{opacity:1;transform:none}}
+@keyframes mv-deroule-contenu{from{opacity:0;transform:translate3d(-8px,0,0)}to{opacity:1;transform:none}}
+
+/* ---------- 5. FAQ : la réponse se pose à l'ouverture ---------- */
+.faq details.mv-deplie > :not(summary){animation:mv-deplie 280ms var(--mv-courbe) both}
+@keyframes mv-deplie{from{opacity:0;transform:translate3d(0,-6px,0)}to{opacity:1;transform:none}}
+
+/* ---------- 6. Survol des cartes ---------- */
+
+/* Flèche des liens « Découvrir → » : avance de 4 px (span posé par le JS) */
+.mv-fleche{display:inline-block;transition:transform var(--mv-survol) var(--mv-courbe)}
+a:hover .mv-fleche,a:focus-visible .mv-fleche,
+.socle-carte:hover .mv-fleche,.sect-ref-carte:hover .mv-fleche,
+.promo-services:hover .mv-fleche{transform:translate3d(4px,0,0)}
+
+/* Filet d'accent : se trace de gauche à droite sur les cartes à bord fin */
+.secteur-carte,.cas,.blog-carte{position:relative}
+.secteur-carte::after,.cas::after,.blog-carte::after{
+  content:"";position:absolute;left:0;right:0;top:0;height:2px;
+  background:var(--accent);
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 300ms var(--mv-courbe);
+  pointer-events:none;z-index:3;
+}
+.secteur-carte:focus-within::after,.cas:focus-within::after,.blog-carte:focus-within::after{transform:scaleX(1)}
+
+/* Filet d'offre déjà présent (4 px) : se renforce à 6 px */
+.porte::after,.sect-ref-carte::after,a.sect-defi::after{
+  content:"";position:absolute;left:0;right:0;top:0;height:2px;
+  background:var(--accent);
+  transform:scaleY(0);transform-origin:center top;
+  transition:transform var(--mv-survol) var(--mv-courbe);
+  pointer-events:none;z-index:3;
+}
+.sect-ref-carte::after,a.sect-defi::after{top:4px}
+.porte:focus-within::after,.sect-ref-carte:focus-within::after,a.sect-defi:focus-visible::after{transform:scaleY(1)}
+
+@media (hover:hover) and (pointer:fine){
+  .secteur-carte:hover::after,.cas:hover::after,.blog-carte:hover::after{transform:scaleX(1)}
+  .porte:hover::after,.sect-ref-carte:hover::after,a.sect-defi:hover::after{transform:scaleY(1)}
+}
+
+/* ---------- 7. Mouvement réduit et impression : état final direct ---------- */
+@media (prefers-reduced-motion:reduce){
+  html.mv .mv-e,html.mv .mv-bloc,html.mv .mv-plan{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important}
+  html.mv .mv-glisse .barre{transform:none!important}
+  html.mv .mv-trace > path:first-child{stroke-dashoffset:0!important}
+  html.mv .mv-plan > path,html.mv .mv-trace > path{opacity:1!important}
+  .mv-losange,.mv-fleche,.secteur-carte::after,.cas::after,.blog-carte::after,.porte::after,.sect-ref-carte::after,a.sect-defi::after{transition:none!important}
+  .menu .deroulant,.menu .deroulant>*,.faq details > *{animation:none!important}
+}
+@media print{
+  html.mv .mv-e,html.mv .mv-bloc,html.mv .mv-plan{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important}
+  html.mv .mv-glisse .barre{transform:none!important}
+  html.mv .mv-trace > path:first-child{stroke-dashoffset:0!important}
+  html.mv .mv-plan > path,html.mv .mv-trace > path{opacity:1!important}
+}

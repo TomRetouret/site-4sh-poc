@@ -1,0 +1,77 @@
+{#
+  COMPOSANTS DE CARTE
+  Les cartes partagees par plusieurs gabarits. Les cartes propres a une seule
+  page restent dans la section qui les porte : les sortir ici n'apporterait
+  qu'un niveau d'indirection.
+  Voir composants/README.md.
+#}
+
+{# ---------------------------------------------------------------------------
+   carte_ref(ref, une=false)
+   La fiche reference du catalogue. ref : un element de collections.references.
+   une=true : format « une », pleine largeur, visuel a gauche.
+   Utilisee par : index des references, prestation, page libre, secteur.
+--------------------------------------------------------------------------- #}
+{% macro carte_ref(ref, une=false) %}
+<article class="ref-carte{% if une %} ref-carte--une{% endif %}"
+  data-secteurs="{{ ref.data.secteurs | join(',') | lower }}"
+  data-technologies="{{ ref.data.technologies | join(',') | lower }}"
+  data-nom="{{ (ref.data.titre ~ ' ' ~ ref.data.client ~ ' ' ~ ref.data.resume ~ ' ' ~ (ref.data.technologies | join(' ')) ~ ' ' ~ (ref.data.secteurs | join(' '))) | lower }}">
+  <div class="ref-visuel{% if not ref.data.image %} ref-visuel--vide{% endif %}">
+    {% if ref.data.image %}<img src="{{ ref.data.image }}" alt="{{ ref.data.titre }}" loading="lazy" decoding="async" width="600" height="450">{% else %}<span class="ref-vide-nom">{{ ref.data.client }}</span>{% endif %}
+    <div class="ref-cartouche">{% if ref.data.logo %}<img src="{{ ref.data.logo }}" alt="{{ ref.data.client }}" loading="lazy" decoding="async">{% else %}<span class="ref-cartouche-txt">{{ ref.data.client }}</span>{% endif %}</div>
+  </div>
+  <div class="ref-carte-corps">
+    {% if ref.data.secteurs and ref.data.secteurs.length %}<span class="ref-secteur">{{ ref.data.secteurs[0] }}</span>{% endif %}
+    <h3><a href="{{ ref.url }}">{{ ref.data.titre }}</a></h3>
+    <p class="resume">{{ ref.data.resume }}</p>
+    {% if ref.data.technologies and ref.data.technologies.length %}
+    <div class="ref-tags">{% for t in ref.data.technologies %}{% if loop.index <= 4 %}<span>{{ t }}</span>{% endif %}{% endfor %}</div>
+    {% endif %}
+  </div>
+</article>
+{% endmacro %}
+
+{# ---------------------------------------------------------------------------
+   apercu_projet(titre, texte, fiche=null, lien=null, libelle_lien=null)
+   Carte d'apercu d'un projet : titre et texte imposes par la page, visuel et
+   logo tires de la fiche reference quand elle est trouvee.
+
+   titre        : titre affiche, celui de la page
+   texte        : texte affiche, celui de la page
+   fiche        : element de collections.references, ou null
+   lien         : URL de sortie (par defaut la fiche)
+   libelle_lien : libelle du lien de sortie
+
+   Le filtre « blocs » de eleventy.config.js produit la meme carte en JS pour
+   les sections generees depuis le markdown : toute retouche ici doit y etre
+   reportee (chercher carteRefItem).
+--------------------------------------------------------------------------- #}
+{% macro apercu_projet(titre, texte, fiche=null, lien=null, libelle_lien="Voir la référence") %}
+{%- set url = lien or (fiche.url if fiche else null) -%}
+<div class="sect-ref-carte">
+  {% if fiche and fiche.data.image %}
+  <div class="sect-ref-visuel">
+    <img src="{{ fiche.data.image }}" alt="{{ fiche.data.titre }}" loading="lazy" decoding="async">
+    <div class="ref-cartouche">{% if fiche.data.logo %}<img src="{{ fiche.data.logo }}" alt="{{ fiche.data.client }}" loading="lazy" decoding="async">{% else %}<span class="ref-cartouche-txt">{{ fiche.data.client }}</span>{% endif %}</div>
+  </div>
+  {% else %}
+  <div class="sect-ref-visuel ref-visuel--vide"><span class="ref-vide-nom">{{ (fiche.data.client if fiche else titre.split(" - ")[0]) }}</span></div>
+  {% endif %}
+  <div class="sect-ref-corps">
+    <span class="sect-ref-label">{% if fiche and fiche.data.secteurs and fiche.data.secteurs.length %}{{ fiche.data.secteurs[0] }}{% else %}Projet{% endif %}</span>
+    <h3>{{ titre }}</h3>
+    <div class="sect-ref-texte"><p>{{ texte }}</p></div>
+    {% if url %}<a class="socle-lien" href="{{ url }}"{% if "http" in url %} target="_blank" rel="noopener"{% endif %}>{{ libelle_lien }} &rarr;</a>{% endif %}
+  </div>
+</div>
+{%- endmacro %}
+
+{# ---------------------------------------------------------------------------
+   carte_atout(atout, rang=null)
+   Carte numerotee « pourquoi nous ». atout : { titre, texte }
+   Utilisee par : notre demarche, fiches technologie.
+--------------------------------------------------------------------------- #}
+{% macro carte_atout(atout, rang=null) %}
+<div class="atout">{% if rang %}<span class="n">{{ rang }}</span>{% endif %}<h3>{{ atout.titre }}</h3><p>{{ atout.texte }}</p></div>
+{%- endmacro %}

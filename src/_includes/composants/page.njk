@@ -1,0 +1,91 @@
+{#
+  COMPOSANTS DE CHROME DE PAGE
+  Fil d'Ariane, hero editorial, doodles et bandeau de chiffres.
+  Voir composants/README.md pour la liste complete et les conventions.
+#}
+
+{# ---------------------------------------------------------------------------
+   doodle(type)
+   Les traces manuscrites de la charte. Un seul endroit ou vivent les traces,
+   au lieu d'un SVG recopie dans chaque gabarit.
+   type : "vague" (souligne de titre), "asterisque", "fleche", "fleche-mini",
+          "spirale"
+--------------------------------------------------------------------------- #}
+{% macro doodle(type="vague") %}
+{%- if type == "vague" -%}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg>
+{%- elif type == "vague-large" -%}<svg class="doodle doodle-vague" width="96" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg>
+{%- elif type == "asterisque" -%}<svg class="doodle doodle-asterisque" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M13 3.5c-.4 3.2-.2 6.4.2 19M4.2 8.2c5.8 3.4 11.7 6.6 17.6 9.6M21.8 8.2C16 11.6 10.1 14.8 4.2 17.8"/></svg>
+{%- elif type == "fleche" -%}<svg class="doodle doodle-fleche" width="92" height="58" viewBox="0 0 92 58" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M88 6C74 34 48 47 12 48"/><path d="M22 40.5 11.5 48l11 5.5"/></svg>
+{%- elif type == "fleche-mini" -%}<svg class="doodle doodle-fleche-mini" width="54" height="20" viewBox="0 0 54 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10c18 0 34 0 48 0"/><path d="M44 4l7 6-7 6"/></svg>
+{%- elif type == "spirale" -%}<svg class="doodle doodle-spirale" width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M27 27c0-3 4-4 6-1s0 8-5 9-11-2-12-9 5-14 13-14 16 6 16 15c0 2-.4 4-1 6"/><path d="M41.5 29.5 44 33l3.6-2"/></svg>
+{%- endif -%}
+{% endmacro %}
+
+{# ---------------------------------------------------------------------------
+   fil_ariane(courant, parents=[])
+   courant : libelle de la page en cours, non cliquable
+   parents : niveaux intermediaires, [{ label, url }]. « Accueil » est ajoute
+             en premier automatiquement.
+--------------------------------------------------------------------------- #}
+{% macro fil_ariane(courant, parents=[]) %}
+<nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; {% for p in parents %}<a href="{{ p.url }}">{{ p.label }}</a> &rsaquo; {% endfor %}{{ courant }}</nav>
+{%- endmacro %}
+
+{# ---------------------------------------------------------------------------
+   hero(titre, ...)
+   Le hero sombre des pages editoriales : fil d'Ariane, chapeau, H1 souligne
+   d'un doodle, accroche et boutons.
+
+   titre    : titre de la page, sert de repli au H1 et de dernier niveau du
+              fil d'Ariane
+   h1       : H1 si different du titre (le filtre accent est applique)
+   eyebrow  : petit chapeau au-dessus du H1
+   chapo    : phrase d'accroche
+   parents  : niveaux intermediaires du fil d'Ariane, [{ label, url }]
+   ariane   : false pour ne pas afficher de fil d'Ariane du tout
+   trace    : false pour un H1 sans doodle
+   logo     : URL d'un logo affiche au-dessus du H1
+   ctas     : boutons, [{ label, url, fantome, externe }]
+--------------------------------------------------------------------------- #}
+{% macro hero(titre, h1=null, eyebrow=null, chapo=null, parents=[], ariane=true, trace=true, logo=null, ctas=[]) %}
+<section class="sect-hero">
+  <div class="container">
+    {%- if ariane %}
+    {{ fil_ariane(titre, parents) }}
+    {%- endif %}
+    {%- if eyebrow %}
+    <span class="eyebrow">{{ eyebrow }}</span>
+    {%- endif %}
+    {%- if logo %}
+    <div class="sect-logo"><img src="{{ logo }}" alt="{{ titre }}"></div>
+    {%- endif %}
+    <h1>{{ (h1 or titre) | accent | safe }}{% if trace %}{{ doodle("vague") }}{% endif %}</h1>
+    {%- if chapo %}
+    <p class="accroche">{{ chapo }}</p>
+    {%- endif %}
+    {%- if ctas and ctas.length %}
+    <div class="hero-cta">
+      {%- for c in ctas %}
+      <a class="btn {% if c.fantome %}btn-ghost{% else %}btn-primary{% endif %}" href="{{ c.url }}"{% if c.externe %} target="_blank" rel="noopener"{% endif %}>{{ c.label }}</a>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </div>
+</section>
+{%- endmacro %}
+
+{# ---------------------------------------------------------------------------
+   bandeau_chiffres(chiffres)
+   Bande sombre de resultats chiffres. chiffres : [{ chiffre, label }]
+--------------------------------------------------------------------------- #}
+{% macro bandeau_chiffres(chiffres) %}
+{%- if chiffres and chiffres.length %}
+<div class="ref-resultats">
+  <div class="container">
+    <div class="grille">
+      {% for c in chiffres %}<div class="stat"><b>{{ c.chiffre | accent | safe }}</b><span>{{ c.label }}</span></div>{% endfor %}
+    </div>
+  </div>
+</div>
+{%- endif %}
+{%- endmacro %}

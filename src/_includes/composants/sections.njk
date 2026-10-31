@@ -1,0 +1,105 @@
+{#
+  COMPOSANTS DE SECTION
+  Les sections qui reviennent d'une page a l'autre : titre de section, FAQ et
+  son schema, bloc de references, frise d'etapes, carrousel.
+  Voir composants/README.md.
+#}
+{% import "composants/cartes.njk" as cartes %}
+
+{# ---------------------------------------------------------------------------
+   faq_accordeon(items)
+   La liste depliante seule. items : [{ question, reponse }]
+--------------------------------------------------------------------------- #}
+{% macro faq_accordeon(items, style=null) %}
+<div class="faq"{% if style %} style="{{ style }}"{% endif %}>
+  {% for item in items %}
+  <details{% if loop.first %} open{% endif %}>
+    <summary>{{ item.question }}</summary>
+    <p>{{ item.reponse }}</p>
+  </details>
+  {% endfor %}
+</div>
+{%- endmacro %}
+
+{# ---------------------------------------------------------------------------
+   faq_schema(items)
+   Le JSON-LD FAQPage. A poser sur toute page qui affiche une FAQ.
+--------------------------------------------------------------------------- #}
+{% macro faq_schema(items) %}
+{%- if items and items.length %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for item in items %}{"@type":"Question","name":{{ item.question | dump | safe }},"acceptedAnswer":{"@type":"Answer","text":{{ item.reponse | dump | safe }}}}{% if not loop.last %},{% endif %}{% endfor %}]}
+</script>
+{%- endif %}
+{%- endmacro %}
+
+{# ---------------------------------------------------------------------------
+   faq_section(items, titre, creme=false)
+   La FAQ complete d'une page interne : section, titre, accordeon et schema.
+--------------------------------------------------------------------------- #}
+{% macro faq_section(items, titre, creme=false) %}
+{%- if items and items.length %}
+{{ faq_schema(items) }}
+<section class="sect-bloc{% if creme %} sect-bloc--creme{% endif %}">
+  <div class="container">
+    <div class="sect-faq">
+      <h2>{{ titre }}</h2>
+      {{ faq_accordeon(items, "margin-top:20px") }}
+    </div>
+  </div>
+</section>
+{%- endif %}
+{%- endmacro %}
+
+{# ---------------------------------------------------------------------------
+   bloc_references(slugs, toutes, eyebrow, titre)
+   Les fiches references liees a une page.
+   slugs  : liste de fileSlug a afficher
+   toutes : collections.references
+--------------------------------------------------------------------------- #}
+{% macro bloc_references(slugs, toutes, eyebrow, titre) %}
+{%- if slugs and slugs.length %}
+<section class="sect-refs">
+  <div class="container">
+    <p class="eyebrow">{{ eyebrow }}</p>
+    <h2>{{ titre }}</h2>
+    <div class="ref-grille">
+      {% for slug in slugs %}{% for r in toutes %}{% if r.fileSlug == slug %}{{ cartes.carte_ref(r) }}{% endif %}{% endfor %}{% endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}
+{%- endmacro %}
+
+{# ---------------------------------------------------------------------------
+   frise_etapes(etapes)
+   La frise en quatre temps de la methode 4D.
+   etapes : [{ num, label, titre, texte }]
+--------------------------------------------------------------------------- #}
+{% macro frise_etapes(etapes) %}
+<div class="etapes">
+  {% for e in etapes %}
+  <div class="etape"><span class="num">{{ e.num }}</span><span class="num-label">{{ e.label }}</span><h3>{{ e.titre }}</h3><p>{{ e.texte }}</p></div>
+  {% endfor %}
+</div>
+{%- endmacro %}
+
+{# ---------------------------------------------------------------------------
+   carrousel(libelle, variante="", auto=true)
+   Enveloppe de carrousel, a utiliser en bloc :
+
+     {% call carrousel("Secteurs", "car--secteurs") %}
+       ... les cartes ...
+     {% endcall %}
+
+   auto=false coupe le defilement automatique (corps de page, pour ne pas
+   bouger sous les yeux du lecteur).
+--------------------------------------------------------------------------- #}
+{% macro carrousel(libelle, variante="", auto=true) %}
+<div class="carrousel{% if variante %} {{ variante }}{% endif %}" data-carrousel{% if not auto %} data-carrousel-auto="off"{% endif %} aria-label="{{ libelle }}">
+  <div class="car-piste">
+    {{ caller() }}
+  </div>
+  <div class="car-dots"></div>
+</div>
+{%- endmacro %}

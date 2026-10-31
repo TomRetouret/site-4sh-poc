@@ -72,7 +72,9 @@
             },
             {
               "label": "Transformation digitale",
-              "url": "/prestations/transformation-digitale/"
+              "sous_texte": "Vos outils au service du métier",
+              "url": "/prestations/transformation-digitale/",
+              "icone": "refonte"
             }
           ]
         },

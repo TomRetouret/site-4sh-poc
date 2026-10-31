@@ -2,77 +2,23 @@
 layout: base.njk
 extraCss: /assets/secteurs.css
 ---
-{% from "ref-macros.njk" import carte %}
-<section class="sect-hero">
-  <div class="container">
-    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; {{ titre }}</nav>
-    {% if eyebrow %}<span class="eyebrow">{{ eyebrow }}</span>{% endif %}
-    <h1>{{ (h1 or titre) | accent | safe }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
-    {% if chapo %}<p class="accroche">{{ chapo }}</p>{% endif %}
-    {% if cta_label %}<div class="hero-cta"><a class="btn btn-primary" href="{{ cta_url or '/contact/' }}">{{ cta_label }}</a></div>{% endif %}
-  </div>
-</section>
+{% from "composants/page.njk" import hero, bandeau_chiffres %}
+{% from "composants/sections.njk" import faq_section, bloc_references %}
+{% from "composants/formulaires.njk" import contact_final as bloc_contact %}
+{{ hero(titre,
+        h1=h1,
+        eyebrow=eyebrow,
+        chapo=chapo,
+        ctas=[{ "label": cta_label, "url": cta_url or "/contact/" }] if cta_label else []) }}
 
-{% if chiffres and chiffres.length %}
-<div class="ref-resultats">
-  <div class="container">
-    <div class="grille">
-      {% for c in chiffres %}<div class="stat"><b>{{ c.chiffre | accent | safe }}</b><span>{{ c.label }}</span></div>{% endfor %}
-    </div>
-  </div>
-</div>
-{% endif %}
+{{ bandeau_chiffres(chiffres) }}
 
 {{ content | blocs(collections.references, page.url) | safe }}
 
 {% set refs_haut = page.url | refsMisesEnAvant %}
-{% set refs_bas = references | sansRefs(refs_haut) %}
-{% if refs_bas and refs_bas.length %}
-<section class="sect-refs">
-  <div class="container">
-    <p class="eyebrow">{{ libelles.secteur.refs_eyebrow }}</p>
-    <h2>{{ libelles.secteur.refs_titre }}</h2>
-    <div class="ref-grille">
-      {% for slug in refs_bas %}{% for r in collections.references %}{% if r.fileSlug == slug %}{{ carte(r) }}{% endif %}{% endfor %}{% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
+{{ bloc_references(references | sansRefs(refs_haut), collections.references,
+                   libelles.secteur.refs_eyebrow, libelles.secteur.refs_titre) }}
 
-{% if faq and faq.length %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {%- for item in faq %}
-    {
-      "@type": "Question",
-      "name": {{ item.question | dump | safe }},
-      "acceptedAnswer": { "@type": "Answer", "text": {{ item.reponse | dump | safe }} }
-    }{% if not loop.last %},{% endif %}
-    {%- endfor %}
-  ]
-}
-</script>
-{% endif %}
+{{ faq_section(faq, libelles.secteur.faq_titre, creme=true) }}
 
-{% if faq and faq.length %}
-<section class="sect-bloc sect-bloc--creme">
-  <div class="container">
-    <div class="sect-faq">
-      <h2>{{ libelles.secteur.faq_titre }}</h2>
-      <div class="faq" style="margin-top:20px">
-        {% for item in faq %}
-        <details{% if loop.first %} open{% endif %}>
-          <summary>{{ item.question }}</summary>
-          <p>{{ item.reponse }}</p>
-        </details>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-</section>
-{% endif %}
-
-{% if contact_final %}{% include "contact-etendu.njk" %}{% endif %}
+{% if contact_final %}{{ bloc_contact(site, page.url) }}{% endif %}

@@ -2,6 +2,7 @@
 layout: base.njk
 permalink: /contact/
 ---
+{% from "composants/formulaires.njk" import formulaire %}
 <section class="contact-final sur-sombre" id="contact" style="margin-top:0">
   <div class="container">
     <nav class="fil-ariane" aria-label="Fil d'Ariane" style="color:#8b979c;padding-bottom:18px"><a href="/" style="color:#8b979c">Accueil</a> › Contact</nav>
@@ -17,8 +18,7 @@ permalink: /contact/
           <p><b>{{ site.contact.coord_agences_titre }}</b><br>{{ site.villes }}</p>
         </div>
       </div>
-      {% set avec_tel = true %}
-      {% set form_id = "contact-page" %}{% set avec_tel = true %}{% include "formulaire.njk" %}
+      {{ formulaire(site.formulaire, page.url, "contact-page", avec_tel=true) }}
     </div>
   </div>
 </section>

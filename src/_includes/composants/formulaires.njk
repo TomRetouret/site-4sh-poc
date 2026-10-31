@@ -1,0 +1,155 @@
+{#
+  COMPOSANTS DE FORMULAIRE
+  Les quatre formulaires du site partagent ces briques. Chaque macro prend ses
+  parametres en clair : plus de {% set %} pose avant un include pour passer un
+  identifiant en douce.
+  Voir composants/README.md.
+#}
+
+{# ---------------------------------------------------------------------------
+   champ_sujet(f, id="sujet", defaut=null)
+   Choix du type de demande.
+   Rendu natif (accessible, capte par Netlify Forms meme sans JavaScript),
+   transforme en liste deroulante a la charte par assets/formulaires.js.
+   Chaque option porte l'adresse de destination : le script recopie celle de
+   l'option choisie dans le champ cache « destinataire », que la fonction
+   Netlify de routage lit a la reception.
+
+   f      : site.formulaire
+   id     : prefixe d'identifiant, unique par formulaire de la page
+   defaut : libelle du sujet preselectionne
+--------------------------------------------------------------------------- #}
+{% macro champ_sujet(f, id="sujet", defaut=null) %}
+{%- if f.sujets and f.sujets.length %}
+<label id="{{ id }}-label" for="{{ id }}">{{ f.label_sujet }}</label>
+<div class="champ-select" data-dropdown>
+  <select id="{{ id }}" name="sujet" required>
+    <option value="" {% if not defaut %}selected{% endif %} disabled>{{ f.ph_sujet }}</option>
+    {% for s in f.sujets %}
+    <option value="{{ s.label }}" data-email="{{ s.email }}"{% if defaut and s.label == defaut %} selected{% endif %}>{{ s.label }}</option>
+    {% endfor %}
+  </select>
+</div>
+<input type="hidden" name="destinataire" value="{% if defaut %}{% for s in f.sujets %}{% if s.label == defaut %}{{ s.email }}{% endif %}{% endfor %}{% endif %}">
+{%- endif %}
+{%- endmacro %}
+
+{# ---------------------------------------------------------------------------
+   case_rgpd(f, id="rgpd")
+   Case de consentement. Le lien vers la notice est injecte dans la phrase.
+--------------------------------------------------------------------------- #}
+{% macro case_rgpd(f, id="rgpd") %}
+{%- if f.rgpd_texte %}
+<label class="case" for="{{ id }}">
+  <input id="{{ id }}" name="rgpd" type="checkbox" required>
+  <span class="case-texte">{{ f.rgpd_texte | replace(f.rgpd_lien_label, '<a href="' + (f.rgpd_url or '/rgpd/') + '" target="_blank" rel="noopener">' + f.rgpd_lien_label + '</a>') | safe }}</span>
+</label>
+{%- endif %}
+{%- endmacro %}
+
+{# ---------------------------------------------------------------------------
+   formulaire(f, url_page, nom, avec_tel, sujet_defaut, sujet_id, rgpd_id)
+   Le formulaire de contact courant.
+   f         : site.formulaire
+   url_page  : page.url, recopie en champ cache pour savoir d'ou vient l'envoi
+   nom       : nom du formulaire cote Netlify, unique par formulaire, sert
+               aussi de prefixe aux identifiants des champs
+   avec_tel  : true pour afficher le champ telephone
+   sujet_id  : identifiant du champ sujet, unique dans la page
+   rgpd_id   : identifiant de la case de consentement, unique dans la page
+--------------------------------------------------------------------------- #}
+{% macro formulaire(f, url_page, nom="contact-general", avec_tel=false, sujet_defaut=null, sujet_id="sujet", rgpd_id="rgpd") %}
+<form class="formulaire" name="{{ nom }}" method="POST" action="/merci/" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="{{ nom }}">
+  <input type="hidden" name="page" value="{{ url_page }}">
+  <p hidden><label>Ne pas remplir <input name="bot-field"></label></p>
+
+  {{ champ_sujet(f, sujet_id, sujet_defaut) }}
+
+  <label for="{{ nom }}-nom">{{ f.label_nom }}</label>
+  <input id="{{ nom }}-nom" name="nom" type="text" placeholder="{{ f.ph_nom }}" required>
+  <label for="{{ nom }}-email">{{ f.label_email }}</label>
+  <input id="{{ nom }}-email" name="email" type="email" placeholder="{{ f.ph_email }}" required>
+  {% if avec_tel %}
+  <label for="{{ nom }}-tel">{{ f.label_tel }}</label>
+  <input id="{{ nom }}-tel" name="telephone" type="tel" placeholder="{{ f.ph_tel }}">
+  {% endif %}
+  <label for="{{ nom }}-besoin">{{ f.label_besoin }}</label>
+  <textarea id="{{ nom }}-besoin" name="besoin" rows="4" placeholder="{{ f.ph_besoin }}" required></textarea>
+  <p class="aide" id="{{ nom }}-aide">{{ f.aide }}</p>
+
+  {{ case_rgpd(f, rgpd_id) }}
+
+  <button class="btn btn-primary" type="submit">{{ f.bouton }}</button>
+  <p class="reassurance">{{ f.reassurance }}</p>
+</form>
+{%- endmacro %}
+
+{# ---------------------------------------------------------------------------
+   contact_final(site, url_page, nom="contact-bandeau")
+   Le grand bloc de contact sombre en fin de page interne : arguments,
+   coordonnees et formulaire.
+--------------------------------------------------------------------------- #}
+{% macro contact_final(site, url_page, nom="contact-bandeau") %}
+<section class="contact-final sur-sombre" id="contact">
+  <div class="container">
+    <div class="contact-grille">
+      <div>
+        <h2 class="sec-titre">{{ site.contact.titre | accent | safe }}</h2>
+        <p class="sec-sous" style="margin-bottom:18px">{{ site.contact.sous }}</p>
+        <ul class="arguments">
+          {% for a in site.contact.arguments %}<li>{{ a }}</li>{% endfor %}
+        </ul>
+        <div class="equipe-visages">{% for v in site.contact.visages %}<span>{{ v }}</span>{% endfor %}</div>
+        <p style="font-size:13.5px;color:#8b979c">{{ site.contact.note }}</p><svg class="doodle doodle-spirale" width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M27 27c0-3 4-4 6-1s0 8-5 9-11-2-12-9 5-14 13-14 16 6 16 15c0 2-.4 4-1 6"/><path d="M41.5 29.5 44 33l3.6-2"/></svg>
+        <div class="contact-coord">
+          <p><b>{{ site.contact.coord_tel_titre }}</b><br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
+          <p><b>{{ site.contact.coord_agences_titre }}</b><br>{{ site.villes }}</p>
+        </div>
+      </div>
+      {{ formulaire(site.formulaire, url_page, nom, false, null, "sujet-bandeau", "rgpd-bandeau") }}
+    </div>
+  </div>
+</section>
+{%- endmacro %}
+
+{# ---------------------------------------------------------------------------
+   devis(d, f, url_page, id="contact", style=null, sujet_defaut=null)
+   Le bloc de demande de devis des pages formation.
+   d : libelles.devis
+   f : site.formulaire
+--------------------------------------------------------------------------- #}
+{% macro devis(d, f, url_page, id="contact", style=null, sujet_defaut=null) %}
+<section class="contact-final sur-sombre" id="{{ id }}"{% if style %} style="{{ style }}"{% endif %}>
+  <div class="container">
+    <div class="contact-grille">
+      <div>
+        <h2 class="sec-titre">{{ d.titre | accent | safe }}</h2>
+        <p class="sec-sous" style="margin-bottom:18px">{{ d.sous }}</p>
+        <ul class="arguments">
+          {% for a in d.arguments %}<li>{{ a }}</li>{% endfor %}
+        </ul>
+      </div>
+      <form class="formulaire" name="devis-formation" method="POST" action="/merci/" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="devis-formation">
+        <input type="hidden" name="page" value="{{ url_page }}">
+        <p hidden><label>Ne pas remplir <input name="bot-field"></label></p>
+
+        {{ champ_sujet(f, "sujet-devis", sujet_defaut) }}
+
+        <label for="devis-nom">{{ d.label_nom }}</label>
+        <input id="devis-nom" name="nom" type="text" placeholder="{{ d.ph_nom }}" required>
+        <label for="devis-email">{{ d.label_email }}</label>
+        <input id="devis-email" name="email" type="email" placeholder="{{ d.ph_email }}" required>
+        <label for="devis-besoin">{{ d.label_besoin }}</label>
+        <textarea id="devis-besoin" name="besoin" rows="3" placeholder="{{ d.ph_besoin }}" required></textarea>
+
+        {{ case_rgpd(f, "rgpd-devis") }}
+
+        <button class="btn btn-learning" type="submit" style="width:100%;justify-content:center;margin-top:24px">{{ d.bouton }}</button>
+        <p class="reassurance">{{ d.reassurance }}</p>
+      </form>
+    </div>
+  </div>
+</section>
+{%- endmacro %}

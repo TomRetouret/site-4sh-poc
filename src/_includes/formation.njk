@@ -4,6 +4,7 @@ bodyClass: learning
 learningStyles: true
 permalink: "/formations/{{ page.fileSlug }}/"
 ---
+{% from "composants/formulaires.njk" import devis, case_rgpd %}
 <!-- HERO DÉTAIL + CARTE INSCRIPTION (colonne latérale sticky sur tout le scroll) -->
 <div class="hero-detail">
   <div class="container">
@@ -210,9 +211,8 @@ permalink: "/formations/{{ page.fileSlug }}/"
 </div>
 
 <!-- DEVIS (mutualisé) -->
-{% set devis_id = "devis" %}
-{% set devis_style = "margin-top:70px" %}
-{% include "devis.njk" %}
+{{ devis(libelles.devis, site.formulaire, page.url, id="devis", style="margin-top:70px",
+         sujet_defaut=site.formulaire.sujet_defaut_formation) }}
 
 <!-- MODALE PRÉ-INSCRIPTION -->
 <div class="modale" id="modale-inscription" onclick="if(event.target===this)fermerModale()">
@@ -243,8 +243,7 @@ permalink: "/formations/{{ page.fileSlug }}/"
         </select>
       </div>
 
-      {% set rgpd_id = "rgpd-modale" %}
-      {% include "case-rgpd.njk" %}
+      {{ case_rgpd(site.formulaire, "rgpd-modale") }}
 
       <button class="btn btn-learning" type="submit" style="width:100%;justify-content:center;margin-top:22px">{{ libelles.preinscription.bouton }}</button>
     </form>

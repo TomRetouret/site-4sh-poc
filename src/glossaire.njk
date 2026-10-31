@@ -3,6 +3,7 @@ layout: base.njk
 permalink: /glossaire/
 extraCss: /assets/glossaire.css
 ---
+{% from "composants/formulaires.njk" import contact_final as bloc_contact %}
 {%- set alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"] -%}
 {%- set lettresPresentes = "" -%}
 {%- for g in collections.glossaireGroupes %}{% set lettresPresentes = lettresPresentes + g.lettre %}{% endfor -%}
@@ -44,4 +45,4 @@ extraCss: /assets/glossaire.css
   </div>
 </section>
 
-{% include "contact-etendu.njk" %}
+{{ bloc_contact(site, page.url) }}

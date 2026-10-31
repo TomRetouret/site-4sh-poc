@@ -2,13 +2,11 @@
 layout: base.njk
 extraCss: /assets/secteurs.css
 ---
-<section class="sect-hero">
-  <div class="container">
-    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; {{ titre }}</nav>
-    <h1>{{ (h1 or titre) | accent | safe }}</h1>
-    {% if maj %}<p class="accroche">Dernière mise à jour : {{ maj }}</p>{% endif %}
-  </div>
-</section>
+{% from "composants/page.njk" import hero %}
+{{ hero(titre,
+        h1=h1,
+        chapo=("Dernière mise à jour : " ~ maj) if maj else null,
+        trace=false) }}
 
 <section class="sect-bloc">
   <div class="container">

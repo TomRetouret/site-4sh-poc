@@ -5,15 +5,14 @@ extraCss: /assets/secteurs.css
 noindex: true
 eleventyExcludeFromCollections: true
 ---
+{% from "composants/page.njk" import hero %}
 {%- set m = libelles.merci -%}
-<section class="sect-hero">
-  <div class="container">
-    <span class="eyebrow">{{ m.eyebrow }}</span>
-    <h1>{{ m.h1 | accent | safe }}</h1>
-    <p class="accroche">{{ m.chapo }}</p>
-    <div class="hero-cta"><a class="btn btn-primary" href="{{ m.retour_url }}">{{ m.retour_label }}</a></div>
-  </div>
-</section>
+{{ hero(m.h1,
+        eyebrow=m.eyebrow,
+        chapo=m.chapo,
+        ariane=false,
+        trace=false,
+        ctas=[{ "label": m.retour_label, "url": m.retour_url }]) }}
 
 <section class="sect-bloc">
   <div class="container">

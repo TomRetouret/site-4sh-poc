@@ -228,6 +228,17 @@ module.exports = function (eleventyConfig) {
     (refs || []).find((r) => r.url === lien) || null
   );
 
+  // Transforme une liste de { label, url } en boutons pour le hero : le
+  // premier est plein, les suivants fantomes. prefixe s'ajoute aux libelles.
+  eleventyConfig.addFilter("boutons", (liste, prefixe) =>
+    (liste || []).map((x, i) => ({
+      label: (prefixe || "") + (x.label || ""),
+      url: x.url,
+      fantome: i > 0,
+      externe: true
+    }))
+  );
+
   // Mémoire des références déjà mises en avant dans le corps d'une page :
   // le gabarit s'en sert pour ne pas répéter le bloc « projets liés » en pied.
   const refsParPage = new Map();

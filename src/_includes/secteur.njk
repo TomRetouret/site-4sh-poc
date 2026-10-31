@@ -3,16 +3,15 @@ layout: base.njk
 permalink: "/secteurs/{{ page.fileSlug }}/"
 extraCss: /assets/secteurs.css
 ---
-{% from "ref-macros.njk" import carte %}
-<section class="sect-hero">
-  <div class="container">
-    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <a href="/">Secteurs</a> › {{ titre }}</nav>
-    <span class="eyebrow">Secteur · {{ titre }}</span>
-    <h1>{{ (h1 or titre) | accent | safe }}<svg class="doodle" width="54" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg></h1>
-    {% if accroche %}<p class="accroche">{{ accroche }}</p>{% endif %}
-    <div class="hero-cta"><a class="btn btn-primary" href="/#contact">{{ libelles.secteur.cta_bouton }}</a></div>
-  </div>
-</section>
+{% from "composants/page.njk" import hero %}
+{% from "composants/sections.njk" import bloc_references %}
+{% from "composants/formulaires.njk" import contact_final as bloc_contact %}
+{{ hero(titre,
+        h1=h1,
+        eyebrow="Secteur · " ~ titre,
+        chapo=accroche,
+        parents=[{ "label": "Secteurs", "url": "/" }],
+        ctas=[{ "label": libelles.secteur.cta_bouton, "url": "/#contact" }]) }}
 
 {% if defis and defis.length %}
 <section class="sect-bloc">
@@ -79,16 +78,7 @@ extraCss: /assets/secteurs.css
 </section>
 {% endif %}
 
-{% if references and references.length %}
-<section class="sect-refs">
-  <div class="container">
-    <p class="eyebrow">{{ libelles.secteur.refs_eyebrow }}</p>
-    <h2>{{ libelles.secteur.refs_titre }}</h2>
-    <div class="ref-grille">
-      {% for slug in references %}{% for r in collections.references %}{% if r.fileSlug == slug %}{{ carte(r) }}{% endif %}{% endfor %}{% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
+{{ bloc_references(references, collections.references,
+                   libelles.secteur.refs_eyebrow, libelles.secteur.refs_titre) }}
 
-{% include "contact-etendu.njk" %}
+{{ bloc_contact(site, page.url) }}

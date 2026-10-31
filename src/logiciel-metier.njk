@@ -3,6 +3,7 @@ layout: base.njk
 permalink: /prestations/logiciel-metier/
 extraCss: /assets/logiciel-metier.css
 ---
+{% from "composants/formulaires.njk" import contact_final as bloc_contact %}
 {%- set lm = logiciel_metier -%}
 
 <!-- HERO INTERNE -->
@@ -190,6 +191,6 @@ extraCss: /assets/logiciel-metier.css
 </section>
 
 <!-- CONTACT FINAL (bloc mutualisé, piloté par Réglages du site) -->
-{% include "contact-etendu.njk" %}
+{{ bloc_contact(site, page.url) }}
 
 <a class="btn btn-primary sticky-cta" href="#contact">{{ lm.sticky_cta_label }}</a>

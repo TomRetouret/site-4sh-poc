@@ -5,6 +5,8 @@ learningStyles: true
 catalogueStyles: true
 permalink: "/formations/{{ page.fileSlug }}/"
 ---
+{% from "composants/catalogue.njk" import grille as catalogue %}
+{% from "composants/formulaires.njk" import devis %}
 <div class="hero-form">
   <div class="container">
     <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <a href="/formations/">Formations</a> › {{ nom }}</nav>
@@ -31,8 +33,7 @@ permalink: "/formations/{{ page.fileSlug }}/"
 <section id="catalogue" style="padding-top:60px">
   <div class="container">
     <h2 class="sec-titre">Formations <em class="accent">{{ nom }}</em></h2>
-    {% set categorieActive = nom %}
-    {% include "catalogue-grille.njk" %}
+    {{ catalogue(collections.formationsParGroupe, libelles, nom) }}
   </div>
 </section>
 
@@ -56,4 +57,4 @@ permalink: "/formations/{{ page.fileSlug }}/"
 </section>
 
 <!-- CONTACT / DEVIS (mutualisé) -->
-{% include "devis.njk" %}
+{{ devis(libelles.devis, site.formulaire, page.url, sujet_defaut=site.formulaire.sujet_defaut_formation) }}

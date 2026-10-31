@@ -3,18 +3,14 @@ layout: base.njk
 permalink: /podcasts/
 extraCss: /assets/secteurs.css
 ---
+{% from "composants/page.njk" import hero %}
 {%- set p = page_podcasts -%}
-<section class="sect-hero">
-  <div class="container">
-    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; Podcasts</nav>
-    <span class="eyebrow">{{ p.eyebrow }}</span>
-    <h1>{{ p.h1 | accent | safe }}</h1>
-    <p class="accroche">{{ p.chapo }}</p>
-    <div class="hero-cta">
-      {% for pl in p.plateformes %}<a class="btn {% if loop.first %}btn-primary{% else %}btn-ghost{% endif %}" href="{{ pl.url }}" target="_blank" rel="noopener">Écouter sur {{ pl.label }}</a>{% endfor %}
-    </div>
-  </div>
-</section>
+{{ hero("Podcasts",
+        h1=p.h1,
+        eyebrow=p.eyebrow,
+        chapo=p.chapo,
+        trace=false,
+        ctas=p.plateformes | boutons("Écouter sur ")) }}
 
 <section class="sect-bloc">
   <div class="container">

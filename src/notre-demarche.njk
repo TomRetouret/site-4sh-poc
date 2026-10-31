@@ -3,6 +3,9 @@ layout: base.njk
 permalink: /notre-demarche/
 extraCss: /assets/logiciel-metier.css
 ---
+{% from "composants/sections.njk" import frise_etapes, carrousel %}
+{% from "composants/cartes.njk" import carte_atout %}
+{% from "composants/formulaires.njk" import contact_final as bloc_contact %}
 {%- set d = notre_demarche -%}
 
 <!-- HERO INTERNE -->
@@ -62,11 +65,7 @@ extraCss: /assets/logiciel-metier.css
     <p class="eyebrow">{{ d.methode_eyebrow }}</p>
     <h2 class="sec-titre">{{ d.methode_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ d.methode_sous }}</p>
-    <div class="etapes">
-      {% for e in d.methode_etapes %}
-      <div class="etape"><span class="num">{{ e.num }}</span><span class="num-label">{{ e.label }}</span><h3>{{ e.titre }}</h3><p>{{ e.texte }}</p></div>
-      {% endfor %}
-    </div>
+    {{ frise_etapes(d.methode_etapes) }}
   </div>
 </section>
 
@@ -78,7 +77,7 @@ extraCss: /assets/logiciel-metier.css
     <p class="sec-sous">{{ d.ux_sous }}</p>
     <div class="atouts" style="grid-template-columns:repeat(3,1fr)">
       {% for e in d.ux_etapes %}
-      <div class="atout"><span class="n">{{ loop.index }}</span><h3>{{ e.titre }}</h3><p>{{ e.texte }}</p></div>
+      {{ carte_atout(e, loop.index) }}
       {% endfor %}
     </div>
   </div>
@@ -90,14 +89,11 @@ extraCss: /assets/logiciel-metier.css
     <p class="eyebrow">{{ d.engagements_eyebrow }}</p>
     <h2 class="sec-titre">{{ d.engagements_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ d.engagements_sous }}</p>
-    <div class="carrousel car--blocs" data-carrousel data-carrousel-auto="off" aria-label="Nos engagements">
-      <div class="car-piste">
+    {% call carrousel("Nos engagements", "car--blocs", auto=false) %}
         {% for a in d.engagements %}
-        <div class="atout"><span class="n">{{ loop.index }}</span><h3>{{ a.titre }}</h3><p>{{ a.texte }}</p></div>
+        {{ carte_atout(a, loop.index) }}
         {% endfor %}
-      </div>
-      <div class="car-dots"></div>
-    </div>
+    {% endcall %}
   </div>
 </section>
 
@@ -115,4 +111,4 @@ extraCss: /assets/logiciel-metier.css
   </div>
 </section>
 
-{% include "contact-etendu.njk" %}
+{{ bloc_contact(site, page.url) }}

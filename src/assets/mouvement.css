@@ -175,3 +175,6 @@ a:hover .mv-fleche,a:focus-visible .mv-fleche,
   html.mv .mv-trace > path:first-child{stroke-dashoffset:0!important}
   html.mv .mv-plan > path,html.mv .mv-trace > path{opacity:1!important}
 }
+
+/* Hero : le losange voyage sur la crête du plan (mouvement.js), il est donc visible pendant le parcours */
+html.mv .mv-plan.mv-voyage > path:last-child{transition:none;opacity:1}

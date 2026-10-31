@@ -486,3 +486,33 @@ html{overflow-x:clip}
   main table,section table,.prose table{width:100%;table-layout:fixed}
   main td,main th,section td,section th{overflow-wrap:anywhere;hyphens:auto}
 }
+
+/* ============================================================
+   Hero de l'accueil : jamais plus haut que l'écran moins l'en-tête.
+   Le plan rouge absorbe la hauteur qui reste (72 à 280 px) ; son socle
+   se prolonge à gauche dans le SVG, les paliers restent à 45°.
+   ============================================================ */
+:root{--en-tete:80px}
+@media (max-width:960px){:root{--en-tete:64px}}
+.hero{display:flex;flex-direction:column;height:calc(100vh - var(--en-tete));height:calc(100svh - var(--en-tete));max-height:calc(100svh - var(--en-tete));min-height:min-content;justify-content:space-between}
+.hero .container{flex:0 0 auto;width:100%;box-sizing:border-box;padding-top:clamp(32px,8vh,128px);padding-bottom:clamp(20px,4vh,64px)}
+.hero .surtitre,.hero h1.surtitre{margin-bottom:clamp(10px,2.4vh,28px)}
+.hero-accroche{font-size:clamp(40px,min(8.3vw,12.5vh),120px);margin-bottom:clamp(12px,2.6vh,28px)}
+.hero p.chapo{font-size:clamp(17px,2.3vh,22px);margin-bottom:clamp(16px,3.6vh,40px)}
+.hero-note{margin-top:clamp(10px,2vh,20px)}
+.hero-plan-zone{position:relative;flex:1 1 auto;min-height:72px;max-height:280px}
+.hero-plan,.hero-plan--m{position:absolute;inset:0;width:100%;height:100%}
+.hero-plan--m{display:none}
+@media (max-width:767px){
+  .hero-plan{display:none}
+  .hero-plan--m{display:block}
+  .hero-plan-zone{max-height:170px;min-height:64px}
+  .hero-cta .btn{min-height:44px}
+}
+/* écran trop bas pour tout contenir : le hero reprend sa hauteur naturelle */
+@media (max-height:600px){.hero{height:auto;max-height:none}.hero-plan-zone{flex:0 0 120px}}
+
+/* Mur des technos : toute la largeur, noms alignés sur leur ligne de base */
+.techno-nuage{max-width:none!important;gap:4px 48px!important;align-items:baseline!important}
+.techno-nuage .techno-tag{display:inline-block!important;min-height:0!important;padding:6px 0!important;line-height:1.15!important;transform:none!important}
+@media (max-width:767px){.techno-nuage{gap:2px 28px!important}}

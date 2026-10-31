@@ -69,8 +69,52 @@
       el._mvArme = false;
     }
 
+    // Hero : le losange parcourt le bord du plan (ses paliers) en suivant le front
+    // qui découvre le plan, puis se pose sur le dernier palier. Une seule fois.
+    function voyageLosange(svg) {
+      var chemins = svg.querySelectorAll('path');
+      var plan = chemins[0], losange = chemins[chemins.length - 1];
+      if (!plan || !losange || !losange.animate || !svg.viewBox || !svg.viewBox.baseVal) return false;
+      var vb = svg.viewBox.baseVal;
+      // d = M x bas V y H x L x y ... : on rebâtit la ligne de crête
+      var pts = [], x = 0, y = 0;
+      var toks = plan.getAttribute('d').match(/[MVHLZ]|-?\d+(\.\d+)?/g), i = 0;
+      while (i < toks.length) {
+        var c = toks[i++];
+        if (c === 'M') { x = +toks[i++]; y = +toks[i++]; }
+        else if (c === 'V') { y = +toks[i++]; if (y < vb.height) pts.push([x, y]); }
+        else if (c === 'H') { x = +toks[i++]; if (y < vb.height) pts.push([x, y]); }
+        else if (c === 'L') { x = +toks[i++]; y = +toks[i++]; pts.push([x, y]); }
+      }
+      var b = losange.getBBox(), cx = b.x + b.width / 2, cy = b.y + b.height / 2;
+      // fin du parcours : le centre du losange
+      while (pts.length && pts[pts.length - 1][0] > cx) pts.pop();
+      pts.push([cx, cy]);
+      // départ : bord gauche visible de l'écran (le socle se prolonge à gauche du viewBox)
+      var r = svg.getBoundingClientRect();
+      if (!r.width || !r.height) return false;
+      var echelle = Math.min(r.width / vb.width, r.height / vb.height);
+      var gauche = vb.width - r.width / echelle;
+      pts.unshift([Math.min(gauche, 0), pts[0][1]]);
+      // le front qui découvre le plan va de « gauche » au bord droit, avec la même courbe :
+      // chaque point est atteint quand le front y passe (le losange garde 15 unités d'avance)
+      var largeur = vb.width - gauche;
+      var images = pts.map(function (p) {
+        return { offset: Math.max(0, Math.min(1, (p[0] + 15 - gauche) / largeur)), transform: 'translate(' + (p[0] - cx) + 'px,' + (p[1] - cy) + 'px)' };
+      });
+      for (var k = 1; k < images.length; k++) if (images[k].offset < images[k - 1].offset) images[k].offset = images[k - 1].offset;
+      images[0].offset = 0;
+      images.push({ offset: 1, transform: 'translate(0px,0px)' });
+      svg.classList.add('mv-voyage');
+      losange.animate(images, { duration: 600, delay: 300, easing: 'cubic-bezier(0.2, 0, 0, 1)', fill: 'backwards' });
+      return true;
+    }
+
     function reveler(el) {
       if (!el._mvArme || el.classList.contains('mv-vu')) return;
+      if (el.matches('svg.hero-plan, svg.hero-plan--m') && el.getClientRects().length) {
+        try { voyageLosange(el); } catch (e) {}
+      }
       el.classList.add('mv-vu');
       var r = REGLAGES[el._mvGenre];
       setTimeout(function () { nettoyer(el); }, (el._mvDelai || 0) + r.duree + 150);

@@ -516,3 +516,11 @@ html{overflow-x:clip}
 .techno-nuage{max-width:none!important;gap:4px 48px!important;align-items:baseline!important}
 .techno-nuage .techno-tag{display:inline-block!important;min-height:0!important;padding:6px 0!important;line-height:1.15!important;transform:none!important}
 @media (max-width:767px){.techno-nuage{gap:2px 28px!important}}
+
+/* Cadrage du hero sur tablette en portrait : le hero prend la hauteur de son contenu
+   (toujours plafonnée à l'écran moins l'en-tête), le plan colle au texte au lieu
+   de laisser une bande vide au-dessus de lui */
+@media (min-width:768px) and (max-width:1366px) and (orientation:portrait){
+  .hero{height:auto}
+  .hero-plan-zone{flex:0 0 auto;height:calc(100vw * 280 / 1440 + 32px);max-height:none}
+}

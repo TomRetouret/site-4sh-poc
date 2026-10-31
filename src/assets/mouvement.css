@@ -178,3 +178,24 @@ a:hover .mv-fleche,a:focus-visible .mv-fleche,
 
 /* Hero : le losange voyage sur la crête du plan (mouvement.js), il est donc visible pendant le parcours */
 html.mv .mv-plan.mv-voyage > path:last-child{transition:none;opacity:1}
+
+/* ---------- 8. Hero de l'accueil : « Le signal prend forme » (hero-signal.js) ---------- */
+.hero{position:relative}
+.hs-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.hero .container{position:relative;z-index:2}
+.hero-plan-zone{z-index:2}
+/* Épure : repères à 18 %, cotes à 30 %, la cote du palier visé à 60 % */
+.hs-epure .hs-niveaux{opacity:.18}
+.hs-epure .hs-cote{opacity:.3;transition:opacity var(--mv-survol) var(--mv-courbe)}
+.hs-epure .hs-cote.hs-vise{opacity:.6}
+/* Paliers nommés (séquence 4D du premier défilement) */
+.hero-4d{list-style:none;margin:0;padding:0;position:absolute;inset:0;z-index:3;pointer-events:none}
+.hero-4d li{position:absolute;left:-999px;top:0;opacity:0;transform:translate(-50%,calc(-100% - 8px));white-space:nowrap;
+  font-family:var(--titre);font-weight:700;font-size:13px;line-height:1;letter-spacing:.08em;text-transform:uppercase;color:#fff;
+  transition:opacity 300ms var(--mv-courbe),transform 300ms var(--mv-courbe)}
+.hero-4d li.hs-on{opacity:1;transform:translate(-50%,calc(-100% - 14px))}
+.hero-4d span{color:var(--sur-nuit);margin-right:6px}
+@media (max-width:1199px){.hero-4d li{font-size:11px}.hero-4d span{display:none}}
+@media (max-width:767px){.hero-4d{display:none}}
+@media (prefers-reduced-motion:reduce){.hero-4d li{transition:none}.hs-canvas{display:none}}
+@media print{.hs-canvas,.hero-4d{display:none}}

@@ -40,8 +40,10 @@
   <div class="hero-plan-zone">
     <svg class="hero-plan" viewBox="0 0 1440 280" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false"><rect x="-6000" y="200" width="6001" height="80" fill="#ED203D"/><path d="M0 280V200H520L560 160H800L840 120H1080L1120 80H1440V280Z" fill="#ED203D"/><path d="M1320 65L1335 80L1320 95L1305 80Z" fill="#FFFFFF"/></svg>
     <svg class="hero-plan--m" viewBox="0 0 390 170" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false"><rect x="-3000" y="110" width="3001" height="60" fill="#ED203D"/><path d="M0 170V110H180L220 70H390V170Z" fill="#ED203D"/><path d="M320 55L335 70L320 85L305 70Z" fill="#FFFFFF"/></svg>
+    <ol class="hero-4d" aria-hidden="true">{% for e in accueil.methode_etapes %}<li><span>{{ e.num }}</span>{{ e.label }}</li>{% endfor %}</ol>
   </div>
 </div>
+<script src="/assets/hero-signal.js"></script>
 
 <!-- PHOTO D'ÉQUIPE ET LOGOS CLIENTS -->
 {% if accueil.equipe_photo %}

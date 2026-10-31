@@ -21,7 +21,7 @@
 
     var SELECTEURS = {
       glisse: [
-        '.hero .surtitre', '.hero-accroche', '.hero p.chapo', '.hero-cta', '.hero-note',
+        // texte du hero de l'accueil : jamais animé, lisible et cliquable dès le premier rendu
         '.sect-hero .container > *',
         '.hero-interne .eyebrow', '.hero-interne h1', '.hero-interne .chapo',
         '.eyebrow', '.sec-titre', '.sec-sous',
@@ -161,6 +161,8 @@
       var candidats = document.querySelectorAll(tous);
       Array.prototype.forEach.call(candidats, function (el) {
         if (el.closest(EXCLUS)) return;
+        // hero de l'accueil en WebGL (hero-signal.js) : le plan n'est pas armé ici
+        if (racine.classList.contains('hs-gl') && el.matches('svg.hero-plan, svg.hero-plan--m')) return;
         if (el.parentElement && el.parentElement.closest('.mv-e, .mv-bloc')) return; // pas d'effet imbriqué
         var genre = genreDe(el);
         if (!genre) return;

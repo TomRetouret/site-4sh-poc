@@ -76,6 +76,13 @@
       setTimeout(function () { nettoyer(el); }, (el._mvDelai || 0) + r.duree + 150);
     }
 
+    function defileHorizontal(el) {
+      for (var a = el.parentElement; a && a !== document.body; a = a.parentElement) {
+        var ox = getComputedStyle(a).overflowX;
+        if ((ox === 'auto' || ox === 'scroll') && a.scrollWidth > a.clientWidth + 1) return a;
+      }
+      return null;
+    }
     function armer(el, genre) {
       var r = REGLAGES[genre];
       // rang parmi les voisins de même genre : cascade courte
@@ -119,7 +126,10 @@
         if (!armer(el, genre)) return;
         armes.push(el);
         // dans un carrousel, c'est le carrousel entier qui déclenche
-        var declencheur = el.closest('[data-carrousel]') || el;
+        // idem pour toute bande qui défile à l'horizontale (cartes hors champ à droite)
+        // un plan masqué par clip-path n'a plus de surface visible pour l'IntersectionObserver :
+        // on observe la section qui le porte
+        var declencheur = el.closest('[data-carrousel]') || defileHorizontal(el) || (genre === 'plan' ? el.parentElement : el);
         var liste = parDeclencheur.get(declencheur);
         if (!liste) { liste = []; parDeclencheur.set(declencheur, liste); }
         liste.push(el);
@@ -136,7 +146,7 @@
       var obsTrace = new IntersectionObserver(rappel, { rootMargin: '0px 0px -8% 0px', threshold: 0.5 });
       parDeclencheur.forEach(function (liste, declencheur) {
         var g = liste[0]._mvGenre;
-        (g === 'plan' || g === 'trace' ? obsTrace : obsContenu).observe(declencheur);
+        (g === 'trace' ? obsTrace : obsContenu).observe(declencheur);
       });
 
       racine.classList.add('mv'); // à partir d'ici seulement, les éléments armés sont masqués

@@ -476,3 +476,13 @@ html{overflow-x:clip}
 .menu-services .col-svc .deroulant-titre{flex-wrap:wrap;justify-content:flex-start!important;column-gap:8px}
 .real-carte .secteur{color:var(--accent-texte)!important}
 .marquee li,.marquee li a{color:var(--texte-2)!important;opacity:1!important}
+/* Recette (4) : grilles de cartes qui ne se replient pas (style en ligne repeat(3,1fr)) */
+@media (max-width:1199px){.socle,.atouts{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:767px){.socle,.atouts,.sect-atouts{grid-template-columns:minmax(0,1fr)!important}}
+@media (max-width:767px){
+  .chiffres .container{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .cas{grid-template-columns:minmax(0,1fr)!important}
+  .cas>*{min-width:0}
+  main table,section table,.prose table{width:100%;table-layout:fixed}
+  main td,main th,section td,section th{overflow-wrap:anywhere;hyphens:auto}
+}

@@ -1,6 +1,6 @@
 {
   "meta_title": "Notre démarche : méthode 4D, UX et engagements – 4SH",
-  "meta_description": "Découvrez la démarche 4SH : la méthode 4D (Discover, Design, Develop, Deploy), une conception centrée utilisateur et des engagements clairs sur la qualité, les délais et la transparence.",
+  "meta_description": "Découvrez la démarche 4SH : la méthode 4D (Découvrir, Dessiner, Développer, Déployer), une conception centrée utilisateur et des engagements clairs sur la qualité, les délais et la transparence.",
   "hero_eyebrow": "Notre démarche",
   "hero_h1": "De votre idée à votre logiciel, une *méthode* qui sécurise chaque étape",
   "hero_chapo": "Nous structurons chaque projet autour de trois piliers : une méthode agile en quatre temps, une conception centrée sur vos utilisateurs, et des engagements clairs sur la qualité et les délais.",
@@ -9,10 +9,10 @@
   "hero_cta_secondaire_label": "Découvrir la méthode 4D",
   "hero_cta_secondaire_url": "#methode",
   "hero_chips": [
-    "Discover",
-    "Design",
-    "Develop",
-    "Deploy"
+    "Découvrir",
+    "Dessiner",
+    "Développer",
+    "Déployer"
   ],
   "chiffres": [
     {
@@ -40,7 +40,7 @@
       "valeur": "4",
       "compte": "4",
       "suffixe": "",
-      "texte": "temps forts : Discover, Design, Develop, Deploy",
+      "texte": "temps forts : Découvrir, Dessiner, Développer, Déployer",
       "note": ""
     }
   ],
@@ -50,25 +50,25 @@
   "methode_etapes": [
     {
       "num": "1",
-      "label": "Discover",
+      "label": "Découvrir",
       "titre": "On écoute votre idée",
       "texte": "Nous commençons par comprendre votre idée, puis nous élaborons ensemble les grands principes de la solution et sa roadmap."
     },
     {
       "num": "2",
-      "label": "Design",
+      "label": "Dessiner",
       "titre": "On conçoit l'expérience",
       "texte": "Nous élaborons les spécifications UX et UI, pour définir la solution avant d'écrire la moindre ligne de code."
     },
     {
       "num": "3",
-      "label": "Develop",
+      "label": "Développer",
       "titre": "On développe",
       "texte": "C'est là que la magie opère : nos équipes développent votre application selon les principes validés ensemble."
     },
     {
       "num": "4",
-      "label": "Deploy",
+      "label": "Déployer",
       "titre": "On met en production",
       "texte": "Le grand jour. Nous validons et ajustons les derniers détails avec vous, puis nous mettons la solution en production. Votre application est prête !"
     }

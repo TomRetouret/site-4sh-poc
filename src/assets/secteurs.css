@@ -1,7 +1,7 @@
 /* ============================================================
    Pages Secteurs (métiers) 4SH
    ============================================================ */
-@import url("references.css");   /* réutilise les cartes .ref-carte pour le bloc Références */
+@import url("/assets/references.css");   /* réutilise les cartes .ref-carte pour le bloc Références */
 
 /* ---------- HERO ---------- */
 .sect-hero{background:var(--sombre);background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:20px 20px;color:#fff;margin-top:-94px;padding:112px 0 60px}

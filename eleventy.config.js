@@ -89,7 +89,7 @@ module.exports = function (eleventyConfig) {
           variante === "refs" ? " car--refs" : ""
         }" data-carrousel data-carrousel-auto="off" aria-label="${
           echapper(txt(label)) || "Éléments"
-        }"><div class="car-piste">${cartes.join("")}</div><div class="car-dots"></div></div>`
+        }"><div class="car-piste" tabindex="0" role="group" aria-label="Faites défiler">${cartes.join("")}</div><div class="car-dots"></div></div>`
       : `<div class="${
           variante === "refs" ? "sect-refs-inline" : "sect-defis"
         }">${cartes.join("")}</div>`;

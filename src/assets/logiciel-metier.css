@@ -1,5 +1,5 @@
 /* compléments spécifiques page interne */
-@import url("secteurs.css");   /* vocabulaire de blocs partagé (.sect-*) */
+@import url("/assets/secteurs.css");   /* vocabulaire de blocs partagé (.sect-*) */
 
 .fil-ariane{font-size:13.5px;color:var(--muted);padding:18px 0 0}
 .fil-ariane a{color:var(--muted)}

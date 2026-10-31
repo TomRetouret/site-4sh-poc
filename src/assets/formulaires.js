@@ -53,8 +53,11 @@
     var obligatoire = select.required;
     if (obligatoire) {
       select.required = false;
-      bouton.setAttribute("aria-required", "true");
+      bouton.dataset.obligatoire = "oui";
     }
+    // le select natif reste dans le formulaire (sa valeur est envoyée) mais sort de l'arbre d'accessibilité
+    select.hidden = true;
+    select.tabIndex = -1;
     bouton.innerHTML = '<span class="valeur"></span><span class="chevron" aria-hidden="true"></span>';
 
     var liste = document.createElement("ul");

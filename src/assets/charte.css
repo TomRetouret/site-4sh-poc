@@ -450,3 +450,29 @@ body *:not(em):not(cite):not(q){font-style:normal!important}
 
 /* Citations : Asap, guillemets en Manrope */
 .ref-temoignage blockquote,.temoin blockquote,.cas-corps blockquote{font-family:var(--corps);font-weight:600;color:var(--encre)}
+
+/* Recette : contrastes et onglets */
+.socle-lien,.learning .socle-lien{color:var(--accent-texte)!important}
+.pastille-cat{color:var(--learning-texte)!important;background:var(--fond-doux)!important}
+.onglets .onglet.actif,.onglets .onglet[aria-current="page"]{background:var(--encre)!important;border-color:var(--encre)!important;color:#fff!important}
+.car-piste:focus-visible{outline:2px solid var(--encre);outline-offset:4px}
+.menu-actions{list-style:none}
+/* Recette (2) */
+body{overflow-x:clip}
+.sect-hero .fil-ariane,.hero-interne .fil-ariane,.fil-ariane{color:var(--texte-2)!important}
+.sect-hero .fil-ariane a,.hero-interne .fil-ariane a,.fil-ariane a{color:var(--texte-2)!important}
+.sect-hero .eyebrow,.hero-interne .eyebrow{color:var(--accent-texte)!important}
+section a:not([class]),.sect-prose a:not([class]),.ref-corps a:not([class]){color:var(--rouge)}
+.sur-sombre a:not([class]),.contact-final a:not([class]),.sect-bloc--sombre a:not([class]){color:#fff}
+.temoin .pastille{color:#fff!important}
+.toggle-niveau a.actif{background:var(--encre)!important;color:#fff!important}
+.formulaire a:not([class]),.sur-sombre .formulaire a:not([class]),.contact-final .formulaire a:not([class]){color:var(--rouge)!important}
+/* Recette (3) */
+html{overflow-x:clip}
+.sur-sombre .fil-ariane,.sur-sombre .fil-ariane a,.contact-final .fil-ariane,.contact-final .fil-ariane a,.hero .fil-ariane,.hero .fil-ariane a{color:var(--sur-nuit)!important}
+.section-sombre p,.section-sombre li,.section-sombre small{color:var(--texte-2)!important}
+.section-sombre h3,.section-sombre h4,.section-sombre b,.section-sombre strong{color:var(--encre)!important}
+.socle-carte a,.socle-carte .socle-lien{color:var(--rouge)!important}
+.menu-services .col-svc .deroulant-titre{flex-wrap:wrap;justify-content:flex-start!important;column-gap:8px}
+.real-carte .secteur{color:var(--accent-texte)!important}
+.marquee li,.marquee li a{color:var(--texte-2)!important;opacity:1!important}

@@ -82,10 +82,13 @@
 
   // En mobile, on rapatrie les boutons d'action (Contact...) DANS le panneau ;
   // en desktop, on les remet à leur place initiale (avant le burger).
+  // en mobile, les actions vont dans la liste du menu : on les enveloppe dans un <li> (liste valide)
+  var liActions = document.createElement('li');
+  liActions.className = 'menu-actions';
   function placerActions() {
     if (!actions) return;
-    if (MQ.matches) { if (actions.parentNode !== menu) menu.appendChild(actions); }
-    else if (actions.parentNode !== nav) nav.insertBefore(actions, burger);
+    if (MQ.matches) { if (actions.parentNode !== liActions) { liActions.appendChild(actions); menu.appendChild(liActions); } }
+    else if (actions.parentNode !== nav) { nav.insertBefore(actions, burger); if (liActions.parentNode) liActions.parentNode.removeChild(liActions); }
   }
 
   function ouvrir() {

@@ -57,9 +57,9 @@ permalink: "/formations/{{ page.fileSlug }}/"
       <div class="detail-main">
 
         {% for grp in collections.formationsParGroupe %}{% if grp.groupe == groupe and grp.niveaux.length > 1 %}
-        <div class="toggle-niveau" role="tablist" aria-label="Niveau de la formation">
-          {% for n in grp.niveaux %}<a{% if n.url == page.url %} class="actif" aria-current="true"{% else %} href="{{ n.url }}"{% endif %}>{{ n.niveau }}</a>{% endfor %}
-        </div>
+        <nav class="toggle-niveau" aria-label="Niveau de la formation">
+          {% for n in grp.niveaux %}<a{% if n.url == page.url %} class="actif" aria-current="page"{% else %} href="{{ n.url }}"{% endif %}>{{ n.niveau }}</a>{% endfor %}
+        </nav>
         {% endif %}{% endfor %}
 
         <div class="meta-grille">

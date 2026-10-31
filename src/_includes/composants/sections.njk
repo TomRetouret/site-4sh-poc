@@ -97,7 +97,7 @@
 --------------------------------------------------------------------------- #}
 {% macro carrousel(libelle, variante="", auto=true) %}
 <div class="carrousel{% if variante %} {{ variante }}{% endif %}" data-carrousel{% if not auto %} data-carrousel-auto="off"{% endif %} aria-label="{{ libelle }}">
-  <div class="car-piste">
+  <div class="car-piste" tabindex="0" role="group" aria-label="{{ libelle }}, faites défiler">
     {{ caller() }}
   </div>
   <div class="car-dots"></div>

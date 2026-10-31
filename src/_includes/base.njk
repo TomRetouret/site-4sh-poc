@@ -20,7 +20,8 @@
 <meta property="og:image" content="{{ seo.og_image }}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css?family=Asap:400,400i,500,600,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"4SH","url":"https://www.4sh.fr/","foundingDate":"2007","address":[{"@type":"PostalAddress","addressLocality":"Le Haillan","postalCode":"33185"},{"@type":"PostalAddress","addressLocality":"Capbreton","postalCode":"40130"},{"@type":"PostalAddress","addressLocality":"Paris","postalCode":"75008"}],"telephone":"+33963286273"}
 </script>
@@ -28,13 +29,14 @@
 {% if learningStyles %}<link rel="stylesheet" href="/assets/learning.css">{% endif %}
 {% if catalogueStyles %}<link rel="stylesheet" href="/assets/catalogue.css">{% endif %}
 {% if extraCss %}<link rel="stylesheet" href="{{ extraCss }}">{% endif %}
+<link rel="stylesheet" href="/assets/charte.css">
 </head>
 <body class="{{ bodyClass }}">
 
 {% if not hideHeader %}
 <header>
   <div class="container nav">
-    <a class="logo" href="{{ '/en/' if lang == 'en' else '/' }}" aria-label="4SH"><img src="https://www.4sh.fr/assets/img/png/logo_4sh_baseline.png" alt="4SH, développez vos idées"></a>
+    <a class="logo" href="{{ '/en/' if lang == 'en' else '/' }}" aria-label="4SH"><img src="/assets/img/logo-4sh.svg" alt="4SH" width="72" height="24"></a>
     <ul class="menu">
       {% for item in navigation.items %}
       {% if item.type == "lien" %}
@@ -87,7 +89,7 @@
       {% if altUrl %}<a class="lang-switch" href="{{ altUrl }}" hreflang="{{ 'fr' if lang == 'en' else 'en' }}" aria-label="{{ 'Voir la version française' if lang == 'en' else 'View the English version' }}" title="{{ 'Version française' if lang == 'en' else 'English version' }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg><span>{{ 'FR' if lang == 'en' else 'EN' }}</span></a>{% endif %}
       {% for a in navigation.actions %}<a class="{{ a.style }}" href="{{ a.url or '#' }}">{{ a.label }}</a>{% endfor %}
     </div>
-    <button class="burger" aria-label="Ouvrir le menu">☰</button>
+    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7H20M4 12H20M4 17H20"/></svg><span aria-hidden="true">Menu</span></button>
   </div>
 </header>
 {% endif %}
@@ -98,7 +100,8 @@
   <div class="container">
     <div class="footer-grille">
       <div>
-        <p class="footer-titre">{{ site.nom }}</p>
+        <img class="footer-logo" src="/assets/img/logo-4sh-blanc.svg" alt="{{ site.nom }}" width="72" height="24">
+        <p class="footer-accroche">Développez vos idées</p>
         <p>{{ site.footer_accroche }}<br>{{ site.villes }}<br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
       </div>
       {% for col in site.footer_colonnes %}

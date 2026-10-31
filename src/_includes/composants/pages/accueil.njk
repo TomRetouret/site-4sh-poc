@@ -13,16 +13,16 @@
 
 {% macro corps(accueil, site, blog, url_page) %}
 <!-- HERO (option « fondu intégré » : photo full-bleed en duotone) -->
-<div class="hero sur-sombre{% if accueil.equipe_photo %} hero--photo{% endif %}">
+<div class="hero sur-sombre">
   <div class="container">
     <div class="hero-grille">
       <div>
         <h1 class="surtitre">{{ accueil.hero_surtitre }}</h1>
-        <p class="hero-accroche">{{ accueil.hero_accroche_debut }} <em class="accent">{{ accueil.hero_accroche_accent }}</em><svg class="doodle doodle-asterisque" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M13 3.5c-.4 3.2-.2 6.4.2 19M4.2 8.2c5.8 3.4 11.7 6.6 17.6 9.6M21.8 8.2C16 11.6 10.1 14.8 4.2 17.8"/></svg> {{ accueil.hero_accroche_fin | accent | safe }}</p>
+        <p class="hero-accroche">{{ accueil.hero_accroche_debut }} <em class="accent">{{ accueil.hero_accroche_accent }}</em> {{ accueil.hero_accroche_fin | accent | safe }}</p>
         <p class="chapo">{{ accueil.hero_chapo }}</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#contact">{{ accueil.hero_cta_principal }}</a>
-          <a class="btn btn-ghost" href="/references/">{{ accueil.hero_cta_secondaire }}</a><svg class="doodle doodle-fleche" width="92" height="58" viewBox="0 0 92 58" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M88 6C74 34 48 47 12 48"/><path d="M22 40.5 11.5 48l11 5.5"/></svg>
+          <a class="btn btn-ghost" href="/references/">{{ accueil.hero_cta_secondaire }}</a>
         </div>
         <p class="hero-note">{{ accueil.hero_note }}</p>
       </div>
@@ -37,38 +37,42 @@
       {% endif %}
     </div>
   </div>
-  {% if accueil.equipe_photo %}
-  <figure class="hero-photo">
-    <img src="{{ accueil.equipe_photo }}" alt="{{ accueil.equipe_titre | accent | striptags }}" width="1200" height="800" fetchpriority="high" decoding="async">
-  </figure>
-  {% endif %}
-  <!-- LOGOS CLIENTS (ancrés en bas du hero, pour tenir dans le 1er écran) -->
-  <div class="logos">
-    <div class="container">
-      <p>{{ site.clients_intro }}</p>
-      <div class="marquee"><ul aria-label="Références clients">
-        {% for c in site.clients %}<li>{% if c.url %}<a href="{{ c.url }}">{{ c.nom }}</a>{% else %}{{ c.nom }}{% endif %}</li>{% endfor %}
-      </ul></div>
-    </div>
-  </div>
+  <svg class="hero-plan" viewBox="0 0 1440 280" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false"><path d="M0 280V200H520L560 160H800L840 120H1080L1120 80H1440V280Z" fill="#ED203D"/><path d="M1320 65L1335 80L1320 95L1305 80Z" fill="#FFFFFF"/></svg>
+  <svg class="hero-plan--m" viewBox="0 0 390 170" aria-hidden="true" focusable="false"><path d="M0 170V110H180L220 70H390V170Z" fill="#ED203D"/><path d="M320 55L335 70L320 85L305 70Z" fill="#FFFFFF"/></svg>
 </div>
 
-<!-- 3 PORTES D'ENTRÉE (design conservé) -->
-<section>
+<!-- PHOTO D'ÉQUIPE ET LOGOS CLIENTS -->
+{% if accueil.equipe_photo %}
+<div class="equipe-bande">
+  <figure><img src="{{ accueil.equipe_photo }}" alt="{{ accueil.equipe_titre | accent | striptags }}" width="1360" height="583" loading="lazy" decoding="async"></figure>
+</div>
+{% endif %}
+<div class="logos">
+  <div class="container"><div>
+    <p>{{ site.clients_intro }}</p>
+    <div class="marquee"><ul aria-label="Références clients">
+      {% for c in site.clients %}<li>{% if c.url %}<a href="{{ c.url }}">{{ c.nom }}</a>{% else %}{{ c.nom }}{% endif %}</li>{% endfor %}
+    </ul></div>
+  </div></div>
+</div>
+
+<!-- 3 PORTES D'ENTRÉE -->
+<section class="fond-doux">
   <div class="container">
     <p class="eyebrow">{{ accueil.portes_eyebrow }}</p>
     <h2 class="sec-titre">{{ accueil.portes_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ accueil.portes_sous }}</p>
-    {% set porte_pictos = ["⚙", "🛡", "🎓"] %}
+    {% set porte_pictos = ["<path d=\"M8 6L3 12L8 18M16 6L21 12L16 18\"/><path d=\"M13.5 4L10.5 20\"/>", "<path d=\"M4 4H18L20 6V10H4Z\"/><path d=\"M4 14H18L20 16V20H4Z\"/><path d=\"M7 7H10M7 17H10\"/>", "<path d=\"M3 5H10L12 7L14 5H21V19H14L12 21L10 19H3Z\"/><path d=\"M12 7V21\"/>"] %}
+    {% set porte_offres = ["4SH Build", "4SH Run", "4SH Learning"] %}
     {% set porte_familles = ["famille-build", "famille-run", "famille-formation"] %}
     <div class="portes">
       {% for p in accueil.portes %}
       <article class="porte {{ porte_familles[loop.index0] }}">
-        <div class="pictos">{{ porte_pictos[loop.index0] }}</div>
+        <div class="pictos"><svg viewBox="0 0 24 24" fill="none" stroke="#14171C" stroke-width="1.5" stroke-linejoin="miter" aria-hidden="true" focusable="false">{{ porte_pictos[loop.index0] | safe }}</svg><span class="offre">{{ porte_offres[loop.index0] }}</span></div>
         <h3>{{ p.titre }}</h3>
         <p>{{ p.texte }}</p>
         <ul>
-          {% for l in p.liens %}<li><a href="{{ l.url or '#' }}">{{ l.label }}</a></li>{% endfor %}
+          {% for l in p.liens %}<li><a href="{{ l.url or '#' }}">{{ l.label | replace("→ ", "") }}</a></li>{% endfor %}
         </ul>
         <a class="suite" href="{{ p.suite_url or '#' }}">{{ p.suite_label }}</a>
       </article>
@@ -82,8 +86,8 @@
   <div class="container">
     {% for c in accueil.chiffres %}
     <div>
-      <b>{% if c.compte %}<i data-compte="{{ c.compte }}"{% if c.suffixe %} data-suffixe="{{ c.suffixe }}"{% endif %}>{{ c.valeur }}</i>{% else %}<i>{{ c.valeur }}</i>{% endif %}</b>
-      {% if loop.first %}<svg class="doodle doodle-vague" width="96" height="12" viewBox="0 0 96 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M2 8c8-6 16-6 24 0s16 6 24 0 16-6 24 0 14 5 20 1"/></svg>{% endif %}
+      <b><i>{{ c.valeur }}</i></b>
+      {% if loop.first %}{% endif %}
       <span>{{ c.texte }}</span>{% if c.note %}<small>{{ c.note }}</small>{% endif %}
     </div>
     {% endfor %}
@@ -96,7 +100,7 @@
     <p class="eyebrow">{{ accueil.secteurs_eyebrow }}</p>
     <h2 class="sec-titre">{{ accueil.secteurs_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ accueil.secteurs_sous }}</p>
-    {% call carrousel("Secteurs", "car--secteurs") %}
+    {% call carrousel("Secteurs", "car--secteurs", false) %}
         {% for s in accueil.secteurs %}
         <div class="secteur-carte"><h3>{{ s.titre }}</h3><p>{{ s.texte }}</p><a href="{{ s.url or '#' }}">{{ s.lien_libelle }}</a></div>
         {% endfor %}
@@ -110,17 +114,18 @@
     <p class="eyebrow">{{ accueil.methode_eyebrow }}</p>
     <h2 class="sec-titre">{{ accueil.methode_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ accueil.methode_sous }}</p>
+    <svg class="trace-4d" viewBox="0 0 1280 120" aria-hidden="true" focusable="false"><path d="M0 110H280L310 80H600L630 50H920L950 20H1240" fill="none" stroke="#14171C" stroke-width="2"/><path d="M1240 9L1251 20L1240 31L1229 20Z" fill="#ED203D"/></svg>
     {{ frise_etapes(accueil.methode_etapes) }}
   </div>
 </section>
 
-<!-- RÉALISATIONS (carrousel de cas, carte conservée) -->
-<section>
+<!-- RÉALISATIONS -->
+<section class="fond-doux">
   <div class="container">
     <p class="eyebrow">{{ accueil.cas_eyebrow }}</p>
     <h2 class="sec-titre">{{ accueil.cas_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ accueil.cas_sous }}</p>
-    {% call carrousel("Réalisations", "car--real") %}
+    {% call carrousel("Réalisations", "car--real", false) %}
         {% for r in accueil.realisations %}
         <div class="cas{% if r.image %} cas--image{% endif %}">
           <figure class="cas-visuel">
@@ -182,7 +187,7 @@
   <div class="container">
     <div class="blog-tete">
       <h2 class="sec-titre">Nos derniers <em class="accent">articles</em></h2>
-      <a class="blog-tout" href="https://blog.4sh.fr/">Tout le blog</a><svg class="doodle doodle-fleche-mini" width="54" height="20" viewBox="0 0 54 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 10c18 0 34 0 48 0"/><path d="M44 4l7 6-7 6"/></svg>
+      <a class="blog-tout" href="https://blog.4sh.fr/">Tout le blog</a>
     </div>
     <div class="blog-grille">
       {% for a in blog %}

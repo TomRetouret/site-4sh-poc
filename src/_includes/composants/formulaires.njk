@@ -101,7 +101,7 @@
           {% for a in site.contact.arguments %}<li>{{ a }}</li>{% endfor %}
         </ul>
         <div class="equipe-visages">{% for v in site.contact.visages %}<span>{{ v }}</span>{% endfor %}</div>
-        <p style="font-size:13.5px;color:#8b979c">{{ site.contact.note }}</p><svg class="doodle doodle-spirale" width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M27 27c0-3 4-4 6-1s0 8-5 9-11-2-12-9 5-14 13-14 16 6 16 15c0 2-.4 4-1 6"/><path d="M41.5 29.5 44 33l3.6-2"/></svg>
+        <p style="font-size:13.5px;color:#8b979c">{{ site.contact.note }}</p>
         <div class="contact-coord">
           <p><b>{{ site.contact.coord_tel_titre }}</b><br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
           <p><b>{{ site.contact.coord_agences_titre }}</b><br>{{ site.villes }}</p>
@@ -110,6 +110,7 @@
       {{ formulaire(site.formulaire, url_page, nom, false, null, "sujet-bandeau", "rgpd-bandeau") }}
     </div>
   </div>
+  <svg class="contact-plan" viewBox="0 0 1440 220" preserveAspectRatio="xMinYMax meet" aria-hidden="true" focusable="false"><path d="M0 220V160H420L460 120H760L800 80H1440V220Z" fill="#ED203D"/><path d="M1320 65L1335 80L1320 95L1305 80Z" fill="#FFFFFF"/></svg>
 </section>
 {%- endmacro %}
 

@@ -1,5 +1,6 @@
 /* 4SH refonte v2 : micro-interactions (apparition au scroll + marquee) */
 (function () {
+  return; // Charte v1.1 : ni marquee ni apparition au défilement
   // 1. Marquee logos : duplique la liste pour une boucle continue
   document.querySelectorAll('.marquee ul').forEach(function (ul) {
     ul.innerHTML += ul.innerHTML;
@@ -37,6 +38,7 @@
 /* Curseur personnalisé : point rouge 4SH + anneau en retard doux.
    Actif uniquement à la souris (pointer:fine), respecte prefers-reduced-motion. */
 (function () {
+  return; // Charte v1.1 : pas de curseur personnalisé
   if (!matchMedia('(pointer:fine)').matches) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   document.body.classList.add('curseur-perso');
@@ -128,6 +130,7 @@
 
 /* Compteurs animés (bandeau chiffres), déclenchés au scroll, respecte reduced-motion */
 (function () {
+  return; // Charte v1.1 : rien ne s'anime au défilement
   var nums = document.querySelectorAll('[data-compte]');
   if (!nums.length) return;
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -210,7 +213,7 @@
     function precedent() { i = (i <= 0) ? slides.length - 1 : i - 1; aller(); }
     // défilement automatique : actif sur l'accueil, coupé dans le corps des
     // pages (data-carrousel-auto="off") pour ne pas bouger sous les yeux du lecteur
-    var auto = car.getAttribute('data-carrousel-auto') !== 'off';
+    var auto = false; // Charte v1.1 : pas de défilement automatique
     function jouer() { if (auto && !reduce && !timer) timer = setInterval(suivant, 4800); }
     function stop() { clearInterval(timer); timer = null; }
     function relance() { stop(); jouer(); }

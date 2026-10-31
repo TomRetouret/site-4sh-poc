@@ -194,25 +194,25 @@
   "methode_etapes": [
     {
       "num": "01",
-      "label": "Discover",
+      "label": "Découvrir",
       "titre": "Comprendre votre métier",
       "texte": "Ateliers avec vos équipes terrain. On repart avec vos processus réels, pas une liste de fonctionnalités."
     },
     {
       "num": "02",
-      "label": "Design",
+      "label": "Dessiner",
       "titre": "Dessiner l'outil",
       "texte": "Maquettes testées avec vos utilisateurs avant d'écrire une ligne de code. Vous validez sur du concret."
     },
     {
       "num": "03",
-      "label": "Develop",
+      "label": "Développer",
       "titre": "Développer par jalons",
       "texte": "Démos toutes les deux semaines, code testé et maintenable. Vous savez toujours où en est votre projet."
     },
     {
       "num": "04",
-      "label": "Deploy",
+      "label": "Déployer",
       "titre": "Livrer, puis rester",
       "texte": "Mise en production, hébergement, maintenance, évolutions. Le logiciel grandit avec votre activité."
     }

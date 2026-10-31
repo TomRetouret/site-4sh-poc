@@ -2,6 +2,7 @@
 layout: base.njk
 permalink: /prestations/logiciel-metier/
 extraCss: /assets/logiciel-metier.css
+famille_label: "Concevoir & développer"
 ---
 {% from "composants/formulaires.njk" import contact_final as bloc_contact %}
 {%- set lm = logiciel_metier -%}
@@ -10,10 +11,11 @@ extraCss: /assets/logiciel-metier.css
 <div class="hero-interne">
   <div class="container">
     <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; Logiciel métier</nav>
+    <span class="eyebrow eyebrow-offre"><span class="barre" aria-hidden="true"></span>4SH Build · Concevoir &amp; développer</span>
     <div class="hero-grille">
       <div>
         <h1>{{ lm.hero_h1 | accent | safe }}</h1>
-        <p class="chapo" style="font-size:18px;color:var(--texte-2);margin-bottom:26px">{{ lm.hero_chapo }}</p>
+        <p class="chapo">{{ lm.hero_chapo }}</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="{{ lm.hero_cta_principal_url or '#contact' }}">{{ lm.hero_cta_principal_label }}</a>
           <a class="btn btn-ghost" href="{{ lm.hero_cta_secondaire_url or '#realisations' }}">{{ lm.hero_cta_secondaire_label }}</a>
@@ -21,25 +23,6 @@ extraCss: /assets/logiciel-metier.css
         <div class="chips">
           {% for chip in lm.hero_chips %}<span>{{ chip }}</span>{% endfor %}
         </div>
-      </div>
-      <div class="schema-craft" aria-hidden="true">
-        <svg viewBox="0 0 480 270" fill="none" font-family="Asap,sans-serif">
-          <rect x="18" y="26" width="130" height="66" rx="12" stroke="#494849" stroke-width="1.6"/>
-          <text x="83" y="55" text-anchor="middle" fill="#1f292e" font-size="15" font-weight="600">Votre besoin</text>
-          <text x="83" y="76" text-anchor="middle" fill="#767676" font-size="12">process, terrain, contraintes</text>
-          <rect x="178" y="118" width="130" height="66" rx="12" stroke="#494849" stroke-width="1.6"/>
-          <text x="243" y="147" text-anchor="middle" fill="#1f292e" font-size="15" font-weight="600">Ateliers &#38; maquettes</text>
-          <text x="243" y="168" text-anchor="middle" fill="#767676" font-size="12">testés avec vos équipes</text>
-          <rect x="332" y="26" width="130" height="66" rx="12" stroke="#ea2631" stroke-width="1.8"/>
-          <text x="397" y="55" text-anchor="middle" fill="#1f292e" font-size="15" font-weight="600">Votre logiciel</text>
-          <text x="397" y="76" text-anchor="middle" fill="#767676" font-size="12">évolutif, maintenu</text>
-          <path d="M118 96c18 26 34 38 56 46" stroke="#494849" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M164 136l10 7-12 4" stroke="#494849" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M312 146c26-8 44-24 58-46" stroke="#494849" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M362 106l8-8 3 12" stroke="#494849" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="240" y="228" text-anchor="middle" fill="#ea2631" font-size="17" font-family="Fraunces,Georgia,serif" font-style="italic">du terrain à votre logiciel</text>
-          <path d="M290 240c10 6 24 6 38-2" stroke="#ea2631" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
       </div>
     </div>
   </div>
@@ -50,7 +33,7 @@ extraCss: /assets/logiciel-metier.css
   <div class="chiffres">
     <div class="container">
       {% for c in lm.chiffres %}
-      <div><b{% if c.compte %} data-compte="{{ c.compte }}"{% if c.suffixe %} data-suffixe="{{ c.suffixe }}"{% endif %}{% endif %}>{{ c.valeur }}</b><span>{{ c.texte }}</span>{% if c.note %}<small>{{ c.note }}</small>{% endif %}</div>
+      <div><b>{{ c.valeur }}</b><span>{{ c.texte }}</span>{% if c.note %}<small>{{ c.note }}</small>{% endif %}</div>
       {% endfor %}
     </div>
   </div>

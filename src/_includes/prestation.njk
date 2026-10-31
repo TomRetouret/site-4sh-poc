@@ -4,6 +4,7 @@ permalink: "/prestations/{{ page.fileSlug }}/"
 extraCss: /assets/secteurs.css
 ---
 {% from "composants/page.njk" import hero, bandeau_chiffres %}
+{%- set offre = offre or ("build" if famille_label == "Concevoir & développer" else ("run" if famille_label == "Faire vivre & auditer" else ("learning" if bodyClass == "learning" else ""))) -%}
 {% from "composants/sections.njk" import faq_section, bloc_references %}
 {% from "composants/formulaires.njk" import contact_final as bloc_contact %}
 {{ hero(titre,
@@ -11,7 +12,8 @@ extraCss: /assets/secteurs.css
         eyebrow=famille_label or "Prestation",
         chapo=chapo,
         parents=[{ "label": fil_parent_label, "url": fil_parent_url }] if fil_parent_label else [],
-        ctas=[{ "label": cta_label or "Parlons de votre projet", "url": cta_url or "/contact/" }]) }}
+        ctas=[{ "label": cta_label or "Parlons de votre projet", "url": cta_url or "/contact/" }],
+        offre=offre) }}
 
 {{ bandeau_chiffres(chiffres) }}
 

@@ -21,15 +21,15 @@
     <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Formations en informatique</nav>
     <div class="hero-grille">
       <div>
-        <span class="eyebrow">{{ p.eyebrow }}</span>
+        <span class="eyebrow eyebrow-offre"><span class="barre" aria-hidden="true"></span>{{ p.eyebrow }}</span>
         <h1>{{ p.h1 | accent | safe }}</h1>
         <p class="chapo">{{ p.chapo }}</p>
         <div class="meta-form">
-          <span class="note-etoiles"><span class="etoiles">★★★★★</span> {{ p.note }} <small>· {{ p.note_detail }}</small></span>
+          <span class="note-etoiles">{{ p.note }} <small>· {{ p.note_detail }}</small></span>
         </div>
         <div class="hero-cta">
-          <a class="btn btn-learning" href="{{ p.hero_cta_principal_url or '#catalogue' }}">{{ p.hero_cta_principal_label }}</a>
-          <a class="btn btn-ghost" href="{{ p.hero_cta_secondaire_url or '#contact' }}" style="border-color:var(--violet);color:var(--violet)">{{ p.hero_cta_secondaire_label }}</a>
+          <a class="btn btn-primary" href="{{ p.hero_cta_principal_url or '#catalogue' }}">{{ p.hero_cta_principal_label }}</a>
+          <a class="btn btn-ghost" href="{{ p.hero_cta_secondaire_url or '#contact' }}">{{ p.hero_cta_secondaire_label }}</a>
         </div>
       </div>
       <div class="visuel-form">

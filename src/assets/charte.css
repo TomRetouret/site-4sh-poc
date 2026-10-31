@@ -68,7 +68,8 @@ h3{font-weight:700}
 
 /* Mot mis en valeur : rouge texte, sans italique ni serif */
 em.accent{font-family:inherit;font-style:normal;font-weight:inherit;color:var(--rouge);letter-spacing:inherit}
-.sur-sombre em.accent,.section-sombre em.accent,.contact-final em.accent,.chiffres em.accent{color:var(--signal)}
+.sur-sombre em.accent,.contact-final em.accent,.chiffres em.accent{color:var(--signal)}
+.section-sombre em.accent{color:var(--rouge)}
 
 /* Étiquette de section */
 .eyebrow,.surtitre{font-family:var(--titre);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--rouge)}
@@ -312,3 +313,97 @@ footer a:hover{color:#fff;text-decoration:underline}
 .cas-visuel .secteur{color:#fff!important;background:none!important}
 .cas-visuel .logo-client{color:#fff!important}
 .faq summary::after{transform:none!important;width:auto;height:auto}
+
+/* Plans et tracés : moins de paliers sur petit écran (4 / 3 / 2) */
+.hero-plan--m{display:none}
+@media (max-width:767px){
+  .hero-plan{display:none}
+  .hero-plan--m{display:block;width:100%;height:auto}
+  .trace-4d{display:none}
+}
+
+/* ============================================================
+   Lot 2 · gabarit Prestation, couleur d'offre, menus
+   ============================================================ */
+
+/* Angles vifs partout : ni pilule, ni coin arrondi, ni cercle */
+*,*::before,*::after{border-radius:0!important}
+
+/* Mot mis en valeur : rouge texte sur clair, rouge signal sur nuit, jamais la couleur d'offre */
+em.accent{color:var(--rouge)!important}
+.hero em.accent,.sur-sombre em.accent,.contact-final em.accent,.chiffres em.accent,.ref-resultats em.accent,.sect-bloc--sombre em.accent{color:var(--signal)!important}
+.formulaire em.accent{color:var(--rouge)!important}
+
+/* Boutons : rouge texte partout, blanc sur nuit ; l'offre ne colore jamais un bouton */
+.btn-primary,.btn-learning,.learning .btn-primary{background:var(--rouge)!important;border-color:var(--rouge)!important;color:#fff!important}
+.btn-primary:hover,.btn-learning:hover{background:var(--rouge-fonce)!important;border-color:var(--rouge-fonce)!important}
+.btn-ghost,.learning .btn-ghost{background:transparent!important;border-color:var(--encre)!important;color:var(--encre)!important}
+.btn-ghost:hover{background:var(--encre)!important;color:#fff!important}
+.hero .btn-primary,.sur-sombre .btn-primary{background:#fff!important;border-color:#fff!important;color:var(--nuit)!important}
+.hero .btn-ghost,.sur-sombre .btn-ghost{border-color:#fff!important;color:#fff!important}
+.hero .btn-ghost:hover,.sur-sombre .btn-ghost:hover{background:#fff!important;color:var(--nuit)!important}
+.formulaire .btn,.sur-sombre .formulaire .btn,.sur-sombre .formulaire .btn-primary{background:var(--rouge)!important;border-color:var(--rouge)!important;color:#fff!important}
+
+/* Étiquette d'offre : barre pleine 24 x 4 + nom de l'offre en couleur texte */
+.eyebrow-offre{display:inline-flex!important;align-items:center;gap:10px;color:var(--accent-texte)!important}
+.eyebrow-offre .barre{display:inline-block;width:24px;height:4px;background:var(--accent);flex:none}
+
+/* Losange de l'entrée active du menu : couleur de l'offre de la page (rouge par défaut) */
+.lien-formations.actif,.menu>li>a.actif{position:relative}
+.lien-formations.actif::after{content:"";position:absolute;left:50%;bottom:2px;width:8px;height:8px;margin-left:-4px;background:var(--accent);transform:rotate(45deg)}
+.menu>li>a.actif,.lien-formations.actif{color:var(--encre)!important;font-weight:800}
+
+/* Hero sobre des pages internes : fond blanc, pas de trame ni de halo */
+.sect-hero,.hero-interne{background:#fff!important;background-image:none!important;margin-top:0!important;padding:56px 0 96px!important;color:var(--encre)!important}
+.sect-hero::before,.sect-hero::after,.hero-interne::before,.hero-interne::after{display:none!important}
+.sect-hero .eyebrow,.hero-interne .eyebrow{margin-bottom:16px}
+.sect-hero h1,.hero-interne h1{margin:16px 0 20px;max-width:1100px}
+.sect-hero .accroche,.hero-interne .chapo,.hero-interne p.chapo{font-size:20px!important;line-height:1.55;color:var(--texte-2)!important;max-width:760px;margin-bottom:32px}
+.hero-interne .hero-grille{display:block!important}
+.chips{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:28px}
+.chips span{background:none!important;border:0!important;padding:0 0 0 22px!important;position:relative;font-size:16px;color:var(--texte-2)}
+.chips span::before{content:"";position:absolute;left:2px;top:6px;width:11px;height:6px;border-left:1.5px solid var(--encre);border-bottom:1.5px solid var(--encre);transform:rotate(-45deg)}
+@media (max-width:767px){.sect-hero,.hero-interne{padding:32px 0 56px!important}.hero-cta{flex-direction:column;align-items:stretch}.hero-cta .btn{width:100%}}
+
+/* Numéros de section et étiquettes : couleur texte de l'offre, Manrope droit */
+.sect-bloc .eyebrow,.eyebrow--rang{color:var(--accent-texte)!important;font-style:normal!important}
+.sect-bloc > .container > .eyebrow::after,.eyebrow--rang{font-family:var(--titre)!important;font-style:normal!important;font-weight:800!important;color:var(--accent-texte)!important}
+.eyebrow--rang::before,.eyebrow--rang::after{background:var(--accent)!important}
+
+/* Cartes de section : filet d'offre visible d'emblée (plus d'animation au survol) */
+.sect-defi::before,.sect-atout::before,.sect-ref-apercu::before,.sect-ref-carte::before{transform:none!important;transition:none!important}
+.sect-defi,.sect-atout,.sect-ref-carte,.sect-ref-apercu,.atout,.socle-carte,.real-carte,.col-carte,.panneau,.regle{box-shadow:none!important;border-color:var(--bordure)!important}
+
+/* Listes à coche : coche encre de la charte (trait 1,5), pas de pastille colorée */
+.sect-liste li::before{content:""!important;background:none!important;width:12px!important;height:7px!important;border-left:1.5px solid var(--encre);border-bottom:1.5px solid var(--encre);transform:rotate(-45deg);top:11px!important;left:4px!important}
+.sect-liste li::after{content:none!important}
+.sect-bloc--sombre .sect-liste li::before{border-color:#fff}
+
+/* Chiffres des pages internes : fond nuit, très grands chiffres, 4 colonnes */
+.hero-interne + section .chiffres .container,.ref-resultats .grille{grid-template-columns:repeat(4,minmax(0,1fr))}
+.hero-interne + section .chiffres b{font-size:clamp(48px,5.5vw,80px)}
+@media (max-width:1199px){.hero-interne + section .chiffres .container,.ref-resultats .grille{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Formations (4SH Learning) */
+.note-etoiles{color:var(--encre)!important}
+.note-etoiles .etoiles{display:none}
+.learning .hero-visuel,.learning .hero-illu{border-radius:0;box-shadow:none}
+.filtres button,.onglets button,.cat-onglets button,[role="tab"]{border-radius:0!important;font-family:var(--titre);font-weight:700;min-height:44px}
+.learning svg[stroke],.learning .ico svg{stroke:var(--encre)}
+
+/* Méga-menus : panneau plat, colonnes d'offre repérées par une barre (exception à valider) */
+.a-panneau .deroulant.menu-services{border:1px solid var(--bordure)!important;border-top:0!important;padding:40px var(--marge) 48px!important}
+.menu-services .col-svc .deroulant-titre{display:flex;align-items:center;gap:8px;color:var(--muted)}
+.menu-services .col-svc:not(.col-ia):not(.col-run) .deroulant-titre::before,.menu-services .col-run .deroulant-titre::before{content:"";width:16px;height:4px;flex:none}
+.menu:not(.x) > li:first-child .menu-services .col-svc:not(.col-ia):not(.col-run) .deroulant-titre::before{background:var(--build)}
+.menu:not(.x) > li:first-child .menu-services .col-run .deroulant-titre::before{background:var(--run)}
+.menu > li:not(:first-child) .menu-services .deroulant-titre::before{content:none!important}
+.menu-services .svc-ico{display:none}
+.menu-services .svc-item{padding:10px 12px!important;margin:0 -12px;min-height:44px}
+.menu-services .svc-item:hover{background:var(--fond-doux)!important}
+.menu-services .svc-item:hover b{color:var(--rouge)!important}
+.menu-services .services-bas{background:var(--fond-doux)!important;color:var(--encre)!important;border:0!important}
+.menu-services .services-bas b{font-family:var(--titre);color:var(--encre)!important}
+.menu-services .services-bas span{color:var(--texte-2)!important}
+.menu-secteurs .promo-kpi b,.menu-services .promo-stats b{font-family:var(--titre);font-weight:800;color:var(--encre)!important}
+.menu-services .promo-lien{color:var(--encre)!important;font-family:var(--titre);font-weight:700;border-bottom:2px solid var(--signal)}

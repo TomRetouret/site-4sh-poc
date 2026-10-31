@@ -47,19 +47,19 @@
    logo     : URL d'un logo affiche au-dessus du H1
    ctas     : boutons, [{ label, url, fantome, externe }]
 --------------------------------------------------------------------------- #}
-{% macro hero(titre, h1=null, eyebrow=null, chapo=null, parents=[], ariane=true, trace=true, logo=null, ctas=[]) %}
+{% macro hero(titre, h1=null, eyebrow=null, chapo=null, parents=[], ariane=true, trace=true, logo=null, ctas=[], offre=null) %}
 <section class="sect-hero">
   <div class="container">
     {%- if ariane %}
     {{ fil_ariane(titre, parents) }}
     {%- endif %}
     {%- if eyebrow %}
-    <span class="eyebrow">{{ eyebrow }}</span>
+    <span class="eyebrow{% if offre %} eyebrow-offre{% endif %}">{% if offre %}<span class="barre" aria-hidden="true"></span>4SH {{ offre | capitalize }} · {% endif %}{{ eyebrow }}</span>
     {%- endif %}
     {%- if logo %}
     <div class="sect-logo"><img src="{{ logo }}" alt="{{ titre }}"></div>
     {%- endif %}
-    <h1>{{ (h1 or titre) | accent | safe }}{% if trace %}{{ doodle("vague") }}{% endif %}</h1>
+    <h1>{{ (h1 or titre) | accent | safe }}</h1>
     {%- if chapo %}
     <p class="accroche">{{ chapo }}</p>
     {%- endif %}

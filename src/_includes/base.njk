@@ -1,5 +1,15 @@
 {%- from "composants/icones.njk" import navicone -%}
 {%- if lang == "en" -%}{% set navigation = en.navigation %}{% set site = en.site %}{% set seo = en.seo %}{%- endif -%}
+{%- set offre = offre or ("build" if famille_label == "Concevoir & développer" else ("run" if famille_label == "Faire vivre & auditer" else ("learning" if bodyClass == "learning" else ""))) -%}
+{%- set u = page.url or "" -%}
+{%- set rubrique = "" -%}
+{%- if u.startsWith("/prestations/") or u.startsWith("/intelligence-artificielle") -%}{% set rubrique = "Prestations & IA" %}
+{%- elif u.startsWith("/secteurs/") -%}{% set rubrique = "Secteurs" %}
+{%- elif u.startsWith("/expertises-techniques") -%}{% set rubrique = "Technologies" %}
+{%- elif u.startsWith("/references/") -%}{% set rubrique = "Réalisations" %}
+{%- elif u.startsWith("/notre-") -%}{% set rubrique = "L'agence" %}
+{%- elif u.startsWith("/formations/") -%}{% set rubrique = "Formations" %}
+{%- endif %}
 <!DOCTYPE html>
 <html lang="{{ lang or 'fr' }}">
 <head>
@@ -31,7 +41,7 @@
 {% if extraCss %}<link rel="stylesheet" href="{{ extraCss }}">{% endif %}
 <link rel="stylesheet" href="/assets/charte.css">
 </head>
-<body class="{{ bodyClass }}">
+<body class="{{ bodyClass }}{% if offre %} famille-{{ 'formation' if offre == 'learning' else offre }}{% endif %}">
 
 {% if not hideHeader %}
 <header>
@@ -40,10 +50,10 @@
     <ul class="menu">
       {% for item in navigation.items %}
       {% if item.type == "lien" %}
-      <li><a href="{{ item.url or '#' }}">{{ item.label }}</a></li>
+      <li><a href="{{ item.url or '#' }}"{% if item.label == rubrique %} class="actif" aria-current="page"{% endif %}>{{ item.label }}</a></li>
       {% elif item.type == "menu_simple" %}
       <li>
-        <a href="#">{{ item.label }}</a>
+        <a href="#"{% if item.label == rubrique %} class="actif" aria-current="true"{% endif %}>{{ item.label }}</a>
         <div class="deroulant simple">
           {% if item.titre_col %}<p class="deroulant-titre">{{ item.titre_col }}</p>{% endif %}
           <ul>
@@ -53,7 +63,7 @@
       </li>
       {% elif item.type == "megamenu" %}
       <li class="a-panneau">
-        <a href="#">{{ item.label }}</a>
+        <a href="#"{% if item.label == rubrique %} class="actif" aria-current="true"{% endif %}>{{ item.label }}</a>
         <div class="deroulant menu-services{% if item.variant %} {{ item.variant }}{% endif %}" aria-label="{{ item.label }}">
           {% if item.promo %}
           <a class="promo-services" href="{{ item.promo.url or '#' }}">
@@ -87,7 +97,7 @@
     </ul>
     <div class="nav-actions">
       {% if altUrl %}<a class="lang-switch" href="{{ altUrl }}" hreflang="{{ 'fr' if lang == 'en' else 'en' }}" aria-label="{{ 'Voir la version française' if lang == 'en' else 'View the English version' }}" title="{{ 'Version française' if lang == 'en' else 'English version' }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg><span>{{ 'FR' if lang == 'en' else 'EN' }}</span></a>{% endif %}
-      {% for a in navigation.actions %}<a class="{{ a.style }}" href="{{ a.url or '#' }}">{{ a.label }}</a>{% endfor %}
+      {% for a in navigation.actions %}<a class="{{ a.style }}{% if a.label == rubrique %} actif{% endif %}" href="{{ a.url or '#' }}"{% if a.label == rubrique %} aria-current="page"{% endif %}>{{ a.label }}</a>{% endfor %}
     </div>
     <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7H20M4 12H20M4 17H20"/></svg><span aria-hidden="true">Menu</span></button>
   </div>

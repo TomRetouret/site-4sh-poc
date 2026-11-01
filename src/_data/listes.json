@@ -1,0 +1,149 @@
+{
+  "secteurs": [
+    {
+      "nom": "Administratif"
+    },
+    {
+      "nom": "Assurance"
+    },
+    {
+      "nom": "Conformité réglementaire"
+    },
+    {
+      "nom": "Écologie"
+    },
+    {
+      "nom": "Immobilier"
+    },
+    {
+      "nom": "Jeu"
+    },
+    {
+      "nom": "Logistique"
+    },
+    {
+      "nom": "Mobilité"
+    },
+    {
+      "nom": "Presse"
+    }
+  ],
+  "technologies": [
+    {
+      "nom": "Angular"
+    },
+    {
+      "nom": "Apache Tomcat"
+    },
+    {
+      "nom": "Cordova"
+    },
+    {
+      "nom": "Drupal"
+    },
+    {
+      "nom": "Figma"
+    },
+    {
+      "nom": "HTML"
+    },
+    {
+      "nom": "HTML5"
+    },
+    {
+      "nom": "http4k"
+    },
+    {
+      "nom": "Ionic"
+    },
+    {
+      "nom": "Java"
+    },
+    {
+      "nom": "Kafka"
+    },
+    {
+      "nom": "Keycloak"
+    },
+    {
+      "nom": "Kotlin"
+    },
+    {
+      "nom": "Kubernetes"
+    },
+    {
+      "nom": "Material UI"
+    },
+    {
+      "nom": "MongoDB"
+    },
+    {
+      "nom": "Next.js"
+    },
+    {
+      "nom": "PhoneGap"
+    },
+    {
+      "nom": "PostgreSQL"
+    },
+    {
+      "nom": "React"
+    },
+    {
+      "nom": "RestX"
+    },
+    {
+      "nom": "Sass"
+    },
+    {
+      "nom": "Simatix-Invoice"
+    },
+    {
+      "nom": "TypeScript"
+    },
+    {
+      "nom": "Whimsical"
+    }
+  ],
+  "expertises": [
+    {
+      "nom": "4SH Data"
+    },
+    {
+      "nom": "4SH Digital"
+    },
+    {
+      "nom": "4SH Digital Strategy"
+    },
+    {
+      "nom": "4SH Facility"
+    },
+    {
+      "nom": "4SH Learning"
+    },
+    {
+      "nom": "4SH Studio"
+    },
+    {
+      "nom": "4SH UX"
+    },
+    {
+      "nom": "Branding"
+    },
+    {
+      "nom": "Deploy"
+    },
+    {
+      "nom": "Design"
+    },
+    {
+      "nom": "Develop"
+    },
+    {
+      "nom": "Discover"
+    },
+    {
+      "nom": "Product Design"
+    }
+  ]
+}

@@ -134,3 +134,11 @@
 .prose--sombre li::before{content:"→";position:absolute;left:0;color:var(--accent-clair)}
 @media (max-width:960px){.phares{grid-template-columns:1fr 1fr}.techno-blason{display:none}}
 @media (min-width:961px) and (max-width:1024px){.phares{grid-template-columns:repeat(3,1fr)}}
+/* Bloc « Étapes ou processus » : grille selon le nombre d'étapes (cinq existait déjà) */
+.etapes.trois{grid-template-columns:repeat(3,1fr)}
+.etapes.quatre{grid-template-columns:repeat(4,1fr)}
+.etapes.six{grid-template-columns:repeat(3,1fr)}
+@media (max-width:960px){.etapes.trois,.etapes.quatre,.etapes.six{grid-template-columns:1fr 1fr}}
+@media (max-width:767px){.etapes.trois,.etapes.quatre,.etapes.six{grid-template-columns:1fr}}
+/* Bloc « Appel à l'action final » */
+.cta-final .hero-cta{display:flex;flex-wrap:wrap;gap:12px}

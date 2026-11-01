@@ -1,5 +1,32 @@
-{# Bloc « hero » : haut de page. ctx.etapes_4d = étapes du premier bloc methode_4d de la page. #}
+{# Bloc « hero » : haut de page, deux variantes (champ variante).
+   expressif (défaut, accueil) : ctx.etapes_4d = étapes du premier bloc methode_4d de la page.
+   sobre (pages d'offre) : le titre de la page (H1) est le grand titre ; fil d'Ariane
+   (ctx.fil_ariane) et surtitre d'offre (champ offre) déduits des données. #}
 {% macro bloc(b, ctx) %}
+{% if b.variante == "sobre" %}
+{% set surtitre = b.offre | surtitreOffre %}
+<!-- HERO INTERNE (variante sobre) -->
+<div class="hero-interne">
+  <div class="container">
+    {% if ctx.fil_ariane %}<nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; {{ ctx.fil_ariane }}</nav>{% endif %}
+    {% if surtitre %}<span class="eyebrow eyebrow-offre"><span class="barre" aria-hidden="true"></span>{{ surtitre }}</span>{% endif %}
+    <div class="hero-grille">
+      <div>
+        <h1>{{ b.titre_page | accent | safe }}</h1>
+        {% if b.chapo %}<p class="chapo">{{ b.chapo }}</p>{% endif %}
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="{{ b.bouton_principal.lien or '#contact' }}">{{ b.bouton_principal.texte }}</a>
+          {% if b.bouton_secondaire and b.bouton_secondaire.texte %}<a class="btn btn-ghost" href="{{ b.bouton_secondaire.lien or '/references/' }}">{{ b.bouton_secondaire.texte }}</a>{% endif %}
+        </div>
+        {% if b.note %}<p class="hero-note">{{ b.note }}</p>{% endif %}
+        {% if b.etiquettes and b.etiquettes.length %}<div class="chips">
+          {% for chip in b.etiquettes %}<span>{{ chip }}</span>{% endfor %}
+        </div>{% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
 <!-- HERO (option « fondu intégré » : photo full-bleed en duotone) -->
 <div class="hero sur-sombre">
   <div class="container">
@@ -32,4 +59,5 @@
   </div>
 </div>
 <script src="/assets/hero-signal.js"></script>
+{% endif %}
 {% endmacro %}

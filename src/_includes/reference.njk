@@ -20,11 +20,11 @@ extraCss: /assets/references.css
         {% endif %}
         <div class="ref-hero-actions">
           {% if fiche_pdf %}<a class="btn btn-ghost btn-sm" href="{{ fiche_pdf }}" target="_blank" rel="noopener">{{ libelles.reference.telecharger }}</a>{% endif %}
-          {% if maj %}<span class="ref-maj">{{ libelles.reference.maj }} {{ maj }}</span>{% endif %}
+          {% set majTexte = (maj | dateMaj) if maj else maj_repli %}{% if majTexte %}<span class="ref-maj">{{ libelles.reference.maj }} {{ majTexte }}</span>{% endif %}
         </div>
       </div>
       <div class="ref-hero-visuel">
-        {% if image %}<img src="{{ image }}" alt="{{ titre }}" decoding="async">{% else %}<div class="ref-visuel ref-visuel--vide" style="aspect-ratio:4/3;border-radius:var(--radius)"><span class="ref-vide-nom">{{ client }}</span></div>{% endif %}
+        {% if image %}<img src="{{ image }}" alt="{{ '' if image_decorative else image_alt }}" decoding="async">{% else %}<div class="ref-visuel ref-visuel--vide" style="aspect-ratio:4/3;border-radius:var(--radius)"><span class="ref-vide-nom">{{ client }}</span></div>{% endif %}
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@ extraCss: /assets/references.css
   <div class="container">
     <div class="ref-fiche-grille">
       <div class="ref-corps">
-        {{ content | safe }}
+        {{ etude | etudeDeCas | safe }}{{ content | safe }}
       </div>
       <aside class="ref-identite">
         {% if client %}<div class="bloc"><b>{{ libelles.reference.client }}</b><span>{{ client }}</span></div>{% endif %}
@@ -49,7 +49,7 @@ extraCss: /assets/references.css
     <div class="ref-galerie" id="galerie">
       <h2>{{ libelles.reference.galerie }}</h2>
       <div class="grille">
-        {% for img in galerie %}<figure><img src="{{ img }}" alt="{{ titre }}, visuel {{ loop.index }}" loading="lazy" decoding="async"></figure>{% endfor %}
+        {% for img in galerie %}<figure><img src="{{ img.image }}" alt="{{ '' if img.decorative else img.alt }}" loading="lazy" decoding="async"></figure>{% endfor %}
       </div>
     </div>
     {% endif %}

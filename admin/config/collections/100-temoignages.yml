@@ -1,5 +1,5 @@
   # -----------------------------------------------------------------------
-  # 6 bis) TÉMOIGNAGES  (contenu partagé, relié depuis les projets de l'accueil)
+  # 6 bis) TÉMOIGNAGES  (contenu partagé, relié depuis les projets de l'accueil et le projet vedette des pages d'offre)
   #    Un fichier JSON par témoignage et par langue : src/_data/temoignages/<langue>/<slug>.json
   # -----------------------------------------------------------------------
   - name: temoignages
@@ -10,12 +10,12 @@
     create: true
     extension: json
     format: json
-    identifier_field: auteur
-    slug: "{{auteur}}"
-    summary: "{{auteur}}, {{entreprise}}"
-    sortable_fields: [auteur, entreprise]
+    identifier_field: entreprise
+    slug: "{{entreprise}} {{auteur}}"
+    summary: "{{entreprise}} {{auteur}}"
+    sortable_fields: [entreprise, auteur]
     fields:
       - { label: Citation, name: citation, widget: text, required: true, i18n: true }
-      - { label: Nom, name: auteur, widget: string, required: true, i18n: duplicate }
+      - { label: Nom, name: auteur, widget: string, required: false, hint: "Facultatif : laissez vide si la personne n'a pas donné son accord pour être nommée. N'inventez jamais un nom.", i18n: duplicate }
       - { label: Fonction, name: fonction, widget: string, required: false, i18n: true }
-      - { label: Entreprise, name: entreprise, widget: string, required: false, i18n: duplicate }
+      - { label: Entreprise, name: entreprise, widget: string, required: true, hint: Affichée sous la citation, seule si le nom est vide., i18n: duplicate }

@@ -1,5 +1,17 @@
-{# Bloc « logos_clients » : noms tirés des réglages du site (site.clients). #}
-{% macro bloc(b, ctx) %}
+{# Bloc « logos_clients » : noms tirés des réglages du site (site.clients).
+   ctx.gabarit == "offre" : bandeau « clients » de la page Logiciel métier (logiciel-metier.css). #}
+{% macro bloc(b, ctx, serre) %}
+{% if ctx.gabarit == "offre" %}
+<!-- BANDEAU CLIENTS (pages d'offre : bandeau discret, sans lien) -->
+<section{% if serre %} style="padding-top:0"{% endif %}>
+  <div class="container">
+    <div class="clients">
+      <p class="tt">{% if b.titre %}{{ b.titre }}{% else %}{{ ctx.site.clients_intro | replace(" :", "") | replace(":", "") }}{% endif %}</p>
+      <div class="marquee"><ul>{% for c in ctx.site.clients %}<li>{{ c.nom }}</li>{% endfor %}</ul></div>
+    </div>
+  </div>
+</section>
+{% else %}
 <!-- ILS NOUS CONFIENT LEUR MÉTIER : mur de noms, statique (pas de défilement en boucle) -->
 <section class="confiance" aria-labelledby="confiance-titre">
   <div class="container confiance-grille">
@@ -9,4 +21,5 @@
     </ul>
   </div>
 </section>
+{% endif %}
 {% endmacro %}

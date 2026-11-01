@@ -1,0 +1,36 @@
+  # -----------------------------------------------------------------------
+  # 2 bis) LISTES DE RÉFÉRENCE  (valeurs proposées dans les fiches références)
+  # Fichier : src/_data/listes.json. Les fiches choisissent dans ces listes
+  # (champs relation de 020-references.yml).
+  # -----------------------------------------------------------------------
+  - name: "listes"
+    label: "Listes de référence"
+    files:
+      - name: "listes"
+        label: "Secteurs, technologies et expertises"
+        file: "src/_data/listes.json"
+        fields:
+          - label: "Secteurs"
+            name: "secteurs"
+            widget: "list"
+            required: true
+            summary: "{{nom}}"
+            hint: "Proposés dans les fiches références. Renommer ou supprimer une valeur ne modifie pas les fiches qui l'utilisent : reprenez-les ensuite (le build les signale)."
+            fields:
+              - { label: "Secteur", name: "nom", widget: "string", required: true, hint: "Ex. : Logistique" }
+          - label: "Technologies"
+            name: "technologies"
+            widget: "list"
+            required: true
+            summary: "{{nom}}"
+            hint: "Nom tel qu'il s'affiche sur la fiche et sur la carte. Mêmes précautions que pour les secteurs."
+            fields:
+              - { label: "Technologie", name: "nom", widget: "string", required: true, hint: "Ex. : Angular" }
+          - label: "Expertises"
+            name: "expertises"
+            widget: "list"
+            required: true
+            summary: "{{nom}}"
+            hint: "Offres 4SH et étapes de la méthode. Mêmes précautions que pour les secteurs."
+            fields:
+              - { label: "Expertise", name: "nom", widget: "string", required: true, hint: "Ex. : 4SH UX" }

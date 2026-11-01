@@ -1,16 +1,23 @@
 {#
-  AIGUILLEUR DES BLOCS (page d'accueil)
+  AIGUILLEUR DES BLOCS (accueil, pages d'offre, pages de démonstration)
   Spécification : docs/back-office/schema-blocs.md
 
-  rendre_blocs(blocs, site, blog, temoignages, url_page)
-    blocs       : la liste "blocs" du fichier src/_data/contenus/<langue>/accueil.json
+  rendre_blocs(blocs, site, blog, temoignages, url_page, options)
+    blocs       : la liste "blocs" de la page
     site        : le bundle site de la langue
     blog        : les derniers articles, ou rien
     temoignages : la collection de la langue (temoignages.fr, temoignages.en), ou rien
     url_page    : page.url, pour le formulaire de contact
+    options     : facultatif, objet avec
+                  gabarit       "offre" pour une page d'offre (balisage des pages intérieures), sinon rien
+                  fil_ariane    nom de la page dans le fil d'Ariane (hero sobre)
+                  references    collections.references (bloc projet_vedette)
+                  appels_action appels à l'action partagés (bloc appel_action)
 
   Parcourt les blocs dans l'ordre, ignore ceux marqués "masquer", appelle le
   composant du type, puis ajoute le formulaire de contact final (hors blocs).
+  Chaque composant reçoit (b, ctx, serre) : serre est vrai quand le bloc suit
+  une section blanche (sa marge haute est alors retirée, filtre blocsSerres).
   Référence et retour arrière : composants/pages/accueil.njk (ancien rendu).
 #}
 {% from "composants/blocs/hero.njk" import bloc as bloc_hero %}
@@ -24,9 +31,15 @@
 {% from "composants/blocs/faq.njk" import bloc as bloc_faq %}
 {% from "composants/blocs/derniers_articles.njk" import bloc as bloc_derniers_articles %}
 {% from "composants/blocs/equipe.njk" import bloc as bloc_equipe %}
+{% from "composants/blocs/texte_simple.njk" import bloc as bloc_texte_simple %}
+{% from "composants/blocs/etapes.njk" import bloc as bloc_etapes %}
+{% from "composants/blocs/benefices.njk" import bloc as bloc_benefices %}
+{% from "composants/blocs/projet_vedette.njk" import bloc as bloc_projet_vedette %}
+{% from "composants/blocs/appel_action.njk" import bloc as bloc_appel_action %}
 {% from "composants/formulaires.njk" import contact_final as bloc_contact %}
 
-{% macro rendre_blocs(blocs, site, blog, temoignages, url_page) %}
+{% macro rendre_blocs(blocs, site, blog, temoignages, url_page, options) %}
+{% set opts = options or {} %}
 {# étapes du hero : premier bloc methode_4d de la page, même masqué #}
 {% set m4d = blocs | premierBloc("methode_4d") %}
 {% set ctx = {
@@ -34,12 +47,18 @@
   blog: blog,
   temoignages: temoignages,
   etapes_4d: (m4d.etapes if m4d else []),
-  url_page: url_page
+  url_page: url_page,
+  gabarit: opts.gabarit,
+  fil_ariane: opts.fil_ariane,
+  references: opts.references,
+  appels_action: opts.appels_action
 } %}
+{% set serres = blocs | blocsSerres %}
 {% for b in blocs %}
 {% if not b.masquer %}
+{% set serre = serres[loop.index0] %}
 {% if b.type == "hero" %}{{ bloc_hero(b, ctx) }}
-{% elif b.type == "logos_clients" %}{{ bloc_logos_clients(b, ctx) }}
+{% elif b.type == "logos_clients" %}{{ bloc_logos_clients(b, ctx, serre) }}
 {% elif b.type == "cartes_offres" %}{{ bloc_cartes_offres(b, ctx) }}
 {% elif b.type == "chiffres_cles" %}{{ bloc_chiffres_cles(b, ctx) }}
 {% elif b.type == "cartes_secteurs" %}{{ bloc_cartes_secteurs(b, ctx) }}
@@ -49,6 +68,11 @@
 {% elif b.type == "faq" %}{{ bloc_faq(b, ctx) }}
 {% elif b.type == "derniers_articles" %}{{ bloc_derniers_articles(b, ctx) }}
 {% elif b.type == "equipe" %}{{ bloc_equipe(b, ctx) }}
+{% elif b.type == "texte_simple" %}{{ bloc_texte_simple(b, ctx, serre) }}
+{% elif b.type == "etapes" %}{{ bloc_etapes(b, ctx, serre) }}
+{% elif b.type == "benefices" %}{{ bloc_benefices(b, ctx, serre) }}
+{% elif b.type == "projet_vedette" %}{{ bloc_projet_vedette(b, ctx, serre) }}
+{% elif b.type == "appel_action" %}{{ bloc_appel_action(b, ctx, serre) }}
 {% endif %}
 {% endif %}
 {% endfor %}

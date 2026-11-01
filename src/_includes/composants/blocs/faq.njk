@@ -1,9 +1,10 @@
-{# Bloc « faq » : accordéon et JSON-LD FAQPage. #}
+{# Bloc « faq » : accordéon et JSON-LD FAQPage. Titre avec la convention *mot*.
+   ctx.gabarit == "offre" : titre sans la classe centre (balisage de la page d'origine). #}
 {% macro bloc(b, ctx) %}
 <!-- FAQ -->
 <section style="padding-top:0">
   <div class="container">
-    <h2 class="sec-titre centre" style="text-align:center">{{ b.titre }}</h2>
+    <h2 class="sec-titre{% if ctx.gabarit != 'offre' %} centre{% endif %}" style="text-align:center">{{ b.titre | escape | accent | safe }}</h2>
     {% if b.sous_titre %}<p class="sec-sous" style="margin:0 auto 38px;text-align:center">{{ b.sous_titre }}</p>{% endif %}
     <div class="faq">
       {% for item in b.questions %}

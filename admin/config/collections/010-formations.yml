@@ -1,5 +1,11 @@
   # -----------------------------------------------------------------------
-  # 1) FORMATIONS  (une fiche = un fichier ; on peut en ajouter / supprimer)
+  # 1) FORMATIONS  (une fiche = un niveau = un fichier ; on peut en ajouter / supprimer)
+  #    Gabarit fixe (src/_includes/formation.njk) alimenté par la fiche.
+  #    Champs regroupés dans l'ordre de la page : En-tête, Inscription, Chiffres clés,
+  #    Description, Public visé et prérequis, Objectifs, Programme, Formateur,
+  #    Questions fréquentes, puis Référencement. Schéma : docs/back-office/schema-formations.md
+  #    Champs « obligatoires » : exigés pour passer en relecture ou publier ; un brouillon
+  #    incomplet reste enregistrable (allow_incomplete_drafts).
   # -----------------------------------------------------------------------
   - name: "formations"
     label: "Formations"
@@ -7,85 +13,176 @@
     folder: "src/content/formations"
     preview_path: "formations/{{slug}}/"
     create: true
-    slug: "{{slug}}"
+    identifier_field: "entete.titre"
+    slug: "{{entete.titre}}-{{entete.niveau}}"
     extension: "md"
     format: "frontmatter"
-    summary: "{{titre}} - {{niveau}} ({{categorie}})"
-    sortable_fields: ["titre", "categorie", "groupe"]
+    summary: "{{entete.titre}} - {{entete.niveau}} ({{entete.categorie}})"
+    sortable_fields: ["entete.titre", "entete.categorie", "entete.groupe"]
     fields:
-      - { label: "Nom (techno)", name: "titre", widget: "string", hint: "Ex. : Angular", required: true }
-      - { label: "Groupe (relie les niveaux d'une même techno)", name: "groupe", widget: "string", hint: "Identifiant commun à tous les niveaux, ex. : angular. Sert au regroupement au catalogue et au sélecteur de niveau.", required: false }
-      - { label: "Sous-titre", name: "sous_titre", widget: "string", required: false, hint: "Ex. : - Les fondamentaux" }
-      - label: "Catégorie"
-        name: "categorie"
-        widget: "relation"
-        collection: "categories"
-        value_field: "nom"
-        search_fields: ["nom"]
-        display_fields: ["nom"]
-        hint: "Reliée aux pages catégories existantes (Develop, Design, DevOps, Outils)."
-      - { label: "Niveau", name: "niveau", widget: "select", options: ["Essentiel", "Fondamental", "Intermédiaire", "Avancé"], required: false }
-      - { label: "Accroche (phrase d'intro)", name: "chapo", widget: "text", required: false }
-      - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false }
-      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
-      - { label: "Programme de la formation (PDF)", name: "programme_pdf", widget: "string", required: false, hint: "Lien vers le PDF du programme." }
-      - { label: "Poids du PDF du programme", name: "programme_pdf_poids", widget: "string", required: false, hint: "Ex. : 724 Ko" }
-      - { label: "Prix", name: "prix", widget: "string", hint: "Ex. : 2200 € HT", required: false }
-      - { label: "Durée", name: "duree", widget: "string", required: false, hint: "Ex. : 4 jours (28h00)" }
-      - { label: "Nombre de participants", name: "participants", widget: "string", required: false, hint: "Ex. : 1 à 8" }
-      - { label: "Note", name: "note", widget: "string", required: false, hint: "Ex. : 4,89 / 5" }
-      - { label: "Nombre d'avis", name: "avis", widget: "number", required: false, value_type: "int" }
-      - { label: "Proposée depuis", name: "depuis", widget: "string", required: false, hint: "Ex. : janvier 2023" }
-      - { label: "Part de théorie (%)", name: "theorie", widget: "number", required: false, value_type: "int", min: 0, max: 100 }
-      - { label: "Part de pratique (%)", name: "pratique", widget: "number", required: false, value_type: "int", min: 0, max: 100 }
-      - { label: "Illustration / logo (URL ou image)", name: "image", widget: "image", required: false, choose_url: true }
-      - label: "Sessions à venir"
-        name: "sessions"
-        widget: "list"
-        required: false
-        field: { label: "Session", name: "session", widget: "string", hint: "Ex. : Du 15/09/2026 au 18/09/2026", required: false }
-      - { label: "Pour qui ?", name: "pour_qui", widget: "text", required: false }
-      - label: "Prérequis"
-        name: "prerequis"
-        widget: "list"
-        required: false
-        field: { label: "Prérequis", name: "item", widget: "string", required: false }
+      # --- En-tête -----------------------------------------------------------
+      - label: "En-tête"
+        name: "entete"
+        widget: "object"
+        required: true
+        collapsed: false
+        summary: "{{fields.titre}} {{fields.sous_titre}}"
+        hint: "Haut de la page : fil d'Ariane, surtitre, grand titre « Formation <nom> <complément> » et accroche."
+        fields:
+          - { label: "Nom de la formation", name: "titre", widget: "string", required: true, hint: "Technologie ou sujet, sans le mot « Formation » (ajouté automatiquement). 40 caractères maximum. Ex. : Angular" }
+          - { label: "Complément du titre (en rouge)", name: "sous_titre", widget: "string", required: false, hint: "Affiché en rouge après le nom, sans tiret ni ponctuation au début. 20 caractères maximum. Ex. : Les fondamentaux" }
+          - { label: "Niveau", name: "niveau", widget: "select", options: ["Essentiel", "Fondamental", "Intermédiaire", "Avancé"], required: true, hint: "Sert au tri des niveaux au catalogue, au sélecteur de niveau et à la fenêtre de pré-inscription." }
+          - { label: "Famille (relie les niveaux d'une même formation)", name: "groupe", widget: "string", required: false, pattern: ["^[a-z0-9-]*$", "Minuscules, chiffres et tirets seulement, sans espace."], hint: "Identifiant identique pour tous les niveaux d'une même techno, en minuscules sans espace. Ex. : angular. Vide : la fiche forme sa propre famille." }
+          - label: "Catégorie"
+            name: "categorie"
+            widget: "relation"
+            required: true
+            collection: "categories"
+            value_field: "nom"
+            search_fields: ["nom"]
+            display_fields: ["nom"]
+            hint: "Choisir dans la liste (Develop, Design, DevOps, Outils, IA). Affichée dans le fil d'Ariane, le surtitre et « Autres formations »."
+          - { label: "Accroche", name: "chapo", widget: "text", required: true, hint: "Une phrase sous le titre, 40 mots maximum. Sert aussi de description Google par défaut et de texte de la carte au catalogue." }
+          - { label: "Logo ou illustration", name: "image", widget: "image", required: false, choose_url: true, hint: "SVG de préférence, carré, fond transparent. Un lien vers une image déjà en ligne est accepté." }
+
+      # --- Inscription (carte de droite) ---------------------------------------
+      - label: "Inscription"
+        name: "inscription"
+        widget: "object"
+        required: true
+        collapsed: false
+        summary: "{{fields.prix}} € HT"
+        hint: "Carte d'inscription à droite de la page : prix, prochaines sessions et programme à télécharger."
+        fields:
+          - { label: "Prix par participant (€ HT)", name: "prix", widget: "number", value_type: "int", min: 0, required: true, hint: "Nombre entier en euros hors taxes, sans symbole ni espace. Ex. : 1500. Affiché « 1500 € HT »." }
+          - { label: "Afficher « À partir de » devant le prix", name: "prix_a_partir", widget: "boolean", required: false, default: false, hint: "À cocher seulement si le prix varie selon la durée ou le format. Affiché « À partir de 700 € HT »." }
+          - label: "Prochaines sessions"
+            name: "sessions"
+            widget: "list"
+            required: false
+            label_singular: "Session"
+            collapsed: true
+            summary: "{{fields.debut}} au {{fields.fin}}"
+            hint: "Une ligne par session. Une session d'un jour : même date de début et de fin. Les sessions déjà commencées sont masquées automatiquement à la mise en ligne."
+            fields:
+              - { label: "Date de début", name: "debut", widget: "datetime", type: "date", required: true, hint: "Premier jour de la session." }
+              - { label: "Date de fin", name: "fin", widget: "datetime", type: "date", required: true, hint: "Dernier jour. Même date que le début pour une session d'un jour." }
+          - { label: "Programme détaillé (PDF)", name: "programme_pdf", widget: "string", required: true, hint: "Lien de partage public vers le PDF du programme (Google Drive par exemple), commençant par https://. Attendu par Qualiopi." }
+          - { label: "Poids du PDF", name: "programme_pdf_poids", widget: "string", required: false, hint: "Affiché à côté du lien. Ex. : 724 Ko" }
+
+      # --- Chiffres clés ---------------------------------------------------------
+      - label: "Chiffres clés"
+        name: "chiffres"
+        widget: "object"
+        required: true
+        collapsed: false
+        hint: "Bandeau sous le titre : durée, participants, note des stagiaires, ancienneté, répartition théorie et pratique."
+        fields:
+          - { label: "Durée en jours", name: "duree_jours", widget: "number", value_type: "float", min: 0.5, step: 0.5, required: false, hint: "Ex. : 3 ou 1,5 ; 0,5 pour une demi-journée. Affiché « 3 jours (21h00) » avec la durée en heures." }
+          - { label: "Durée en heures", name: "duree_heures", widget: "number", value_type: "float", min: 0, step: 0.5, required: false, hint: "Ex. : 21 ; 3,5 pour 3h30." }
+          - { label: "Durée, saisie libre (cas particulier)", name: "duree_texte", widget: "string", required: false, hint: "Seulement si la durée ne tient pas en deux nombres. Remplace jours et heures. La partie avant la parenthèse s'affiche en gras. Ex. : 1 à 5 jours (7h00 à 35h00)" }
+          - { label: "Participants minimum", name: "participants_min", widget: "number", value_type: "int", min: 1, default: 1, required: false, hint: "Nombre entier. Ex. : 1" }
+          - { label: "Participants maximum", name: "participants_max", widget: "number", value_type: "int", min: 1, required: true, hint: "Nombre entier. Ex. : 8. Affiché « 1 à 8 personnes »." }
+          - { label: "Note moyenne des stagiaires (sur 5)", name: "note", widget: "number", value_type: "float", min: 0, max: 5, step: 0.01, required: false, hint: "Nombre décimal entre 0 et 5. Ex. : 4,7. Affiché « 4,7 / 5 ». Vide : la note n'est pas affichée." }
+          - { label: "Nombre d'avis", name: "avis", widget: "number", value_type: "int", min: 0, required: false, hint: "Nombre entier. Ex. : 12" }
+          - { label: "Proposée depuis", name: "depuis", widget: "string", required: false, hint: "Mois et année. Ex. : janvier 2023" }
+          - { label: "Part de théorie (%)", name: "theorie", widget: "number", value_type: "int", min: 0, max: 100, required: false, hint: "Nombre entre 0 et 100. Ex. : 60. La part de pratique est calculée (100 moins la théorie)." }
+
+      # --- Description (corps de la fiche) -------------------------------------
+      - { label: "Description", name: "body", widget: "markdown", required: true, hint: "Paragraphes de présentation, en haut de la section Description. 150 à 300 mots. Intertitres de niveau 3 au plus." }
+
+      # --- Public visé et prérequis ---------------------------------------------
+      - label: "Public visé et prérequis"
+        name: "public"
+        widget: "object"
+        required: true
+        collapsed: false
+        hint: "Suite de la section Description. Informations attendues par Qualiopi."
+        fields:
+          - { label: "Public visé", name: "pour_qui", widget: "text", required: true, hint: "À qui s'adresse la formation, 50 mots maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge." }
+          - label: "Prérequis"
+            name: "prerequis"
+            widget: "list"
+            required: true
+            min: 1
+            label_singular: "Prérequis"
+            hint: "Une ligne par prérequis, 150 caractères maximum. Écrire « Aucun » s'il n'y en a pas."
+            field: { label: "Prérequis", name: "item", widget: "string", required: true }
+
+      # --- Objectifs ---------------------------------------------------------------
       - label: "Objectifs pédagogiques"
         name: "objectifs"
         widget: "list"
-        required: false
-        field: { label: "Objectif", name: "item", widget: "string", required: false }
-      - label: "Programme (chapitres)"
+        required: true
+        min: 1
+        label_singular: "Objectif"
+        hint: "3 à 6 objectifs, chacun commence par un verbe. 120 caractères maximum. Attendus par Qualiopi."
+        field: { label: "Objectif", name: "item", widget: "string", required: true }
+
+      # --- Programme -----------------------------------------------------------------
+      - label: "Programme"
         name: "programme"
         widget: "list"
-        required: false
+        required: true
+        min: 1
+        label_singular: "Chapitre"
+        collapsed: true
+        summary: "{{fields.titre}}"
+        hint: "Un chapitre par demi-journée environ, affiché en accordéon (le premier est ouvert). Attendu par Qualiopi."
         fields:
-          - { label: "Titre du chapitre", name: "titre", widget: "string", required: false }
+          - { label: "Titre du chapitre", name: "titre", widget: "string", required: true, hint: "60 caractères maximum. Ex. : Architecture d'Angular" }
           - label: "Points abordés"
-            name: "items"
+            name: "points"
             widget: "list"
-            field: { label: "Point", name: "point", widget: "string", required: false }
+            required: true
+            min: 1
+            label_singular: "Point"
+            hint: "Une ligne par point, 120 caractères maximum."
+            field: { label: "Point abordé", name: "point", widget: "string", required: true }
+
+      # --- Formateur -------------------------------------------------------------------
       - label: "Formateur"
         name: "formateur"
         widget: "object"
         required: false
         collapsed: true
+        summary: "{{fields.personne}}"
+        hint: "Le nom, la photo, la fonction et la présentation viennent de la fiche Équipe choisie. Vide : la section Formateur n'est pas affichée."
         fields:
-          - { label: "Nom", name: "nom", widget: "string", required: false }
-          - { label: "Rôle", name: "role", widget: "string", required: false }
-          - { label: "Photo (URL ou image)", name: "photo", widget: "image", required: false, choose_url: true }
-          - label: "Biographie (paragraphes)"
-            name: "bio"
-            widget: "list"
-            field: { label: "Paragraphe", name: "para", widget: "text", required: false }
+          - label: "Personne"
+            name: "personne"
+            widget: "relation"
+            required: false
+            collection: "equipe"
+            value_field: "{{slug}}"
+            search_fields: ["nom", "fonction"]
+            display_fields: ["{{nom}}, {{fonction}}"]
+            hint: "Choisir dans la collection Équipe. Pour ajouter une personne, passez par cette collection."
+          - { label: "Fonction propre à cette formation", name: "fonction", widget: "string", required: false, hint: "Facultatif. Remplace la fonction de la fiche Équipe sur cette page seulement. 40 caractères maximum." }
+          - { label: "Présentation propre à cette formation", name: "presentation", widget: "text", required: false, hint: "Facultatif. Remplace la présentation de la fiche Équipe sur cette page seulement. Séparez les paragraphes par une ligne vide. 80 mots maximum." }
+
+      # --- Questions fréquentes --------------------------------------------------------
       - label: "Questions fréquentes"
         name: "faq"
         widget: "list"
+        required: false
+        label_singular: "Question"
         summary: "{{fields.question}}"
         collapsed: true
-        required: false
+        hint: "3 à 6 questions, affichées en accordéon (la première est ouverte)."
         fields:
-          - { label: "Question", name: "question", widget: "string", required: false }
-          - { label: "Réponse", name: "reponse", widget: "text", required: false }
-      - { label: "Description (texte principal)", name: "body", widget: "markdown", hint: "Les paragraphes de présentation affichés en haut de la section Description.", required: false }
+          - { label: "Question", name: "question", widget: "string", required: true, hint: "100 caractères maximum." }
+          - { label: "Réponse", name: "reponse", widget: "text", required: true, hint: "80 mots maximum." }
+
+      # --- Référencement (séparé du contenu de la page) ----------------------------------
+      - label: "Référencement"
+        name: "referencement"
+        widget: "object"
+        required: false
+        collapsed: true
+        summary: "{{fields.meta_title}}"
+        hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
+        fields:
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères. Vide : « Formation <nom> - 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "140 à 160 caractères. Vide : l'accroche est reprise." }
+          - { label: "Afficher cette page dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }

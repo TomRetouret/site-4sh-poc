@@ -4,4 +4,4 @@ layout: base.njk
 {#- Page composée de blocs (pages de démonstration de la preuve de concept).
     Les blocs suivent docs/back-office/schema-blocs.md. -#}
 {% from "composants/blocs/aiguilleur.njk" import rendre_blocs %}
-{{ rendre_blocs(blocs or [], site, blog, temoignages.fr, page.url) }}
+{{ rendre_blocs(blocs or [], site, blog, temoignages.fr, page.url, { fil_ariane: titre, references: collections.references, appels_action: appels_action }) }}

@@ -1,0 +1,22 @@
+  # -----------------------------------------------------------------------
+  # 6 quater) APPELS À L'ACTION  (contenu partagé : texte et destination d'un bouton)
+  #    Un fichier JSON par appel à l'action : src/_data/appels_action/<slug>.json
+  #    Relié depuis le bouton flottant des pages d'offre et le bloc « Appel à l'action final ».
+  #    Spécification : docs/back-office/schema-logiciel-metier.md
+  # -----------------------------------------------------------------------
+  - name: appels_action
+    label: Appels à l'action
+    label_singular: Appel à l'action
+    description: Boutons réutilisés sur plusieurs pages. Modifier un appel à l'action le change partout où il est relié.
+    folder: src/_data/appels_action
+    create: true
+    extension: json
+    format: json
+    identifier_field: intitule
+    slug: "{{intitule}}"
+    summary: "{{intitule}} : {{texte}}"
+    sortable_fields: [intitule, texte]
+    fields:
+      - { label: Intitulé interne, name: intitule, widget: string, required: true, hint: "Sert à retrouver l'appel à l'action dans les listes. N'apparaît pas sur le site. Par exemple : Parlons de votre projet (formulaire de contact)." }
+      - { label: Texte du bouton, name: texte, widget: string, required: true, hint: 25 caractères maximum, commence par un verbe. }
+      - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: true, default: "#contact", hint: "#contact pour le formulaire en bas de page, une adresse commençant par / pour une page du site, https:// pour un site externe." }

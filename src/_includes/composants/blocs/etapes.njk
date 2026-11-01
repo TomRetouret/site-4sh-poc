@@ -1,0 +1,19 @@
+{# Bloc « etapes » : étapes ou processus, numéro calculé selon la position (01, 02...).
+   Classe de grille selon le nombre d'étapes (trois à six). Styles : logiciel-metier.css (.etapes). #}
+{% macro bloc(b, ctx, serre) %}
+{% set etapes = b.etapes or [] %}
+<!-- ÉTAPES OU PROCESSUS -->
+<section{% if serre %} style="padding-top:0"{% endif %}>
+  <div class="container">
+    {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
+    {% set classe = etapes.length | classeEtapes %}
+    <div class="etapes{% if classe %} {{ classe }}{% endif %}">
+      {% for e in etapes %}
+      <div class="etape"><span class="num">{{ loop.index | deuxChiffres }}</span>{% if e.phase %}<span class="num-label">{{ e.phase }}</span>{% endif %}<h3>{{ e.titre }}</h3><p>{{ e.texte }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endmacro %}

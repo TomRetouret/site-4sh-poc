@@ -1,5 +1,9 @@
   # -----------------------------------------------------------------------
-  # 2) RÉFÉRENCES  (projets clients / réussites)
+  # 2) RÉFÉRENCES  (études de cas clients, une fiche = un fichier)
+  # Gabarit fixe : src/_includes/reference.njk. Champs groupés dans l'ordre de la
+  # page (préfixe du libellé = groupe). Spécification : docs/back-office/schema-references.md
+  # Les champs titre, client, resume, logo, image, ordre et h1 sont aussi lus par
+  # les cartes de références des autres pages : ne pas les renommer.
   # -----------------------------------------------------------------------
   - name: "references"
     label: "Références"
@@ -13,46 +17,92 @@
     summary: "{{titre}}"
     sortable_fields: ["ordre", "titre", "client"]
     fields:
-      - { label: "Titre du projet", name: "titre", widget: "string", hint: "Ex. : Izivia - App Mobile", required: true }
-      - { label: "Client", name: "client", widget: "string", required: false }
-      - { label: "Résumé (carte)", name: "resume", widget: "text", hint: "Phrase de présentation affichée sur la carte et en chapô.", required: false }
-      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int", hint: "Plus petit = affiché en premier." }
-      - { label: "Titre de la fiche (grand titre visible)", name: "h1", widget: "string", required: true, hint: "Ex. : L'application mobile" }
-      - { label: "Sous-titre", name: "sous_titre", widget: "text", required: false, hint: "Phrase affichée sous le titre de la fiche." }
-      - { label: "Lien fiche PDF", name: "fiche_pdf", widget: "string", required: false, hint: "Lien vers la fiche PDF (Drive...)." }
-      - { label: "Dernière mise à jour", name: "maj", widget: "string", required: false, hint: "Ex. : 20/04/2022" }
-      - label: "Chiffres clés (bandeau hero)"
+      # --- En-tête ---
+      - { label: "En-tête · Nom du projet", name: "titre", widget: "string", required: true, maxlength: 50, hint: "Client et produit, 50 caractères maximum. Ex. : Izivia - App Mobile. Affiché dans le fil d'Ariane, sur les cartes et dans la navigation entre projets." }
+      - { label: "En-tête · Titre de la fiche (grand titre)", name: "h1", widget: "string", required: true, maxlength: 60, hint: "60 caractères maximum. Ex. : L'application mobile. Mettez un mot entre *astérisques* pour l'afficher en rouge." }
+      - { label: "En-tête · Sous-titre", name: "sous_titre", widget: "text", required: true, hint: "Une ou deux phrases sous le grand titre, 40 mots maximum. Sert aussi de description pour Google si celle du Référencement est vide." }
+      - { label: "En-tête · Client", name: "client", widget: "string", required: true, hint: "Nom de l'entreprise tel qu'elle l'écrit. Ex. : Bordeaux Métropole." }
+      - { label: "En-tête · Logo du client", name: "logo", widget: "image", required: true, choose_url: true, hint: "SVG ou PNG sur fond transparent, 400 px de large minimum. Le texte alternatif est le nom du client (automatique)." }
+      - label: "En-tête · Chiffres clés"
         name: "stats"
         widget: "list"
         required: false
-        hint: "Optionnel. Reprend des chiffres déjà présents dans l'étude de cas pour les mettre en avant."
+        max: 4
+        hint: "Facultatif. 2 à 4 chiffres déjà cités dans l'étude de cas, affichés sous le sous-titre."
+        summary: "{{chiffre}} {{label}}"
         fields:
-          - { label: "Chiffre", name: "chiffre", widget: "string", hint: "Ex. : 9 000, 200 000", required: false }
-          - { label: "Libellé", name: "label", widget: "string", hint: "Ex. : utilisateurs, bornes de recharge", required: false }
-      - { label: "Logo client", name: "logo", widget: "image", required: false, choose_url: true }
-      - { label: "Visuel", name: "image", widget: "image", required: false, choose_url: true }
-      - label: "Secteurs"
-        name: "secteurs"
-        widget: "list"
-        required: false
-        field: { label: "Secteur", name: "secteur", widget: "string", hint: "Ex. : Logistique, Mobilité, Assurance...", required: false }
-      - label: "Technologies"
-        name: "technologies"
-        widget: "list"
-        required: false
-        field: { label: "Technologie", name: "techno", widget: "string", hint: "Ex. : Angular, Java, Kotlin...", required: false }
-      - label: "Expertises"
-        name: "expertises"
-        widget: "list"
-        required: false
-        field: { label: "Expertise", name: "expertise", widget: "string", hint: "Ex. : UX, Data, Studio...", required: false }
-      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
-      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
-      - { label: "Lien source (site actuel)", name: "source_url", widget: "string", required: false }
-      - label: "Galerie (visuels)"
+          - { label: "Chiffre", name: "chiffre", widget: "string", required: true, maxlength: 10, hint: "10 caractères maximum. Ex. : 9 000" }
+          - { label: "Libellé", name: "label", widget: "string", required: true, maxlength: 40, hint: "40 caractères maximum. Ex. : bornes de recharge" }
+
+      # --- Téléchargement ---
+      - { label: "Téléchargement · Fiche projet (PDF)", name: "fiche_pdf", widget: "string", required: false, hint: "Lien de partage public du PDF (Google Drive...). Le bouton « Télécharger la fiche » s'affiche dans l'en-tête et dans la colonne de droite." }
+      - { label: "Téléchargement · Date de mise à jour", name: "maj", widget: "datetime", required: false, time_format: false, date_format: "DD/MM/YYYY", format: "YYYY-MM-DD", picker_utc: true, hint: "Date de la dernière mise à jour de la fiche, affichée « Dernière mise à jour : JJ/MM/AAAA »." }
+      - { label: "Téléchargement · Date (ancienne saisie à reprendre)", name: "maj_repli", widget: "string", required: false, hint: "Rempli seulement si une ancienne date n'a pas pu être convertie. Saisissez la date ci-dessus puis videz ce champ." }
+
+      # --- Étude de cas ---
+      - label: "Étude de cas"
+        name: "etude"
+        widget: "object"
+        required: true
+        hint: "Quatre rubriques fixes, affichées dans cet ordre avec leur intertitre. Une rubrique vide n'est pas affichée."
+        fields:
+          - { label: "1. Entreprise et activité", name: "entreprise", widget: "markdown", required: true, buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Qui est le client, son métier, sa taille. 100 à 250 mots." }
+          - { label: "2. Nos missions", name: "missions", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Ce que 4SH a fait pour le client, de préférence en liste. 100 à 250 mots." }
+          - label: "3. Enjeux et objectifs"
+            name: "enjeux_objectifs"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Phrase d'introduction", name: "intro", widget: "text", required: false, hint: "Facultatif. Une phrase avant les enjeux. Ex. : Refonte du système de gestion de fret." }
+              - { label: "Les enjeux", name: "enjeux", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list"], editor_components: [], hint: "Liste à puces des enjeux du client." }
+              - { label: "Les objectifs", name: "objectifs", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list"], editor_components: [], hint: "Liste à puces des objectifs, éventuellement suivie d'une phrase de conclusion." }
+          - label: "4. Points clés"
+            name: "points_cles"
+            widget: "object"
+            required: false
+            fields:
+              - label: "Intertitre"
+                name: "intertitre"
+                widget: "select"
+                required: false
+                default: "Les points clés de l'application"
+                options: ["Les points clés de l'application", "Les points clés de l'application mobile", "Les points clés de la solution", "Les points clés de kubernetes", "Les points clés"]
+                hint: "Choisissez ce que décrivent les points clés."
+              - { label: "Points clés de la solution", name: "texte", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "heading-three", "bulleted-list"], editor_components: [], hint: "Liste à puces. Des sous-titres (Titre 3) sont possibles, par exemple « Côté utilisateur » et « Côté entreprise »." }
+              - { label: "Les points clés du projet", name: "projet", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list"], editor_components: [], hint: "Facultatif. Liste à puces sur la conduite du projet (équipe, méthode, durée)." }
+          - { label: "Compléments", name: "complements", widget: "markdown", required: false, maxlength: 2500, buttons: ["bold", "italic", "link", "heading-two", "heading-three", "bulleted-list"], editor_components: [], hint: "À n'utiliser que si le contenu ne rentre pas dans les 4 rubriques. Affiché après les points clés. Chaque partie commence par un Titre 2. 2 500 caractères maximum." }
+
+      # --- Identité du projet ---
+      - { label: "Identité du projet · Secteurs", name: "secteurs", widget: "relation", required: true, multiple: true, min: 1, max: 3, collection: "listes", file: "listes", value_field: "secteurs.*.nom", search_fields: ["secteurs.*.nom"], display_fields: ["secteurs.*.nom"], hint: "1 à 3. Le premier s'affiche dans le surtitre de la fiche et sur la carte. Pour ajouter un secteur, modifiez « Listes de référence »." }
+      - { label: "Identité du projet · Technologies", name: "technologies", widget: "relation", required: false, multiple: true, collection: "listes", file: "listes", value_field: "technologies.*.nom", search_fields: ["technologies.*.nom"], display_fields: ["technologies.*.nom"], hint: "Les 4 premières s'affichent sur la carte. Pour ajouter une technologie, modifiez « Listes de référence »." }
+      - { label: "Identité du projet · Expertises", name: "expertises", widget: "relation", required: false, multiple: true, collection: "listes", file: "listes", value_field: "expertises.*.nom", search_fields: ["expertises.*.nom"], display_fields: ["expertises.*.nom"], hint: "Offres et étapes de la méthode mobilisées. Pour ajouter une expertise, modifiez « Listes de référence »." }
+
+      # --- Visuels ---
+      - { label: "Visuels · Visuel principal", name: "image", widget: "image", required: true, choose_url: true, hint: "Paysage 4:3, 1200 x 900 px minimum. Affiché dans l'en-tête de la fiche et sur la carte." }
+      - { label: "Visuels · Texte alternatif du visuel principal", name: "image_alt", widget: "string", required: false, maxlength: 120, hint: "Obligatoire sauf image décorative : décrivez ce que montre l'image, 120 caractères maximum. Ex. : Écran d'accueil de l'application Izivia sur smartphone." }
+      - { label: "Visuels · Visuel principal décoratif", name: "image_decorative", widget: "boolean", required: false, default: false, hint: "Cochez seulement si l'image n'apporte aucune information (le texte alternatif est alors ignoré)." }
+      - label: "Visuels · Galerie"
         name: "galerie"
         widget: "list"
         required: false
-        field: { label: "Image", name: "image", widget: "image", choose_url: true, required: false }
-      - { label: "Étude de cas", name: "body", widget: "markdown", hint: "Sections : Entreprise et activité, Nos missions, Enjeux & Objectifs, Les points clés.", required: false }
+        hint: "3 à 6 images de même format, 1600 px de large."
+        summary: "{{alt}}"
+        fields:
+          - { label: "Image", name: "image", widget: "image", required: true, choose_url: true }
+          - { label: "Texte alternatif", name: "alt", widget: "string", required: false, maxlength: 120, hint: "Obligatoire sauf image décorative : ce que montre l'écran, 120 caractères maximum." }
+          - { label: "Image décorative", name: "decorative", widget: "boolean", required: false, default: false, hint: "Cochez seulement si l'image n'apporte aucune information." }
+
+      # --- Carte de liste ---
+      - { label: "Carte de liste · Résumé", name: "resume", widget: "text", required: true, maxlength: 160, hint: "160 caractères maximum. Affiché sur la carte de la page Nos réussites (et sur la fiche si le sous-titre est vide)." }
+      - { label: "Carte de liste · Position", name: "ordre", widget: "number", required: false, value_type: "int", min: 1, hint: "Nombre entier : le plus petit s'affiche en premier. Sert aussi à la navigation entre projets." }
+
+      # --- Référencement ---
+      - label: "Référencement"
+        name: "referencement"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Titre SEO", name: "meta_title", widget: "string", required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « Nom du projet - Référence 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : le sous-titre est utilisé." }
+          - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher masque la fiche dans Google." }

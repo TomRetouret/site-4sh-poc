@@ -1,5 +1,18 @@
-{# Bloc « chiffres_cles » : bandeau de chiffres. #}
+{# Bloc « chiffres_cles » : bandeau de chiffres.
+   ctx.gabarit == "offre" (pages d'offre) : balisage de la page d'origine (section sans marge, chiffre sans <i>). #}
 {% macro bloc(b, ctx) %}
+{% if ctx.gabarit == "offre" %}
+<!-- PREUVE CHIFFRÉE -->
+<section style="padding:0">
+  <div class="chiffres">
+    <div class="container">
+      {% for c in b.chiffres %}
+      <div><b>{{ c.valeur }}</b><span>{{ c.texte }}</span>{% if c.note %}<small>{{ c.note }}</small>{% endif %}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% else %}
 <!-- BANDEAU CHIFFRES -->
 <div class="chiffres">
   <div class="container">
@@ -11,4 +24,5 @@
     {% endfor %}
   </div>
 </div>
+{% endif %}
 {% endmacro %}

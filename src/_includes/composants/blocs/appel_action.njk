@@ -1,0 +1,15 @@
+{# Bloc « appel_action » : bandeau d'appel à l'action final, centré.
+   Le bouton vient du contenu partagé « Appels à l'action » (ctx.appels_action[slug] : texte, lien).
+   fond : blanc (défaut), doux (.fond-doux) ou sombre (.section-sombre). #}
+{% macro bloc(b, ctx, serre) %}
+{% set appel = ctx.appels_action[b.appel] if (b.appel and ctx.appels_action) %}
+{% set classe = {"doux": "fond-doux", "sombre": "section-sombre"}[b.fond] %}
+<!-- APPEL À L'ACTION -->
+<section class="cta-final{% if classe %} {{ classe }}{% endif %}">
+  <div class="container" style="text-align:center">
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    {% if b.texte %}<p class="sec-sous" style="margin:0 auto 28px">{{ b.texte }}</p>{% endif %}
+    {% if appel and appel.texte %}<div class="hero-cta" style="justify-content:center"><a class="btn btn-primary" href="{{ appel.lien or '#contact' }}">{{ appel.texte }}</a></div>{% endif %}
+  </div>
+</section>
+{% endmacro %}

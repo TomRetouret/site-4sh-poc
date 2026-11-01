@@ -1,0 +1,14 @@
+{# Bloc « texte_simple » : surtitre, titre et texte mis en forme (Markdown limité : gras, liens, listes).
+   serre : vrai si le bloc suit une section blanche (marge haute retirée). Styles : logiciel-metier.css (.prose). #}
+{% macro bloc(b, ctx, serre) %}
+<!-- TEXTE SIMPLE -->
+<section{% if serre %} style="padding-top:0"{% endif %}>
+  <div class="container">
+    {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    <div class="prose">
+      {{ b.texte | texteRiche | safe }}
+    </div>
+  </div>
+</section>
+{% endmacro %}

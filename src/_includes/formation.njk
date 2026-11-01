@@ -90,7 +90,7 @@ permalink: "/formations/{{ page.fileSlug }}/"
             <a href="#description" class="actif">{{ libelles.formation.ancre_description }}</a>
             <a href="#objectifs">{{ libelles.formation.ancre_objectifs }}</a>
             <a href="#programme">{{ libelles.formation.ancre_programme }}</a>
-            {% if formateur %}<a href="#formateur">{{ libelles.formation.ancre_formateur }}</a>{% endif %}
+            {% if formateur_vue %}<a href="#formateur">{{ libelles.formation.ancre_formateur }}</a>{% endif %}
             <a href="#modalites">{{ libelles.formation.ancre_modalites }}</a>
             <a href="#liees">{{ libelles.formation.ancre_liees }}</a>
           </div>
@@ -132,7 +132,7 @@ permalink: "/formations/{{ page.fileSlug }}/"
               {% for chap in programme %}
               <details{% if loop.first %} open{% endif %}>
                 <summary>{{ chap.titre }}</summary>
-                <ul class="contenu">{% for item in chap.items %}<li>{{ item }}</li>{% endfor %}</ul>
+                <ul class="contenu">{% for item in chap.points %}<li>{{ item }}</li>{% endfor %}</ul>
               </details>
               {% endfor %}
             </div>
@@ -140,19 +140,19 @@ permalink: "/formations/{{ page.fileSlug }}/"
         </section>
         {% endif %}
 
-        <!-- FORMATEUR -->
-        {% if formateur %}
+        <!-- FORMATEUR -->{# fiche Équipe reliée : formateur_vue est calculé dans formations.11tydata.js #}
+        {% if formateur_vue %}
         <section id="formateur" style="padding:48px 0 0">
           <div class="bloc-detail" style="max-width:none">
             <h2 style="max-width:820px">{{ libelles.formation.formateur_titre | accent | safe }}</h2>
             <div class="formateur">
               <div class="portrait">
-                {% if formateur.photo %}<img src="{{ formateur.photo }}" alt="{{ formateur.nom }}, formateur {{ titre }} chez 4SH">{% endif %}
-                <b>{{ formateur.nom }}</b>
-                <span>{{ formateur.role }}</span>
+                {% if formateur_vue.photo %}<img src="{{ formateur_vue.photo }}" alt="{{ formateur_vue.nom }}, formateur {{ titre }} chez 4SH">{% endif %}
+                <b>{{ formateur_vue.nom }}</b>
+                <span>{{ formateur_vue.role }}</span>
               </div>
               <div>
-                {% for para in formateur.bio %}<p{% if loop.last %} style="margin-bottom:0"{% endif %}>{{ para | accent | safe }}</p>{% endfor %}
+                {% for para in formateur_vue.bio %}<p{% if loop.last %} style="margin-bottom:0"{% endif %}>{{ para | accent | safe }}</p>{% endfor %}
               </div>
             </div>
           </div>

@@ -26,6 +26,9 @@
  * site dans la collection « pages », fichiers « site » et « en_site ».
  * Collection dossier « demo » (Pages de démonstration, src/demo/*.md) : même
  * gabarit que l'accueil, enregistré sous le nom de la collection.
+ * Pages d'offre (collection « pages_offre », fichier « logiciel_metier ») :
+ * gabarit dans apercus-logiciel-metier.js, qui réutilise rendreBlocs() d'ici
+ * avec ctx.gabarit = 'offre' (balisage des pages intérieures).
  * admin-decap/config.yml n'existait pas encore : on enregistre donc aussi les
  * noms probables d'une configuration Decap sans i18n (voir NOMS_ACCUEIL et
  * NOMS_TEMOIGNAGES plus bas). Enregistrer un nom absent de la configuration est
@@ -57,7 +60,7 @@
 // Les autres couvrent les variantes probables (Decap, version anglaise séparée).
 const NOMS_ACCUEIL = ['accueil', 'accueil_fr', 'accueil_en', 'en_accueil', 'home'];
 
-// Collections dossier dont les entrées ont un champ « blocs » (mêmes 11 types) :
+// Collections dossier dont les entrées ont un champ « blocs » (bibliothèque complète) :
 // rendues par le même gabarit que l'accueil. « demo » : Pages de démonstration
 // (src/demo/*.md, données en front matter : titre, seo, blocs).
 const NOMS_PAGES_BLOCS = ['demo'];
@@ -83,11 +86,26 @@ const LIBELLES = {
   cartes_secteurs: 'Cartes secteurs (carrousel)',
   methode_4d: 'Méthode 4D',
   projets: 'Projets (carrousel de réalisations)',
-  technologies: 'Technologies (mur)',
+  technologies: 'Technologies',
   faq: 'Questions fréquentes',
   derniers_articles: 'Derniers articles du blog',
   equipe: 'Équipe (photo et texte)',
+  texte_simple: 'Texte simple',
+  etapes: 'Étapes ou processus',
+  benefices: 'Liste de bénéfices',
+  projet_vedette: 'Projet vedette',
+  appel_action: "Appel à l'action final",
 };
+
+// Blocs dont les styles sont dans /assets/logiciel-metier.css (feuille des pages
+// d'offre, ajoutée à l'aperçu seulement si la page en contient).
+const FEUILLE_OFFRE = '/assets/logiciel-metier.css';
+export function besoinFeuilleOffre(blocs) {
+  return tableau(blocs).some((b) => b && !b.masquer && (
+    ['texte_simple', 'etapes', 'benefices', 'projet_vedette', 'appel_action'].includes(b.type) ||
+    (b.type === 'hero' && b.variante === 'sobre') ||
+    (b.type === 'technologies' && b.affichage === 'cartes')));
+}
 
 // Styles propres à l'aperçu (mentions, avertissements, repère de focus).
 // Préfixe « apercu- » pour ne jamais entrer en conflit avec la charte.
@@ -184,6 +202,38 @@ function accent(s) {
   });
   return morceaux;
 }
+
+// Markdown limité des champs « texte mis en forme » (filtre texteRiche du site) :
+// paragraphes séparés par une ligne vide, listes à puces (- ou *) et numérotées
+// (1.), gras **mot**, italique *mot* rendu en rouge (convention accent), liens
+// [texte](adresse). Le reste est affiché tel quel.
+function enLigne(s) {
+  const morceaux = [];
+  const re = /\*\*([^*]+)\*\*|\*([^*\n]+)\*|_([^_\n]+)_|\[([^\]]+)\]\(([^)\s]*)\)/g;
+  let dernier = 0;
+  let m;
+  while ((m = re.exec(s))) {
+    morceaux.push(s.slice(dernier, m.index));
+    if (m[1] !== undefined) morceaux.push(el('strong', null, m[1]));
+    else if (m[2] !== undefined || m[3] !== undefined) morceaux.push(el('em', { className: 'accent' }, m[2] || m[3]));
+    else morceaux.push(el('a', propsLien(m[5]), m[4]));
+    dernier = re.lastIndex;
+  }
+  morceaux.push(s.slice(dernier));
+  return morceaux;
+}
+export function texteRiche(source) {
+  const blocs = texte(source).replace(/\r/g, '').split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
+  return blocs.map((b) => {
+    const lignes = b.split('\n');
+    if (lignes.every((l) => /^\s*[-*+]\s+/.test(l))) return el('ul', null, lignes.map((l) => el('li', null, enLigne(l.replace(/^\s*[-*+]\s+/, '')))));
+    if (lignes.every((l) => /^\s*\d+[.)]\s+/.test(l))) return el('ol', null, lignes.map((l) => el('li', null, enLigne(l.replace(/^\s*\d+[.)]\s+/, '')))));
+    return el('p', null, enLigne(lignes.join(' ')));
+  });
+}
+
+// Signature d'un témoignage : nom, fonction et entreprise non vides (le nom est facultatif).
+const signature = (t) => [t.auteur, t.fonction, t.entreprise].filter((x) => texte(x).trim()).join(', ');
 
 // Lien inerte dans l'aperçu : pas d'attribut href (un clic ne fait donc pas
 // naviguer l'iframe, et on n'appelle pas preventDefault, qui désactiverait le
@@ -318,7 +368,40 @@ function carrousel(libelle, variante, enfants) {
     el('div', { className: 'car-dots' }));
 }
 
+// Surtitre d'offre du hero sobre (filtre surtitreOffre du site).
+const SURTITRES_OFFRE = {
+  build: '4SH Build · Concevoir & développer',
+  run: '4SH Run · Faire vivre & auditer',
+  learning: '4SH Learning',
+  institutionnel: '4SH',
+};
+
+function BlocHeroSobre({ b, i, ctx }) {
+  const p = 'blocs.' + i;
+  const bp = b.bouton_principal || {};
+  const bs = b.bouton_secondaire || {};
+  const surtitre = SURTITRES_OFFRE[b.offre];
+  return el('div', { className: 'hero-interne' },
+    el('div', { className: 'container' },
+      ctx.filAriane && el('nav', { className: 'fil-ariane', 'aria-label': "Fil d'Ariane" },
+        el('a', propsLien('/'), 'Accueil'), ' › ', el('span', cle(ctx.cleFilAriane || 'nom'), ctx.filAriane)),
+      surtitre
+        ? el('span', Object.assign({ className: 'eyebrow eyebrow-offre' }, cle(p + '.offre')), el('span', { className: 'barre', 'aria-hidden': 'true' }), surtitre)
+        : null,
+      el('div', { className: 'hero-grille' },
+        el('div', null,
+          el('h1', cle(p + '.titre_page'), accent(b.titre_page)),
+          b.chapo && el('p', Object.assign({ className: 'chapo' }, cle(p + '.chapo')), b.chapo),
+          el('div', { className: 'hero-cta' },
+            el('a', Object.assign({ className: 'btn btn-primary' }, propsLien(bp.lien, '#contact'), cle(p + '.bouton_principal.texte')), bp.texte),
+            bs.texte && el('a', Object.assign({ className: 'btn btn-ghost' }, propsLien(bs.lien, '/references/'), cle(p + '.bouton_secondaire.texte')), bs.texte)),
+          b.note && el('p', Object.assign({ className: 'hero-note' }, cle(p + '.note')), b.note),
+          tableau(b.etiquettes).length > 0 && el('div', { className: 'chips' },
+            tableau(b.etiquettes).map((c, j) => el('span', cle(p + '.etiquettes.' + j), c)))))));
+}
+
 function BlocHero({ b, i, ctx }) {
+  if (b.variante === 'sobre') return BlocHeroSobre({ b, i, ctx });
   const p = 'blocs.' + i;
   const bp = b.bouton_principal || {};
   const bs = b.bouton_secondaire || {};
@@ -362,7 +445,7 @@ function BlocHero({ b, i, ctx }) {
           el('span', null, e.numero), e.phase)))));
 }
 
-function BlocLogosClients({ b, i, ctx }) {
+function BlocLogosClients({ b, i, ctx, serre }) {
   const p = 'blocs.' + i;
   // Les noms viennent des réglages du site (contenu partagé, hors de cette page).
   const essais = ctx.langue === 'en'
@@ -374,6 +457,16 @@ function BlocLogosClients({ b, i, ctx }) {
     rendu: (site) => {
       const intro = texte(site && site.clients_intro).replace(' :', '').replace(':', '');
       const clients = tableau(site && site.clients);
+      if (ctx.gabarit === 'offre') {
+        // Pages d'offre : bandeau discret de la page Logiciel métier, noms sans lien.
+        return el('section', serre ? { style: { paddingTop: 0 } } : null,
+          el('div', { className: 'container' },
+            el('div', { className: 'clients' },
+              el('p', Object.assign({ className: 'tt' }, cle(p + '.titre')), b.titre || intro || 'Ils nous confient leur métier'),
+              clients.length
+                ? el('div', { className: 'marquee' }, el('ul', null, clients.map((c) => el('li', null, c.nom))))
+                : el('p', { className: 'apercu-info' }, 'Les noms des clients viennent des réglages du site (contenu partagé) : ils s’afficheront ici sur le site publié.'))));
+      }
       return el('section', { className: 'confiance', 'aria-labelledby': 'confiance-titre' },
         el('div', { className: 'container confiance-grille' },
           el('h2', Object.assign({ className: 'confiance-titre', id: 'confiance-titre' }, cle(p + '.titre')),
@@ -416,8 +509,21 @@ function BlocCartesOffres({ b, i }) {
         }))));
 }
 
-function BlocChiffresCles({ b, i }) {
+function BlocChiffresCles({ b, i, ctx }) {
   const p = 'blocs.' + i;
+  if (ctx.gabarit === 'offre') {
+    // Pages d'offre : section sans marge, chiffre sans <i> (chiffres_cles.njk).
+    return el('section', { style: { padding: 0 } },
+      el('div', { className: 'chiffres' },
+        el('div', { className: 'container' },
+          tableau(b.chiffres).map((c, j) => {
+            const pc = p + '.chiffres.' + j;
+            return el('div', null,
+              el('b', cle(pc + '.valeur'), c.valeur),
+              el('span', cle(pc + '.texte'), c.texte),
+              c.note && el('small', cle(pc + '.note'), c.note));
+          }))));
+  }
   return el('div', { className: 'chiffres' },
     el('div', { className: 'container' },
       tableau(b.chiffres).map((c, j) => {
@@ -475,15 +581,14 @@ function citationTemoignage(slug, chemin, ctx) {
     }
     return [
       el('blockquote', cle(chemin), t.citation),
-      t.auteur && el('p', Object.assign({ className: 'auteur' }, cle(chemin)),
-        [t.auteur, t.fonction, t.entreprise].filter((x) => texte(x).trim()).join(', ')),
+      signature(t) && el('p', Object.assign({ className: 'auteur' }, cle(chemin)), signature(t)),
     ];
   };
   // 1. Données déjà fournies par le widget relation (fieldsMetaData).
   const fm = ctx.fieldsMetaData;
   if (fm && typeof fm.getIn === 'function') {
     for (const coll of NOMS_TEMOIGNAGES) {
-      for (const base of [['temoignage'], ['projets', 'temoignage'], ['blocs', 'projets', 'temoignage']]) {
+      for (const base of [['temoignage'], ['projets', 'temoignage'], ['blocs', 'projets', 'temoignage'], ['blocs', 'temoignage']]) {
         const t = versJS(fm.getIn(base.concat([coll, slug])));
         if (t && t.citation) return rendu(t);
       }
@@ -528,8 +633,22 @@ function BlocProjets({ b, i, ctx }) {
         el('a', Object.assign({ className: 'btn btn-primary' }, propsLien(bas.lien, '/references/'), cle(p + '.bouton_bas.texte')), bas.texte))));
 }
 
-function BlocTechnologies({ b, i }) {
+function BlocTechnologies({ b, i, ctx }) {
   const p = 'blocs.' + i;
+  if (b.affichage === 'cartes') {
+    // Affichage cartes : logo, nom et lien sur fond sombre (logiciel-metier.css).
+    return el('section', { className: 'section-sombre' },
+      el('div', { className: 'container' },
+        entete(b, p),
+        el('div', { className: 'socle' },
+          tableau(b.technos).map((t, j) => {
+            const pt = p + '.technos.' + j;
+            return el('div', { className: 'socle-carte' },
+              t.logo && el('img', Object.assign({ src: adresseImage(ctx.getAsset, t.logo), alt: texte(t.nom) }, cle(pt + '.logo'))),
+              el('h3', cle(pt + '.nom'), t.nom),
+              t.lien && el('a', Object.assign(propsLien(t.lien), cle(pt + '.lien')), 'En savoir plus →'));
+          }))));
+  }
   return el('section', null,
     el('div', { className: 'container' },
       entete(b, p),
@@ -537,12 +656,12 @@ function BlocTechnologies({ b, i }) {
         tableau(b.technos).map((t, j) => el('a', Object.assign({ className: 'techno-tag' }, propsLien(t.lien), cle(p + '.technos.' + j + '.nom')), t.nom)))));
 }
 
-function BlocFaq({ b, i }) {
+function BlocFaq({ b, i, ctx }) {
   const p = 'blocs.' + i;
   // Le JSON-LD FAQPage du site n'a pas d'intérêt dans l'aperçu : omis.
   return el('section', { style: { paddingTop: 0 } },
     el('div', { className: 'container' },
-      el('h2', Object.assign({ className: 'sec-titre centre', style: { textAlign: 'center' } }, cle(p + '.titre')), b.titre),
+      el('h2', Object.assign({ className: ctx.gabarit === 'offre' ? 'sec-titre' : 'sec-titre centre', style: { textAlign: 'center' } }, cle(p + '.titre')), accent(b.titre)),
       b.sous_titre && el('p', Object.assign({ className: 'sec-sous', style: { margin: '0 auto 38px', textAlign: 'center' } }, cle(p + '.sous_titre')), b.sous_titre),
       el('div', { className: 'faq' },
         tableau(b.questions).map((q, j) => el('details', j === 0 ? { open: true } : null,
@@ -585,6 +704,112 @@ function BlocEquipe({ b, i, ctx }) {
         el('a', Object.assign({ className: 'btn btn-ghost' }, propsLien(bouton.lien, '/notre-entreprise/'), cle(p + '.bouton.texte')), bouton.texte || 'Notre entreprise'))));
 }
 
+// Section blanche ordinaire ; serre = marge haute retirée (suit une section blanche).
+const propsSection = (serre, extra) => Object.assign({}, extra || {}, serre ? { style: { paddingTop: 0 } } : {});
+
+function BlocTexteSimple({ b, i, serre }) {
+  const p = 'blocs.' + i;
+  return el('section', propsSection(serre),
+    el('div', { className: 'container' },
+      entete(b, p),
+      el('div', Object.assign({ className: 'prose' }, cle(p + '.texte')), texteRiche(b.texte))));
+}
+
+const CLASSES_ETAPES = { 3: 'trois', 4: 'quatre', 5: 'cinq', 6: 'six' };
+
+function BlocEtapes({ b, i, serre }) {
+  const p = 'blocs.' + i;
+  const etapes = tableau(b.etapes);
+  const classe = CLASSES_ETAPES[etapes.length];
+  return el('section', propsSection(serre),
+    el('div', { className: 'container' },
+      entete(b, p),
+      el('div', { className: 'etapes' + (classe ? ' ' + classe : '') },
+        etapes.map((e, j) => {
+          const pe = p + '.etapes.' + j;
+          // Numéro calculé selon la position (01, 02...).
+          return el('div', { className: 'etape' },
+            el('span', { className: 'num' }, String(j + 1).padStart(2, '0')),
+            e.phase && el('span', Object.assign({ className: 'num-label' }, cle(pe + '.phase')), e.phase),
+            el('h3', cle(pe + '.titre'), e.titre),
+            el('p', cle(pe + '.texte'), e.texte));
+        }))));
+}
+
+function BlocBenefices({ b, i, serre }) {
+  const p = 'blocs.' + i;
+  return el('section', propsSection(serre),
+    el('div', { className: 'container' },
+      entete(b, p),
+      el('div', { className: 'atouts' },
+        tableau(b.benefices).map((a, j) => {
+          const pa = p + '.benefices.' + j;
+          return el('div', { className: 'atout' },
+            el('span', { className: 'n' }, String(j + 1)),
+            el('h3', cle(pa + '.titre'), a.titre),
+            a.texte && el('p', cle(pa + '.texte'), a.texte));
+        }))));
+}
+
+// Carte « Autres références » construite à partir de la fiche reliée (slug).
+function carteReference(slug, chemin, ctx) {
+  return chargeur({
+    cleCache: 'reference:' + slug,
+    charger: () => premiereEntree(ctx.getCollection, [['references', slug]]),
+    rendu: (f) => el('div', Object.assign({ className: 'real-carte' }, cle(chemin)),
+      f ? [
+        el('div', { className: 'secteur' }, f.client + (Array.isArray(f.secteurs) && f.secteurs.length ? ' · ' + f.secteurs[0] : '')),
+        el('h3', null, (f.titre === f.client && f.sous_titre) ? f.sous_titre : f.titre),
+        f.resume && el('p', null, f.resume),
+        el('a', propsLien('/references/' + slug + '/'), 'Voir la référence →'),
+      ] : el('p', { className: 'apercu-info' }, 'Fiche référence reliée : « ' + slug + ' » (client, titre et résumé repris de la fiche sur le site publié).')),
+  });
+}
+
+function BlocProjetVedette({ b, i, ctx, serre }) {
+  const p = 'blocs.' + i;
+  const bouton = b.bouton || {};
+  const refs = tableau(b.references);
+  const chiffres = tableau(b.chiffres);
+  return el('section', propsSection(serre, b.ancre ? { id: b.ancre } : null),
+    el('div', { className: 'container' },
+      b.surtitre && el('p', Object.assign({ className: 'eyebrow' }, cle(p + '.surtitre')), b.surtitre),
+      el('h2', Object.assign({ className: 'sec-titre' }, cle(p + '.titre')), accent(b.titre)),
+      el('div', { className: 'cas', style: { marginTop: '24px', marginBottom: '22px' } },
+        el('div', { className: 'cas-visuel' },
+          b.secteur && el('div', Object.assign({ className: 'secteur' }, cle(p + '.secteur')), b.secteur),
+          el('div', Object.assign({ className: 'logo-client' }, cle(p + '.client')), b.client),
+          b.description && el('p', Object.assign({ style: { color: 'var(--sur-nuit)', fontSize: '15px' } }, cle(p + '.description')), b.description)),
+        el('div', { className: 'cas-corps' },
+          citationTemoignage(b.temoignage, p + '.temoignage', ctx),
+          chiffres.length > 0 && el('div', { className: 'cas-chiffre' },
+            chiffres.map((ch, k) => el('div', null,
+              el('b', cle(p + '.chiffres.' + k + '.valeur'), accent(ch.valeur)),
+              el('span', cle(p + '.chiffres.' + k + '.libelle'), ch.libelle)))),
+          bouton.texte && el('a', Object.assign({ className: 'btn btn-ghost btn-sm' }, propsLien(bouton.lien, '/references/'), cle(p + '.bouton.texte')), bouton.texte))),
+      refs.length > 0 && el('div', { className: 'realisations' },
+        refs.map((slug, k) => carteReference(slug, p + '.references.' + k, ctx)))));
+}
+
+const FONDS_CTA = { doux: 'fond-doux', sombre: 'section-sombre' };
+
+function BlocAppelAction({ b, i, ctx }) {
+  const p = 'blocs.' + i;
+  return el('section', { className: 'cta-final' + (FONDS_CTA[b.fond] ? ' ' + FONDS_CTA[b.fond] : '') },
+    el('div', { className: 'container', style: { textAlign: 'center' } },
+      el('h2', Object.assign({ className: 'sec-titre' }, cle(p + '.titre')), accent(b.titre)),
+      b.texte && el('p', Object.assign({ className: 'sec-sous', style: { margin: '0 auto 28px' } }, cle(p + '.texte')), b.texte),
+      b.appel
+        ? chargeur({
+            cleCache: 'appel:' + b.appel,
+            charger: () => premiereEntree(ctx.getCollection, [['appels_action', b.appel]]),
+            rendu: (a) => el('div', { className: 'hero-cta', style: { justifyContent: 'center' } },
+              el('a', Object.assign({ className: 'btn btn-primary' }, propsLien(a && a.lien, '#contact'), cle(p + '.appel')),
+                (a && a.texte) || 'Appel à l’action « ' + b.appel + ' »')),
+          })
+        : el('p', Object.assign({ className: 'apercu-alerte' }, cle(p + '.appel')), 'Choisissez un appel à l’action pour afficher le bouton.')));
+}
+
 const COMPOSANTS = {
   hero: BlocHero,
   logos_clients: BlocLogosClients,
@@ -597,7 +822,26 @@ const COMPOSANTS = {
   faq: BlocFaq,
   derniers_articles: BlocDerniersArticles,
   equipe: BlocEquipe,
+  texte_simple: BlocTexteSimple,
+  etapes: BlocEtapes,
+  benefices: BlocBenefices,
+  projet_vedette: BlocProjetVedette,
+  appel_action: BlocAppelAction,
 };
+
+// Marge haute retirée quand un bloc suit une section blanche (filtre blocsSerres du site).
+const blocBlanc = (b) => ['texte_simple', 'etapes', 'benefices', 'projet_vedette', 'logos_clients', 'faq'].includes(b.type) ||
+  (b.type === 'technologies' && b.affichage !== 'cartes');
+const blocSerrable = (b) => ['texte_simple', 'etapes', 'benefices', 'projet_vedette', 'logos_clients'].includes(b.type);
+function serres(liste) {
+  let precedent = null;
+  return liste.map((b) => {
+    if (!b || b.masquer) return false;
+    const r = !!(precedent && blocBlanc(precedent) && blocSerrable(b));
+    precedent = b;
+    return r;
+  });
+}
 
 /* ------------------------------------------------------------------------- */
 /* Rendu de la liste des blocs et gabarits                                   */
@@ -611,6 +855,7 @@ export function rendreBlocs(blocs, ctxBase) {
   const ctx = Object.assign({}, ctxBase, {
     etapes4d: { rang: rang4d, etapes: rang4d >= 0 ? tableau(liste[rang4d].etapes) : [] },
   });
+  const serre = serres(liste);
   return liste.map((b, i) => {
     if (!b) return null;
     const libelle = LIBELLES[b.type] || b.type || 'type inconnu';
@@ -620,7 +865,7 @@ export function rendreBlocs(blocs, ctxBase) {
     const Composant = COMPOSANTS[b.type];
     if (!Composant) return el('p', { className: 'apercu-alerte' }, 'Bloc inconnu : ' + libelle);
     try {
-      return Composant({ b, i, ctx });
+      return Composant({ b, i, ctx, serre: serre[i] });
     } catch (err) {
       // Un bloc en cours de saisie ne doit jamais casser tout l'aperçu.
       return el('p', { className: 'apercu-alerte' }, 'Aperçu indisponible pour le bloc « ' + libelle + ' » : ' + err.message);
@@ -637,8 +882,12 @@ export function ApercuAccueil(props) {
     getCollection: props.getCollection,
     fieldsMetaData: props.fieldsMetaData,
     langue: langueDe(props.entry),
+    // Hero sobre des pages de démonstration : le titre de la page sert de fil d'Ariane.
+    filAriane: data.titre,
+    cleFilAriane: 'titre',
   };
   return el('div', { className: 'apercu-accueil' },
+    besoinFeuilleOffre(data.blocs) && el('link', { rel: 'stylesheet', href: FEUILLE_OFFRE }),
     // Rappel SEO (absent de la page, mais utile au contributeur).
     el('div', { className: 'apercu-seo' },
       // Titre de la page (pages de démonstration ; absent de l'accueil).
@@ -653,15 +902,18 @@ export function ApercuAccueil(props) {
 // Gabarit d'un témoignage : rendu dans une carte de réalisation, comme sur le site.
 export function ApercuTemoignage(props) {
   const t = lireDonnees(props.entry);
-  const auteur = [t.auteur, t.fonction, t.entreprise].filter((x) => texte(x).trim()).join(', ');
+  const auteur = signature(t);
   return el('section', { className: 'fond-doux' },
     el('div', { className: 'container' },
       el('div', { className: 'cas', style: { maxWidth: '560px' } },
         el('div', { className: 'cas-corps' },
           el('blockquote', cle('citation'), t.citation || '(citation vide)'),
           el('p', { className: 'auteur' },
-            el('span', cle('auteur'), auteur || '(nom vide)'))))));
+            el('span', cle(t.auteur ? 'auteur' : 'entreprise'), auteur || '(entreprise vide)'))))));
 }
+
+// Outils partagés avec apercus-logiciel-metier.js (gabarit des pages d'offre).
+export { el, cle, propsLien, lireDonnees, chargeur, premiereEntree, FEUILLE_OFFRE };
 
 /* ------------------------------------------------------------------------- */
 /* Enregistrement auprès du CMS                                              */

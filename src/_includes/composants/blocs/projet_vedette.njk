@@ -1,0 +1,43 @@
+{# Bloc « projet_vedette » : une réalisation mise en avant, puis des cartes « Autres références »
+   construites à partir des fiches de la collection references (slug : titre, client, resume).
+   Citation et signature viennent du témoignage relié (ctx.temoignages) ; l'auteur est facultatif.
+   ctx.references = collections.references. Styles : logiciel-metier.css (.cas, .realisations). #}
+{% macro bloc(b, ctx, serre) %}
+{% set t = ctx.temoignages[b.temoignage] if (b.temoignage and ctx.temoignages) %}
+{% set bouton = b.bouton or {} %}
+<!-- PROJET VEDETTE -->
+<section{% if serre %} style="padding-top:0"{% endif %}{% if b.ancre %} id="{{ b.ancre }}"{% endif %}>
+  <div class="container">
+    {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    <div class="cas" style="margin-top:24px;margin-bottom:22px">
+      <div class="cas-visuel">
+        {% if b.secteur %}<div class="secteur">{{ b.secteur }}</div>{% endif %}
+        <div class="logo-client">{{ b.client }}</div>
+        {% if b.description %}<p style="color:var(--sur-nuit);font-size:15px">{{ b.description }}</p>{% endif %}
+      </div>
+      <div class="cas-corps">
+        {% if t and t.citation %}<blockquote>{{ t.citation }}</blockquote>{% set signature = [t.auteur, t.fonction, t.entreprise] | select | join(", ") %}{% if signature %}<p class="auteur">{{ signature }}</p>{% endif %}{% endif %}
+        {% if b.chiffres and b.chiffres.length %}<div class="cas-chiffre">
+          {% for ch in b.chiffres %}<div><b>{{ ch.valeur | accent | safe }}</b><span>{{ ch.libelle }}</span></div>{% endfor %}
+        </div>{% endif %}
+        {% if bouton.texte %}<a class="btn btn-ghost btn-sm" href="{{ bouton.lien or '/references/' }}">{{ bouton.texte }}</a>{% endif %}
+      </div>
+    </div>
+    {% set cartes = ctx.references | fichesReferences(b.references) %}
+    {% if cartes.length %}
+    <div class="realisations">
+      {% for f in cartes %}
+      <div class="real-carte">
+        <div class="secteur">{{ f.data.client }}{% if f.data.secteurs and f.data.secteurs.length %} · {{ f.data.secteurs[0] }}{% endif %}</div>
+        {#- titre identique au client (ex. CIN) : on affiche le sous-titre pour éviter la répétition -#}
+        <h3>{{ f.data.sous_titre if (f.data.titre == f.data.client and f.data.sous_titre) else f.data.titre }}</h3>
+        {% if f.data.resume %}<p>{{ f.data.resume }}</p>{% endif %}
+        <a href="{{ f.url }}">Voir la référence →</a>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endmacro %}

@@ -1,0 +1,23 @@
+  # -----------------------------------------------------------------------
+  # 1 bis) ÉQUIPE  (contenu partagé : une personne = un fichier JSON)
+  #    src/_data/equipe/<slug>.json, lu par le site comme donnée globale « equipe ».
+  #    Reliée depuis les fiches formation (champ Formateur). Une fiche reliée ne peut
+  #    pas être supprimée tant qu'une formation l'utilise.
+  # -----------------------------------------------------------------------
+  - name: "equipe"
+    label: "Équipe"
+    label_singular: "Membre de l'équipe"
+    folder: "src/_data/equipe"
+    extension: "json"
+    format: "json"
+    create: true
+    identifier_field: "nom"
+    slug: "{{nom}}"
+    summary: "{{nom}}, {{fonction}}"
+    sortable_fields: ["nom"]
+    fields:
+      - { label: "Prénom et nom", name: "nom", widget: "string", required: true, hint: "Tel qu'affiché sur le site. Ex. : Damien Martin" }
+      - { label: "Fonction", name: "fonction", widget: "string", required: false, hint: "40 caractères maximum. Ex. : Développeur et formateur depuis 2013" }
+      - { label: "Photo", name: "photo", widget: "image", required: false, choose_url: true, hint: "Portrait carré, 600 x 600 px minimum." }
+      - { label: "Texte alternatif de la photo", name: "photo_alt", widget: "string", required: false, hint: "Décrit la photo pour les lecteurs d'écran, 120 caractères maximum. Ex. : Damien Martin souriant, en chemise bleue. Sur les fiches formation, le texte « <nom>, formateur <formation> chez 4SH » est utilisé." }
+      - { label: "Courte présentation", name: "presentation", widget: "text", required: false, hint: "Parcours et expertise, 80 mots maximum. Séparez les paragraphes par une ligne vide. Une formation peut afficher sa propre présentation (champ « Présentation propre à cette formation »)." }

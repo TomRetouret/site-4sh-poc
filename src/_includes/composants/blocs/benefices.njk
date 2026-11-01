@@ -1,0 +1,16 @@
+{# Bloc « benefices » : liste de bénéfices numérotés automatiquement. Styles : logiciel-metier.css (.atouts). #}
+{% macro bloc(b, ctx, serre) %}
+<!-- LISTE DE BÉNÉFICES -->
+<section{% if serre %} style="padding-top:0"{% endif %}>
+  <div class="container">
+    {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
+    <div class="atouts">
+      {% for a in b.benefices %}
+      <div class="atout"><span class="n">{{ loop.index }}</span><h3>{{ a.titre }}</h3>{% if a.texte %}<p>{{ a.texte }}</p>{% endif %}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endmacro %}

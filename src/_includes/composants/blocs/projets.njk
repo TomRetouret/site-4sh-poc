@@ -21,7 +21,7 @@
             </figcaption>
           </figure>
           <div class="cas-corps">
-            {% if t and t.citation %}<blockquote>{{ t.citation }}</blockquote>{% if t.auteur %}<p class="auteur">{{ [t.auteur, t.fonction, t.entreprise] | select | join(", ") }}</p>{% endif %}{% endif %}
+            {% if t and t.citation %}<blockquote>{{ t.citation }}</blockquote>{% set signature = [t.auteur, t.fonction, t.entreprise] | select | join(", ") %}{% if signature %}<p class="auteur">{{ signature }}</p>{% endif %}{% endif %}
             {% if r.description %}<p class="cas-desc">{{ r.description }}</p>{% endif %}
             <div class="cas-chiffre">
               {% for ch in r.chiffres %}<div><b>{{ ch.valeur | accent | safe }}</b><span>{{ ch.libelle }}</span></div>{% endfor %}

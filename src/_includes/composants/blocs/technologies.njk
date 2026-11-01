@@ -1,5 +1,22 @@
-{# Bloc « technologies » : mur typographique. #}
+{# Bloc « technologies » : deux affichages (champ affichage).
+   nuage (défaut, accueil) : mur typographique.
+   cartes : cartes avec logo sur fond sombre (page Logiciel métier) ; le texte alternatif du logo est le nom. #}
 {% macro bloc(b, ctx) %}
+{% if b.affichage == "cartes" %}
+<!-- SOCLE TECHNOLOGIQUE (affichage cartes) -->
+<section class="section-sombre">
+  <div class="container">
+    {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
+    <div class="socle">
+      {% for s in b.technos %}
+      <div class="socle-carte">{% if s.logo %}<img src="{{ s.logo }}" alt="{{ s.nom }}">{% endif %}<h3>{{ s.nom }}</h3>{% if s.lien %}<a href="{{ s.lien }}">En savoir plus →</a>{% endif %}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% else %}
 <!-- TECHNOS (mur typographique) -->
 <section>
   <div class="container">
@@ -11,4 +28,5 @@
     </div>
   </div>
 </section>
+{% endif %}
 {% endmacro %}

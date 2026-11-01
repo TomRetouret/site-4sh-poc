@@ -100,16 +100,12 @@ type:
         widget: string
         required: true
         hint: 20 caractères maximum.
+    # Illustration : champ caché du formulaire. La charte v1.1 retire les illustrations manuscrites de
+    # l'ancienne direction (.schema-craft masqué par charte.css) : le réglage n'avait plus d'effet.
+    # Le champ reste caché (et non supprimé) pour conserver les valeurs enregistrées (demarche,
+    # entreprise) en attendant de nouveaux schémas dans la charte. Valeurs : aucune, demarche, entreprise.
     - label: Illustration
       name: illustration
-      widget: select
-      required: true
+      widget: hidden
+      required: false
       default: aucune
-      hint: Schéma dessiné à droite du titre (masqué sur téléphone). Ses textes sont écrits dans le gabarit du site, en français.
-      options:
-        - label: Aucune
-          value: aucune
-        - label: 'Notre démarche : de votre idée à la mise en production'
-          value: demarche
-        - label: 'Notre entreprise : nos agences autour de 4SH'
-          value: entreprise

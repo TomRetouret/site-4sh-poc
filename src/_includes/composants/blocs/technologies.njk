@@ -1,10 +1,11 @@
 {# Bloc « technologies » : deux affichages (champ affichage).
    nuage (défaut, accueil) : mur typographique.
-   cartes : cartes avec logo sur fond sombre (page Logiciel métier) ; le texte alternatif du logo est le nom. #}
+   cartes : cartes avec logo (page Logiciel métier) ; le texte alternatif du logo est le nom. Fond clair : .section-sombre
+   est en fond clair dans la charte ; .technos-cartes ramène les logos (blancs à l'origine) en encre (charte.css). #}
 {% macro bloc(b, ctx) %}
 {% if b.affichage == "cartes" %}
 <!-- SOCLE TECHNOLOGIQUE (affichage cartes) -->
-<section class="section-sombre">
+<section class="section-sombre technos-cartes">
   <div class="container">
     {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
     <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>

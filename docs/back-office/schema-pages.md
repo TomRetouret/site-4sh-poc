@@ -33,7 +33,7 @@ Libellé du type entre guillemets ; puis champs `nom` : « Libellé » (widget) 
 - `surtitre` [non], `titre_page` « Titre de la page (H1) » [oui] (accent), `chapo` (text) [non]
 - `bouton_principal` Lien [oui] (défaut `#contact`), `bouton_secondaire` Lien [non, rendu si son texte est rempli] ; une destination contenant `://` s'ouvre dans un nouvel onglet.
 - `etiquettes` (4 au plus) [non]
-- `illustration` (select fermé) [oui, défaut `aucune`] : `aucune`, `demarche` (schéma « De votre idée à la mise en production »), `entreprise` (schéma des agences). Les schémas SVG, avec leurs textes français, sont écrits dans le composant.
+- `illustration` (hidden, défaut `aucune`) : `aucune`, `demarche` (schéma « De votre idée à la mise en production »), `entreprise` (schéma des agences). Les schémas SVG, avec leurs textes français, sont écrits dans le composant. Champ caché du formulaire depuis la charte v1.1, qui retire les illustrations manuscrites (`.schema-craft` masqué) : valeurs conservées, rien ne s'affiche, en attente de nouveaux schémas.
 
 **chiffres_compteurs : « Chiffres animés »** (`section` sans marge, `.chiffres`)
 - `chiffres` (2 à 6) [oui] de `valeur` « Chiffre » [oui], `texte` « Libellé » [oui], `note` [non] (petit texte), `animer` « Animer le chiffre » (boolean, défaut vrai).
@@ -53,7 +53,7 @@ Libellé du type entre guillemets ; puis champs `nom` : « Libellé » (widget) 
 **cartes_texte : « Cartes de texte »**
 - `sans_marge_haute`, `surtitre`, `titre` [oui], `sous_titre`
 - `presentation` (select fermé) [oui, défaut `encadrees`] : `encadrees` (`.socle` de `.socle-carte`, texte 14,5 px) ou `colonnes` (`.offres-liees` de `.col-carte`, texte 15 px)
-- `fond` (select fermé) [oui, défaut `blanc`] : `blanc`, `sombre` (`section-sombre sur-sombre`, texte `--sur-nuit`)
+- `fond` (select fermé) [oui, défaut `blanc`] : `blanc`, `sombre` (`section-nuit sur-sombre` : fond nuit de la charte, texte `--sur-nuit` ; `.section-sombre` reste en fond clair pour la Méthode 4D)
 - `colonnes` (select fermé) [oui, défaut `auto`] : cartes encadrées seulement
 - `cartes` (1 à 12) [oui] de `titre` [oui], `texte` (text) [non, retour à la ligne = `<br>`, accent], `lien` { `texte`, `lien` } [non] : `a.socle-lien` « texte → », nouvel onglet si `://`.
 

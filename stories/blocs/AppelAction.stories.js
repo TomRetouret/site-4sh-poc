@@ -29,8 +29,8 @@ export default {
           "**Règles éditoriales** : titre de 60 caractères, un mot entre `*astérisques*` s'affiche en rouge ; texte de 30 mots ; " +
           "un appel à l'action se crée dans sa collection, puis se choisit ici ; fond blanc, gris clair (par défaut) ou sombre.\n\n" +
           "Aucune page ne contient encore ce bloc : titre et texte sont des exemples, marqués « Exemple ».\n\n" +
-          "**À savoir** : la charte 2026 (`charte.css`) redéfinit `.section-sombre` en fond blanc ; le fond sombre " +
-          "s'affiche donc blanc, sur le site comme ici."
+          "**Fond sombre** : fond nuit de la charte (classes `.section-nuit .sur-sombre`, mêmes jetons que le bandeau des " +
+          "chiffres), bouton blanc. `.section-sombre` reste en fond clair, réservé à la Méthode 4D."
       },
       story: { height: "340px" }
     }
@@ -48,7 +48,7 @@ export default {
       name: "Fond",
       control: "inline-radio",
       options: ["blanc", "doux", "sombre"],
-      description: "`blanc`, `doux` (gris clair) ou `sombre`.",
+      description: "`blanc`, `doux` (gris clair) ou `sombre` (fond nuit, bouton blanc).",
       table: { defaultValue: { summary: "doux" } }
     }
   }

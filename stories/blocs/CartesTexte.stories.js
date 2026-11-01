@@ -22,8 +22,9 @@ export default {
           "sous-titre 50 mots ; de 1 à 12 cartes, titre de 40 caractères, texte de 35 mots (un retour à la ligne crée une " +
           "nouvelle ligne, pratique pour une adresse) ; la flèche du lien est ajoutée automatiquement, une adresse `https://` " +
           "s'ouvre dans un nouvel onglet. Le fond sombre convient aux cartes encadrées.\n\n" +
-          "**À savoir** : la charte 2026 (`charte.css`) redéfinit `.section-sombre` en fond blanc ; le fond sombre " +
-          "s'affiche donc blanc, sur le site comme ici."
+          "**Fond sombre** : fond nuit de la charte (classe `.section-nuit`, mêmes jetons que le bandeau des chiffres : " +
+          "titres blancs, texte secondaire `--sur-nuit`, mot mis en valeur rouge signal, filet `#3A4048`). `.section-sombre` " +
+          "reste en fond clair, réservé à la Méthode 4D. Utilisé sur Notre entreprise / Company (Nos valeurs)."
       },
       story: { height: "620px" }
     }
@@ -48,7 +49,7 @@ export default {
       name: "Fond",
       control: "inline-radio",
       options: ["blanc", "sombre"],
-      description: "Le fond sombre convient aux cartes encadrées.",
+      description: "`sombre` : fond nuit (`.section-nuit`). Convient aux cartes encadrées.",
       table: { defaultValue: { summary: "blanc" } }
     },
     colonnes: {

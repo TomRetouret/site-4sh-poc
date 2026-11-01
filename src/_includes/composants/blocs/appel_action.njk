@@ -1,9 +1,10 @@
 {# Bloc « appel_action » : bandeau d'appel à l'action final, centré.
    Le bouton vient du contenu partagé « Appels à l'action » (ctx.appels_action[slug] : texte, lien).
-   fond : blanc (défaut), doux (.fond-doux) ou sombre (.section-sombre). #}
+   fond : blanc, doux (.fond-doux, défaut du formulaire) ou sombre (.section-nuit .sur-sombre : fond nuit de la charte,
+   bouton blanc ; .section-sombre reste en fond clair pour la Méthode 4D). #}
 {% macro bloc(b, ctx, serre) %}
 {% set appel = ctx.appels_action[b.appel] if (b.appel and ctx.appels_action) %}
-{% set classe = {"doux": "fond-doux", "sombre": "section-sombre"}[b.fond] %}
+{% set classe = {"doux": "fond-doux", "sombre": "section-nuit sur-sombre"}[b.fond] %}
 <!-- APPEL À L'ACTION -->
 <section class="cta-final{% if classe %} {{ classe }}{% endif %}">
   <div class="container" style="text-align:center">

@@ -145,7 +145,7 @@
     "vide_reset": "Réinitialiser"
   },
   "devis": {
-    "titre": "Un besoin de formation <em class=\"accent\" style=\"color:#a996d6\">sur mesure</em> ?",
+    "titre": "Un besoin de formation *sur mesure* ?",
     "sous": "Décrivez-nous votre besoin : nombre de participants, niveau, sujets. Nous revenons vers vous avec une proposition adaptée et un devis.",
     "arguments": [
       "Formations construites à partir de projets réels",

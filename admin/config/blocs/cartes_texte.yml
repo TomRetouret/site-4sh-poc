@@ -57,7 +57,7 @@ type:
       widget: select
       required: true
       default: blanc
-      hint: Le fond sombre convient aux cartes encadrées ; il met la section en valeur.
+      hint: 'Sombre : fond nuit, textes en blanc, comme le bandeau des chiffres. Il convient aux cartes encadrées et met la section en valeur ; à réserver à un temps fort de la page.'
       options:
         - label: Blanc
           value: blanc

@@ -1,10 +1,11 @@
 {# Bloc « cartes_texte » : cartes simples (titre, texte, lien facultatif), encadrées ou en colonnes, sur fond blanc ou sombre.
+   Fond sombre : .section-nuit (fond nuit de la charte, charte.css) ; .section-sombre reste en fond clair pour la Méthode 4D.
    Retour à la ligne dans le texte = nouvelle ligne (adresses). Mot entre *astérisques* en rouge.
    Spécification : docs/back-office/schema-pages.md. Styles : charte du site (.socle, .offres-liees). #}
 {% macro bloc(b, ctx) %}
 {%- set sombre = b.fond == "sombre" %}
 <!-- CARTES TEXTE -->
-<section{% if sombre %} class="section-sombre sur-sombre"{% endif %}{% if b.sans_marge_haute %} style="padding-top:0"{% endif %}>
+<section{% if sombre %} class="section-nuit sur-sombre"{% endif %}{% if b.sans_marge_haute %} style="padding-top:0"{% endif %}>
   <div class="container">
     {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
     <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
@@ -12,7 +13,7 @@
     {% if b.presentation == "colonnes" %}
     <div class="offres-liees">
       {% for c in b.cartes %}
-      <div class="col-carte"><h3>{{ c.titre }}</h3>{% if c.texte %}<p style="font-size:15px;color:var(--texte-2)">{{ c.texte | escape | replace("\n", "<br>") | accent | safe }}</p>{% endif %}{% if c.lien and c.lien.lien and c.lien.texte %}<a class="socle-lien" href="{{ c.lien.lien }}"{% if "://" in c.lien.lien %} target="_blank" rel="noopener"{% endif %}>{{ c.lien.texte }} &rarr;</a>{% endif %}</div>
+      <div class="col-carte"><h3>{{ c.titre }}</h3>{% if c.texte %}<p style="font-size:15px;color:var({{ '--sur-nuit' if sombre else '--texte-2' }})">{{ c.texte | escape | replace("\n", "<br>") | accent | safe }}</p>{% endif %}{% if c.lien and c.lien.lien and c.lien.texte %}<a class="socle-lien" href="{{ c.lien.lien }}"{% if "://" in c.lien.lien %} target="_blank" rel="noopener"{% endif %}>{{ c.lien.texte }} &rarr;</a>{% endif %}</div>
       {% endfor %}
     </div>
     {% else %}

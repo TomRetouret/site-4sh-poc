@@ -342,7 +342,7 @@
             collapsed: true
             hint: "Textes par défaut des blocs (accueil, pages d'offre). Ils s'affichent quand le champ du bloc est laissé vide."
             fields:
-              - { label: "Derniers articles · titre par défaut", name: "blog_titre", widget: "string", hint: "Titre du bloc Derniers articles quand son champ Titre est vide. Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Derniers articles · titre par défaut", name: "blog_titre", widget: "string", hint: "Titre du bloc Derniers articles quand son champ Titre est vide. Pour mettre un mot en avant (en rouge), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
               - { label: "Derniers articles · lien vers le blog", name: "blog_tout", widget: "string", hint: "Lien en haut à droite du bloc Derniers articles, quand le texte du lien n'est pas saisi dans le bloc.", required: false }
               - { label: "Équipe · bouton par défaut", name: "equipe_bouton", widget: "string", hint: "Bouton du bloc Équipe quand son texte n'est pas saisi dans le bloc.", required: false }
               - { label: "Technologies (cartes) · lien de carte", name: "technologies_lien", widget: "string", hint: "Lien sous chaque carte du bloc Technologies en affichage cartes (page Logiciel métier) et sous chaque carte de technologie de la page Expertises techniques. Ex. : En savoir plus →", required: false }
@@ -379,11 +379,11 @@
               - { label: "Titre Description", name: "description_titre", widget: "string", required: false }
               - { label: "Titre Pour qui", name: "pour_qui_titre", widget: "string", required: false }
               - { label: "Titre Prérequis", name: "prerequis_titre", widget: "string", required: false }
-              - { label: "Titre Objectifs", name: "objectifs_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Titre Objectifs", name: "objectifs_titre", widget: "string", hint: "Pour mettre un mot en avant (en violet, couleur de 4SH Learning), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
               - { label: "Titre Programme", name: "programme_titre", widget: "string", required: false }
-              - { label: "Titre Formateur", name: "formateur_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Titre Formateur", name: "formateur_titre", widget: "string", hint: "Pour mettre un mot en avant (en violet, couleur de 4SH Learning), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
               - { label: "Titre FAQ", name: "faq_titre", widget: "string", required: false }
-              - { label: "Titre Modalités", name: "modalites_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Titre Modalités", name: "modalites_titre", widget: "string", hint: "Pour mettre un mot en avant (en violet, couleur de 4SH Learning), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
               - { label: "Titre Autres formations", name: "autres_titre", widget: "string", required: false }
               - { label: "Bouton Voir toutes", name: "voir_toutes", widget: "string", required: false }
               - { label: "Mention « à partir de »", name: "a_partir_de", widget: "string", required: false }
@@ -500,7 +500,7 @@
             collapsed: true
             hint: "Bloc « Demander un devis » réutilisé sur la page Formations, les pages catégories et les fiches formation."
             fields:
-              - { label: "Titre", name: "titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Titre", name: "titre", widget: "string", hint: "Pour mettre un mot en avant (en violet, couleur de 4SH Learning), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
               - { label: "Sous-titre", name: "sous", widget: "text", required: false }
               - label: "Arguments"
                 name: "arguments"

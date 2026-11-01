@@ -9,8 +9,9 @@ const NOMS = [
   "editeur", "cloud-plus", "reseau", "megaphone", "hub", "graph", "batterie", "code", "data"
 ];
 
-// Les pictos portent la classe « doodle », que charte.css masque (display:none!important).
-// Cette planche les rend visibles, dans son cadre seulement, pour les montrer.
+// Les pictos portent la classe « doodle », que charte.css masque (display:none!important) :
+// choix de la charte v1.1 (« effets retirés : pas de doodle »). Ils ne s'affichent nulle part
+// sur le site. Cette planche les rend visibles, dans son cadre seulement, comme archive.
 const VISIBLES = `<style>.sb4-pictos svg.doodle{display:block!important}</style>`;
 
 const picto = (nom) => appeler("icones", "navicone", [nom]).trim();
@@ -30,11 +31,15 @@ export default {
           "le picto prend la couleur du texte qui l'entoure.\n\n" +
           "Règle de la charte appliquée par `charte.css` à tous les SVG : « Pictos et schémas : extrémités carrées, " +
           "angles vifs » (`stroke-linecap:square; stroke-linejoin:miter`).\n\n" +
-          "**État sur le site.** La macro sert le méga-menu (`base.njk`, champ `icone` d'un lien de `navigation.json`). " +
-          "Les SVG portent la classe `doodle`, masquée par `charte.css` (« effets retirés »), et la vignette `.svc-ico` " +
-          "du menu est elle aussi masquée : ces pictos ne s'affichent donc pas aujourd'hui. Cette planche les rend " +
-          "visibles dans son cadre uniquement. Plusieurs tracés gardent des coins arrondis (`rx` des rectangles) ou des " +
-          "cercles, que la règle CSS des angles vifs ne modifie pas.\n\n" +
+          "**Non affichés sur le site : choix de la charte.** La charte v1.1 retire les doodles de l'ancienne direction " +
+          "(`charte.css`, « effets retirés : rien au défilement, pas de doodle » : `.doodle { display: none }`) et la " +
+          "vignette `.svc-ico` du méga-menu, seul endroit qui appelle la macro (`base.njk`, champ `icone` d'un lien de " +
+          "`navigation.json`), est elle aussi masquée. Ce n'est pas un défaut : ces pictos ne doivent pas être réaffichés. " +
+          "Cette planche les montre dans son cadre uniquement, comme archive du jeu existant.\n\n" +
+          "**Écarts de tracé avec la charte (angles vifs)**, non corrigés puisque les pictos ne sont pas affichés : coins " +
+          "arrondis (`rx` des rectangles) dans `ecran`, `cloud`, `mobile`, `design`, `serveurs`, `audit`, `editeur` et " +
+          "`batterie` ; cercles (`charte.css` : « ni pilule, ni coin arrondi, ni cercle ») dans `ecran`, `mobile`, `audit`, `logistique`, `reseau` et `hub` ; ellipses dans `data`. La règle CSS des angles vifs ne modifie pas ces " +
+          "attributs : à redessiner si un jeu de pictos revient dans la charte.\n\n" +
           "Source : `src/_includes/composants/icones.njk`, `src/assets/charte.css`."
       },
       story: { height: "900px" }
@@ -54,6 +59,7 @@ export const Tous = {
     const vides = NOMS.filter((n) => !picto(n));
     return planche(
       VISIBLES +
+        `<p class="sb4-note" style="margin-bottom:16px"><strong>Non affichés sur le site</strong> : la charte v1.1 retire les doodles (<code>.doodle</code> et <code>.svc-ico</code> masqués). Planche d'archive.</p>` +
         `<div class="sb4-pictos sb4-grille" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0;border-top:1px solid var(--bordure);border-left:1px solid var(--bordure)">
 ${NOMS.map(
   (n) => `<figure style="margin:0;padding:24px 16px;border-right:1px solid var(--bordure);border-bottom:1px solid var(--bordure);background:${fond};color:${COULEURS[couleur]};display:flex;flex-direction:column;align-items:center;gap:12px">

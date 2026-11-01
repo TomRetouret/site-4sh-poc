@@ -50,7 +50,7 @@ type:
       widget: select
       required: true
       default: doux
-      hint: Couleur de fond du bandeau.
+      hint: 'Couleur de fond du bandeau. Sombre : fond nuit et bouton blanc, comme le bandeau des chiffres.'
       options:
         - label: Blanc
           value: blanc

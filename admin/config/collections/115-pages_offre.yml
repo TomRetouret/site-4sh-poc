@@ -555,7 +555,7 @@
                     widget: select
                     required: false
                     default: nuage
-                    hint: 'Nuage de mots : noms seuls (accueil). Cartes : logo, nom et lien « En savoir plus » sur fond sombre (4 à 8 technologies). Vide : nuage de mots.'
+                    hint: 'Nuage de mots : noms seuls (accueil). Cartes : logo, nom et lien « En savoir plus » sur fond clair (4 à 8 technologies). Vide : nuage de mots.'
                     options:
                       - label: Nuage de mots
                         value: nuage
@@ -583,7 +583,7 @@
                         widget: image
                         required: false
                         choose_url: true
-                        hint: Affichage cartes uniquement. SVG carré sur fond transparent. Le nom sert de texte alternatif.
+                        hint: Affichage cartes uniquement. SVG carré, d'une seule couleur, sur fond transparent ; il s'affiche toujours en encre (noir), quelle que soit sa couleur d'origine. Le nom sert de texte alternatif.
                     hint: 'Affichage cartes : 4 à 8 technologies.'
               - label: Projet vedette
                 name: projet_vedette
@@ -1198,7 +1198,7 @@
                     widget: select
                     required: true
                     default: doux
-                    hint: Couleur de fond du bandeau.
+                    hint: 'Couleur de fond du bandeau. Sombre : fond nuit et bouton blanc, comme le bandeau des chiffres.'
                     options:
                       - label: Blanc
                         value: blanc

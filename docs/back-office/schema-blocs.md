@@ -172,7 +172,7 @@ La convention *mot* (astérisques) met un mot en rouge dans tous les titres marq
 - `affichage` « Affichage » (select fermé) [non, défaut `nuage`] : `nuage` = Nuage de mots (accueil), `cartes` = Cartes avec logo
 - `technos` « Technologies » (list) de `nom` « Nom » [oui], `lien` « Destination » (string), `logo` « Logo » (image, affichage cartes uniquement ; texte alternatif = nom)
 - Rendu nuage : mur typographique actuel (lien vide replié sur `#`, comme avant).
-- Rendu cartes : `section.section-sombre` puis `.socle` de `.socle-carte` (logo, `h3` nom, lien « En savoir plus → » seulement si `lien` est rempli). Libellé commun écrit dans le composant (à déplacer dans les libellés du site plus tard). Le contenu partagé Technologies n'est pas relié pour l'instant.
+- Rendu cartes : `section.section-sombre.technos-cartes` (fond clair dans la charte ; logos affichés en silhouette encre) puis `.socle` de `.socle-carte` (logo, `h3` nom, lien « En savoir plus → » seulement si `lien` est rempli). Libellé commun écrit dans le composant (à déplacer dans les libellés du site plus tard). Le contenu partagé Technologies n'est pas relié pour l'instant.
 
 ### faq : « Questions fréquentes »
 - `titre` « Titre » [oui] (accent, harmonisé avec les autres blocs), `sous_titre` « Sous-titre »
@@ -219,7 +219,7 @@ La convention *mot* (astérisques) met un mot en rouge dans tous les titres marq
 ### appel_action : « Appel à l'action final »
 - `titre` (accent) [oui], `texte` « Texte » (text) [non]
 - `appel` « Bouton » (relation vers `appels_action`, valeur = slug) [oui]
-- `fond` « Fond » (select fermé) [oui, défaut `doux`] : `blanc` = Blanc, `doux` = Gris clair (`.fond-doux`), `sombre` = Sombre (`.section-sombre`)
+- `fond` « Fond » (select fermé) [oui, défaut `doux`] : `blanc` = Blanc, `doux` = Gris clair (`.fond-doux`), `sombre` = Sombre (`.section-nuit.sur-sombre` : fond nuit de la charte, bouton blanc)
 - Rendu : `section.cta-final` centrée : `h2.sec-titre`, `p.sec-sous`, bouton `.btn.btn-primary` (texte et destination de l'appel relié).
 
 ### texte_image : « Texte et image »

@@ -38,8 +38,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("mdSection", (s) =>
     s == null || String(s).trim() === "" ? "" : listes(md.render(String(s)))
   );
-  // Titre de section, de carte ou d'étape (Markdown en ligne : gras, italique, lien).
-  eleventyConfig.addFilter("mdTitre", enLigne);
+  // Titre de section, de carte ou d'étape (Markdown en ligne : gras, lien). Comme partout sur le
+  // site (filtre « accent »), un mot entre *astérisques* est le mot mis en valeur : <em class="accent">,
+  // rouge et droit (la charte interdit l'italique), et non un <em> en italique.
+  eleventyConfig.addFilter("mdTitre", (s) => enLigne(s).replace(/<em>/g, '<em class="accent">'));
   // Échappement du filtre d'origine (guillemets compris, apostrophe laissée telle quelle).
   eleventyConfig.addFilter("echappeSection", echapper);
   // Libellé accessible d'un carrousel : le titre de la section en texte brut.

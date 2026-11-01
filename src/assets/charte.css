@@ -630,3 +630,32 @@ html.mv .mv-bloc{clip-path:none!important}
 .chiffres .container:has(> :nth-child(5)) span{font-size:clamp(13px,1.1vw,18px)}
 @media (max-width:767px){.chiffres .container:has(> :nth-child(5)){scroll-padding-inline:16px}}
 .learning [aria-pressed="true"],.learning [aria-selected="true"],.learning .actif[role="tab"],.learning .toggle-niveau a.actif,.learning .toggle-niveau [aria-current]{background:var(--learning)!important;border-color:var(--learning)!important;color:#fff!important}
+
+/* ============================================================
+   Alignement Storybook / back-office (1er novembre)
+   ============================================================ */
+
+/* ---------- Fond nuit des blocs (variante « Sombre ») ----------
+   .section-sombre reste en fond clair (Méthode 4D, plus haut). La variante « Sombre »
+   des blocs Cartes de texte et Appel à l'action porte .section-nuit (avec .sur-sombre :
+   boutons blancs, mot mis en valeur rouge signal, liens et focus blancs). Elle reprend les
+   jetons du bandeau .chiffres et du bloc contact : fond nuit, titres blancs, texte
+   secondaire --sur-nuit, filet #3A4048 du pied de page. */
+.section-nuit{background:var(--nuit);color:#fff}
+.section-nuit .sec-titre,.section-nuit h2,.section-nuit h3{color:#fff}
+.section-nuit .sec-sous,.section-nuit p{color:var(--sur-nuit)}
+.section-nuit .eyebrow{color:#fff}
+.section-nuit .socle-carte,.section-nuit .col-carte{background:none!important;border-color:#3A4048!important}
+.section-nuit .socle-carte h3,.section-nuit .col-carte h3{color:#fff}
+.section-nuit .socle-carte a,.section-nuit .col-carte a,.section-nuit .socle-lien{color:#fff!important}
+
+/* ---------- Technologies en cartes : logos en encre sur fond clair ----------
+   Les logos fournis sont blancs (ancien fond sombre) : sur le fond clair de la charte,
+   ils sont ramenés à une silhouette encre (#141414, à 1 % de l'encre #14171C), sans
+   grisé ni effet au survol. */
+.technos-cartes .socle-carte img,.technos-cartes .socle-carte:hover img{filter:brightness(0) invert(8%)!important;opacity:1!important;transform:none!important;transition:none!important}
+
+/* ---------- Formations : bouton du formulaire de devis en violet ----------
+   Blanc sur violet #7C4DDB : 5,33:1 (AA texte courant, tableau des contrastes de la charte). */
+.learning .formulaire .btn-learning,.learning .sur-sombre .formulaire .btn-learning{background:var(--learning)!important;border-color:var(--learning)!important;color:#fff!important}
+.learning .formulaire .btn-learning:hover,.learning .sur-sombre .formulaire .btn-learning:hover{background:var(--learning-texte)!important;border-color:var(--learning-texte)!important;color:#fff!important}

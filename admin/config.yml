@@ -44,8 +44,8 @@ i18n:
 locale: fr
 
 # URL du site déployé : sert aux liens "Voir sur le site" (preview_path) et à l'en-tête de l'admin.
-site_url: https://site-4sh-poc.netlify.app # site Netlify de test : nommer le site « site-4sh-poc » sur Netlify, sinon corriger ici
-display_url: https://site-4sh-poc.netlify.app # site Netlify de test : nommer le site « site-4sh-poc » sur Netlify, sinon corriger ici
+site_url: https://eclectic-conkies-63f114.netlify.app # site Netlify du dépôt de test
+display_url: https://eclectic-conkies-63f114.netlify.app # site Netlify du dépôt de test
 
 # Dossier des images uploadées par les rédacteurs
 media_folder: "src/uploads"

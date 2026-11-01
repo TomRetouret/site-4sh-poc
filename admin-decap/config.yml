@@ -22,8 +22,8 @@ publish_mode: editorial_workflow
 show_preview_links: true
 
 locale: fr
-site_url: https://site-4sh-poc.netlify.app # site Netlify de test : nommer le site « site-4sh-poc » sur Netlify, sinon corriger ici
-display_url: https://site-4sh-poc.netlify.app # site Netlify de test : nommer le site « site-4sh-poc » sur Netlify, sinon corriger ici
+site_url: https://eclectic-conkies-63f114.netlify.app # site Netlify du dépôt de test
+display_url: https://eclectic-conkies-63f114.netlify.app # site Netlify du dépôt de test
 
 media_folder: "src/uploads"
 public_folder: "/uploads"

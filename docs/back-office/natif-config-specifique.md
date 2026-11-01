@@ -25,7 +25,7 @@ Légende de la colonne « Statut » :
 | Lien projet vers témoignage | Champ relation `temoignage`, valeur = slug | Identique |
 | Circuit éditorial | `publish_mode` en objet : `type: editorial_workflow`, `allow_incomplete_drafts: true` | `publish_mode: editorial_workflow` |
 | Liens d'aperçu | `show_preview_links: true`, `preview_path: "{{locale}}/"` et `omit_default_locale_from_preview_path: true` | `show_preview_links: true`, `preview_path` `""` (fr) et `en/` (en) |
-| Adresse du site | `site_url` et `display_url` : `https://site-4sh-poc.netlify.app` (à remplacer par l'adresse du site Netlify de test) | Identique |
+| Adresse du site | `site_url` et `display_url` : `https://eclectic-conkies-63f114.netlify.app` | Identique |
 | Dépôt | `TomRetouret/site-4sh-poc`, branche `main` (à remplacer par le dépôt de test 4SH) | Identique |
 | Authentification | Worker `sveltia-cms-auth` (même `base_url` qu'aujourd'hui) | Même Worker (voir section 4) |
 

@@ -46,7 +46,7 @@ const preview = {
       source: { type: "dynamic", language: "html" }
     },
     options: {
-      storySort: { order: ["Design system 4SH", "Fondations", "Composants", "Blocs"] }
+      storySort: { order: ["Design system 4SH", "Fondations", "Composants", "Blocs", ["Haut de page", "Texte", "Chiffres", "Cartes", "Méthode et étapes", "Projets et références", "Équipe", "Prestations", "Fin de page"]] }
     }
   }
 };

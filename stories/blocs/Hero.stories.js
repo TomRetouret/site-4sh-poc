@@ -8,7 +8,7 @@ const sobre = { arg: "variante", eq: "sobre" };
 const expressif = { arg: "variante", neq: "sobre" };
 
 export default {
-  title: "Blocs/Hero",
+  title: "Blocs/Haut de page/Hero",
   tags: ["autodocs"],
   render: (args, { parameters }) =>
     rendreBloc("hero", args, {

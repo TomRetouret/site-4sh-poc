@@ -3,7 +3,7 @@
 import { rendreBloc, blocExemple } from "../../.storybook/4sh/rendre-bloc.js";
 
 export default {
-  title: "Blocs/Chiffres clés",
+  title: "Blocs/Chiffres/Chiffres clés",
   tags: ["autodocs"],
   render: (args, { parameters }) => rendreBloc("chiffres_cles", args, parameters.bloc),
   parameters: {

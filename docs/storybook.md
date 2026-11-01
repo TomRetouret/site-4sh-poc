@@ -88,3 +88,7 @@ Vérifier ensuite avec `npm run storybook`, puis `npm run build`.
   mise en production** (contrairement à l'en-tête global de préproduction).
 - `src/robots.njk` : `Disallow: /storybook/`, collé au groupe `User-agent` de `seo.robots_txt`.
 - Eleventy ne lit que `src/` : les dossiers `.storybook/` et `stories/` ne sont jamais traités par lui.
+
+## Données d'exemple des stories
+
+`.storybook/4sh/contenus-site.js` lit les en-têtes YAML des pages de prestation, de la page de démonstration et des fiches références, et expose `blocDe` (n-ième bloc d'un type dans une page), `blocDemo`, `sectionPrestation`, `referencesSite` et `PAGES` (paramètres de story par type de page). Les données de l'accueil et des pages institutionnelles viennent de `blocExemple` (`rendre-bloc.js`), qui lit `src/_data/contenus/`.

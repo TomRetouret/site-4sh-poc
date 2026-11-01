@@ -12,7 +12,8 @@ backend:
   base_url: https://sveltia-cms-auth.tom-retouret.workers.dev
 
 # Note : sur localhost, Sveltia propose automatiquement l'édition locale (dossier du projet).
-# Le workflow éditorial (publish_mode) n'est pas encore supporté par Sveltia : on publie directement.
+# Publication directe (publish_mode non déclaré). Le circuit éditorial existe dans Sveltia 0.256.1 :
+# il est évalué dans la preuve de concept (branche poc/back-office) avant d'être activé ici.
 
 # Langue de l'interface
 locale: fr

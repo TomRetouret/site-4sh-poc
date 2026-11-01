@@ -83,7 +83,7 @@
 .programme details:last-child{border-bottom:none}
 .programme summary{counter-increment:chap;display:flex;align-items:center;gap:14px;padding:18px 24px;font-weight:600;font-size:16.5px;color:var(--sombre);cursor:pointer;list-style:none}
 .programme summary::-webkit-details-marker{display:none}
-.programme summary::before{content:counter(chap,decimal-leading-zero);font-family:var(--serif);font-style:italic;color:var(--violet);font-size:22px;font-weight:600;flex:none}
+.programme summary::before{content:counter(chap,decimal-leading-zero);font-family:var(--serif);font-style:normal;color:var(--violet);font-size:22px;font-weight:600;flex:none}
 .programme summary::after{content:"+";margin-left:auto;color:var(--violet);font-size:24px;font-weight:300;transition:transform .25s var(--ease)}
 .programme details[open] summary::after{transform:rotate(45deg)}
 .programme .contenu{padding:0 24px 20px 60px}

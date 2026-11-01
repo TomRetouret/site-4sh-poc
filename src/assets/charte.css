@@ -534,3 +534,99 @@ svg *{stroke-linecap:square;stroke-linejoin:miter}
 /* Références : trois chiffres sur une ligne (évite un chiffre orphelin) */
 .chiffres .container.ref-chiffres{grid-template-columns:repeat(3,minmax(0,1fr))!important}
 @media (max-width:767px){.chiffres .container.ref-chiffres{grid-template-columns:1fr!important}}
+
+/* ============================================================
+   Retours de Tom du 1er novembre
+   ============================================================ */
+:root{--en-tete-actuel:var(--en-tete)}
+
+/* ---------- Chiffres clés : toujours visibles, sur une seule ligne ---------- */
+.chiffres{padding:112px 0}
+.chiffres .container,.ref-resultats .grille,.hero-interne + section .chiffres .container,.chiffres .container.ref-chiffres{
+  display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);grid-template-columns:none!important;gap:24px!important}
+.chiffres b{font-size:clamp(44px,6vw,96px)!important}
+.chiffres .container:has(> :nth-child(5)) b{font-size:clamp(36px,4.4vw,72px)!important}
+.chiffres span{font-size:clamp(15px,1.4vw,20px)}
+html.mv .mv-bloc{clip-path:none!important}
+@media (max-width:767px){
+  .chiffres{padding:56px 0}
+  .chiffres .container,.ref-resultats .grille,.chiffres .container.ref-chiffres{gap:12px!important}
+  .chiffres b,.chiffres .container:has(> :nth-child(5)) b{font-size:clamp(26px,8vw,34px)!important}
+  .chiffres span{font-size:13px}
+  .chiffres small{font-size:12px}
+  .chiffres .container>div{padding-top:12px}
+  /* plus de 4 chiffres : une seule ligne qui défile horizontalement plutôt que deux lignes */
+  .chiffres .container:has(> :nth-child(5)){grid-auto-columns:42%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+  .chiffres .container:has(> :nth-child(5))>div{scroll-snap-align:start}
+}
+
+/* ---------- Accueil : « Ils nous confient leur métier » ---------- */
+.confiance{background:#fff;padding:96px 0}
+.confiance-grille{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px;align-items:start}
+.confiance-titre{margin:0;font-family:var(--titre);font-weight:800;font-size:clamp(24px,2.4vw,32px);line-height:1.15;letter-spacing:-.02em;color:var(--encre);border-top:2px solid var(--encre);padding-top:16px}
+.confiance-noms{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--bordure);border-left:1px solid var(--bordure)}
+.confiance-noms li{border-right:1px solid var(--bordure);border-bottom:1px solid var(--bordure);min-height:112px;display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;position:relative}
+.confiance-noms li > *{font-family:var(--titre);font-weight:800;font-size:clamp(17px,1.6vw,22px);letter-spacing:-.01em;line-height:1.15;color:var(--encre);text-decoration:none}
+.confiance-noms li::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:2px;background:var(--signal);transform:scaleX(0);transform-origin:left center;transition:transform var(--mv-survol,200ms) cubic-bezier(.2,0,0,1)}
+@media (hover:hover){.confiance-noms li:hover::before{transform:scaleX(1)}}
+@media (max-width:1023px){.confiance-grille{grid-template-columns:1fr;gap:24px}}
+@media (max-width:767px){.confiance{padding:56px 0}.confiance-noms{grid-template-columns:repeat(2,minmax(0,1fr))}.confiance-noms li{min-height:80px}}
+
+/* ---------- Accueil : l'équipe, en bas de page ---------- */
+.equipe{background:var(--fond-doux);padding:112px 0}
+.equipe-grille{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:center}
+.equipe-photo{margin:0;position:relative}
+.equipe-photo img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.equipe-photo::after{content:"";position:absolute;left:0;bottom:0;width:33%;height:8px;background:var(--signal)}
+.equipe-texte .sec-sous{margin-bottom:28px}
+@media (max-width:1023px){.equipe-grille{grid-template-columns:1fr;gap:32px}}
+@media (max-width:767px){.equipe{padding:56px 0}}
+
+/* ---------- Formations : le violet domine ---------- */
+.learning em.accent,.learning .sec-titre em.accent,.learning h1 em.accent,.learning h2 em.accent{color:var(--learning-texte)!important}
+.learning .contact-final em.accent,.learning .sur-sombre em.accent,.learning .chiffres em.accent{color:var(--learning-nuit)!important}
+.learning .btn-primary,.learning .btn-learning,.learning .contact-final .btn-primary,.learning .formulaire .btn-primary{background:var(--learning)!important;border-color:var(--learning)!important;color:#fff!important}
+.learning .btn-primary:hover,.learning .btn-learning:hover{background:var(--learning-texte)!important;border-color:var(--learning-texte)!important}
+.learning header .btn-primary,.learning header .btn-primary:hover{background:var(--rouge)!important;border-color:var(--rouge)!important}
+.learning .hero-form a:not(.btn),.learning .hero-detail a:not(.btn),.learning section a:not(.btn):not(.onglet),.learning .carte-inscription a:not(.btn){color:var(--learning-texte)}
+.learning .fil-ariane a{color:var(--texte-2)!important}
+.learning .onglet.actif,.learning .onglet[aria-current="page"]{background:var(--learning)!important;border-color:var(--learning)!important;color:#fff!important}
+.learning .eyebrow,.learning .eyebrow-offre,.learning .cat,.learning .sessions{color:var(--learning-texte)!important}
+.learning .carte-inscription{border-top:4px solid var(--learning)!important}
+.learning .ancres a:hover,.learning .ancres a.actif{color:var(--learning-texte);border-color:var(--learning)}
+.learning svg.contact-plan path:not(:last-child),.learning svg.contact-plan rect{fill:var(--learning)}
+.learning .programme summary::before,.learning .agenda-mois{color:var(--learning-texte)}
+
+/* ---------- Catalogue : bandeau fixe, compact une fois collé ---------- */
+.catalogue-barre{position:sticky;top:var(--en-tete-actuel);z-index:30;background:#fff}
+.catalogue-barre-titre{display:none}
+.catalogue-barre.colle{display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid var(--bordure)}
+.catalogue-barre.colle::before{content:"";position:absolute;top:0;bottom:-1px;left:-100vw;right:-100vw;background:#fff;border-bottom:1px solid var(--bordure);z-index:-1}
+.catalogue-barre.colle .catalogue-barre-titre{display:block;margin:0;flex:none;font-family:var(--titre);font-weight:800;font-size:17px;letter-spacing:-.01em;color:var(--encre)}
+.catalogue-barre.colle .barre-filtres{order:3;margin:0 0 0 auto}
+.catalogue-barre.colle .barre-filtres .recherche{min-height:0;height:40px;width:260px}
+.catalogue-barre.colle .barre-filtres .recherche input{height:38px;min-height:0;padding-top:0;padding-bottom:0;font-size:14px}
+.catalogue-barre.colle .ligne-outils{margin:0;flex:0 1 auto;min-width:0}
+.catalogue-barre.colle .onglets{flex-wrap:nowrap;overflow-x:auto}
+.catalogue-barre.colle .onglet{padding:7px 14px!important;font-size:14px!important;min-height:0}
+.catalogue-barre.colle .compteur{display:none}
+@media (max-width:1023px){
+  .catalogue-barre.colle{gap:10px;padding:8px 0}
+  .catalogue-barre.colle .barre-filtres{display:none}
+}
+@media (max-width:767px){.catalogue-barre.colle .catalogue-barre-titre{display:none}}
+
+/* ---------- Fiche formation : onglets collés à l'en-tête, inscription et documents solidaires ---------- */
+.ancres{top:var(--en-tete-actuel)!important}
+.detail-aside .carte-inscription{position:static!important}
+.aside-colle{position:sticky;top:calc(var(--en-tete-actuel) + 24px)}
+/* écran trop bas pour tout montrer : le bloc défile normalement plutôt que d'être coupé */
+@media (max-height:819px){.aside-colle{position:static}}
+@media (max-width:960px){.aside-colle{position:static}}
+.confiance-noms a,.confiance-noms span{color:var(--encre)!important}
+.learning .promo{color:var(--learning-texte)!important}
+.learning .promo b,.learning .promo strong,.learning .promo em{color:var(--learning-texte)!important}
+.chiffres span,.chiffres small{overflow-wrap:anywhere;hyphens:auto}
+.chiffres .container:has(> :nth-child(5)) span{font-size:clamp(13px,1.1vw,18px)}
+@media (max-width:767px){.chiffres .container:has(> :nth-child(5)){scroll-padding-inline:16px}}
+.learning [aria-pressed="true"],.learning [aria-selected="true"],.learning .actif[role="tab"],.learning .toggle-niveau a.actif,.learning .toggle-niveau [aria-current]{background:var(--learning)!important;border-color:var(--learning)!important;color:#fff!important}

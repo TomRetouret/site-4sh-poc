@@ -33,7 +33,7 @@
         '.real-carte', '.ref-carte', '.col-carte', '.faq > details',
         '.contact-final .formulaire'
       ],
-      bloc: ['.chiffres .container > div', '.ref-resultats .stat'],
+      bloc: [], // chiffres clés : toujours visibles (retour de Tom, le bandeau restait noir)
       plan: ['svg.hero-plan', 'svg.hero-plan--m', 'svg.contact-plan'],
       trace: ['svg.trace-4d']
     };

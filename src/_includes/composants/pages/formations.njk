@@ -68,7 +68,7 @@
     <h2 class="sec-titre">{{ p.catalogue_titre | accent | safe }}</h2>
     <p class="sec-sous">{{ p.catalogue_sous }}</p>
     {% if docs.catalogue_url %}<p class="sec-sous" style="margin-top:-6px"><a href="{{ docs.catalogue_url }}" target="_blank" rel="noopener">{{ docs.catalogue_label }}</a></p>{% endif %}
-    {{ catalogue(groupes, libelles) }}
+    {{ catalogue(groupes, libelles, null, p.catalogue_titre | replace("*", "")) }}
   </div>
 </section>
 

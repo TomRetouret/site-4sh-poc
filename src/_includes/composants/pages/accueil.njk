@@ -45,20 +45,15 @@
 </div>
 <script src="/assets/hero-signal.js"></script>
 
-<!-- PHOTO D'ÉQUIPE ET LOGOS CLIENTS -->
-{% if accueil.equipe_photo %}
-<div class="equipe-bande">
-  <figure><img src="{{ accueil.equipe_photo }}" alt="{{ accueil.equipe_titre | accent | striptags }}" width="1360" height="583" loading="lazy" decoding="async"></figure>
-</div>
-{% endif %}
-<div class="logos">
-  <div class="container"><div>
-    <p>{{ site.clients_intro }}</p>
-    <div class="marquee"><ul aria-label="Références clients">
-      {% for c in site.clients %}<li>{% if c.url %}<a href="{{ c.url }}">{{ c.nom }}</a>{% else %}{{ c.nom }}{% endif %}</li>{% endfor %}
-    </ul></div>
-  </div></div>
-</div>
+<!-- ILS NOUS CONFIENT LEUR MÉTIER : mur de noms, statique (pas de défilement en boucle) -->
+<section class="confiance" aria-labelledby="confiance-titre">
+  <div class="container confiance-grille">
+    <h2 class="confiance-titre" id="confiance-titre">{{ site.clients_intro | replace(" :", "") | replace(":", "") }}</h2>
+    <ul class="confiance-noms">
+      {% for c in site.clients %}<li>{% if c.url %}<a href="{{ c.url }}">{{ c.nom }}</a>{% else %}<span>{{ c.nom }}</span>{% endif %}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
 
 <!-- 3 PORTES D'ENTRÉE -->
 <section class="fond-doux">
@@ -212,6 +207,21 @@
         {% endif %}
       </article>
       {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- L'ÉQUIPE : photo intégrée au contenu, en bas de page -->
+{% if accueil.equipe_photo %}
+<section class="equipe">
+  <div class="container equipe-grille">
+    <figure class="equipe-photo"><img src="{{ accueil.equipe_photo }}" alt="{{ accueil.equipe_titre | accent | striptags }}" width="1360" height="583" loading="lazy" decoding="async"></figure>
+    <div class="equipe-texte">
+      <p class="eyebrow">{{ accueil.equipe_eyebrow }}</p>
+      <h2 class="sec-titre">{{ accueil.equipe_titre | accent | safe }}</h2>
+      <p class="sec-sous">{{ accueil.equipe_texte }}</p>
+      <a class="btn btn-ghost" href="/notre-entreprise/">Notre entreprise</a>
     </div>
   </div>
 </section>

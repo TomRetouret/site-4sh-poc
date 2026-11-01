@@ -33,7 +33,7 @@ permalink: "/formations/{{ page.fileSlug }}/"
 <section id="catalogue" style="padding-top:60px">
   <div class="container">
     <h2 class="sec-titre">Formations <em class="accent">{{ nom }}</em></h2>
-    {{ catalogue(collections.formationsParGroupe, libelles, nom) }}
+    {{ catalogue(collections.formationsParGroupe, libelles, nom, "Formations " + nom) }}
   </div>
 </section>
 

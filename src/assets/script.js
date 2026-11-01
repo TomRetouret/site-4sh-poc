@@ -276,7 +276,11 @@
 (function () {
   var header = document.querySelector('header');
   if (!header) return;
-  function maj() { header.classList.toggle('scrolled', window.scrollY > 8); }
+  var racine = document.documentElement;
+  function hauteur() { racine.style.setProperty('--en-tete-actuel', Math.round(header.getBoundingClientRect().height) + 'px'); }
+  function maj() { header.classList.toggle('scrolled', window.scrollY > 8); hauteur(); }
+  if ('ResizeObserver' in window) new ResizeObserver(hauteur).observe(header);
+  addEventListener('resize', hauteur);
   addEventListener('scroll', maj, { passive: true });
   maj();
 })();

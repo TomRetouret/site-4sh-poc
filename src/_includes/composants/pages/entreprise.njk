@@ -64,7 +64,7 @@
 <!-- CHIFFRES -->
 <section style="padding:0">
   <div class="chiffres">
-    <div class="container" style="grid-template-columns:repeat(3,1fr)">
+    <div class="container" tabindex="0" role="group" aria-label="Chiffres clés">
       {% for c in e.chiffres %}
       <div><b{% if c.compte %} data-compte="{{ c.compte }}"{% if c.suffixe %} data-suffixe="{{ c.suffixe }}"{% endif %}{% endif %}>{{ c.valeur }}</b><span>{{ c.texte }}</span></div>
       {% endfor %}

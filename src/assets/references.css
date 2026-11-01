@@ -31,7 +31,7 @@
 .chip[aria-pressed="true"]{background:var(--sombre);color:#fff;border-color:var(--sombre)}
 .ref-barre-bas{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:8px}
 .ref-compteur{font-size:14px;color:var(--muted)}
-.ref-compteur b{font-family:var(--serif);font-style:italic;color:var(--sombre);font-size:17px}
+.ref-compteur b{font-family:var(--serif);font-style:normal;color:var(--sombre);font-size:17px}
 .ref-reset{font-size:13.5px;color:var(--accent-fonce);font-weight:600;background:none;border:none;cursor:pointer}
 .ref-reset[hidden]{display:none}
 
@@ -50,12 +50,12 @@
 .ref-carte:hover .ref-visuel img{transform:scale(1.04)}
 /* planche sombre de repli quand pas de visuel */
 .ref-visuel--vide{display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#14171C 0%,var(--sombre) 100%);background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:16px 16px}
-.ref-visuel--vide .ref-vide-nom{font-family:var(--serif);font-style:italic;font-size:26px;color:#fff;text-align:center;padding:0 20px;opacity:.92}
+.ref-visuel--vide .ref-vide-nom{font-family:var(--serif);font-style:normal;font-size:26px;color:#fff;text-align:center;padding:0 20px;opacity:.92}
 
 /* cartouche crème qui porte le logo (signature) */
 .ref-cartouche{position:absolute;left:16px;bottom:-18px;background:var(--creme);border:1px solid var(--bordure);border-radius:12px;height:52px;min-width:52px;padding:0 14px;display:flex;align-items:center;box-shadow:0 8px 20px rgba(31,41,46,.12);z-index:2}
 .ref-cartouche img{max-height:30px;max-width:120px;object-fit:contain;display:block}
-.ref-cartouche .ref-cartouche-txt{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--sombre)}
+.ref-cartouche .ref-cartouche-txt{font-family:var(--serif);font-style:normal;font-size:18px;color:var(--sombre)}
 
 .ref-carte-corps{display:flex;flex-direction:column;flex:1;padding:30px 22px 22px}
 .ref-carte .ref-secteur{font-size:11.5px;text-transform:uppercase;letter-spacing:1px;color:var(--accent-fonce);font-weight:600;margin-bottom:8px}
@@ -118,8 +118,8 @@
 .ref-resultats{background:var(--sombre);background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:18px 18px;margin-top:46px;padding:48px 0}
 .ref-resultats .grille{display:flex;flex-wrap:wrap;gap:40px;justify-content:center}
 .ref-resultats .stat{text-align:center}
-.ref-resultats .stat b{display:block;font-family:var(--serif);font-style:italic;font-size:clamp(34px,4vw,52px);color:#fff;line-height:1}
-.ref-resultats .stat b em{color:#e98b90;font-style:italic}
+.ref-resultats .stat b{display:block;font-family:var(--serif);font-style:normal;font-size:clamp(34px,4vw,52px);color:#fff;line-height:1}
+.ref-resultats .stat b em{color:#e98b90;font-style:normal}
 .ref-resultats .stat span{display:block;font-size:14px;color:#B8C0C8;margin-top:8px;max-width:200px}
 
 .ref-corps{max-width:760px;margin:0 auto;padding:52px 0 0;font-size:16.5px}
@@ -134,7 +134,7 @@
 
 /* témoignage */
 .ref-temoignage{max-width:760px;margin:34px auto 0;background:var(--creme);border:1px solid var(--bordure);border-left:4px solid var(--accent);border-radius:var(--radius);padding:30px 32px}
-.ref-temoignage blockquote{font-size:19px;line-height:1.5;color:var(--sombre);font-style:italic;margin-bottom:14px}
+.ref-temoignage blockquote{font-size:19px;line-height:1.5;color:var(--sombre);font-style:normal;margin-bottom:14px}
 .ref-temoignage .auteur{font-size:14px;color:var(--muted)}
 .ref-temoignage .auteur b{color:var(--sombre);font-style:normal}
 
@@ -209,7 +209,7 @@
 .ref-corps h2{scroll-margin-top:96px;border-top:1px solid var(--bordure);padding-top:26px;margin-top:40px}
 .ref-corps h2:first-child{border-top:none;padding-top:0;margin-top:0}
 .ref-corps:has(h2 ~ h2) h2{counter-increment:sec}
-.ref-corps:has(h2 ~ h2) h2::before{content:counter(sec,decimal-leading-zero);font-family:var(--serif);font-style:italic;color:var(--accent);font-size:.66em;font-weight:600;margin-right:10px}
+.ref-corps:has(h2 ~ h2) h2::before{content:counter(sec,decimal-leading-zero);font-family:var(--serif);font-style:normal;color:var(--accent);font-size:.66em;font-weight:600;margin-right:10px}
 
 /* listes "points clés" (ul directement après un h2) -> grille de cartes */
 .ref-corps h2 + ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:22px 0 8px;padding:0}

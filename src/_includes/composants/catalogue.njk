@@ -11,7 +11,11 @@
    libelles  : l'objet libelles (utilise .catalogue et .formation)
    categorie : nom de la categorie active, null pour « toutes »
 --------------------------------------------------------------------------- #}
-{% macro grille(groupes, libelles, categorie=null) %}
+{% macro grille(groupes, libelles, categorie=null, titre=null) %}
+{# Bandeau du catalogue : fixe au défilement, en version compacte une fois collé sous l'en-tête #}
+<div class="catalogue-repere" aria-hidden="true"></div>
+<div class="catalogue-barre">
+{% if titre %}<p class="catalogue-barre-titre" aria-hidden="true">{{ titre }}</p>{% endif %}
 <div class="barre-filtres">
   <div class="recherche">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M4 4H16V16H4Z"/><path d="M16 16L21 21"/></svg>
@@ -28,6 +32,16 @@
   </nav>
   <p class="compteur"><b id="nb-resultats">0</b> {{ libelles.catalogue.compteur }}</p>
 </div>
+</div>
+<script>
+(function () {
+  var r = document.querySelector('.catalogue-repere'), b = document.querySelector('.catalogue-barre');
+  if (!r || !b || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (e) {
+    b.classList.toggle('colle', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
+  }, { rootMargin: '-' + Math.round((document.querySelector('header') || { offsetHeight: 80 }).offsetHeight + 1) + 'px 0px 0px 0px' }).observe(r);
+})();
+</script>
 
 <div class="grille-form" id="grille-form">
   {% for g in groupes %}{% if not categorie or g.categorie == categorie %}

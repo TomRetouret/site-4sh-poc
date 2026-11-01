@@ -8,6 +8,23 @@
         label: "Libellés & blocs partagés"
         file: "src/_data/libelles.json"
         fields: &f_libelles
+          - label: "Commun à plusieurs pages"
+            name: "commun"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Fil d'Ariane · premier lien", name: "fil_ariane_accueil", widget: "string", hint: "Premier lien du fil d'Ariane, vers la page d'accueil (fiches formation, fiches référence, page Logiciel métier).", required: false }
+          - label: "Blocs de page"
+            name: "blocs"
+            widget: "object"
+            collapsed: true
+            hint: "Textes par défaut des blocs (accueil, pages d'offre). Ils s'affichent quand le champ du bloc est laissé vide."
+            fields:
+              - { label: "Derniers articles · titre par défaut", name: "blog_titre", widget: "string", hint: "Titre du bloc Derniers articles quand son champ Titre est vide. Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Derniers articles · lien vers le blog", name: "blog_tout", widget: "string", hint: "Lien en haut à droite du bloc Derniers articles, quand le texte du lien n'est pas saisi dans le bloc.", required: false }
+              - { label: "Équipe · bouton par défaut", name: "equipe_bouton", widget: "string", hint: "Bouton du bloc Équipe quand son texte n'est pas saisi dans le bloc.", required: false }
+              - { label: "Technologies (cartes) · lien de carte", name: "technologies_lien", widget: "string", hint: "Lien sous chaque carte du bloc Technologies en affichage cartes (page Logiciel métier). Ex. : En savoir plus →", required: false }
+              - { label: "Projet vedette · lien des autres références", name: "projet_vedette_lien", widget: "string", hint: "Lien de chaque carte « autre référence » sous le projet vedette (page Logiciel métier). Ex. : Voir la référence →", required: false }
           - label: "Fiche formation"
             name: "formation"
             widget: "object"
@@ -43,6 +60,10 @@
               - { label: "Titre Autres formations", name: "autres_titre", widget: "string", required: false }
               - { label: "Bouton Voir toutes", name: "voir_toutes", widget: "string", required: false }
               - { label: "Mention « à partir de »", name: "a_partir_de", widget: "string", required: false }
+              - { label: "Fil d'Ariane · lien Formations", name: "fil_parent", widget: "string", hint: "Lien vers le catalogue dans le fil d'Ariane de chaque fiche formation.", required: false }
+              - { label: "Mot devant le nom de la formation", name: "prefixe_titre", widget: "string", hint: "Placé devant le nom de la formation dans le grand titre, le fil d'Ariane et la fenêtre de pré-inscription. Ex. : Formation Angular", required: false }
+              - { label: "Pré-inscription · « participant » (1)", name: "participant", widget: "string", hint: "Choix « 1 participant » de la liste Nombre de participants, dans la fenêtre de pré-inscription.", required: false }
+              - { label: "Pré-inscription · « participants » (2 et plus)", name: "participants", widget: "string", hint: "Choix « 2 participants » à « 8 participants » de la même liste.", required: false }
           - label: "Modalités d'accueil (cartes)"
             name: "modalites"
             widget: "list"

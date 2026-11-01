@@ -1,0 +1,28 @@
+{# Bloc « telechargement » : un document à télécharger (fichier déposé ou adresse en ligne).
+   Définition : admin/config/blocs/telechargement.yml. Styles : /assets/blocs.css (chargée par l'aiguilleur).
+   Le format (PDF...) vient de l'extension du document (filtre formatFichier, eleventy/blocs.js). #}
+{% set feuille = "/assets/blocs.css" %}
+{% macro bloc(b, ctx, serre) %}
+{% if b.document %}
+{% set format = b.document | formatFichier %}
+{% set meta = [format, b.poids] | select | join(" · ") %}
+{% set interne = (b.document | string) | first == "/" %}
+{% set id_meta = "telechargement-" + (b.titre | striptags | slugify) %}
+<!-- TÉLÉCHARGEMENT D'UN DOCUMENT -->
+<section class="bloc-telechargement"{% if serre %} style="padding-top:0"{% endif %}>
+  <div class="container">
+    <div class="bloc-tel-carte">
+      <div class="bloc-tel-texte">
+        {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+        <h2 class="bloc-tel-titre">{{ b.titre | accent | safe }}</h2>
+        {% if b.texte %}<p>{{ b.texte }}</p>{% endif %}
+      </div>
+      <div class="bloc-tel-action">
+        <a class="btn btn-primary" href="{{ b.document }}"{% if interne %} download{% else %} target="_blank" rel="noopener"{% endif %}{% if meta %} aria-describedby="{{ id_meta }}"{% endif %}>{{ b.bouton_texte or "Télécharger le document" }}</a>
+        {% if meta %}<span class="bloc-tel-meta" id="{{ id_meta }}">{{ meta }}</span>{% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endmacro %}

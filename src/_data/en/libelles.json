@@ -1,4 +1,14 @@
 {
+  "commun": {
+    "fil_ariane_accueil": "Home"
+  },
+  "blocs": {
+    "blog_titre": "Our latest *articles*",
+    "blog_tout": "All articles",
+    "equipe_bouton": "Our company",
+    "technologies_lien": "Learn more →",
+    "projet_vedette_lien": "View the case study →"
+  },
   "formation": {
     "eyebrow": "Training · ",
     "prix_titre": "Course price",
@@ -29,7 +39,11 @@
     "modalites_titre": "Welcome *arrangements*",
     "autres_titre": "Other courses",
     "voir_toutes": "See all courses",
-    "a_partir_de": "from"
+    "a_partir_de": "from",
+    "fil_parent": "Training",
+    "prefixe_titre": "Training",
+    "participant": "participant",
+    "participants": "participants"
   },
   "modalites": [
     { "titre": "Coffee provided", "texte": "Welcome over a coffee at every session." },

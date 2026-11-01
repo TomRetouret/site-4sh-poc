@@ -1,0 +1,154 @@
+# Bloc « hero » : Hero (haut de page)
+# Composant du site : src/_includes/composants/blocs/hero.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc »).
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  accueil: 10
+  demo: 10
+  offre: 10
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
+type:
+  label: Hero (haut de page)
+  name: hero
+  widget: object
+  summary: 'Hero : {{fields.titre_page}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Variante
+      name: variante
+      widget: select
+      required: false
+      default: expressif
+      hint: 'Expressive : grande accroche sur fond sombre, pour l''accueil. Sobre : le titre de la page est le grand titre, pour les pages d''offre et les pages intérieures. Vide : expressive.'
+      options:
+        - label: Expressive (accueil)
+          value: expressif
+        - label: Sobre (pages d'offre et pages intérieures)
+          value: sobre
+    - label: Offre (surtitre coloré)
+      name: offre
+      widget: select
+      required: false
+      hint: 'Variante sobre uniquement. Affiche le surtitre de l''offre (par exemple « 4SH Build · Concevoir & développer ») et donne sa couleur à la page. Vide : pas de surtitre.'
+      options:
+        - label: 4SH Build
+          value: build
+        - label: 4SH Run
+          value: run
+        - label: 4SH Learning
+          value: learning
+        - label: 4SH institutionnel
+          value: institutionnel
+    - label: Titre de la page (H1)
+      name: titre_page
+      widget: string
+      required: true
+      hint: 'Lu par Google et les lecteurs d''écran. 60 caractères maximum. Expressive : affiché en petit au-dessus de l''accroche. Sobre : c''est le grand titre ; mettez un mot entre *astérisques* pour l''afficher en rouge.'
+    - label: Accroche
+      name: accroche
+      widget: string
+      required: false
+      hint: Variante expressive uniquement, et obligatoire dans ce cas. Mettez un mot entre *astérisques* pour l'afficher en rouge. Environ 40 caractères.
+    - label: Chapô
+      name: chapo
+      widget: text
+      required: false
+      hint: 40 mots maximum.
+    - label: Bouton principal
+      name: bouton_principal
+      widget: object
+      required: true
+      collapsed: false
+      summary: '{{fields.texte}} ({{fields.lien}})'
+      fields:
+        - label: Texte du bouton
+          name: texte
+          widget: string
+          required: true
+        - label: 'Destination (adresse ou #ancre)'
+          name: lien
+          widget: string
+          required: true
+          default: '#contact'
+    - label: Bouton secondaire
+      name: bouton_secondaire
+      widget: object
+      required: false
+      collapsed: false
+      summary: '{{fields.texte}} ({{fields.lien}})'
+      fields:
+        - label: Texte du bouton
+          name: texte
+          widget: string
+          required: false
+        - label: 'Destination (adresse ou #ancre)'
+          name: lien
+          widget: string
+          required: false
+          default: /references/
+    - label: Note sous les boutons
+      name: note
+      widget: string
+      required: false
+    - label: Étiquettes
+      name: etiquettes
+      widget: list
+      required: false
+      label_singular: Étiquette
+      max: 4
+      hint: Variante sobre uniquement. Petits mots-clés sous les boutons, 4 au maximum.
+      field:
+        label: Étiquette
+        name: etiquette
+        widget: string
+        required: true
+        hint: 30 caractères maximum.
+    - label: Encart visuel
+      name: encart
+      widget: object
+      required: false
+      collapsed: true
+      summary: '{{fields.titre}}'
+      fields:
+        - label: Afficher l'encart
+          name: afficher
+          widget: boolean
+          required: false
+          default: true
+        - label: Titre de l'encart
+          name: titre
+          widget: string
+          required: false
+        - label: Lignes
+          name: lignes
+          widget: list
+          required: false
+          label_singular: Ligne
+          collapsed: true
+          summary: '{{fields.cle}} : {{fields.valeur}}'
+          fields:
+            - label: Mot-clé
+              name: cle
+              widget: string
+              required: false
+            - label: Texte
+              name: valeur
+              widget: string
+              required: false
+        - label: Badge
+          name: badge
+          widget: string
+          required: false
+        - label: Note du badge
+          name: badge_note
+          widget: string
+          required: false
+      hint: Variante expressive uniquement.

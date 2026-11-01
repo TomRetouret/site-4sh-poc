@@ -7,7 +7,7 @@ extraCss: /assets/references.css
 {% from "composants/formulaires.njk" import contact_final as bloc_contact %}
 <section class="ref-detail">
   <div class="container">
-    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <a href="/references/">{{ libelles.reference.fil_parent }}</a> › {{ titre }}</nav>
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">{{ libelles.commun.fil_ariane_accueil or "Accueil" }}</a> › <a href="/references/">{{ libelles.reference.fil_parent }}</a> › {{ titre }}</nav>
 
     <div class="ref-hero-detail">
       <div>
@@ -24,7 +24,7 @@ extraCss: /assets/references.css
         </div>
       </div>
       <div class="ref-hero-visuel">
-        {% if image %}<img src="{{ image }}" alt="{{ '' if image_decorative else image_alt }}" decoding="async">{% else %}<div class="ref-visuel ref-visuel--vide" style="aspect-ratio:4/3;border-radius:var(--radius)"><span class="ref-vide-nom">{{ client }}</span></div>{% endif %}
+        {% if image %}{% image image, ('' if image_decorative else image_alt), { sizes: "(max-width: 1023px) 100vw, 600px", loading: "eager", style: "height:auto" } %}{% else %}<div class="ref-visuel ref-visuel--vide" style="aspect-ratio:4/3;border-radius:var(--radius)"><span class="ref-vide-nom">{{ client }}</span></div>{% endif %}
       </div>
     </div>
   </div>
@@ -49,7 +49,7 @@ extraCss: /assets/references.css
     <div class="ref-galerie" id="galerie">
       <h2>{{ libelles.reference.galerie }}</h2>
       <div class="grille">
-        {% for img in galerie %}<figure><img src="{{ img.image }}" alt="{{ '' if img.decorative else img.alt }}" loading="lazy" decoding="async"></figure>{% endfor %}
+        {% for img in galerie %}<figure>{% image img.image, ('' if img.decorative else img.alt), { sizes: "(max-width: 767px) 100vw, 500px", style: "height:auto" } %}</figure>{% endfor %}
       </div>
     </div>
     {% endif %}

@@ -1,0 +1,68 @@
+# Bloc « cartes_secteurs » : Cartes secteurs (carrousel)
+# Composant du site : src/_includes/composants/blocs/cartes_secteurs.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc »).
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  accueil: 50
+  demo: 50
+  offre: 90
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
+type:
+  label: Cartes secteurs (carrousel)
+  name: cartes_secteurs
+  widget: object
+  summary: 'Cartes secteurs : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Surtitre
+      name: surtitre
+      widget: string
+      required: false
+    - label: Titre
+      name: titre
+      widget: string
+      required: true
+      hint: Mettez un mot entre *astérisques* pour l'afficher en rouge.
+    - label: Sous-titre
+      name: sous_titre
+      widget: text
+      required: false
+    - label: Cartes
+      name: cartes
+      widget: list
+      required: false
+      label_singular: Carte
+      collapsed: true
+      summary: '{{fields.titre}}'
+      fields:
+        - label: Titre
+          name: titre
+          widget: string
+          required: true
+        - label: Texte
+          name: texte
+          widget: text
+          required: false
+        - label: Lien de la carte
+          name: lien
+          widget: object
+          required: false
+          collapsed: false
+          summary: '{{fields.texte}} ({{fields.lien}})'
+          fields:
+            - label: Texte du bouton
+              name: texte
+              widget: string
+              required: false
+            - label: 'Destination (adresse ou #ancre)'
+              name: lien
+              widget: string
+              required: false

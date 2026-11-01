@@ -1,0 +1,58 @@
+# Bloc « appel_action » : Appel à l'action final
+# Composant du site : src/_includes/composants/blocs/appel_action.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc »).
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  demo: 160
+  offre: 140
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
+type:
+  label: Appel à l'action final
+  name: appel_action
+  widget: object
+  summary: 'Appel à l''action : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Titre
+      name: titre
+      widget: string
+      required: true
+      hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+    - label: Texte
+      name: texte
+      widget: text
+      required: false
+      hint: 30 mots maximum.
+    - label: Bouton
+      name: appel
+      widget: relation
+      required: true
+      collection: appels_action
+      value_field: '{{slug}}'
+      display_fields:
+        - '{{intitule}}'
+      search_fields:
+        - intitule
+        - texte
+      hint: Choisissez un appel à l'action partagé (texte et destination du bouton). Pour en créer un, passez par la collection Appels à l'action.
+    - label: Fond
+      name: fond
+      widget: select
+      required: true
+      default: doux
+      hint: Couleur de fond du bandeau.
+      options:
+        - label: Blanc
+          value: blanc
+        - label: Gris clair
+          value: doux
+        - label: Sombre
+          value: sombre

@@ -1,0 +1,20 @@
+# =========================================================================
+#  PROFILS DE LA BIBLIOTHÈQUE DE BLOCS
+#  Un profil = une liste « Blocs de la page » du CMS, repérée dans une
+#  collection (admin/config/collections/*.yml) par :
+#      # >>> BLOCS:<profil> (généré par scripts/generer-blocs.js : ne pas modifier à la main)
+#      # <<< BLOCS
+#  Chaque bloc choisit lui-même ses profils (clé « profils » de
+#  admin/config/blocs/<type>.yml) : on ne touche à ce fichier que pour
+#  créer un profil.
+#  i18n : true ajoute i18n: true à chaque champ (accueil bilingue).
+# =========================================================================
+accueil:
+  description: Page d'accueil, en français et en anglais.
+  i18n: true
+demo:
+  description: Pages de démonstration (src/demo/), toute la bibliothèque.
+  i18n: false
+offre:
+  description: Pages d'offre (Logiciel métier, puis les autres pages d'offre).
+  i18n: false

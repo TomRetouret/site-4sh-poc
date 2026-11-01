@@ -1,0 +1,47 @@
+# Bloc « derniers_articles » : Derniers articles du blog
+# Composant du site : src/_includes/composants/blocs/derniers_articles.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc »).
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  accueil: 100
+  demo: 100
+  offre: 120
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
+type:
+  label: Derniers articles du blog
+  name: derniers_articles
+  widget: object
+  summary: 'Derniers articles : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Titre
+      name: titre
+      widget: string
+      required: false
+      hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Les articles sont repris automatiquement du blog.
+      default: Nos derniers *articles*
+    - label: Lien vers le blog
+      name: lien_tout
+      widget: object
+      required: false
+      collapsed: false
+      summary: '{{fields.texte}} ({{fields.lien}})'
+      fields:
+        - label: Texte du bouton
+          name: texte
+          widget: string
+          required: false
+          default: Tout le blog
+        - label: 'Destination (adresse ou #ancre)'
+          name: lien
+          widget: string
+          required: false
+          default: https://blog.4sh.fr/

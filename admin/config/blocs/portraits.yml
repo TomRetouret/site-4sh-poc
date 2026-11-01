@@ -1,0 +1,65 @@
+# Bloc « portraits » : Équipe ou portraits
+# Composant du site : src/_includes/composants/blocs/portraits.njk
+# Aperçu du back-office : admin-shared/apercus-bloc-portraits.js
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc »).
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  demo: 200
+  offre: 115
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
+type:
+  label: Équipe ou portraits (fiches Équipe)
+  name: portraits
+  widget: object
+  summary: 'Portraits : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Surtitre
+      name: surtitre
+      widget: string
+      required: false
+      hint: Petit texte au-dessus du titre. 30 caractères maximum.
+    - label: Titre
+      name: titre
+      widget: string
+      required: true
+      hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+    - label: Sous-titre
+      name: sous_titre
+      widget: text
+      required: false
+      hint: 40 mots maximum.
+    - label: Affichage
+      name: affichage
+      widget: select
+      required: true
+      default: grille
+      hint: 'Grille : photo, nom et fonction de chaque personne (4 par ligne). Portrait unique : la première personne choisie, avec sa présentation.'
+      options:
+        - label: Grille de portraits
+          value: grille
+        - label: Portrait unique
+          value: unique
+    - label: Personnes
+      name: membres
+      widget: relation
+      required: true
+      multiple: true
+      min: 1
+      max: 12
+      collection: equipe
+      value_field: '{{slug}}'
+      display_fields:
+        - '{{nom}}, {{fonction}}'
+      search_fields:
+        - nom
+        - fonction
+      hint: Choisissez de 1 à 12 personnes de la collection Équipe, dans l'ordre d'affichage. Photo, nom, fonction et présentation se modifient dans la fiche de la personne.

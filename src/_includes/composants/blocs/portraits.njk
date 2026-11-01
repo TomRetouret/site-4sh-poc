@@ -1,0 +1,39 @@
+{# Bloc « portraits » : personnes choisies dans la collection Équipe (src/_data/equipe/).
+   Variantes : grille (photo, nom, fonction) ou portrait unique (première personne, avec sa présentation).
+   Définition : admin/config/blocs/portraits.yml. Styles : /assets/blocs.css (chargée par l'aiguilleur).
+   Fiches lues par le filtre fichesEquipe (eleventy/blocs.js) ; une fiche supprimée est ignorée. #}
+{% set feuille = "/assets/blocs.css" %}
+{% macro bloc(b, ctx, serre) %}
+{% set membres = b.membres | fichesEquipe %}
+{% if membres | length %}
+<!-- ÉQUIPE OU PORTRAITS -->
+<section class="bloc-portraits"{% if serre %} style="padding-top:0"{% endif %}>
+  <div class="container">
+    {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
+    {% if b.affichage == "unique" %}
+    {% set m = membres[0] %}
+    <div class="bloc-portrait-unique">
+      {% if m.photo %}{% image m.photo, (m.photo_alt or ''), { classe: "bloc-portrait-photo", sizes: "(max-width: 767px) 50vw, 280px" } %}{% endif %}
+      <div>
+        <h3 class="bloc-portrait-nom">{{ m.nom }}</h3>
+        {% if m.fonction %}<p class="bloc-portrait-fonction">{{ m.fonction }}</p>{% endif %}
+        {% for para in m.paragraphes %}<p class="bloc-portrait-texte">{{ para }}</p>{% endfor %}
+      </div>
+    </div>
+    {% else %}
+    <ul class="bloc-portraits-grille">
+      {% for m in membres %}
+      <li>
+        {% if m.photo %}{% image m.photo, (m.photo_alt or ''), { classe: "bloc-portrait-photo", sizes: "(max-width: 767px) 50vw, 280px" } %}{% endif %}
+        <h3 class="bloc-portrait-nom">{{ m.nom }}</h3>
+        {% if m.fonction %}<p class="bloc-portrait-fonction">{{ m.fonction }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+{% endmacro %}

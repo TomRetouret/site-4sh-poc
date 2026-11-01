@@ -52,6 +52,20 @@ display_url: https://eclectic-conkies-63f114.netlify.app # site Netlify du dép�
 media_folder: "src/uploads"
 public_folder: "/uploads"
 
+# Optimisation des images dès le dépôt (Sveltia CMS, option media_libraries,
+# voir docs/back-office/images.md). Les photos JPEG, PNG et HEIC sont converties
+# en WebP (qualité 85) et réduites à 2400 px de large au plus (jamais agrandies).
+# Les GIF (animés) et les SVG ne sont pas touchés. Fichier refusé au-delà de 10 Mo.
+# Le site génère ensuite lui-même les variantes AVIF, WebP et les largeurs utiles.
+media_libraries:
+  default:
+    config:
+      max_file_size: 10485760
+      transformations:
+        jpeg: { format: webp, quality: 85, width: 2400, height: 2400 }
+        png: { format: webp, quality: 85, width: 2400, height: 2400 }
+        heic: { format: webp, quality: 85, width: 2400, height: 2400 }
+
 collections:
   # -----------------------------------------------------------------------
   # 1) FORMATIONS  (une fiche = un niveau = un fichier ; on peut en ajouter / supprimer)
@@ -2603,8 +2617,7 @@ collections:
                 name: client
                 widget: string
                 required: true
-                hint: Nom du client ou du produit
-                écrit en toutes lettres. 40 caractères maximum.: null
+                hint: Nom du client ou du produit, écrit en toutes lettres. 40 caractères maximum.
               - label: Description
                 name: description
                 widget: text
@@ -2720,6 +2733,280 @@ collections:
                     value: doux
                   - label: Sombre
                     value: sombre
+          - label: Texte et image
+            name: texte_image
+            widget: object
+            summary: 'Texte et image : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+            fields:
+              - label: Masquer ce bloc (il reste enregistré)
+                name: masquer
+                widget: boolean
+                required: false
+                default: false
+                hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+              - label: Surtitre
+                name: surtitre
+                widget: string
+                required: false
+                hint: Petit texte au-dessus du titre. 30 caractères maximum.
+              - label: Titre
+                name: titre
+                widget: string
+                required: true
+                hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+              - label: Texte
+                name: texte
+                widget: markdown
+                required: true
+                hint: Gras, liens et listes uniquement. Laissez une ligne vide entre deux paragraphes. 150 mots maximum.
+                buttons:
+                  - bold
+                  - link
+                  - bulleted-list
+                  - numbered-list
+                editor_components: []
+                modes:
+                  - rich_text
+              - label: Image
+                name: image
+                widget: object
+                required: true
+                collapsed: false
+                summary: '{{fields.fichier}}'
+                fields:
+                  - label: Image
+                    name: fichier
+                    widget: image
+                    required: true
+                    hint: Format paysage, 1600 px de large minimum. Affichée en 4:3 à côté du texte.
+                  - label: Texte alternatif
+                    name: alt
+                    widget: string
+                    required: false
+                    hint: 'Obligatoire sauf si l''image est décorative. Décrivez ce que montre l''image en une phrase, 120 caractères maximum. Par exemple : Deux développeurs devant un tableau blanc couvert de maquettes.'
+                  - label: Image décorative (aucune information à transmettre)
+                    name: decorative
+                    widget: boolean
+                    required: false
+                    default: false
+                    hint: Cochez seulement si l'image n'apporte rien au texte (ambiance, texture). Le texte alternatif est alors ignoré.
+                  - label: Crédit photo
+                    name: credit
+                    widget: string
+                    required: false
+                    hint: 'Affiché en petit sous l''image. Par exemple : Photo Studio Nantes. Vide : pas de crédit.'
+                  - label: Cadrage
+                    name: cadrage
+                    widget: select
+                    required: true
+                    default: centre
+                    hint: Partie de l'image conservée quand elle est recadrée.
+                    options:
+                      - label: Centre
+                        value: centre
+                      - label: Haut
+                        value: haut
+                      - label: Bas
+                        value: bas
+                      - label: Gauche
+                        value: gauche
+                      - label: Droite
+                        value: droite
+              - label: Position de l'image
+                name: position_image
+                widget: select
+                required: true
+                default: gauche
+                hint: Sur ordinateur. Sur téléphone, l'image passe toujours au-dessus du texte.
+                options:
+                  - label: À gauche du texte
+                    value: gauche
+                  - label: À droite du texte
+                    value: droite
+              - label: Bouton
+                name: bouton
+                widget: object
+                required: false
+                collapsed: false
+                summary: '{{fields.texte}} ({{fields.lien}})'
+                fields:
+                  - label: Texte du bouton
+                    name: texte
+                    widget: string
+                    required: false
+                    hint: '25 caractères maximum, commence par un verbe. Vide : pas de bouton.'
+                  - label: 'Destination (adresse ou #ancre)'
+                    name: lien
+                    widget: string
+                    required: false
+                    hint: Adresse commençant par / pour une page du site, https:// pour un site externe.
+          - label: Image pleine largeur
+            name: image_pleine
+            widget: object
+            summary: 'Image pleine largeur : {{fields.legende}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+            fields:
+              - label: Masquer ce bloc (il reste enregistré)
+                name: masquer
+                widget: boolean
+                required: false
+                default: false
+                hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+              - label: Image
+                name: image
+                widget: object
+                required: true
+                collapsed: false
+                summary: '{{fields.fichier}}'
+                fields:
+                  - label: Image
+                    name: fichier
+                    widget: image
+                    required: true
+                    hint: Format paysage, 2400 px de large minimum. Elle occupe toute la largeur de l'écran.
+                  - label: Texte alternatif
+                    name: alt
+                    widget: string
+                    required: false
+                    hint: 'Obligatoire sauf si l''image est décorative. Décrivez ce que montre l''image en une phrase, 120 caractères maximum. Par exemple : Deux développeurs devant un tableau blanc couvert de maquettes.'
+                  - label: Image décorative (aucune information à transmettre)
+                    name: decorative
+                    widget: boolean
+                    required: false
+                    default: false
+                    hint: Cochez seulement si l'image n'apporte rien au texte (ambiance, texture). Le texte alternatif est alors ignoré.
+                  - label: Crédit photo
+                    name: credit
+                    widget: string
+                    required: false
+                    hint: 'Affiché en petit sous l''image. Par exemple : Photo Studio Nantes. Vide : pas de crédit.'
+                  - label: Cadrage
+                    name: cadrage
+                    widget: select
+                    required: true
+                    default: centre
+                    hint: Partie de l'image conservée quand elle est recadrée.
+                    options:
+                      - label: Centre
+                        value: centre
+                      - label: Haut
+                        value: haut
+                      - label: Bas
+                        value: bas
+                      - label: Gauche
+                        value: gauche
+                      - label: Droite
+                        value: droite
+              - label: Format d'affichage
+                name: format
+                widget: select
+                required: true
+                default: bandeau
+                hint: 'Bandeau : image recadrée en bande panoramique (suivez le réglage Cadrage). Image entière : aucune partie coupée.'
+                options:
+                  - label: Bandeau panoramique
+                    value: bandeau
+                  - label: Image entière
+                    value: entiere
+              - label: Légende
+                name: legende
+                widget: string
+                required: false
+                hint: 'Phrase affichée sous l''image, 120 caractères maximum. Vide : pas de légende.'
+          - label: Téléchargement d'un document
+            name: telechargement
+            widget: object
+            summary: 'Téléchargement : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+            fields:
+              - label: Masquer ce bloc (il reste enregistré)
+                name: masquer
+                widget: boolean
+                required: false
+                default: false
+                hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+              - label: Surtitre
+                name: surtitre
+                widget: string
+                required: false
+                hint: Petit texte au-dessus du titre. 30 caractères maximum.
+              - label: Titre
+                name: titre
+                widget: string
+                required: true
+                hint: 'Nom du document, 60 caractères maximum. Par exemple : Plaquette 4SH Build. Mettez un mot entre *astérisques* pour l''afficher en rouge.'
+              - label: Texte
+                name: texte
+                widget: text
+                required: false
+                hint: Ce que contient le document et à qui il sert, 40 mots maximum.
+              - label: Document
+                name: document
+                widget: file
+                required: true
+                choose_url: true
+                hint: Déposez le fichier (PDF de préférence, 10 Mo maximum) ou collez l'adresse d'un document en ligne commençant par https://. Le format (PDF, DOCX...) est affiché d'après le nom du fichier.
+              - label: Texte du bouton
+                name: bouton_texte
+                widget: string
+                required: true
+                default: Télécharger le document
+                hint: '30 caractères maximum, commence par un verbe. Par exemple : Télécharger la plaquette.'
+              - label: Poids du fichier
+                name: poids
+                widget: string
+                required: false
+                hint: 'Par exemple : 2,4 Mo. Affiché à côté du format pour prévenir le visiteur. Vide : poids non affiché.'
+          - label: Équipe ou portraits (fiches Équipe)
+            name: portraits
+            widget: object
+            summary: 'Portraits : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+            fields:
+              - label: Masquer ce bloc (il reste enregistré)
+                name: masquer
+                widget: boolean
+                required: false
+                default: false
+                hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+              - label: Surtitre
+                name: surtitre
+                widget: string
+                required: false
+                hint: Petit texte au-dessus du titre. 30 caractères maximum.
+              - label: Titre
+                name: titre
+                widget: string
+                required: true
+                hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+              - label: Sous-titre
+                name: sous_titre
+                widget: text
+                required: false
+                hint: 40 mots maximum.
+              - label: Affichage
+                name: affichage
+                widget: select
+                required: true
+                default: grille
+                hint: 'Grille : photo, nom et fonction de chaque personne (4 par ligne). Portrait unique : la première personne choisie, avec sa présentation.'
+                options:
+                  - label: Grille de portraits
+                    value: grille
+                  - label: Portrait unique
+                    value: unique
+              - label: Personnes
+                name: membres
+                widget: relation
+                required: true
+                multiple: true
+                min: 1
+                max: 12
+                collection: equipe
+                value_field: '{{slug}}'
+                display_fields:
+                  - '{{nom}}, {{fonction}}'
+                search_fields:
+                  - nom
+                  - fonction
+                hint: Choisissez de 1 à 12 personnes de la collection Équipe, dans l'ordre d'affichage. Photo, nom, fonction et présentation se modifient dans la fiche de la personne.
         # <<< BLOCS
 
   # -----------------------------------------------------------------------
@@ -2972,6 +3259,185 @@ collections:
                     editor_components: []
                     modes:
                       - rich_text
+              - label: Texte et image
+                name: texte_image
+                widget: object
+                summary: 'Texte et image : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+                fields:
+                  - label: Masquer ce bloc (il reste enregistré)
+                    name: masquer
+                    widget: boolean
+                    required: false
+                    default: false
+                    hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+                  - label: Surtitre
+                    name: surtitre
+                    widget: string
+                    required: false
+                    hint: Petit texte au-dessus du titre. 30 caractères maximum.
+                  - label: Titre
+                    name: titre
+                    widget: string
+                    required: true
+                    hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+                  - label: Texte
+                    name: texte
+                    widget: markdown
+                    required: true
+                    hint: Gras, liens et listes uniquement. Laissez une ligne vide entre deux paragraphes. 150 mots maximum.
+                    buttons:
+                      - bold
+                      - link
+                      - bulleted-list
+                      - numbered-list
+                    editor_components: []
+                    modes:
+                      - rich_text
+                  - label: Image
+                    name: image
+                    widget: object
+                    required: true
+                    collapsed: false
+                    summary: '{{fields.fichier}}'
+                    fields:
+                      - label: Image
+                        name: fichier
+                        widget: image
+                        required: true
+                        hint: Format paysage, 1600 px de large minimum. Affichée en 4:3 à côté du texte.
+                      - label: Texte alternatif
+                        name: alt
+                        widget: string
+                        required: false
+                        hint: 'Obligatoire sauf si l''image est décorative. Décrivez ce que montre l''image en une phrase, 120 caractères maximum. Par exemple : Deux développeurs devant un tableau blanc couvert de maquettes.'
+                      - label: Image décorative (aucune information à transmettre)
+                        name: decorative
+                        widget: boolean
+                        required: false
+                        default: false
+                        hint: Cochez seulement si l'image n'apporte rien au texte (ambiance, texture). Le texte alternatif est alors ignoré.
+                      - label: Crédit photo
+                        name: credit
+                        widget: string
+                        required: false
+                        hint: 'Affiché en petit sous l''image. Par exemple : Photo Studio Nantes. Vide : pas de crédit.'
+                      - label: Cadrage
+                        name: cadrage
+                        widget: select
+                        required: true
+                        default: centre
+                        hint: Partie de l'image conservée quand elle est recadrée.
+                        options:
+                          - label: Centre
+                            value: centre
+                          - label: Haut
+                            value: haut
+                          - label: Bas
+                            value: bas
+                          - label: Gauche
+                            value: gauche
+                          - label: Droite
+                            value: droite
+                  - label: Position de l'image
+                    name: position_image
+                    widget: select
+                    required: true
+                    default: gauche
+                    hint: Sur ordinateur. Sur téléphone, l'image passe toujours au-dessus du texte.
+                    options:
+                      - label: À gauche du texte
+                        value: gauche
+                      - label: À droite du texte
+                        value: droite
+                  - label: Bouton
+                    name: bouton
+                    widget: object
+                    required: false
+                    collapsed: false
+                    summary: '{{fields.texte}} ({{fields.lien}})'
+                    fields:
+                      - label: Texte du bouton
+                        name: texte
+                        widget: string
+                        required: false
+                        hint: '25 caractères maximum, commence par un verbe. Vide : pas de bouton.'
+                      - label: 'Destination (adresse ou #ancre)'
+                        name: lien
+                        widget: string
+                        required: false
+                        hint: Adresse commençant par / pour une page du site, https:// pour un site externe.
+              - label: Image pleine largeur
+                name: image_pleine
+                widget: object
+                summary: 'Image pleine largeur : {{fields.legende}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+                fields:
+                  - label: Masquer ce bloc (il reste enregistré)
+                    name: masquer
+                    widget: boolean
+                    required: false
+                    default: false
+                    hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+                  - label: Image
+                    name: image
+                    widget: object
+                    required: true
+                    collapsed: false
+                    summary: '{{fields.fichier}}'
+                    fields:
+                      - label: Image
+                        name: fichier
+                        widget: image
+                        required: true
+                        hint: Format paysage, 2400 px de large minimum. Elle occupe toute la largeur de l'écran.
+                      - label: Texte alternatif
+                        name: alt
+                        widget: string
+                        required: false
+                        hint: 'Obligatoire sauf si l''image est décorative. Décrivez ce que montre l''image en une phrase, 120 caractères maximum. Par exemple : Deux développeurs devant un tableau blanc couvert de maquettes.'
+                      - label: Image décorative (aucune information à transmettre)
+                        name: decorative
+                        widget: boolean
+                        required: false
+                        default: false
+                        hint: Cochez seulement si l'image n'apporte rien au texte (ambiance, texture). Le texte alternatif est alors ignoré.
+                      - label: Crédit photo
+                        name: credit
+                        widget: string
+                        required: false
+                        hint: 'Affiché en petit sous l''image. Par exemple : Photo Studio Nantes. Vide : pas de crédit.'
+                      - label: Cadrage
+                        name: cadrage
+                        widget: select
+                        required: true
+                        default: centre
+                        hint: Partie de l'image conservée quand elle est recadrée.
+                        options:
+                          - label: Centre
+                            value: centre
+                          - label: Haut
+                            value: haut
+                          - label: Bas
+                            value: bas
+                          - label: Gauche
+                            value: gauche
+                          - label: Droite
+                            value: droite
+                  - label: Format d'affichage
+                    name: format
+                    widget: select
+                    required: true
+                    default: bandeau
+                    hint: 'Bandeau : image recadrée en bande panoramique (suivez le réglage Cadrage). Image entière : aucune partie coupée.'
+                    options:
+                      - label: Bandeau panoramique
+                        value: bandeau
+                      - label: Image entière
+                        value: entiere
+                  - label: Légende
+                    name: legende
+                    widget: string
+                    required: false
+                    hint: 'Phrase affichée sous l''image, 120 caractères maximum. Vide : pas de légende.'
               - label: Étapes ou processus
                 name: etapes
                 widget: object
@@ -3169,8 +3635,7 @@ collections:
                     name: client
                     widget: string
                     required: true
-                    hint: Nom du client ou du produit
-                    écrit en toutes lettres. 40 caractères maximum.: null
+                    hint: Nom du client ou du produit, écrit en toutes lettres. 40 caractères maximum.
                   - label: Description
                     name: description
                     widget: text
@@ -3541,6 +4006,58 @@ collections:
                         widget: string
                         required: false
                         default: /notre-entreprise/
+              - label: Équipe ou portraits (fiches Équipe)
+                name: portraits
+                widget: object
+                summary: 'Portraits : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+                fields:
+                  - label: Masquer ce bloc (il reste enregistré)
+                    name: masquer
+                    widget: boolean
+                    required: false
+                    default: false
+                    hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+                  - label: Surtitre
+                    name: surtitre
+                    widget: string
+                    required: false
+                    hint: Petit texte au-dessus du titre. 30 caractères maximum.
+                  - label: Titre
+                    name: titre
+                    widget: string
+                    required: true
+                    hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+                  - label: Sous-titre
+                    name: sous_titre
+                    widget: text
+                    required: false
+                    hint: 40 mots maximum.
+                  - label: Affichage
+                    name: affichage
+                    widget: select
+                    required: true
+                    default: grille
+                    hint: 'Grille : photo, nom et fonction de chaque personne (4 par ligne). Portrait unique : la première personne choisie, avec sa présentation.'
+                    options:
+                      - label: Grille de portraits
+                        value: grille
+                      - label: Portrait unique
+                        value: unique
+                  - label: Personnes
+                    name: membres
+                    widget: relation
+                    required: true
+                    multiple: true
+                    min: 1
+                    max: 12
+                    collection: equipe
+                    value_field: '{{slug}}'
+                    display_fields:
+                      - '{{nom}}, {{fonction}}'
+                    search_fields:
+                      - nom
+                      - fonction
+                    hint: Choisissez de 1 à 12 personnes de la collection Équipe, dans l'ordre d'affichage. Photo, nom, fonction et présentation se modifient dans la fiche de la personne.
               - label: Derniers articles du blog
                 name: derniers_articles
                 widget: object
@@ -3611,6 +4128,49 @@ collections:
                         name: reponse
                         widget: text
                         required: true
+              - label: Téléchargement d'un document
+                name: telechargement
+                widget: object
+                summary: 'Téléchargement : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+                fields:
+                  - label: Masquer ce bloc (il reste enregistré)
+                    name: masquer
+                    widget: boolean
+                    required: false
+                    default: false
+                    hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+                  - label: Surtitre
+                    name: surtitre
+                    widget: string
+                    required: false
+                    hint: Petit texte au-dessus du titre. 30 caractères maximum.
+                  - label: Titre
+                    name: titre
+                    widget: string
+                    required: true
+                    hint: 'Nom du document, 60 caractères maximum. Par exemple : Plaquette 4SH Build. Mettez un mot entre *astérisques* pour l''afficher en rouge.'
+                  - label: Texte
+                    name: texte
+                    widget: text
+                    required: false
+                    hint: Ce que contient le document et à qui il sert, 40 mots maximum.
+                  - label: Document
+                    name: document
+                    widget: file
+                    required: true
+                    choose_url: true
+                    hint: Déposez le fichier (PDF de préférence, 10 Mo maximum) ou collez l'adresse d'un document en ligne commençant par https://. Le format (PDF, DOCX...) est affiché d'après le nom du fichier.
+                  - label: Texte du bouton
+                    name: bouton_texte
+                    widget: string
+                    required: true
+                    default: Télécharger le document
+                    hint: '30 caractères maximum, commence par un verbe. Par exemple : Télécharger la plaquette.'
+                  - label: Poids du fichier
+                    name: poids
+                    widget: string
+                    required: false
+                    hint: 'Par exemple : 2,4 Mo. Affiché à côté du format pour prévenir le visiteur. Vide : poids non affiché.'
               - label: Appel à l'action final
                 name: appel_action
                 widget: object
@@ -4282,6 +4842,23 @@ collections:
         label: "Libellés & blocs partagés"
         file: "src/_data/libelles.json"
         fields: &f_libelles
+          - label: "Commun à plusieurs pages"
+            name: "commun"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Fil d'Ariane · premier lien", name: "fil_ariane_accueil", widget: "string", hint: "Premier lien du fil d'Ariane, vers la page d'accueil (fiches formation, fiches référence, page Logiciel métier).", required: false }
+          - label: "Blocs de page"
+            name: "blocs"
+            widget: "object"
+            collapsed: true
+            hint: "Textes par défaut des blocs (accueil, pages d'offre). Ils s'affichent quand le champ du bloc est laissé vide."
+            fields:
+              - { label: "Derniers articles · titre par défaut", name: "blog_titre", widget: "string", hint: "Titre du bloc Derniers articles quand son champ Titre est vide. Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Derniers articles · lien vers le blog", name: "blog_tout", widget: "string", hint: "Lien en haut à droite du bloc Derniers articles, quand le texte du lien n'est pas saisi dans le bloc.", required: false }
+              - { label: "Équipe · bouton par défaut", name: "equipe_bouton", widget: "string", hint: "Bouton du bloc Équipe quand son texte n'est pas saisi dans le bloc.", required: false }
+              - { label: "Technologies (cartes) · lien de carte", name: "technologies_lien", widget: "string", hint: "Lien sous chaque carte du bloc Technologies en affichage cartes (page Logiciel métier). Ex. : En savoir plus →", required: false }
+              - { label: "Projet vedette · lien des autres références", name: "projet_vedette_lien", widget: "string", hint: "Lien de chaque carte « autre référence » sous le projet vedette (page Logiciel métier). Ex. : Voir la référence →", required: false }
           - label: "Fiche formation"
             name: "formation"
             widget: "object"
@@ -4317,6 +4894,10 @@ collections:
               - { label: "Titre Autres formations", name: "autres_titre", widget: "string", required: false }
               - { label: "Bouton Voir toutes", name: "voir_toutes", widget: "string", required: false }
               - { label: "Mention « à partir de »", name: "a_partir_de", widget: "string", required: false }
+              - { label: "Fil d'Ariane · lien Formations", name: "fil_parent", widget: "string", hint: "Lien vers le catalogue dans le fil d'Ariane de chaque fiche formation.", required: false }
+              - { label: "Mot devant le nom de la formation", name: "prefixe_titre", widget: "string", hint: "Placé devant le nom de la formation dans le grand titre, le fil d'Ariane et la fenêtre de pré-inscription. Ex. : Formation Angular", required: false }
+              - { label: "Pré-inscription · « participant » (1)", name: "participant", widget: "string", hint: "Choix « 1 participant » de la liste Nombre de participants, dans la fenêtre de pré-inscription.", required: false }
+              - { label: "Pré-inscription · « participants » (2 et plus)", name: "participants", widget: "string", hint: "Choix « 2 participants » à « 8 participants » de la même liste.", required: false }
           - label: "Modalités d'accueil (cartes)"
             name: "modalites"
             widget: "list"

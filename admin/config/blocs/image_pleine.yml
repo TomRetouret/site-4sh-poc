@@ -1,0 +1,85 @@
+# Bloc « image_pleine » : Image pleine largeur
+# Composant du site : src/_includes/composants/blocs/image_pleine.njk
+# Aperçu du back-office : admin-shared/apercus-bloc-image_pleine.js
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc »).
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  demo: 180
+  offre: 36
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
+type:
+  label: Image pleine largeur
+  name: image_pleine
+  widget: object
+  summary: 'Image pleine largeur : {{fields.legende}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Image
+      name: image
+      widget: object
+      required: true
+      collapsed: false
+      summary: '{{fields.fichier}}'
+      fields:
+        - label: Image
+          name: fichier
+          widget: image
+          required: true
+          hint: Format paysage, 2400 px de large minimum. Elle occupe toute la largeur de l'écran.
+        - label: Texte alternatif
+          name: alt
+          widget: string
+          required: false
+          hint: 'Obligatoire sauf si l''image est décorative. Décrivez ce que montre l''image en une phrase, 120 caractères maximum. Par exemple : Deux développeurs devant un tableau blanc couvert de maquettes.'
+        - label: Image décorative (aucune information à transmettre)
+          name: decorative
+          widget: boolean
+          required: false
+          default: false
+          hint: Cochez seulement si l'image n'apporte rien au texte (ambiance, texture). Le texte alternatif est alors ignoré.
+        - label: Crédit photo
+          name: credit
+          widget: string
+          required: false
+          hint: 'Affiché en petit sous l''image. Par exemple : Photo Studio Nantes. Vide : pas de crédit.'
+        - label: Cadrage
+          name: cadrage
+          widget: select
+          required: true
+          default: centre
+          hint: Partie de l'image conservée quand elle est recadrée.
+          options:
+            - label: Centre
+              value: centre
+            - label: Haut
+              value: haut
+            - label: Bas
+              value: bas
+            - label: Gauche
+              value: gauche
+            - label: Droite
+              value: droite
+    - label: Format d'affichage
+      name: format
+      widget: select
+      required: true
+      default: bandeau
+      hint: 'Bandeau : image recadrée en bande panoramique (suivez le réglage Cadrage). Image entière : aucune partie coupée.'
+      options:
+        - label: Bandeau panoramique
+          value: bandeau
+        - label: Image entière
+          value: entiere
+    - label: Légende
+      name: legende
+      widget: string
+      required: false
+      hint: 'Phrase affichée sous l''image, 120 caractères maximum. Vide : pas de légende.'

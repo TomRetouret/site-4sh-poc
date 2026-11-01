@@ -33,7 +33,7 @@
         {#- titre identique au client (ex. CIN) : on affiche le sous-titre pour éviter la répétition -#}
         <h3>{{ f.data.sous_titre if (f.data.titre == f.data.client and f.data.sous_titre) else f.data.titre }}</h3>
         {% if f.data.resume %}<p>{{ f.data.resume }}</p>{% endif %}
-        <a href="{{ f.url }}">Voir la référence →</a>
+        <a href="{{ f.url }}">{{ ("blocs.projet_vedette_lien" | libelle(ctx.url_page)) or "Voir la référence →" }}</a>
       </div>
       {% endfor %}
     </div>

@@ -8,7 +8,8 @@ module.exports = function (eleventyConfig) {
   }
   // Fichiers copiés tels quels vers le site généré
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
-  eleventyConfig.addPassthroughCopy({ "admin": "admin" });
+  // Back-office : les morceaux de admin/config/ ne sont pas publiés, seul admin/config.yml assemblé l'est.
+  eleventyConfig.addPassthroughCopy({ "admin": "admin" }, { filter: (f) => !/^config([\\/]|$)/.test(f) });
   // Back-office (preuve de concept) : configuration Decap et gabarits d'aperçu partagés Sveltia / Decap
   eleventyConfig.addPassthroughCopy({ "admin-shared": "admin-shared" });
   eleventyConfig.addPassthroughCopy({ "src/uploads": "uploads" });

@@ -1,0 +1,56 @@
+# Bloc « telechargement » : Téléchargement d'un document
+# Composant du site : src/_includes/composants/blocs/telechargement.njk
+# Aperçu du back-office : admin-shared/apercus-bloc-telechargement.js
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc »).
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  demo: 190
+  offre: 135
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
+type:
+  label: Téléchargement d'un document
+  name: telechargement
+  widget: object
+  summary: 'Téléchargement : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Surtitre
+      name: surtitre
+      widget: string
+      required: false
+      hint: Petit texte au-dessus du titre. 30 caractères maximum.
+    - label: Titre
+      name: titre
+      widget: string
+      required: true
+      hint: 'Nom du document, 60 caractères maximum. Par exemple : Plaquette 4SH Build. Mettez un mot entre *astérisques* pour l''afficher en rouge.'
+    - label: Texte
+      name: texte
+      widget: text
+      required: false
+      hint: Ce que contient le document et à qui il sert, 40 mots maximum.
+    - label: Document
+      name: document
+      widget: file
+      required: true
+      choose_url: true
+      hint: Déposez le fichier (PDF de préférence, 10 Mo maximum) ou collez l'adresse d'un document en ligne commençant par https://. Le format (PDF, DOCX...) est affiché d'après le nom du fichier.
+    - label: Texte du bouton
+      name: bouton_texte
+      widget: string
+      required: true
+      default: Télécharger le document
+      hint: '30 caractères maximum, commence par un verbe. Par exemple : Télécharger la plaquette.'
+    - label: Poids du fichier
+      name: poids
+      widget: string
+      required: false
+      hint: 'Par exemple : 2,4 Mo. Affiché à côté du format pour prévenir le visiteur. Vide : poids non affiché.'

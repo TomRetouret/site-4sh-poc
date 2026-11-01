@@ -18,7 +18,7 @@
   data-technologies="{{ ref.data.technologies | join(',') | lower }}"
   data-nom="{{ (ref.data.titre ~ ' ' ~ ref.data.client ~ ' ' ~ ref.data.resume ~ ' ' ~ (ref.data.technologies | join(' ')) ~ ' ' ~ (ref.data.secteurs | join(' '))) | lower }}">
   <div class="ref-visuel{% if not ref.data.image %} ref-visuel--vide{% endif %}">
-    {% if ref.data.image %}<img src="{{ ref.data.image }}" alt="{{ '' if ref.data.image_decorative else (ref.data.image_alt or ref.data.titre) }}" loading="lazy" decoding="async" width="600" height="450">{% else %}<span class="ref-vide-nom">{{ ref.data.client }}</span>{% endif %}
+    {% if ref.data.image %}{% image ref.data.image, ('' if ref.data.image_decorative else (ref.data.image_alt or ref.data.titre)), { sizes: "(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 600px", width: 600, height: 450 } %}{% else %}<span class="ref-vide-nom">{{ ref.data.client }}</span>{% endif %}
     <div class="ref-cartouche">{% if ref.data.logo %}<img src="{{ ref.data.logo }}" alt="{{ ref.data.client }}" loading="lazy" decoding="async">{% else %}<span class="ref-cartouche-txt">{{ ref.data.client }}</span>{% endif %}</div>
   </div>
   <div class="ref-carte-corps">
@@ -52,7 +52,7 @@
 <div class="sect-ref-carte">
   {% if fiche and fiche.data.image %}
   <div class="sect-ref-visuel">
-    <img src="{{ fiche.data.image }}" alt="{{ fiche.data.titre }}" loading="lazy" decoding="async">
+    {% image fiche.data.image, fiche.data.titre, { sizes: "(max-width: 767px) 100vw, 600px" } %}
     <div class="ref-cartouche">{% if fiche.data.logo %}<img src="{{ fiche.data.logo }}" alt="{{ fiche.data.client }}" loading="lazy" decoding="async">{% else %}<span class="ref-cartouche-txt">{{ fiche.data.client }}</span>{% endif %}</div>
   </div>
   {% else %}

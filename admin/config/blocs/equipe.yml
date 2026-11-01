@@ -1,0 +1,96 @@
+# Bloc « equipe » : Équipe (photo et texte)
+# Composant du site : src/_includes/composants/blocs/equipe.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc »).
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  accueil: 110
+  demo: 110
+  offre: 110
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
+type:
+  label: Équipe (photo et texte)
+  name: equipe
+  widget: object
+  summary: 'Équipe : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Surtitre
+      name: surtitre
+      widget: string
+      required: false
+    - label: Titre
+      name: titre
+      widget: string
+      required: true
+      hint: Mettez un mot entre *astérisques* pour l'afficher en rouge.
+    - label: Texte
+      name: texte
+      widget: text
+      required: false
+    - label: Photo de l'équipe
+      name: photo
+      widget: object
+      required: false
+      collapsed: true
+      summary: '{{fields.fichier}}'
+      fields:
+        - label: Image
+          name: fichier
+          widget: image
+          required: false
+        - label: Texte alternatif
+          name: alt
+          widget: string
+          required: false
+          hint: Obligatoire sauf si l'image est décorative. Décrivez ce que montre l'image. À défaut, le titre est utilisé.
+        - label: Image décorative (aucune information à transmettre)
+          name: decorative
+          widget: boolean
+          required: false
+          default: false
+        - label: Crédit photo
+          name: credit
+          widget: string
+          required: false
+        - label: Cadrage
+          name: cadrage
+          widget: select
+          required: true
+          default: centre
+          hint: Partie de l'image conservée quand elle est recadrée.
+          options:
+            - label: Centre
+              value: centre
+            - label: Haut
+              value: haut
+            - label: Bas
+              value: bas
+            - label: Gauche
+              value: gauche
+            - label: Droite
+              value: droite
+    - label: Bouton
+      name: bouton
+      widget: object
+      required: false
+      collapsed: false
+      summary: '{{fields.texte}} ({{fields.lien}})'
+      fields:
+        - label: Texte du bouton
+          name: texte
+          widget: string
+          required: false
+          default: Notre entreprise
+        - label: 'Destination (adresse ou #ancre)'
+          name: lien
+          widget: string
+          required: false
+          default: /notre-entreprise/

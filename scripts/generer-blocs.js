@@ -1,10 +1,15 @@
 #!/usr/bin/env node
-// Recopie les types de blocs de la bibliothèque (admin/config/blocs.yml, source unique)
-// dans les collections du CMS, entre les repères :
+// Bibliothèque des blocs du CMS : recopie les types de blocs dans les collections.
+//
+// Sources (une par type de bloc) :
+//   admin/config/blocs/<type>.yml   { profils: { <profil>: <rang> }, type: <définition Sveltia> }
+//   admin/config/blocs/_profils.yml { <profil>: { description, i18n } }
+// Cibles : les listes repérées dans admin/config/collections/*.yml par
 //     # >>> BLOCS:<profil> (généré par scripts/generer-blocs.js : ne pas modifier à la main)
 //     # <<< BLOCS
 // Le repère d'ouverture fixe l'indentation de la clé « types: » écrite à sa place.
-// Profils : quels blocs sont autorisés, et faut-il ajouter i18n: true (accueil bilingue).
+// Dans chaque profil, les blocs sont rangés par rang croissant (puis par nom).
+// Mode d'emploi « Ajouter un bloc » : docs/back-office/schema-blocs.md.
 // Ensuite : node scripts/assembler-config.js (assemble et valide admin/config.yml).
 const fs = require("fs");
 const path = require("path");
@@ -12,38 +17,45 @@ const yaml = require("js-yaml");
 
 const racine = path.join(__dirname, "..");
 const dossier = path.join(racine, "admin", "config", "collections");
-const biblio = yaml.load(fs.readFileSync(path.join(racine, "admin", "config", "blocs.yml"), "utf8")).types;
+const dossierBlocs = path.join(racine, "admin", "config", "blocs");
+const dossierComposants = path.join(racine, "src", "_includes", "composants", "blocs");
 
-const PROFILS = {
-  // Accueil (français et anglais) : les 11 blocs d'origine.
-  accueil: {
-    i18n: true,
-    blocs: ["hero", "logos_clients", "cartes_offres", "chiffres_cles", "cartes_secteurs", "methode_4d",
-      "projets", "technologies", "faq", "derniers_articles", "equipe"]
-  },
-  // Pages de démonstration : toute la bibliothèque.
-  demo: { i18n: false, blocs: biblio.map((t) => t.name) },
-  // Pages d'offre (Logiciel métier, puis les autres pages d'offre).
-  offre: {
-    i18n: false,
-    blocs: ["hero", "chiffres_cles", "texte_simple", "etapes", "benefices", "technologies", "projet_vedette",
-      "projets", "cartes_secteurs", "logos_clients", "equipe", "derniers_articles", "faq", "appel_action"]
-  }
-};
+const erreurs = [];
+const PROFILS = yaml.load(fs.readFileSync(path.join(dossierBlocs, "_profils.yml"), "utf8")) || {};
+
+// Lecture des blocs : un fichier par type, les fichiers commençant par _ sont réservés.
+const blocs = fs.readdirSync(dossierBlocs)
+  .filter((f) => f.endsWith(".yml") && !f.startsWith("_"))
+  .sort()
+  .map((f) => {
+    const nom = f.replace(/\.yml$/, "");
+    const source = yaml.load(fs.readFileSync(path.join(dossierBlocs, f), "utf8")) || {};
+    const t = source.type || {};
+    if (!/^[a-z][a-z0-9_]*$/.test(nom)) erreurs.push(`${f} : nom de fichier en minuscules, chiffres et _ uniquement`);
+    if (t.name !== nom) erreurs.push(`${f} : type.name (« ${t.name} ») doit être le nom du fichier (« ${nom} »)`);
+    if (!fs.existsSync(path.join(dossierComposants, nom + ".njk"))) {
+      erreurs.push(`${f} : composant src/_includes/composants/blocs/${nom}.njk introuvable`);
+    }
+    const profils = source.profils || {};
+    Object.keys(profils).forEach((p) => {
+      if (!PROFILS[p]) erreurs.push(`${f} : profil « ${p} » absent de admin/config/blocs/_profils.yml`);
+      if (typeof profils[p] !== "number") erreurs.push(`${f} : le rang du profil « ${p} » doit être un nombre`);
+    });
+    return { nom, profils, type: t };
+  });
 
 // Contrôle : chaque champ déclare required (true ou false).
-const manquants = [];
 function controler(champs, chemin) {
   (champs || []).forEach((c) => {
     const ici = chemin + "." + c.name;
-    if (typeof c.required !== "boolean") manquants.push(ici);
+    if (typeof c.required !== "boolean") erreurs.push(`required absent ou non booléen : ${ici}`);
     controler(c.fields, ici);
     if (c.field) controler([c.field], ici);
   });
 }
-biblio.forEach((t) => controler(t.fields, t.name));
-if (manquants.length) {
-  console.error("required absent ou non booléen : " + manquants.join(", "));
+blocs.forEach((b) => controler(b.type.fields, b.nom));
+if (erreurs.length) {
+  console.error(erreurs.join("\n"));
   process.exit(1);
 }
 
@@ -58,17 +70,18 @@ function avecI18n(champ) {
 
 function typesDu(profil) {
   const p = PROFILS[profil];
-  if (!p) throw new Error("profil inconnu : " + profil);
-  return p.blocs.map((nom) => {
-    const t = biblio.find((x) => x.name === nom);
-    if (!t) throw new Error(`bloc « ${nom} » absent de admin/config/blocs.yml`);
-    const copie = JSON.parse(JSON.stringify(t));
-    if (p.i18n) copie.fields = copie.fields.map(avecI18n);
-    return copie;
-  });
+  if (!p) throw new Error(`profil inconnu : ${profil} (à déclarer dans admin/config/blocs/_profils.yml)`);
+  return blocs
+    .filter((b) => b.profils[profil] !== undefined)
+    .sort((a, b) => a.profils[profil] - b.profils[profil] || a.nom.localeCompare(b.nom))
+    .map((b) => {
+      const copie = JSON.parse(JSON.stringify(b.type));
+      if (p.i18n) copie.fields = copie.fields.map(avecI18n);
+      return copie;
+    });
 }
 
-const RE = /^([ \t]*)# >>> BLOCS:([a-z]+)[^\n]*\n[\s\S]*?^[ \t]*# <<< BLOCS[^\n]*$/gm;
+const RE = /^([ \t]*)# >>> BLOCS:([a-z_]+)[^\n]*\n[\s\S]*?^[ \t]*# <<< BLOCS[^\n]*$/gm;
 let total = 0;
 fs.readdirSync(dossier).filter((f) => f.endsWith(".yml")).sort().forEach((f) => {
   const fichier = path.join(dossier, f);

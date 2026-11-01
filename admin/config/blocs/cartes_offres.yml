@@ -1,0 +1,101 @@
+# Bloc « cartes_offres » : Cartes d'offres (Build, Run, Learning)
+# Composant du site : src/_includes/composants/blocs/cartes_offres.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc »).
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  accueil: 30
+  demo: 30
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
+type:
+  label: Cartes d'offres (Build, Run, Learning)
+  name: cartes_offres
+  widget: object
+  summary: 'Cartes d''offres : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Surtitre
+      name: surtitre
+      widget: string
+      required: false
+    - label: Titre
+      name: titre
+      widget: string
+      required: true
+      hint: Mettez un mot entre *astérisques* pour l'afficher en rouge.
+    - label: Sous-titre
+      name: sous_titre
+      widget: text
+      required: false
+    - label: Cartes
+      name: cartes
+      widget: list
+      required: false
+      label_singular: Carte
+      collapsed: true
+      min: 1
+      max: 3
+      summary: '{{fields.titre}}'
+      hint: De 1 à 3 cartes.
+      fields:
+        - label: Couleur d'offre
+          name: offre
+          widget: select
+          required: true
+          default: build
+          hint: Donne la couleur, le picto et l'étiquette de la carte.
+          options:
+            - label: 4SH Build
+              value: build
+            - label: 4SH Run
+              value: run
+            - label: 4SH Learning
+              value: learning
+            - label: 4SH institutionnel
+              value: institutionnel
+        - label: Titre
+          name: titre
+          widget: string
+          required: true
+        - label: Texte
+          name: texte
+          widget: text
+          required: true
+        - label: Liens
+          name: liens
+          widget: list
+          required: false
+          label_singular: Lien
+          collapsed: true
+          summary: '{{fields.texte}}'
+          fields:
+            - label: Texte du bouton
+              name: texte
+              widget: string
+              required: false
+            - label: 'Destination (adresse ou #ancre)'
+              name: lien
+              widget: string
+              required: false
+        - label: Lien de bas de carte
+          name: lien_bas
+          widget: object
+          required: false
+          collapsed: false
+          summary: '{{fields.texte}} ({{fields.lien}})'
+          fields:
+            - label: Texte du bouton
+              name: texte
+              widget: string
+              required: false
+            - label: 'Destination (adresse ou #ancre)'
+              name: lien
+              widget: string
+              required: false

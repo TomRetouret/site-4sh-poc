@@ -429,9 +429,9 @@
     {
       "type": "derniers_articles",
       "masquer": false,
-      "titre": "Nos derniers *articles*",
+      "titre": "Our latest *articles*",
       "lien_tout": {
-        "texte": "Tout le blog",
+        "texte": "All articles",
         "lien": "https://blog.4sh.fr/"
       }
     },
@@ -449,7 +449,7 @@
         "cadrage": "centre"
       },
       "bouton": {
-        "texte": "Notre entreprise",
+        "texte": "Our company",
         "lien": "/notre-entreprise/"
       }
     }

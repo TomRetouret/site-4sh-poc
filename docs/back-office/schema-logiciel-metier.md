@@ -13,7 +13,7 @@ Ce fichier fait foi pour la page `/prestations/logiciel-metier/` : données, con
 | Titre, description, couleur d'offre | `src/logiciel-metier.11tydata.js` |
 | Styles | `src/assets/logiciel-metier.css` (inchangé, plus quelques règles pour les étapes à 3, 4 ou 6 et le bloc appel_action) |
 | Filtres | `eleventy/logiciel-metier.js` |
-| Configuration Sveltia | `admin/config/collections/115-pages_offre.yml` (page), `105-appels_action.yml` (contenu partagé), `100-temoignages.yml` (auteur facultatif) ; blocs générés depuis `admin/config/blocs.yml` |
+| Configuration Sveltia | `admin/config/collections/115-pages_offre.yml` (page), `105-appels_action.yml` (contenu partagé), `100-temoignages.yml` (auteur facultatif) ; blocs générés depuis `admin/config/blocs/<type>.yml` |
 | Aperçu | `admin-shared/apercus-logiciel-metier.js` (enveloppe de page) et `admin-shared/apercus.js` (blocs) |
 
 ## Forme du fichier de données

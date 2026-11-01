@@ -1,0 +1,25 @@
+{# Bloc « texte_image » : surtitre, titre, texte mis en forme et image à gauche ou à droite.
+   Définition : admin/config/blocs/texte_image.yml. Styles : /assets/blocs.css (chargée par l'aiguilleur).
+   serre : vrai si le bloc suit une section blanche (marge haute retirée). #}
+{% set feuille = "/assets/blocs.css" %}
+{% macro bloc(b, ctx, serre) %}
+{% set image = b.image or {} %}
+{% set bouton = b.bouton or {} %}
+<!-- TEXTE ET IMAGE -->
+<section class="bloc-ti{% if b.position_image == 'droite' %} bloc-ti--droite{% endif %}"{% if serre %} style="padding-top:0"{% endif %}>
+  <div class="container bloc-ti-grille">
+    {% if image.fichier %}<figure class="bloc-ti-image">
+      {% image image.fichier, ('' if image.decorative else image.alt), { cadrage: image.cadrage, sizes: "(max-width: 1023px) 100vw, 50vw" } %}
+      {% if image.credit %}<figcaption class="bloc-credit">{{ image.credit }}</figcaption>{% endif %}
+    </figure>{% endif %}
+    <div class="bloc-ti-texte">
+      {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+      <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+      <div class="prose">
+        {{ b.texte | texteRiche | safe }}
+      </div>
+      {% if bouton.texte %}<p class="bloc-ti-action"><a class="btn btn-ghost" href="{{ bouton.lien or '#contact' }}">{{ bouton.texte }}</a></p>{% endif %}
+    </div>
+  </div>
+</section>
+{% endmacro %}

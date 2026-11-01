@@ -8,11 +8,11 @@ permalink: "/formations/{{ page.fileSlug }}/"
 <!-- HERO DÉTAIL + CARTE INSCRIPTION (colonne latérale sticky sur tout le scroll) -->
 <div class="hero-detail">
   <div class="container">
-    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <a href="/formations/">Formations</a> › <a href="/formations/">{{ categorie }}</a> › Formation {{ titre }}{% if sous_titre %} {{ sous_titre }}{% endif %}</nav>
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">{{ libelles.commun.fil_ariane_accueil or "Accueil" }}</a> › <a href="/formations/">{{ libelles.formation.fil_parent or "Formations" }}</a> › <a href="/formations/">{{ categorie }}</a> › {{ libelles.formation.prefixe_titre or "Formation" }} {{ titre }}{% if sous_titre %} {{ sous_titre }}{% endif %}</nav>
 
     <div class="detail-tete">
       <span class="eyebrow">{{ libelles.formation.eyebrow }}{{ categorie }}</span>
-      <h1>Formation {{ titre }}{% if sous_titre %} <em class="accent">{{ sous_titre }}</em>{% endif %}</h1>
+      <h1>{{ libelles.formation.prefixe_titre or "Formation" }} {{ titre }}{% if sous_titre %} <em class="accent">{{ sous_titre }}</em>{% endif %}</h1>
       <p class="chapo">{{ chapo }}</p>
     </div>
 
@@ -80,7 +80,7 @@ permalink: "/formations/{{ page.fileSlug }}/"
 
         {% if image %}
         <div class="visuel-detail">
-          <img src="{{ image }}" alt="Formation {{ titre }}, 4SH">
+          {% image image, "Formation " ~ titre ~ ", 4SH", { sizes: "300px", style: "width:auto;height:auto" } %}
         </div>
         {% endif %}
 
@@ -147,7 +147,7 @@ permalink: "/formations/{{ page.fileSlug }}/"
             <h2 style="max-width:820px">{{ libelles.formation.formateur_titre | accent | safe }}</h2>
             <div class="formateur">
               <div class="portrait">
-                {% if formateur_vue.photo %}<img src="{{ formateur_vue.photo }}" alt="{{ formateur_vue.nom }}, formateur {{ titre }} chez 4SH">{% endif %}
+                {% if formateur_vue.photo %}{% image formateur_vue.photo, formateur_vue.nom ~ ", formateur " ~ titre ~ " chez 4SH", { sizes: "130px" } %}{% endif %}
                 <b>{{ formateur_vue.nom }}</b>
                 <span>{{ formateur_vue.role }}</span>
               </div>
@@ -221,7 +221,7 @@ permalink: "/formations/{{ page.fileSlug }}/"
   <div class="modale-corps">
     <button class="fermer" onclick="fermerModale()" aria-label="Fermer">×</button>
     <span class="eyebrow">{{ libelles.preinscription.eyebrow }}</span>
-    <h3>Formation {{ titre }}{% if niveau %} - {{ niveau }}{% endif %}</h3>
+    <h3>{{ libelles.formation.prefixe_titre or "Formation" }} {{ titre }}{% if niveau %} - {{ niveau }}{% endif %}</h3>
     {% if duree %}<p style="font-size:14px;color:var(--muted);margin-bottom:8px">{{ duree | accent | safe }}</p>{% endif %}
     <form class="formulaire-modale" name="preinscription-formation" method="POST" action="/merci/" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="preinscription-formation">
@@ -241,7 +241,7 @@ permalink: "/formations/{{ page.fileSlug }}/"
       <label id="m-nb-label" for="m-nb">{{ libelles.preinscription.label_nb }}</label>
       <div class="champ-select" data-dropdown>
         <select id="m-nb" name="participants">
-          <option>1 participant</option><option>2 participants</option><option>3 participants</option><option>4 participants</option><option>5 participants</option><option>6 participants</option><option>7 participants</option><option>8 participants</option>
+          {% for n in range(1, 9) %}<option>{{ n }} {{ (libelles.formation.participant or "participant") if n == 1 else (libelles.formation.participants or "participants") }}</option>{% endfor %}
         </select>
       </div>
 

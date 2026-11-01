@@ -1,0 +1,60 @@
+/* =========================================================================
+   BLOCS DE LA BIBLIOTHÈQUE : styles propres aux blocs ajoutés en novembre 2026
+   (texte_image, image_pleine, telechargement, portraits).
+   Chargée par l'aiguilleur (src/_includes/composants/blocs/aiguilleur.njk)
+   seulement si la page contient un de ces blocs : chaque composant la déclare
+   en tête de fichier ({% set feuille = "/assets/blocs.css" %}).
+   Charte : couleurs et polices de charte.css uniquement, ni ombre ni coin arrondi.
+   ========================================================================= */
+
+/* Crédit et légende d'image */
+.bloc-credit{display:block;font-size:12.5px;line-height:1.5;color:var(--muted);margin-top:8px}
+.bloc-legende{display:block;font-size:14.5px;line-height:1.5;color:var(--texte-2)}
+
+/* Texte et image */
+.bloc-ti-grille{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.bloc-ti-image{margin:0}
+.bloc-ti-image img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--fond-doux)}
+.bloc-ti--droite .bloc-ti-image{order:2}
+.bloc-ti-texte .prose{max-width:none}
+.bloc-ti-texte .prose ul,.bloc-ti-texte .prose ol{margin:0 0 16px 1.2em;color:var(--texte-2);line-height:1.7}
+.bloc-ti-action{margin-top:28px}
+@media (max-width:960px){
+  .bloc-ti-grille{grid-template-columns:1fr;gap:32px}
+  .bloc-ti--droite .bloc-ti-image{order:0}
+}
+
+/* Image pleine largeur */
+.bloc-image-pleine{padding:0}
+.bloc-image-pleine figure{margin:0}
+.bloc-image-pleine img{display:block;width:100%;aspect-ratio:21/9;object-fit:cover;background:var(--fond-doux)}
+.bloc-image-pleine--entiere img{aspect-ratio:auto;height:auto}
+.bloc-image-pleine figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 24px;padding-top:12px}
+.bloc-image-pleine figcaption .bloc-credit{margin-top:0}
+@media (max-width:767px){.bloc-image-pleine img{aspect-ratio:3/2}.bloc-image-pleine--entiere img{aspect-ratio:auto}}
+
+/* Téléchargement d'un document */
+.bloc-tel-carte{display:grid;grid-template-columns:1fr auto;gap:32px 64px;align-items:center;background:var(--fond-doux);border-left:4px solid var(--accent);padding:40px 48px}
+.bloc-tel-titre{font-family:var(--titre);font-size:clamp(24px,2.4vw,32px);font-weight:700;line-height:1.15;color:var(--sombre);letter-spacing:-.5px;margin:0 0 10px}
+.bloc-tel-texte p:not(.eyebrow){font-size:16.5px;line-height:1.6;color:var(--texte-2);max-width:620px;margin:0}
+.bloc-tel-action{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.bloc-tel-meta{font-size:13.5px;color:var(--muted)}
+@media (max-width:767px){.bloc-tel-carte{grid-template-columns:1fr;padding:28px 24px}}
+
+/* Équipe ou portraits */
+.bloc-portraits .sec-titre+.bloc-portraits-grille,.bloc-portraits .sec-titre+.bloc-portrait-unique{margin-top:38px}
+.bloc-portraits-grille{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:40px 24px}
+.bloc-portrait-photo{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;background:var(--fond-doux);margin-bottom:16px}
+.bloc-portrait-nom{font-family:var(--titre);font-size:18px;font-weight:700;line-height:1.25;color:var(--sombre);margin:0 0 4px}
+.bloc-portrait-fonction{font-size:14.5px;line-height:1.45;color:var(--muted);margin:0}
+.bloc-portrait-unique{display:grid;grid-template-columns:minmax(200px,320px) 1fr;gap:48px;align-items:start}
+.bloc-portrait-unique .bloc-portrait-photo{margin-bottom:0}
+.bloc-portrait-unique .bloc-portrait-nom{font-size:24px}
+.bloc-portrait-unique .bloc-portrait-fonction{margin-bottom:20px}
+.bloc-portrait-texte{font-size:16.5px;line-height:1.7;color:var(--texte-2);max-width:680px;margin:0 0 16px}
+@media (max-width:960px){.bloc-portraits-grille{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:767px){
+  .bloc-portraits-grille{grid-template-columns:1fr 1fr;gap:28px 16px}
+  .bloc-portrait-unique{grid-template-columns:1fr;gap:24px}
+  .bloc-portrait-unique .bloc-portrait-photo{max-width:280px}
+}

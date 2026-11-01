@@ -5,12 +5,12 @@
 <!-- L'ÉQUIPE : photo intégrée au contenu, en bas de page -->
 <section class="equipe">
   <div class="container equipe-grille">
-    {% if photo.fichier %}<figure class="equipe-photo"><img src="{{ photo.fichier }}" alt="{{ '' if photo.decorative else photo.alt }}"{{ photo.cadrage | cadrageStyle | safe }} width="1360" height="583" loading="lazy" decoding="async"></figure>{% endif %}
+    {% if photo.fichier %}<figure class="equipe-photo">{% image photo.fichier, ('' if photo.decorative else photo.alt), { cadrage: photo.cadrage, sizes: "(max-width: 1023px) 100vw, 720px", width: 1360, height: 583 } %}</figure>{% endif %}
     <div class="equipe-texte">
       {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
       <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
       {% if b.texte %}<p class="sec-sous">{{ b.texte }}</p>{% endif %}
-      <a class="btn btn-ghost" href="{{ bouton.lien or '/notre-entreprise/' }}">{{ bouton.texte or "Notre entreprise" }}</a>
+      <a class="btn btn-ghost" href="{{ bouton.lien or '/notre-entreprise/' }}">{{ bouton.texte or ("blocs.equipe_bouton" | libelle(ctx.url_page)) or "Notre entreprise" }}</a>
     </div>
   </div>
 </section>

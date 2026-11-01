@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>4SH · Versions publiées</title>
+  <link rel="stylesheet" href="versions.css">
+  <!-- Page complémentaire au back-office Sveltia CMS : revenir à une version publiée antérieure.
+       Mode d'emploi et plan de test : docs/back-office/restauration.md -->
+  <script type="module" src="page.js"></script>
+</head>
+<body>
+  <a class="evitement" href="#principal">Aller au contenu</a>
+  <header class="entete">
+    <div class="entete-interieur">
+      <p class="fil"><a href="../">Administration du contenu</a> › Versions publiées</p>
+      <div id="session" class="session" aria-live="polite">Lecture de la session…</div>
+    </div>
+  </header>
+
+  <main id="principal" class="principal">
+    <h1>Revenir à une version publiée</h1>
+    <p class="intro">Choisissez une page ou une fiche, comparez une ancienne version avec celle en ligne, puis restaurez-la. La version restaurée devient un <strong>brouillon</strong> dans le back-office : elle sera relue puis publiée comme toute autre modification. Le site ne change pas avant la publication.</p>
+
+    <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+
+    <section id="etape-contenu" class="etape" hidden aria-labelledby="titre-contenu">
+      <h2 id="titre-contenu"><span class="numero" aria-hidden="true">1</span> Choisir le contenu</h2>
+      <form id="formulaire-contenu" class="formulaire">
+        <div class="champ">
+          <label for="collection">Type de contenu</label>
+          <select id="collection" name="collection"></select>
+        </div>
+        <div class="champ">
+          <label for="contenu">Page ou fiche</label>
+          <select id="contenu" name="contenu" disabled>
+            <option value="">Choisir d’abord un type de contenu</option>
+          </select>
+        </div>
+        <div class="champ champ-action">
+          <button id="voir-versions" type="submit" class="bouton bouton-principal">Voir les versions</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="etape-versions" class="etape" hidden aria-labelledby="titre-versions">
+      <h2 id="titre-versions" tabindex="-1"><span class="numero" aria-hidden="true">2</span> Versions publiées</h2>
+      <p class="discret">Une ligne par publication, de la plus récente à la plus ancienne. « Modifié par » : la personne qui a fait la dernière modification ; « Publié par » : celle qui l’a mise en ligne.</p>
+      <div class="tableau-defilant">
+        <table id="versions">
+          <caption class="sr-only">Liste des versions publiées</caption>
+          <thead>
+            <tr><th scope="col">Date de publication</th><th scope="col">Modifié par</th><th scope="col">Publié par</th><th scope="col">Description</th><th scope="col"><span class="sr-only">Action</span></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button id="plus-versions" type="button" class="bouton" hidden>Afficher les versions plus anciennes</button>
+    </section>
+
+    <section id="etape-comparaison" class="etape" hidden aria-labelledby="titre-comparaison">
+      <h2 id="titre-comparaison" tabindex="-1"><span class="numero" aria-hidden="true">3</span> Comparaison</h2>
+      <div id="differences"></div>
+      <p class="actions">
+        <button id="restaurer" type="button" class="bouton bouton-principal">Restaurer cette version en brouillon…</button>
+      </p>
+    </section>
+
+    <section id="resultat" class="etape etape-succes" hidden aria-live="polite"></section>
+  </main>
+
+  <dialog id="confirmation" aria-labelledby="confirmation-titre" aria-describedby="confirmation-texte">
+    <form id="confirmation-formulaire" method="dialog">
+      <h2 id="confirmation-titre">Confirmer la restauration</h2>
+      <p id="confirmation-texte"></p>
+      <div id="confirmation-avertissement" class="avertissement" hidden>
+        <p><strong>Attention, un brouillon existe déjà.</strong> <span id="avertissement-texte"></span> <a id="avertissement-lien" href="#" target="_blank" rel="noopener">Voir ce brouillon sur GitHub</a></p>
+        <p class="case">
+          <input type="checkbox" id="confirmation-remplacer">
+          <label for="confirmation-remplacer">J’ai compris : remplacer le brouillon existant</label>
+        </p>
+      </div>
+      <p class="actions">
+        <button id="confirmation-annuler" type="button" class="bouton">Annuler</button>
+        <button id="confirmation-valider" type="submit" class="bouton bouton-principal">Créer le brouillon</button>
+      </p>
+    </form>
+  </dialog>
+
+  <noscript><p class="message message-erreur">Cette page a besoin de JavaScript.</p></noscript>
+</body>
+</html>

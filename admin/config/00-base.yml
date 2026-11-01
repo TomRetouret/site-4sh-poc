@@ -50,3 +50,17 @@ display_url: https://eclectic-conkies-63f114.netlify.app # site Netlify du dép�
 # Dossier des images uploadées par les rédacteurs
 media_folder: "src/uploads"
 public_folder: "/uploads"
+
+# Optimisation des images dès le dépôt (Sveltia CMS, option media_libraries,
+# voir docs/back-office/images.md). Les photos JPEG, PNG et HEIC sont converties
+# en WebP (qualité 85) et réduites à 2400 px de large au plus (jamais agrandies).
+# Les GIF (animés) et les SVG ne sont pas touchés. Fichier refusé au-delà de 10 Mo.
+# Le site génère ensuite lui-même les variantes AVIF, WebP et les largeurs utiles.
+media_libraries:
+  default:
+    config:
+      max_file_size: 10485760
+      transformations:
+        jpeg: { format: webp, quality: 85, width: 2400, height: 2400 }
+        png: { format: webp, quality: 85, width: 2400, height: 2400 }
+        heic: { format: webp, quality: 85, width: 2400, height: 2400 }

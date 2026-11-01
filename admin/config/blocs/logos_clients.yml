@@ -1,0 +1,29 @@
+# Bloc « logos_clients » : Logos clients (Ils nous confient leur métier)
+# Composant du site : src/_includes/composants/blocs/logos_clients.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc »).
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  accueil: 20
+  demo: 20
+  offre: 100
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
+type:
+  label: Logos clients (Ils nous confient leur métier)
+  name: logos_clients
+  widget: object
+  summary: Logos clients{{fields.masquer | ternary(' (masqué)', '')}}
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Titre
+      name: titre
+      widget: string
+      required: false
+      hint: Laisser vide pour reprendre l'intitulé des réglages du site. Les noms des clients se modifient dans les réglages du site.

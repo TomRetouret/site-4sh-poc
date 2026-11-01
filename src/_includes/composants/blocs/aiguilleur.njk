@@ -1,6 +1,6 @@
 {#
   AIGUILLEUR DES BLOCS (accueil, pages d'offre, pages de démonstration)
-  Spécification : docs/back-office/schema-blocs.md
+  Spécification et mode d'emploi « Ajouter un bloc » : docs/back-office/schema-blocs.md
 
   rendre_blocs(blocs, site, blog, temoignages, url_page, options)
     blocs       : la liste "blocs" de la page
@@ -14,28 +14,20 @@
                   references    collections.references (bloc projet_vedette)
                   appels_action appels à l'action partagés (bloc appel_action)
 
-  Parcourt les blocs dans l'ordre, ignore ceux marqués "masquer", appelle le
-  composant du type, puis ajoute le formulaire de contact final (hors blocs).
-  Chaque composant reçoit (b, ctx, serre) : serre est vrai quand le bloc suit
-  une section blanche (sa marge haute est alors retirée, filtre blocsSerres).
+  Parcourt les blocs dans l'ordre, ignore ceux marqués "masquer" et ceux dont le
+  type n'a pas de composant, puis ajoute le formulaire de contact final (hors blocs).
+
+  AUCUNE LISTE DE TYPES ICI : le bloc de type <type> est rendu par la macro
+  bloc(b, ctx, serre) du fichier composants/blocs/<type>.njk, importé par son nom.
+    b     : le bloc (ses champs)
+    ctx   : contexte commun (voir plus bas)
+    serre : vrai quand le bloc suit une section blanche (sa marge haute est alors
+            retirée, filtre blocsSerres) ; un composant peut l'ignorer.
+  Un composant peut déclarer, en tête de fichier, une feuille de styles propre :
+    {% set feuille = "/assets/blocs.css" %}
+  Elle est alors chargée une seule fois, avant les blocs, si la page contient ce bloc.
   Référence et retour arrière : composants/pages/accueil.njk (ancien rendu).
 #}
-{% from "composants/blocs/hero.njk" import bloc as bloc_hero %}
-{% from "composants/blocs/logos_clients.njk" import bloc as bloc_logos_clients %}
-{% from "composants/blocs/cartes_offres.njk" import bloc as bloc_cartes_offres %}
-{% from "composants/blocs/chiffres_cles.njk" import bloc as bloc_chiffres_cles %}
-{% from "composants/blocs/cartes_secteurs.njk" import bloc as bloc_cartes_secteurs %}
-{% from "composants/blocs/methode_4d.njk" import bloc as bloc_methode_4d %}
-{% from "composants/blocs/projets.njk" import bloc as bloc_projets %}
-{% from "composants/blocs/technologies.njk" import bloc as bloc_technologies %}
-{% from "composants/blocs/faq.njk" import bloc as bloc_faq %}
-{% from "composants/blocs/derniers_articles.njk" import bloc as bloc_derniers_articles %}
-{% from "composants/blocs/equipe.njk" import bloc as bloc_equipe %}
-{% from "composants/blocs/texte_simple.njk" import bloc as bloc_texte_simple %}
-{% from "composants/blocs/etapes.njk" import bloc as bloc_etapes %}
-{% from "composants/blocs/benefices.njk" import bloc as bloc_benefices %}
-{% from "composants/blocs/projet_vedette.njk" import bloc as bloc_projet_vedette %}
-{% from "composants/blocs/appel_action.njk" import bloc as bloc_appel_action %}
 {% from "composants/formulaires.njk" import contact_final as bloc_contact %}
 
 {% macro rendre_blocs(blocs, site, blog, temoignages, url_page, options) %}
@@ -54,26 +46,20 @@
   appels_action: opts.appels_action
 } %}
 {% set serres = blocs | blocsSerres %}
+{# feuilles de styles propres aux blocs présents, chacune une seule fois #}
+{% set feuilles = [] %}
 {% for b in blocs %}
-{% if not b.masquer %}
-{% set serre = serres[loop.index0] %}
-{% if b.type == "hero" %}{{ bloc_hero(b, ctx) }}
-{% elif b.type == "logos_clients" %}{{ bloc_logos_clients(b, ctx, serre) }}
-{% elif b.type == "cartes_offres" %}{{ bloc_cartes_offres(b, ctx) }}
-{% elif b.type == "chiffres_cles" %}{{ bloc_chiffres_cles(b, ctx) }}
-{% elif b.type == "cartes_secteurs" %}{{ bloc_cartes_secteurs(b, ctx) }}
-{% elif b.type == "methode_4d" %}{{ bloc_methode_4d(b, ctx) }}
-{% elif b.type == "projets" %}{{ bloc_projets(b, ctx) }}
-{% elif b.type == "technologies" %}{{ bloc_technologies(b, ctx) }}
-{% elif b.type == "faq" %}{{ bloc_faq(b, ctx) }}
-{% elif b.type == "derniers_articles" %}{{ bloc_derniers_articles(b, ctx) }}
-{% elif b.type == "equipe" %}{{ bloc_equipe(b, ctx) }}
-{% elif b.type == "texte_simple" %}{{ bloc_texte_simple(b, ctx, serre) }}
-{% elif b.type == "etapes" %}{{ bloc_etapes(b, ctx, serre) }}
-{% elif b.type == "benefices" %}{{ bloc_benefices(b, ctx, serre) }}
-{% elif b.type == "projet_vedette" %}{{ bloc_projet_vedette(b, ctx, serre) }}
-{% elif b.type == "appel_action" %}{{ bloc_appel_action(b, ctx, serre) }}
+{% if not b.masquer and (b.type | blocExiste) %}
+{% import "composants/blocs/" + b.type + ".njk" as composant %}
+{% if composant.feuille and not (composant.feuille in feuilles) %}{% if feuilles.push(composant.feuille) %}{% endif %}{% endif %}
 {% endif %}
+{% endfor %}
+{% for f in feuilles %}<link rel="stylesheet" href="{{ f }}">
+{% endfor %}
+{% for b in blocs %}
+{% if not b.masquer and (b.type | blocExiste) %}
+{% import "composants/blocs/" + b.type + ".njk" as composant %}
+{{ composant.bloc(b, ctx, serres[loop.index0]) }}
 {% endif %}
 {% endfor %}
 

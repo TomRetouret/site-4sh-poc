@@ -5,22 +5,66 @@ Toute divergence se règle ici d'abord. Style : aucun tiret cadratin ni demi-cad
 
 Pages qui utilisent la bibliothèque : l'accueil (FR et EN), les pages d'offre (voir `schema-logiciel-metier.md`) et les pages de démonstration.
 
+## Ajouter un bloc (mode d'emploi)
+
+Un nouveau type de bloc s'ajoute **en créant des fichiers, sans en modifier aucun** : ni l'aiguilleur, ni `apercus.js`, ni la liste des autres blocs. Plusieurs personnes peuvent donc ajouter des blocs en parallèle sans conflit.
+
+**Nom du type** : minuscules sans accent, chiffres et `_` (par exemple `texte_image`). Le même nom sert partout : fichier de configuration, composant, aperçu, valeur `type` dans les contenus. Il ne change plus une fois des pages enregistrées.
+
+**Étapes**
+
+1. **Configuration** : créer `admin/config/blocs/<type>.yml` (partir d'un bloc proche, par exemple `texte_simple.yml`) :
+   ```yaml
+   profils:          # où le bloc est proposé, et son rang dans le menu « Ajouter un bloc »
+     demo: 210
+     offre: 125
+   type:             # définition Sveltia du type, sans i18n
+     label: Mon bloc
+     name: <type>    # identique au nom du fichier
+     widget: object
+     summary: 'Mon bloc : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+     fields:
+       - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false }
+       # ... chaque champ déclare required: true ou false
+   ```
+   Profils existants : `accueil` (bilingue, `i18n: true` ajouté par le générateur), `demo`, `offre` ; un nouveau profil se déclare dans `admin/config/blocs/_profils.yml` et se repère dans une collection par `# >>> BLOCS:<profil>` ... `# <<< BLOCS`. Rangs : de 10 en 10 ; deux blocs de même rang sont triés par nom.
+2. **Rendu** : créer `src/_includes/composants/blocs/<type>.njk` avec la macro à la signature commune :
+   ```njk
+   {% set feuille = "/assets/blocs.css" %}   {# facultatif : feuille propre, chargée si le bloc est présent #}
+   {% macro bloc(b, ctx, serre) %}
+   <!-- MON BLOC -->
+   <section>...</section>
+   {% endmacro %}
+   ```
+   `b` : les champs du bloc ; `ctx` : `site`, `blog`, `temoignages`, `etapes_4d`, `url_page`, `gabarit` (« offre » ou rien), `fil_ariane`, `references`, `appels_action` ; `serre` : vrai si le bloc suit une section blanche (mettre alors `style="padding-top:0"`, ou ignorer). L'aiguilleur importe ce fichier par le nom du type (`composants/blocs/<type>.njk`) ; un type sans composant est ignoré (filtre `blocExiste`, `eleventy/blocs.js`). Les données globales ne sont pas visibles dans une macro importée : les lire par `ctx` ou par un filtre (exemple : `fichesEquipe`). Styles : classes du site d'abord, sinon `src/assets/blocs.css` (couleurs et polices de `charte.css`, ni ombre ni coin arrondi).
+3. **Aperçu** : créer `admin-shared/apercus-bloc-<type>.js`, chargé automatiquement par `apercus.js` la première fois qu'une page contient ce type :
+   ```js
+   import { enregistrerBloc, outils } from './apercus.js';   // ou window.APERCUS_4SH
+   const { el, cle, entete, texteRiche, imageSite, alerteAlt, propsLien } = outils;
+   function MonBloc({ b, i, ctx, serre }) { const p = 'blocs.' + i; return el('section', null, entete(b, p)); }
+   enregistrerBloc('<type>', MonBloc, { libelle: 'Mon bloc', feuille: '/assets/blocs.css' });
+   ```
+   Reproduire le balisage du composant classe par classe ; `cle(p + '.champ')` sur chaque élément éditable. Outils disponibles : `el`, `cle`, `accent`, `texteRiche`, `entete`, `propsSection`, `propsLien`, `adresseImage`, `imageSite`, `alerteAlt`, `chargeur` (données liées), `premiereEntree`, `groupe`, `tableau`, `texte`, `CADRAGES`.
+4. **Générer** : `node scripts/generer-blocs.js` puis `node scripts/assembler-config.js` (jamais `admin/config.yml` à la main). Le générateur refuse un nom de fichier différent de `type.name`, un composant absent, un profil inconnu ou un champ sans `required` booléen.
+5. **Vérifier et documenter** : ajouter un exemple dans `src/demo/essai-blocs.md` (page [DÉMO] des contributeurs), lancer `npx eleventy`, regarder `/demo/essai-blocs/` à 1440 et 390 px, puis décrire le bloc dans la section « Les types de blocs » ci-dessous.
+
 ## Où vivent les blocs
 
 | Quoi | Où |
 |---|---|
-| Définition des champs (source unique) | `admin/config/blocs.yml` |
+| Définition des champs (source unique) | `admin/config/blocs/<type>.yml`, un fichier par type (profils et définition) ; profils dans `admin/config/blocs/_profils.yml`. L'ancien `admin/config/blocs.yml` n'est plus lu. |
 | Recopie dans les collections | `node scripts/generer-blocs.js` (entre les repères `# >>> BLOCS:<profil>` et `# <<< BLOCS`), puis `node scripts/assembler-config.js` |
-| Rendu | `src/_includes/composants/blocs/<type>.njk`, appelé par `aiguilleur.njk` |
-| Filtres propres aux blocs | `eleventy.config.js` (accueil) et `eleventy/logiciel-metier.js` (texteRiche, surtitreOffre, fichesReferences, blocsSerres, deuxChiffres, classeEtapes) |
-| Aperçus | `admin-shared/apercus.js` (un composant par type) ; enveloppe des pages d'offre dans `admin-shared/apercus-logiciel-metier.js` |
+| Rendu | `src/_includes/composants/blocs/<type>.njk` (macro `bloc(b, ctx, serre)`), importé par son nom par `aiguilleur.njk` |
+| Filtres propres aux blocs | `eleventy.config.js` (accueil), `eleventy/logiciel-metier.js` (texteRiche, surtitreOffre, fichesReferences, blocsSerres, deuxChiffres, classeEtapes) et `eleventy/blocs.js` (blocExiste, fichesEquipe, formatFichier) |
+| Styles propres aux blocs ajoutés | `src/assets/blocs.css`, chargée par l'aiguilleur si un bloc la déclare (`{% set feuille = ... %}`) |
+| Aperçus | `admin-shared/apercus.js` (16 blocs d'origine, registre `enregistrerBloc` et outils) ; `admin-shared/apercus-bloc-<type>.js` pour les blocs ajoutés (chargés à la demande) ; enveloppe des pages d'offre dans `admin-shared/apercus-logiciel-metier.js` |
 
-Profils du générateur (blocs autorisés par collection) :
+Profils du générateur (blocs autorisés par collection), déclarés bloc par bloc (clé `profils`) :
 - `accueil` : les 11 blocs d'origine, avec `i18n: true` ajouté à chaque champ (`090-accueil.yml`) ;
 - `demo` : toute la bibliothèque (`110-demo.yml`) ;
-- `offre` : hero, chiffres_cles, texte_simple, etapes, benefices, technologies, projet_vedette, projets, cartes_secteurs, logos_clients, equipe, derniers_articles, faq, appel_action (`115-pages_offre.yml`). Cartes d'offres et Méthode 4D restent propres à l'accueil.
+- `offre` : hero, chiffres_cles, texte_simple, texte_image, image_pleine, etapes, benefices, technologies, projet_vedette, projets, cartes_secteurs, logos_clients, equipe, portraits, derniers_articles, faq, telechargement, appel_action (`115-pages_offre.yml`). Cartes d'offres et Méthode 4D restent propres à l'accueil.
 
-Le générateur refuse un champ sans `required` booléen.
+Le générateur refuse un champ sans `required` booléen, un fichier dont le nom diffère de `type.name`, un composant absent et un profil inconnu.
 
 ## Gabarit « offre » et marges
 
@@ -61,9 +105,9 @@ Chaque composant reçoit `(b, ctx, serre)`. `serre` est vrai quand le bloc suit 
 - `type` (caché, fixé par le type)
 - `masquer` booléen, « Masquer ce bloc (il reste enregistré) », défaut false
 
-## Les 16 types de blocs
+## Les 20 types de blocs
 
-Les 11 premiers viennent de l'accueil ; texte_simple, etapes, benefices, projet_vedette et appel_action ont été ajoutés pour les pages d'offre. Cartes secteurs et Derniers articles font partie de la bibliothèque (décision du 1er novembre 2026). Les autres blocs prévus pour atteindre 20 types arriveront avec les fiches Formation et Référence.
+Les 11 premiers viennent de l'accueil ; texte_simple, etapes, benefices, projet_vedette et appel_action ont été ajoutés pour les pages d'offre. Cartes secteurs et Derniers articles font partie de la bibliothèque (décision du 1er novembre 2026). texte_image, image_pleine, telechargement et portraits complètent la bibliothèque cible (profils demo et offre ; exemples sur `/demo/essai-blocs/`).
 
 Libellé du type entre guillemets ; puis champs `nom` : « Libellé » (widget) [obligatoire ?] , aide.
 La convention *mot* (astérisques) met un mot en rouge dans tous les titres marqués (accent) : rendu par le filtre `accent`.
@@ -177,6 +221,32 @@ La convention *mot* (astérisques) met un mot en rouge dans tous les titres marq
 - `appel` « Bouton » (relation vers `appels_action`, valeur = slug) [oui]
 - `fond` « Fond » (select fermé) [oui, défaut `doux`] : `blanc` = Blanc, `doux` = Gris clair (`.fond-doux`), `sombre` = Sombre (`.section-sombre`)
 - Rendu : `section.cta-final` centrée : `h2.sec-titre`, `p.sec-sous`, bouton `.btn.btn-primary` (texte et destination de l'appel relié).
+
+### texte_image : « Texte et image »
+- `surtitre` [non], `titre` (accent) [oui], `texte` (markdown restreint, comme texte_simple) [oui]
+- `image` Image « Image » [oui, `fichier` obligatoire], format objet (fichier, alt, decorative, credit, cadrage)
+- `position_image` « Position de l'image » (select fermé) [oui, défaut `gauche`] : `gauche` = À gauche du texte, `droite` = À droite du texte (sur téléphone, l'image passe toujours au-dessus)
+- `bouton` Lien « Bouton » [non] ; sans texte, pas de bouton (destination par défaut `#contact`)
+- Rendu : `section.bloc-ti` (+ `.bloc-ti--droite`) ; `.container.bloc-ti-grille` : `figure.bloc-ti-image` (img recadrée en 4:3, `figcaption.bloc-credit` si crédit), puis `.bloc-ti-texte` : `p.eyebrow`, `h2.sec-titre`, `div.prose` (filtre `texteRiche`), `p.bloc-ti-action` avec `a.btn.btn-ghost`. Styles : `blocs.css`.
+
+### image_pleine : « Image pleine largeur »
+- `image` Image « Image » [oui, `fichier` obligatoire], format objet
+- `format` « Format d'affichage » (select fermé) [oui, défaut `bandeau`] : `bandeau` = Bandeau panoramique (21:9, 3:2 sur téléphone, suit le cadrage), `entiere` = Image entière (aucune partie coupée)
+- `legende` « Légende » (string) [non]
+- Rendu : sans image, rien. `section.bloc-image-pleine` (+ `--entiere`) sans marge ; `figure` : img sur toute la largeur de l'écran, `figcaption.container` avec `span.bloc-legende` et `span.bloc-credit` si renseignés. Styles : `blocs.css`.
+
+### telechargement : « Téléchargement d'un document »
+- `surtitre` [non], `titre` (accent) [oui], `texte` (text) [non]
+- `document` « Document » (widget file, `choose_url: true`) [oui] : fichier déposé dans `src/uploads` ou adresse en ligne
+- `bouton_texte` « Texte du bouton » [oui, défaut « Télécharger le document »], `poids` « Poids du fichier » (string, par exemple « 2,4 Mo ») [non]
+- Rendu : sans document, rien. `section.bloc-telechargement` ; `.container` puis `.bloc-tel-carte` (fond gris clair, filet d'accent à gauche) : `.bloc-tel-texte` (`p.eyebrow`, `h2.bloc-tel-titre`, `p`) et `.bloc-tel-action` : `a.btn.btn-primary` (`download` pour un fichier du site commençant par `/`, sinon nouvel onglet `rel="noopener"`), `span.bloc-tel-meta` = format et poids séparés par « · », relié au bouton par `aria-describedby`. Format : extension du document (filtre `formatFichier` : PDF, DOCX, XLSX, PPTX, ODT, ZIP...), vide si inconnue. Styles : `blocs.css`.
+
+### portraits : « Équipe ou portraits (fiches Équipe) »
+- `surtitre` [non], `titre` (accent) [oui], `sous_titre` (text) [non]
+- `affichage` « Affichage » (select fermé) [oui, défaut `grille`] : `grille` = Grille de portraits, `unique` = Portrait unique (première personne choisie, avec sa présentation)
+- `membres` « Personnes » (relation multiple vers la collection `equipe`, valeur = slug, 1 à 12) [oui]
+- Données lues dans `src/_data/equipe/<slug>.json` (`nom`, `fonction`, `photo`, `photo_alt`, `presentation`) par le filtre `fichesEquipe` ; une fiche introuvable est ignorée, et sans fiche le bloc n'affiche rien.
+- Rendu : `section.bloc-portraits` ; `.container` : `p.eyebrow`, `h2.sec-titre`, `p.sec-sous`, puis en grille `ul.bloc-portraits-grille` (4 colonnes, 3 sous 960 px, 2 sous 767 px) de `li` : `img.bloc-portrait-photo` (4:5), `h3.bloc-portrait-nom`, `p.bloc-portrait-fonction` ; en portrait unique `.bloc-portrait-unique` : photo, puis nom, fonction et un `p.bloc-portrait-texte` par paragraphe de la présentation. Texte alternatif : `photo_alt`, sinon vide (le nom suit la photo). Styles : `blocs.css`.
 
 ## Collection témoignages (contenu partagé)
 

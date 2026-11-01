@@ -1,0 +1,47 @@
+# Bloc « chiffres_cles » : Chiffres clés
+# Composant du site : src/_includes/composants/blocs/chiffres_cles.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc »).
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  accueil: 40
+  demo: 40
+  offre: 20
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
+type:
+  label: Chiffres clés
+  name: chiffres_cles
+  widget: object
+  summary: Chiffres clés{{fields.masquer | ternary(' (masqué)', '')}}
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Chiffres
+      name: chiffres
+      widget: list
+      required: false
+      label_singular: Chiffre
+      collapsed: true
+      min: 2
+      max: 4
+      summary: '{{fields.valeur}} {{fields.texte}}'
+      hint: De 2 à 4 chiffres.
+      fields:
+        - label: Chiffre
+          name: valeur
+          widget: string
+          required: true
+        - label: Libellé
+          name: texte
+          widget: string
+          required: true
+        - label: Note (petit texte)
+          name: note
+          widget: string
+          required: false

@@ -7,6 +7,8 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  # Cache des images optimisées dans node_modules, que Netlify conserve entre deux builds.
+  IMAGES_CACHE_DIR = "node_modules/.cache/eleventy-img"
 
 # Empêche l'indexation par les moteurs pendant la préprod (double sécurité avec la balise meta noindex).
 # À RETIRER lors de la mise en production réelle (et passer "indexation" à true dans src/_data/seo.json).

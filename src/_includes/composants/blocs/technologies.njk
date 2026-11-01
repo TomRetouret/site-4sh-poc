@@ -11,7 +11,7 @@
     {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
     <div class="socle">
       {% for s in b.technos %}
-      <div class="socle-carte">{% if s.logo %}<img src="{{ s.logo }}" alt="{{ s.nom }}">{% endif %}<h3>{{ s.nom }}</h3>{% if s.lien %}<a href="{{ s.lien }}">En savoir plus →</a>{% endif %}</div>
+      <div class="socle-carte">{% if s.logo %}<img src="{{ s.logo }}" alt="{{ s.nom }}">{% endif %}<h3>{{ s.nom }}</h3>{% if s.lien %}<a href="{{ s.lien }}">{{ ("blocs.technologies_lien" | libelle(ctx.url_page)) or "En savoir plus →" }}</a>{% endif %}</div>
       {% endfor %}
     </div>
   </div>

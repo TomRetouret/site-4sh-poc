@@ -14,7 +14,7 @@
         {% set t = ctx.temoignages[r.temoignage] if (r.temoignage and ctx.temoignages) %}
         <div class="cas{% if img.fichier %} cas--image{% endif %}">
           <figure class="cas-visuel">
-            {% if img.fichier %}<img src="{{ img.fichier }}" alt="{{ '' if img.decorative else img.alt }}"{{ img.cadrage | cadrageStyle | safe }} loading="lazy" decoding="async">{% endif %}
+            {% if img.fichier %}{% image img.fichier, ('' if img.decorative else img.alt), { cadrage: img.cadrage, sizes: "(max-width: 767px) 100vw, 600px" } %}{% endif %}
             <figcaption>
               <span class="secteur">{{ r.secteur }}</span>
               <span class="logo-client">{{ r.client }}</span>

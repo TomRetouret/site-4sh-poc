@@ -1,0 +1,18 @@
+{# Bloc « image_pleine » : image sur toute la largeur de l'écran, légende et crédit facultatifs.
+   Définition : admin/config/blocs/image_pleine.yml. Styles : /assets/blocs.css (chargée par l'aiguilleur). #}
+{% set feuille = "/assets/blocs.css" %}
+{% macro bloc(b, ctx, serre) %}
+{% set image = b.image or {} %}
+{% if image.fichier %}
+<!-- IMAGE PLEINE LARGEUR -->
+<section class="bloc-image-pleine{% if b.format == 'entiere' %} bloc-image-pleine--entiere{% endif %}">
+  <figure>
+    {% image image.fichier, ('' if image.decorative else image.alt), { cadrage: image.cadrage, sizes: "100vw" } %}
+    {% if b.legende or image.credit %}<figcaption class="container">
+      {% if b.legende %}<span class="bloc-legende">{{ b.legende }}</span>{% endif %}
+      {% if image.credit %}<span class="bloc-credit">{{ image.credit }}</span>{% endif %}
+    </figcaption>{% endif %}
+  </figure>
+</section>
+{% endif %}
+{% endmacro %}

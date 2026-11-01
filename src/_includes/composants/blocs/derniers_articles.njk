@@ -7,8 +7,8 @@
 <section class="blog-accueil">
   <div class="container">
     <div class="blog-tete">
-      <h2 class="sec-titre">{{ (b.titre or "Nos derniers *articles*") | accent | safe }}</h2>
-      <a class="blog-tout" href="{{ tout.lien or 'https://blog.4sh.fr/' }}">{{ tout.texte or "Tout le blog" }}</a>
+      <h2 class="sec-titre">{{ (b.titre or ("blocs.blog_titre" | libelle(ctx.url_page)) or "Nos derniers *articles*") | accent | safe }}</h2>
+      <a class="blog-tout" href="{{ tout.lien or 'https://blog.4sh.fr/' }}">{{ tout.texte or ("blocs.blog_tout" | libelle(ctx.url_page)) or "Tout le blog" }}</a>
     </div>
     <div class="blog-grille">
       {% for a in blog %}

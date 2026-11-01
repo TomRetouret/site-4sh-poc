@@ -1,0 +1,72 @@
+# Bloc « technologies » : Technologies
+# Composant du site : src/_includes/composants/blocs/technologies.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc »).
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  accueil: 80
+  demo: 80
+  offre: 60
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
+type:
+  label: Technologies
+  name: technologies
+  widget: object
+  summary: 'Technologies : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Surtitre
+      name: surtitre
+      widget: string
+      required: false
+    - label: Titre
+      name: titre
+      widget: string
+      required: true
+      hint: Mettez un mot entre *astérisques* pour l'afficher en rouge.
+    - label: Sous-titre
+      name: sous_titre
+      widget: text
+      required: false
+    - label: Affichage
+      name: affichage
+      widget: select
+      required: false
+      default: nuage
+      hint: 'Nuage de mots : noms seuls (accueil). Cartes : logo, nom et lien « En savoir plus » sur fond sombre (4 à 8 technologies). Vide : nuage de mots.'
+      options:
+        - label: Nuage de mots
+          value: nuage
+        - label: Cartes avec logo
+          value: cartes
+    - label: Technologies
+      name: technos
+      widget: list
+      required: false
+      label_singular: Technologie
+      collapsed: true
+      summary: '{{fields.nom}}'
+      fields:
+        - label: Nom
+          name: nom
+          widget: string
+          required: true
+        - label: Destination
+          name: lien
+          widget: string
+          required: false
+          hint: 'Adresse de la page de la technologie, commençant par /. Vide : pas de lien en affichage cartes.'
+        - label: Logo
+          name: logo
+          widget: image
+          required: false
+          choose_url: true
+          hint: Affichage cartes uniquement. SVG carré sur fond transparent. Le nom sert de texte alternatif.
+      hint: 'Affichage cartes : 4 à 8 technologies.'

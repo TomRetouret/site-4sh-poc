@@ -1,4 +1,14 @@
 {
+  "commun": {
+    "fil_ariane_accueil": "Accueil"
+  },
+  "blocs": {
+    "blog_titre": "Nos derniers *articles*",
+    "blog_tout": "Tout le blog",
+    "equipe_bouton": "Notre entreprise",
+    "technologies_lien": "En savoir plus →",
+    "projet_vedette_lien": "Voir la référence →"
+  },
   "formation": {
     "eyebrow": "Formations · ",
     "prix_titre": "Prix de la formation",
@@ -31,7 +41,11 @@
     "voir_toutes": "Voir toutes les formations",
     "a_partir_de": "à partir de",
     "documents_titre": "Documents",
-    "programme_pdf_label": "Programme de la formation"
+    "programme_pdf_label": "Programme de la formation",
+    "fil_parent": "Formations",
+    "prefixe_titre": "Formation",
+    "participant": "participant",
+    "participants": "participants"
   },
   "modalites": [
     {

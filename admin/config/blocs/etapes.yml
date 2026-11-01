@@ -1,0 +1,64 @@
+# Bloc « etapes » : Étapes ou processus
+# Composant du site : src/_includes/composants/blocs/etapes.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc »).
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  demo: 130
+  offre: 40
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
+type:
+  label: Étapes ou processus
+  name: etapes
+  widget: object
+  summary: 'Étapes : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Surtitre
+      name: surtitre
+      widget: string
+      required: false
+      hint: Petit texte au-dessus du titre. 30 caractères maximum.
+    - label: Titre
+      name: titre
+      widget: string
+      required: true
+      hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+    - label: Sous-titre
+      name: sous_titre
+      widget: text
+      required: false
+      hint: 40 mots maximum.
+    - label: Étapes
+      name: etapes
+      widget: list
+      required: true
+      label_singular: Étape
+      collapsed: true
+      min: 3
+      max: 6
+      summary: '{{fields.phase}} : {{fields.titre}}'
+      hint: 'De 3 à 6 étapes. Le numéro (01, 02...) suit l''ordre de la liste : faites glisser une étape pour la renuméroter.'
+      fields:
+        - label: Phase
+          name: phase
+          widget: string
+          required: false
+          hint: 'Un mot. Par exemple : Cadrage.'
+        - label: Titre
+          name: titre
+          widget: string
+          required: true
+          hint: 40 caractères maximum.
+        - label: Texte
+          name: texte
+          widget: text
+          required: true
+          hint: 30 mots maximum.

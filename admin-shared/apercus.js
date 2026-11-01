@@ -34,6 +34,17 @@
  * NOMS_TEMOIGNAGES plus bas). Enregistrer un nom absent de la configuration est
  * sans effet. Si Decap retient un autre nom, il suffit de l'ajouter à la liste.
  *
+ * AJOUTER UN BLOC (mode d'emploi complet : docs/back-office/schema-blocs.md)
+ * Ce fichier n'a pas à être modifié. L'aperçu du bloc <type> vit dans son
+ * propre fichier admin-shared/apercus-bloc-<type>.js, chargé à la demande la
+ * première fois qu'une page contient ce type (import dynamique), qui appelle :
+ *   window.APERCUS_4SH.enregistrerBloc('<type>', Composant, { libelle, feuille })
+ * (ou import { enregistrerBloc, outils } from './apercus.js').
+ * Composant({ b, i, ctx, serre }) rend le bloc avec les outils exposés :
+ * window.APERCUS_4SH.outils (el, cle, accent, texteRiche, imageSite, alerteAlt,
+ * propsLien, chargeur, premiereEntree...). « feuille » : feuille du site propre
+ * au bloc (par exemple /assets/blocs.css), ajoutée à l'aperçu si le bloc est présent.
+ *
  * CHOIX TECHNIQUES
  * - On écrit avec h() (alias de React.createElement) exposé globalement par
  *   les deux CMS (window.h). Pas de HTM : aucune dépendance réseau, rien à lier,
@@ -829,6 +840,37 @@ const COMPOSANTS = {
   appel_action: BlocAppelAction,
 };
 
+// Feuille du site propre à un type de bloc (option « feuille » de enregistrerBloc).
+const FEUILLES_BLOCS = {};
+
+// Registre : ajoute (ou remplace) l'aperçu d'un type de bloc.
+//   type      : nom du type, identique à admin/config/blocs/<type>.yml
+//   composant : fonction ({ b, i, ctx, serre }) => élément
+//   options   : { libelle: 'Texte et image', feuille: '/assets/blocs.css' } (facultatif)
+export function enregistrerBloc(type, composant, options) {
+  if (!/^[a-z][a-z0-9_]*$/.test(String(type)) || typeof composant !== 'function') {
+    console.warn('apercus.js : enregistrerBloc ignoré pour « ' + type + ' » (nom ou composant invalide).');
+    return;
+  }
+  const o = options || {};
+  COMPOSANTS[type] = composant;
+  if (o.libelle) LIBELLES[type] = o.libelle;
+  if (o.feuille) FEUILLES_BLOCS[type] = o.feuille;
+}
+
+// Chargement à la demande de admin-shared/apercus-bloc-<type>.js pour un type
+// sans aperçu enregistré. Rend vrai si le fichier a enregistré le type.
+const chargementsBlocs = new Map();
+const blocsTentes = new Set(); // types dont le chargement est terminé (réussi ou non)
+function chargerBloc(type) {
+  if (!chargementsBlocs.has(type)) {
+    chargementsBlocs.set(type, import(new URL('./apercus-bloc-' + type + '.js', import.meta.url).href)
+      .catch(() => null)
+      .then(() => { blocsTentes.add(type); return !!COMPOSANTS[type]; }));
+  }
+  return chargementsBlocs.get(type);
+}
+
 // Marge haute retirée quand un bloc suit une section blanche (filtre blocsSerres du site).
 const blocBlanc = (b) => ['texte_simple', 'etapes', 'benefices', 'projet_vedette', 'logos_clients', 'faq'].includes(b.type) ||
   (b.type === 'technologies' && b.affichage !== 'cartes');
@@ -856,20 +898,49 @@ export function rendreBlocs(blocs, ctxBase) {
     etapes4d: { rang: rang4d, etapes: rang4d >= 0 ? tableau(liste[rang4d].etapes) : [] },
   });
   const serre = serres(liste);
-  return liste.map((b, i) => {
-    if (!b) return null;
-    const libelle = LIBELLES[b.type] || b.type || 'type inconnu';
-    if (b.masquer) {
-      return el('p', Object.assign({ className: 'apercu-masque' }, cle('blocs.' + i + '.masquer')), 'Bloc masqué : ' + libelle);
-    }
-    const Composant = COMPOSANTS[b.type];
-    if (!Composant) return el('p', { className: 'apercu-alerte' }, 'Bloc inconnu : ' + libelle);
+  const feuillesVues = new Set();
+  // Feuille propre au bloc (une seule fois par feuille), puis le bloc.
+  const avecFeuille = (type, rendu) => {
+    const f = FEUILLES_BLOCS[type];
+    if (!f || feuillesVues.has(f)) return rendu;
+    feuillesVues.add(f);
+    return [el('link', { rel: 'stylesheet', href: f }), rendu];
+  };
+  const rendreUn = (Composant, b, i, libelle) => {
     try {
       return Composant({ b, i, ctx, serre: serre[i] });
     } catch (err) {
       // Un bloc en cours de saisie ne doit jamais casser tout l'aperçu.
       return el('p', { className: 'apercu-alerte' }, 'Aperçu indisponible pour le bloc « ' + libelle + ' » : ' + err.message);
     }
+  };
+  return liste.map((b, i) => {
+    if (!b) return null;
+    const libelle = LIBELLES[b.type] || b.type || 'type inconnu';
+    if (b.masquer) {
+      return el('p', Object.assign({ className: 'apercu-masque' }, cle('blocs.' + i + '.masquer')), 'Bloc masqué : ' + libelle);
+    }
+    if (COMPOSANTS[b.type]) return avecFeuille(b.type, rendreUn(COMPOSANTS[b.type], b, i, libelle));
+    if (!/^[a-z][a-z0-9_]*$/.test(String(b.type))) return el('p', { className: 'apercu-alerte' }, 'Bloc inconnu : ' + libelle);
+    // Type sans aperçu enregistré : on charge admin-shared/apercus-bloc-<type>.js
+    // (lancé ici aussi, au cas où le CMS n'exposerait pas createClass).
+    chargerBloc(b.type);
+    return chargeur({
+      cleCache: 'apercu-bloc:' + b.type,
+      charger: () => chargerBloc(b.type),
+      rendu: (pret) => {
+        const Composant = COMPOSANTS[b.type];
+        if (!Composant) {
+          return pret === undefined && !blocsTentes.has(b.type)
+            ? el('p', { className: 'apercu-info' }, 'Chargement de l’aperçu du bloc « ' + libelle + ' »…')
+            : el('p', { className: 'apercu-alerte' }, 'Bloc inconnu : ' + libelle);
+        }
+        const f = FEUILLES_BLOCS[b.type];
+        const lib = LIBELLES[b.type] || libelle;
+        // Feuille répétée sans inconvénient : le navigateur ne la télécharge qu'une fois.
+        return [f && el('link', { rel: 'stylesheet', href: f }), rendreUn(Composant, b, i, lib)];
+      },
+    });
   });
 }
 
@@ -914,6 +985,31 @@ export function ApercuTemoignage(props) {
 
 // Outils partagés avec apercus-logiciel-metier.js (gabarit des pages d'offre).
 export { el, cle, propsLien, lireDonnees, chargeur, premiereEntree, FEUILLE_OFFRE };
+
+// Outils exposés aux aperçus de blocs (admin-shared/apercus-bloc-<type>.js).
+// Voir chaque fonction plus haut pour sa signature.
+export const outils = {
+  el,              // el(type, props, ...enfants) : élément React, enfants vides retirés
+  cle,             // cle('blocs.2.titre') : clic ou Entrée amène au champ dans Sveltia
+  accent,          // accent('Un *mot*') : convention *mot* en rouge
+  texteRiche,      // texteRiche(markdown) : Markdown limité du filtre texteRiche
+  entete,          // entete(b, 'blocs.2') : surtitre, titre, sous-titre
+  propsSection,    // propsSection(serre) : marge haute retirée si serre
+  propsLien,       // propsLien(destination, defaut) : lien inerte, destination en infobulle
+  adresseImage,    // adresseImage(getAsset, fichier) : adresse d'une image téléversée ou publiée
+  imageSite,       // imageSite(image, chemin, getAsset, extra) : <img> au format objet de la spec
+  alerteAlt,       // alerteAlt(image, chemin) : avertissement si le texte alternatif manque
+  chargeur,        // chargeur({ cleCache, charger, rendu }) : données liées chargées puis rendues
+  premiereEntree,  // premiereEntree(getCollection, [[collection, slug], ...]) : données d'une entrée
+  groupe,          // groupe([éléments]) : plusieurs éléments sans balise ajoutée
+  tableau,         // tableau(v) : v si c'est un tableau, sinon []
+  texte,           // texte(v) : chaîne, '' pour null ou undefined
+  CADRAGES,        // correspondance cadrage vers object-position
+};
+
+// Registre global, pour les fichiers d'aperçu chargés hors module.
+export const APERCUS_4SH = { enregistrerBloc, outils, composants: COMPOSANTS, libelles: LIBELLES };
+if (typeof window !== 'undefined') window.APERCUS_4SH = APERCUS_4SH;
 
 /* ------------------------------------------------------------------------- */
 /* Enregistrement auprès du CMS                                              */

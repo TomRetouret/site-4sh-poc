@@ -128,7 +128,7 @@
         {% for r in accueil.realisations %}
         <div class="cas{% if r.image %} cas--image{% endif %}">
           <figure class="cas-visuel">
-            {% if r.image %}<img src="{{ r.image }}" alt="{{ r.client }}, {{ r.secteur }}" loading="lazy" decoding="async">{% endif %}
+            {% if r.image %}{% image r.image, r.client ~ ", " ~ r.secteur, { sizes: "(max-width: 767px) 100vw, 600px" } %}{% endif %}
             <figcaption>
               <span class="secteur">{{ r.secteur }}</span>
               <span class="logo-client">{{ r.client }}</span>
@@ -216,7 +216,7 @@
 {% if accueil.equipe_photo %}
 <section class="equipe">
   <div class="container equipe-grille">
-    <figure class="equipe-photo"><img src="{{ accueil.equipe_photo }}" alt="{{ accueil.equipe_titre | accent | striptags }}" width="1360" height="583" loading="lazy" decoding="async"></figure>
+    <figure class="equipe-photo">{% image accueil.equipe_photo, (accueil.equipe_titre | accent | striptags), { sizes: "(max-width: 1023px) 100vw, 720px", width: 1360, height: 583 } %}</figure>
     <div class="equipe-texte">
       <p class="eyebrow">{{ accueil.equipe_eyebrow }}</p>
       <h2 class="sec-titre">{{ accueil.equipe_titre | accent | safe }}</h2>

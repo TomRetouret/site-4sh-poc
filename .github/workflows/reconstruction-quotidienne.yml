@@ -1,0 +1,45 @@
+# Reconstruction quotidienne du site (docs/back-office/exploitation.md)
+#
+# Les sessions de formation passées sont masquées au moment du build : sans
+# nouveau build, une session d'hier resterait affichée. Ce workflow appelle
+# chaque nuit le crochet de build Netlify (build hook), qui reconstruit et
+# republie le site à partir de la branche main.
+#
+# Prérequis : le secret de dépôt NETLIFY_BUILD_HOOK contient l'URL du crochet
+# (Netlify, Build hooks). Lancement manuel : onglet Actions, « Reconstruction
+# quotidienne », Run workflow.
+name: Reconstruction quotidienne
+
+on:
+  schedule:
+    # 4 h 07, heure de Paris (heure d'été comme d'hiver grâce à timezone).
+    # Sans la clé timezone, GitHub lit le cron en UTC.
+    # Minute 7 plutôt que 0 : les débuts d'heure sont les plus chargés chez GitHub.
+    - cron: "7 4 * * *"
+      timezone: "Europe/Paris"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: reconstruction-quotidienne
+  cancel-in-progress: false
+
+jobs:
+  reconstruire:
+    name: Déclencher le build Netlify
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Appeler le crochet de build Netlify
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
+            echo "::error::Le secret NETLIFY_BUILD_HOOK est absent (Settings, Secrets and variables, Actions)."
+            exit 1
+          fi
+          curl --fail --silent --show-error --retry 3 --retry-delay 10 \
+            -X POST -d '{}' \
+            "${NETLIFY_BUILD_HOOK}?trigger_title=Reconstruction+quotidienne+(GitHub+Actions)"
+          echo "Build Netlify demandé. Suivi : Netlify, onglet Deploys."

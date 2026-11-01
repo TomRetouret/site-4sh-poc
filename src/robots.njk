@@ -2,6 +2,9 @@
 permalink: /robots.txt
 eleventyExcludeFromCollections: true
 ---
+{#- Storybook du design system (publié sous /storybook/) : jamais exploré. La ligne Disallow doit suivre
+    le groupe User-agent de seo.robots_txt sans ligne vide, sinon elle ne s'applique plus. -#}
 {{ seo.robots_txt }}
+Disallow: /storybook/
 
 Sitemap: {{ seo.url }}/sitemap.xml

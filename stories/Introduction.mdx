@@ -1,0 +1,51 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Design system 4SH/Introduction" />
+
+# Design system 4SH
+
+Ce Storybook montre les composants du site 4SH **tels que le site les rend** : les stories utilisent
+les vrais gabarits Nunjucks (`src/_includes/composants/**`), les vrais filtres du site
+(`eleventy.config.js`, `eleventy/*.js`) et les vraies feuilles de styles (`src/assets/*.css`).
+Rien n'est redessiné ici : quand un composant change sur le site, il change aussi dans ce Storybook.
+
+## À quoi il sert
+
+- **Voir** chaque bloc et ses variantes sans monter une page de démonstration.
+- **Essayer** des contenus : les contrôles de chaque story correspondent aux champs du back-office
+  (textes trop longs, liste vide, variante, offre...).
+- **Partager** une référence commune entre conception, contenu et développement, alignée sur la
+  charte graphique v1.1.
+
+## Organisation
+
+| Rubrique | Contenu |
+| --- | --- |
+| **Fondations** | Couleurs, typographie, espacements, mouvement : les jetons de `charte.css` (à venir). |
+| **Composants** | Morceaux réutilisables hors blocs : cartes, formulaires, icônes, sections (`src/_includes/composants/*.njk`, à venir). |
+| **Blocs** | Les types de blocs que le contributeur assemble dans le back-office (`src/_includes/composants/blocs/<type>.njk`). Premiers exemples : Hero et Chiffres clés. |
+
+Chaque story porte une page **Docs** générée automatiquement : description, tableau des champs et
+exemples.
+
+## Lien avec le back-office
+
+Les champs de chaque bloc, leurs libellés et leurs règles sont décrits dans
+`docs/back-office/schema-blocs.md`
+([voir sur GitHub](https://github.com/TomRetouret/site-4sh/blob/main/docs/back-office/schema-blocs.md)).
+Les noms des contrôles reprennent les libellés du back-office, et les données d'exemple sont lues dans
+les fichiers de contenu réels (`src/_data/contenus/fr/*.json`).
+
+## Ajouter une story de bloc
+
+1. Créer `stories/blocs/<NomDuBloc>.stories.js` (copier `ChiffresCles.stories.js`).
+2. Titre `Blocs/<Nom affiché>`, et `tags: ["autodocs"]` pour la page de documentation.
+3. Rendu en une ligne : `render: (args) => rendreBloc("<type>", args)`.
+4. Données d'exemple tirées du contenu réel : `args: blocExemple("<page>", "<type>")`.
+5. Un `argTypes` par champ du schéma : libellé du back-office en `name`, `select` ou `inline-radio`
+   pour les listes fermées, `if` pour les champs propres à une variante.
+
+Mode d'emploi complet et limites connues : `docs/storybook.md`.
+
+> Ce Storybook est publié avec le site sous `/storybook/`. Il n'est jamais indexé par les moteurs de
+> recherche (en-tête `X-Robots-Tag: noindex` et exclusion dans `robots.txt`).

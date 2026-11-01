@@ -5,12 +5,19 @@
   "scripts": {
     "start": "eleventy --serve",
     "dev": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy && npm run build-storybook",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build --output-dir dist/storybook --quiet"
   },
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-img": "^6.0.4"
+    "@11ty/eleventy-img": "^6.0.4",
+    "@storybook/addon-docs": "10.6.2",
+    "@storybook/html-vite": "10.6.2",
+    "nunjucks": "3.2.4",
+    "storybook": "10.6.2",
+    "vite": "8.3.4"
   }
 }

@@ -16,3 +16,10 @@
   for = "/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# Storybook du design system (publié avec le site sous /storybook/) : jamais indexé.
+# À CONSERVER après la mise en production, contrairement à l'en-tête global ci-dessus.
+[[headers]]
+  for = "/storybook/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

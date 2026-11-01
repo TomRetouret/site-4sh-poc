@@ -209,7 +209,7 @@ html.mv .mv-plan.mv-voyage > path:last-child{transition:none;opacity:1}
 .learning-scene svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .ls-noms{list-style:none;margin:0;padding:0;position:absolute;inset:0;pointer-events:none}
 .ls-noms li{position:absolute;white-space:nowrap;font-family:var(--titre);font-weight:700;font-size:13px;line-height:1;letter-spacing:.08em;text-transform:uppercase;
-  color:#6A717B;opacity:0;transition:opacity 250ms var(--mv-courbe),color 200ms var(--mv-courbe)}
+  color:var(--muted);opacity:0;transition:opacity 250ms var(--mv-courbe),color 200ms var(--mv-courbe)}
 .ls-noms li.ls-vu{opacity:1}
 .ls-noms li.ls-fait{color:var(--learning-texte)}
 /* en attendant le script : la scène est vide (le texte, lui, est déjà là) */
@@ -221,7 +221,7 @@ html.ls-attente .learning-scene svg > *,html.ls-attente .ls-noms li{opacity:0!im
 .ls-bureau[data-vise="2"] g[data-p]:not([data-p="2"]){opacity:.25}
 .ls-bureau[data-vise="0"] .ls-noms li:not(:nth-child(1)),
 .ls-bureau[data-vise="1"] .ls-noms li:not(:nth-child(2)),
-.ls-bureau[data-vise="2"] .ls-noms li:not(:nth-child(3)){color:#6A717B}
+.ls-bureau[data-vise="2"] .ls-noms li:not(:nth-child(3)){color:var(--muted)}
 @media (max-width:960px){.hero-form .hero-grille{grid-template-columns:1fr!important;gap:32px}.learning-scene{max-width:620px}}
 @media (max-width:767px){
   .learning-scene .ls-bureau{display:none}

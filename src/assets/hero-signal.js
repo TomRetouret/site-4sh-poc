@@ -64,7 +64,7 @@
     epure = document.createElementNS(NS, 'g');
     epure.setAttribute('class', 'hs-epure');
     epure.setAttribute('fill', 'none');
-    epure.setAttribute('stroke', '#5A616B');
+    epure.setAttribute('stroke', '#5E656E');
     epure.setAttribute('stroke-width', '1');
     niveaux = document.createElementNS(NS, 'g'); niveaux.setAttribute('class', 'hs-niveaux'); epure.appendChild(niveaux);
     paliers.forEach(function (pl) { ligne(-6000, pl[2], vb.width, pl[2], niveaux); });

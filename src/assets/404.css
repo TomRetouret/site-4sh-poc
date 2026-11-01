@@ -12,7 +12,7 @@
   text-align:center;
   padding:80px 0;
   background:var(--sombre);
-  color:#b9c3c8;
+  color:#B8C0C8;
   position:relative;overflow:hidden;
 }
 /* trame de points + halo, comme les sections sombres du site */
@@ -31,9 +31,9 @@
 /* --- texte --- */
 .p404-titre{font-size:clamp(26px,3.4vw,40px);color:#fff;letter-spacing:-.6px;margin-bottom:12px}
 .p404-titre em.accent{color:var(--accent-clair)}
-.p404-chapo{font-size:17px;color:#b9c3c8;max-width:520px;margin:0 auto 30px}
+.p404-chapo{font-size:17px;color:#B8C0C8;max-width:520px;margin:0 auto 30px}
 .p404-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
-.p404-secours{margin-top:22px;font-size:14px;color:#8b979c}
+.p404-secours{margin-top:22px;font-size:14px;color:#B8C0C8}
 .p404-secours a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 .p404-secours a:hover{color:var(--accent-clair)}
 .p404 .btn:focus-visible,.p404-secours a:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:8px}

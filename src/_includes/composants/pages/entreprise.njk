@@ -40,9 +40,9 @@
           <text x="396" y="61" text-anchor="middle" fill="#1f292e" font-size="13" font-weight="600">Capbreton</text>
           <rect x="180" y="200" width="120" height="52" rx="12" stroke="#494849" stroke-width="1.6"/>
           <text x="240" y="231" text-anchor="middle" fill="#1f292e" font-size="13" font-weight="600">Paris</text>
-          <path d="M144 60c10 14 22 30 34 46" stroke="#494849" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M336 60c-10 14-22 30-34 46" stroke="#494849" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M240 165v33" stroke="#494849" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M144 60c10 14 22 30 34 46" stroke="#494849" stroke-width="1.6" stroke-linecap="square"/>
+          <path d="M336 60c-10 14-22 30-34 46" stroke="#494849" stroke-width="1.6" stroke-linecap="square"/>
+          <path d="M240 165v33" stroke="#494849" stroke-width="1.6" stroke-linecap="square"/>
           <text x="240" y="20" text-anchor="middle" fill="#ea2631" font-size="15" font-family="Fraunces,Georgia,serif" font-style="italic">une communauté qui grandit</text>
         </svg>
       </div>
@@ -93,7 +93,7 @@
     <h2 class="sec-titre">{{ e.valeurs_titre | accent | safe }}</h2>
     <div class="socle">
       {% for v in e.valeurs %}
-      <div class="socle-carte"><h3>{{ v.titre }}</h3><p style="font-size:14.5px;color:#b9c3c8">{{ v.texte }}</p></div>
+      <div class="socle-carte"><h3>{{ v.titre }}</h3><p style="font-size:14.5px;color:var(--sur-nuit)">{{ v.texte }}</p></div>
       {% endfor %}
     </div>
   </div>

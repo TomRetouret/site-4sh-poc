@@ -101,7 +101,7 @@
           {% for a in site.contact.arguments %}<li>{{ a }}</li>{% endfor %}
         </ul>
         <div class="equipe-visages">{% for v in site.contact.visages %}<span>{{ v }}</span>{% endfor %}</div>
-        <p style="font-size:13.5px;color:#8b979c">{{ site.contact.note }}</p>
+        <p style="font-size:13.5px;color:var(--sur-nuit)">{{ site.contact.note }}</p>
         <div class="contact-coord">
           <p><b>{{ site.contact.coord_tel_titre }}</b><br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
           <p><b>{{ site.contact.coord_agences_titre }}</b><br>{{ site.villes }}</p>

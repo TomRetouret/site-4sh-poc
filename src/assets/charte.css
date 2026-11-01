@@ -257,7 +257,7 @@ section{padding:144px 0}
 .car-ctrl{gap:8px}
 .car-nav{width:44px;height:44px;border-radius:0!important;border:2px solid var(--encre)!important;background:#fff!important;color:var(--encre)!important;box-shadow:none!important}
 .car-dots{gap:4px;align-items:center}
-.car-dots button{width:10px!important;height:3px!important;border-radius:0!important;background:#9AA1AA!important;padding:0}
+.car-dots button{width:10px!important;height:3px!important;border-radius:0!important;background:#B8C0C8!important;padding:0}
 .car-dots button[aria-current="true"]{width:24px!important;background:var(--encre)!important}
 @media (max-width:1199px){
   .carrousel .car-piste>*{flex:0 0 100%!important;max-width:100%}
@@ -290,7 +290,7 @@ footer .footer-accroche{font-family:var(--titre);font-weight:700;font-size:20px;
 footer h5,footer .footer-titre{font-family:var(--titre);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#fff}
 footer a{color:var(--sur-nuit);display:inline-flex;align-items:center;min-height:32px}
 footer a:hover{color:#fff;text-decoration:underline}
-.footer-bas{border-top:1px solid #252A31;color:var(--sur-nuit)}
+.footer-bas{border-top:1px solid #3A4048;color:var(--sur-nuit)}
 @media (max-width:767px){footer a{min-height:44px}}
 
 /* ---------- héros des pages internes (sobre) ---------- */
@@ -524,3 +524,13 @@ html{overflow-x:clip}
   .hero{height:auto}
   .hero-plan-zone{flex:0 0 auto;height:calc(100vw * 280 / 1440 + 32px);max-height:none}
 }
+
+/* ---------- Recette du 1er novembre : conformité à la charte ---------- */
+/* Aucune ombre portée : la charte est à plat (les anneaux de focus restent en outline) */
+body *:not(:focus):not(:focus-visible){box-shadow:none!important}
+/* Pictos et schémas : extrémités carrées, angles vifs */
+svg *{stroke-linecap:square;stroke-linejoin:miter}
+.hs-epure *,.learning-scene svg *{stroke-linecap:butt}
+/* Références : trois chiffres sur une ligne (évite un chiffre orphelin) */
+.chiffres .container.ref-chiffres{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+@media (max-width:767px){.chiffres .container.ref-chiffres{grid-template-columns:1fr!important}}

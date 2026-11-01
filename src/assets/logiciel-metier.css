@@ -58,11 +58,11 @@
 @media (min-width:961px) and (max-width:1024px){.socle,.atouts,.etapes.cinq{grid-template-columns:repeat(3,1fr)}}
 
 /* --- v5 : relief & preuve (comité boosté) --- */
-.section-sombre{background:var(--sombre);color:#b9c3c8;position:relative;overflow:hidden;padding:96px 0}
+.section-sombre{background:var(--sombre);color:#B8C0C8;position:relative;overflow:hidden;padding:96px 0}
 .section-sombre::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(180deg,transparent,#000);-webkit-mask-image:linear-gradient(180deg,transparent,#000)}
 .section-sombre .container{position:relative}
 .section-sombre .sec-titre{color:#fff}
-.section-sombre .sec-sous{color:#b9c3c8}
+.section-sombre .sec-sous{color:#B8C0C8}
 .section-sombre .socle-carte{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
 .section-sombre .socle-carte h3{color:#fff}
 .section-sombre .socle-carte a{color:#ff7b82}
@@ -126,7 +126,7 @@
 /* carte formation cliquable (fiche techno) */
 .socle-carte .socle-lien{display:inline-block;margin-top:10px;font-size:14px;font-weight:600;color:var(--accent)}
 /* prose sur fond sombre (communauté & écosystème) */
-.prose--sombre{max-width:760px;font-size:16.5px;color:#b9c3c8}
+.prose--sombre{max-width:760px;font-size:16.5px;color:#B8C0C8}
 .prose--sombre p{margin-bottom:14px}
 .prose--sombre a{color:var(--accent-clair)}
 .prose--sombre ul{list-style:none;margin:6px 0}

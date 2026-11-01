@@ -113,7 +113,7 @@ famille_label: "Concevoir & développer"
       <div class="cas-visuel">
         <div class="secteur">{{ v.secteur }}</div>
         <div class="logo-client">{{ v.logo_texte }}</div>
-        <p style="color:#b9c3c8;font-size:15px">{{ v.description }}</p>
+        <p style="color:var(--sur-nuit);font-size:15px">{{ v.description }}</p>
       </div>
       <div class="cas-corps">
         {% if v.citation %}<blockquote>{{ v.citation }}</blockquote>{% if v.auteur %}<p class="auteur">{{ v.auteur }}</p>{% endif %}{% endif %}

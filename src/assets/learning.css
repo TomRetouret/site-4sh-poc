@@ -33,11 +33,11 @@
 .repartition .barre{height:9px;border-radius:6px;background:var(--bordure);overflow:hidden;display:flex;margin:8px 0 6px;max-width:420px}
 .repartition .barre i{display:block;height:100%}
 .repartition .theorie{background:var(--violet)}
-.repartition .pratique{background:#c3b6de}
+.repartition .pratique{background:#9A75EC}
 .repartition .legende{display:flex;gap:20px;font-size:13px;color:var(--texte-2)}
 .repartition .legende span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:middle}
 .repartition .legende .t::before{background:var(--violet)}
-.repartition .legende .p::before{background:#c3b6de}
+.repartition .legende .p::before{background:#9A75EC}
 
 .visuel-detail{background:#fff;border:1px solid var(--bordure);border-radius:var(--radius);padding:26px;display:flex;align-items:center;justify-content:center;margin-top:22px}
 .visuel-detail img{max-height:160px}
@@ -101,7 +101,7 @@
 .modalites{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .modalite{background:#fff;border:1px solid var(--bordure);border-radius:var(--radius);padding:24px;text-align:center}
 .modalite .rond{width:52px;height:52px;border-radius:14px;background:var(--rouge-pale);color:var(--violet);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
-.modalite .rond{background:#efe9f7}
+.modalite .rond{background:#F4F5F7}
 .modalite b{color:var(--sombre);font-size:16px}
 .modalite p{font-size:14px;color:var(--texte-2);margin-top:4px}
 
@@ -121,8 +121,8 @@
 .modale-corps h3{font-size:22px;color:var(--sombre);margin-bottom:6px}
 .modale-corps .fermer{position:absolute;top:18px;right:18px;background:var(--fond);border:none;width:38px;height:38px;border-radius:50%;font-size:20px;cursor:pointer;color:var(--texte)}
 .modale-corps label{display:block;font-size:14px;font-weight:600;color:var(--sombre);margin:16px 0 6px}
-.modale-corps input,.modale-corps select{width:100%;border:1.5px solid #d5d5d5;border-radius:12px;padding:12px 14px;font-family:inherit;font-size:15px;color:var(--texte)}
-.modale-corps input:focus,.modale-corps select:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 3px #efe9f7}
+.modale-corps input,.modale-corps select{width:100%;border:1.5px solid #5E656E;border-radius:12px;padding:12px 14px;font-family:inherit;font-size:15px;color:var(--texte)}
+.modale-corps input:focus,.modale-corps select:focus{outline:none;border-color:var(--violet);box-shadow:none;outline:2px solid var(--violet);outline-offset:2px}
 
 @media (max-width:1024px){
   .detail-grille{grid-template-columns:1fr}

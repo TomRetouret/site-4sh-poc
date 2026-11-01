@@ -18,7 +18,7 @@
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var V = '#7C4DDB', ENCRE = '#14171C', GRIS = '#9AA0A8', FILET = '#E3E5E8', DOUX = '#F4F5F7';
+  var V = '#7C4DDB', ENCRE = '#14171C', GRIS = '#B8C0C8', FILET = '#E3E5E8', DOUX = '#F4F5F7';
   var ease = function (t) { t = t < 0 ? 0 : t > 1 ? 1 : t; return 1 - Math.pow(1 - t, 3); };
   var lerp = function (a, b, k) { return a + (b - a) * k; };
   var hex = function (s) { return [1, 3, 5].map(function (i) { return parseInt(s.slice(i, i + 2), 16); }); };
@@ -79,6 +79,7 @@
 
   function fragment(f, t) {
     var range = ease((t - arriveeTrace(f.p)) / 300), fini = ease((t - passage(f.p)) / 220);
+    if (t >= T.fin) { range = 1; fini = 1; } // état final : tout est achevé
     var op = r1((0.45 + 0.55 * range) * ease(t / 300) * 100) / 100;
     var col = mixC(GRIS, ENCRE, fini);
     var x = r1(f.x + f.d[0] * (1 - range)), y = r1(Math.max(8, f.y + f.d[1] * (1 - range)));

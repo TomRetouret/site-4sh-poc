@@ -22,12 +22,12 @@
 
 /* pourquoi choisir : 3 portes violettes */
 .learning .porte::before{background:var(--violet)}
-.learning .porte .pictos{background:#efe9f7;color:var(--violet)}
+.learning .porte .pictos{background:#F4F5F7;color:var(--violet)}
 
 /* barre recherche + filtres */
 .recherche{position:relative;max-width:420px;flex:1;min-width:240px}
 .recherche input{width:100%;border:1.5px solid var(--bordure);border-radius:140px;padding:13px 18px 13px 46px;font-family:inherit;font-size:15px;color:var(--texte);background:#fff;transition:border-color .2s,box-shadow .2s}
-.recherche input:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 3px #efe9f7}
+.recherche input:focus{outline:none;border-color:var(--violet);box-shadow:none;outline:2px solid var(--violet);outline-offset:2px}
 .recherche svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted)}
 .barre-filtres{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:16px}
 .onglets{display:flex;gap:8px;flex-wrap:wrap}
@@ -82,7 +82,7 @@
 .session-info .details{font-size:13.5px;color:var(--texte-2);display:flex;gap:14px;flex-wrap:wrap;margin-top:3px}
 .session-info .details span{display:inline-flex;align-items:center;gap:5px}
 .session-info .details svg{color:var(--violet)}
-.pastille-cat{font-size:11px;text-transform:uppercase;letter-spacing:.8px;font-weight:600;color:var(--violet);background:#efe9f7;border-radius:140px;padding:3px 10px}
+.pastille-cat{font-size:11px;text-transform:uppercase;letter-spacing:.8px;font-weight:600;color:var(--violet);background:#F4F5F7;border-radius:140px;padding:3px 10px}
 .session-ligne .cta-session{white-space:nowrap}
 
 /* Qualiopi */

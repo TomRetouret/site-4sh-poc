@@ -15,7 +15,10 @@
 // Dossier modifiable par la variable d'environnement IMAGES_CACHE_DIR.
 const path = require("path");
 const fs = require("fs");
-const Image = require("@11ty/eleventy-img");
+// eleventy-img 6 exporte une fonction (CommonJS), les versions suivantes un module ESM
+// dont la fonction est sous "default" : on accepte les deux.
+const moduleImage = require("@11ty/eleventy-img");
+const Image = moduleImage.default || moduleImage;
 
 const RACINE = path.join(__dirname, "..");
 const SOURCE = path.join(RACINE, "src");

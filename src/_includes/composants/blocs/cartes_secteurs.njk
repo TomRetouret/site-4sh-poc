@@ -1,0 +1,17 @@
+{# Bloc « cartes_secteurs » : carrousel de secteurs. #}
+{% from "composants/sections.njk" import carrousel %}
+{% macro bloc(b, ctx) %}
+<!-- SECTEURS (carrousel) -->
+<section>
+  <div class="container">
+    {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
+    {% call carrousel("Secteurs", "car--secteurs", false) %}
+        {% for s in b.cartes %}
+        <div class="secteur-carte"><h3>{{ s.titre }}</h3>{% if s.texte %}<p>{{ s.texte }}</p>{% endif %}{% if s.lien and s.lien.texte %}<a href="{{ s.lien.lien or '#' }}">{{ s.lien.texte }}</a>{% endif %}</div>
+        {% endfor %}
+    {% endcall %}
+  </div>
+</section>
+{% endmacro %}

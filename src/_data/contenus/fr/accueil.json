@@ -1,0 +1,457 @@
+{
+  "seo": {
+    "meta_title": "Agence de développement logiciel sur mesure - 4SH",
+    "meta_description": "4SH, agence de développement de logiciels sur mesure depuis 2007 : logiciels métiers, applications web et mobiles, maintenance. Bordeaux et Capbreton."
+  },
+  "blocs": [
+    {
+      "type": "hero",
+      "masquer": false,
+      "titre_page": "Agence de développement logiciel sur mesure",
+      "accroche": "Un logiciel qui *épouse* vos processus",
+      "chapo": "Depuis 2007, 4SH est l'agence de développement de logiciels sur mesure des entreprises qui ne rentrent dans aucune case : on conçoit, on développe et on fait vivre votre logiciel métier, et on reste après la mise en production.",
+      "bouton_principal": {
+        "texte": "Parlons de votre projet",
+        "lien": "#contact"
+      },
+      "bouton_secondaire": {
+        "texte": "Voir nos réalisations",
+        "lien": "/references/"
+      },
+      "note": "30 minutes avec un expert · Bordeaux, Capbreton ou à distance",
+      "encart": {
+        "afficher": false,
+        "titre": "// votre logiciel métier",
+        "lignes": [
+          {
+            "cle": "livraison",
+            "valeur": "jalons tenus, démos toutes les 2 semaines"
+          },
+          {
+            "cle": "équipe",
+            "valeur": "UX, dev, devops, produit, dédiée"
+          },
+          {
+            "cle": "après",
+            "valeur": "hébergé, maintenu, évolutif"
+          }
+        ],
+        "badge": "Méthode 4D · Découvrir → Déployer",
+        "badge_note": "Depuis 2007"
+      }
+    },
+    {
+      "type": "logos_clients",
+      "masquer": false,
+      "titre": ""
+    },
+    {
+      "type": "cartes_offres",
+      "masquer": false,
+      "surtitre": "Par où commencer",
+      "titre": "Quelle prestation est faite pour *vous* ?",
+      "sous_titre": "Trois façons de travailler ensemble, selon l'endroit où vous en êtes.",
+      "cartes": [
+        {
+          "offre": "build",
+          "titre": "Créer un logiciel sur mesure",
+          "texte": "Un Excel qui craque, un outil du marché qui ne colle pas ? On développe le logiciel métier sur mesure qui suit vos gestes réels.",
+          "liens": [
+            {
+              "texte": "Logiciel métier",
+              "lien": "/prestations/logiciel-metier/"
+            },
+            {
+              "texte": "Application SaaS",
+              "lien": "#"
+            },
+            {
+              "texte": "Application mobile",
+              "lien": "#"
+            }
+          ],
+          "lien_bas": {
+            "texte": "Découvrir nos offres de développement sur mesure",
+            "lien": "/prestations/logiciel-metier/"
+          }
+        },
+        {
+          "offre": "run",
+          "titre": "Faire vivre votre solution",
+          "texte": "Votre logiciel existe déjà : nous l'hébergeons, le sécurisons, le maintenons et le faisons évoluer avec votre activité.",
+          "liens": [
+            {
+              "texte": "Hébergement & maintenance",
+              "lien": "#"
+            },
+            {
+              "texte": "Évolutions & refonte",
+              "lien": "#"
+            },
+            {
+              "texte": "Audits UX, sécurité, cloud",
+              "lien": "#"
+            }
+          ],
+          "lien_bas": {
+            "texte": "Découvrir nos offres de MCO",
+            "lien": "#"
+          }
+        },
+        {
+          "offre": "learning",
+          "titre": "Former vos équipes",
+          "texte": "Montez vos équipes en compétences sur les technologies et méthodes que nous pratiquons tous les jours en projet.",
+          "liens": [
+            {
+              "texte": "Développement (Angular, Kotlin...)",
+              "lien": "/formations/"
+            },
+            {
+              "texte": "DevOps (Kubernetes...)",
+              "lien": "/formations/"
+            },
+            {
+              "texte": "Design (Figma...)",
+              "lien": "/formations/"
+            }
+          ],
+          "lien_bas": {
+            "texte": "Découvrir nos formations",
+            "lien": "/formations/"
+          }
+        }
+      ]
+    },
+    {
+      "type": "chiffres_cles",
+      "masquer": false,
+      "chiffres": [
+        {
+          "valeur": "2007",
+          "texte": "Année de création, du sur-mesure depuis le début",
+          "note": ""
+        },
+        {
+          "valeur": "3",
+          "texte": "Agences en France",
+          "note": "Bordeaux (Le Haillan) · Bordeaux centre · Capbreton"
+        },
+        {
+          "valeur": "48h",
+          "texte": "Pour un premier retour",
+          "note": "par un expert, pas un commercial"
+        },
+        {
+          "valeur": "100%",
+          "texte": "Conçu et maintenu en interne",
+          "note": "une seule équipe, de A à Z"
+        }
+      ]
+    },
+    {
+      "type": "cartes_secteurs",
+      "masquer": false,
+      "surtitre": "Vos métiers",
+      "titre": "On connaît déjà *votre métier*",
+      "sous_titre": "On a déjà développé des logiciels sur mesure dans votre secteur : on gagne du temps ensemble dès la première réunion.",
+      "cartes": [
+        {
+          "titre": "Logistique",
+          "texte": "Vos flux ne s'arrêtent jamais, votre logiciel non plus. On sait ce que temps réel veut dire dans un entrepôt.",
+          "lien": {
+            "texte": "Nos projets logistique →",
+            "lien": "/secteurs/logistique/"
+          }
+        },
+        {
+          "titre": "Assurance",
+          "texte": "Entre réglementation, contrats et parcours client, il vous faut un outil rigoureux qui reste simple à utiliser.",
+          "lien": {
+            "texte": "Nos projets assurance →",
+            "lien": "/secteurs/assurance/"
+          }
+        },
+        {
+          "titre": "Électromobilité",
+          "texte": "Superviser des bornes, remonter des données, piloter à distance : on connaît les enjeux d'un parc connecté.",
+          "lien": {
+            "texte": "Nos projets mobilité →",
+            "lien": "/secteurs/electromobilite/"
+          }
+        },
+        {
+          "titre": "Industrie",
+          "texte": "Vos process sont spécifiques et vos outils souvent trop rigides. On construit le logiciel qui colle à votre atelier.",
+          "lien": {
+            "texte": "Parlons de votre projet →",
+            "lien": "/contact/"
+          }
+        },
+        {
+          "titre": "Santé",
+          "texte": "Données sensibles, hébergement certifié, traçabilité : on travaille avec vos exigences, pas contre elles.",
+          "lien": {
+            "texte": "Parlons de votre projet →",
+            "lien": "/contact/"
+          }
+        },
+        {
+          "titre": "Finance",
+          "texte": "Sécurité, conformité et fiabilité ne se négocient pas. On développe des outils solides, pensés pour durer.",
+          "lien": {
+            "texte": "Parlons de votre projet →",
+            "lien": "/contact/"
+          }
+        }
+      ]
+    },
+    {
+      "type": "methode_4d",
+      "masquer": false,
+      "surtitre": "Notre méthode 4D",
+      "titre": "Comment se passe un projet *avec nous*",
+      "sous_titre": "De la première idée à la mise en production, voici comment se déroule un projet de développement sur mesure avec 4SH : des jalons clairs, des démos régulières, zéro flou.",
+      "etapes": [
+        {
+          "numero": "01",
+          "phase": "Découvrir",
+          "titre": "Comprendre votre métier",
+          "texte": "Ateliers avec vos équipes terrain. On repart avec vos processus réels, pas une liste de fonctionnalités."
+        },
+        {
+          "numero": "02",
+          "phase": "Dessiner",
+          "titre": "Dessiner l'outil",
+          "texte": "Maquettes testées avec vos utilisateurs avant d'écrire une ligne de code. Vous validez sur du concret."
+        },
+        {
+          "numero": "03",
+          "phase": "Développer",
+          "titre": "Développer par jalons",
+          "texte": "Démos toutes les deux semaines, code testé et maintenable. Vous savez toujours où en est votre projet."
+        },
+        {
+          "numero": "04",
+          "phase": "Déployer",
+          "titre": "Livrer, puis rester",
+          "texte": "Mise en production, hébergement, maintenance, évolutions. Le logiciel grandit avec votre activité."
+        }
+      ]
+    },
+    {
+      "type": "projets",
+      "masquer": false,
+      "surtitre": "Nos réalisations",
+      "titre": "La preuve par les *projets*",
+      "sous_titre": "Nos projets de développement sur mesure, racontés avec des résultats, pas des adjectifs.",
+      "projets": [
+        {
+          "secteur": "Mobilité",
+          "client": "EDF business service · filiale du groupe EDF",
+          "image": {
+            "fichier": "https://www.4sh.fr/assets/img/png/references/izivia/ref-izivia-portail.png",
+            "alt": "EDF business service · filiale du groupe EDF, Mobilité",
+            "decorative": false,
+            "credit": "",
+            "cadrage": "centre"
+          },
+          "description": "Portail professionnel de gestion de parc de véhicules électriques : supervision en temps réel des bornes, abonnements, suivi des consommations et facturation.",
+          "temoignage": "",
+          "chiffres": [
+            {
+              "valeur": "200 000",
+              "libelle": "bornes de recharge"
+            },
+            {
+              "valeur": "766 000",
+              "libelle": "charges par an"
+            }
+          ],
+          "bouton": {
+            "texte": "Lire le cas client",
+            "lien": "/references/izivia-portail/"
+          }
+        },
+        {
+          "secteur": "Assurance",
+          "client": "Filhet-Allard",
+          "image": {
+            "fichier": "https://www.4sh.fr/assets/img/png/references/fa/ref-fa-1.png",
+            "alt": "Filhet-Allard, Assurance",
+            "decorative": false,
+            "credit": "",
+            "cadrage": "centre"
+          },
+          "description": "Refonte graphique et technique de l'extranet Santé et Prévoyance : espaces Assuré, Entreprise et Gestionnaire pour un courtier en assurance.",
+          "temoignage": "",
+          "chiffres": [
+            {
+              "valeur": "600 000",
+              "libelle": "assurés sur l'extranet"
+            },
+            {
+              "valeur": "Depuis 2017",
+              "libelle": "de collaboration"
+            }
+          ],
+          "bouton": {
+            "texte": "Lire le cas client",
+            "lien": "/references/filhet-allard/"
+          }
+        },
+        {
+          "secteur": "Presse",
+          "client": "Groupe Sud Ouest",
+          "image": {
+            "fichier": "https://www.4sh.fr/assets/img/png/references/sudouest/ref-sudouest-socoa.png",
+            "alt": "Groupe Sud Ouest, Presse",
+            "decorative": false,
+            "credit": "",
+            "cadrage": "centre"
+          },
+          "description": "Outil sur mesure de calcul automatique de la rémunération des pigistes et correspondants, avec moteur d'analyse des articles publiés.",
+          "temoignage": "",
+          "chiffres": [
+            {
+              "valeur": "300 000",
+              "libelle": "exemplaires par jour"
+            },
+            {
+              "valeur": "2,2 millions",
+              "libelle": "de lecteurs quotidiens"
+            }
+          ],
+          "bouton": {
+            "texte": "Lire le cas client",
+            "lien": "/references/sud-ouest-socoa/"
+          }
+        }
+      ],
+      "bouton_bas": {
+        "texte": "Voir toutes nos références",
+        "lien": "/references/"
+      }
+    },
+    {
+      "type": "technologies",
+      "masquer": false,
+      "surtitre": "Les technos",
+      "titre": "Les bonnes technos, pour les *bonnes raisons*",
+      "sous_titre": "On choisit chaque technologie selon votre projet de développement sur mesure, jamais par habitude.",
+      "technos": [
+        {
+          "nom": "Java",
+          "lien": "/expertises-techniques/java/"
+        },
+        {
+          "nom": "Kotlin",
+          "lien": "/expertises-techniques/kotlin/"
+        },
+        {
+          "nom": "Spring",
+          "lien": "/formations/spring-rest-jpa/"
+        },
+        {
+          "nom": "Angular",
+          "lien": "/expertises-techniques/angular/"
+        },
+        {
+          "nom": "TypeScript",
+          "lien": "/formations/ts-fondamental/"
+        },
+        {
+          "nom": "JavaScript",
+          "lien": "/formations/javascript/"
+        },
+        {
+          "nom": "Docker",
+          "lien": "/formations/docker-fondamental/"
+        },
+        {
+          "nom": "Kubernetes",
+          "lien": "/expertises-techniques/kubernetes/"
+        },
+        {
+          "nom": "Terraform",
+          "lien": "/formations/terraform/"
+        },
+        {
+          "nom": "Kafka",
+          "lien": "/formations/kafka/"
+        },
+        {
+          "nom": "MongoDB",
+          "lien": "/formations/mongodb-fondamental/"
+        },
+        {
+          "nom": "SQL",
+          "lien": "/formations/sql/"
+        },
+        {
+          "nom": "Git",
+          "lien": "/formations/git-fondamental/"
+        },
+        {
+          "nom": "Figma",
+          "lien": "/formations/figma-fondamental/"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "masquer": false,
+      "titre": "Les questions qu'on nous pose souvent",
+      "sous_titre": "Le développement d'un logiciel sur mesure soulève des questions. Voici nos réponses avant de nous appeler.",
+      "questions": [
+        {
+          "question": "Combien coûte un logiciel sur mesure ?",
+          "reponse": "Ça dépend du périmètre, et c'est justement pour ça qu'on commence par en parler. Après un premier échange, on vous donne une estimation claire, sans engagement. Vous savez où vous mettez les pieds avant de décider."
+        },
+        {
+          "question": "En combien de temps voit-on quelque chose de concret ?",
+          "reponse": "On vous répond sous 48h après votre premier contact. Côté projet, vous voyez les premières maquettes en quelques semaines et une version testable rapidement, grâce à nos itérations courtes."
+        },
+        {
+          "question": "Que se passe-t-il après la livraison ?",
+          "reponse": "On ne disparaît pas. On assure la maintenance, les évolutions et la sécurité dans la durée. Nos clients restent avec nous des années, c'est notre meilleur indicateur."
+        },
+        {
+          "question": "Quelles technologies utilisez-vous ?",
+          "reponse": "On maîtrise un large éventail de technos modernes et éprouvées (Angular, Java, Kotlin, TypeScript, Docker, Kubernetes...), et on choisit selon votre contexte, pas selon nos préférences. L'objectif : un outil durable, que vos équipes ou d'autres pourront reprendre."
+        },
+        {
+          "question": "Sur mesure ou logiciel du marché : comment savoir ?",
+          "reponse": "Si un outil du marché couvre votre besoin, on vous le dira honnêtement. Le sur mesure prend tout son sens quand vos processus sont spécifiques et qu'aucune solution existante ne les respecte vraiment."
+        }
+      ]
+    },
+    {
+      "type": "derniers_articles",
+      "masquer": false,
+      "titre": "Nos derniers *articles*",
+      "lien_tout": {
+        "texte": "Tout le blog",
+        "lien": "https://blog.4sh.fr/"
+      }
+    },
+    {
+      "type": "equipe",
+      "masquer": false,
+      "surtitre": "L'équipe",
+      "titre": "Des logiciels faits par des *talents*",
+      "texte": "Ceux qui conçoivent votre outil sont ceux que vous aurez au téléphone. Voici l'équipe 4SH au complet.",
+      "photo": {
+        "fichier": "/uploads/equipe-4sh.jpg",
+        "alt": "Des logiciels faits par des talents",
+        "decorative": false,
+        "credit": "",
+        "cadrage": "centre"
+      },
+      "bouton": {
+        "texte": "Notre entreprise",
+        "lien": "/notre-entreprise/"
+      }
+    }
+  ]
+}

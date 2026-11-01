@@ -1,0 +1,457 @@
+{
+  "seo": {
+    "meta_title": "Custom software development agency - 4SH",
+    "meta_description": "4SH, a custom software development agency since 2007: business software, web and mobile apps, maintenance. Bordeaux and Capbreton."
+  },
+  "blocs": [
+    {
+      "type": "hero",
+      "masquer": false,
+      "titre_page": "Custom software development agency",
+      "accroche": "Software that *fits* your processes",
+      "chapo": "Since 2007, 4SH has been the custom software development agency for companies that fit no ready-made box: we design, build and run your business software, and we stay on after go-live.",
+      "bouton_principal": {
+        "texte": "Let's talk about your project",
+        "lien": "#contact"
+      },
+      "bouton_secondaire": {
+        "texte": "See our case studies",
+        "lien": "/references/"
+      },
+      "note": "30 minutes with an expert · Bordeaux, Capbreton or remote",
+      "encart": {
+        "afficher": false,
+        "titre": "// your business software",
+        "lignes": [
+          {
+            "cle": "delivery",
+            "valeur": "milestones met, demos every 2 weeks"
+          },
+          {
+            "cle": "team",
+            "valeur": "UX, dev, devops, product, dedicated"
+          },
+          {
+            "cle": "after",
+            "valeur": "hosted, maintained, scalable"
+          }
+        ],
+        "badge": "4D method · Discover → Deploy",
+        "badge_note": "Since 2007"
+      }
+    },
+    {
+      "type": "logos_clients",
+      "masquer": false,
+      "titre": ""
+    },
+    {
+      "type": "cartes_offres",
+      "masquer": false,
+      "surtitre": "Where to start",
+      "titre": "Which service is right for *you*?",
+      "sous_titre": "Three ways to work together, depending on where you stand.",
+      "cartes": [
+        {
+          "offre": "build",
+          "titre": "Build custom software",
+          "texte": "An Excel sheet cracking under pressure, an off-the-shelf tool that doesn't fit? We build the custom business software that follows how you actually work.",
+          "liens": [
+            {
+              "texte": "Business software",
+              "lien": "/prestations/logiciel-metier/"
+            },
+            {
+              "texte": "SaaS application",
+              "lien": "#"
+            },
+            {
+              "texte": "Mobile application",
+              "lien": "#"
+            }
+          ],
+          "lien_bas": {
+            "texte": "Explore our custom development services",
+            "lien": "/prestations/logiciel-metier/"
+          }
+        },
+        {
+          "offre": "run",
+          "titre": "Keep your solution alive",
+          "texte": "Your software already exists: we host it, secure it, maintain it and grow it alongside your business.",
+          "liens": [
+            {
+              "texte": "Hosting & maintenance",
+              "lien": "#"
+            },
+            {
+              "texte": "Evolutions & redesign",
+              "lien": "#"
+            },
+            {
+              "texte": "UX, security, cloud audits",
+              "lien": "#"
+            }
+          ],
+          "lien_bas": {
+            "texte": "Explore our maintenance services",
+            "lien": "#"
+          }
+        },
+        {
+          "offre": "learning",
+          "titre": "Train your teams",
+          "texte": "Level up your teams on the technologies and methods we use on projects every day.",
+          "liens": [
+            {
+              "texte": "Development (Angular, Kotlin...)",
+              "lien": "/en/training/"
+            },
+            {
+              "texte": "DevOps (Kubernetes...)",
+              "lien": "/en/training/"
+            },
+            {
+              "texte": "Design (Figma...)",
+              "lien": "/en/training/"
+            }
+          ],
+          "lien_bas": {
+            "texte": "Explore our training courses",
+            "lien": "/en/training/"
+          }
+        }
+      ]
+    },
+    {
+      "type": "chiffres_cles",
+      "masquer": false,
+      "chiffres": [
+        {
+          "valeur": "2007",
+          "texte": "Year founded, custom-built from day one",
+          "note": ""
+        },
+        {
+          "valeur": "3",
+          "texte": "Offices in France",
+          "note": "Bordeaux (Le Haillan) · Bordeaux city centre · Capbreton"
+        },
+        {
+          "valeur": "48h",
+          "texte": "For a first reply",
+          "note": "from an expert, not a salesperson"
+        },
+        {
+          "valeur": "100%",
+          "texte": "Designed and maintained in-house",
+          "note": "one team, from A to Z"
+        }
+      ]
+    },
+    {
+      "type": "cartes_secteurs",
+      "masquer": false,
+      "surtitre": "Your industries",
+      "titre": "We already know *your business*",
+      "sous_titre": "We have already built custom software in your industry: we save time together from the very first meeting.",
+      "cartes": [
+        {
+          "titre": "Logistics",
+          "texte": "Your flows never stop, and neither does your software. We know what real time means inside a warehouse.",
+          "lien": {
+            "texte": "Our logistics projects →",
+            "lien": "/secteurs/logistique/"
+          }
+        },
+        {
+          "titre": "Insurance",
+          "texte": "Between regulation, contracts and the customer journey, you need a rigorous tool that stays simple to use.",
+          "lien": {
+            "texte": "Our insurance projects →",
+            "lien": "/secteurs/assurance/"
+          }
+        },
+        {
+          "titre": "E-mobility",
+          "texte": "Supervising charge points, collecting data, steering remotely: we know the stakes of a connected fleet.",
+          "lien": {
+            "texte": "Our mobility projects →",
+            "lien": "/secteurs/electromobilite/"
+          }
+        },
+        {
+          "titre": "Industry",
+          "texte": "Your processes are specific and your tools often too rigid. We build software that fits your shop floor.",
+          "lien": {
+            "texte": "Let's talk about your project →",
+            "lien": "/contact/"
+          }
+        },
+        {
+          "titre": "Healthcare",
+          "texte": "Sensitive data, certified hosting, traceability: we work with your requirements, not against them.",
+          "lien": {
+            "texte": "Let's talk about your project →",
+            "lien": "/contact/"
+          }
+        },
+        {
+          "titre": "Finance",
+          "texte": "Security, compliance and reliability are non-negotiable. We build solid tools, made to last.",
+          "lien": {
+            "texte": "Let's talk about your project →",
+            "lien": "/contact/"
+          }
+        }
+      ]
+    },
+    {
+      "type": "methode_4d",
+      "masquer": false,
+      "surtitre": "Our 4D method",
+      "titre": "How a project unfolds *with us*",
+      "sous_titre": "From the first idea to go-live, here is how a custom development project runs with 4SH: clear milestones, regular demos, zero fog.",
+      "etapes": [
+        {
+          "numero": "01",
+          "phase": "Discover",
+          "titre": "Understand your business",
+          "texte": "Workshops with your field teams. We leave with your real processes, not a feature list."
+        },
+        {
+          "numero": "02",
+          "phase": "Design",
+          "titre": "Design the tool",
+          "texte": "Mockups tested with your users before a single line of code. You validate on something concrete."
+        },
+        {
+          "numero": "03",
+          "phase": "Develop",
+          "titre": "Build by milestones",
+          "texte": "Demos every two weeks, tested and maintainable code. You always know where your project stands."
+        },
+        {
+          "numero": "04",
+          "phase": "Deploy",
+          "titre": "Deliver, then stay",
+          "texte": "Go-live, hosting, maintenance, evolutions. The software grows with your business."
+        }
+      ]
+    },
+    {
+      "type": "projets",
+      "masquer": false,
+      "surtitre": "Our case studies",
+      "titre": "Proof through *projects*",
+      "sous_titre": "Our custom development projects, told with results, not adjectives.",
+      "projets": [
+        {
+          "secteur": "Mobility",
+          "client": "EDF business service · an EDF group subsidiary",
+          "image": {
+            "fichier": "https://www.4sh.fr/assets/img/png/references/izivia/ref-izivia-portail.png",
+            "alt": "EDF business service · an EDF group subsidiary, Mobility",
+            "decorative": false,
+            "credit": "",
+            "cadrage": "centre"
+          },
+          "description": "A professional portal for managing electric vehicle fleets: real-time supervision of charge points, subscriptions, consumption tracking and billing.",
+          "temoignage": "",
+          "chiffres": [
+            {
+              "valeur": "200,000",
+              "libelle": "charge points"
+            },
+            {
+              "valeur": "766,000",
+              "libelle": "charges per year"
+            }
+          ],
+          "bouton": {
+            "texte": "Read the case study",
+            "lien": "/references/izivia-portail/"
+          }
+        },
+        {
+          "secteur": "Insurance",
+          "client": "Filhet-Allard",
+          "image": {
+            "fichier": "https://www.4sh.fr/assets/img/png/references/fa/ref-fa-1.png",
+            "alt": "Filhet-Allard, Insurance",
+            "decorative": false,
+            "credit": "",
+            "cadrage": "centre"
+          },
+          "description": "Visual and technical overhaul of the Health & Protection extranet: Policyholder, Company and Administrator areas for an insurance broker.",
+          "temoignage": "",
+          "chiffres": [
+            {
+              "valeur": "600,000",
+              "libelle": "policyholders on the extranet"
+            },
+            {
+              "valeur": "Since 2017",
+              "libelle": "of collaboration"
+            }
+          ],
+          "bouton": {
+            "texte": "Read the case study",
+            "lien": "/references/filhet-allard/"
+          }
+        },
+        {
+          "secteur": "Press",
+          "client": "Sud Ouest group",
+          "image": {
+            "fichier": "https://www.4sh.fr/assets/img/png/references/sudouest/ref-sudouest-socoa.png",
+            "alt": "Sud Ouest group, Press",
+            "decorative": false,
+            "credit": "",
+            "cadrage": "centre"
+          },
+          "description": "A custom tool that automatically calculates the pay of freelance journalists and correspondents, with an engine that analyses published articles.",
+          "temoignage": "",
+          "chiffres": [
+            {
+              "valeur": "300,000",
+              "libelle": "copies per day"
+            },
+            {
+              "valeur": "2.2 million",
+              "libelle": "daily readers"
+            }
+          ],
+          "bouton": {
+            "texte": "Read the case study",
+            "lien": "/references/sud-ouest-socoa/"
+          }
+        }
+      ],
+      "bouton_bas": {
+        "texte": "See all our case studies",
+        "lien": "/references/"
+      }
+    },
+    {
+      "type": "technologies",
+      "masquer": false,
+      "surtitre": "The tech",
+      "titre": "The right tech, for the *right reasons*",
+      "sous_titre": "We pick each technology to fit your custom development project, never out of habit.",
+      "technos": [
+        {
+          "nom": "Java",
+          "lien": "/expertises-techniques/java/"
+        },
+        {
+          "nom": "Kotlin",
+          "lien": "/expertises-techniques/kotlin/"
+        },
+        {
+          "nom": "Spring",
+          "lien": "/formations/spring-rest-jpa/"
+        },
+        {
+          "nom": "Angular",
+          "lien": "/expertises-techniques/angular/"
+        },
+        {
+          "nom": "TypeScript",
+          "lien": "/formations/ts-fondamental/"
+        },
+        {
+          "nom": "JavaScript",
+          "lien": "/formations/javascript/"
+        },
+        {
+          "nom": "Docker",
+          "lien": "/formations/docker-fondamental/"
+        },
+        {
+          "nom": "Kubernetes",
+          "lien": "/expertises-techniques/kubernetes/"
+        },
+        {
+          "nom": "Terraform",
+          "lien": "/formations/terraform/"
+        },
+        {
+          "nom": "Kafka",
+          "lien": "/formations/kafka/"
+        },
+        {
+          "nom": "MongoDB",
+          "lien": "/formations/mongodb-fondamental/"
+        },
+        {
+          "nom": "SQL",
+          "lien": "/formations/sql/"
+        },
+        {
+          "nom": "Git",
+          "lien": "/formations/git-fondamental/"
+        },
+        {
+          "nom": "Figma",
+          "lien": "/formations/figma-fondamental/"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "masquer": false,
+      "titre": "The questions we're often asked",
+      "sous_titre": "Building custom software raises questions. Here are our answers before you call.",
+      "questions": [
+        {
+          "question": "How much does custom software cost?",
+          "reponse": "It depends on the scope, and that's exactly why we start by talking it through. After a first conversation, we give you a clear estimate, no strings attached. You know what you're getting into before you decide."
+        },
+        {
+          "question": "How soon do we see something concrete?",
+          "reponse": "We reply within 48h of your first contact. On the project side, you see the first mockups within a few weeks and a testable version soon after, thanks to our short iterations."
+        },
+        {
+          "question": "What happens after delivery?",
+          "reponse": "We don't disappear. We handle maintenance, evolutions and security over the long term. Our clients stay with us for years, and that's our best indicator."
+        },
+        {
+          "question": "Which technologies do you use?",
+          "reponse": "We master a wide range of modern, proven technologies (Angular, Java, Kotlin, TypeScript, Docker, Kubernetes...), and we choose based on your context, not our preferences. The goal: a durable tool that your teams or others can pick up."
+        },
+        {
+          "question": "Custom or off-the-shelf software: how do I know?",
+          "reponse": "If an off-the-shelf tool covers your need, we'll tell you honestly. Custom makes sense when your processes are specific and no existing solution truly respects them."
+        }
+      ]
+    },
+    {
+      "type": "derniers_articles",
+      "masquer": false,
+      "titre": "Nos derniers *articles*",
+      "lien_tout": {
+        "texte": "Tout le blog",
+        "lien": "https://blog.4sh.fr/"
+      }
+    },
+    {
+      "type": "equipe",
+      "masquer": false,
+      "surtitre": "The team",
+      "titre": "Software built by *talented people*",
+      "texte": "The people who design your tool are the ones you'll have on the phone. Here is the full 4SH team.",
+      "photo": {
+        "fichier": "/uploads/equipe-4sh.jpg",
+        "alt": "Software built by talented people",
+        "decorative": false,
+        "credit": "",
+        "cadrage": "centre"
+      },
+      "bouton": {
+        "texte": "Notre entreprise",
+        "lien": "/notre-entreprise/"
+      }
+    }
+  ]
+}

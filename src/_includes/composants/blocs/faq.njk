@@ -1,0 +1,21 @@
+{# Bloc « faq » : accordéon et JSON-LD FAQPage. #}
+{% macro bloc(b, ctx) %}
+<!-- FAQ -->
+<section style="padding-top:0">
+  <div class="container">
+    <h2 class="sec-titre centre" style="text-align:center">{{ b.titre }}</h2>
+    {% if b.sous_titre %}<p class="sec-sous" style="margin:0 auto 38px;text-align:center">{{ b.sous_titre }}</p>{% endif %}
+    <div class="faq">
+      {% for item in b.questions %}
+      <details{% if loop.first %} open{% endif %}>
+        <summary>{{ item.question }}</summary>
+        <p>{{ item.reponse }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for item in b.questions %}{"@type":"Question","name":{{ item.question | dump | safe }},"acceptedAnswer":{"@type":"Answer","text":{{ item.reponse | dump | safe }}}}{% if not loop.last %},{% endif %}{% endfor %}]}
+  </script>
+</section>
+{% endmacro %}

@@ -1,0 +1,14 @@
+{# Bloc « methode_4d » : frise des 4 étapes (numero vers num, phase vers label). #}
+{% from "composants/sections.njk" import frise_etapes %}
+{% macro bloc(b, ctx) %}
+<!-- MÉTHODE 4D -->
+<section class="section-sombre">
+  <div class="container">
+    {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
+    <svg class="trace-4d" viewBox="0 0 1280 120" aria-hidden="true" focusable="false"><path d="M0 110H280L310 80H600L630 50H920L950 20H1240" fill="none" stroke="#14171C" stroke-width="2"/><path d="M1240 9L1251 20L1240 31L1229 20Z" fill="#ED203D"/></svg>
+    {{ frise_etapes(b.etapes | etapesFrise) }}
+  </div>
+</section>
+{% endmacro %}

@@ -1,0 +1,12 @@
+{# Bloc « logos_clients » : noms tirés des réglages du site (site.clients). #}
+{% macro bloc(b, ctx) %}
+<!-- ILS NOUS CONFIENT LEUR MÉTIER : mur de noms, statique (pas de défilement en boucle) -->
+<section class="confiance" aria-labelledby="confiance-titre">
+  <div class="container confiance-grille">
+    <h2 class="confiance-titre" id="confiance-titre">{% if b.titre %}{{ b.titre }}{% else %}{{ ctx.site.clients_intro | replace(" :", "") | replace(":", "") }}{% endif %}</h2>
+    <ul class="confiance-noms">
+      {% for c in ctx.site.clients %}<li>{% if c.url %}<a href="{{ c.url }}">{{ c.nom }}</a>{% else %}<span>{{ c.nom }}</span>{% endif %}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
+{% endmacro %}

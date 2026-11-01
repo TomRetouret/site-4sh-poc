@@ -2,6 +2,9 @@ module.exports = function (eleventyConfig) {
   // Fichiers copiés tels quels vers le site généré
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "admin": "admin" });
+  // Back-office (preuve de concept) : configuration Decap et gabarits d'aperçu partagés Sveltia / Decap
+  eleventyConfig.addPassthroughCopy({ "admin-decap": "admin-decap" });
+  eleventyConfig.addPassthroughCopy({ "admin-shared": "admin-shared" });
   eleventyConfig.addPassthroughCopy({ "src/uploads": "uploads" });
   // Redirections 301 des anciennes URLs (.html) vers la refonte : lu par Netlify à la racine du site.
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
@@ -228,6 +231,24 @@ module.exports = function (eleventyConfig) {
       `</div></div>`
     );
   };
+
+  // -------------------------------------------------------------------------
+  // Page d'accueil en blocs (docs/back-office/schema-blocs.md)
+  // -------------------------------------------------------------------------
+  // Premier bloc d'un type donné dans une liste de blocs, masqué ou non
+  // (le hero reprend les étapes du premier bloc methode_4d).
+  eleventyConfig.addFilter("premierBloc", (blocs, type) =>
+    (blocs || []).find((b) => b && b.type === type) || null
+  );
+  // Étapes du bloc methode_4d vers la forme attendue par frise_etapes (num, label).
+  eleventyConfig.addFilter("etapesFrise", (etapes) =>
+    (etapes || []).map((e) => ({ num: e.numero, label: e.phase, titre: e.titre, texte: e.texte }))
+  );
+  // Cadrage d'une image : attribut style object-position, rien au cadrage centre.
+  const CADRAGES = { haut: "center top", bas: "center bottom", gauche: "left center", droite: "right center" };
+  eleventyConfig.addFilter("cadrageStyle", (cadrage) =>
+    CADRAGES[cadrage] ? ` style="object-position: ${CADRAGES[cadrage]}"` : ""
+  );
 
   // Retrouve la fiche référence correspondant à une URL, pour les gabarits
   // qui déclarent leurs références sous forme de liens (fiches technologie).

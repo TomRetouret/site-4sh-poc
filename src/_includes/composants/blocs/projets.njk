@@ -1,0 +1,37 @@
+{# Bloc « projets » : carrousel de réalisations. Citation et auteur viennent du
+   témoignage relié par slug (ctx.temoignages = témoignages de la langue de la page). #}
+{% from "composants/sections.njk" import carrousel %}
+{% macro bloc(b, ctx) %}
+<!-- RÉALISATIONS -->
+<section class="fond-doux">
+  <div class="container">
+    {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
+    {% call carrousel("Réalisations", "car--real", false) %}
+        {% for r in b.projets %}
+        {% set img = r.image or {} %}
+        {% set t = ctx.temoignages[r.temoignage] if (r.temoignage and ctx.temoignages) %}
+        <div class="cas{% if img.fichier %} cas--image{% endif %}">
+          <figure class="cas-visuel">
+            {% if img.fichier %}<img src="{{ img.fichier }}" alt="{{ '' if img.decorative else img.alt }}"{{ img.cadrage | cadrageStyle | safe }} loading="lazy" decoding="async">{% endif %}
+            <figcaption>
+              <span class="secteur">{{ r.secteur }}</span>
+              <span class="logo-client">{{ r.client }}</span>
+            </figcaption>
+          </figure>
+          <div class="cas-corps">
+            {% if t and t.citation %}<blockquote>{{ t.citation }}</blockquote>{% if t.auteur %}<p class="auteur">{{ [t.auteur, t.fonction, t.entreprise] | select | join(", ") }}</p>{% endif %}{% endif %}
+            {% if r.description %}<p class="cas-desc">{{ r.description }}</p>{% endif %}
+            <div class="cas-chiffre">
+              {% for ch in r.chiffres %}<div><b>{{ ch.valeur | accent | safe }}</b><span>{{ ch.libelle }}</span></div>{% endfor %}
+            </div>
+            {% if r.bouton and r.bouton.texte %}<a class="btn btn-ghost btn-sm" href="{{ r.bouton.lien or '#' }}">{{ r.bouton.texte }}</a>{% endif %}
+          </div>
+        </div>
+        {% endfor %}
+    {% endcall %}
+    {% if b.bouton_bas and b.bouton_bas.texte %}<div class="centre" style="margin-top:28px"><a class="btn btn-primary" href="{{ b.bouton_bas.lien or '/references/' }}">{{ b.bouton_bas.texte }}</a></div>{% endif %}
+  </div>
+</section>
+{% endmacro %}

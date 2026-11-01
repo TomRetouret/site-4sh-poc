@@ -1,25 +1,51 @@
 # =========================================================================
 #  Configuration du CMS git (Sveltia CMS, successeur de Decap CMS)
-#  Chaque modification faite dans l'admin = un commit git = une mise en ligne.
+#  Preuve de concept back-office (branche poc/back-office) :
+#  circuit éditorial activé. Chaque enregistrement crée une demande de fusion
+#  (pull request) sur GitHub ; la mise en ligne a lieu à la publication.
 # =========================================================================
 
 # --- Où le CMS écrit-il ? ---
 backend:
   name: github
-  repo: TomRetouret/site-4sh
+  repo: TomRetouret/site-4sh-poc # à remplacer par le dépôt de test 4SH
   branch: main
   # Authentification "Se connecter avec GitHub" via le Worker Cloudflare sveltia-cms-auth.
+  # Le domaine du site de test doit figurer dans la variable ALLOWED_DOMAINS du Worker.
   base_url: https://sveltia-cms-auth.tom-retouret.workers.dev
+  # Les liens d'aperçu sont lus dans les statuts envoyés par Netlify (deploy preview).
+  # Si plusieurs services publient des statuts, nommer le bon ici :
+  # preview_context: netlify/site-4sh-poc/deploy-preview
 
-# Note : sur localhost, Sveltia propose automatiquement l'édition locale (dossier du projet).
-# Le workflow éditorial (publish_mode) n'est pas encore supporté par Sveltia : on publie directement.
+# Note : sur localhost, Sveltia propose automatiquement l'édition locale (dossier du projet),
+# sans circuit éditorial.
+
+# --- Circuit éditorial ---
+# Brouillon, En relecture, Prêt : chaque contenu modifié vit dans sa propre pull request
+# jusqu'à la publication (fusion dans main). Un brouillon peut être enregistré même si des
+# champs obligatoires sont vides ; ils sont exigés pour passer en relecture ou publier.
+publish_mode:
+  type: editorial_workflow
+  allow_incomplete_drafts: true
+
+# Liens « Voir l'aperçu » vers le déploiement de prévisualisation de chaque pull request.
+show_preview_links: true
+
+# --- Multilingue (utilisé par la page d'accueil en blocs et les témoignages) ---
+# Les autres collections ne sont pas concernées (elles n'activent pas i18n).
+i18n:
+  structure: multiple_folders
+  locales: [fr, en]
+  default_locale: fr
+  initial_locales: default
+  omit_default_locale_from_preview_path: true
 
 # Langue de l'interface
 locale: fr
 
 # URL du site déployé : sert aux liens "Voir sur le site" (preview_path) et à l'en-tête de l'admin.
-site_url: https://www.4sh.fr
-display_url: https://www.4sh.fr
+site_url: https://site-4sh-poc.netlify.app # à remplacer par l'adresse du site Netlify de test
+display_url: https://site-4sh-poc.netlify.app # à remplacer par l'adresse du site Netlify de test
 
 # Dossier des images uploadées par les rédacteurs
 media_folder: "src/uploads"
@@ -462,157 +488,826 @@ collections:
       - { label: "Communauté & écosystème", name: "body", widget: "markdown", hint: "Texte affiché dans la section sombre « Communauté et écosystème ».", required: false }
 
   # -----------------------------------------------------------------------
-  # 6) PAGES  (contenus éditables des pages existantes)
+  # 6) PAGE D'ACCUEIL EN BLOCS  (preuve de concept, voir docs/back-office/schema-blocs.md)
+  #    Un seul écran pour le français et l'anglais (multilingue intégré de Sveltia) :
+  #    src/_data/contenus/fr/accueil.json et src/_data/contenus/en/accueil.json.
+  #    L'ancien fichier src/_data/accueil.json n'est plus édité ici (retour arrière possible).
+  # -----------------------------------------------------------------------
+  - name: accueil
+    label: Page d'accueil
+    label_singular: Page d'accueil
+    i18n: true
+    files:
+      - name: accueil
+        label: Page d'accueil
+        file: src/_data/contenus/{{locale}}/accueil.json
+        format: json
+        i18n: true
+        preview_path: "{{locale}}/"
+        fields:
+          - label: Référencement
+            name: seo
+            widget: object
+            required: false
+            collapsed: true
+            summary: "{{fields.meta_title}}"
+            hint: Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur.
+            fields:
+              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: false, hint: 60 caractères maximum., i18n: true }
+              - { label: Description SEO, name: meta_description, widget: text, required: false, hint: 155 caractères maximum., i18n: true }
+            i18n: true
+          - label: Blocs de la page
+            name: blocs
+            widget: list
+            required: false
+            label_singular: Bloc
+            hint: Les blocs s'affichent dans cet ordre. Faites-les glisser pour les déplacer. Le formulaire de contact reste toujours en bas de page.
+            collapsed: true
+            typeKey: type
+            types:
+              - label: Hero (haut de page)
+                name: hero
+                widget: object
+                summary: "Hero : {{fields.accroche}}{{fields.masquer | ternary(' (masqué)', '')}}"
+                fields:
+                  - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé.", i18n: true }
+                  - { label: Titre de la page (H1), name: titre_page, widget: string, required: true, hint: Affiché en petit au-dessus de l'accroche. Lu par Google et les lecteurs d'écran. 60 caractères maximum., i18n: true }
+                  - { label: Accroche, name: accroche, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Environ 40 caractères., i18n: true }
+                  - { label: Chapô, name: chapo, widget: text, required: false, hint: 40 mots maximum., i18n: true }
+                  - label: Bouton principal
+                    name: bouton_principal
+                    widget: object
+                    required: true
+                    collapsed: false
+                    summary: "{{fields.texte}} ({{fields.lien}})"
+                    fields:
+                      - { label: Texte du bouton, name: texte, widget: string, required: true, i18n: true }
+                      - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: true, default: "#contact", i18n: true }
+                    i18n: true
+                  - label: Bouton secondaire
+                    name: bouton_secondaire
+                    widget: object
+                    required: false
+                    collapsed: false
+                    summary: "{{fields.texte}} ({{fields.lien}})"
+                    fields:
+                      - { label: Texte du bouton, name: texte, widget: string, required: false, i18n: true }
+                      - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false, default: /references/, i18n: true }
+                    i18n: true
+                  - { label: Note sous les boutons, name: note, widget: string, required: false, i18n: true }
+                  - label: Encart visuel
+                    name: encart
+                    widget: object
+                    required: false
+                    collapsed: true
+                    summary: "{{fields.titre}}"
+                    fields:
+                      - { label: Afficher l'encart, name: afficher, widget: boolean, required: false, default: true, i18n: true }
+                      - { label: Titre de l'encart, name: titre, widget: string, required: false, i18n: true }
+                      - label: Lignes
+                        name: lignes
+                        widget: list
+                        required: false
+                        label_singular: Ligne
+                        collapsed: true
+                        summary: "{{fields.cle}} : {{fields.valeur}}"
+                        fields:
+                          - { label: Mot-clé, name: cle, widget: string, required: false, i18n: true }
+                          - { label: Texte, name: valeur, widget: string, required: false, i18n: true }
+                        i18n: true
+                      - { label: Badge, name: badge, widget: string, required: false, i18n: true }
+                      - { label: Note du badge, name: badge_note, widget: string, required: false, i18n: true }
+                    i18n: true
+              - label: Logos clients (Ils nous confient leur métier)
+                name: logos_clients
+                widget: object
+                summary: Logos clients{{fields.masquer | ternary(' (masqué)', '')}}
+                fields:
+                  - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé.", i18n: true }
+                  - { label: Titre, name: titre, widget: string, required: false, hint: Laisser vide pour reprendre l'intitulé des réglages du site. Les noms des clients se modifient dans les réglages du site., i18n: true }
+              - label: Cartes d'offres (Build, Run, Learning)
+                name: cartes_offres
+                widget: object
+                summary: "Cartes d'offres : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+                fields:
+                  - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé.", i18n: true }
+                  - { label: Surtitre, name: surtitre, widget: string, required: false, i18n: true }
+                  - { label: Titre, name: titre, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge., i18n: true }
+                  - { label: Sous-titre, name: sous_titre, widget: text, required: false, i18n: true }
+                  - label: Cartes
+                    name: cartes
+                    widget: list
+                    required: false
+                    label_singular: Carte
+                    collapsed: true
+                    min: 1
+                    max: 3
+                    summary: "{{fields.titre}}"
+                    hint: De 1 à 3 cartes.
+                    fields:
+                      - label: Couleur d'offre
+                        name: offre
+                        widget: select
+                        required: true
+                        default: build
+                        hint: Donne la couleur, le picto et l'étiquette de la carte.
+                        options:
+                          - { label: 4SH Build, value: build }
+                          - { label: 4SH Run, value: run }
+                          - { label: 4SH Learning, value: learning }
+                          - { label: 4SH institutionnel, value: institutionnel }
+                        i18n: true
+                      - { label: Titre, name: titre, widget: string, required: true, i18n: true }
+                      - { label: Texte, name: texte, widget: text, required: true, i18n: true }
+                      - label: Liens
+                        name: liens
+                        widget: list
+                        required: false
+                        label_singular: Lien
+                        collapsed: true
+                        summary: "{{fields.texte}}"
+                        fields:
+                          - { label: Texte du bouton, name: texte, widget: string, required: false, i18n: true }
+                          - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false, i18n: true }
+                        i18n: true
+                      - label: Lien de bas de carte
+                        name: lien_bas
+                        widget: object
+                        required: false
+                        collapsed: false
+                        summary: "{{fields.texte}} ({{fields.lien}})"
+                        fields:
+                          - { label: Texte du bouton, name: texte, widget: string, required: false, i18n: true }
+                          - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false, i18n: true }
+                        i18n: true
+                    i18n: true
+              - label: Chiffres clés
+                name: chiffres_cles
+                widget: object
+                summary: Chiffres clés{{fields.masquer | ternary(' (masqué)', '')}}
+                fields:
+                  - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé.", i18n: true }
+                  - label: Chiffres
+                    name: chiffres
+                    widget: list
+                    required: false
+                    label_singular: Chiffre
+                    collapsed: true
+                    min: 2
+                    max: 4
+                    summary: "{{fields.valeur}} {{fields.texte}}"
+                    hint: De 2 à 4 chiffres.
+                    fields:
+                      - { label: Chiffre, name: valeur, widget: string, required: true, i18n: true }
+                      - { label: Libellé, name: texte, widget: string, required: true, i18n: true }
+                      - { label: Note (petit texte), name: note, widget: string, required: false, i18n: true }
+                    i18n: true
+              - label: Cartes secteurs (carrousel)
+                name: cartes_secteurs
+                widget: object
+                summary: "Cartes secteurs : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+                fields:
+                  - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé.", i18n: true }
+                  - { label: Surtitre, name: surtitre, widget: string, required: false, i18n: true }
+                  - { label: Titre, name: titre, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge., i18n: true }
+                  - { label: Sous-titre, name: sous_titre, widget: text, required: false, i18n: true }
+                  - label: Cartes
+                    name: cartes
+                    widget: list
+                    required: false
+                    label_singular: Carte
+                    collapsed: true
+                    summary: "{{fields.titre}}"
+                    fields:
+                      - { label: Titre, name: titre, widget: string, required: true, i18n: true }
+                      - { label: Texte, name: texte, widget: text, required: false, i18n: true }
+                      - label: Lien de la carte
+                        name: lien
+                        widget: object
+                        required: false
+                        collapsed: false
+                        summary: "{{fields.texte}} ({{fields.lien}})"
+                        fields:
+                          - { label: Texte du bouton, name: texte, widget: string, required: false, i18n: true }
+                          - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false, i18n: true }
+                        i18n: true
+                    i18n: true
+              - label: Méthode 4D
+                name: methode_4d
+                widget: object
+                summary: "Méthode 4D : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+                fields:
+                  - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé.", i18n: true }
+                  - { label: Surtitre, name: surtitre, widget: string, required: false, i18n: true }
+                  - { label: Titre, name: titre, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge., i18n: true }
+                  - { label: Sous-titre, name: sous_titre, widget: text, required: false, i18n: true }
+                  - label: Étapes
+                    name: etapes
+                    widget: list
+                    required: false
+                    label_singular: Étape
+                    collapsed: true
+                    min: 4
+                    max: 4
+                    summary: "{{fields.numero}} {{fields.phase}}"
+                    hint: Exactement 4 étapes. Elles sont aussi reprises dans le haut de page.
+                    fields:
+                      - { label: Numéro, name: numero, widget: string, required: false, i18n: true }
+                      - { label: Phase, name: phase, widget: string, required: false, i18n: true }
+                      - { label: Titre, name: titre, widget: string, required: false, i18n: true }
+                      - { label: Texte, name: texte, widget: text, required: false, i18n: true }
+                    i18n: true
+              - label: Projets (carrousel de réalisations)
+                name: projets
+                widget: object
+                summary: "Projets : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+                fields:
+                  - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé.", i18n: true }
+                  - { label: Surtitre, name: surtitre, widget: string, required: false, i18n: true }
+                  - { label: Titre, name: titre, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge., i18n: true }
+                  - { label: Sous-titre, name: sous_titre, widget: text, required: false, i18n: true }
+                  - label: Projets
+                    name: projets
+                    widget: list
+                    required: false
+                    label_singular: Projet
+                    collapsed: true
+                    summary: "{{fields.client}} ({{fields.secteur}})"
+                    fields:
+                      - { label: Secteur, name: secteur, widget: string, required: false, i18n: true }
+                      - { label: Client, name: client, widget: string, required: true, i18n: true }
+                      - label: Visuel du projet
+                        name: image
+                        widget: object
+                        required: false
+                        collapsed: true
+                        summary: "{{fields.fichier}}"
+                        fields:
+                          - { label: Image, name: fichier, widget: image, required: false, i18n: true }
+                          - { label: Texte alternatif, name: alt, widget: string, required: false, hint: Obligatoire sauf si l'image est décorative. Décrivez ce que montre l'image., i18n: true }
+                          - { label: Image décorative (aucune information à transmettre), name: decorative, widget: boolean, required: false, default: false, i18n: true }
+                          - { label: Crédit photo, name: credit, widget: string, required: false, i18n: true }
+                          - label: Cadrage
+                            name: cadrage
+                            widget: select
+                            required: true
+                            default: centre
+                            hint: Partie de l'image conservée quand elle est recadrée.
+                            options:
+                              - { label: Centre, value: centre }
+                              - { label: Haut, value: haut }
+                              - { label: Bas, value: bas }
+                              - { label: Gauche, value: gauche }
+                              - { label: Droite, value: droite }
+                            i18n: true
+                        i18n: true
+                      - { label: Description, name: description, widget: text, required: false, i18n: true }
+                      - { label: Témoignage, name: temoignage, widget: relation, required: false, hint: "Choisissez un témoignage de la collection Témoignages. Pour en créer un, passez par cette collection.", collection: temoignages, value_field: "{{slug}}", display_fields: ["{{auteur}}, {{entreprise}}"], search_fields: [auteur, entreprise, citation], i18n: true }
+                      - label: Chiffres du projet
+                        name: chiffres
+                        widget: list
+                        required: false
+                        label_singular: Chiffre
+                        collapsed: true
+                        summary: "{{fields.valeur}} {{fields.libelle}}"
+                        fields:
+                          - { label: Chiffre, name: valeur, widget: string, required: false, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge., i18n: true }
+                          - { label: Libellé, name: libelle, widget: string, required: false, i18n: true }
+                        i18n: true
+                      - label: Bouton du projet
+                        name: bouton
+                        widget: object
+                        required: false
+                        collapsed: false
+                        summary: "{{fields.texte}} ({{fields.lien}})"
+                        fields:
+                          - { label: Texte du bouton, name: texte, widget: string, required: false, i18n: true }
+                          - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false, i18n: true }
+                        i18n: true
+                    i18n: true
+                  - label: Bouton sous le carrousel
+                    name: bouton_bas
+                    widget: object
+                    required: false
+                    collapsed: false
+                    summary: "{{fields.texte}} ({{fields.lien}})"
+                    fields:
+                      - { label: Texte du bouton, name: texte, widget: string, required: false, i18n: true }
+                      - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false, default: /references/, i18n: true }
+                    i18n: true
+              - label: Technologies (mur)
+                name: technologies
+                widget: object
+                summary: "Technologies : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+                fields:
+                  - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé.", i18n: true }
+                  - { label: Surtitre, name: surtitre, widget: string, required: false, i18n: true }
+                  - { label: Titre, name: titre, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge., i18n: true }
+                  - { label: Sous-titre, name: sous_titre, widget: text, required: false, i18n: true }
+                  - label: Technologies
+                    name: technos
+                    widget: list
+                    required: false
+                    label_singular: Technologie
+                    collapsed: true
+                    summary: "{{fields.nom}}"
+                    fields:
+                      - { label: Nom, name: nom, widget: string, required: true, i18n: true }
+                      - { label: Destination, name: lien, widget: string, required: false, i18n: true }
+                    i18n: true
+              - label: Questions fréquentes
+                name: faq
+                widget: object
+                summary: "Questions fréquentes : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+                fields:
+                  - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé.", i18n: true }
+                  - { label: Titre, name: titre, widget: string, required: true, i18n: true }
+                  - { label: Sous-titre, name: sous_titre, widget: text, required: false, i18n: true }
+                  - label: Questions
+                    name: questions
+                    widget: list
+                    required: false
+                    label_singular: Question
+                    collapsed: true
+                    summary: "{{fields.question}}"
+                    fields:
+                      - { label: Question, name: question, widget: string, required: true, i18n: true }
+                      - { label: Réponse, name: reponse, widget: text, required: true, i18n: true }
+                    i18n: true
+              - label: Derniers articles du blog
+                name: derniers_articles
+                widget: object
+                summary: "Derniers articles : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+                fields:
+                  - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé.", i18n: true }
+                  - { label: Titre, name: titre, widget: string, required: false, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Les articles sont repris automatiquement du blog., default: Nos derniers *articles*, i18n: true }
+                  - label: Lien vers le blog
+                    name: lien_tout
+                    widget: object
+                    required: false
+                    collapsed: false
+                    summary: "{{fields.texte}} ({{fields.lien}})"
+                    fields:
+                      - { label: Texte du bouton, name: texte, widget: string, required: false, default: Tout le blog, i18n: true }
+                      - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false, default: https://blog.4sh.fr/, i18n: true }
+                    i18n: true
+              - label: Équipe (photo et texte)
+                name: equipe
+                widget: object
+                summary: "Équipe : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+                fields:
+                  - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé.", i18n: true }
+                  - { label: Surtitre, name: surtitre, widget: string, required: false, i18n: true }
+                  - { label: Titre, name: titre, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge., i18n: true }
+                  - { label: Texte, name: texte, widget: text, required: false, i18n: true }
+                  - label: Photo de l'équipe
+                    name: photo
+                    widget: object
+                    required: false
+                    collapsed: true
+                    summary: "{{fields.fichier}}"
+                    fields:
+                      - { label: Image, name: fichier, widget: image, required: false, i18n: true }
+                      - { label: Texte alternatif, name: alt, widget: string, required: false, hint: "Obligatoire sauf si l'image est décorative. Décrivez ce que montre l'image. À défaut, le titre est utilisé.", i18n: true }
+                      - { label: Image décorative (aucune information à transmettre), name: decorative, widget: boolean, required: false, default: false, i18n: true }
+                      - { label: Crédit photo, name: credit, widget: string, required: false, i18n: true }
+                      - label: Cadrage
+                        name: cadrage
+                        widget: select
+                        required: true
+                        default: centre
+                        hint: Partie de l'image conservée quand elle est recadrée.
+                        options:
+                          - { label: Centre, value: centre }
+                          - { label: Haut, value: haut }
+                          - { label: Bas, value: bas }
+                          - { label: Gauche, value: gauche }
+                          - { label: Droite, value: droite }
+                        i18n: true
+                    i18n: true
+                  - label: Bouton
+                    name: bouton
+                    widget: object
+                    required: false
+                    collapsed: false
+                    summary: "{{fields.texte}} ({{fields.lien}})"
+                    fields:
+                      - { label: Texte du bouton, name: texte, widget: string, required: false, default: Notre entreprise, i18n: true }
+                      - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false, default: /notre-entreprise/, i18n: true }
+                    i18n: true
+            i18n: true
+  # -----------------------------------------------------------------------
+  # 6 bis) TÉMOIGNAGES  (contenu partagé, relié depuis les projets de l'accueil)
+  #    Un fichier JSON par témoignage et par langue : src/_data/temoignages/<langue>/<slug>.json
+  # -----------------------------------------------------------------------
+  - name: temoignages
+    label: Témoignages
+    label_singular: Témoignage
+    folder: src/_data/temoignages/{{locale}}
+    i18n: true
+    create: true
+    extension: json
+    format: json
+    identifier_field: auteur
+    slug: "{{auteur}}"
+    summary: "{{auteur}}, {{entreprise}}"
+    sortable_fields: [auteur, entreprise]
+    fields:
+      - { label: Citation, name: citation, widget: text, required: true, i18n: true }
+      - { label: Nom, name: auteur, widget: string, required: true, i18n: duplicate }
+      - { label: Fonction, name: fonction, widget: string, required: false, i18n: true }
+      - { label: Entreprise, name: entreprise, widget: string, required: false, i18n: duplicate }
+
+  # -----------------------------------------------------------------------
+  # 6 ter) PAGES DE DÉMONSTRATION  (scénario « créer une page », français seulement)
+  #    Un fichier Markdown par page dans src/demo/, contenu en front matter :
+  #    mêmes blocs que l'accueil. Adresse /demo/<nom>/, jamais indexée.
+  # -----------------------------------------------------------------------
+  - name: demo
+    label: Pages de démonstration
+    label_singular: Page de démonstration
+    folder: src/demo
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    preview_path: demo/{{slug}}/
+    identifier_field: titre
+    summary: "{{titre}}"
+    fields:
+      - { label: Titre de la page, name: titre, widget: string, required: true }
+      - label: Référencement
+        name: seo
+        widget: object
+        required: false
+        collapsed: true
+        summary: "{{fields.meta_title}}"
+        hint: Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur.
+        fields:
+          - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: false, hint: 60 caractères maximum. }
+          - { label: Description SEO, name: meta_description, widget: text, required: false, hint: 155 caractères maximum. }
+      - label: Blocs de la page
+        name: blocs
+        widget: list
+        required: false
+        label_singular: Bloc
+        hint: Les blocs s'affichent dans cet ordre. Faites-les glisser pour les déplacer. Le formulaire de contact reste toujours en bas de page.
+        collapsed: true
+        typeKey: type
+        types:
+          - label: Hero (haut de page)
+            name: hero
+            widget: object
+            summary: "Hero : {{fields.accroche}}{{fields.masquer | ternary(' (masqué)', '')}}"
+            fields:
+              - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé." }
+              - { label: Titre de la page (H1), name: titre_page, widget: string, required: true, hint: Affiché en petit au-dessus de l'accroche. Lu par Google et les lecteurs d'écran. 60 caractères maximum. }
+              - { label: Accroche, name: accroche, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Environ 40 caractères. }
+              - { label: Chapô, name: chapo, widget: text, required: false, hint: 40 mots maximum. }
+              - label: Bouton principal
+                name: bouton_principal
+                widget: object
+                required: true
+                collapsed: false
+                summary: "{{fields.texte}} ({{fields.lien}})"
+                fields:
+                  - { label: Texte du bouton, name: texte, widget: string, required: true }
+                  - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: true, default: "#contact" }
+              - label: Bouton secondaire
+                name: bouton_secondaire
+                widget: object
+                required: false
+                collapsed: false
+                summary: "{{fields.texte}} ({{fields.lien}})"
+                fields:
+                  - { label: Texte du bouton, name: texte, widget: string, required: false }
+                  - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false, default: /references/ }
+              - { label: Note sous les boutons, name: note, widget: string, required: false }
+              - label: Encart visuel
+                name: encart
+                widget: object
+                required: false
+                collapsed: true
+                summary: "{{fields.titre}}"
+                fields:
+                  - { label: Afficher l'encart, name: afficher, widget: boolean, required: false, default: true }
+                  - { label: Titre de l'encart, name: titre, widget: string, required: false }
+                  - label: Lignes
+                    name: lignes
+                    widget: list
+                    required: false
+                    label_singular: Ligne
+                    collapsed: true
+                    summary: "{{fields.cle}} : {{fields.valeur}}"
+                    fields:
+                      - { label: Mot-clé, name: cle, widget: string, required: false }
+                      - { label: Texte, name: valeur, widget: string, required: false }
+                  - { label: Badge, name: badge, widget: string, required: false }
+                  - { label: Note du badge, name: badge_note, widget: string, required: false }
+          - label: Logos clients (Ils nous confient leur métier)
+            name: logos_clients
+            widget: object
+            summary: Logos clients{{fields.masquer | ternary(' (masqué)', '')}}
+            fields:
+              - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé." }
+              - { label: Titre, name: titre, widget: string, required: false, hint: Laisser vide pour reprendre l'intitulé des réglages du site. Les noms des clients se modifient dans les réglages du site. }
+          - label: Cartes d'offres (Build, Run, Learning)
+            name: cartes_offres
+            widget: object
+            summary: "Cartes d'offres : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+            fields:
+              - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé." }
+              - { label: Surtitre, name: surtitre, widget: string, required: false }
+              - { label: Titre, name: titre, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. }
+              - { label: Sous-titre, name: sous_titre, widget: text, required: false }
+              - label: Cartes
+                name: cartes
+                widget: list
+                required: false
+                label_singular: Carte
+                collapsed: true
+                min: 1
+                max: 3
+                summary: "{{fields.titre}}"
+                hint: De 1 à 3 cartes.
+                fields:
+                  - label: Couleur d'offre
+                    name: offre
+                    widget: select
+                    required: true
+                    default: build
+                    hint: Donne la couleur, le picto et l'étiquette de la carte.
+                    options:
+                      - { label: 4SH Build, value: build }
+                      - { label: 4SH Run, value: run }
+                      - { label: 4SH Learning, value: learning }
+                      - { label: 4SH institutionnel, value: institutionnel }
+                  - { label: Titre, name: titre, widget: string, required: true }
+                  - { label: Texte, name: texte, widget: text, required: true }
+                  - label: Liens
+                    name: liens
+                    widget: list
+                    required: false
+                    label_singular: Lien
+                    collapsed: true
+                    summary: "{{fields.texte}}"
+                    fields:
+                      - { label: Texte du bouton, name: texte, widget: string, required: false }
+                      - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false }
+                  - label: Lien de bas de carte
+                    name: lien_bas
+                    widget: object
+                    required: false
+                    collapsed: false
+                    summary: "{{fields.texte}} ({{fields.lien}})"
+                    fields:
+                      - { label: Texte du bouton, name: texte, widget: string, required: false }
+                      - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false }
+          - label: Chiffres clés
+            name: chiffres_cles
+            widget: object
+            summary: Chiffres clés{{fields.masquer | ternary(' (masqué)', '')}}
+            fields:
+              - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé." }
+              - label: Chiffres
+                name: chiffres
+                widget: list
+                required: false
+                label_singular: Chiffre
+                collapsed: true
+                min: 2
+                max: 4
+                summary: "{{fields.valeur}} {{fields.texte}}"
+                hint: De 2 à 4 chiffres.
+                fields:
+                  - { label: Chiffre, name: valeur, widget: string, required: true }
+                  - { label: Libellé, name: texte, widget: string, required: true }
+                  - { label: Note (petit texte), name: note, widget: string, required: false }
+          - label: Cartes secteurs (carrousel)
+            name: cartes_secteurs
+            widget: object
+            summary: "Cartes secteurs : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+            fields:
+              - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé." }
+              - { label: Surtitre, name: surtitre, widget: string, required: false }
+              - { label: Titre, name: titre, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. }
+              - { label: Sous-titre, name: sous_titre, widget: text, required: false }
+              - label: Cartes
+                name: cartes
+                widget: list
+                required: false
+                label_singular: Carte
+                collapsed: true
+                summary: "{{fields.titre}}"
+                fields:
+                  - { label: Titre, name: titre, widget: string, required: true }
+                  - { label: Texte, name: texte, widget: text, required: false }
+                  - label: Lien de la carte
+                    name: lien
+                    widget: object
+                    required: false
+                    collapsed: false
+                    summary: "{{fields.texte}} ({{fields.lien}})"
+                    fields:
+                      - { label: Texte du bouton, name: texte, widget: string, required: false }
+                      - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false }
+          - label: Méthode 4D
+            name: methode_4d
+            widget: object
+            summary: "Méthode 4D : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+            fields:
+              - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé." }
+              - { label: Surtitre, name: surtitre, widget: string, required: false }
+              - { label: Titre, name: titre, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. }
+              - { label: Sous-titre, name: sous_titre, widget: text, required: false }
+              - label: Étapes
+                name: etapes
+                widget: list
+                required: false
+                label_singular: Étape
+                collapsed: true
+                min: 4
+                max: 4
+                summary: "{{fields.numero}} {{fields.phase}}"
+                hint: Exactement 4 étapes. Elles sont aussi reprises dans le haut de page.
+                fields:
+                  - { label: Numéro, name: numero, widget: string, required: false }
+                  - { label: Phase, name: phase, widget: string, required: false }
+                  - { label: Titre, name: titre, widget: string, required: false }
+                  - { label: Texte, name: texte, widget: text, required: false }
+          - label: Projets (carrousel de réalisations)
+            name: projets
+            widget: object
+            summary: "Projets : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+            fields:
+              - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé." }
+              - { label: Surtitre, name: surtitre, widget: string, required: false }
+              - { label: Titre, name: titre, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. }
+              - { label: Sous-titre, name: sous_titre, widget: text, required: false }
+              - label: Projets
+                name: projets
+                widget: list
+                required: false
+                label_singular: Projet
+                collapsed: true
+                summary: "{{fields.client}} ({{fields.secteur}})"
+                fields:
+                  - { label: Secteur, name: secteur, widget: string, required: false }
+                  - { label: Client, name: client, widget: string, required: true }
+                  - label: Visuel du projet
+                    name: image
+                    widget: object
+                    required: false
+                    collapsed: true
+                    summary: "{{fields.fichier}}"
+                    fields:
+                      - { label: Image, name: fichier, widget: image, required: false }
+                      - { label: Texte alternatif, name: alt, widget: string, required: false, hint: Obligatoire sauf si l'image est décorative. Décrivez ce que montre l'image. }
+                      - { label: Image décorative (aucune information à transmettre), name: decorative, widget: boolean, required: false, default: false }
+                      - { label: Crédit photo, name: credit, widget: string, required: false }
+                      - label: Cadrage
+                        name: cadrage
+                        widget: select
+                        required: true
+                        default: centre
+                        hint: Partie de l'image conservée quand elle est recadrée.
+                        options:
+                          - { label: Centre, value: centre }
+                          - { label: Haut, value: haut }
+                          - { label: Bas, value: bas }
+                          - { label: Gauche, value: gauche }
+                          - { label: Droite, value: droite }
+                  - { label: Description, name: description, widget: text, required: false }
+                  - { label: Témoignage, name: temoignage, widget: relation, required: false, hint: "Choisissez un témoignage de la collection Témoignages. Pour en créer un, passez par cette collection.", collection: temoignages, value_field: "{{slug}}", display_fields: ["{{auteur}}, {{entreprise}}"], search_fields: [auteur, entreprise, citation] }
+                  - label: Chiffres du projet
+                    name: chiffres
+                    widget: list
+                    required: false
+                    label_singular: Chiffre
+                    collapsed: true
+                    summary: "{{fields.valeur}} {{fields.libelle}}"
+                    fields:
+                      - { label: Chiffre, name: valeur, widget: string, required: false, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. }
+                      - { label: Libellé, name: libelle, widget: string, required: false }
+                  - label: Bouton du projet
+                    name: bouton
+                    widget: object
+                    required: false
+                    collapsed: false
+                    summary: "{{fields.texte}} ({{fields.lien}})"
+                    fields:
+                      - { label: Texte du bouton, name: texte, widget: string, required: false }
+                      - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false }
+              - label: Bouton sous le carrousel
+                name: bouton_bas
+                widget: object
+                required: false
+                collapsed: false
+                summary: "{{fields.texte}} ({{fields.lien}})"
+                fields:
+                  - { label: Texte du bouton, name: texte, widget: string, required: false }
+                  - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false, default: /references/ }
+          - label: Technologies (mur)
+            name: technologies
+            widget: object
+            summary: "Technologies : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+            fields:
+              - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé." }
+              - { label: Surtitre, name: surtitre, widget: string, required: false }
+              - { label: Titre, name: titre, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. }
+              - { label: Sous-titre, name: sous_titre, widget: text, required: false }
+              - label: Technologies
+                name: technos
+                widget: list
+                required: false
+                label_singular: Technologie
+                collapsed: true
+                summary: "{{fields.nom}}"
+                fields:
+                  - { label: Nom, name: nom, widget: string, required: true }
+                  - { label: Destination, name: lien, widget: string, required: false }
+          - label: Questions fréquentes
+            name: faq
+            widget: object
+            summary: "Questions fréquentes : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+            fields:
+              - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé." }
+              - { label: Titre, name: titre, widget: string, required: true }
+              - { label: Sous-titre, name: sous_titre, widget: text, required: false }
+              - label: Questions
+                name: questions
+                widget: list
+                required: false
+                label_singular: Question
+                collapsed: true
+                summary: "{{fields.question}}"
+                fields:
+                  - { label: Question, name: question, widget: string, required: true }
+                  - { label: Réponse, name: reponse, widget: text, required: true }
+          - label: Derniers articles du blog
+            name: derniers_articles
+            widget: object
+            summary: "Derniers articles : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+            fields:
+              - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé." }
+              - { label: Titre, name: titre, widget: string, required: false, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Les articles sont repris automatiquement du blog., default: Nos derniers *articles* }
+              - label: Lien vers le blog
+                name: lien_tout
+                widget: object
+                required: false
+                collapsed: false
+                summary: "{{fields.texte}} ({{fields.lien}})"
+                fields:
+                  - { label: Texte du bouton, name: texte, widget: string, required: false, default: Tout le blog }
+                  - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false, default: https://blog.4sh.fr/ }
+          - label: Équipe (photo et texte)
+            name: equipe
+            widget: object
+            summary: "Équipe : {{fields.titre}}{{fields.masquer | ternary(' (masqué)', '')}}"
+            fields:
+              - { label: Masquer ce bloc (il reste enregistré), name: masquer, widget: boolean, required: false, default: false, hint: "Le bloc n'apparaît plus sur le site, mais son contenu est conservé." }
+              - { label: Surtitre, name: surtitre, widget: string, required: false }
+              - { label: Titre, name: titre, widget: string, required: true, hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. }
+              - { label: Texte, name: texte, widget: text, required: false }
+              - label: Photo de l'équipe
+                name: photo
+                widget: object
+                required: false
+                collapsed: true
+                summary: "{{fields.fichier}}"
+                fields:
+                  - { label: Image, name: fichier, widget: image, required: false }
+                  - { label: Texte alternatif, name: alt, widget: string, required: false, hint: "Obligatoire sauf si l'image est décorative. Décrivez ce que montre l'image. À défaut, le titre est utilisé." }
+                  - { label: Image décorative (aucune information à transmettre), name: decorative, widget: boolean, required: false, default: false }
+                  - { label: Crédit photo, name: credit, widget: string, required: false }
+                  - label: Cadrage
+                    name: cadrage
+                    widget: select
+                    required: true
+                    default: centre
+                    hint: Partie de l'image conservée quand elle est recadrée.
+                    options:
+                      - { label: Centre, value: centre }
+                      - { label: Haut, value: haut }
+                      - { label: Bas, value: bas }
+                      - { label: Gauche, value: gauche }
+                      - { label: Droite, value: droite }
+              - label: Bouton
+                name: bouton
+                widget: object
+                required: false
+                collapsed: false
+                summary: "{{fields.texte}} ({{fields.lien}})"
+                fields:
+                  - { label: Texte du bouton, name: texte, widget: string, required: false, default: Notre entreprise }
+                  - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false, default: /notre-entreprise/ }
+
+  # -----------------------------------------------------------------------
+  # 7) PAGES  (contenus éditables des pages existantes)
   # -----------------------------------------------------------------------
   - name: "pages"
     label: "Pages"
     files:
-      - name: "accueil"
-        label: "Page d'accueil"
-        file: "src/_data/accueil.json"
-        preview_path: ""
-        fields: &f_accueil
-          - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
-          - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-          - { label: "Hero · titre principal (H1)", name: "hero_surtitre", widget: "string", required: false }
-          - { label: "Hero · accroche (début)", name: "hero_accroche_debut", widget: "string", hint: "Ex. : Un logiciel qui", required: false }
-          - { label: "Hero · accroche (mot accentué)", name: "hero_accroche_accent", widget: "string", hint: "Ex. : épouse", required: false }
-          - { label: "Hero · accroche (fin)", name: "hero_accroche_fin", widget: "string", hint: "HTML autorisé (<br>). Ex. : vos processus,<br>pas l'inverse.", required: false }
-          - { label: "Hero · paragraphe d'introduction", name: "hero_chapo", widget: "text", required: false }
-          - { label: "Hero · note sous les boutons", name: "hero_note", widget: "string", required: false }
-          - { label: "Hero · bouton principal", name: "hero_cta_principal", widget: "string", required: false }
-          - { label: "Hero · bouton secondaire", name: "hero_cta_secondaire", widget: "string", required: false }
-          - { label: "Hero · titre de l'encart visuel", name: "hero_visuel_titre", widget: "string", hint: "Ex. : // votre logiciel métier", required: false }
-          - label: "Hero · lignes de l'encart visuel"
-            name: "hero_visuel_lignes"
-            widget: "list"
-            fields:
-              - { label: "Clé (en italique)", name: "cle", widget: "string", required: false }
-              - { label: "Valeur", name: "valeur", widget: "string", required: false }
-          - { label: "Hero · badge (texte)", name: "hero_visuel_badge", widget: "string", required: false }
-          - { label: "Hero · badge (note)", name: "hero_visuel_badge_note", widget: "string", required: false }
-
-          - { label: "Portes · sur-titre", name: "portes_eyebrow", widget: "string", required: false }
-          - { label: "Portes · titre", name: "portes_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
-          - { label: "Portes · sous-titre", name: "portes_sous", widget: "text", required: false }
-          - label: "Portes d'entrée (3 blocs)"
-            name: "portes"
-            widget: "list"
-            summary: "{{fields.titre}}"
-            collapsed: true
-            hint: "Les pictogrammes restent fixes selon la position."
-            fields:
-              - { label: "Titre", name: "titre", widget: "string", required: false }
-              - { label: "Texte", name: "texte", widget: "text", required: false }
-              - label: "Liens"
-                name: "liens"
-                widget: "list"
-                fields:
-                  - { label: "Libellé", name: "label", widget: "string", required: false }
-                  - { label: "Lien", name: "url", widget: "string", required: false }
-              - { label: "Libellé du lien de bas de carte", name: "suite_label", widget: "string", required: false }
-              - { label: "Lien de bas de carte", name: "suite_url", widget: "string", required: false }
-
-          - label: "Bandeau chiffres"
-            name: "chiffres"
-            widget: "list"
-            summary: "{{fields.valeur}} · {{fields.texte}}"
-            collapsed: true
-            fields:
-              - { label: "Valeur affichée", name: "valeur", widget: "string", hint: "Ex. : 2007, 48h, 100%", required: false }
-              - { label: "Valeur à animer (nombre)", name: "compte", widget: "string", required: false, hint: "Optionnel. Nombre pour l'animation de comptage, ex. : 48. Laisser vide pour un affichage figé (ex. 2007)." }
-              - { label: "Suffixe", name: "suffixe", widget: "string", required: false, hint: "Ex. : h, %" }
-              - { label: "Texte", name: "texte", widget: "string", required: false }
-              - { label: "Note (petit texte)", name: "note", widget: "string", required: false }
-
-          - { label: "Secteurs · sur-titre", name: "secteurs_eyebrow", widget: "string", required: false }
-          - { label: "Secteurs · titre", name: "secteurs_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
-          - { label: "Secteurs · sous-titre", name: "secteurs_sous", widget: "text", required: false }
-          - label: "Secteurs (cartes)"
-            name: "secteurs"
-            widget: "list"
-            summary: "{{fields.titre}}"
-            collapsed: true
-            fields:
-              - { label: "Titre", name: "titre", widget: "string", required: false }
-              - { label: "Texte", name: "texte", widget: "text", required: false }
-              - { label: "Libellé du lien", name: "lien_libelle", widget: "string", required: false }
-              - { label: "Lien", name: "url", widget: "string", required: false }
-
-          - { label: "Méthode · sur-titre", name: "methode_eyebrow", widget: "string", required: false }
-          - { label: "Méthode · titre", name: "methode_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
-          - { label: "Méthode · sous-titre", name: "methode_sous", widget: "text", required: false }
-          - label: "Méthode · étapes"
-            name: "methode_etapes"
-            widget: "list"
-            summary: "{{fields.num}} · {{fields.titre}}"
-            collapsed: true
-            fields:
-              - { label: "Numéro", name: "num", widget: "string", required: false }
-              - { label: "Libellé (phase)", name: "label", widget: "string", required: false }
-              - { label: "Titre", name: "titre", widget: "string", required: false }
-              - { label: "Texte", name: "texte", widget: "text", required: false }
-
-          - { label: "Réalisations · sur-titre", name: "cas_eyebrow", widget: "string", required: false }
-          - { label: "Réalisations · titre", name: "cas_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
-          - { label: "Réalisations · sous-titre", name: "cas_sous", widget: "text", required: false }
-          - label: "Réalisations (carrousel de cas)"
-            name: "realisations"
-            widget: "list"
-            summary: "{{fields.client}}"
-            collapsed: true
-            hint: "Chaque cas défile dans le carrousel. Reprend la carte projet (chiffres + avis)."
-            fields:
-              - { label: "Secteur", name: "secteur", widget: "string", required: false }
-              - { label: "Client (logo texte)", name: "client", widget: "string", required: false }
-              - { label: "Image du produit (screenshot)", name: "image", widget: "image", required: false, choose_url: true }
-              - { label: "Texte du visuel", name: "visuel_texte", widget: "text", required: false }
-              - { label: "Citation / avis client", name: "citation", widget: "text", required: false }
-              - { label: "Auteur de l'avis", name: "auteur", widget: "string", required: false }
-              - label: "Chiffres du projet"
-                name: "chiffres"
-                widget: "list"
-                summary: "{{fields.valeur}} · {{fields.texte}}"
-                collapsed: true
-                required: false
-                fields:
-                  - { label: "Valeur", name: "valeur", widget: "string", required: false }
-                  - { label: "Libellé", name: "label", widget: "string", required: false }
-              - { label: "Libellé du bouton", name: "cta_label", widget: "string", required: false }
-              - { label: "Lien du bouton", name: "cta_url", widget: "string", required: false }
-          - { label: "Réalisations · bouton (libellé)", name: "realisations_cta_label", widget: "string", required: false }
-          - { label: "Réalisations · bouton (lien)", name: "realisations_cta_url", widget: "string", required: false }
-
-          - { label: "Technos · sur-titre", name: "technos_eyebrow", widget: "string", required: false }
-          - { label: "Technos · titre", name: "technos_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
-          - { label: "Technos · sous-titre", name: "technos_sous", widget: "text", required: false }
-          - label: "Technos (nuage de mots)"
-            name: "technos"
-            widget: "list"
-            summary: "{{fields.nom}}"
-            collapsed: true
-            hint: "Chaque techno est un lien cliquable (maillage interne)."
-            fields:
-              - { label: "Nom", name: "nom", widget: "string", required: false }
-              - { label: "Lien", name: "url", widget: "string", required: false }
-
-          - { label: "FAQ · titre", name: "faq_titre", widget: "string", required: false }
-          - { label: "FAQ · sous-titre", name: "faq_sous", widget: "text", required: false }
-          - label: "Questions fréquentes"
-            name: "faq"
-            widget: "list"
-            summary: "{{fields.question}}"
-            collapsed: true
-            fields:
-              - { label: "Question", name: "question", widget: "string", required: false }
-              - { label: "Réponse", name: "reponse", widget: "text", required: false }
-
-          - { label: "Équipe · sur-titre", name: "equipe_eyebrow", widget: "string", required: false }
-          - { label: "Équipe · titre", name: "equipe_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
-          - { label: "Équipe · texte", name: "equipe_texte", widget: "text", required: false }
-          - { label: "Équipe · photo", name: "equipe_photo", widget: "image", required: false, choose_url: true, hint: "Photo de groupe affichée en bas de l'accueil." }
-          # Le bloc de contact en bas de page est désormais commun à tout le site : voir « Réglages du site » > Bloc contact.
-
       - name: "page_formations"
         label: "Formations (page mère)"
         file: "src/_data/page_formations.json"
@@ -1521,11 +2216,6 @@ collections:
   - name: "pages_en"
     label: "🇬🇧 Pages (English)"
     files:
-      - name: "en_accueil"
-        label: "Home (EN) - /en/"
-        file: "src/_data/en/accueil.json"
-        preview_path: "en/"
-        fields: *f_accueil
       - name: "en_page_formations"
         label: "Training page (EN) - /en/training/"
         file: "src/_data/en/page_formations.json"

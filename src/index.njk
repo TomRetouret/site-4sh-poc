@@ -2,5 +2,7 @@
 layout: base.njk
 permalink: /
 ---
-{% from "composants/pages/accueil.njk" import corps %}
-{{ corps(accueil, site, blog, page.url) }}
+{#- Accueil rendu à partir des blocs (src/_data/contenus/fr/accueil.json).
+    Retour arrière : composants/pages/accueil.njk avec corps(accueil, site, blog, page.url). -#}
+{% from "composants/blocs/aiguilleur.njk" import rendre_blocs %}
+{{ rendre_blocs(contenus.fr.accueil.blocs, site, blog, temoignages.fr, page.url) }}

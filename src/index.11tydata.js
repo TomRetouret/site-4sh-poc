@@ -1,8 +1,8 @@
-// Titre / description SEO de l'accueil, tirés des données éditables (src/_data/accueil.json)
+// Titre / description SEO de l'accueil, tirés des blocs éditables (src/_data/contenus/fr/accueil.json)
 module.exports = {
   altUrl: "/en/",
   eleventyComputed: {
-    title: (data) => data.accueil.meta_title,
-    description: (data) => data.accueil.meta_description
+    title: (data) => data.contenus.fr.accueil.seo.meta_title,
+    description: (data) => data.contenus.fr.accueil.seo.meta_description
   }
 };

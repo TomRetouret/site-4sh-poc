@@ -1,0 +1,36 @@
+{# Bloc « derniers_articles » : articles du blog récupérés au build (ctx.blog). Non rendu sans article. #}
+{% macro bloc(b, ctx) %}
+{% set blog = ctx.blog %}
+<!-- DERNIERS ARTICLES DU BLOG (récupérés au build, discret) -->
+{% if blog and blog.length %}
+{% set tout = b.lien_tout or {} %}
+<section class="blog-accueil">
+  <div class="container">
+    <div class="blog-tete">
+      <h2 class="sec-titre">{{ (b.titre or "Nos derniers *articles*") | accent | safe }}</h2>
+      <a class="blog-tout" href="{{ tout.lien or 'https://blog.4sh.fr/' }}">{{ tout.texte or "Tout le blog" }}</a>
+    </div>
+    <div class="blog-grille">
+      {% for a in blog %}
+      <article class="blog-carte">
+        <a class="blog-carte-lien" href="{{ a.url }}">
+          {% if a.image %}<span class="blog-img"><img src="{{ a.image }}" alt="" loading="lazy" decoding="async"></span>{% endif %}
+          <span class="blog-corps">
+            {% if a.categorie %}<span class="blog-cat">{{ a.categorie }}</span>{% endif %}
+            <span class="blog-titre">{{ a.titre }}</span>
+            <span class="blog-meta">{{ a.date_affichee }}{% if a.duree %} · {{ a.duree }}{% endif %}</span>
+          </span>
+        </a>
+        {% if a.auteur %}
+        <div class="blog-auteur">
+          {% if a.auteur.avatar %}<img src="{{ a.auteur.avatar }}" alt="" width="30" height="30" loading="lazy" decoding="async">{% endif %}
+          <span class="blog-auteur-txt">{% if a.auteur.url %}<a href="{{ a.auteur.url }}">{{ a.auteur.nom }}</a>{% else %}{{ a.auteur.nom }}{% endif %}{% if a.auteur.role %}<small>{{ a.auteur.role }}</small>{% endif %}</span>
+        </div>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endmacro %}

@@ -1,0 +1,17 @@
+{# Bloc « equipe » : photo d'équipe et texte. #}
+{% macro bloc(b, ctx) %}
+{% set photo = b.photo or {} %}
+{% set bouton = b.bouton or {} %}
+<!-- L'ÉQUIPE : photo intégrée au contenu, en bas de page -->
+<section class="equipe">
+  <div class="container equipe-grille">
+    {% if photo.fichier %}<figure class="equipe-photo"><img src="{{ photo.fichier }}" alt="{{ '' if photo.decorative else photo.alt }}"{{ photo.cadrage | cadrageStyle | safe }} width="1360" height="583" loading="lazy" decoding="async"></figure>{% endif %}
+    <div class="equipe-texte">
+      {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+      <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+      {% if b.texte %}<p class="sec-sous">{{ b.texte }}</p>{% endif %}
+      <a class="btn btn-ghost" href="{{ bouton.lien or '/notre-entreprise/' }}">{{ bouton.texte or "Notre entreprise" }}</a>
+    </div>
+  </div>
+</section>
+{% endmacro %}

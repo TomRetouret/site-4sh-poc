@@ -1,0 +1,35 @@
+{# Bloc « hero » : haut de page. ctx.etapes_4d = étapes du premier bloc methode_4d de la page. #}
+{% macro bloc(b, ctx) %}
+<!-- HERO (option « fondu intégré » : photo full-bleed en duotone) -->
+<div class="hero sur-sombre">
+  <div class="container">
+    <div class="hero-grille">
+      <div>
+        <h1 class="surtitre">{{ b.titre_page }}</h1>
+        <p class="hero-accroche">{{ b.accroche | accent | safe }}</p>
+        {% if b.chapo %}<p class="chapo">{{ b.chapo }}</p>{% endif %}
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="{{ b.bouton_principal.lien or '#contact' }}">{{ b.bouton_principal.texte }}</a>
+          {% if b.bouton_secondaire and b.bouton_secondaire.texte %}<a class="btn btn-ghost" href="{{ b.bouton_secondaire.lien or '/references/' }}">{{ b.bouton_secondaire.texte }}</a>{% endif %}
+        </div>
+        {% if b.note %}<p class="hero-note">{{ b.note }}</p>{% endif %}
+      </div>
+      {% if b.encart and b.encart.afficher %}
+      <div class="hero-visuel" aria-hidden="true">
+        <div class="fenetre">
+          <span>{{ b.encart.titre }}</span><br>
+          {% for l in b.encart.lignes %}<i>{{ l.cle }}</i> : {{ l.valeur }}<br>{% endfor %}
+        </div>
+        <div class="badge-projet"><span>{{ b.encart.badge }}</span><b>{{ b.encart.badge_note }}</b></div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="hero-plan-zone">
+    <svg class="hero-plan" viewBox="0 0 1440 280" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false"><rect x="-6000" y="200" width="6001" height="80" fill="#ED203D"/><path d="M0 280V200H520L560 160H800L840 120H1080L1120 80H1440V280Z" fill="#ED203D"/><path d="M1320 65L1335 80L1320 95L1305 80Z" fill="#FFFFFF"/></svg>
+    <svg class="hero-plan--m" viewBox="0 0 390 170" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false"><rect x="-3000" y="110" width="3001" height="60" fill="#ED203D"/><path d="M0 170V110H180L220 70H390V170Z" fill="#ED203D"/><path d="M320 55L335 70L320 85L305 70Z" fill="#FFFFFF"/></svg>
+    <ol class="hero-4d" aria-hidden="true">{% for e in ctx.etapes_4d %}<li><span>{{ e.numero }}</span>{{ e.phase }}</li>{% endfor %}</ol>
+  </div>
+</div>
+<script src="/assets/hero-signal.js"></script>
+{% endmacro %}

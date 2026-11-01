@@ -1,0 +1,14 @@
+{# Bloc « technologies » : mur typographique. #}
+{% macro bloc(b, ctx) %}
+<!-- TECHNOS (mur typographique) -->
+<section>
+  <div class="container">
+    {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
+    <div class="techno-nuage">
+      {% for t in b.technos %}<a class="techno-tag" href="{{ t.lien or '#' }}">{{ t.nom }}</a>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endmacro %}

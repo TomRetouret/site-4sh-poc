@@ -1,0 +1,14 @@
+{# Bloc « chiffres_cles » : bandeau de chiffres. #}
+{% macro bloc(b, ctx) %}
+<!-- BANDEAU CHIFFRES -->
+<div class="chiffres">
+  <div class="container">
+    {% for c in b.chiffres %}
+    <div>
+      <b><i>{{ c.valeur }}</i></b>
+      <span>{{ c.texte }}</span>{% if c.note %}<small>{{ c.note }}</small>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endmacro %}

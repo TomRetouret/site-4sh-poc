@@ -1,0 +1,33 @@
+{# Bloc « cartes_offres » : picto, famille et étiquette déduits du champ offre. #}
+{% macro bloc(b, ctx) %}
+<!-- 3 PORTES D'ENTRÉE -->
+<section class="fond-doux">
+  <div class="container">
+    {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
+    {% set pictos = {
+      build: "<path d=\"M8 6L3 12L8 18M16 6L21 12L16 18\"/><path d=\"M13.5 4L10.5 20\"/>",
+      run: "<path d=\"M4 4H18L20 6V10H4Z\"/><path d=\"M4 14H18L20 16V20H4Z\"/><path d=\"M7 7H10M7 17H10\"/>",
+      learning: "<path d=\"M3 5H10L12 7L14 5H21V19H14L12 21L10 19H3Z\"/><path d=\"M12 7V21\"/>",
+      institutionnel: "<path d=\"M8 6L3 12L8 18M16 6L21 12L16 18\"/><path d=\"M13.5 4L10.5 20\"/>"
+    } %}
+    {% set etiquettes = { build: "4SH Build", run: "4SH Run", learning: "4SH Learning", institutionnel: "4SH" } %}
+    {% set familles = { build: "famille-build", run: "famille-run", learning: "famille-formation", institutionnel: "" } %}
+    <div class="portes">
+      {% for p in b.cartes %}
+      {% set o = p.offre if etiquettes[p.offre] else "institutionnel" %}
+      <article class="porte{% if familles[o] %} {{ familles[o] }}{% endif %}">
+        <div class="pictos"><svg viewBox="0 0 24 24" fill="none" stroke="#14171C" stroke-width="1.5" stroke-linejoin="miter" aria-hidden="true" focusable="false">{{ pictos[o] | safe }}</svg><span class="offre">{{ etiquettes[o] }}</span></div>
+        <h3>{{ p.titre }}</h3>
+        <p>{{ p.texte }}</p>
+        <ul>
+          {% for l in p.liens %}<li><a href="{{ l.lien or '#' }}">{{ l.texte }}</a></li>{% endfor %}
+        </ul>
+        {% if p.lien_bas and p.lien_bas.texte %}<a class="suite" href="{{ p.lien_bas.lien or '#' }}">{{ p.lien_bas.texte }}</a>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endmacro %}

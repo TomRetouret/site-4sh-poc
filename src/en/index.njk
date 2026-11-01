@@ -2,7 +2,9 @@
 layout: base.njk
 permalink: /en/
 altUrl: /
-dataKey: accueil
 ---
-{% from "composants/pages/accueil.njk" import corps %}
-{{ corps(en.accueil, en.site, blog, page.url) }}
+{#- Accueil anglais rendu à partir des blocs (src/_data/contenus/en/accueil.json) ;
+    title et description dans index.11tydata.js.
+    Retour arrière : composants/pages/accueil.njk avec corps(en.accueil, en.site, blog, page.url) et dataKey: accueil. -#}
+{% from "composants/blocs/aiguilleur.njk" import rendre_blocs %}
+{{ rendre_blocs(contenus.en.accueil.blocs, en.site, blog, temoignages.en, page.url) }}

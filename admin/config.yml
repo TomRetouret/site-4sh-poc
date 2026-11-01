@@ -8,7 +8,7 @@
 # --- Où le CMS écrit-il ? ---
 backend:
   name: github
-  repo: TomRetouret/site-4sh-poc # à remplacer par le dépôt de test 4SH
+  repo: TomRetouret/site-4sh-poc # dépôt de test temporaire (compte personnel de Tom), à transférer vers 4SH ensuite
   branch: main
   # Authentification "Se connecter avec GitHub" via le Worker Cloudflare sveltia-cms-auth.
   # Le domaine du site de test doit figurer dans la variable ALLOWED_DOMAINS du Worker.
@@ -44,8 +44,8 @@ i18n:
 locale: fr
 
 # URL du site déployé : sert aux liens "Voir sur le site" (preview_path) et à l'en-tête de l'admin.
-site_url: https://site-4sh-poc.netlify.app # à remplacer par l'adresse du site Netlify de test
-display_url: https://site-4sh-poc.netlify.app # à remplacer par l'adresse du site Netlify de test
+site_url: https://site-4sh-poc.netlify.app # site Netlify de test : nommer le site « site-4sh-poc » sur Netlify, sinon corriger ici
+display_url: https://site-4sh-poc.netlify.app # site Netlify de test : nommer le site « site-4sh-poc » sur Netlify, sinon corriger ici
 
 # Dossier des images uploadées par les rédacteurs
 media_folder: "src/uploads"

@@ -6,7 +6,7 @@
 
 backend:
   name: github
-  repo: TomRetouret/site-4sh-poc # à remplacer par le dépôt de test 4SH
+  repo: TomRetouret/site-4sh-poc # dépôt de test temporaire (compte personnel de Tom), à transférer vers 4SH ensuite
   branch: main
   # Même Worker Cloudflare que Sveltia (sveltia-cms-auth) : il répond sur /auth et /callback,
   # chemins attendus par Decap (auth_endpoint par défaut : auth).
@@ -22,8 +22,8 @@ publish_mode: editorial_workflow
 show_preview_links: true
 
 locale: fr
-site_url: https://site-4sh-poc.netlify.app # à remplacer par l'adresse du site Netlify de test
-display_url: https://site-4sh-poc.netlify.app # à remplacer par l'adresse du site Netlify de test
+site_url: https://site-4sh-poc.netlify.app # site Netlify de test : nommer le site « site-4sh-poc » sur Netlify, sinon corriger ici
+display_url: https://site-4sh-poc.netlify.app # site Netlify de test : nommer le site « site-4sh-poc » sur Netlify, sinon corriger ici
 
 media_folder: "src/uploads"
 public_folder: "/uploads"

@@ -1,0 +1,58 @@
+  # -----------------------------------------------------------------------
+  # 2) RÉFÉRENCES  (projets clients / réussites)
+  # -----------------------------------------------------------------------
+  - name: "references"
+    label: "Références"
+    label_singular: "Référence"
+    folder: "src/content/references"
+    preview_path: "references/{{slug}}/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{titre}}"
+    sortable_fields: ["ordre", "titre", "client"]
+    fields:
+      - { label: "Titre du projet", name: "titre", widget: "string", hint: "Ex. : Izivia - App Mobile", required: true }
+      - { label: "Client", name: "client", widget: "string", required: false }
+      - { label: "Résumé (carte)", name: "resume", widget: "text", hint: "Phrase de présentation affichée sur la carte et en chapô.", required: false }
+      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int", hint: "Plus petit = affiché en premier." }
+      - { label: "Titre de la fiche (grand titre visible)", name: "h1", widget: "string", required: true, hint: "Ex. : L'application mobile" }
+      - { label: "Sous-titre", name: "sous_titre", widget: "text", required: false, hint: "Phrase affichée sous le titre de la fiche." }
+      - { label: "Lien fiche PDF", name: "fiche_pdf", widget: "string", required: false, hint: "Lien vers la fiche PDF (Drive...)." }
+      - { label: "Dernière mise à jour", name: "maj", widget: "string", required: false, hint: "Ex. : 20/04/2022" }
+      - label: "Chiffres clés (bandeau hero)"
+        name: "stats"
+        widget: "list"
+        required: false
+        hint: "Optionnel. Reprend des chiffres déjà présents dans l'étude de cas pour les mettre en avant."
+        fields:
+          - { label: "Chiffre", name: "chiffre", widget: "string", hint: "Ex. : 9 000, 200 000", required: false }
+          - { label: "Libellé", name: "label", widget: "string", hint: "Ex. : utilisateurs, bornes de recharge", required: false }
+      - { label: "Logo client", name: "logo", widget: "image", required: false, choose_url: true }
+      - { label: "Visuel", name: "image", widget: "image", required: false, choose_url: true }
+      - label: "Secteurs"
+        name: "secteurs"
+        widget: "list"
+        required: false
+        field: { label: "Secteur", name: "secteur", widget: "string", hint: "Ex. : Logistique, Mobilité, Assurance...", required: false }
+      - label: "Technologies"
+        name: "technologies"
+        widget: "list"
+        required: false
+        field: { label: "Technologie", name: "techno", widget: "string", hint: "Ex. : Angular, Java, Kotlin...", required: false }
+      - label: "Expertises"
+        name: "expertises"
+        widget: "list"
+        required: false
+        field: { label: "Expertise", name: "expertise", widget: "string", hint: "Ex. : UX, Data, Studio...", required: false }
+      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Lien source (site actuel)", name: "source_url", widget: "string", required: false }
+      - label: "Galerie (visuels)"
+        name: "galerie"
+        widget: "list"
+        required: false
+        field: { label: "Image", name: "image", widget: "image", choose_url: true, required: false }
+      - { label: "Étude de cas", name: "body", widget: "markdown", hint: "Sections : Entreprise et activité, Nos missions, Enjeux & Objectifs, Les points clés.", required: false }

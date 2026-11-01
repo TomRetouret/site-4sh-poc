@@ -1,0 +1,58 @@
+  # -----------------------------------------------------------------------
+  # 5 bis) TECHNOLOGIES  (fiches sous « Expertises techniques »)
+  # -----------------------------------------------------------------------
+  - name: "technologies"
+    label: "Technologies"
+    label_singular: "Technologie"
+    folder: "src/content/technologies"
+    preview_path: "expertises-techniques/{{slug}}/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{nom}}"
+    sortable_fields: ["ordre", "nom"]
+    fields:
+      - { label: "Nom", name: "nom", widget: "string", hint: "Ex. : Java", required: true }
+      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int", hint: "Plus petit = affiché en premier sur la page mère." }
+      - { label: "Famille d'offre (code couleur)", name: "famille", widget: "select", options: ["build", "run", "formation"], default: "build", hint: "build = rouge (dev), run = cyan (infra), formation = violet.", required: false }
+      - { label: "Logo (URL ou image)", name: "logo", widget: "image", required: false, choose_url: true }
+      - { label: "Accroche courte (carte de la page mère)", name: "accroche_courte", widget: "text", required: false }
+      - { label: "Titre (H1)", name: "h1", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+      - { label: "Introduction (hero)", name: "intro", widget: "text", required: false }
+      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Pourquoi · titre", name: "pourquoi_titre", widget: "string", hint: "Pour mettre un mot en avant, encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+      - { label: "Pourquoi · sous-titre", name: "pourquoi_intro", widget: "text", required: false }
+      - label: "Atouts (numérotés automatiquement)"
+        name: "atouts"
+        widget: "list"
+        summary: "{{fields.titre}}"
+        collapsed: true
+        fields:
+          - { label: "Titre", name: "titre", widget: "string", required: false }
+          - { label: "Texte", name: "texte", widget: "text", required: false }
+      - label: "Références clients"
+        name: "references"
+        widget: "list"
+        summary: "{{fields.titre}}"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Titre", name: "titre", widget: "string", required: false }
+          - { label: "Lien (optionnel)", name: "lien", widget: "string", required: false }
+          - { label: "Texte", name: "texte", widget: "text", required: false }
+      - { label: "Guide · surtitre du bloc de contenu", name: "corps_eyebrow", widget: "string", required: false, hint: "Ex. : Guide, ou Communauté et écosystème." }
+      - { label: "Guide · titre du bloc de contenu", name: "corps_titre", widget: "string", required: false }
+      - { label: "Guide · afficher le bloc sur fond sombre", name: "corps_sombre", widget: "boolean", required: false, default: false }
+      - { label: "Guide · URL de la page d'origine (pour mémoire)", name: "guide_source_url", widget: "string", required: false }
+      - label: "Formations liées"
+        name: "formations"
+        widget: "list"
+        summary: "{{fields.titre}}"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Titre", name: "titre", widget: "string", required: false }
+          - { label: "Lien", name: "url", widget: "string", required: false }
+      - { label: "Communauté & écosystème", name: "body", widget: "markdown", hint: "Texte affiché dans la section sombre « Communauté et écosystème ».", required: false }

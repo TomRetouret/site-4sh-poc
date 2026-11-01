@@ -1,0 +1,91 @@
+  # -----------------------------------------------------------------------
+  # 1) FORMATIONS  (une fiche = un fichier ; on peut en ajouter / supprimer)
+  # -----------------------------------------------------------------------
+  - name: "formations"
+    label: "Formations"
+    label_singular: "Formation"
+    folder: "src/content/formations"
+    preview_path: "formations/{{slug}}/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{titre}} - {{niveau}} ({{categorie}})"
+    sortable_fields: ["titre", "categorie", "groupe"]
+    fields:
+      - { label: "Nom (techno)", name: "titre", widget: "string", hint: "Ex. : Angular", required: true }
+      - { label: "Groupe (relie les niveaux d'une même techno)", name: "groupe", widget: "string", hint: "Identifiant commun à tous les niveaux, ex. : angular. Sert au regroupement au catalogue et au sélecteur de niveau.", required: false }
+      - { label: "Sous-titre", name: "sous_titre", widget: "string", required: false, hint: "Ex. : - Les fondamentaux" }
+      - label: "Catégorie"
+        name: "categorie"
+        widget: "relation"
+        collection: "categories"
+        value_field: "nom"
+        search_fields: ["nom"]
+        display_fields: ["nom"]
+        hint: "Reliée aux pages catégories existantes (Develop, Design, DevOps, Outils)."
+      - { label: "Niveau", name: "niveau", widget: "select", options: ["Essentiel", "Fondamental", "Intermédiaire", "Avancé"], required: false }
+      - { label: "Accroche (phrase d'intro)", name: "chapo", widget: "text", required: false }
+      - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Programme de la formation (PDF)", name: "programme_pdf", widget: "string", required: false, hint: "Lien vers le PDF du programme." }
+      - { label: "Poids du PDF du programme", name: "programme_pdf_poids", widget: "string", required: false, hint: "Ex. : 724 Ko" }
+      - { label: "Prix", name: "prix", widget: "string", hint: "Ex. : 2200 € HT", required: false }
+      - { label: "Durée", name: "duree", widget: "string", required: false, hint: "Ex. : 4 jours (28h00)" }
+      - { label: "Nombre de participants", name: "participants", widget: "string", required: false, hint: "Ex. : 1 à 8" }
+      - { label: "Note", name: "note", widget: "string", required: false, hint: "Ex. : 4,89 / 5" }
+      - { label: "Nombre d'avis", name: "avis", widget: "number", required: false, value_type: "int" }
+      - { label: "Proposée depuis", name: "depuis", widget: "string", required: false, hint: "Ex. : janvier 2023" }
+      - { label: "Part de théorie (%)", name: "theorie", widget: "number", required: false, value_type: "int", min: 0, max: 100 }
+      - { label: "Part de pratique (%)", name: "pratique", widget: "number", required: false, value_type: "int", min: 0, max: 100 }
+      - { label: "Illustration / logo (URL ou image)", name: "image", widget: "image", required: false, choose_url: true }
+      - label: "Sessions à venir"
+        name: "sessions"
+        widget: "list"
+        required: false
+        field: { label: "Session", name: "session", widget: "string", hint: "Ex. : Du 15/09/2026 au 18/09/2026", required: false }
+      - { label: "Pour qui ?", name: "pour_qui", widget: "text", required: false }
+      - label: "Prérequis"
+        name: "prerequis"
+        widget: "list"
+        required: false
+        field: { label: "Prérequis", name: "item", widget: "string", required: false }
+      - label: "Objectifs pédagogiques"
+        name: "objectifs"
+        widget: "list"
+        required: false
+        field: { label: "Objectif", name: "item", widget: "string", required: false }
+      - label: "Programme (chapitres)"
+        name: "programme"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Titre du chapitre", name: "titre", widget: "string", required: false }
+          - label: "Points abordés"
+            name: "items"
+            widget: "list"
+            field: { label: "Point", name: "point", widget: "string", required: false }
+      - label: "Formateur"
+        name: "formateur"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Nom", name: "nom", widget: "string", required: false }
+          - { label: "Rôle", name: "role", widget: "string", required: false }
+          - { label: "Photo (URL ou image)", name: "photo", widget: "image", required: false, choose_url: true }
+          - label: "Biographie (paragraphes)"
+            name: "bio"
+            widget: "list"
+            field: { label: "Paragraphe", name: "para", widget: "text", required: false }
+      - label: "Questions fréquentes"
+        name: "faq"
+        widget: "list"
+        summary: "{{fields.question}}"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string", required: false }
+          - { label: "Réponse", name: "reponse", widget: "text", required: false }
+      - { label: "Description (texte principal)", name: "body", widget: "markdown", hint: "Les paragraphes de présentation affichés en haut de la section Description.", required: false }

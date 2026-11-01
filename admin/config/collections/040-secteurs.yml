@@ -1,0 +1,62 @@
+  # -----------------------------------------------------------------------
+  # 4) SECTEURS  (pages métier : Logistique, Électromobilité, Assurance...)
+  # -----------------------------------------------------------------------
+  - name: "secteurs"
+    label: "Secteurs"
+    label_singular: "Secteur"
+    folder: "src/content/secteurs"
+    preview_path: "secteurs/{{slug}}/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{titre}}"
+    sortable_fields: ["ordre", "titre"]
+    fields:
+      - { label: "Nom du secteur", name: "titre", widget: "string", required: false }
+      - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", required: true }
+      - { label: "Accroche", name: "accroche", widget: "text", required: false }
+      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int" }
+      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Introduction des défis", name: "defis_intro", widget: "text", required: false }
+      - label: "Défis du métier"
+        name: "defis"
+        widget: "list"
+        required: false
+        field: { label: "Défi", name: "defi", widget: "string", hint: "Mots-clés en gras via <strong>...</strong>.", required: false }
+      - { label: "Introduction des opportunités", name: "opportunites_intro", widget: "text", required: false }
+      - label: "Opportunités"
+        name: "opportunites"
+        widget: "list"
+        required: false
+        field: { label: "Opportunité", name: "opportunite", widget: "string", required: false }
+      - label: "Pourquoi 4SH (atouts)"
+        name: "pourquoi"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Titre", name: "titre", widget: "string", required: false }
+          - label: "Paragraphes"
+            name: "paras"
+            widget: "list"
+            field: { label: "Paragraphe", name: "para", widget: "text", required: false }
+      - { label: "Introduction de l'approche", name: "comment_intro", widget: "text", required: false }
+      - label: "Étapes (Comment ?)"
+        name: "etapes"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Titre", name: "titre", widget: "string", required: false }
+          - { label: "Texte", name: "texte", widget: "text", required: false }
+      - label: "Références clients"
+        name: "references"
+        widget: "relation"
+        required: false
+        multiple: true
+        collection: "references"
+        value_field: "{{slug}}"
+        search_fields: ["titre", "client"]
+        display_fields: ["titre"]
+        hint: "Sélectionnez les fiches références à afficher (recherche par nom)."

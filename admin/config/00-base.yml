@@ -1,0 +1,52 @@
+# =========================================================================
+#  Configuration du CMS git (Sveltia CMS, successeur de Decap CMS)
+#  Preuve de concept back-office (branche poc/back-office) :
+#  circuit éditorial activé. Chaque enregistrement crée une demande de fusion
+#  (pull request) sur GitHub ; la mise en ligne a lieu à la publication.
+# =========================================================================
+
+# --- Où le CMS écrit-il ? ---
+backend:
+  name: github
+  repo: TomRetouret/site-4sh-poc # dépôt de test temporaire (compte personnel de Tom), à transférer vers 4SH ensuite
+  branch: main
+  # Authentification "Se connecter avec GitHub" via le Worker Cloudflare sveltia-cms-auth.
+  # Le domaine du site de test doit figurer dans la variable ALLOWED_DOMAINS du Worker.
+  base_url: https://sveltia-cms-auth.tom-retouret.workers.dev
+  # Les liens d'aperçu sont lus dans les statuts envoyés par Netlify (deploy preview).
+  # Si plusieurs services publient des statuts, nommer le bon ici :
+  # preview_context: netlify/site-4sh-poc/deploy-preview
+
+# Note : sur localhost, Sveltia propose automatiquement l'édition locale (dossier du projet),
+# sans circuit éditorial.
+
+# --- Circuit éditorial ---
+# Brouillon, En relecture, Prêt : chaque contenu modifié vit dans sa propre pull request
+# jusqu'à la publication (fusion dans main). Un brouillon peut être enregistré même si des
+# champs obligatoires sont vides ; ils sont exigés pour passer en relecture ou publier.
+publish_mode:
+  type: editorial_workflow
+  allow_incomplete_drafts: true
+
+# Liens « Voir l'aperçu » vers le déploiement de prévisualisation de chaque pull request.
+show_preview_links: true
+
+# --- Multilingue (utilisé par la page d'accueil en blocs et les témoignages) ---
+# Les autres collections ne sont pas concernées (elles n'activent pas i18n).
+i18n:
+  structure: multiple_folders
+  locales: [fr, en]
+  default_locale: fr
+  initial_locales: default
+  omit_default_locale_from_preview_path: true
+
+# Langue de l'interface
+locale: fr
+
+# URL du site déployé : sert aux liens "Voir sur le site" (preview_path) et à l'en-tête de l'admin.
+site_url: https://eclectic-conkies-63f114.netlify.app # site Netlify du dépôt de test
+display_url: https://eclectic-conkies-63f114.netlify.app # site Netlify du dépôt de test
+
+# Dossier des images uploadées par les rédacteurs
+media_folder: "src/uploads"
+public_folder: "/uploads"

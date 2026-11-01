@@ -1,0 +1,29 @@
+  # -----------------------------------------------------------------------
+  # 3) CATÉGORIES  (pages Develop / Design / DevOps / Outils, textes SEO dédiés)
+  # -----------------------------------------------------------------------
+  - name: "categories"
+    label: "Catégories de formation"
+    label_singular: "Catégorie"
+    folder: "src/content/categories"
+    preview_path: "formations/{{slug}}/"
+    create: false
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{nom}}"
+    fields:
+      - { label: "Nom", name: "nom", widget: "select", options: ["Develop", "Design", "DevOps", "Outils"], hint: "Doit correspondre à la catégorie des fiches formation.", required: false }
+      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", required: true }
+      - { label: "Introduction", name: "intro", widget: "text", required: false }
+      - label: "Questions fréquentes"
+        name: "faq"
+        widget: "list"
+        summary: "{{fields.question}}"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string", required: false }
+          - { label: "Réponse", name: "reponse", widget: "text", required: false }
+      - { label: "Texte SEO", name: "body", widget: "markdown", hint: "Le contenu rédactionnel affiché sous le catalogue de la catégorie.", required: false }

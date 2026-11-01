@@ -1,0 +1,55 @@
+  # -----------------------------------------------------------------------
+  # 5ter) PRESTATIONS  (une page d'offre = un fichier ; sous /prestations/)
+  # -----------------------------------------------------------------------
+  - name: "pages_prestations"
+    label: "Prestations"
+    label_singular: "Prestation"
+    folder: "src/content/prestations"
+    preview_path: "prestations/{{slug}}/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{titre}} ({{famille_label}})"
+    sortable_fields: ["ordre", "titre", "famille_label"]
+    fields:
+      - { label: "Nom court de la prestation", name: "titre", widget: "string", required: true }
+      - { label: "Famille", name: "famille_label", widget: "select", options: ["Concevoir & développer", "Faire vivre & auditer"], required: false }
+      - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", required: true, hint: "Mettre un mot entre *astérisques* pour l'accentuer en rouge." }
+      - { label: "Accroche", name: "chapo", widget: "text", required: false }
+      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int" }
+      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Libellé du bouton", name: "cta_label", widget: "string", required: false }
+      - { label: "Lien du bouton", name: "cta_url", widget: "string", required: false, default: "/contact/" }
+      - { label: "URL de la page d'origine (pour mémoire)", name: "source_url", widget: "string", required: false }
+      - label: "Chiffres clés"
+        name: "chiffres"
+        widget: "list"
+        summary: "{{fields.chiffre}} · {{fields.label}}"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Chiffre", name: "chiffre", widget: "string", required: false }
+          - { label: "Libellé", name: "label", widget: "string", required: false }
+      - label: "Références clients"
+        name: "references"
+        widget: "relation"
+        required: false
+        multiple: true
+        collection: "references"
+        value_field: "{{slug}}"
+        search_fields: ["titre", "client"]
+        display_fields: ["titre"]
+        hint: "Sélectionnez les fiches références à afficher (recherche par nom)."
+      - label: "Questions fréquentes"
+        name: "faq"
+        widget: "list"
+        summary: "{{fields.question}}"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string", required: false }
+          - { label: "Réponse", name: "reponse", widget: "text", required: false }
+      - { label: "Contenu", name: "body", widget: "markdown", required: false }

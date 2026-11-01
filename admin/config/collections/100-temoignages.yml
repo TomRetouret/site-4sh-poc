@@ -1,0 +1,21 @@
+  # -----------------------------------------------------------------------
+  # 6 bis) TÉMOIGNAGES  (contenu partagé, relié depuis les projets de l'accueil)
+  #    Un fichier JSON par témoignage et par langue : src/_data/temoignages/<langue>/<slug>.json
+  # -----------------------------------------------------------------------
+  - name: temoignages
+    label: Témoignages
+    label_singular: Témoignage
+    folder: src/_data/temoignages/{{locale}}
+    i18n: true
+    create: true
+    extension: json
+    format: json
+    identifier_field: auteur
+    slug: "{{auteur}}"
+    summary: "{{auteur}}, {{entreprise}}"
+    sortable_fields: [auteur, entreprise]
+    fields:
+      - { label: Citation, name: citation, widget: text, required: true, i18n: true }
+      - { label: Nom, name: auteur, widget: string, required: true, i18n: duplicate }
+      - { label: Fonction, name: fonction, widget: string, required: false, i18n: true }
+      - { label: Entreprise, name: entreprise, widget: string, required: false, i18n: duplicate }

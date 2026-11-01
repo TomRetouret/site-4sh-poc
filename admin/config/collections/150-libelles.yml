@@ -1,0 +1,154 @@
+  # -----------------------------------------------------------------------
+  # 9) TEXTES RÉCURRENTS (libellés partagés : titres de rubriques, blocs devis...)
+  # -----------------------------------------------------------------------
+  - name: "libelles"
+    label: "Textes récurrents (libellés)"
+    files:
+      - name: "libelles"
+        label: "Libellés & blocs partagés"
+        file: "src/_data/libelles.json"
+        fields: &f_libelles
+          - label: "Fiche formation"
+            name: "formation"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Sur-titre (préfixe)", name: "eyebrow", widget: "string", required: false }
+              - { label: "Carte · titre prix", name: "prix_titre", widget: "string", required: false }
+              - { label: "Carte · par participant", name: "par_participant", widget: "string", required: false }
+              - { label: "Carte · promo", name: "promo", widget: "string", hint: "HTML autorisé (<b>).", required: false }
+              - { label: "Carte · titre sessions", name: "sessions_titre", widget: "string", required: false }
+              - { label: "Bouton inscription", name: "cta_inscription", widget: "string", required: false }
+              - { label: "Bouton devis", name: "cta_devis", widget: "string", required: false }
+              - { label: "Note lieu", name: "note_lieu", widget: "string", required: false }
+              - { label: "Mot « personnes »", name: "personnes", widget: "string", required: false }
+              - { label: "Mot « avis »", name: "avis", widget: "string", required: false }
+              - { label: "Mot « Depuis »", name: "depuis", widget: "string", required: false }
+              - { label: "Mot « Théorie »", name: "theorie", widget: "string", required: false }
+              - { label: "Mot « Pratique »", name: "pratique", widget: "string", required: false }
+              - { label: "Ancre Description", name: "ancre_description", widget: "string", required: false }
+              - { label: "Ancre Objectifs", name: "ancre_objectifs", widget: "string", required: false }
+              - { label: "Ancre Programme", name: "ancre_programme", widget: "string", required: false }
+              - { label: "Ancre Formateur", name: "ancre_formateur", widget: "string", required: false }
+              - { label: "Ancre Modalités", name: "ancre_modalites", widget: "string", required: false }
+              - { label: "Ancre Formations liées", name: "ancre_liees", widget: "string", required: false }
+              - { label: "Titre Description", name: "description_titre", widget: "string", required: false }
+              - { label: "Titre Pour qui", name: "pour_qui_titre", widget: "string", required: false }
+              - { label: "Titre Prérequis", name: "prerequis_titre", widget: "string", required: false }
+              - { label: "Titre Objectifs", name: "objectifs_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Titre Programme", name: "programme_titre", widget: "string", required: false }
+              - { label: "Titre Formateur", name: "formateur_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Titre FAQ", name: "faq_titre", widget: "string", required: false }
+              - { label: "Titre Modalités", name: "modalites_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Titre Autres formations", name: "autres_titre", widget: "string", required: false }
+              - { label: "Bouton Voir toutes", name: "voir_toutes", widget: "string", required: false }
+              - { label: "Mention « à partir de »", name: "a_partir_de", widget: "string", required: false }
+          - label: "Modalités d'accueil (cartes)"
+            name: "modalites"
+            widget: "list"
+            fields:
+              - { label: "Titre", name: "titre", widget: "string", required: false }
+              - { label: "Texte", name: "texte", widget: "text", required: false }
+          - label: "Modale pré-inscription"
+            name: "preinscription"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string", required: false }
+              - { label: "Libellé entreprise", name: "label_entreprise", widget: "string", required: false }
+              - { label: "Libellé email", name: "label_email", widget: "string", required: false }
+              - { label: "Libellé téléphone", name: "label_tel", widget: "string", required: false }
+              - { label: "Libellé nombre", name: "label_nb", widget: "string", required: false }
+              - { label: "Bouton", name: "bouton", widget: "string", required: false }
+              - { label: "Mention RGPD", name: "rgpd", widget: "text", required: false }
+          - label: "Catalogue de formations"
+            name: "catalogue"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Placeholder recherche", name: "recherche_placeholder", widget: "string", required: false }
+              - { label: "Onglet Toutes", name: "onglet_toutes", widget: "string", required: false }
+              - { label: "Mot compteur", name: "compteur", widget: "string", required: false }
+              - { label: "Message vide", name: "vide", widget: "text", required: false }
+              - { label: "Bouton Voir les formations", name: "cta_voir", widget: "string", required: false }
+              - { label: "Bouton Devis", name: "cta_devis", widget: "string", required: false }
+              - label: "Puces (chips)"
+                name: "chips"
+                widget: "list"
+                field: { label: "Puce", name: "item", widget: "string", required: false }
+          - label: "Fiche référence"
+            name: "reference"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string", required: false }
+              - { label: "Fil d'Ariane (parent)", name: "fil_parent", widget: "string", required: false }
+              - { label: "Bouton télécharger", name: "telecharger", widget: "string", required: false }
+              - { label: "Mention mise à jour", name: "maj", widget: "string", required: false }
+              - { label: "Libellé Client", name: "client", widget: "string", required: false }
+              - { label: "Libellé Secteur", name: "secteur", widget: "string", required: false }
+              - { label: "Libellé Expertises", name: "expertises", widget: "string", required: false }
+              - { label: "Libellé Technologies", name: "technologies", widget: "string", required: false }
+              - { label: "Titre Galerie", name: "galerie", widget: "string", required: false }
+              - { label: "Titre sommaire", name: "sommaire", widget: "string", required: false }
+              - { label: "Lien projet précédent", name: "prec", widget: "string", required: false }
+              - { label: "Lien projet suivant", name: "suiv", widget: "string", required: false }
+              - { label: "CTA · texte", name: "cta_texte", widget: "text", required: false }
+              - { label: "CTA · bouton", name: "cta_bouton", widget: "string", required: false }
+              - { label: "Lien toutes les réussites", name: "toutes", widget: "string", required: false }
+          - label: "Page secteur"
+            name: "secteur"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Défis · sur-titre", name: "defis_eyebrow", widget: "string", required: false }
+              - { label: "Défis · titre", name: "defis_titre", widget: "string", required: false }
+              - { label: "Opportunités · sur-titre", name: "opportunites_eyebrow", widget: "string", required: false }
+              - { label: "Opportunités · titre", name: "opportunites_titre", widget: "string", required: false }
+              - { label: "Pourquoi · sur-titre", name: "pourquoi_eyebrow", widget: "string", required: false }
+              - { label: "Pourquoi · titre", name: "pourquoi_titre", widget: "string", required: false }
+              - { label: "Comment · sur-titre", name: "comment_eyebrow", widget: "string", required: false }
+              - { label: "Comment · titre", name: "comment_titre", widget: "string", required: false }
+              - { label: "Références · sur-titre", name: "refs_eyebrow", widget: "string", required: false }
+              - { label: "Références · titre", name: "refs_titre", widget: "string", required: false }
+              - { label: "Titre FAQ", name: "faq_titre", widget: "string", required: false }
+              - { label: "CTA · titre par défaut", name: "cta_defaut_titre", widget: "string", required: false }
+              - { label: "CTA · texte", name: "cta_texte", widget: "text", required: false }
+              - { label: "CTA · bouton", name: "cta_bouton", widget: "string", required: false }
+          - label: "Page liste des références"
+            name: "references_index"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Stat · projets", name: "stat_projets", widget: "string", required: false }
+              - { label: "Stat · secteurs", name: "stat_secteurs", widget: "string", required: false }
+              - { label: "Stat · valeur depuis", name: "stat_depuis_valeur", widget: "string", required: false }
+              - { label: "Stat · libellé depuis", name: "stat_depuis", widget: "string", required: false }
+              - { label: "Placeholder recherche", name: "recherche_placeholder", widget: "string", required: false }
+              - { label: "Facette Type", name: "facette_type", widget: "string", required: false }
+              - { label: "Facette Secteurs", name: "facette_secteurs", widget: "string", required: false }
+              - { label: "Facette Technologies", name: "facette_technologies", widget: "string", required: false }
+              - { label: "Mot compteur", name: "compteur", widget: "string", required: false }
+              - { label: "Bouton réinitialiser", name: "reset", widget: "string", required: false }
+              - { label: "Message vide", name: "vide", widget: "text", required: false }
+              - { label: "Bouton réinitialiser (vide)", name: "vide_reset", widget: "string", required: false }
+          - label: "Bloc devis (mutualisé)"
+            name: "devis"
+            widget: "object"
+            collapsed: true
+            hint: "Bloc « Demander un devis » réutilisé sur la page Formations, les pages catégories et les fiches formation."
+            fields:
+              - { label: "Titre", name: "titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Sous-titre", name: "sous", widget: "text", required: false }
+              - label: "Arguments"
+                name: "arguments"
+                widget: "list"
+                field: { label: "Argument", name: "item", widget: "string", required: false }
+              - { label: "Libellé nom", name: "label_nom", widget: "string", required: false }
+              - { label: "Placeholder nom", name: "ph_nom", widget: "string", required: false }
+              - { label: "Libellé email", name: "label_email", widget: "string", required: false }
+              - { label: "Placeholder email", name: "ph_email", widget: "string", required: false }
+              - { label: "Libellé besoin", name: "label_besoin", widget: "string", required: false }
+              - { label: "Placeholder besoin", name: "ph_besoin", widget: "text", required: false }
+              - { label: "Bouton", name: "bouton", widget: "string", required: false }
+              - { label: "Réassurance", name: "reassurance", widget: "string", required: false }

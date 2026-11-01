@@ -1,0 +1,57 @@
+  # -----------------------------------------------------------------------
+  # 5) CLIENTS & SOLUTIONS  (pages sous /secteurs/ : profils clients et produits 4SH)
+  # -----------------------------------------------------------------------
+  - name: "pages_secteurs"
+    label: "Clients & Solutions"
+    label_singular: "Page"
+    folder: "src/content/pages-secteurs"
+    preview_path: "secteurs/{{slug}}/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{titre}} ({{categorie}})"
+    sortable_fields: ["categorie", "ordre", "titre"]
+    fields:
+      - { label: "Titre", name: "titre", widget: "string", required: false }
+      - { label: "Catégorie", name: "categorie", widget: "select", options: ["Client", "Solution"], required: false }
+      - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", required: true }
+      - { label: "Accroche", name: "chapo", widget: "text", required: false }
+      - { label: "Logo produit", name: "logo", widget: "image", required: false, choose_url: true }
+      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int" }
+      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
+      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
+      - { label: "Libellé du bouton", name: "cta_label", widget: "string", required: false }
+      - { label: "Lien du bouton", name: "cta_url", widget: "string", required: false }
+      - { label: "Titre du bandeau final", name: "cta_titre", widget: "string", required: false }
+      - { label: "Texte du bandeau final", name: "cta_texte", widget: "text", required: false }
+      - label: "Chiffres clés"
+        name: "chiffres"
+        widget: "list"
+        summary: "{{fields.valeur}} · {{fields.texte}}"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Chiffre", name: "chiffre", widget: "string", required: false }
+          - { label: "Libellé", name: "label", widget: "string", required: false }
+      - label: "Références clients"
+        name: "references"
+        widget: "relation"
+        required: false
+        multiple: true
+        collection: "references"
+        value_field: "{{slug}}"
+        search_fields: ["titre", "client"]
+        display_fields: ["titre"]
+        hint: "Sélectionnez les fiches références à afficher (recherche par nom)."
+      - label: "Questions fréquentes"
+        name: "faq"
+        widget: "list"
+        summary: "{{fields.question}}"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string", required: false }
+          - { label: "Réponse", name: "reponse", widget: "text", required: false }
+      - { label: "Contenu", name: "body", widget: "markdown", required: false }

@@ -1,9 +1,15 @@
 module.exports = function (eleventyConfig) {
+  // Extensions : chaque fichier de eleventy/ exporte function (eleventyConfig) {...}
+  // (filtres et réglages propres à une page pilote, chargés automatiquement).
+  const dossierExt = require("path").join(__dirname, "eleventy");
+  if (require("fs").existsSync(dossierExt)) {
+    require("fs").readdirSync(dossierExt).filter((f) => f.endsWith(".js")).sort()
+      .forEach((f) => require(require("path").join(dossierExt, f))(eleventyConfig));
+  }
   // Fichiers copiés tels quels vers le site généré
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "admin": "admin" });
   // Back-office (preuve de concept) : configuration Decap et gabarits d'aperçu partagés Sveltia / Decap
-  eleventyConfig.addPassthroughCopy({ "admin-decap": "admin-decap" });
   eleventyConfig.addPassthroughCopy({ "admin-shared": "admin-shared" });
   eleventyConfig.addPassthroughCopy({ "src/uploads": "uploads" });
   // Redirections 301 des anciennes URLs (.html) vers la refonte : lu par Netlify à la racine du site.

@@ -1,0 +1,40 @@
+  # -----------------------------------------------------------------------
+  # 10) PAGES (ENGLISH)  -  version anglaise du site (pilote i18n, URL /en/)
+  #     Réutilise les mêmes définitions de champs que les pages FR (ancres YAML).
+  #     Les libellés de champs restent en français, mais les VALEURS se saisissent
+  #     en anglais. Le corps éditorial est à traduire ici.
+  # -----------------------------------------------------------------------
+  - name: "pages_en"
+    label: "🇬🇧 Pages (English)"
+    files:
+      - name: "en_page_formations"
+        label: "Training page (EN) - /en/training/"
+        file: "src/_data/en/page_formations.json"
+        preview_path: "en/training/"
+        fields: *f_page_formations
+      - name: "en_page_technologies"
+        label: "Technical expertise page (EN) - /en/tech-expertise/"
+        file: "src/_data/en/page_technologies.json"
+        preview_path: "en/tech-expertise/"
+        fields: *f_page_technologies
+      - name: "en_notre_entreprise"
+        label: "Company page (EN) - /en/company/"
+        file: "src/_data/en/notre_entreprise.json"
+        preview_path: "en/company/"
+        fields: *f_notre_entreprise
+      - name: "en_site"
+        label: "Site settings (EN) - footer, contact, form"
+        file: "src/_data/en/site.json"
+        fields: *f_site
+      - name: "en_navigation"
+        label: "Menu (EN)"
+        file: "src/_data/en/navigation.json"
+        fields: *f_navigation
+      - name: "en_seo"
+        label: "SEO (EN)"
+        file: "src/_data/en/seo.json"
+        fields: *f_seo
+      - name: "en_libelles"
+        label: "Shared labels (EN)"
+        file: "src/_data/en/libelles.json"
+        fields: *f_libelles

@@ -1,3 +1,4 @@
+# FICHIER GÉNÉRÉ par scripts/assembler-config.js à partir de admin/config/ : ne pas modifier à la main.
 # =========================================================================
 #  Configuration du CMS git (Sveltia CMS, successeur de Decap CMS)
 #  Preuve de concept back-office (branche poc/back-office) :
@@ -896,6 +897,7 @@ collections:
                       - { label: "Destination (adresse ou #ancre)", name: lien, widget: string, required: false, default: /notre-entreprise/, i18n: true }
                     i18n: true
             i18n: true
+
   # -----------------------------------------------------------------------
   # 6 bis) TÉMOIGNAGES  (contenu partagé, relié depuis les projets de l'accueil)
   #    Un fichier JSON par témoignage et par langue : src/_data/temoignages/<langue>/<slug>.json
@@ -1951,6 +1953,7 @@ collections:
               - { label: "Politique d'accessibilité · libellé", name: "accessibilite_label", widget: "string", required: false }
               - { label: "Politique d'accessibilité · lien", name: "accessibilite_url", widget: "string", required: false }
               - { label: "Lien", name: "url", widget: "string", required: false }
+
   - name: "seo"
     label: "SEO & indexation"
     files:

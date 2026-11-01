@@ -45,7 +45,7 @@
       plan:   { pas: 0, max: 0, duree: 1050 },       // tracé 300 -> 900, losange 1 050
       trace:  { pas: 0, max: 0, duree: 1050 }
     };
-    var EXCLUS = 'header, footer, .deroulant, .modale, dialog, template, [hidden], .menu';
+    var EXCLUS = 'header, footer, .deroulant, .modale, dialog, template, [hidden], .menu, .hero-form'; // hero Learning : texte jamais animé en entrée
     var CLASSES = ['mv-e', 'mv-glisse', 'mv-monte', 'mv-bloc', 'mv-plan', 'mv-trace', 'mv-vu'];
 
     var genres = Object.keys(SELECTEURS);

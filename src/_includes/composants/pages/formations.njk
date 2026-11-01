@@ -31,14 +31,15 @@
           <a class="btn btn-primary" href="{{ p.hero_cta_principal_url or '#catalogue' }}">{{ p.hero_cta_principal_label }}</a>
           <a class="btn btn-ghost" href="{{ p.hero_cta_secondaire_url or '#contact' }}">{{ p.hero_cta_secondaire_label }}</a>
         </div>
+        <div class="chips">{% for chip in p.hero_chips %}<span>{{ chip }}</span>{% endfor %}</div>
       </div>
-      <div class="visuel-form">
-        <img src="https://www.4sh.fr/assets/img/svg/illu-learning.svg" alt="4SH Learning, formations en informatique">
-        <div class="chips" style="justify-content:center">{% for chip in p.hero_chips %}<span>{{ chip }}</span>{% endfor %}</div>
-      </div>
+      {# Animation « Le savoir se structure » : l'état final est écrit ici, le script le rejoue une fois #}
+      <script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){document.documentElement.classList.add('ls-attente');setTimeout(function(){document.documentElement.classList.remove('ls-attente')},2500)}</script>
+      {% learningScene p.hero_etapes %}
     </div>
   </div>
 </div>
+<script src="/assets/learning-scene.js" defer></script>
 
 <!-- POURQUOI CHOISIR 4SH LEARNING -->
 <section style="padding:80px 0 0">

@@ -8,6 +8,13 @@ module.exports = function (eleventyConfig) {
 
   // Filtre "accent" : le rédacteur écrit *mot* dans le CMS, le site affiche <em class="accent">mot</em>.
   // Objectif : plus aucune balise HTML à taper à la main dans les champs de titre.
+  // Shortcode "learningScene" : hero de /formations/ (4SH Learning). Écrit l'état final de
+  // l'animation en SVG statique, avec le même modèle que le script du navigateur.
+  eleventyConfig.addShortcode("learningScene", (noms) => {
+    delete require.cache[require.resolve("./src/assets/learning-scene.js")];
+    return require("./src/assets/learning-scene.js").balisage(noms);
+  });
+
   eleventyConfig.addFilter("accent", (s) =>
     s == null ? "" : String(s).replace(/\*([^*\n]+)\*/g, '<em class="accent">$1</em>')
   );

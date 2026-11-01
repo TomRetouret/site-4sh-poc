@@ -14,6 +14,11 @@
     "Présentiel & distanciel",
     "Certifié Qualiopi"
   ],
+  "hero_etapes": [
+    "Comprendre",
+    "Pratiquer",
+    "Maîtriser"
+  ],
   "catalogue_titre": "Catalogue de *formations*",
   "catalogue_sous": "Cherchez une technologie ou choisissez une catégorie.",
   "agenda_titre": "Nos prochaines *sessions*",

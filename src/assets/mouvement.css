@@ -199,3 +199,33 @@ html.mv .mv-plan.mv-voyage > path:last-child{transition:none;opacity:1}
 @media (max-width:767px){.hero-4d{display:none}}
 @media (prefers-reduced-motion:reduce){.hero-4d li{transition:none}.hs-canvas{display:none}}
 @media print{.hs-canvas,.hero-4d{display:none}}
+
+/* ---------- 9. Hero 4SH Learning : « Le savoir se structure » (learning-scene.js) ---------- */
+.hero-form .hero-grille{display:grid!important;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)!important;gap:56px;align-items:center;max-width:none}
+.learning-scene{position:relative;width:100%}
+.learning-scene .ls-bureau,.learning-scene .ls-mobile{position:relative}
+.learning-scene .ls-bureau{aspect-ratio:620/460}
+.learning-scene .ls-mobile{display:none;aspect-ratio:358/150}
+.learning-scene svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ls-noms{list-style:none;margin:0;padding:0;position:absolute;inset:0;pointer-events:none}
+.ls-noms li{position:absolute;white-space:nowrap;font-family:var(--titre);font-weight:700;font-size:13px;line-height:1;letter-spacing:.08em;text-transform:uppercase;
+  color:#6A717B;opacity:0;transition:opacity 250ms var(--mv-courbe),color 200ms var(--mv-courbe)}
+.ls-noms li.ls-vu{opacity:1}
+.ls-noms li.ls-fait{color:var(--learning-texte)}
+/* en attendant le script : la scène est vide (le texte, lui, est déjà là) */
+html.ls-attente .learning-scene svg > *,html.ls-attente .ls-noms li{opacity:0!important}
+/* survol : le palier visé met son objet en avant */
+.ls-bureau g[data-p]{transition:opacity var(--mv-survol) var(--mv-courbe)}
+.ls-bureau[data-vise="0"] g[data-p]:not([data-p="0"]),
+.ls-bureau[data-vise="1"] g[data-p]:not([data-p="1"]),
+.ls-bureau[data-vise="2"] g[data-p]:not([data-p="2"]){opacity:.25}
+.ls-bureau[data-vise="0"] .ls-noms li:not(:nth-child(1)),
+.ls-bureau[data-vise="1"] .ls-noms li:not(:nth-child(2)),
+.ls-bureau[data-vise="2"] .ls-noms li:not(:nth-child(3)){color:#6A717B}
+@media (max-width:960px){.hero-form .hero-grille{grid-template-columns:1fr!important;gap:32px}.learning-scene{max-width:620px}}
+@media (max-width:767px){
+  .learning-scene .ls-bureau{display:none}
+  .learning-scene .ls-mobile{display:block}
+  .ls-noms li{font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){.ls-noms li{transition:none}}

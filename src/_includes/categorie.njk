@@ -12,19 +12,18 @@ permalink: "/formations/{{ page.fileSlug }}/"
     <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <a href="/formations/">Formations</a> › {{ nom }}</nav>
     <div class="hero-grille">
       <div>
-        <span class="eyebrow">4SH Learning</span>
+        <span class="eyebrow eyebrow-offre"><span class="barre" aria-hidden="true"></span>4SH Learning</span>
         <h1>{{ (h1 or ('Formations ' + nom)) | accent | safe }}</h1>
         {% if intro %}<p class="chapo">{{ intro }}</p>{% endif %}
-        {% if site.documents.catalogue_url %}<p style="font-size:14.5px"><a href="{{ site.documents.catalogue_url }}" target="_blank" rel="noopener">{{ site.documents.catalogue_label }}</a></p>{% endif %}
+        {% if site.documents.catalogue_url %}<p style="font-size:14.5px;margin:0 0 24px"><a href="{{ site.documents.catalogue_url }}" target="_blank" rel="noopener">{{ site.documents.catalogue_label }}</a></p>{% endif %}
         <div class="hero-cta">
           <a class="btn btn-learning" href="#catalogue">{{ libelles.catalogue.cta_voir }}</a>
-          <a class="btn btn-ghost" href="#contact" style="border-color:var(--violet);color:var(--violet)">{{ libelles.catalogue.cta_devis }}</a>
+          <a class="btn btn-ghost" href="#contact">{{ libelles.catalogue.cta_devis }}</a>
         </div>
+        <div class="chips">{% for chip in libelles.catalogue.chips %}<span>{{ chip }}</span>{% endfor %}</div>
       </div>
-      <div class="visuel-form">
-        <img src="https://www.4sh.fr/assets/img/svg/illu-learning.svg" alt="4SH Learning, formations {{ nom }}">
-        <div class="chips" style="justify-content:center">{% for chip in libelles.catalogue.chips %}<span>{{ chip }}</span>{% endfor %}</div>
-      </div>
+      {# Même scène que l'accueil Learning, en état final statique : seul l'accueil /formations/ est animé #}
+      {% learningScene page_formations.hero_etapes %}
     </div>
   </div>
 </div>

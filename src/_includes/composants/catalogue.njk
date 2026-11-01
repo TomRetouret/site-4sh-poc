@@ -35,11 +35,22 @@
 </div>
 <script>
 (function () {
-  var r = document.querySelector('.catalogue-repere'), b = document.querySelector('.catalogue-barre');
-  if (!r || !b || !('IntersectionObserver' in window)) return;
-  new IntersectionObserver(function (e) {
-    b.classList.toggle('colle', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
-  }, { rootMargin: '-' + Math.round((document.querySelector('header') || { offsetHeight: 80 }).offsetHeight + 1) + 'px 0px 0px 0px' }).observe(r);
+  // Version compacte dès que le bandeau est collé sous l'en-tête. Calcul à chaque défilement
+  // (et non par IntersectionObserver, qui ne se déclenche pas lors d'un saut d'ancre ou d'un
+  // défilement rapide d'un bout à l'autre de la page).
+  var r = document.querySelector('.catalogue-repere'), b = document.querySelector('.catalogue-barre'), h = document.querySelector('header');
+  if (!r || !b) return;
+  var attente = false;
+  function maj() {
+    attente = false;
+    var haut = h ? h.getBoundingClientRect().height : 0;
+    b.classList.toggle('colle', r.getBoundingClientRect().top < haut + 1);
+  }
+  function demande() { if (!attente) { attente = true; requestAnimationFrame(maj); } }
+  addEventListener('scroll', demande, { passive: true });
+  addEventListener('resize', demande);
+  addEventListener('load', maj);
+  maj();
 })();
 </script>
 

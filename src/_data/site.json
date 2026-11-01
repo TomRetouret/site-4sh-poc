@@ -121,6 +121,10 @@
           "url": "/formations/"
         },
         {
+          "label": "IA",
+          "url": "/formations/ia/"
+        },
+        {
           "label": "Develop",
           "url": "/formations/develop/"
         },

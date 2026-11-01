@@ -25,6 +25,7 @@
 <div class="ligne-outils">
   <nav class="onglets" aria-label="Catégories de formation">
     <a class="onglet{% if not categorie %} actif{% endif %}" href="/formations/"{% if not categorie %} aria-current="page"{% endif %}>{{ libelles.catalogue.onglet_toutes }}</a>
+    <a class="onglet{% if categorie == 'IA' %} actif{% endif %}" href="/formations/ia/"{% if categorie == 'IA' %} aria-current="page"{% endif %}>IA</a>
     <a class="onglet{% if categorie == 'Develop' %} actif{% endif %}" href="/formations/develop/"{% if categorie == 'Develop' %} aria-current="page"{% endif %}>Develop</a>
     <a class="onglet{% if categorie == 'Design' %} actif{% endif %}" href="/formations/design/"{% if categorie == 'Design' %} aria-current="page"{% endif %}>Design</a>
     <a class="onglet{% if categorie == 'DevOps' %} actif{% endif %}" href="/formations/devops/"{% if categorie == 'DevOps' %} aria-current="page"{% endif %}>DevOps</a>

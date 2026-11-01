@@ -91,12 +91,16 @@
 
 # --- Formations : catalogue et catégories -------------------------------
 /learning/formations/                                /formations/                               301!
+/learning/formations/ia/                             /formations/ia/                            301!
 /learning/formations/develop/                        /formations/develop/                       301!
 /learning/formations/design/                         /formations/design/                        301!
 /learning/formations/devops/                         /formations/devops/                        301!
 /learning/formations/outils/                         /formations/outils/                        301!
 
 # --- Formations : fiches (la catégorie disparait de l'URL) ---------------
+/learning/formations/ia/developpeur-augmente-ia-fondamental.html    /formations/developpeur-augmente-ia-fondamental/    301!
+/learning/formations/ia/product-owner-augmente-ia-fondamental.html   /formations/product-owner-augmente-ia-fondamental/   301!
+/learning/formations/ia/integrer-ia-applications-fondamental.html    /formations/integrer-ia-applications-fondamental/    301!
 /learning/formations/develop/angular-fondamental.html      /formations/angular-fondamental/     301!
 /learning/formations/develop/angular-avance.html           /formations/angular-avance/          301!
 /learning/formations/develop/signaux-angular-avance.html   /formations/signaux-angular/         301!

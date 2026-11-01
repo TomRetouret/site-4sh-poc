@@ -1,9 +1,14 @@
   # -----------------------------------------------------------------------
   # 5) CLIENTS & SOLUTIONS  (pages sous /secteurs/ : profils clients et produits 4SH)
+  # Gabarit fixe : src/_includes/secteur-libre.njk. Champs dans l'ordre de la page :
+  # En-tête, Sections (mises en page automatiquement par le filtre « blocs »),
+  # Chiffres clés, Références, Questions fréquentes, puis Référencement.
+  # Spécification : docs/back-office/schema-collections.md
   # -----------------------------------------------------------------------
   - name: "pages_secteurs"
     label: "Clients & Solutions"
     label_singular: "Page"
+    description: "Pages profils de clients (éditeurs, franchises...) et produits 4SH (4Desk, Hubit...), sous /secteurs/. Le menu du site se règle dans Navigation."
     folder: "src/content/pages-secteurs"
     preview_path: "secteurs/{{slug}}/"
     create: true
@@ -13,28 +18,61 @@
     summary: "{{titre}} ({{categorie}})"
     sortable_fields: ["categorie", "ordre", "titre"]
     fields:
-      - { label: "Titre", name: "titre", widget: "string", required: false }
-      - { label: "Catégorie", name: "categorie", widget: "select", options: ["Client", "Solution"], required: false }
-      - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", required: true }
-      - { label: "Accroche", name: "chapo", widget: "text", required: false }
-      - { label: "Logo produit", name: "logo", widget: "image", required: false, choose_url: true }
-      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int" }
-      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
-      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
-      - { label: "Libellé du bouton", name: "cta_label", widget: "string", required: false }
-      - { label: "Lien du bouton", name: "cta_url", widget: "string", required: false }
-      - { label: "Titre du bandeau final", name: "cta_titre", widget: "string", required: false }
-      - { label: "Texte du bandeau final", name: "cta_texte", widget: "text", required: false }
+      # --- En-tête ---
+      - { label: "En-tête · Nom de la page", name: "titre", widget: "string", required: true, maxlength: 50, hint: "50 caractères maximum. Ex. : Franchise, ou 4Desk. Affiché dans le fil d'Ariane, en texte alternatif du logo et dans le titre de l'onglet par défaut." }
+      - label: "En-tête · Type de page"
+        name: "categorie"
+        widget: "select"
+        required: true
+        options:
+          - { label: "Client (profil de client, ex. : Franchise)", value: "Client" }
+          - { label: "Solution (produit 4SH, ex. : 4Desk)", value: "Solution" }
+        hint: "Affiché en surtitre au-dessus du grand titre."
+      - { label: "En-tête · Grand titre", name: "h1", widget: "string", required: true, maxlength: 110, hint: "70 caractères conseillés, 110 maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge." }
+      - { label: "En-tête · Accroche", name: "chapo", widget: "text", required: true, hint: "Une à trois phrases sous le grand titre, 60 mots maximum. Mettez des mots entre **doubles astérisques** pour les afficher en gras. Sert aussi de description pour Google si celle du Référencement est vide." }
+      - { label: "En-tête · Logo du produit", name: "logo", widget: "image", required: false, choose_url: true, hint: "Pages Solution seulement, facultatif. SVG ou PNG sur fond transparent, 400 px de large minimum. Le texte alternatif est le nom de la page (automatique)." }
+      - { label: "En-tête · Texte du bouton", name: "cta_label", widget: "string", required: false, maxlength: 30, hint: "30 caractères maximum. Ex. : Demandez une démo. Vide : « Contactez-nous »." }
+      - { label: "En-tête · Destination du bouton", name: "cta_url", widget: "string", required: false, hint: "Adresse d'une page du site (/contact/) ou d'une ancre (/#contact). Vide : formulaire de contact de la page d'accueil (/#contact)." }
+
+      # --- Sections de la page ---
+      - label: "Sections de la page"
+        name: "sections"
+        widget: "list"
+        required: false
+        label_singular: "Section"
+        summary: "{{fields.titre}}"
+        collapsed: true
+        hint: "Le contenu principal, entre l'en-tête et les chiffres clés. Une section par grand thème, dans l'ordre de la page : fonds alternés blanc et crème, la première section en étapes passe sur fond sombre. Une dernière section courte avec un seul lien devient un bandeau d'appel à l'action centré."
+        fields:
+          - { label: "Titre de la section", name: "titre", widget: "string", required: false, maxlength: 110, hint: "Intertitre de la section, 110 caractères maximum. Laisser vide seulement pour un texte d'introduction placé en tout premier. Le titre décide aussi de la mise en page des sous-parties : « approche », « méthode », « démarche », « comment »... donne des étapes numérotées (3 sous-parties minimum) ; « pourquoi », « choisir », « atout », « engagement »... donne des atouts sur deux colonnes ; sinon des cartes." }
+          - { label: "Texte d'introduction", name: "texte", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Paragraphes sous le titre. Sans sous-partie, une liste de 3 puces ou plus devient une grille de cartes (« **Titre** : texte » donne une carte titrée). Un paragraphe qui ne contient qu'un lien devient un bouton. Un lien vers une fiche (/references/...) affiche l'aperçu de cette référence à côté du texte." }
+          - label: "Sous-parties"
+            name: "sous_parties"
+            widget: "list"
+            required: false
+            label_singular: "Sous-partie"
+            summary: "{{fields.titre}}"
+            collapsed: true
+            hint: "Facultatif. 2 à 8 sous-parties de même nature, affichées en cartes, atouts ou étapes selon le titre de la section. Au-delà de 3 cartes, elles défilent en carrousel."
+            fields:
+              - { label: "Titre de la sous-partie", name: "titre", widget: "string", required: true, maxlength: 110, hint: "110 caractères maximum. Ex. : Centralisation de toutes les demandes dans une interface unique" }
+              - { label: "Texte", name: "texte", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "60 mots environ (au-delà de 420 caractères en moyenne, les cartes passent en atouts). Listes à puces possibles." }
+
+      # --- Chiffres clés ---
       - label: "Chiffres clés"
         name: "chiffres"
         widget: "list"
-        summary: "{{fields.valeur}} · {{fields.texte}}"
-        collapsed: true
         required: false
+        max: 4
+        label_singular: "Chiffre"
+        summary: "{{fields.chiffre}} {{fields.label}}"
+        collapsed: true
+        hint: "Facultatif. 2 à 4 chiffres, en bandeau sous les sections."
         fields:
-          - { label: "Chiffre", name: "chiffre", widget: "string", required: false }
-          - { label: "Libellé", name: "label", widget: "string", required: false }
+          - { label: "Chiffre", name: "chiffre", widget: "string", required: true, maxlength: 12, hint: "12 caractères maximum. Ex. : +400. Mettez-le entre *astérisques* pour l'afficher en rouge." }
+          - { label: "Libellé", name: "label", widget: "string", required: true, maxlength: 60, hint: "60 caractères maximum. Ex. : journaux utilisateurs" }
+
+      # --- Références clients ---
       - label: "Références clients"
         name: "references"
         widget: "relation"
@@ -44,14 +82,36 @@
         value_field: "{{slug}}"
         search_fields: ["titre", "client"]
         display_fields: ["titre"]
-        hint: "Sélectionnez les fiches références à afficher (recherche par nom)."
+        hint: "Fiches de la collection Références, dans l'ordre d'affichage (recherche par nom). Une référence déjà présentée dans une section n'est pas répétée ici. Vide : la section n'est pas affichée."
+
+      # --- Questions fréquentes ---
       - label: "Questions fréquentes"
         name: "faq"
         widget: "list"
+        required: false
+        label_singular: "Question"
         summary: "{{fields.question}}"
         collapsed: true
-        required: false
+        hint: "Facultatif. 3 à 6 questions, affichées en accordéon avant le formulaire de contact."
         fields:
-          - { label: "Question", name: "question", widget: "string", required: false }
-          - { label: "Réponse", name: "reponse", widget: "text", required: false }
-      - { label: "Contenu", name: "body", widget: "markdown", required: false }
+          - { label: "Question", name: "question", widget: "string", required: true, maxlength: 120, hint: "120 caractères maximum." }
+          - { label: "Réponse", name: "reponse", widget: "text", required: true, hint: "80 mots maximum, sans mise en forme." }
+
+      # --- Back-office ---
+      - { label: "Rang dans la liste du back-office", name: "ordre", widget: "number", required: false, value_type: "int", min: 1, hint: "Nombre entier, classe les pages dans cette liste uniquement. L'ordre du menu du site se règle dans Navigation." }
+
+      # --- Référencement ---
+      - label: "Référencement"
+        name: "referencement"
+        widget: "object"
+        required: false
+        collapsed: true
+        summary: "{{fields.meta_title}}"
+        hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
+        fields:
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « <nom de la page> - 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : l'accroche est reprise." }
+          - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
+
+      # --- Suivi interne (non affiché) ---
+      - { label: "Suivi interne · Page d'origine (non affichée)", name: "source_url", widget: "string", required: false, hint: "Pour mémoire : adresse de la page de l'ancien site dont le contenu est repris." }

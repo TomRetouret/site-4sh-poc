@@ -1,9 +1,11 @@
 ---
-nom: "Develop"
-meta_title: "Formation en développement full stack avec l'agence 4SH"
-meta_description: "Formez-vous au développement full stack avec 4SH ! Découvrez notre accompagnement pour la montée en compétences de vos collaborateurs en développement."
-h1: "Nos formations de développeur full stack"
-intro: "Formez-vous au développement full stack avec 4SH ! Découvrez nos services d'accompagnement pour le développement des compétences de vos collaborateurs, grâce à l'expertise de nos professionnels. Parcourez notre catalogue de formations et n'hésitez pas à nous contacter pour des besoins spécifiques !"
+nom: Develop
+h1: Nos formations de développeur full stack
+intro: Formez-vous au développement full stack avec 4SH ! Découvrez nos services d'accompagnement pour le développement des compétences de vos collaborateurs, grâce à l'expertise de nos professionnels. Parcourez notre catalogue de formations et n'hésitez pas à nous contacter pour des besoins spécifiques !
+referencement:
+  meta_title: Formation en développement full stack avec l'agence 4SH
+  meta_description: Formez-vous au développement full stack avec 4SH ! Découvrez notre accompagnement pour la montée en compétences de vos collaborateurs en développement.
+  indexation: true
 ---
 ## Se former au développement full stack avec 4SH
 

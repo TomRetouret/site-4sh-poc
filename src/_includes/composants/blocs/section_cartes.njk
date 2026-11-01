@@ -1,0 +1,8 @@
+{# Bloc « section_cartes » : Section en cartes (pages de prestation).
+   Spécification : docs/back-office/schema-prestations.md
+   Grille de cartes, en carrousel à partir de 4 cartes. Fond et numéro : ctx (calculés). #}
+{% import "composants/blocs/_section.njk" as s %}
+{% macro bloc(b, ctx, serre) %}
+{% set cartes = b.cartes or [] %}
+{% call s.section(b, ctx) %}{% if cartes.length %}{% call s.grille(cartes.length, b.titre, "") %}{% for e in cartes %}{{ s.carte(e, "sect-defi") }}{% endfor %}{% endcall %}{% endif %}{% endcall %}
+{% endmacro %}

@@ -1,23 +1,27 @@
 {
-  "meta_title": "Vision Tech, le podcast de 4SH",
-  "meta_description": "Vision Tech, le podcast de 4SH : parcours, métiers et coulisses du développement logiciel. Disponible sur Spotify, Deezer et Apple Podcasts.",
-  "eyebrow": "Podcast",
-  "h1": "*Vision Tech*, le podcast de 4SH",
-  "chapo": "Parcours, métiers et coulisses du développement logiciel. Notre podcast Vision Tech est disponible sur les plateformes d'écoute.",
-  "plateformes": [
-    {
-      "label": "Spotify",
-      "url": "https://open.spotify.com/show/6Q2FTeWDhNrOBYLHGoRRp8"
-    },
-    {
-      "label": "Deezer",
-      "url": "https://www.deezer.com/fr/show/1001319511"
-    },
-    {
-      "label": "Apple Podcasts",
-      "url": "https://podcasts.apple.com/fr/podcast/vision-tech/id1775412242"
-    }
-  ],
+  "seo": {
+    "meta_title": "Vision Tech, le podcast de 4SH",
+    "meta_description": "Vision Tech, le podcast de 4SH : parcours, métiers et coulisses du développement logiciel. Disponible sur Spotify, Deezer et Apple Podcasts."
+  },
+  "hero": {
+    "surtitre": "Podcast",
+    "titre": "*Vision Tech*, le podcast de 4SH",
+    "chapo": "Parcours, métiers et coulisses du développement logiciel. Notre podcast Vision Tech est disponible sur les plateformes d'écoute.",
+    "plateformes": [
+      {
+        "label": "Spotify",
+        "url": "https://open.spotify.com/show/6Q2FTeWDhNrOBYLHGoRRp8"
+      },
+      {
+        "label": "Deezer",
+        "url": "https://www.deezer.com/fr/show/1001319511"
+      },
+      {
+        "label": "Apple Podcasts",
+        "url": "https://podcasts.apple.com/fr/podcast/vision-tech/id1775412242"
+      }
+    ]
+  },
   "episodes": [
     {
       "date": "30 juin 2025",

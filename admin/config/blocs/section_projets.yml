@@ -1,0 +1,99 @@
+# Bloc « section_projets » : Section de projets (pages de prestation)
+# Composant du site : src/_includes/composants/blocs/section_projets.njk (morceaux communs : _section.njk)
+# Spécification : docs/back-office/schema-prestations.md ; mode d'emploi : docs/back-office/schema-blocs.md
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+#
+# Le fond (blanc, gris clair une section sur deux, sombre pour la première section en étapes)
+# et le petit numéro de section sont calculés par le site : aucun réglage ici.
+
+profils:
+  prestation: 50
+
+type:
+  label: Section de projets
+  name: section_projets
+  widget: object
+  summary: 'Projets : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Titre de la section
+      name: titre
+      widget: string
+      required: false
+      hint: 'Laissez vide uniquement pour le texte d''introduction en haut de page.'
+    - label: Texte d'introduction
+      name: texte
+      widget: markdown
+      required: false
+      hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, italique, liens et listes. Laissez une ligne vide entre deux paragraphes.
+      buttons: [bold, italic, link, bulleted-list, numbered-list]
+      editor_components: []
+      modes: [rich_text]
+    - label: Projets
+      name: projets
+      widget: list
+      required: true
+      label_singular: Projet
+      collapsed: true
+      min: 1
+      summary: '{{fields.titre}}'
+      hint: Une carte par projet. Jusqu'à 3 projets côte à côte, à partir de 4 un carrousel. Les fiches reliées ne sont pas répétées dans les références de bas de page.
+      fields:
+        - label: Titre du projet
+          name: titre
+          widget: string
+          required: true
+          hint: 'Client et secteur, par exemple : IZIVIA, électromobilité.'
+        - label: Texte
+          name: texte
+          widget: markdown
+          required: false
+          hint: Ce que nous avons fait. Gras, italique et liens.
+          buttons: [bold, italic, link, bulleted-list, numbered-list]
+          editor_components: []
+          modes: [rich_text]
+        - label: Fiche référence reliée
+          name: reference
+          widget: relation
+          required: false
+          collection: references
+          value_field: '{{slug}}'
+          search_fields: [titre, client]
+          display_fields: [titre]
+          hint: Facultatif. Fournit le visuel, le logo et le secteur de la carte, et la destination par défaut du lien.
+        - label: Texte du lien
+          name: lien_texte
+          widget: string
+          required: false
+          hint: 'Facultatif. Par défaut : Voir la référence.'
+        - label: Destination du lien
+          name: lien
+          widget: string
+          required: false
+          hint: Facultatif. Par défaut, la fiche référence reliée. Une adresse complète (https://...) s'ouvre dans un nouvel onglet. Sans fiche ni destination, pas de lien.
+    - label: Boutons
+      name: boutons
+      widget: list
+      required: false
+      label_singular: Bouton
+      collapsed: true
+      max: 3
+      summary: '{{fields.texte}} ({{fields.lien}})'
+      hint: Facultatif. Affichés en fin de section ; le premier est rouge, les suivants en contour.
+      fields:
+        - label: Texte du bouton
+          name: texte
+          widget: string
+          required: true
+          hint: 'Verbe d''action, 30 caractères maximum. Par exemple : Parlons de votre projet.'
+        - label: Destination
+          name: lien
+          widget: string
+          required: true
+          default: /contact/
+          hint: Adresse d'une page du site (/contact/) ou adresse complète (https://...), ouverte alors dans un nouvel onglet.

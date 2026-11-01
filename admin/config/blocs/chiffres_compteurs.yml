@@ -1,0 +1,54 @@
+# Bloc « chiffres_compteurs » : Chiffres animés
+# Composant du site : src/_includes/composants/blocs/chiffres_compteurs.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc ») ; pages : docs/back-office/schema-pages.md.
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+profils:
+  institutionnel: 20
+  institutionnel_bilingue: 20
+  demo: 25
+
+type:
+  label: Chiffres animés
+  name: chiffres_compteurs
+  widget: object
+  summary: 'Chiffres animés{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Chiffres
+      name: chiffres
+      widget: list
+      required: true
+      label_singular: Chiffre
+      collapsed: true
+      min: 2
+      max: 6
+      summary: '{{fields.valeur}} {{fields.texte}}'
+      hint: De 2 à 6 chiffres, sur un bandeau sombre. Au-delà de 4, le bandeau défile sur téléphone.
+      fields:
+        - label: Chiffre
+          name: valeur
+          widget: string
+          required: true
+          hint: 'Tel qu''affiché, par exemple 2007, 96% ou 58. 6 caractères maximum.'
+        - label: Libellé
+          name: texte
+          widget: string
+          required: true
+          hint: Ce que mesure le chiffre. 70 caractères maximum.
+        - label: Note (petit texte)
+          name: note
+          widget: string
+          required: false
+          hint: 'Source ou précision, en petit sous le libellé. Par exemple : statistiques 4PM.'
+        - label: Animer le chiffre
+          name: animer
+          widget: boolean
+          required: false
+          default: true
+          hint: Le chiffre défile de 0 à sa valeur quand il apparaît à l'écran. Sans effet si le chiffre ne commence pas par un nombre entier (par exemple 4,7).

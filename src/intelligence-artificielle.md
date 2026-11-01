@@ -1,34 +1,39 @@
 ---
 layout: page-libre.njk
 permalink: /intelligence-artificielle/
-titre: "Intelligence artificielle"
-eyebrow: "Intelligence artificielle"
-h1: "Intelligence artificielle sur mesure en entreprise : l'IA intégrée à vos *logiciels métier*"
-chapo: "L'intelligence artificielle ne crée de la valeur en entreprise que branchée sur un usage réel, vos données et vos processus. Notre métier, c'est le développement IA sur mesure : nous concevons et intégrons l'IA là où elle fait gagner du temps ou fiabilise une décision, directement dans vos applications et vos logiciels métier."
-meta_title: "Intelligence artificielle sur mesure pour entreprise | 4SH"
-meta_description: "4SH intègre l'intelligence artificielle dans vos logiciels métier : LLM, NLP, analyse prédictive, agents IA. IA sur mesure, souveraine et conforme RGPD."
-requete_cible: "intelligence artificielle entreprise"
-source_confluence: "https://4sh-toolkit.atlassian.net/wiki/spaces/4SHWEB/pages/2654765132"
-source_url: "https://www.4sh.fr/ia.html"
-cta_label: "Parlons de votre projet IA"
-cta_url: "/contact/"
-contact_final: true
-references: ["beclm-ia"]
+titre: Intelligence artificielle
+referencement:
+  meta_title: Intelligence artificielle sur mesure pour entreprise | 4SH
+  meta_description: "4SH intègre l'intelligence artificielle dans vos logiciels métier : LLM, NLP, analyse prédictive, agents IA. IA sur mesure, souveraine et conforme RGPD."
+hero:
+  surtitre: Intelligence artificielle
+  titre: "Intelligence artificielle sur mesure en entreprise : l'IA intégrée à vos *logiciels métier*"
+  chapo: "L'intelligence artificielle ne crée de la valeur en entreprise que branchée sur un usage réel, vos données et vos processus. Notre métier, c'est le développement IA sur mesure : nous concevons et intégrons l'IA là où elle fait gagner du temps ou fiabilise une décision, directement dans vos applications et vos logiciels métier."
+  bouton:
+    texte: Parlons de votre projet IA
+    lien: /contact/
+references:
+  - beclm-ia
 faq:
-  - question: "Comment intégrer l'IA dans une entreprise ?"
+  - question: Comment intégrer l'IA dans une entreprise ?
     reponse: "En partant d'un cas d'usage précis, pas d'une ambition générale. Les étapes sont toujours les mêmes : identifier une tâche coûteuse et mesurable, fixer l'objectif de gain, vérifier que les données nécessaires existent et sont exploitables, développer un premier périmètre, mesurer. Puis étendre si les gains sont au rendez-vous. Une démarche de développement IA sur mesure se juge sur ce premier processus, pas sur une feuille de route à trois ans."
-  - question: "Quels sont les cas d'usage concrets de l'IA en entreprise ?"
-    reponse: "Extraction et analyse de documents, scoring et détection d'anomalies, recherche sémantique dans une base documentaire, assistants métier, recommandation, analyse prédictive, automatisation des tâches répétitives. Chez BeCLM, l'IA traite des dossiers de conformité et justifie ses conclusions."
-  - question: "Combien coûte un projet d'intégration d'IA sur mesure ?"
-    reponse: "Le budget dépend du cas d'usage, de l'état de vos données et du niveau d'intégration au système d'information. Un premier outil éprouvé en conditions réelles coûte nettement moins cher qu'un programme IA global, et il a l'avantage de dire assez vite si la suite vaut l'investissement."
-  - question: "Faut-il utiliser une IA générative (LLM) ou un modèle spécialisé ?"
+  - question: Quels sont les cas d'usage concrets de l'IA en entreprise ?
+    reponse: Extraction et analyse de documents, scoring et détection d'anomalies, recherche sémantique dans une base documentaire, assistants métier, recommandation, analyse prédictive, automatisation des tâches répétitives. Chez BeCLM, l'IA traite des dossiers de conformité et justifie ses conclusions.
+  - question: Combien coûte un projet d'intégration d'IA sur mesure ?
+    reponse: Le budget dépend du cas d'usage, de l'état de vos données et du niveau d'intégration au système d'information. Un premier outil éprouvé en conditions réelles coûte nettement moins cher qu'un programme IA global, et il a l'avantage de dire assez vite si la suite vaut l'investissement.
+  - question: Faut-il utiliser une IA générative (LLM) ou un modèle spécialisé ?
     reponse: "Ça dépend de la tâche. Un LLM est pertinent sur le langage : lire, résumer, extraire, justifier, dialoguer. Un modèle spécialisé, souvent plus léger et plus prévisible, reste supérieur sur la classification, le scoring et la détection d'anomalies. Les deux cohabitent très bien dans une même application."
-  - question: "Mes données sont-elles en sécurité avec une IA ?"
-    reponse: "Elles le sont si l'architecture est conçue pour ça. Nous définissons dès le cadrage ce qui sort de votre système d'information, vers qui, et sous quelles garanties contractuelles. Les données sensibles peuvent rester dans votre environnement, avec des traitements locaux quand le cas d'usage l'exige."
-  - question: "L'IA est-elle conforme au RGPD et à l'IA Act ?"
+  - question: Mes données sont-elles en sécurité avec une IA ?
+    reponse: Elles le sont si l'architecture est conçue pour ça. Nous définissons dès le cadrage ce qui sort de votre système d'information, vers qui, et sous quelles garanties contractuelles. Les données sensibles peuvent rester dans votre environnement, avec des traitements locaux quand le cas d'usage l'exige.
+  - question: L'IA est-elle conforme au RGPD et à l'IA Act ?
     reponse: "Une IA n'est ni conforme ni non conforme en soi : c'est le traitement que vous en faites qui l'est. Nous documentons les finalités, les données utilisées et les décisions automatisées, et nous prévoyons la supervision humaine que le règlement européen attend sur les usages à risque."
-  - question: "Combien de temps pour un premier cas d'usage IA en production ?"
-    reponse: "Nous privilégions des approches progressives avec un MVP rapide pour valider la valeur avant un déploiement complet. La disponibilité et la qualité de vos données pèsent souvent plus lourd que le développement lui-même."
+  - question: Combien de temps pour un premier cas d'usage IA en production ?
+    reponse: Nous privilégions des approches progressives avec un MVP rapide pour valider la valeur avant un déploiement complet. La disponibilité et la qualité de vos données pèsent souvent plus lourd que le développement lui-même.
+contact_final: true
+suivi:
+  requete_cible: intelligence artificielle entreprise
+  source_confluence: https://4sh-toolkit.atlassian.net/wiki/spaces/4SHWEB/pages/2654765132
+  source_url: https://www.4sh.fr/ia.html
 ---
 
 Pas un modèle de plus posé à côté du système d'information : une IA développée, hébergée et maintenue par l'équipe qui connaît déjà votre produit.

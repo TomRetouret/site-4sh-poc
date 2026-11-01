@@ -1,0 +1,115 @@
+# Bloc « hero_institutionnel » : Haut de page institutionnelle
+# Composant du site : src/_includes/composants/blocs/hero_institutionnel.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc ») ; pages : docs/back-office/schema-pages.md.
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+# Profils où le bloc est proposé, avec son rang dans le menu « Ajouter un bloc » (10, 20, 30...).
+profils:
+  institutionnel: 10
+  institutionnel_bilingue: 10
+  demo: 15
+
+# Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour les pages bilingues).
+type:
+  label: Haut de page institutionnelle
+  name: hero_institutionnel
+  widget: object
+  summary: 'Haut de page : {{fields.titre_page}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Fil d'Ariane
+      name: fil_ariane
+      widget: list
+      required: false
+      label_singular: Étape
+      hint: 'Petit chemin affiché tout en haut, de l''accueil à la page. La première étape renvoie vers l''accueil. Par exemple : Accueil, L''agence, Notre entreprise. Laissez vide pour ne pas l''afficher.'
+      max: 4
+      field:
+        label: Étape
+        name: etape
+        widget: string
+        required: true
+        hint: 30 caractères maximum.
+    - label: Surtitre
+      name: surtitre
+      widget: string
+      required: false
+      hint: Petit texte au-dessus du grand titre. 30 caractères maximum.
+    - label: Titre de la page (H1)
+      name: titre_page
+      widget: string
+      required: true
+      hint: Le grand titre, lu par Google et les lecteurs d'écran. 70 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+    - label: Chapô
+      name: chapo
+      widget: text
+      required: false
+      hint: Paragraphe d'introduction sous le titre. 45 mots maximum.
+    - label: Bouton principal
+      name: bouton_principal
+      widget: object
+      required: true
+      collapsed: false
+      summary: '{{fields.texte}} ({{fields.lien}})'
+      fields:
+        - label: Texte du bouton
+          name: texte
+          widget: string
+          required: true
+          hint: 30 caractères maximum.
+        - label: 'Destination (adresse ou #ancre)'
+          name: lien
+          widget: string
+          required: true
+          default: '#contact'
+          hint: '#contact descend au formulaire en bas de page. Une adresse commençant par https:// s''ouvre dans un nouvel onglet.'
+    - label: Bouton secondaire
+      name: bouton_secondaire
+      widget: object
+      required: false
+      collapsed: false
+      summary: '{{fields.texte}} ({{fields.lien}})'
+      hint: Laissez le texte vide pour ne pas afficher de second bouton.
+      fields:
+        - label: Texte du bouton
+          name: texte
+          widget: string
+          required: false
+          hint: 30 caractères maximum.
+        - label: 'Destination (adresse ou #ancre)'
+          name: lien
+          widget: string
+          required: false
+          default: '#contact'
+          hint: 'Une #ancre descend à la section qui la porte (par exemple #methode). Une adresse commençant par https:// s''ouvre dans un nouvel onglet.'
+    - label: Étiquettes
+      name: etiquettes
+      widget: list
+      required: false
+      label_singular: Étiquette
+      max: 4
+      hint: Petits mots-clés sous les boutons, 4 au maximum.
+      field:
+        label: Étiquette
+        name: etiquette
+        widget: string
+        required: true
+        hint: 20 caractères maximum.
+    - label: Illustration
+      name: illustration
+      widget: select
+      required: true
+      default: aucune
+      hint: Schéma dessiné à droite du titre (masqué sur téléphone). Ses textes sont écrits dans le gabarit du site, en français.
+      options:
+        - label: Aucune
+          value: aucune
+        - label: 'Notre démarche : de votre idée à la mise en production'
+          value: demarche
+        - label: 'Notre entreprise : nos agences autour de 4SH'
+          value: entreprise

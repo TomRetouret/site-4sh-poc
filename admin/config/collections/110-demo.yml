@@ -177,6 +177,108 @@
                     widget: string
                     required: false
                 hint: Variante expressive uniquement.
+          - label: Haut de page institutionnelle
+            name: hero_institutionnel
+            widget: object
+            summary: 'Haut de page : {{fields.titre_page}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+            fields:
+              - label: Masquer ce bloc (il reste enregistré)
+                name: masquer
+                widget: boolean
+                required: false
+                default: false
+                hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+              - label: Fil d'Ariane
+                name: fil_ariane
+                widget: list
+                required: false
+                label_singular: Étape
+                hint: 'Petit chemin affiché tout en haut, de l''accueil à la page. La première étape renvoie vers l''accueil. Par exemple : Accueil, L''agence, Notre entreprise. Laissez vide pour ne pas l''afficher.'
+                max: 4
+                field:
+                  label: Étape
+                  name: etape
+                  widget: string
+                  required: true
+                  hint: 30 caractères maximum.
+              - label: Surtitre
+                name: surtitre
+                widget: string
+                required: false
+                hint: Petit texte au-dessus du grand titre. 30 caractères maximum.
+              - label: Titre de la page (H1)
+                name: titre_page
+                widget: string
+                required: true
+                hint: Le grand titre, lu par Google et les lecteurs d'écran. 70 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+              - label: Chapô
+                name: chapo
+                widget: text
+                required: false
+                hint: Paragraphe d'introduction sous le titre. 45 mots maximum.
+              - label: Bouton principal
+                name: bouton_principal
+                widget: object
+                required: true
+                collapsed: false
+                summary: '{{fields.texte}} ({{fields.lien}})'
+                fields:
+                  - label: Texte du bouton
+                    name: texte
+                    widget: string
+                    required: true
+                    hint: 30 caractères maximum.
+                  - label: 'Destination (adresse ou #ancre)'
+                    name: lien
+                    widget: string
+                    required: true
+                    default: '#contact'
+                    hint: '#contact descend au formulaire en bas de page. Une adresse commençant par https:// s''ouvre dans un nouvel onglet.'
+              - label: Bouton secondaire
+                name: bouton_secondaire
+                widget: object
+                required: false
+                collapsed: false
+                summary: '{{fields.texte}} ({{fields.lien}})'
+                hint: Laissez le texte vide pour ne pas afficher de second bouton.
+                fields:
+                  - label: Texte du bouton
+                    name: texte
+                    widget: string
+                    required: false
+                    hint: 30 caractères maximum.
+                  - label: 'Destination (adresse ou #ancre)'
+                    name: lien
+                    widget: string
+                    required: false
+                    default: '#contact'
+                    hint: 'Une #ancre descend à la section qui la porte (par exemple #methode). Une adresse commençant par https:// s''ouvre dans un nouvel onglet.'
+              - label: Étiquettes
+                name: etiquettes
+                widget: list
+                required: false
+                label_singular: Étiquette
+                max: 4
+                hint: Petits mots-clés sous les boutons, 4 au maximum.
+                field:
+                  label: Étiquette
+                  name: etiquette
+                  widget: string
+                  required: true
+                  hint: 20 caractères maximum.
+              - label: Illustration
+                name: illustration
+                widget: select
+                required: true
+                default: aucune
+                hint: Schéma dessiné à droite du titre (masqué sur téléphone). Ses textes sont écrits dans le gabarit du site, en français.
+                options:
+                  - label: Aucune
+                    value: aucune
+                  - label: 'Notre démarche : de votre idée à la mise en production'
+                    value: demarche
+                  - label: 'Notre entreprise : nos agences autour de 4SH'
+                    value: entreprise
           - label: Logos clients (Ils nous confient leur métier)
             name: logos_clients
             widget: object
@@ -193,6 +295,49 @@
                 widget: string
                 required: false
                 hint: Laisser vide pour reprendre l'intitulé des réglages du site. Les noms des clients se modifient dans les réglages du site.
+          - label: Chiffres animés
+            name: chiffres_compteurs
+            widget: object
+            summary: Chiffres animés{{fields.masquer | ternary(' (masqué)', '')}}
+            fields:
+              - label: Masquer ce bloc (il reste enregistré)
+                name: masquer
+                widget: boolean
+                required: false
+                default: false
+                hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+              - label: Chiffres
+                name: chiffres
+                widget: list
+                required: true
+                label_singular: Chiffre
+                collapsed: true
+                min: 2
+                max: 6
+                summary: '{{fields.valeur}} {{fields.texte}}'
+                hint: De 2 à 6 chiffres, sur un bandeau sombre. Au-delà de 4, le bandeau défile sur téléphone.
+                fields:
+                  - label: Chiffre
+                    name: valeur
+                    widget: string
+                    required: true
+                    hint: Tel qu'affiché, par exemple 2007, 96% ou 58. 6 caractères maximum.
+                  - label: Libellé
+                    name: texte
+                    widget: string
+                    required: true
+                    hint: Ce que mesure le chiffre. 70 caractères maximum.
+                  - label: Note (petit texte)
+                    name: note
+                    widget: string
+                    required: false
+                    hint: 'Source ou précision, en petit sous le libellé. Par exemple : statistiques 4PM.'
+                  - label: Animer le chiffre
+                    name: animer
+                    widget: boolean
+                    required: false
+                    default: true
+                    hint: Le chiffre défile de 0 à sa valeur quand il apparaît à l'écran. Sans effet si le chiffre ne commence pas par un nombre entier (par exemple 4,7).
           - label: Cartes d'offres (Build, Run, Learning)
             name: cartes_offres
             widget: object
@@ -282,6 +427,71 @@
                         name: lien
                         widget: string
                         required: false
+          - label: Frise de méthode (fond sombre)
+            name: frise_methode
+            widget: object
+            summary: 'Frise de méthode : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+            fields:
+              - label: Masquer ce bloc (il reste enregistré)
+                name: masquer
+                widget: boolean
+                required: false
+                default: false
+                hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+              - label: Ancre de la section
+                name: ancre
+                widget: string
+                required: false
+                pattern:
+                  - ^[a-z0-9-]*$
+                  - Minuscules sans accent, chiffres et tirets uniquement.
+                hint: 'Nom court qui permet à un bouton d''y descendre avec #nom (par exemple methode pour #methode). Facultatif.'
+              - label: Surtitre
+                name: surtitre
+                widget: string
+                required: false
+                hint: Petit texte au-dessus du titre. 30 caractères maximum.
+              - label: Titre
+                name: titre
+                widget: string
+                required: true
+                hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+              - label: Sous-titre
+                name: sous_titre
+                widget: text
+                required: false
+                hint: 50 mots maximum.
+              - label: Étapes
+                name: etapes
+                widget: list
+                required: true
+                label_singular: Étape
+                collapsed: true
+                min: 3
+                max: 6
+                summary: '{{fields.numero}} {{fields.titre}}'
+                hint: De 3 à 6 étapes, affichées dans l'ordre de la liste.
+                fields:
+                  - label: Numéro
+                    name: numero
+                    widget: string
+                    required: true
+                    hint: Affiché en grand, par exemple 1.
+                  - label: Phase
+                    name: phase
+                    widget: string
+                    required: false
+                    hint: Mot court à côté du numéro, par exemple Découvrir.
+                  - label: Titre
+                    name: titre
+                    widget: string
+                    required: true
+                    hint: 40 caractères maximum.
+                  - label: Texte
+                    name: texte
+                    widget: text
+                    required: true
+                    hint: 35 mots maximum.
           - label: Chiffres clés
             name: chiffres_cles
             widget: object
@@ -914,6 +1124,193 @@
                     widget: string
                     required: false
                     hint: 20 mots maximum.
+          - label: Cartes numérotées
+            name: cartes_numerotees
+            widget: object
+            summary: 'Cartes numérotées : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+            fields:
+              - label: Masquer ce bloc (il reste enregistré)
+                name: masquer
+                widget: boolean
+                required: false
+                default: false
+                hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+              - label: Coller au bloc précédent
+                name: sans_marge_haute
+                widget: boolean
+                required: false
+                default: false
+                hint: Supprime l'espace au-dessus du bloc. À cocher quand le bloc précédent a le même fond blanc.
+              - label: Surtitre
+                name: surtitre
+                widget: string
+                required: false
+                hint: Petit texte au-dessus du titre. 30 caractères maximum. En carrousel, il nomme aussi le carrousel pour les lecteurs d'écran.
+              - label: Titre
+                name: titre
+                widget: string
+                required: true
+                hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+              - label: Sous-titre
+                name: sous_titre
+                widget: text
+                required: false
+                hint: 50 mots maximum.
+              - label: Affichage
+                name: affichage
+                widget: select
+                required: true
+                default: grille
+                hint: 'Grille : toutes les cartes visibles. Carrousel : les cartes défilent horizontalement (pratique au-delà de 6 cartes).'
+                options:
+                  - label: Grille
+                    value: grille
+                  - label: Carrousel
+                    value: carrousel
+              - label: Colonnes (grille)
+                name: colonnes
+                widget: select
+                required: true
+                default: auto
+                hint: Nombre de cartes par ligne sur grand écran, en affichage grille. Automatique laisse la mise en page du site décider.
+                options:
+                  - label: Automatique
+                    value: auto
+                  - label: 2 par ligne
+                    value: '2'
+                  - label: 3 par ligne
+                    value: '3'
+                  - label: 4 par ligne
+                    value: '4'
+              - label: Cartes
+                name: cartes
+                widget: list
+                required: true
+                label_singular: Carte
+                collapsed: true
+                min: 2
+                max: 12
+                summary: '{{fields.titre}}'
+                hint: Numérotées automatiquement dans l'ordre de la liste (1, 2, 3...).
+                fields:
+                  - label: Titre
+                    name: titre
+                    widget: string
+                    required: true
+                    hint: 40 caractères maximum.
+                  - label: Texte
+                    name: texte
+                    widget: text
+                    required: true
+                    hint: 35 mots maximum.
+          - label: Cartes de texte
+            name: cartes_texte
+            widget: object
+            summary: 'Cartes de texte : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+            fields:
+              - label: Masquer ce bloc (il reste enregistré)
+                name: masquer
+                widget: boolean
+                required: false
+                default: false
+                hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+              - label: Coller au bloc précédent
+                name: sans_marge_haute
+                widget: boolean
+                required: false
+                default: false
+                hint: Supprime l'espace au-dessus du bloc. À cocher quand le bloc précédent a le même fond.
+              - label: Surtitre
+                name: surtitre
+                widget: string
+                required: false
+                hint: Petit texte au-dessus du titre. 30 caractères maximum.
+              - label: Titre
+                name: titre
+                widget: string
+                required: true
+                hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+              - label: Sous-titre
+                name: sous_titre
+                widget: text
+                required: false
+                hint: 50 mots maximum.
+              - label: Présentation
+                name: presentation
+                widget: select
+                required: true
+                default: encadrees
+                hint: 'Cartes encadrées : petites cartes bordées (valeurs, métiers, agences). Colonnes : cartes plus larges, sur deux ou trois colonnes (offres, dispositifs).'
+                options:
+                  - label: Cartes encadrées
+                    value: encadrees
+                  - label: Colonnes
+                    value: colonnes
+              - label: Fond
+                name: fond
+                widget: select
+                required: true
+                default: blanc
+                hint: Le fond sombre convient aux cartes encadrées ; il met la section en valeur.
+                options:
+                  - label: Blanc
+                    value: blanc
+                  - label: Sombre
+                    value: sombre
+              - label: Colonnes (cartes encadrées)
+                name: colonnes
+                widget: select
+                required: true
+                default: auto
+                hint: Nombre de cartes par ligne sur grand écran. Automatique laisse la mise en page du site décider.
+                options:
+                  - label: Automatique
+                    value: auto
+                  - label: 2 par ligne
+                    value: '2'
+                  - label: 3 par ligne
+                    value: '3'
+                  - label: 4 par ligne
+                    value: '4'
+              - label: Cartes
+                name: cartes
+                widget: list
+                required: true
+                label_singular: Carte
+                collapsed: true
+                min: 1
+                max: 12
+                summary: '{{fields.titre}}'
+                hint: Affichées dans l'ordre de la liste.
+                fields:
+                  - label: Titre
+                    name: titre
+                    widget: string
+                    required: true
+                    hint: 40 caractères maximum.
+                  - label: Texte
+                    name: texte
+                    widget: text
+                    required: false
+                    hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Laissez vide pour une carte avec son seul titre.
+                  - label: Lien
+                    name: lien
+                    widget: object
+                    required: false
+                    collapsed: true
+                    summary: '{{fields.texte}} ({{fields.lien}})'
+                    hint: Petit lien sous le texte, suivi d'une flèche. Laissez vide pour aucun lien.
+                    fields:
+                      - label: Texte du lien
+                        name: texte
+                        widget: string
+                        required: false
+                        hint: 'Par exemple : Voir sur la carte. La flèche est ajoutée automatiquement.'
+                      - label: Destination
+                        name: lien
+                        widget: string
+                        required: false
+                        hint: Une adresse commençant par https:// s'ouvre dans un nouvel onglet.
           - label: Projet vedette
             name: projet_vedette
             widget: object
@@ -1343,4 +1740,60 @@
                   - nom
                   - fonction
                 hint: Choisissez de 1 à 12 personnes de la collection Équipe, dans l'ordre d'affichage. Photo, nom, fonction et présentation se modifient dans la fiche de la personne.
+          - label: Encart avec bouton
+            name: encart_bouton
+            widget: object
+            summary: 'Encart : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+            fields:
+              - label: Masquer ce bloc (il reste enregistré)
+                name: masquer
+                widget: boolean
+                required: false
+                default: false
+                hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+              - label: Coller au bloc précédent
+                name: sans_marge_haute
+                widget: boolean
+                required: false
+                default: false
+                hint: Supprime l'espace au-dessus du bloc. À cocher quand le bloc précédent a le même fond blanc.
+              - label: Présentation
+                name: presentation
+                widget: select
+                required: true
+                default: encadre
+                hint: 'Encadré : centré sur fond crème, bouton plein (recrutement). Libre : aligné à gauche, sans fond, bouton contour (document à consulter).'
+                options:
+                  - label: Encadré centré
+                    value: encadre
+                  - label: Libre, aligné à gauche
+                    value: libre
+              - label: Titre
+                name: titre
+                widget: string
+                required: true
+                hint: 60 caractères maximum.
+              - label: Texte
+                name: texte
+                widget: text
+                required: false
+                hint: 40 mots maximum.
+              - label: Bouton
+                name: bouton
+                widget: object
+                required: true
+                collapsed: false
+                summary: '{{fields.texte}} ({{fields.lien}})'
+                fields:
+                  - label: Texte du bouton
+                    name: texte
+                    widget: string
+                    required: true
+                    hint: 40 caractères maximum.
+                  - label: 'Destination (adresse ou #ancre)'
+                    name: lien
+                    widget: string
+                    required: true
+                    default: '#contact'
+                    hint: Une adresse commençant par https:// s'ouvre dans un nouvel onglet.
         # <<< BLOCS

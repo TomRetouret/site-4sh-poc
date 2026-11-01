@@ -1,0 +1,8 @@
+{# Bloc « section_etapes » : Section en étapes (pages de prestation).
+   Spécification : docs/back-office/schema-prestations.md
+   La première section en étapes qui n'ouvre pas la page passe sur fond sombre (temps fort, calculé). #}
+{% import "composants/blocs/_section.njk" as s %}
+{% macro bloc(b, ctx, serre) %}
+{% set etapes = b.etapes or [] %}
+{% call s.section(b, ctx) %}{% if etapes.length %}<div class="sect-etapes">{% for e in etapes %}<div class="sect-etape"><div><h3>{{ e.titre | mdTitre | safe }}</h3>{{ e.texte | mdSection | safe }}</div></div>{% endfor %}</div>{% endif %}{% endcall %}
+{% endmacro %}

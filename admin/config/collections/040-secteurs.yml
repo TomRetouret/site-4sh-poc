@@ -1,9 +1,14 @@
   # -----------------------------------------------------------------------
-  # 4) SECTEURS  (pages métier : Logistique, Électromobilité, Assurance...)
+  # 4) SECTEURS  (pages métier /secteurs/logistique/, electromobilite, assurance)
+  # Gabarit fixe : src/_includes/secteur.njk. Champs dans l'ordre de la page (préfixe
+  # du libellé = section) : En-tête, Défis, Opportunités, Pourquoi 4SH, Notre approche,
+  # Références, puis Référencement. Surtitres et titres des sections : collection
+  # Libellés (communs aux trois secteurs). Spécification : docs/back-office/schema-collections.md
   # -----------------------------------------------------------------------
   - name: "secteurs"
     label: "Secteurs"
     label_singular: "Secteur"
+    description: "Pages métier. Les titres des sections (Les défis de votre métier, Pourquoi 4SH ?...) se règlent dans Libellés. Le menu du site se règle dans Navigation."
     folder: "src/content/secteurs"
     preview_path: "secteurs/{{slug}}/"
     create: true
@@ -13,43 +18,66 @@
     summary: "{{titre}}"
     sortable_fields: ["ordre", "titre"]
     fields:
-      - { label: "Nom du secteur", name: "titre", widget: "string", required: false }
-      - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", required: true }
-      - { label: "Accroche", name: "accroche", widget: "text", required: false }
-      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int" }
-      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
-      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
-      - { label: "Introduction des défis", name: "defis_intro", widget: "text", required: false }
-      - label: "Défis du métier"
+      # --- En-tête ---
+      - { label: "En-tête · Nom du secteur", name: "titre", widget: "string", required: true, maxlength: 40, hint: "40 caractères maximum. Ex. : Logistique. Affiché dans le fil d'Ariane, le surtitre « Secteur · <nom> » et le titre de l'onglet par défaut." }
+      - { label: "En-tête · Grand titre", name: "h1", widget: "string", required: true, maxlength: 70, hint: "70 caractères maximum. Ex. : Maîtrisez chaque étape de votre Supply Chain. Mettez un mot entre *astérisques* pour l'afficher en rouge." }
+      - { label: "En-tête · Accroche", name: "accroche", widget: "text", required: true, hint: "Une ou deux phrases sous le grand titre, 40 mots maximum. Sert aussi de description pour Google si celle du Référencement est vide." }
+
+      # --- Défis ---
+      - { label: "Défis · Phrase d'introduction", name: "defis_intro", widget: "text", required: false, hint: "Facultatif. Une phrase avant la liste. Ex. : La logistique fait face à des défis structurants :" }
+      - label: "Défis · Liste des défis"
         name: "defis"
         widget: "list"
         required: false
-        field: { label: "Défi", name: "defi", widget: "string", hint: "Mots-clés en gras via <strong>...</strong>.", required: false }
-      - { label: "Introduction des opportunités", name: "opportunites_intro", widget: "text", required: false }
-      - label: "Opportunités"
+        label_singular: "Défi"
+        hint: "3 à 6 défis, une phrase chacun, affichés en cartes. Mettez des mots entre **doubles astérisques** pour les afficher en gras. Liste vide : la section n'est pas affichée."
+        field: { label: "Défi", name: "defi", widget: "string", required: true, hint: "160 caractères maximum." }
+
+      # --- Opportunités ---
+      - { label: "Opportunités · Phrase d'introduction", name: "opportunites_intro", widget: "text", required: false, hint: "Facultatif. Une ou deux phrases avant la liste." }
+      - label: "Opportunités · Liste des opportunités"
         name: "opportunites"
         widget: "list"
         required: false
-        field: { label: "Opportunité", name: "opportunite", widget: "string", required: false }
-      - label: "Pourquoi 4SH (atouts)"
+        label_singular: "Opportunité"
+        hint: "3 à 6 lignes, affichées en liste. **Gras** possible. Liste vide : la section n'est pas affichée."
+        field: { label: "Opportunité", name: "opportunite", widget: "string", required: true, hint: "120 caractères maximum." }
+
+      # --- Pourquoi 4SH ---
+      - label: "Pourquoi 4SH · Atouts"
         name: "pourquoi"
         widget: "list"
         required: false
+        label_singular: "Atout"
+        summary: "{{fields.titre}}"
+        collapsed: true
+        hint: "2 à 4 atouts, sur deux colonnes. Liste vide : la section n'est pas affichée."
         fields:
-          - { label: "Titre", name: "titre", widget: "string", required: false }
+          - { label: "Titre de l'atout", name: "titre", widget: "string", required: true, maxlength: 80, hint: "80 caractères maximum. Ex. : Une connaissance de votre métier" }
           - label: "Paragraphes"
             name: "paras"
             widget: "list"
-            field: { label: "Paragraphe", name: "para", widget: "text", required: false }
-      - { label: "Introduction de l'approche", name: "comment_intro", widget: "text", required: false }
-      - label: "Étapes (Comment ?)"
+            required: true
+            min: 1
+            label_singular: "Paragraphe"
+            hint: "1 à 3 paragraphes de 60 mots maximum. **Gras** possible."
+            field: { label: "Paragraphe", name: "para", widget: "text", required: true }
+
+      # --- Notre approche ---
+      - { label: "Notre approche · Phrase d'introduction", name: "comment_intro", widget: "text", required: false, hint: "Facultatif. Ex. : Nous adoptons une approche agile pour garantir la réussite de votre projet :" }
+      - label: "Notre approche · Étapes"
         name: "etapes"
         widget: "list"
         required: false
+        label_singular: "Étape"
+        summary: "{{fields.titre}}"
+        collapsed: true
+        hint: "4 à 6 étapes, dans l'ordre, sur fond sombre. Liste vide : la section n'est pas affichée."
         fields:
-          - { label: "Titre", name: "titre", widget: "string", required: false }
-          - { label: "Texte", name: "texte", widget: "text", required: false }
+          - { label: "Titre de l'étape", name: "titre", widget: "string", required: true, maxlength: 60, hint: "60 caractères maximum. Ex. : Analyse et cadrage" }
+          - { label: "Texte", name: "texte", widget: "text", required: true, hint: "Une phrase, 20 mots maximum, sans mise en forme." }
+
+      # --- Références clients ---
       - label: "Références clients"
         name: "references"
         widget: "relation"
@@ -59,4 +87,20 @@
         value_field: "{{slug}}"
         search_fields: ["titre", "client"]
         display_fields: ["titre"]
-        hint: "Sélectionnez les fiches références à afficher (recherche par nom)."
+        hint: "Fiches de la collection Références, dans l'ordre d'affichage (recherche par nom). Vide : la section n'est pas affichée."
+
+      # --- Back-office ---
+      - { label: "Rang dans la liste du back-office", name: "ordre", widget: "number", required: false, value_type: "int", min: 1, hint: "Nombre entier, classe les fiches dans cette liste uniquement. L'ordre du menu du site se règle dans Navigation." }
+
+      # --- Référencement ---
+      - label: "Référencement"
+        name: "referencement"
+        widget: "object"
+        required: false
+        collapsed: true
+        summary: "{{fields.meta_title}}"
+        hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
+        fields:
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « <nom du secteur> - Logiciel métier sur mesure | 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : l'accroche est reprise." }
+          - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }

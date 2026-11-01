@@ -1,0 +1,90 @@
+# Bloc « cartes_numerotees » : Cartes numérotées
+# Composant du site : src/_includes/composants/blocs/cartes_numerotees.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc ») ; pages : docs/back-office/schema-pages.md.
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+profils:
+  institutionnel: 40
+  institutionnel_bilingue: 40
+  demo: 145
+
+type:
+  label: Cartes numérotées
+  name: cartes_numerotees
+  widget: object
+  summary: 'Cartes numérotées : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Coller au bloc précédent
+      name: sans_marge_haute
+      widget: boolean
+      required: false
+      default: false
+      hint: Supprime l'espace au-dessus du bloc. À cocher quand le bloc précédent a le même fond blanc.
+    - label: Surtitre
+      name: surtitre
+      widget: string
+      required: false
+      hint: Petit texte au-dessus du titre. 30 caractères maximum. En carrousel, il nomme aussi le carrousel pour les lecteurs d'écran.
+    - label: Titre
+      name: titre
+      widget: string
+      required: true
+      hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+    - label: Sous-titre
+      name: sous_titre
+      widget: text
+      required: false
+      hint: 50 mots maximum.
+    - label: Affichage
+      name: affichage
+      widget: select
+      required: true
+      default: grille
+      hint: 'Grille : toutes les cartes visibles. Carrousel : les cartes défilent horizontalement (pratique au-delà de 6 cartes).'
+      options:
+        - label: Grille
+          value: grille
+        - label: Carrousel
+          value: carrousel
+    - label: Colonnes (grille)
+      name: colonnes
+      widget: select
+      required: true
+      default: auto
+      hint: Nombre de cartes par ligne sur grand écran, en affichage grille. Automatique laisse la mise en page du site décider.
+      options:
+        - label: Automatique
+          value: auto
+        - label: 2 par ligne
+          value: '2'
+        - label: 3 par ligne
+          value: '3'
+        - label: 4 par ligne
+          value: '4'
+    - label: Cartes
+      name: cartes
+      widget: list
+      required: true
+      label_singular: Carte
+      collapsed: true
+      min: 2
+      max: 12
+      summary: '{{fields.titre}}'
+      hint: Numérotées automatiquement dans l'ordre de la liste (1, 2, 3...).
+      fields:
+        - label: Titre
+          name: titre
+          widget: string
+          required: true
+          hint: 40 caractères maximum.
+        - label: Texte
+          name: texte
+          widget: text
+          required: true
+          hint: 35 mots maximum.

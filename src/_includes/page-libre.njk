@@ -2,14 +2,19 @@
 layout: base.njk
 extraCss: /assets/secteurs.css
 ---
-{% from "composants/page.njk" import hero, bandeau_chiffres %}
+{#- Page libre (aujourd'hui : Intelligence artificielle). Front matter : titre, hero { surtitre, titre, chapo,
+    bouton }, references, faq, contact_final, referencement ; corps Markdown réparti en sections par le filtre blocs.
+    Spécification : docs/back-office/schema-pages.md -#}
+{% from "composants/page.njk" import hero as hero_page, bandeau_chiffres %}
 {% from "composants/sections.njk" import faq_section, bloc_references %}
 {% from "composants/formulaires.njk" import contact_final as bloc_contact %}
-{{ hero(titre,
-        h1=h1,
-        eyebrow=eyebrow,
-        chapo=chapo,
-        ctas=[{ "label": cta_label, "url": cta_url or "/contact/" }] if cta_label else []) }}
+{%- set h = hero or {} -%}
+{%- set bouton = h.bouton or {} -%}
+{{ hero_page(titre,
+        h1=h.titre,
+        eyebrow=h.surtitre,
+        chapo=h.chapo,
+        ctas=[{ "label": bouton.texte, "url": bouton.lien or "/contact/" }] if bouton.texte else []) }}
 
 {{ bandeau_chiffres(chiffres) }}
 

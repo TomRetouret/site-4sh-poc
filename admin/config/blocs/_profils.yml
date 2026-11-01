@@ -18,3 +18,12 @@ demo:
 offre:
   description: Pages d'offre (Logiciel métier, puis les autres pages d'offre).
   i18n: false
+prestation:
+  description: Pages de prestation (src/content/prestations/), sections à fond alterné.
+  i18n: false
+institutionnel:
+  description: Pages institutionnelles en français seul (Notre démarche).
+  i18n: false
+institutionnel_bilingue:
+  description: Pages institutionnelles en français et en anglais (Notre entreprise / Company).
+  i18n: true

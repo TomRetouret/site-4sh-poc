@@ -2,7 +2,8 @@
   CORPS DU CATALOGUE DE FORMATIONS
   Partage par /formations/ et /en/training/.
 
-  p        : le bundle page_formations
+  p        : le bundle page_formations (groupes seo, hero, pourquoi, catalogue,
+             agenda, qualiopi, temoignages : docs/back-office/schema-pages.md)
   site     : le bundle site correspondant
   libelles : le bundle libelles correspondant
   groupes  : collections.formationsParGroupe
@@ -21,21 +22,21 @@
     <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Formations en informatique</nav>
     <div class="hero-grille">
       <div>
-        <span class="eyebrow eyebrow-offre"><span class="barre" aria-hidden="true"></span>{{ p.eyebrow }}</span>
-        <h1>{{ p.h1 | accent | safe }}</h1>
-        <p class="chapo">{{ p.chapo }}</p>
+        <span class="eyebrow eyebrow-offre"><span class="barre" aria-hidden="true"></span>{{ p.hero.surtitre }}</span>
+        <h1>{{ p.hero.titre | accent | safe }}</h1>
+        <p class="chapo">{{ p.hero.chapo }}</p>
         <div class="meta-form">
-          <span class="note-etoiles">{{ p.note }} <small>· {{ p.note_detail }}</small></span>
+          <span class="note-etoiles">{{ p.hero.note }} <small>· {{ p.hero.note_detail }}</small></span>
         </div>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="{{ p.hero_cta_principal_url or '#catalogue' }}">{{ p.hero_cta_principal_label }}</a>
-          <a class="btn btn-ghost" href="{{ p.hero_cta_secondaire_url or '#contact' }}">{{ p.hero_cta_secondaire_label }}</a>
+          <a class="btn btn-primary" href="{{ p.hero.bouton_principal.lien or '#catalogue' }}">{{ p.hero.bouton_principal.texte }}</a>
+          <a class="btn btn-ghost" href="{{ p.hero.bouton_secondaire.lien or '#contact' }}">{{ p.hero.bouton_secondaire.texte }}</a>
         </div>
-        <div class="chips">{% for chip in p.hero_chips %}<span>{{ chip }}</span>{% endfor %}</div>
+        <div class="chips">{% for chip in p.hero.etiquettes %}<span>{{ chip }}</span>{% endfor %}</div>
       </div>
       {# Animation « Le savoir se structure » : l'état final est écrit ici, le script le rejoue une fois #}
       <script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){document.documentElement.classList.add('ls-attente');setTimeout(function(){document.documentElement.classList.remove('ls-attente')},2500)}</script>
-      {% learningScene p.hero_etapes %}
+      {% learningScene p.hero.etapes %}
     </div>
   </div>
 </div>
@@ -44,18 +45,18 @@
 <!-- POURQUOI CHOISIR 4SH LEARNING -->
 <section style="padding:80px 0 0">
   <div class="container">
-    <h2 class="sec-titre">{{ p.pourquoi_titre | accent | safe }}</h2>
+    <h2 class="sec-titre">{{ p.pourquoi.titre | accent | safe }}</h2>
     {% set pourquoi_pictos = [
       '<path d="M3 3H9V9H3ZM15 3H21V9H15ZM3 15H9V21H3ZM15 15H21V21H15Z"/><path d="M9 6H15M6 9V15M18 9V15M9 18H15"/>',
       '<path d="M6 3H12V9H6Z"/><path d="M3 21V14H15V21"/><path d="M16 5H20V9H16Z"/><path d="M18 13H21V21"/>',
       '<path d="M12 20h9M3 20h2M12 4v16M4 4h16v10H4z"/>'
     ] %}
     <div class="portes" style="margin-top:44px">
-      {% for p in p.pourquoi %}
+      {% for c in p.pourquoi.cartes %}
       <div class="porte">
         <div class="pictos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">{{ pourquoi_pictos[loop.index0] | accent | safe }}</svg></div>
-        <h3>{{ p.titre }}</h3>
-        <p>{{ p.texte }}</p>
+        <h3>{{ c.titre }}</h3>
+        <p>{{ c.texte }}</p>
       </div>
       {% endfor %}
     </div>
@@ -65,21 +66,21 @@
 <!-- CATALOGUE + RECHERCHE + FILTRES -->
 <section id="catalogue" style="padding-top:80px">
   <div class="container">
-    <h2 class="sec-titre">{{ p.catalogue_titre | accent | safe }}</h2>
-    <p class="sec-sous">{{ p.catalogue_sous }}</p>
+    <h2 class="sec-titre">{{ p.catalogue.titre | accent | safe }}</h2>
+    <p class="sec-sous">{{ p.catalogue.sous_titre }}</p>
     {% if docs.catalogue_url %}<p class="sec-sous" style="margin-top:-6px"><a href="{{ docs.catalogue_url }}" target="_blank" rel="noopener">{{ docs.catalogue_label }}</a></p>{% endif %}
-    {{ catalogue(groupes, libelles, null, p.catalogue_titre | replace("*", "")) }}
+    {{ catalogue(groupes, libelles, null, p.catalogue.titre | replace("*", "")) }}
   </div>
 </section>
 
 <!-- AGENDA / PROCHAINES SESSIONS -->
 <section id="agenda" style="padding-top:0">
   <div class="container">
-    <h2 class="sec-titre">{{ p.agenda_titre | accent | safe }}</h2>
-    <p class="sec-sous">{{ p.agenda_sous }}</p>
+    <h2 class="sec-titre">{{ p.agenda.titre | accent | safe }}</h2>
+    <p class="sec-sous">{{ p.agenda.sous_titre }}</p>
 
     <div class="agenda">
-      {% for groupe in p.agenda %}
+      {% for groupe in p.agenda.mois %}
       <p class="agenda-mois">{{ groupe.mois }}</p>
       {% for s in groupe.sessions %}
       <div class="session-ligne">
@@ -96,7 +97,7 @@
       {% endfor %}
       {% endfor %}
     </div>
-    <div class="centre" style="margin-top:34px"><a class="btn btn-ghost" href="{{ p.agenda_cta_url or '#contact' }}" style="border-color:var(--violet);color:var(--violet)">{{ p.agenda_cta_label }}</a></div>
+    <div class="centre" style="margin-top:34px"><a class="btn btn-ghost" href="{{ p.agenda.bouton.lien or '#contact' }}" style="border-color:var(--violet);color:var(--violet)">{{ p.agenda.bouton.texte }}</a></div>
   </div>
 </section>
 
@@ -106,8 +107,8 @@
     <div class="qualiopi">
       <div class="logo-q"><img src="/uploads/ancien-site/assets/img/png/logo-qualiopi.png" alt="Logo Qualiopi"></div>
       <div>
-        <h2>{{ p.qualiopi_titre | accent | safe }}</h2>
-        <p>{{ p.qualiopi_texte }}</p>
+        <h2>{{ p.qualiopi.titre | accent | safe }}</h2>
+        <p>{{ p.qualiopi.texte }}</p>
         {% if docs %}
         <p style="margin-top:10px">
           {% if docs.qualiopi_url %}<a href="{{ docs.qualiopi_url }}" target="_blank" rel="noopener">{{ docs.qualiopi_label }}</a>{% endif %}
@@ -123,9 +124,9 @@
 <!-- TÉMOIGNAGES -->
 <section style="padding-top:0">
   <div class="container">
-    <h2 class="sec-titre">{{ p.temoignages_titre | accent | safe }}</h2>
+    <h2 class="sec-titre">{{ p.temoignages.titre | accent | safe }}</h2>
     <div class="temoins">
-      {% for t in p.temoignages %}
+      {% for t in p.temoignages.liste %}
       <div class="temoin">
         <blockquote>{{ t.citation }}</blockquote>
         <div class="qui"><span class="pastille">{{ t.initiales }}</span><div><b>{{ t.nom }}</b><span>{{ t.detail }}</span></div></div>

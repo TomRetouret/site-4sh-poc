@@ -460,7 +460,7 @@ function BlocLogosClients({ b, i, ctx, serre }) {
   const p = 'blocs.' + i;
   // Les noms viennent des réglages du site (contenu partagé, hors de cette page).
   const essais = ctx.langue === 'en'
-    ? [['pages', 'en_site'], ['reglages', 'site_en'], ['reglages_en', 'site']]
+    ? [['pages_en', 'en_site'], ['pages', 'en_site'], ['reglages', 'site_en']]
     : [['pages', 'site'], ['reglages', 'site'], ['reglages_fr', 'site']];
   return chargeur({
     cleCache: 'site:' + ctx.langue,

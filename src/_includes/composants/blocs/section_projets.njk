@@ -1,0 +1,22 @@
+{# Bloc « section_projets » : Section de projets (pages de prestation).
+   Spécification : docs/back-office/schema-prestations.md
+   Une carte par projet : texte saisi ; visuel, logo et secteur lus dans la fiche référence reliée
+   (ctx.references). Les fiches reliées ne sont pas répétées dans les références de bas de page. #}
+{% import "composants/blocs/_section.njk" as s %}
+{% macro bloc(b, ctx, serre) %}
+{% set projets = b.projets or [] %}
+{% call s.section(b, ctx) %}{% if projets.length %}{% call s.grille(projets.length, b.titre, "refs") %}{% for p in projets %}
+{%- set ref = (ctx.references | ficheReference(p.reference)) if ctx else null %}
+{%- set d = ref.data if ref else {} %}
+{%- set lien = p.lien or (ref.url if ref else "") %}
+<div class="sect-ref-carte"><div class="sect-ref-visuel{% if not d.image %} ref-visuel--vide{% endif %}">
+{%- if d.image %}<img src="{{ d.image | echappeSection | safe }}" alt="{{ d.titre | echappeSection | safe }}" loading="lazy" decoding="async">
+{%- elif d.client %}<span class="ref-vide-nom">{{ d.client | echappeSection | safe }}</span>
+{%- else %}<span class="ref-vide-nom">{{ p.titre | nomProjetSection | safe }}</span>{% endif %}
+{%- if d.logo %}<div class="ref-cartouche"><img src="{{ d.logo | echappeSection | safe }}" alt="{{ d.client | echappeSection | safe }}" loading="lazy" decoding="async"></div>
+{%- elif d.client %}<div class="ref-cartouche"><span class="ref-cartouche-txt">{{ d.client | echappeSection | safe }}</span></div>{% endif -%}
+</div><div class="sect-ref-corps"><span class="sect-ref-label">{% if d.secteurs and d.secteurs.length %}{{ d.secteurs[0] | echappeSection | safe }}{% else %}Projet{% endif %}</span><h3>{{ p.titre | mdTitre | safe }}</h3><div class="sect-ref-texte">{{ p.texte | mdSection | safe }}</div>
+{%- if lien %}<a class="socle-lien" href="{{ lien | echappeSection | safe }}"{% if lien | adresseExterne %} target="_blank" rel="noopener"{% endif %}>{{ (p.lien_texte or "Voir la référence") | echappeSection | safe }} &rarr;</a>{% endif -%}
+</div></div>
+{%- endfor %}{% endcall %}{% endif %}{% endcall %}
+{% endmacro %}

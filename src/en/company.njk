@@ -2,8 +2,10 @@
 layout: base.njk
 permalink: /en/company/
 altUrl: /notre-entreprise/
+contenusKey: notre_entreprise
 extraCss: /assets/logiciel-metier.css
-dataKey: notre_entreprise
 ---
+{#- Page « Company », version anglaise de Notre entreprise, rendue à partir des blocs
+    (src/_data/contenus/en/notre_entreprise.json). Titre et description : groupe Référencement du même fichier. -#}
 {% from "composants/pages/entreprise.njk" import corps %}
-{{ corps(en.notre_entreprise, en.site, page.url) }}
+{{ corps(contenus.en.notre_entreprise, en.site, page.url, blog, temoignages.en, collections.references, appels_action) }}

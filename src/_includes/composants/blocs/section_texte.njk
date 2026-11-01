@@ -1,0 +1,14 @@
+{# Bloc « section_texte » : Section de texte (pages de prestation).
+   Spécification : docs/back-office/schema-prestations.md
+   disposition : empile (titre au-dessus), colonnes (titre à gauche, texte à droite),
+                 bandeau (appel centré, sans numéro). Fond et numéro : ctx (calculés). #}
+{% import "composants/blocs/_section.njk" as s %}
+{% macro bloc(b, ctx, serre) %}
+{% if b.disposition == "colonnes" %}
+<section class="sect-bloc{{ ctx.fond if ctx }}"><div class="container"><div class="sect-duo"><div>{{ s.numero(ctx) }}{{ s.titre(b) }}</div><div>{{ s.chapeau(b) }}{{ s.boutons(b.boutons) }}</div></div></div></section>
+{% elif b.disposition == "bandeau" %}
+<section class="sect-bloc{{ ctx.fond if ctx }} sect-bloc--cta"><div class="container">{{ s.titre(b) }}{{ s.chapeau(b) }}{{ s.boutons(b.boutons) }}</div></section>
+{% else %}
+{% call s.section(b, ctx) %}{% endcall %}
+{% endif %}
+{% endmacro %}

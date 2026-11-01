@@ -1,0 +1,119 @@
+# Bloc « cartes_texte » : Cartes de texte
+# Composant du site : src/_includes/composants/blocs/cartes_texte.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc ») ; pages : docs/back-office/schema-pages.md.
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+profils:
+  institutionnel: 50
+  institutionnel_bilingue: 50
+  demo: 146
+
+type:
+  label: Cartes de texte
+  name: cartes_texte
+  widget: object
+  summary: 'Cartes de texte : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Coller au bloc précédent
+      name: sans_marge_haute
+      widget: boolean
+      required: false
+      default: false
+      hint: Supprime l'espace au-dessus du bloc. À cocher quand le bloc précédent a le même fond.
+    - label: Surtitre
+      name: surtitre
+      widget: string
+      required: false
+      hint: Petit texte au-dessus du titre. 30 caractères maximum.
+    - label: Titre
+      name: titre
+      widget: string
+      required: true
+      hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+    - label: Sous-titre
+      name: sous_titre
+      widget: text
+      required: false
+      hint: 50 mots maximum.
+    - label: Présentation
+      name: presentation
+      widget: select
+      required: true
+      default: encadrees
+      hint: 'Cartes encadrées : petites cartes bordées (valeurs, métiers, agences). Colonnes : cartes plus larges, sur deux ou trois colonnes (offres, dispositifs).'
+      options:
+        - label: Cartes encadrées
+          value: encadrees
+        - label: Colonnes
+          value: colonnes
+    - label: Fond
+      name: fond
+      widget: select
+      required: true
+      default: blanc
+      hint: Le fond sombre convient aux cartes encadrées ; il met la section en valeur.
+      options:
+        - label: Blanc
+          value: blanc
+        - label: Sombre
+          value: sombre
+    - label: Colonnes (cartes encadrées)
+      name: colonnes
+      widget: select
+      required: true
+      default: auto
+      hint: Nombre de cartes par ligne sur grand écran. Automatique laisse la mise en page du site décider.
+      options:
+        - label: Automatique
+          value: auto
+        - label: 2 par ligne
+          value: '2'
+        - label: 3 par ligne
+          value: '3'
+        - label: 4 par ligne
+          value: '4'
+    - label: Cartes
+      name: cartes
+      widget: list
+      required: true
+      label_singular: Carte
+      collapsed: true
+      min: 1
+      max: 12
+      summary: '{{fields.titre}}'
+      hint: Affichées dans l'ordre de la liste.
+      fields:
+        - label: Titre
+          name: titre
+          widget: string
+          required: true
+          hint: 40 caractères maximum.
+        - label: Texte
+          name: texte
+          widget: text
+          required: false
+          hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Laissez vide pour une carte avec son seul titre.
+        - label: Lien
+          name: lien
+          widget: object
+          required: false
+          collapsed: true
+          summary: '{{fields.texte}} ({{fields.lien}})'
+          hint: Petit lien sous le texte, suivi d'une flèche. Laissez vide pour aucun lien.
+          fields:
+            - label: Texte du lien
+              name: texte
+              widget: string
+              required: false
+              hint: 'Par exemple : Voir sur la carte. La flèche est ajoutée automatiquement.'
+            - label: Destination
+              name: lien
+              widget: string
+              required: false
+              hint: Une adresse commençant par https:// s'ouvre dans un nouvel onglet.

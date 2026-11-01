@@ -1,40 +1,44 @@
   # -----------------------------------------------------------------------
-  # 10) PAGES (ENGLISH)  -  version anglaise du site (pilote i18n, URL /en/)
-  #     Réutilise les mêmes définitions de champs que les pages FR (ancres YAML).
-  #     Les libellés de champs restent en français, mais les VALEURS se saisissent
-  #     en anglais. Le corps éditorial est à traduire ici.
+  # 10) PAGES ET RÉGLAGES (ANGLAIS)  -  version anglaise du site (URL /en/)
+  #     Mêmes formulaires que les pages françaises (ancres YAML de 120-pages.yml et 130-seo.yml) :
+  #     libellés des champs en français, valeurs saisies en anglais.
+  #     La page Company se modifie avec Notre entreprise (collection « Pages institutionnelles »,
+  #     multilingue intégré). Chemins des fichiers inchangés.
   # -----------------------------------------------------------------------
-  - name: "pages_en"
-    label: "🇬🇧 Pages (English)"
+  - name: pages_en
+    label: Pages et réglages (anglais)
+    label_singular: Page ou réglage anglais
+    description: "Pages anglaises qui ne sont pas encore dans le multilingue intégré, et réglages communs aux pages anglaises. Saisissez les textes en anglais."
     files:
-      - name: "en_page_formations"
-        label: "Training page (EN) - /en/training/"
-        file: "src/_data/en/page_formations.json"
-        preview_path: "en/training/"
+      - name: en_page_formations
+        label: "Training (/en/training/)"
+        file: src/_data/en/page_formations.json
+        format: json
+        preview_path: en/training/
         fields: *f_page_formations
-      - name: "en_page_technologies"
-        label: "Technical expertise page (EN) - /en/tech-expertise/"
-        file: "src/_data/en/page_technologies.json"
-        preview_path: "en/tech-expertise/"
+      - name: en_page_technologies
+        label: "Technical expertise (/en/tech-expertise/)"
+        file: src/_data/en/page_technologies.json
+        format: json
+        preview_path: en/tech-expertise/
         fields: *f_page_technologies
-      - name: "en_notre_entreprise"
-        label: "Company page (EN) - /en/company/"
-        file: "src/_data/en/notre_entreprise.json"
-        preview_path: "en/company/"
-        fields: *f_notre_entreprise
-      - name: "en_site"
-        label: "Site settings (EN) - footer, contact, form"
-        file: "src/_data/en/site.json"
+      - name: en_site
+        label: "Site settings (réglages du site anglais)"
+        file: src/_data/en/site.json
+        format: json
         fields: *f_site
-      - name: "en_navigation"
-        label: "Menu (EN)"
-        file: "src/_data/en/navigation.json"
+      - name: en_navigation
+        label: "Menu (anglais)"
+        file: src/_data/en/navigation.json
+        format: json
         fields: *f_navigation
-      - name: "en_seo"
-        label: "SEO (EN)"
-        file: "src/_data/en/seo.json"
-        fields: *f_seo
-      - name: "en_libelles"
-        label: "Shared labels (EN)"
-        file: "src/_data/en/libelles.json"
+      - name: en_libelles
+        label: "Shared labels (textes récurrents anglais)"
+        file: src/_data/en/libelles.json
+        format: json
         fields: *f_libelles
+      - name: en_seo
+        label: "SEO (anglais)"
+        file: src/_data/en/seo.json
+        format: json
+        fields: *f_seo

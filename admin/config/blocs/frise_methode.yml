@@ -1,0 +1,74 @@
+# Bloc « frise_methode » : Frise de méthode
+# Composant du site : src/_includes/composants/blocs/frise_methode.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc ») ; pages : docs/back-office/schema-pages.md.
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+profils:
+  institutionnel: 30
+  institutionnel_bilingue: 30
+  demo: 35
+
+type:
+  label: Frise de méthode (fond sombre)
+  name: frise_methode
+  widget: object
+  summary: 'Frise de méthode : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Ancre de la section
+      name: ancre
+      widget: string
+      required: false
+      pattern: ['^[a-z0-9-]*$', 'Minuscules sans accent, chiffres et tirets uniquement.']
+      hint: 'Nom court qui permet à un bouton d''y descendre avec #nom (par exemple methode pour #methode). Facultatif.'
+    - label: Surtitre
+      name: surtitre
+      widget: string
+      required: false
+      hint: Petit texte au-dessus du titre. 30 caractères maximum.
+    - label: Titre
+      name: titre
+      widget: string
+      required: true
+      hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+    - label: Sous-titre
+      name: sous_titre
+      widget: text
+      required: false
+      hint: 50 mots maximum.
+    - label: Étapes
+      name: etapes
+      widget: list
+      required: true
+      label_singular: Étape
+      collapsed: true
+      min: 3
+      max: 6
+      summary: '{{fields.numero}} {{fields.titre}}'
+      hint: De 3 à 6 étapes, affichées dans l'ordre de la liste.
+      fields:
+        - label: Numéro
+          name: numero
+          widget: string
+          required: true
+          hint: Affiché en grand, par exemple 1.
+        - label: Phase
+          name: phase
+          widget: string
+          required: false
+          hint: Mot court à côté du numéro, par exemple Découvrir.
+        - label: Titre
+          name: titre
+          widget: string
+          required: true
+          hint: 40 caractères maximum.
+        - label: Texte
+          name: texte
+          widget: text
+          required: true
+          hint: 35 mots maximum.

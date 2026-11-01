@@ -1,13 +1,538 @@
-  - name: "seo"
-    label: "SEO & indexation"
+  # -----------------------------------------------------------------------
+  # 8) RÉGLAGES  (spécification : docs/back-office/schema-pages.md, section « Réglages »)
+  #    Réglages du site, Menu, Textes récurrents et SEO, en français. Les mêmes formulaires
+  #    servent aux versions anglaises (ancres &f_site, &f_navigation, &f_libelles, &f_seo,
+  #    reprises dans 160-pages_en.yml). Chemins des fichiers inchangés.
+  #    Anciennes collections « seo », « navigation » et « libelles » (130, 140, 150) regroupées ici ;
+  #    140-navigation.yml et 150-libelles.yml ne contiennent plus que des commentaires.
+  #    Champs groupés par zone du site : le préfixe du libellé dit où le texte apparaît
+  #    (Coordonnées, Bloc contact, Formulaire, Logos clients, Pied de page, Documents).
+  # -----------------------------------------------------------------------
+  - name: reglages
+    label: Réglages
+    label_singular: Réglage
+    description: "Textes et liens communs à tout le site : coordonnées, pied de page, formulaire de contact, menu, petits textes récurrents, référencement."
     files:
-      - name: "seo"
-        label: "Réglages SEO"
-        file: "src/_data/seo.json"
+      - name: site
+        label: Réglages du site (coordonnées, pied de page, formulaire)
+        file: src/_data/site.json
+        format: json
+        description: "Les textes communs à toutes les pages françaises. Le préfixe de chaque libellé indique la zone du site concernée."
+        fields: &f_site
+          # --- Coordonnées ---
+          - { label: "Coordonnées · Nom de l'entreprise", name: nom, widget: string, required: true, hint: "Texte alternatif du logo du pied de page." }
+          - { label: "Coordonnées · Téléphone affiché", name: telephone_affiche, widget: string, required: true, hint: "Tel qu'il se lit, par exemple +33 (0)9 63 28 62 73. Affiché dans le pied de page, le bloc contact et la page Contact." }
+          - { label: "Coordonnées · Téléphone (format lien)", name: telephone_lien, widget: string, required: true, pattern: ['^\+?[0-9]+$', "Chiffres uniquement, sans espace, avec + devant l'indicatif."], hint: "Le même numéro sans espace, pour l'appel en un clic sur téléphone. Par exemple +330963286273." }
+          - { label: "Coordonnées · Villes des agences", name: villes, widget: string, required: true, hint: "Une seule ligne, villes séparées par « · ». Affichée dans le pied de page (sous l'accroche), dans le bloc contact et sur la page Contact (sous « Nos agences »). Les adresses détaillées sont dans la page Notre entreprise (bloc Nos agences)." }
+          - { label: Adresse du site (ancien réglage), name: url, widget: hidden, required: false }
+          # --- Bloc contact ---
+          - label: "Bloc contact (bas des pages et page Contact)"
+            name: contact
+            widget: object
+            required: true
+            collapsed: true
+            summary: "{{fields.titre}}"
+            hint: "Le grand bloc sombre « Parlons de votre projet » en bas de l'accueil et des pages intérieures. Ses arguments et intitulés servent aussi à la page Contact."
+            fields:
+              - { label: Titre, name: titre, widget: string, required: true, hint: "Mettez un mot entre *astérisques* pour l'afficher en rouge. Par exemple : Parlons de votre *projet*." }
+              - { label: Sous-titre, name: sous, widget: text, required: false, hint: 30 mots maximum. }
+              - label: Arguments (liste à cocher)
+                name: arguments
+                widget: list
+                required: false
+                max: 4
+                summary: "{{fields.item}}"
+                hint: Affichés aussi sur la page Contact.
+                field: { label: Argument, name: item, widget: string, required: true, hint: 80 caractères maximum. }
+              - label: Pastilles de l'équipe (initiales)
+                name: visages
+                widget: list
+                required: false
+                max: 5
+                hint: "Petites pastilles rondes avec des initiales, par exemple SA ou +40."
+                field: { label: Initiales, name: item, widget: string, required: true, hint: 3 caractères maximum. }
+              - { label: Phrase sous les pastilles, name: note, widget: string, required: false }
+              - { label: "Intitulé au-dessus du téléphone", name: coord_tel_titre, widget: string, required: true, hint: "Par exemple : Par téléphone. Aussi sur la page Contact." }
+              - { label: "Intitulé au-dessus des villes", name: coord_agences_titre, widget: string, required: true, hint: "Par exemple : Nos agences. Les villes sont celles du réglage Coordonnées · Villes des agences." }
+          # --- Formulaire ---
+          - label: "Formulaire de contact"
+            name: formulaire
+            widget: object
+            required: true
+            collapsed: true
+            hint: "Libellés du formulaire du bloc contact et de la page Contact. Les formulaires de devis des formations reprennent les types de demande, la phrase RGPD et le type pré-sélectionné."
+            fields:
+              - { label: "Champ nom · libellé", name: label_nom, widget: string, required: true }
+              - { label: "Champ nom · exemple dans le champ", name: ph_nom, widget: string, required: false, hint: Texte gris affiché tant que le champ est vide. }
+              - { label: "Champ email · libellé", name: label_email, widget: string, required: true }
+              - { label: "Champ email · exemple dans le champ", name: ph_email, widget: string, required: false }
+              - { label: "Champ téléphone · libellé", name: label_tel, widget: string, required: true, hint: "Champ affiché sur la page Contact seulement." }
+              - { label: "Champ téléphone · exemple dans le champ", name: ph_tel, widget: string, required: false }
+              - { label: "Type de demande · libellé", name: label_sujet, widget: string, required: true }
+              - { label: "Type de demande · texte avant le choix", name: ph_sujet, widget: string, required: true, hint: "Première ligne de la liste, non sélectionnable. Par exemple : Merci de sélectionner un sujet." }
+              - label: "Types de demande et destinataires"
+                name: sujets
+                widget: list
+                required: true
+                min: 1
+                summary: "{{fields.label}} : {{fields.email}}"
+                hint: "Chaque type de demande part à l'adresse indiquée en face. Un seul destinataire par type."
+                fields:
+                  - { label: Type de demande (ce que voit le visiteur), name: label, widget: string, required: true }
+                  - { label: Adresse de destination, name: email, widget: string, required: true, pattern: ['^[^@\s]+@[^@\s]+\.[^@\s]+$', "Adresse e-mail attendue, par exemple commerce@4sh.fr."], hint: "Par exemple : commerce@4sh.fr." }
+              - { label: Note interne sur les destinataires, name: _note_sujets, widget: hidden, required: false }
+              - { label: "Type pré-sélectionné sur les formulaires des formations", name: sujet_defaut_formation, widget: string, required: false, hint: "Doit reprendre exactement l'un des types de demande ci-dessus." }
+              - { label: "Champ besoin · libellé", name: label_besoin, widget: string, required: true }
+              - { label: "Champ besoin · exemple dans le champ", name: ph_besoin, widget: text, required: false }
+              - { label: Texte d'aide sous le champ besoin, name: aide, widget: text, required: false }
+              - { label: "Consentement RGPD · phrase", name: rgpd_texte, widget: text, required: true, hint: "Case à cocher avant l'envoi." }
+              - { label: "Consentement RGPD · mots transformés en lien", name: rgpd_lien_label, widget: string, required: false, hint: "Doivent figurer tels quels dans la phrase ci-dessus." }
+              - { label: "Consentement RGPD · destination du lien", name: rgpd_url, widget: string, required: false, hint: "Par exemple : /rgpd/." }
+              - { label: Bouton d'envoi, name: bouton, widget: string, required: true }
+              - { label: Phrase de réassurance sous le bouton, name: reassurance, widget: string, required: false }
+          # --- Logos clients ---
+          - { label: "Logos clients · intitulé du bandeau", name: clients_intro, widget: string, required: true, hint: "Par exemple : Ils nous confient leur métier :. Repris comme titre du bloc Logos clients quand son titre est vide." }
+          - label: "Logos clients · noms"
+            name: clients
+            widget: list
+            required: true
+            summary: "{{fields.nom}}"
+            hint: "Bandeau défilant de l'accueil et des pages d'offre (bloc Logos clients)."
+            fields:
+              - { label: Nom du client, name: nom, widget: string, required: true }
+              - { label: Lien vers sa référence, name: url, widget: string, required: false, hint: "Par exemple : /references/izivia-portail/. Vide : pas de lien." }
+          # --- Pied de page ---
+          - { label: "Pied de page · accroche", name: footer_accroche, widget: text, required: true, hint: "Sous le logo, suivie des villes et du téléphone (réglages Coordonnées)." }
+          - label: "Pied de page · colonnes de liens"
+            name: footer_colonnes
+            widget: list
+            required: true
+            max: 4
+            summary: "{{fields.titre}}"
+            fields:
+              - { label: Titre de la colonne, name: titre, widget: string, required: true }
+              - label: Liens
+                name: liens
+                widget: list
+                required: true
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: Texte du lien, name: label, widget: string, required: true }
+                  - { label: Destination, name: url, widget: string, required: true }
+          - { label: "Pied de page · mention de copyright", name: footer_legal, widget: string, required: true, hint: "Tout en bas à gauche, par exemple © 2007-2026 4SH." }
+          - label: "Pied de page · liens légaux"
+            name: footer_liens_legaux
+            widget: list
+            required: false
+            summary: "{{fields.label}}"
+            hint: "À la suite de la mention de copyright, séparés par un point."
+            fields:
+              - { label: Texte du lien, name: label, widget: string, required: true }
+              - { label: Destination, name: url, widget: string, required: true }
+          - label: "Pied de page · réseaux sociaux"
+            name: footer_reseaux
+            widget: list
+            required: false
+            summary: "{{fields.label}}"
+            hint: Tout en bas à droite, ouverts dans un nouvel onglet.
+            fields:
+              - { label: Réseau, name: label, widget: select, required: true, options: [LinkedIn, YouTube, X, Behance, Instagram, Facebook, GitHub, Welcome to the Jungle] }
+              - { label: Adresse de la page 4SH, name: url, widget: string, required: true }
+          - { label: "Pied de page · intitulé des plateformes de formation", name: footer_formations_titre, widget: string, required: false, hint: "Après les réseaux sociaux, par exemple : Retrouvez nos formations sur :." }
+          - label: "Pied de page · plateformes de formation"
+            name: footer_formations_liens
+            widget: list
+            required: false
+            summary: "{{fields.label}}"
+            hint: "Vide : ni l'intitulé ni les liens ne s'affichent."
+            fields:
+              - { label: Nom de la plateforme, name: label, widget: string, required: true }
+              - { label: Adresse, name: url, widget: string, required: true }
+          # --- Documents ---
+          - label: "Documents téléchargeables (pages Formations)"
+            name: documents
+            widget: object
+            required: false
+            collapsed: true
+            hint: "Liens vers des documents en ligne. Laissez une adresse vide pour masquer le lien. Page française seulement."
+            fields:
+              - { label: "Catalogue de formations · texte du lien", name: catalogue_label, widget: string, required: false, hint: "Sous le titre du catalogue (page Formations et pages catégories)." }
+              - { label: "Catalogue de formations · adresse", name: catalogue_url, widget: string, required: false }
+              - { label: "Certificat Qualiopi · texte du lien", name: qualiopi_label, widget: string, required: false, hint: "Encadré Qualiopi de la page Formations et encadré documents des fiches formation." }
+              - { label: "Certificat Qualiopi · adresse", name: qualiopi_url, widget: string, required: false }
+              - { label: "Politique d'accessibilité · texte du lien", name: accessibilite_label, widget: string, required: false, hint: "Encadré Qualiopi de la page Formations." }
+              - { label: "Politique d'accessibilité · adresse", name: accessibilite_url, widget: string, required: false }
+              - { label: "CGV · texte du lien", name: cgv_label, widget: string, required: false, hint: "Encadré Qualiopi de la page Formations et encadré documents des fiches formation." }
+              - { label: "CGV · adresse", name: cgv_url, widget: string, required: false }
+              - { label: "Charte RSE · texte du lien", name: charte_rse_label, widget: string, required: false, hint: "Non affiché aujourd'hui : la charte RSE apparaît par les liens légaux du pied de page et le bloc Charte RSE de Notre entreprise." }
+              - { label: "Charte RSE · adresse", name: charte_rse_url, widget: string, required: false }
+
+      - name: menu
+        label: Menu principal (en-tête)
+        file: src/_data/navigation.json
+        format: json
+        description: "Le menu en haut de toutes les pages françaises : entrées, sous-menus et boutons de droite."
+        fields: &f_navigation
+          - { label: Note interne, name: _note, widget: hidden, required: false }
+          - label: Entrées du menu
+            name: items
+            widget: list
+            required: true
+            typeKey: type
+            summary: "{{fields.label}}"
+            hint: "De gauche à droite. Glissez-déposez pour réordonner. Une entrée est un lien simple, un menu déroulant (liste) ou un méga-menu (colonnes avec icônes)."
+            types:
+              - name: lien
+                label: Lien simple
+                widget: object
+                summary: "Lien : {{fields.label}}"
+                fields:
+                  - { label: Texte de l'entrée, name: label, widget: string, required: true }
+                  - { label: Destination, name: url, widget: string, required: true }
+              - name: menu_simple
+                label: Menu déroulant (liste)
+                widget: object
+                summary: "Menu déroulant : {{fields.label}}"
+                fields:
+                  - { label: Texte de l'entrée, name: label, widget: string, required: true }
+                  - { label: Titre au-dessus des liens, name: titre_col, widget: string, required: false }
+                  - label: Liens
+                    name: liens
+                    widget: list
+                    required: true
+                    summary: "{{fields.label}}"
+                    fields:
+                      - { label: Texte du lien, name: label, widget: string, required: true }
+                      - { label: Petit texte à côté, name: sous_texte, widget: string, required: false }
+                      - { label: Destination, name: url, widget: string, required: true }
+              - name: megamenu
+                label: Méga-menu (colonnes)
+                widget: object
+                summary: "Méga-menu : {{fields.label}}"
+                fields:
+                  - { label: Texte de l'entrée, name: label, widget: string, required: true }
+                  - label: Mise en page
+                    name: variant
+                    widget: select
+                    required: false
+                    default: ""
+                    options:
+                      - { label: Standard, value: "" }
+                      - { label: Secteurs (colonnes compactes), value: menu-secteurs }
+                  - label: Encart de gauche (promotion)
+                    name: promo
+                    widget: object
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { label: Titre, name: titre, widget: string, required: false, hint: "Mettez un mot entre *astérisques* pour l'afficher en rouge." }
+                      - { label: Texte, name: texte, widget: text, required: false }
+                      - { label: Texte du lien, name: lien_libelle, widget: string, required: false, hint: Une flèche est ajoutée automatiquement. }
+                      - { label: Destination, name: url, widget: string, required: false }
+                      - label: Chiffre clé
+                        name: kpi
+                        widget: object
+                        required: false
+                        fields:
+                          - { label: Chiffre, name: valeur, widget: string, required: false }
+                          - { label: Libellé, name: label, widget: string, required: false }
+                  - label: Colonnes
+                    name: colonnes
+                    widget: list
+                    required: true
+                    summary: "{{fields.titre}}"
+                    fields:
+                      - { label: Titre de la colonne, name: titre, widget: string, required: true }
+                      - label: Couleur de la colonne
+                        name: classe
+                        widget: select
+                        required: false
+                        default: ""
+                        options:
+                          - { label: Standard, value: "" }
+                          - { label: Intelligence artificielle, value: col-ia }
+                          - { label: "4SH Run (faire vivre et auditer)", value: col-run }
+                      - label: Liens
+                        name: liens
+                        widget: list
+                        required: true
+                        summary: "{{fields.label}}"
+                        fields:
+                          - { label: Texte du lien, name: label, widget: string, required: true }
+                          - { label: Petit texte dessous, name: sous_texte, widget: string, required: false }
+                          - { label: Destination, name: url, widget: string, required: true }
+                          - label: Icône
+                            name: icone
+                            widget: select
+                            required: false
+                            hint: Jeu d'icônes 4SH. Ignorée si une image est choisie.
+                            options:
+                              - { label: Écran, value: ecran }
+                              - { label: Nuage, value: cloud }
+                              - { label: Nuage plus, value: cloud-plus }
+                              - { label: Téléphone mobile, value: mobile }
+                              - { label: Design, value: design }
+                              - { label: Serveurs, value: serveurs }
+                              - { label: Refonte, value: refonte }
+                              - { label: Audit, value: audit }
+                              - { label: Logistique, value: logistique }
+                              - { label: Éclair, value: eclair }
+                              - { label: Bouclier, value: bouclier }
+                              - { label: Éditeur de logiciel, value: editeur }
+                              - { label: Réseau, value: reseau }
+                              - { label: Mégaphone, value: megaphone }
+                              - { label: Hub, value: hub }
+                              - { label: Graphique, value: graph }
+                              - { label: Batterie, value: batterie }
+                              - { label: Code, value: code }
+                              - { label: Données, value: data }
+                          - { label: Image (remplace l'icône), name: image, widget: image, required: false, choose_url: true, hint: "Image décorative de 24 px, sans texte alternatif (le texte du lien suffit)." }
+                      - { label: Liens à venir (en attente de leur page), name: _liens_a_venir, widget: hidden, required: false }
+                  - label: Encart en bas du menu
+                    name: bas
+                    widget: object
+                    required: false
+                    collapsed: true
+                    fields:
+                      - { label: Titre, name: titre, widget: string, required: false }
+                      - { label: Texte, name: texte, widget: text, required: false }
+                      - { label: Texte du bouton, name: cta_label, widget: string, required: false }
+                      - { label: Destination du bouton, name: cta_url, widget: string, required: false }
+          - label: Boutons de droite
+            name: actions
+            widget: list
+            required: true
+            max: 3
+            summary: "{{fields.label}}"
+            hint: Liens mis en avant à droite du menu (Formations, Parlons de votre projet).
+            fields:
+              - { label: Texte, name: label, widget: string, required: true }
+              - { label: Destination, name: url, widget: string, required: true }
+              - label: Apparence
+                name: style
+                widget: select
+                required: true
+                options:
+                  - { label: Lien Formations (violet), value: lien-formations }
+                  - { label: Bouton rouge, value: btn btn-primary btn-sm }
+
+      - name: "libelles"
+        label: "Textes récurrents (libellés)"
+        description: "Petits textes fixes répétés sur plusieurs pages : titres de rubriques des fiches, boutons, formulaires de devis et de pré-inscription, page de remerciement."
+        file: "src/_data/libelles.json"
+        fields: &f_libelles
+          - label: "Commun à plusieurs pages"
+            name: "commun"
+            widget: "object"
+            required: false
+            collapsed: true
+            fields:
+              - { label: "Fil d'Ariane · premier lien", name: "fil_ariane_accueil", widget: "string", hint: "Premier lien du fil d'Ariane, vers la page d'accueil (fiches formation, fiches référence, page Logiciel métier).", required: false }
+          - label: "Blocs de page"
+            name: "blocs"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Textes par défaut des blocs (accueil, pages d'offre). Ils s'affichent quand le champ du bloc est laissé vide."
+            fields:
+              - { label: "Derniers articles · titre par défaut", name: "blog_titre", widget: "string", hint: "Titre du bloc Derniers articles quand son champ Titre est vide. Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Derniers articles · lien vers le blog", name: "blog_tout", widget: "string", hint: "Lien en haut à droite du bloc Derniers articles, quand le texte du lien n'est pas saisi dans le bloc.", required: false }
+              - { label: "Équipe · bouton par défaut", name: "equipe_bouton", widget: "string", hint: "Bouton du bloc Équipe quand son texte n'est pas saisi dans le bloc.", required: false }
+              - { label: "Technologies (cartes) · lien de carte", name: "technologies_lien", widget: "string", hint: "Lien sous chaque carte du bloc Technologies en affichage cartes (page Logiciel métier). Ex. : En savoir plus →", required: false }
+              - { label: "Projet vedette · lien des autres références", name: "projet_vedette_lien", widget: "string", hint: "Lien de chaque carte « autre référence » sous le projet vedette (page Logiciel métier). Ex. : Voir la référence →", required: false }
+          - label: "Fiche formation"
+            name: "formation"
+            widget: "object"
+            required: false
+            collapsed: true
+            fields:
+              - { label: "Sur-titre (préfixe)", name: "eyebrow", widget: "string", required: false }
+              - { label: "Carte · titre prix", name: "prix_titre", widget: "string", required: false }
+              - { label: "Carte · par participant", name: "par_participant", widget: "string", required: false }
+              - { label: "Carte · promo", name: "promo", widget: "string", hint: "Sous le prix de chaque fiche formation. Contient du HTML (<b>) pour le gras, seul HTML encore accepté : gardez les balises telles quelles.", required: false }
+              - { label: "Carte · titre sessions", name: "sessions_titre", widget: "string", required: false }
+              - { label: "Bouton inscription", name: "cta_inscription", widget: "string", required: false }
+              - { label: "Bouton devis", name: "cta_devis", widget: "string", required: false }
+              - { label: "Note lieu", name: "note_lieu", widget: "string", required: false }
+              - { label: "Mot « personnes »", name: "personnes", widget: "string", required: false }
+              - { label: "Mot « avis »", name: "avis", widget: "string", required: false }
+              - { label: "Mot « Depuis »", name: "depuis", widget: "string", required: false }
+              - { label: "Mot « Théorie »", name: "theorie", widget: "string", required: false }
+              - { label: "Mot « Pratique »", name: "pratique", widget: "string", required: false }
+              - { label: "Ancre Description", name: "ancre_description", widget: "string", required: false }
+              - { label: "Ancre Objectifs", name: "ancre_objectifs", widget: "string", required: false }
+              - { label: "Ancre Programme", name: "ancre_programme", widget: "string", required: false }
+              - { label: "Ancre Formateur", name: "ancre_formateur", widget: "string", required: false }
+              - { label: "Ancre Modalités", name: "ancre_modalites", widget: "string", required: false }
+              - { label: "Ancre Formations liées", name: "ancre_liees", widget: "string", required: false }
+              - { label: "Titre Description", name: "description_titre", widget: "string", required: false }
+              - { label: "Titre Pour qui", name: "pour_qui_titre", widget: "string", required: false }
+              - { label: "Titre Prérequis", name: "prerequis_titre", widget: "string", required: false }
+              - { label: "Titre Objectifs", name: "objectifs_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Titre Programme", name: "programme_titre", widget: "string", required: false }
+              - { label: "Titre Formateur", name: "formateur_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Titre FAQ", name: "faq_titre", widget: "string", required: false }
+              - { label: "Titre Modalités", name: "modalites_titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Titre Autres formations", name: "autres_titre", widget: "string", required: false }
+              - { label: "Bouton Voir toutes", name: "voir_toutes", widget: "string", required: false }
+              - { label: "Mention « à partir de »", name: "a_partir_de", widget: "string", required: false }
+              - { label: "Fil d'Ariane · lien Formations", name: "fil_parent", widget: "string", hint: "Lien vers le catalogue dans le fil d'Ariane de chaque fiche formation.", required: false }
+              - { label: "Encadré documents · titre", name: "documents_titre", widget: "string", hint: "Titre de l'encadré des documents (programme PDF, Qualiopi, CGV) de chaque fiche formation. Ex. : Documents", required: false }
+              - { label: "Encadré documents · lien du programme", name: "programme_pdf_label", widget: "string", hint: "Texte du lien vers le programme PDF, quand la fiche en a un. Le poids du fichier est ajouté entre parenthèses.", required: false }
+              - { label: "Mot devant le nom de la formation", name: "prefixe_titre", widget: "string", hint: "Placé devant le nom de la formation dans le grand titre, le fil d'Ariane et la fenêtre de pré-inscription. Ex. : Formation Angular", required: false }
+              - { label: "Pré-inscription · « participant » (1)", name: "participant", widget: "string", hint: "Choix « 1 participant » de la liste Nombre de participants, dans la fenêtre de pré-inscription.", required: false }
+              - { label: "Pré-inscription · « participants » (2 et plus)", name: "participants", widget: "string", hint: "Choix « 2 participants » à « 8 participants » de la même liste.", required: false }
+          - label: "Modalités d'accueil (cartes)"
+            name: "modalites"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Titre", name: "titre", widget: "string", required: false }
+              - { label: "Texte", name: "texte", widget: "text", required: false }
+          - label: "Modale pré-inscription"
+            name: "preinscription"
+            widget: "object"
+            required: false
+            collapsed: true
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string", required: false }
+              - { label: "Libellé entreprise", name: "label_entreprise", widget: "string", required: false }
+              - { label: "Libellé email", name: "label_email", widget: "string", required: false }
+              - { label: "Libellé téléphone", name: "label_tel", widget: "string", required: false }
+              - { label: "Libellé nombre", name: "label_nb", widget: "string", required: false }
+              - { label: "Bouton", name: "bouton", widget: "string", required: false }
+              - { label: "Mention RGPD", name: "rgpd", widget: "text", required: false }
+          - label: "Catalogue de formations"
+            name: "catalogue"
+            widget: "object"
+            required: false
+            collapsed: true
+            fields:
+              - { label: "Placeholder recherche", name: "recherche_placeholder", widget: "string", required: false }
+              - { label: "Onglet Toutes", name: "onglet_toutes", widget: "string", required: false }
+              - { label: "Mot compteur", name: "compteur", widget: "string", required: false }
+              - { label: "Message vide", name: "vide", widget: "text", required: false }
+              - { label: "Bouton Voir les formations", name: "cta_voir", widget: "string", required: false }
+              - { label: "Bouton Devis", name: "cta_devis", widget: "string", required: false }
+              - label: "Puces (chips)"
+                name: "chips"
+                widget: "list"
+                required: false
+                field: { label: "Puce", name: "item", widget: "string", required: true }
+          - label: "Fiche référence"
+            name: "reference"
+            widget: "object"
+            required: false
+            collapsed: true
+            fields:
+              - { label: "Sur-titre", name: "eyebrow", widget: "string", required: false }
+              - { label: "Fil d'Ariane (parent)", name: "fil_parent", widget: "string", required: false }
+              - { label: "Bouton télécharger", name: "telecharger", widget: "string", required: false }
+              - { label: "Mention mise à jour", name: "maj", widget: "string", required: false }
+              - { label: "Libellé Client", name: "client", widget: "string", required: false }
+              - { label: "Libellé Secteur", name: "secteur", widget: "string", required: false }
+              - { label: "Libellé Expertises", name: "expertises", widget: "string", required: false }
+              - { label: "Libellé Technologies", name: "technologies", widget: "string", required: false }
+              - { label: "Titre Galerie", name: "galerie", widget: "string", required: false }
+              - { label: "Titre sommaire", name: "sommaire", widget: "string", required: false }
+              - { label: "Lien projet précédent", name: "prec", widget: "string", required: false }
+              - { label: "Lien projet suivant", name: "suiv", widget: "string", required: false }
+              - { label: "CTA · texte", name: "cta_texte", widget: "text", required: false }
+              - { label: "CTA · bouton", name: "cta_bouton", widget: "string", required: false }
+              - { label: "Lien toutes les réussites", name: "toutes", widget: "string", required: false }
+          - label: "Page secteur"
+            name: "secteur"
+            widget: "object"
+            required: false
+            collapsed: true
+            fields:
+              - { label: "Défis · sur-titre", name: "defis_eyebrow", widget: "string", required: false }
+              - { label: "Défis · titre", name: "defis_titre", widget: "string", required: false }
+              - { label: "Opportunités · sur-titre", name: "opportunites_eyebrow", widget: "string", required: false }
+              - { label: "Opportunités · titre", name: "opportunites_titre", widget: "string", required: false }
+              - { label: "Pourquoi · sur-titre", name: "pourquoi_eyebrow", widget: "string", required: false }
+              - { label: "Pourquoi · titre", name: "pourquoi_titre", widget: "string", required: false }
+              - { label: "Comment · sur-titre", name: "comment_eyebrow", widget: "string", required: false }
+              - { label: "Comment · titre", name: "comment_titre", widget: "string", required: false }
+              - { label: "Références · sur-titre", name: "refs_eyebrow", widget: "string", required: false }
+              - { label: "Références · titre", name: "refs_titre", widget: "string", required: false }
+              - { label: "Titre FAQ", name: "faq_titre", widget: "string", required: false }
+              - { label: "CTA · titre par défaut", name: "cta_defaut_titre", widget: "string", required: false }
+              - { label: "CTA · texte", name: "cta_texte", widget: "text", required: false }
+              - { label: "CTA · bouton", name: "cta_bouton", widget: "string", required: false }
+          - label: "Page liste des références"
+            name: "references_index"
+            widget: "object"
+            required: false
+            collapsed: true
+            fields:
+              - { label: "Stat · projets", name: "stat_projets", widget: "string", required: false }
+              - { label: "Stat · secteurs", name: "stat_secteurs", widget: "string", required: false }
+              - { label: "Stat · valeur depuis", name: "stat_depuis_valeur", widget: "string", required: false }
+              - { label: "Stat · libellé depuis", name: "stat_depuis", widget: "string", required: false }
+              - { label: "Placeholder recherche", name: "recherche_placeholder", widget: "string", required: false }
+              - { label: "Facette Type", name: "facette_type", widget: "string", required: false }
+              - { label: "Facette Secteurs", name: "facette_secteurs", widget: "string", required: false }
+              - { label: "Facette Technologies", name: "facette_technologies", widget: "string", required: false }
+              - { label: "Mot compteur", name: "compteur", widget: "string", required: false }
+              - { label: "Bouton réinitialiser", name: "reset", widget: "string", required: false }
+              - { label: "Message vide", name: "vide", widget: "text", required: false }
+              - { label: "Bouton réinitialiser (vide)", name: "vide_reset", widget: "string", required: false }
+          - label: "Bloc devis (mutualisé)"
+            name: "devis"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Bloc « Demander un devis » réutilisé sur la page Formations, les pages catégories et les fiches formation."
+            fields:
+              - { label: "Titre", name: "titre", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
+              - { label: "Sous-titre", name: "sous", widget: "text", required: false }
+              - label: "Arguments"
+                name: "arguments"
+                widget: "list"
+                required: false
+                field: { label: "Argument", name: "item", widget: "string", required: false }
+              - { label: "Libellé nom", name: "label_nom", widget: "string", required: false }
+              - { label: "Placeholder nom", name: "ph_nom", widget: "string", required: false }
+              - { label: "Libellé email", name: "label_email", widget: "string", required: false }
+              - { label: "Placeholder email", name: "ph_email", widget: "string", required: false }
+              - { label: "Libellé besoin", name: "label_besoin", widget: "string", required: false }
+              - { label: "Placeholder besoin", name: "ph_besoin", widget: "text", required: false }
+              - { label: "Bouton", name: "bouton", widget: "string", required: false }
+              - { label: "Réassurance", name: "reassurance", widget: "string", required: false }
+          - label: "Page de remerciement (après envoi du formulaire)"
+            name: "merci"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Page /merci/ affichée après l'envoi d'un formulaire de contact ou de devis (page française)."
+            fields:
+              - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false }
+              - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
+              - { label: "Surtitre", name: "eyebrow", widget: "string", required: false }
+              - { label: "Titre principal (H1)", name: "h1", widget: "string", required: false, hint: "Mettez un mot entre *astérisques* pour l'afficher en rouge." }
+              - { label: "Chapô", name: "chapo", widget: "text", required: false }
+              - { label: "Bouton de retour · texte", name: "retour_label", widget: "string", required: false }
+              - { label: "Bouton de retour · destination", name: "retour_url", widget: "string", required: false }
+              - { label: "Liens utiles · titre", name: "liens_titre", widget: "string", required: false }
+              - label: "Liens utiles"
+                name: "liens"
+                widget: "list"
+                required: false
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: "Texte du lien", name: "label", widget: "string", required: true }
+                  - { label: "Destination", name: "url", widget: "string", required: true }
+
+      - name: seo
+        label: Référencement et indexation (SEO)
+        file: src/_data/seo.json
+        format: json
+        description: "Réglages de référencement communs à tout le site français."
         fields: &f_seo
-          - { label: "URL du site (production)", name: "url", widget: "string", hint: "Sans slash final. Alimente les liens canoniques, le sitemap et le robots.txt. Ex. : https://www.4sh.fr", required: false }
-          - { label: "Autoriser l'indexation par les moteurs", name: "indexation", widget: "boolean", default: false, hint: "Décoché = tout le site en noindex (préprod). À cocher à la mise en production.", required: false }
-          - { label: "Titre par défaut", name: "titre_defaut", widget: "string", hint: "Utilisé quand une page n'a pas de titre SEO propre.", required: false }
-          - { label: "Description par défaut", name: "description_defaut", widget: "text", required: false }
-          - { label: "Image de partage (Open Graph)", name: "og_image", widget: "image", choose_url: true, hint: "Image affichée lors du partage sur les réseaux sociaux.", required: false }
-          - { label: "Contenu du robots.txt", name: "robots_txt", widget: "text", hint: "Règles d'indexation. La ligne Sitemap est ajoutée automatiquement.", required: false }
+          - { label: Adresse du site en production, name: url, widget: string, required: true, pattern: ['^https?://[^/]+$', "Adresse complète sans barre oblique finale, par exemple https://www.4sh.fr."], hint: "Sans barre oblique finale. Sert aux liens canoniques, au plan du site et au robots.txt. Par exemple : https://www.4sh.fr." }
+          - { label: Autoriser l'indexation par les moteurs de recherche, name: indexation, widget: boolean, required: false, default: false, hint: "Décoché : tout le site est masqué aux moteurs (préproduction). À cocher à la mise en production." }
+          - { label: Titre par défaut, name: titre_defaut, widget: string, required: true, hint: "Onglet du navigateur et résultats Google, pour une page sans titre SEO propre. 60 caractères maximum." }
+          - { label: Description par défaut, name: description_defaut, widget: text, required: true, hint: "Pour une page sans description SEO propre. 155 caractères maximum." }
+          - { label: Image de partage sur les réseaux sociaux, name: og_image, widget: image, required: false, choose_url: true, hint: "Image affichée quand une page est partagée (LinkedIn, X...). 1200 x 630 px conseillés." }
+          - { label: Contenu du robots.txt, name: robots_txt, widget: text, required: true, hint: "Règles pour les robots des moteurs. La ligne Sitemap est ajoutée automatiquement." }

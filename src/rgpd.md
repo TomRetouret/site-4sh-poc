@@ -1,11 +1,13 @@
 ---
 layout: page-legale.njk
 permalink: /rgpd/
-titre: "Notice d'informations RGPD"
-h1: "Notice d'informations RGPD"
-meta_title: "Notice d'informations RGPD de 4SH"
-meta_description: "Données personnelles collectées par 4SH, finalités, durées de conservation, sous-traitants et exercice de vos droits."
-source_url: "https://www.4sh.fr/rgpd.html"
+titre: Notice d'informations RGPD
+h1: Notice d'informations RGPD
+referencement:
+  meta_title: Notice d'informations RGPD de 4SH
+  meta_description: Données personnelles collectées par 4SH, finalités, durées de conservation, sous-traitants et exercice de vos droits.
+suivi:
+  source_url: https://www.4sh.fr/rgpd.html
 ---
 
 Dans le cadre de son activité commerciale, 4SH est amené à collecter et traiter des informations concernant ses clients, ses prospects commerciaux ou ses candidats au recrutement.

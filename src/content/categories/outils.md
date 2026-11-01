@@ -1,9 +1,11 @@
 ---
-nom: "Outils"
-meta_title: "Formation outils informatiques et digitaux avec les experts de 4SH"
-meta_description: "Gagnez en productivité avec nos formations aux outils informatiques 4SH ! Découvrez nos offres d'accompagnement pour la montée en compétences de vos collaborateurs."
-h1: "Formation Outils"
-intro: "Gagnez en efficacité avec nos formations outils informatiques 4SH ! Découvrez notre offre d'accompagnement pour la montée en compétences de vos collaborateurs grâce à nos experts. Parcourez notre catalogue de formation et n'hésitez pas à nous contacter si vous avez un besoin sur mesure !"
+nom: Outils
+h1: Formation Outils
+intro: Gagnez en efficacité avec nos formations outils informatiques 4SH ! Découvrez notre offre d'accompagnement pour la montée en compétences de vos collaborateurs grâce à nos experts. Parcourez notre catalogue de formation et n'hésitez pas à nous contacter si vous avez un besoin sur mesure !
+referencement:
+  meta_title: Formation outils informatiques et digitaux avec les experts de 4SH
+  meta_description: Gagnez en productivité avec nos formations aux outils informatiques 4SH ! Découvrez nos offres d'accompagnement pour la montée en compétences de vos collaborateurs.
+  indexation: true
 ---
 ## Améliorez la gestion de vos projets avec nos formations outils
 

@@ -1,9 +1,14 @@
   # -----------------------------------------------------------------------
-  # 3) CATÉGORIES  (pages Develop / Design / DevOps / Outils, textes SEO dédiés)
+  # 3) CATÉGORIES DE FORMATION  (pages /formations/develop/, design, devops, outils, ia)
+  # Gabarit fixe : src/_includes/categorie.njk. Champs dans l'ordre de la page :
+  # En-tête, (catalogue automatique), Texte de présentation, Questions fréquentes,
+  # puis Référencement. Spécification : docs/back-office/schema-collections.md
+  # « nom » est lu par les fiches formation (relation Catégorie) : ne pas le renommer.
   # -----------------------------------------------------------------------
   - name: "categories"
     label: "Catégories de formation"
     label_singular: "Catégorie"
+    description: "Une page par catégorie du catalogue 4SH Learning. Le catalogue de la page se remplit tout seul avec les fiches formation de la catégorie."
     folder: "src/content/categories"
     preview_path: "formations/{{slug}}/"
     create: false
@@ -11,19 +16,37 @@
     format: "frontmatter"
     summary: "{{nom}}"
     fields:
-      - { label: "Nom", name: "nom", widget: "select", options: ["Develop", "Design", "DevOps", "Outils"], hint: "Doit correspondre à la catégorie des fiches formation.", required: false }
-      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
-      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-      - { label: "Cacher cette page de Google (à laisser décoché en temps normal)", name: "noindex", widget: "boolean", required: false, default: false }
-      - { label: "Titre principal de la page (grand titre visible)", name: "h1", widget: "string", required: true }
-      - { label: "Introduction", name: "intro", widget: "text", required: false }
+      - { label: "Catégorie", name: "nom", widget: "select", required: true, options: ["Develop", "Design", "DevOps", "Outils", "IA"], hint: "Doit rester identique à la catégorie choisie dans les fiches formation : c'est elle qui remplit le catalogue de la page. Ne pas modifier sur une page existante." }
+
+      # --- En-tête ---
+      - { label: "En-tête · Grand titre", name: "h1", widget: "string", required: false, maxlength: 70, hint: "70 caractères maximum. Ex. : Nos formations de développeur full stack. Mettez un mot entre *astérisques* pour l'afficher en rouge. Vide : « Formations <catégorie> »." }
+      - { label: "En-tête · Introduction", name: "intro", widget: "text", required: true, hint: "Paragraphe sous le grand titre, 60 à 100 mots. Sert aussi de description pour Google si celle du Référencement est vide." }
+
+      # --- Texte de présentation (sous le catalogue) ---
+      - { label: "Texte de présentation", name: "body", widget: "markdown", required: true, buttons: ["bold", "italic", "link", "heading-two", "heading-three", "bulleted-list", "numbered-list"], editor_components: [], hint: "Affiché sous le catalogue, en colonne de lecture. Commencez par un Titre 2, puis un Titre 3 par question traitée. 300 à 1 500 mots." }
+
+      # --- Questions fréquentes ---
       - label: "Questions fréquentes"
         name: "faq"
         widget: "list"
+        required: false
+        label_singular: "Question"
         summary: "{{fields.question}}"
         collapsed: true
-        required: false
+        hint: "Facultatif. 3 à 6 questions, affichées en accordéon sous le texte de présentation (la première est ouverte)."
         fields:
-          - { label: "Question", name: "question", widget: "string", required: false }
-          - { label: "Réponse", name: "reponse", widget: "text", required: false }
-      - { label: "Texte SEO", name: "body", widget: "markdown", hint: "Le contenu rédactionnel affiché sous le catalogue de la catégorie.", required: false }
+          - { label: "Question", name: "question", widget: "string", required: true, maxlength: 120, hint: "120 caractères maximum." }
+          - { label: "Réponse", name: "reponse", widget: "text", required: true, hint: "80 mots maximum, sans mise en forme." }
+
+      # --- Référencement ---
+      - label: "Référencement"
+        name: "referencement"
+        widget: "object"
+        required: false
+        collapsed: true
+        summary: "{{fields.meta_title}}"
+        hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
+        fields:
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « Formations <catégorie> - 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : l'introduction est reprise." }
+          - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }

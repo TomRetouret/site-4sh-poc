@@ -3,24 +3,39 @@ layout: base.njk
 permalink: "/prestations/{{ page.fileSlug }}/"
 extraCss: /assets/secteurs.css
 ---
+{#- Page de prestation composée de blocs (src/content/prestations/*.md).
+    Spécification : docs/back-office/schema-prestations.md
+    Ordre fixe : en-tête (champ entete), bandeau de chiffres (chiffres), sections choisies par le
+    contributeur (blocs « section_* », dans l'ordre), références de bas de page (references),
+    questions fréquentes (faq), formulaire de contact. Le fond alterné, le temps fort sombre et le
+    numéro de chaque section sont calculés (filtre misePageSections, eleventy/prestations.js).
+    Couleur d'offre (offre), titre et description : prestations.11tydata.js.
+    Retour arrière : ancien gabarit et anciens fichiers dans l'historique Git (filtre « blocs »). -#}
 {% from "composants/page.njk" import hero, bandeau_chiffres %}
-{%- set offre = offre or ("build" if famille_label == "Concevoir & développer" else ("run" if famille_label == "Faire vivre & auditer" else ("learning" if bodyClass == "learning" else ""))) -%}
 {% from "composants/sections.njk" import faq_section, bloc_references %}
 {% from "composants/formulaires.njk" import contact_final as bloc_contact %}
+{%- set e = entete or {} -%}
+{%- set familles = { build: "Concevoir & développer", run: "Faire vivre & auditer" } -%}
 {{ hero(titre,
-        h1=h1,
-        eyebrow=famille_label or "Prestation",
-        chapo=chapo,
-        parents=[{ "label": fil_parent_label, "url": fil_parent_url }] if fil_parent_label else [],
-        ctas=[{ "label": cta_label or "Parlons de votre projet", "url": cta_url or "/contact/" }],
+        h1=e.titre_h1,
+        eyebrow=familles[offre] or "Prestation",
+        chapo=e.chapo,
+        parents=[{ "label": e.parent.texte, "url": e.parent.lien }] if (e.parent and e.parent.texte) else [],
+        ctas=[{ "label": (e.bouton.texte if e.bouton) or "Parlons de votre projet", "url": (e.bouton.lien if e.bouton) or "/contact/" }],
         offre=offre) }}
 
 {{ bandeau_chiffres(chiffres) }}
 
-{{ content | blocs(collections.references, page.url) | safe }}
+{%- set mise = blocs | misePageSections %}
+{% for b in (blocs or []) %}
+{% if mise[loop.index0] %}
+{% import "composants/blocs/" + b.type + ".njk" as composant %}
+{{ composant.bloc(b, { references: collections.references, url_page: page.url, fond: mise[loop.index0].fond, numero: mise[loop.index0].numero }, false) }}
+{% endif %}
+{% endfor %}
 
-{% set refs_haut = page.url | refsMisesEnAvant %}
-{{ bloc_references(references | sansRefs(refs_haut), collections.references,
+{# Les fiches déjà présentées dans une section Projets ne sont pas répétées ici. #}
+{{ bloc_references(references | sansRefs(blocs | refsDesSections), collections.references,
                    libelles.secteur.refs_eyebrow, libelles.secteur.refs_titre) }}
 
 {{ faq_section(faq, libelles.secteur.faq_titre) }}

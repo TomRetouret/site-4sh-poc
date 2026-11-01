@@ -8,6 +8,8 @@ profils:
   accueil: 110
   demo: 110
   offre: 110
+  institutionnel: 72
+  institutionnel_bilingue: 72
 
 # Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
 type:

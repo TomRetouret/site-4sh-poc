@@ -1,0 +1,17 @@
+{# Bloc « chiffres_compteurs » : bandeau de chiffres animés (compteur qui défile à l'affichage, script.js).
+   Le compteur est déduit du chiffre saisi (filtre compteurChiffre, eleventy/pages.js) : « 96% » compte jusqu'à 96.
+   Au-delà de 4 chiffres, le bandeau défile sur téléphone : il devient une zone que l'on peut atteindre au clavier.
+   Spécification : docs/back-office/schema-pages.md. #}
+{% macro bloc(b, ctx) %}
+<!-- CHIFFRES ANIMÉS -->
+<section style="padding:0">
+  <div class="chiffres">
+    <div class="container"{% if b.chiffres and b.chiffres.length > 4 %} tabindex="0" role="group" aria-label="Chiffres clés"{% endif %}>
+      {% for c in b.chiffres %}
+      {%- set k = (c.valeur | compteurChiffre) if c.animer != false else null %}
+      <div><b{% if k %} data-compte="{{ k.compte }}"{% if k.suffixe %} data-suffixe="{{ k.suffixe }}"{% endif %}{% endif %}>{{ c.valeur }}</b><span>{{ c.texte }}</span>{% if c.note %}<small>{{ c.note }}</small>{% endif %}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endmacro %}

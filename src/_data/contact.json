@@ -1,6 +1,10 @@
 {
-  "meta_title": "Contact : parlons de votre projet - 4SH",
-  "meta_description": "Un projet de logiciel sur mesure, une formation ou une question ? Parlons-en : 30 minutes avec un expert 4SH, gratuit et sans engagement. Bordeaux, Capbreton, Paris.",
-  "h1": "Parlons de votre *projet*",
-  "chapo": "30 minutes avec un expert, gratuit, sans engagement. Vous repartez avec un premier avis honnête, pas un argumentaire."
+  "seo": {
+    "meta_title": "Contact : parlons de votre projet - 4SH",
+    "meta_description": "Un projet de logiciel sur mesure, une formation ou une question ? Parlons-en : 30 minutes avec un expert 4SH, gratuit et sans engagement. Bordeaux, Capbreton, Paris."
+  },
+  "hero": {
+    "titre": "Parlons de votre *projet*",
+    "chapo": "30 minutes avec un expert, gratuit, sans engagement. Vous repartez avec un premier avis honnête, pas un argumentaire."
+  }
 }

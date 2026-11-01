@@ -1,9 +1,11 @@
 ---
-nom: "Design"
-meta_title: "Formation UX design : formation sur l'expérience utilisateur design par 4SH"
-meta_description: "Avec la formation 4SH Learning, affûtez les compétences de vos collaborateurs en design et leurs connaissances en intégration, ergonomie, graphisme, branding, UX."
-h1: "Formation Design"
-intro: "Avec 4SH Learning, affûtez les compétences artistiques et techniques indispensables à la réalisation de designs d'interfaces graphiques, riches, ergonomiques et créatifs. Nos formations en UX design vous permettront d'approfondir vos connaissances en intégration, ergonomie, graphisme, Branding, UX et d'en maîtriser les règles."
+nom: Design
+h1: Formation Design
+intro: Avec 4SH Learning, affûtez les compétences artistiques et techniques indispensables à la réalisation de designs d'interfaces graphiques, riches, ergonomiques et créatifs. Nos formations en UX design vous permettront d'approfondir vos connaissances en intégration, ergonomie, graphisme, Branding, UX et d'en maîtriser les règles.
+referencement:
+  meta_title: "Formation UX design : formation sur l'expérience utilisateur design par 4SH"
+  meta_description: Avec la formation 4SH Learning, affûtez les compétences de vos collaborateurs en design et leurs connaissances en intégration, ergonomie, graphisme, branding, UX.
+  indexation: true
 ---
 ## Les formations UX design 4SH
 

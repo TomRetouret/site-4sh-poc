@@ -1,0 +1,248 @@
+{
+  "seo": {
+    "meta_title": "Notre entreprise : 4SH, la technicité dans la convivialité",
+    "meta_description": "4SH, agence de développement de logiciels sur mesure depuis 2007. Découvrez notre histoire, notre équipe, nos valeurs et nos agences à Bordeaux, Capbreton et Paris."
+  },
+  "blocs": [
+    {
+      "type": "hero_institutionnel",
+      "masquer": false,
+      "fil_ariane": [
+        "Accueil",
+        "L'agence",
+        "Notre entreprise"
+      ],
+      "surtitre": "Notre entreprise",
+      "titre_page": "4SH, la technicité dans la *convivialité*",
+      "chapo": "Depuis 2007, une passion nous rassemble : le développement. Nous mettons en synergie nos expertises pour concevoir des logiciels sur mesure, en équipe et en toute transparence.",
+      "bouton_principal": {
+        "texte": "Nous rencontrer",
+        "lien": "#contact"
+      },
+      "bouton_secondaire": {
+        "texte": "Voir nos offres d'emploi",
+        "lien": "https://www.welcometothejungle.com/fr/companies/4sh/jobs"
+      },
+      "etiquettes": [
+        "Excellence",
+        "Engagement",
+        "Cohésion",
+        "Transparence"
+      ],
+      "illustration": "entreprise"
+    },
+    {
+      "type": "texte_simple",
+      "masquer": false,
+      "surtitre": "À propos",
+      "titre": "Une passion, le *développement*",
+      "texte": "Chez 4SH, c'est une passion, le développement, qui depuis 2007 nous rassemble autour d'une vision partagée de l'excellence technique.\n\nNotre mission ? Mettre en synergie nos expertises et compétences pour satisfaire nos clients qui, peu à peu, nous ont confié des projets de plus en plus divers et ambitieux. Nous avons enrichi l'équipe avec des profils variés et, comme chez nous tout le monde se plaît, la communauté ne fait que grandir. Nous travaillons ensemble au quotidien, en équipe, en toute transparence.\n\nPour rester à la pointe des technologies et des méthodes, nous progressons en continu, individuellement et collectivement, via des formations, des meetups et bien d'autres occasions. La dynamique de groupe se poursuit le midi et le soir, autour de tournois, apéros et divertissements. L'épanouissement de chacun passe aussi par la flexibilité et le confort, avec des aménagements sur les horaires et les postes de travail.\n\nPoursuivant notre développement, nous sommes en quête permanente de nouveaux talents pour venir partager notre passion."
+    },
+    {
+      "type": "chiffres_compteurs",
+      "masquer": false,
+      "chiffres": [
+        {
+          "valeur": "2007",
+          "texte": "Année de création",
+          "note": "",
+          "animer": true
+        },
+        {
+          "valeur": "58",
+          "texte": "Clients",
+          "note": "",
+          "animer": true
+        },
+        {
+          "valeur": "403",
+          "texte": "Projets",
+          "note": "",
+          "animer": true
+        },
+        {
+          "valeur": "98",
+          "texte": "Collaborateur·rices",
+          "note": "",
+          "animer": true
+        },
+        {
+          "valeur": "29",
+          "texte": "Âge moyen des collaborateur·rices",
+          "note": "",
+          "animer": true
+        },
+        {
+          "valeur": "6",
+          "texte": "Communautés",
+          "note": "",
+          "animer": true
+        }
+      ]
+    },
+    {
+      "type": "cartes_texte",
+      "masquer": false,
+      "sans_marge_haute": false,
+      "presentation": "encadrees",
+      "fond": "blanc",
+      "colonnes": "3",
+      "surtitre": "Une société technique",
+      "titre": "Riche de l'expérience de ses *collaborateur·rices*",
+      "sous_titre": "Chez nous, 80% des membres de l'entreprise sont développeur·ses ou ont fait du développement. Et parmi eux, on compte des figures reconnues de l'écosystème tech bordelais.",
+      "cartes": [
+        {
+          "titre": "Open source",
+          "texte": "Des créateurs et contributeurs de projets open source au sein de l'équipe."
+        },
+        {
+          "titre": "BordeauxJUG",
+          "texte": "Le créateur et plusieurs ex-lead du Java User Group de Bordeaux."
+        },
+        {
+          "titre": "BDX I/O",
+          "texte": "Le créateur et de nombreux membres de l'organisation de la conférence BDX I/O."
+        }
+      ]
+    },
+    {
+      "type": "cartes_texte",
+      "masquer": false,
+      "sans_marge_haute": false,
+      "presentation": "encadrees",
+      "fond": "sombre",
+      "colonnes": "auto",
+      "surtitre": "Nos valeurs",
+      "titre": "Une entreprise qui gravite autour de *4 valeurs*",
+      "sous_titre": "",
+      "cartes": [
+        {
+          "titre": "Excellence",
+          "texte": "La recherche permanente de la qualité technique, projet après projet."
+        },
+        {
+          "titre": "Engagement",
+          "texte": "Une implication de chaque instant aux côtés de nos clients et de leurs enjeux."
+        },
+        {
+          "titre": "Cohésion",
+          "texte": "Le partage des savoirs et l'esprit d'équipe, moteurs de nos réussites."
+        },
+        {
+          "titre": "Transparence",
+          "texte": "Une vision collaborative et honnête du pilotage de projet, du début à la fin."
+        }
+      ]
+    },
+    {
+      "type": "cartes_texte",
+      "masquer": false,
+      "sans_marge_haute": false,
+      "presentation": "encadrees",
+      "fond": "blanc",
+      "colonnes": "4",
+      "surtitre": "L'équipe",
+      "titre": "Nos *expert·es*, une équipe multi-talents",
+      "sous_titre": "Une bonne équipe, c'est le moteur d'une entreprise pour bien avancer. Nos métiers se complètent pour couvrir tout le cycle d'un projet, du cadrage à l'exploitation.",
+      "cartes": [
+        {
+          "titre": "Product Owner",
+          "texte": ""
+        },
+        {
+          "titre": "UI / UX Designer",
+          "texte": ""
+        },
+        {
+          "titre": "Ingénieur·e Développeur·se",
+          "texte": ""
+        },
+        {
+          "titre": "Technical Leader",
+          "texte": ""
+        },
+        {
+          "titre": "Ingénieur·e Qualité",
+          "texte": ""
+        },
+        {
+          "titre": "Ingénieur·e Système & Réseaux",
+          "texte": ""
+        },
+        {
+          "titre": "Pilote de projet",
+          "texte": ""
+        }
+      ]
+    },
+    {
+      "type": "encart_bouton",
+      "masquer": false,
+      "sans_marge_haute": true,
+      "presentation": "encadre",
+      "titre": "4SH, une entreprise qui recrute",
+      "texte": "L'humain est notre bien le plus précieux. Nous accompagnons chacun·e dans le développement de ses compétences et recherchons activement de nouveaux talents pour compléter nos équipes.",
+      "bouton": {
+        "texte": "Voir nos offres d'emploi et de stage",
+        "lien": "https://www.welcometothejungle.com/fr/companies/4sh/jobs"
+      }
+    },
+    {
+      "type": "cartes_texte",
+      "masquer": false,
+      "sans_marge_haute": true,
+      "presentation": "encadrees",
+      "fond": "blanc",
+      "colonnes": "auto",
+      "surtitre": "Nos agences",
+      "titre": "Nous sommes localisés *ici*",
+      "sous_titre": "Depuis nos agences du Haillan, de Bordeaux et de Capbreton, nos équipes pluridisciplinaires s'impliquent au quotidien aux côtés de nos clients dans la réussite de leurs challenges.",
+      "cartes": [
+        {
+          "titre": "Le Haillan",
+          "texte": "2 rue Edmond Rostand\n33185 Le Haillan",
+          "lien": {
+            "texte": "Voir sur la carte",
+            "lien": "https://maps.app.goo.gl/3y16XjW6fmYh425F9"
+          }
+        },
+        {
+          "titre": "Bordeaux",
+          "texte": "7 rue Esmangard\n33800 Bordeaux",
+          "lien": {
+            "texte": "Voir sur la carte",
+            "lien": "https://maps.app.goo.gl/xZtfUb2nE8CJKTWa8"
+          }
+        },
+        {
+          "titre": "Capbreton",
+          "texte": "2 rue du Barrasquit\n40130 Capbreton",
+          "lien": {
+            "texte": "Voir sur la carte",
+            "lien": "https://maps.app.goo.gl/NKgwXZ4hie75ep8M8"
+          }
+        },
+        {
+          "titre": "Paris",
+          "texte": "6 place de la Madeleine\n75008 Paris",
+          "lien": {
+            "texte": "Voir sur la carte",
+            "lien": "https://goo.gl/maps/Fw7vuuGnaLpK7n9dA"
+          }
+        }
+      ]
+    },
+    {
+      "type": "encart_bouton",
+      "masquer": false,
+      "sans_marge_haute": true,
+      "presentation": "libre",
+      "titre": "Notre engagement RSE",
+      "texte": "4SH formalise ses engagements environnementaux, sociaux et de gouvernance dans une charte RSE.",
+      "bouton": {
+        "texte": "Consulter notre charte RSE",
+        "lien": "https://drive.google.com/file/d/1JOFetCo1BX1ivMkoVkspNnBN1SN0zlCs/view"
+      }
+    }
+  ]
+}

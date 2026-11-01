@@ -2,7 +2,8 @@
   CORPS DE LA PAGE EXPERTISES TECHNIQUES
   Partage par /expertises-techniques/ et /en/tech-expertise/.
 
-  p            : le bundle page_technologies
+  p            : le bundle page_technologies (groupes seo, hero, phares, autres :
+                 docs/back-office/schema-pages.md)
   site         : le bundle site correspondant
   technologies : collections.technologies
   url_page     : page.url
@@ -17,11 +18,11 @@
     <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; Expertises techniques</nav>
     <div class="hero-grille">
       <div>
-        <p class="eyebrow">{{ p.hero_eyebrow }}</p>
-        <h1>{{ p.hero_titre | accent | safe }}</h1>
-        <p class="chapo" style="font-size:18px;color:var(--texte-2);margin-bottom:26px">{{ p.hero_intro }}</p>
+        <p class="eyebrow">{{ p.hero.surtitre }}</p>
+        <h1>{{ p.hero.titre | accent | safe }}</h1>
+        <p class="chapo" style="font-size:18px;color:var(--texte-2);margin-bottom:26px">{{ p.hero.intro }}</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="/contact/">Parlons de votre projet</a>
+          {% if p.hero.bouton and p.hero.bouton.texte %}<a class="btn btn-primary" href="{{ p.hero.bouton.lien or '/contact/' }}">{{ p.hero.bouton.texte }}</a>{% endif %}
         </div>
       </div>
       <div class="techno-blason" aria-hidden="true">
@@ -36,7 +37,7 @@
 <!-- TECHNOS PHARES -->
 <section>
   <div class="container">
-    <h2 class="sec-titre">{{ p.phares_titre | accent | safe }}</h2>
+    <h2 class="sec-titre">{{ p.phares.titre | accent | safe }}</h2>
     <div class="phares">
       {% for t in technologies %}
       <article class="phare-carte {{ 'famille-' + t.data.famille if t.data.famille }}">
@@ -53,9 +54,9 @@
 <!-- AUTRES TECHNOS -->
 <section style="padding-top:0">
   <div class="container">
-    <p class="sec-sous" style="max-width:none">{{ p.autres_intro }}</p>
+    <p class="sec-sous" style="max-width:none">{{ p.autres.intro }}</p>
     <div class="autres-technos">
-      {% for a in p.autres %}
+      {% for a in p.autres.technos %}
       <div class="techno-tuile">{% if a.logo %}<img src="{{ a.logo }}" alt="{{ a.nom }}" loading="lazy" decoding="async">{% endif %}<span>{{ a.nom }}</span></div>
       {% endfor %}
     </div>

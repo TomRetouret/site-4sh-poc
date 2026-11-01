@@ -1,0 +1,15 @@
+{# Bloc « frise_methode » : frise d'étapes numérotées sur fond sombre (méthode en quatre temps de Notre démarche).
+   Distinct de methode_4d (accueil) : pas de tracé décoratif, ancre facultative (cible d'un bouton #ancre).
+   Spécification : docs/back-office/schema-pages.md. #}
+{% from "composants/sections.njk" import frise_etapes %}
+{% macro bloc(b, ctx) %}
+<!-- FRISE DE MÉTHODE -->
+<section class="section-sombre"{% if b.ancre %} id="{{ b.ancre }}"{% endif %}>
+  <div class="container">
+    {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
+    {{ frise_etapes(b.etapes | etapesFrise) }}
+  </div>
+</section>
+{% endmacro %}

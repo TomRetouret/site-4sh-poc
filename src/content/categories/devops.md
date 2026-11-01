@@ -1,9 +1,11 @@
 ---
-nom: "DevOps"
-meta_title: "Formation DevOps : formation et développement de compétences DevOps"
-meta_description: "Découvrez les formations 4SH Learning, ouvrez-vous à la philosophie collaborative, aux outils et aux bonnes pratiques de la culture DevOps."
-h1: "Formation DevOps"
-intro: "Avec 4SH Learning, découvrez l'essence de la philosophie collaborative et imprégnez-vous des outils, méthodes et bonnes pratiques qui façonnent la culture DevOps. Nos formations DevOps vous permettront de maîtriser les principes fondamentaux de l'intégration et du déploiement continu, de l'automatisation des infrastructures, ainsi que des techniques de gestion de version et de surveillance. Préparez-vous à transformer votre approche du développement logiciel et à adopter une culture d'innovation et d'efficacité en participant à notre programme de formation DevOps."
+nom: DevOps
+h1: Formation DevOps
+intro: Avec 4SH Learning, découvrez l'essence de la philosophie collaborative et imprégnez-vous des outils, méthodes et bonnes pratiques qui façonnent la culture DevOps. Nos formations DevOps vous permettront de maîtriser les principes fondamentaux de l'intégration et du déploiement continu, de l'automatisation des infrastructures, ainsi que des techniques de gestion de version et de surveillance. Préparez-vous à transformer votre approche du développement logiciel et à adopter une culture d'innovation et d'efficacité en participant à notre programme de formation DevOps.
+referencement:
+  meta_title: "Formation DevOps : formation et développement de compétences DevOps"
+  meta_description: Découvrez les formations 4SH Learning, ouvrez-vous à la philosophie collaborative, aux outils et aux bonnes pratiques de la culture DevOps.
+  indexation: true
 ---
 ## Se former à la culture DevOps
 

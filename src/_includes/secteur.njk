@@ -23,7 +23,7 @@ extraCss: /assets/secteurs.css
       {% for d in defis %}
       <div class="sect-defi">
         <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
-        <p>{{ d | accent | safe }}</p>
+        <p>{{ d | gras | accent | safe }}</p>
       </div>
       {% endfor %}
     </div>
@@ -38,7 +38,7 @@ extraCss: /assets/secteurs.css
     <h2>{{ libelles.secteur.opportunites_titre }}</h2>
     {% if opportunites_intro %}<p class="intro">{{ opportunites_intro }}</p>{% endif %}
     <ul class="sect-liste">
-      {% for o in opportunites %}<li>{{ o | accent | safe }}</li>{% endfor %}
+      {% for o in opportunites %}<li>{{ o | gras | accent | safe }}</li>{% endfor %}
     </ul>
   </div>
 </section>
@@ -53,7 +53,7 @@ extraCss: /assets/secteurs.css
       {% for a in pourquoi %}
       <div class="sect-atout">
         <h3>{{ a.titre }}</h3>
-        {% for p in a.paras %}<p>{{ p | accent | safe }}</p>{% endfor %}
+        {% for p in a.paras %}<p>{{ p | gras | accent | safe }}</p>{% endfor %}
       </div>
       {% endfor %}
     </div>

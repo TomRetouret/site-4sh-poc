@@ -1,0 +1,50 @@
+{#
+  Morceaux communs des blocs « section_* » des pages de prestation
+  (section_texte, section_cartes, section_atouts, section_etapes, section_projets).
+  Spécification : docs/back-office/schema-prestations.md
+  Fichier réservé (nom commençant par _) : ce n'est pas un type de bloc.
+
+  Balisage identique à celui de l'ancien filtre « blocs » d'eleventy.config.js.
+  ctx.fond et ctx.numero sont calculés par le filtre misePageSections (eleventy/prestations.js) :
+  le contributeur ne règle ni le fond ni le numéro.
+#}
+
+{# Petit numéro de section (01, 02...) au-dessus du titre #}
+{% macro numero(ctx) -%}
+{% if ctx and ctx.numero %}<p class="eyebrow eyebrow--rang">{{ ctx.numero }}</p>{% endif %}
+{%- endmacro %}
+
+{# Titre de la section (H2) #}
+{% macro titre(b) -%}
+{% if b.titre %}<h2>{{ b.titre | mdTitre | safe }}</h2>{% endif %}
+{%- endmacro %}
+
+{# Texte d'introduction de la section #}
+{% macro chapeau(b) -%}
+{% set html = b.texte | mdSection %}
+{% if html %}<div class="sect-prose">{{ html | safe }}</div>{% endif %}
+{%- endmacro %}
+
+{# Boutons de fin de section : le premier plein, les suivants en contour #}
+{% macro boutons(liste) -%}
+{% set bs = [] %}
+{% for x in (liste or []) %}{% if x and x.texte and x.lien %}{% if bs.push(x) %}{% endif %}{% endif %}{% endfor %}
+{% if bs.length %}<div class="hero-cta" style="margin-top:30px">{% for x in bs %}<a class="btn {{ 'btn-primary' if loop.first else 'btn-ghost' }}" href="{{ x.lien | echappeSection | safe }}"{% if x.lien | adresseExterne %} target="_blank" rel="noopener"{% endif %}>{{ x.texte | echappeSection | safe }}</a>{% endfor %}</div>{% endif %}
+{%- endmacro %}
+
+{# Grille de cartes : en carrousel à partir de 4 cartes. variante : "" ou "refs" #}
+{% macro grille(nombre, titre, variante) -%}
+{% if nombre >= 4 %}<div class="carrousel car--blocs{{ ' car--refs' if variante == 'refs' }}" data-carrousel data-carrousel-auto="off" aria-label="{{ titre | libelleCarrousel | safe }}"><div class="car-piste" tabindex="0" role="group" aria-label="Faites défiler">{{ caller() }}</div><div class="car-dots"></div></div>
+{%- else %}<div class="{{ 'sect-refs-inline' if variante == 'refs' else 'sect-defis' }}">{{ caller() }}</div>{% endif %}
+{%- endmacro %}
+
+{# Carte (section_cartes) ou atout (section_atouts). Avec un lien, toute la carte est cliquable. #}
+{% macro carte(e, classe) -%}
+{% if e.lien %}<a class="{{ classe }} sect-defi--lien" href="{{ e.lien | echappeSection | safe }}"><h3>{{ e.titre | mdTitre | safe }}</h3><span class="socle-lien">Découvrir &rarr;</span></a>
+{%- else %}<div class="{{ classe }}">{% if e.titre %}<h3>{{ e.titre | mdTitre | safe }}</h3>{% endif %}{{ e.texte | mdSection | safe }}</div>{% endif %}
+{%- endmacro %}
+
+{# Enveloppe d'une section ordinaire : numéro, titre, introduction, contenu (caller), boutons #}
+{% macro section(b, ctx) -%}
+<section class="sect-bloc{{ ctx.fond if ctx }}"><div class="container">{{ numero(ctx) }}{{ titre(b) }}{{ chapeau(b) }}{{ caller() }}{{ boutons(b.boutons) }}</div></section>
+{%- endmacro %}

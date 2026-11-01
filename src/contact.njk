@@ -8,8 +8,8 @@ permalink: /contact/
     <nav class="fil-ariane" aria-label="Fil d'Ariane" style="padding-bottom:18px"><a href="/">Accueil</a> › Contact</nav>
     <div class="contact-grille">
       <div>
-        <h1 class="sec-titre">{{ contact.h1 | accent | safe }}</h1>
-        <p class="sec-sous" style="margin-bottom:18px">{{ contact.chapo }}</p>
+        <h1 class="sec-titre">{{ contact.hero.titre | accent | safe }}</h1>
+        <p class="sec-sous" style="margin-bottom:18px">{{ contact.hero.chapo }}</p>
         <ul class="arguments">
           {% for a in site.contact.arguments %}<li>{{ a }}</li>{% endfor %}
         </ul>

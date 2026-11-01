@@ -1,9 +1,16 @@
   # -----------------------------------------------------------------------
-  # 5 bis) TECHNOLOGIES  (fiches sous « Expertises techniques »)
+  # 5 bis) TECHNOLOGIES  (fiches /expertises-techniques/<slug>/)
+  # Gabarit fixe : src/_includes/technologie.njk. Champs dans l'ordre de la page :
+  # Identité, En-tête, Pourquoi, Références, Contenu détaillé (sections), Formations,
+  # Questions fréquentes, Carte de la page mère, Référencement, Suivi interne.
+  # nom, famille, logo, accroche_courte et ordre sont aussi lus par la page
+  # Expertises techniques (FR et EN) : ne pas les renommer.
+  # Spécification : docs/back-office/schema-collections.md
   # -----------------------------------------------------------------------
   - name: "technologies"
     label: "Technologies"
     label_singular: "Technologie"
+    description: "Fiches des expertises techniques. Chaque fiche a aussi sa carte sur la page Expertises techniques (française et anglaise)."
     folder: "src/content/technologies"
     preview_path: "expertises-techniques/{{slug}}/"
     create: true
@@ -13,46 +20,144 @@
     summary: "{{nom}}"
     sortable_fields: ["ordre", "nom"]
     fields:
-      - { label: "Nom", name: "nom", widget: "string", hint: "Ex. : Java", required: true }
-      - { label: "Ordre d'affichage", name: "ordre", widget: "number", required: false, value_type: "int", hint: "Plus petit = affiché en premier sur la page mère." }
-      - { label: "Famille d'offre (code couleur)", name: "famille", widget: "select", options: ["build", "run", "formation"], default: "build", hint: "build = rouge (dev), run = cyan (infra), formation = violet.", required: false }
-      - { label: "Logo (URL ou image)", name: "logo", widget: "image", required: false, choose_url: true }
-      - { label: "Accroche courte (carte de la page mère)", name: "accroche_courte", widget: "text", required: false }
-      - { label: "Titre (H1)", name: "h1", widget: "string", hint: "Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
-      - { label: "Introduction (hero)", name: "intro", widget: "text", required: false }
-      - { label: "Titre SEO", name: "meta_title", widget: "string", required: false }
-      - { label: "Description SEO", name: "meta_description", widget: "text", required: false }
-      - { label: "Pourquoi · titre", name: "pourquoi_titre", widget: "string", hint: "Pour mettre un mot en avant, encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
-      - { label: "Pourquoi · sous-titre", name: "pourquoi_intro", widget: "text", required: false }
-      - label: "Atouts (numérotés automatiquement)"
+      # --- Identité ---
+      - { label: "Identité · Nom de la technologie", name: "nom", widget: "string", required: true, maxlength: 30, hint: "30 caractères maximum. Ex. : Java. Affiché dans le fil d'Ariane, sur la carte de la page Expertises techniques et dans les surtitres par défaut." }
+      - label: "Identité · Famille d'offre (couleur)"
+        name: "famille"
+        widget: "select"
+        required: true
+        default: "build"
+        options:
+          - { label: "4SH Build : développement (rouge)", value: "build" }
+          - { label: "4SH Run : infrastructure (cyan)", value: "run" }
+          - { label: "4SH Learning : formation (violet)", value: "formation" }
+        hint: "Donne la couleur d'accent de la fiche et de sa carte."
+      - { label: "Identité · Logo", name: "logo", widget: "image", required: false, choose_url: true, hint: "Facultatif. SVG carré sur fond transparent. Affiché dans l'en-tête et sur la carte de la page Expertises techniques. Le texte alternatif est le nom de la technologie (automatique)." }
+
+      # --- En-tête ---
+      - { label: "En-tête · Grand titre", name: "h1", widget: "string", required: true, maxlength: 110, hint: "70 caractères conseillés, 110 maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge. Ex. : Développement Angular : applications web et *interfaces métier* sur mesure" }
+      - { label: "En-tête · Introduction", name: "intro", widget: "text", required: true, hint: "Paragraphe sous le grand titre, 60 mots maximum. Sert aussi de description pour Google si celle du Référencement est vide." }
+
+      # --- Pourquoi ---
+      - { label: "Pourquoi · Surtitre", name: "pourquoi_eyebrow", widget: "string", required: false, maxlength: 40, hint: "Facultatif, 40 caractères maximum. Vide : « Pourquoi <nom> ? »." }
+      - { label: "Pourquoi · Titre", name: "pourquoi_titre", widget: "string", required: false, maxlength: 90, hint: "90 caractères maximum. Ex. : Pourquoi utiliser *Kubernetes* ? Vide : pas de titre." }
+      - { label: "Pourquoi · Sous-titre", name: "pourquoi_intro", widget: "text", required: false, hint: "Facultatif. Une ou deux phrases sous le titre." }
+      - label: "Pourquoi · Atouts"
         name: "atouts"
         widget: "list"
+        required: true
+        min: 1
+        label_singular: "Atout"
         summary: "{{fields.titre}}"
         collapsed: true
+        hint: "Quatre par rangée, numérotés automatiquement : 4 ou 8 atouts de préférence."
         fields:
-          - { label: "Titre", name: "titre", widget: "string", required: false }
-          - { label: "Texte", name: "texte", widget: "text", required: false }
+          - { label: "Titre de l'atout", name: "titre", widget: "string", required: true, maxlength: 70, hint: "70 caractères maximum. Ex. : TypeScript pour un code typé et maintenable" }
+          - { label: "Texte", name: "texte", widget: "text", required: true, hint: "50 mots maximum, sans mise en forme." }
+
+      # --- Références clients ---
       - label: "Références clients"
         name: "references"
         widget: "list"
+        required: false
+        label_singular: "Référence"
         summary: "{{fields.titre}}"
         collapsed: true
-        required: false
+        hint: "Facultatif. Projets où la technologie a servi, en cartes. Le visuel, le logo et le secteur viennent de la fiche référence choisie."
         fields:
-          - { label: "Titre", name: "titre", widget: "string", required: false }
-          - { label: "Lien (optionnel)", name: "lien", widget: "string", required: false }
-          - { label: "Texte", name: "texte", widget: "text", required: false }
-      - { label: "Guide · surtitre du bloc de contenu", name: "corps_eyebrow", widget: "string", required: false, hint: "Ex. : Guide, ou Communauté et écosystème." }
-      - { label: "Guide · titre du bloc de contenu", name: "corps_titre", widget: "string", required: false }
-      - { label: "Guide · afficher le bloc sur fond sombre", name: "corps_sombre", widget: "boolean", required: false, default: false }
-      - { label: "Guide · URL de la page d'origine (pour mémoire)", name: "guide_source_url", widget: "string", required: false }
+          - label: "Fiche référence"
+            name: "fiche"
+            widget: "relation"
+            required: false
+            collection: "references"
+            value_field: "{{slug}}"
+            search_fields: ["titre", "client"]
+            display_fields: ["titre"]
+            hint: "Facultatif. Vide : carte sans visuel ni lien (projet sans fiche publiée)."
+          - { label: "Titre de la carte", name: "titre", widget: "string", required: true, maxlength: 60, hint: "Client et secteur, 60 caractères maximum. Ex. : Filhet-Allard - Assurance" }
+          - { label: "Texte", name: "texte", widget: "text", required: true, hint: "Le rôle de la technologie dans le projet, 60 mots maximum, sans mise en forme." }
+
+      # --- Contenu détaillé ---
+      - { label: "Contenu détaillé · Surtitre", name: "corps_eyebrow", widget: "string", required: false, maxlength: 40, hint: "Facultatif, 40 caractères maximum. Ex. : Guide. Vide : « Communauté et écosystème »." }
+      - { label: "Contenu détaillé · Titre", name: "corps_titre", widget: "string", required: false, maxlength: 90, hint: "Facultatif, 90 caractères maximum. Ex. : Comprendre *Kubernetes*" }
+      - { label: "Contenu détaillé · Texte continu sur fond sombre", name: "corps_sombre", widget: "boolean", required: false, default: false, hint: "Coché : les sections s'affichent en un seul texte sur fond sombre, sans mise en page automatique (pour un contenu court). Décoché : une section par grand thème." }
+      - label: "Contenu détaillé · Sections"
+        name: "sections"
+        widget: "list"
+        required: false
+        label_singular: "Section"
+        summary: "{{fields.titre}}"
+        collapsed: true
+        hint: "Une section par grand thème, dans l'ordre de la page. Mise en page automatique (fonds alternés, cartes, atouts, étapes), sauf si « Texte continu sur fond sombre » est coché. Vide : le bloc n'est pas affiché."
+        fields:
+          - { label: "Titre de la section", name: "titre", widget: "string", required: false, maxlength: 110, hint: "Intertitre de la section, 110 caractères maximum. Laisser vide seulement pour un texte d'introduction placé en tout premier. Le titre décide aussi de la mise en page des sous-parties : « approche », « méthode », « démarche », « comment »... donne des étapes numérotées (3 sous-parties minimum) ; « pourquoi », « choisir », « atout », « engagement »... donne des atouts sur deux colonnes ; sinon des cartes." }
+          - { label: "Texte d'introduction", name: "texte", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Paragraphes sous le titre. Sans sous-partie, une liste de 3 puces ou plus devient une grille de cartes (« **Titre** : texte » donne une carte titrée). Un paragraphe qui ne contient qu'un lien devient un bouton. Un lien vers une fiche (/references/...) affiche l'aperçu de cette référence à côté du texte." }
+          - label: "Sous-parties"
+            name: "sous_parties"
+            widget: "list"
+            required: false
+            label_singular: "Sous-partie"
+            summary: "{{fields.titre}}"
+            collapsed: true
+            hint: "Facultatif. 2 à 8 sous-parties de même nature, affichées en cartes, atouts ou étapes selon le titre de la section. Au-delà de 3 cartes, elles défilent en carrousel."
+            fields:
+              - { label: "Titre de la sous-partie", name: "titre", widget: "string", required: true, maxlength: 110, hint: "110 caractères maximum. Ex. : Centralisation de toutes les demandes dans une interface unique" }
+              - { label: "Texte", name: "texte", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "60 mots environ (au-delà de 420 caractères en moyenne, les cartes passent en atouts). Listes à puces possibles." }
+
+      # --- Formations liées ---
       - label: "Formations liées"
         name: "formations"
         widget: "list"
+        required: false
+        label_singular: "Formation"
         summary: "{{fields.titre}}"
         collapsed: true
-        required: false
+        hint: "Facultatif. Cartes vers les fiches formation, trois par rangée. Ajoute le bouton « Nos formations » dans l'en-tête."
         fields:
-          - { label: "Titre", name: "titre", widget: "string", required: false }
-          - { label: "Lien", name: "url", widget: "string", required: false }
-      - { label: "Communauté & écosystème", name: "body", widget: "markdown", hint: "Texte affiché dans la section sombre « Communauté et écosystème ».", required: false }
+          - { label: "Titre de la carte", name: "titre", widget: "string", required: true, maxlength: 60, hint: "60 caractères maximum. Ex. : Angular - Les fondamentaux" }
+          - label: "Fiche formation"
+            name: "formation"
+            widget: "relation"
+            required: true
+            collection: "formations"
+            value_field: "{{slug}}"
+            search_fields: ["entete.titre", "entete.niveau"]
+            display_fields: ["{{entete.titre}} {{entete.sous_titre}} ({{entete.niveau}})"]
+            hint: "La carte mène à cette fiche."
+
+      # --- Questions fréquentes ---
+      - { label: "Questions fréquentes · Titre", name: "faq_titre", widget: "string", required: false, maxlength: 90, hint: "Facultatif, 90 caractères maximum. Vide : « Questions fréquentes sur <nom> »." }
+      - label: "Questions fréquentes · Questions"
+        name: "faq"
+        widget: "list"
+        required: false
+        label_singular: "Question"
+        summary: "{{fields.question}}"
+        collapsed: true
+        hint: "Facultatif. 3 à 8 questions, affichées en accordéon. Vide : la section n'est pas affichée."
+        fields:
+          - { label: "Question", name: "question", widget: "string", required: true, maxlength: 120, hint: "120 caractères maximum." }
+          - { label: "Réponse", name: "reponse", widget: "text", required: true, hint: "80 mots maximum, sans mise en forme." }
+
+      # --- Carte de la page Expertises techniques ---
+      - { label: "Carte de la page mère · Accroche courte", name: "accroche_courte", widget: "text", required: true, maxlength: 90, hint: "Une phrase, 90 caractères maximum, affichée sur la carte de la page Expertises techniques (française et anglaise)." }
+      - { label: "Carte de la page mère · Position", name: "ordre", widget: "number", required: false, value_type: "int", min: 1, hint: "Nombre entier : le plus petit s'affiche en premier sur la page Expertises techniques." }
+
+      # --- Référencement ---
+      - label: "Référencement"
+        name: "referencement"
+        widget: "object"
+        required: false
+        collapsed: true
+        summary: "{{fields.meta_title}}"
+        hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
+        fields:
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « <nom> - Expertise technique 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : l'introduction est reprise." }
+          - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
+
+      # --- Suivi interne (non affiché) ---
+      - { label: "Suivi interne · Requête visée (non affichée)", name: "requete_cible", widget: "string", required: false, hint: "Pour mémoire : expression recherchée dans Google que la fiche cible. Ex. : développement Angular" }
+      - { label: "Suivi interne · Page d'origine (non affichée)", name: "source_url", widget: "string", required: false, hint: "Pour mémoire : page de l'ancien site dont le contenu est repris." }
+      - { label: "Suivi interne · Page Confluence (non affichée)", name: "source_confluence", widget: "string", required: false, hint: "Pour mémoire : page de rédaction dans Confluence." }
+      - { label: "Suivi interne · Guide d'origine (non affiché)", name: "guide_source_url", widget: "string", required: false, hint: "Pour mémoire : page de l'ancien site dont vient le contenu détaillé." }

@@ -1,0 +1,8 @@
+{# Bloc « section_atouts » : Section d'atouts sur deux colonnes (pages de prestation).
+   Spécification : docs/back-office/schema-prestations.md
+   Fond et numéro : ctx (calculés). #}
+{% import "composants/blocs/_section.njk" as s %}
+{% macro bloc(b, ctx, serre) %}
+{% set atouts = b.atouts or [] %}
+{% call s.section(b, ctx) %}{% if atouts.length %}<div class="sect-atouts">{% for e in atouts %}{{ s.carte(e, "sect-atout") }}{% endfor %}</div>{% endif %}{% endcall %}
+{% endmacro %}

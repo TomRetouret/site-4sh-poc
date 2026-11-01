@@ -1,0 +1,212 @@
+{
+  "seo": {
+    "meta_title": "Notre démarche : méthode 4D, UX et engagements – 4SH",
+    "meta_description": "Découvrez la démarche 4SH : la méthode 4D (Découvrir, Dessiner, Développer, Déployer), une conception centrée utilisateur et des engagements clairs sur la qualité, les délais et la transparence."
+  },
+  "blocs": [
+    {
+      "type": "hero_institutionnel",
+      "masquer": false,
+      "fil_ariane": [
+        "Accueil",
+        "L'agence",
+        "Notre démarche"
+      ],
+      "surtitre": "Notre démarche",
+      "titre_page": "De votre idée à votre logiciel, une *méthode* qui sécurise chaque étape",
+      "chapo": "Nous structurons chaque projet autour de trois piliers : une méthode agile en quatre temps, une conception centrée sur vos utilisateurs, et des engagements clairs sur la qualité et les délais.",
+      "bouton_principal": {
+        "texte": "Parlons de votre projet",
+        "lien": "#contact"
+      },
+      "bouton_secondaire": {
+        "texte": "Découvrir la méthode 4D",
+        "lien": "#methode"
+      },
+      "etiquettes": [
+        "Découvrir",
+        "Dessiner",
+        "Développer",
+        "Déployer"
+      ],
+      "illustration": "demarche"
+    },
+    {
+      "type": "chiffres_compteurs",
+      "masquer": false,
+      "chiffres": [
+        {
+          "valeur": "2007",
+          "texte": "Année de création",
+          "note": "",
+          "animer": true
+        },
+        {
+          "valeur": "96%",
+          "texte": "de nos projets respectent les délais prévus",
+          "note": "statistiques 4PM® - 4SH Project Management",
+          "animer": true
+        },
+        {
+          "valeur": "60%",
+          "texte": "des projets d'accompagnement naissent d'une recommandation client",
+          "note": "",
+          "animer": true
+        },
+        {
+          "valeur": "4",
+          "texte": "temps forts : Découvrir, Dessiner, Développer, Déployer",
+          "note": "",
+          "animer": true
+        }
+      ]
+    },
+    {
+      "type": "frise_methode",
+      "masquer": false,
+      "ancre": "methode",
+      "surtitre": "Méthode 4D",
+      "titre": "Notre secret de fabrication, les *4D*",
+      "sous_titre": "Vous avez une super idée qui vous permettrait d'accélérer votre business, mais ni le temps ni les ressources pour vous en occuper ? De l'idée à la création de votre application, nous suivons un processus en quatre temps, gage de qualité.",
+      "etapes": [
+        {
+          "numero": "1",
+          "phase": "Découvrir",
+          "titre": "On écoute votre idée",
+          "texte": "Nous commençons par comprendre votre idée, puis nous élaborons ensemble les grands principes de la solution et sa roadmap."
+        },
+        {
+          "numero": "2",
+          "phase": "Dessiner",
+          "titre": "On conçoit l'expérience",
+          "texte": "Nous élaborons les spécifications UX et UI, pour définir la solution avant d'écrire la moindre ligne de code."
+        },
+        {
+          "numero": "3",
+          "phase": "Développer",
+          "titre": "On développe",
+          "texte": "C'est là que la magie opère : nos équipes développent votre application selon les principes validés ensemble."
+        },
+        {
+          "numero": "4",
+          "phase": "Déployer",
+          "titre": "On met en production",
+          "texte": "Le grand jour. Nous validons et ajustons les derniers détails avec vous, puis nous mettons la solution en production. Votre application est prête !"
+        }
+      ]
+    },
+    {
+      "type": "cartes_numerotees",
+      "masquer": false,
+      "sans_marge_haute": true,
+      "affichage": "grille",
+      "colonnes": "3",
+      "surtitre": "Démarche UX",
+      "titre": "Une approche centrée sur *l'utilisateur*",
+      "sous_titre": "La démarche UX 4SH garantit une meilleure expérience pour l'utilisateur final et une optimisation continue du produit grâce à des tests réguliers. Un cycle itératif en six étapes, adapté aux besoins de chaque projet, pour garder votre produit aligné sur les besoins réels.",
+      "cartes": [
+        {
+          "titre": "Comprendre les besoins",
+          "texte": "Nous définissons et planifions la démarche à partir d'une analyse approfondie de vos besoins, de vos objectifs business et du marché concurrentiel."
+        },
+        {
+          "titre": "Écouter vos utilisateurs",
+          "texte": "Comprendre les comportements, besoins et motivations de vos utilisateurs, par des méthodes qualitatives et quantitatives, pour guider la conception."
+        },
+        {
+          "titre": "Imaginer des solutions",
+          "texte": "Autour d'ateliers de co-création, nous concevons des solutions où chaque interaction est pensée pour simplifier la vie de l'utilisateur."
+        },
+        {
+          "titre": "Donner vie aux idées",
+          "texte": "Notre équipe de designers conçoit des interfaces accessibles, cohérentes visuellement, techniquement et fonctionnellement."
+        },
+        {
+          "titre": "Garantir la cohérence",
+          "texte": "Nous créons et maintenons un Design System qui assure une cohérence durable des interfaces."
+        },
+        {
+          "titre": "Tester et réitérer",
+          "texte": "Chaque retour utilisateur est une opportunité. Prototype interactif Figma et tests d'utilisabilité identifient les points de friction avant le lancement."
+        }
+      ]
+    },
+    {
+      "type": "cartes_numerotees",
+      "masquer": false,
+      "sans_marge_haute": true,
+      "affichage": "carrousel",
+      "colonnes": "auto",
+      "surtitre": "Nos engagements",
+      "titre": "Les grands projets méritent une réalisation de *qualité*",
+      "sous_titre": "Sept engagements pour sécuriser votre projet numérique, de la première estimation à la propriété du code source.",
+      "cartes": [
+        {
+          "titre": "Le travail au forfait",
+          "texte": "Dès le début, nous établissons ensemble un forfait en adéquation avec vos objectifs."
+        },
+        {
+          "titre": "Les délais",
+          "texte": "96% de nos projets respectent les délais prévus (statistiques 4PM® - 4SH Project Management)."
+        },
+        {
+          "titre": "La qualité",
+          "texte": "Plus de 60% de nos projets d'accompagnement naissent d'une recommandation client."
+        },
+        {
+          "titre": "La réussite de votre projet",
+          "texte": "Nous sécurisons votre retour sur investissement."
+        },
+        {
+          "titre": "La transparence",
+          "texte": "Nos clients apprécient cette vision collaborative et transparente du pilotage de projets numériques."
+        },
+        {
+          "titre": "La propriété",
+          "texte": "De la réussite du projet aux codes sources du logiciel, nous vous restituons toutes les propriétés."
+        },
+        {
+          "titre": "L'expertise technologique",
+          "texte": "Nous restons toujours à la pointe des dernières avancées technologiques."
+        }
+      ]
+    },
+    {
+      "type": "cartes_texte",
+      "masquer": false,
+      "sans_marge_haute": true,
+      "presentation": "colonnes",
+      "fond": "blanc",
+      "colonnes": "auto",
+      "surtitre": "Nos dispositifs",
+      "titre": "Le bon cadre *contractuel* selon votre besoin",
+      "sous_titre": "Plusieurs modèles de collaboration, du forfait clé en main à la gestion complète d'un service, avec des engagements adaptés à chaque situation.",
+      "cartes": [
+        {
+          "titre": "Forfait",
+          "texte": "Engagement sur un périmètre, un budget et des délais définis. 4SH est responsable de la livraison complète du projet selon les exigences contractuelles."
+        },
+        {
+          "titre": "Centre de Services",
+          "texte": "Structure mutualisée dédiée à certaines activités (développement, maintenance, support) avec des engagements de résultats et des indicateurs de performance (SLA)."
+        },
+        {
+          "titre": "BOT (Build, Operate, Transfer)",
+          "texte": "Construction d'une équipe dédiée qui construit et exploite l'outil pendant une période donnée, puis transfert complet et contractualisé vers le client."
+        },
+        {
+          "titre": "Assistance Technique",
+          "texte": "Mise à disposition de ressources sous la responsabilité du client, facturées au temps passé, avec ou sans pilotage d'un budget global."
+        },
+        {
+          "titre": "TMA / TRA",
+          "texte": "Tierce Maintenance et Recette Applicative : prise en charge de la maintenance et des tests d'applications existantes, souvent avec des niveaux de service."
+        },
+        {
+          "titre": "Managed Services",
+          "texte": "Gestion complète d'un service IT avec engagement de résultats et facturation selon un modèle d'unités d'œuvre (forfait mensuel ou UO de travaux)."
+        }
+      ]
+    }
+  ]
+}

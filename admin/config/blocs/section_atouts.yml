@@ -1,0 +1,85 @@
+# Bloc « section_atouts » : Section d'atouts (deux colonnes) (pages de prestation)
+# Composant du site : src/_includes/composants/blocs/section_atouts.njk (morceaux communs : _section.njk)
+# Spécification : docs/back-office/schema-prestations.md ; mode d'emploi : docs/back-office/schema-blocs.md
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+#
+# Le fond (blanc, gris clair une section sur deux, sombre pour la première section en étapes)
+# et le petit numéro de section sont calculés par le site : aucun réglage ici.
+
+profils:
+  prestation: 30
+
+type:
+  label: Section d'atouts (deux colonnes)
+  name: section_atouts
+  widget: object
+  summary: 'Atouts : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Titre de la section
+      name: titre
+      widget: string
+      required: false
+      hint: 'Laissez vide uniquement pour le texte d''introduction en haut de page.'
+    - label: Texte d'introduction
+      name: texte
+      widget: markdown
+      required: false
+      hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, italique, liens et listes. Laissez une ligne vide entre deux paragraphes.
+      buttons: [bold, italic, link, bulleted-list, numbered-list]
+      editor_components: []
+      modes: [rich_text]
+    - label: Atouts
+      name: atouts
+      widget: list
+      required: true
+      label_singular: Atout
+      collapsed: true
+      min: 1
+      summary: '{{fields.titre}}'
+      hint: 'Affichés sur deux colonnes, sans limite de nombre.'
+      fields:
+        - label: Titre
+          name: titre
+          widget: string
+          required: false
+          hint: Facultatif. 60 caractères maximum.
+        - label: Texte
+          name: texte
+          widget: markdown
+          required: false
+          hint: Gras, italique, liens et listes. Ignoré si la destination ci-dessous est remplie.
+          buttons: [bold, italic, link, bulleted-list, numbered-list]
+          editor_components: []
+          modes: [rich_text]
+        - label: Destination (carte cliquable)
+          name: lien
+          widget: string
+          required: false
+          hint: 'Facultatif. Si rempli, toute la carte devient un lien « Découvrir » vers cette adresse et seul le titre est affiché.'
+    - label: Boutons
+      name: boutons
+      widget: list
+      required: false
+      label_singular: Bouton
+      collapsed: true
+      max: 3
+      summary: '{{fields.texte}} ({{fields.lien}})'
+      hint: Facultatif. Affichés en fin de section ; le premier est rouge, les suivants en contour.
+      fields:
+        - label: Texte du bouton
+          name: texte
+          widget: string
+          required: true
+          hint: 'Verbe d''action, 30 caractères maximum. Par exemple : Parlons de votre projet.'
+        - label: Destination
+          name: lien
+          widget: string
+          required: true
+          default: /contact/
+          hint: Adresse d'une page du site (/contact/) ou adresse complète (https://...), ouverte alors dans un nouvel onglet.

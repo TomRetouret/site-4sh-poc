@@ -1,0 +1,66 @@
+{# Bloc « hero_institutionnel » : haut des pages institutionnelles (Notre démarche, Notre entreprise, Company).
+   Fil d'Ariane saisi étape par étape (la première renvoie vers l'accueil), surtitre, titre (H1),
+   chapô, deux boutons, étiquettes et illustration choisie dans une liste fermée.
+   Spécification : docs/back-office/schema-pages.md. Styles : charte du site (.hero-interne). #}
+{% macro bloc(b, ctx) %}
+<!-- HERO INTERNE (pages institutionnelles) -->
+<div class="hero-interne">
+  <div class="container">
+    {% if b.fil_ariane and b.fil_ariane.length %}<nav class="fil-ariane" aria-label="Fil d'Ariane">{% for e in b.fil_ariane %}{% if loop.first %}<a href="/">{{ e | texteHtml | safe }}</a>{% else %} &rsaquo; {{ e | texteHtml | safe }}{% endif %}{% endfor %}</nav>{% endif %}
+    <div class="hero-grille">
+      <div>
+        {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+        <h1>{{ b.titre_page | accent | safe }}</h1>
+        {% if b.chapo %}<p class="chapo" style="font-size:18px;color:var(--texte-2);margin-bottom:26px">{{ b.chapo }}</p>{% endif %}
+        {%- set l1 = (b.bouton_principal.lien if b.bouton_principal) or "#contact" %}
+        {%- set l2 = (b.bouton_secondaire.lien if b.bouton_secondaire) or "#contact" %}
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="{{ l1 }}"{% if "://" in l1 %} target="_blank" rel="noopener"{% endif %}>{{ b.bouton_principal.texte if b.bouton_principal }}</a>
+          {% if b.bouton_secondaire and b.bouton_secondaire.texte %}<a class="btn btn-ghost" href="{{ l2 }}"{% if "://" in l2 %} target="_blank" rel="noopener"{% endif %}>{{ b.bouton_secondaire.texte }}</a>{% endif %}
+        </div>
+        {% if b.etiquettes and b.etiquettes.length %}<div class="chips">
+          {% for chip in b.etiquettes %}<span>{{ chip }}</span>{% endfor %}
+        </div>{% endif %}
+      </div>
+{% if b.illustration == "demarche" %}
+      <div class="schema-craft" aria-hidden="true">
+        <svg viewBox="0 0 480 270" fill="none" font-family="Asap,sans-serif">
+          <rect x="18" y="26" width="130" height="66" rx="12" stroke="#494849" stroke-width="1.6"/>
+          <text x="83" y="55" text-anchor="middle" fill="#1f292e" font-size="15" font-weight="600">Votre idée</text>
+          <text x="83" y="76" text-anchor="middle" fill="#767676" font-size="12">besoin, objectifs</text>
+          <rect x="178" y="118" width="130" height="66" rx="12" stroke="#494849" stroke-width="1.6"/>
+          <text x="243" y="147" text-anchor="middle" fill="#1f292e" font-size="15" font-weight="600">4D &#38; UX</text>
+          <text x="243" y="168" text-anchor="middle" fill="#767676" font-size="12">conception itérative</text>
+          <rect x="332" y="26" width="130" height="66" rx="12" stroke="#ea2631" stroke-width="1.8"/>
+          <text x="397" y="55" text-anchor="middle" fill="#1f292e" font-size="15" font-weight="600">Mise en production</text>
+          <text x="397" y="76" text-anchor="middle" fill="#767676" font-size="12">livrée, maintenue</text>
+          <path d="M118 96c18 26 34 38 56 46" stroke="#494849" stroke-width="1.6" stroke-linecap="square"/>
+          <path d="M164 136l10 7-12 4" stroke="#494849" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"/>
+          <path d="M312 146c26-8 44-24 58-46" stroke="#494849" stroke-width="1.6" stroke-linecap="square"/>
+          <path d="M362 106l8-8 3 12" stroke="#494849" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"/>
+          <text x="240" y="228" text-anchor="middle" fill="#ea2631" font-size="17" font-family="Fraunces,Georgia,serif" font-style="italic">un cadre commun, du début à la fin</text>
+          <path d="M290 240c10 6 24 6 38-2" stroke="#ea2631" stroke-width="1.8" stroke-linecap="square"/>
+        </svg>
+      </div>
+{% elif b.illustration == "entreprise" %}
+      <div class="schema-craft" aria-hidden="true">
+        <svg viewBox="0 0 480 270" fill="none" font-family="Asap,sans-serif">
+          <rect x="170" y="105" width="140" height="60" rx="12" stroke="#ea2631" stroke-width="1.8"/>
+          <text x="240" y="140" text-anchor="middle" fill="#1f292e" font-size="16" font-weight="600">4SH</text>
+          <rect x="24" y="30" width="120" height="52" rx="12" stroke="#494849" stroke-width="1.6"/>
+          <text x="84" y="61" text-anchor="middle" fill="#1f292e" font-size="13" font-weight="600">Bordeaux</text>
+          <rect x="336" y="30" width="120" height="52" rx="12" stroke="#494849" stroke-width="1.6"/>
+          <text x="396" y="61" text-anchor="middle" fill="#1f292e" font-size="13" font-weight="600">Capbreton</text>
+          <rect x="180" y="200" width="120" height="52" rx="12" stroke="#494849" stroke-width="1.6"/>
+          <text x="240" y="231" text-anchor="middle" fill="#1f292e" font-size="13" font-weight="600">Paris</text>
+          <path d="M144 60c10 14 22 30 34 46" stroke="#494849" stroke-width="1.6" stroke-linecap="square"/>
+          <path d="M336 60c-10 14-22 30-34 46" stroke="#494849" stroke-width="1.6" stroke-linecap="square"/>
+          <path d="M240 165v33" stroke="#494849" stroke-width="1.6" stroke-linecap="square"/>
+          <text x="240" y="20" text-anchor="middle" fill="#ea2631" font-size="15" font-family="Fraunces,Georgia,serif" font-style="italic">une communauté qui grandit</text>
+        </svg>
+      </div>
+{% endif %}
+    </div>
+  </div>
+</div>
+{% endmacro %}

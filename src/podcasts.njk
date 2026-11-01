@@ -6,11 +6,11 @@ extraCss: /assets/secteurs.css
 {% from "composants/page.njk" import hero %}
 {%- set p = page_podcasts -%}
 {{ hero("Podcasts",
-        h1=p.h1,
-        eyebrow=p.eyebrow,
-        chapo=p.chapo,
+        h1=p.hero.titre,
+        eyebrow=p.hero.surtitre,
+        chapo=p.hero.chapo,
         trace=false,
-        ctas=p.plateformes | boutons("Écouter sur ")) }}
+        ctas=p.hero.plateformes | boutons("Écouter sur ")) }}
 
 <section class="sect-bloc">
   <div class="container">

@@ -3,5 +3,8 @@ layout: base.njk
 permalink: /notre-entreprise/
 extraCss: /assets/logiciel-metier.css
 ---
+{#- Page institutionnelle « Notre entreprise » rendue à partir des blocs (src/_data/contenus/fr/notre_entreprise.json).
+    Version anglaise : src/en/company.njk (contenus/en/notre_entreprise.json), même écran dans le CMS.
+    Spécification : docs/back-office/schema-pages.md. -#}
 {% from "composants/pages/entreprise.njk" import corps %}
-{{ corps(notre_entreprise, site, page.url) }}
+{{ corps(contenus.fr.notre_entreprise, site, page.url, blog, temoignages.fr, collections.references, appels_action) }}

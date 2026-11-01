@@ -1,11 +1,13 @@
 ---
 layout: page-legale.njk
 permalink: /mentions-legales/
-titre: "Mentions légales"
-h1: "Mentions légales"
-meta_title: "Mentions légales de 4SH"
-meta_description: "Mentions légales du site 4sh.fr : éditeur, propriété intellectuelle, responsabilités et contact."
-source_url: "https://www.4sh.fr/mentions-legales.html"
+titre: Mentions légales
+h1: Mentions légales
+referencement:
+  meta_title: Mentions légales de 4SH
+  meta_description: "Mentions légales du site 4sh.fr : éditeur, propriété intellectuelle, responsabilités et contact."
+suivi:
+  source_url: https://www.4sh.fr/mentions-legales.html
 ---
 
 ## Information sur l'éditeur

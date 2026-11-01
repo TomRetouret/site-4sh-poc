@@ -1,0 +1,220 @@
+{
+  "seo": {
+    "meta_title": "Our company: 4SH, technical skill with a friendly touch",
+    "meta_description": "4SH, a custom software development agency since 2007. Discover our story, team, values and offices in Bordeaux, Capbreton and Paris."
+  },
+  "blocs": [
+    {
+      "type": "hero_institutionnel",
+      "masquer": false,
+      "fil_ariane": [
+        "Accueil",
+        "L'agence",
+        "Notre entreprise"
+      ],
+      "surtitre": "Our company",
+      "titre_page": "4SH, technical skill with a *friendly touch*",
+      "chapo": "Since 2007, one passion has brought us together: development. We combine our expertise to build custom software, as a team and in full transparency.",
+      "bouton_principal": {
+        "texte": "Meet us",
+        "lien": "#contact"
+      },
+      "bouton_secondaire": {
+        "texte": "See our job openings",
+        "lien": "https://www.welcometothejungle.com/fr/companies/4sh/jobs"
+      },
+      "etiquettes": [
+        "Excellence",
+        "Commitment",
+        "Cohesion",
+        "Transparency"
+      ],
+      "illustration": "entreprise"
+    },
+    {
+      "type": "texte_simple",
+      "masquer": false,
+      "surtitre": "About us",
+      "titre": "One passion, *development*",
+      "texte": "At 4SH, it's a passion, development, that has brought us together since 2007 around a shared vision of technical excellence.\n\nOur mission? To combine our expertise and skills to satisfy our clients, who have gradually entrusted us with ever more diverse and ambitious projects. We have grown the team with varied profiles and, since everyone feels at home here, the community keeps growing. We work together every day, as a team, in full transparency.\n\nTo stay at the cutting edge of technologies and methods, we keep improving, individually and collectively, through training, meetups and many other occasions. The group spirit carries on at lunch and in the evening, around tournaments, drinks and get-togethers. Everyone's fulfilment also comes through flexibility and comfort, with arrangements for working hours and workstations.\n\nAs we keep growing, we are constantly on the lookout for new talent to share our passion."
+    },
+    {
+      "type": "chiffres_compteurs",
+      "masquer": false,
+      "chiffres": [
+        {
+          "valeur": "2007",
+          "texte": "Year founded",
+          "note": "",
+          "animer": true
+        },
+        {
+          "valeur": "58",
+          "texte": "Clients",
+          "note": "",
+          "animer": true
+        },
+        {
+          "valeur": "403",
+          "texte": "Projects",
+          "note": "",
+          "animer": true
+        },
+        {
+          "valeur": "98",
+          "texte": "Team members",
+          "note": "",
+          "animer": true
+        },
+        {
+          "valeur": "29",
+          "texte": "Average age of the team",
+          "note": "",
+          "animer": true
+        },
+        {
+          "valeur": "6",
+          "texte": "Communities",
+          "note": "",
+          "animer": true
+        }
+      ]
+    },
+    {
+      "type": "cartes_texte",
+      "masquer": false,
+      "sans_marge_haute": false,
+      "presentation": "encadrees",
+      "fond": "blanc",
+      "colonnes": "3",
+      "surtitre": "A technical company",
+      "titre": "Rich with the experience of its *team*",
+      "sous_titre": "Here, 80% of the company are developers or have done development. And among them are well-known figures of the Bordeaux tech ecosystem.",
+      "cartes": [
+        {
+          "titre": "Open source",
+          "texte": "Creators and contributors of open source projects within the team."
+        },
+        {
+          "titre": "BordeauxJUG",
+          "texte": "The founder and several former leads of the Bordeaux Java User Group."
+        },
+        {
+          "titre": "BDX I/O",
+          "texte": "The founder and many members of the BDX I/O conference organisation."
+        }
+      ]
+    },
+    {
+      "type": "cartes_texte",
+      "masquer": false,
+      "sans_marge_haute": false,
+      "presentation": "encadrees",
+      "fond": "sombre",
+      "colonnes": "auto",
+      "surtitre": "Our values",
+      "titre": "A company built around *4 values*",
+      "sous_titre": "",
+      "cartes": [
+        {
+          "titre": "Excellence",
+          "texte": "The constant pursuit of technical quality, project after project."
+        },
+        {
+          "titre": "Commitment",
+          "texte": "Being fully involved alongside our clients and their challenges, at every moment."
+        },
+        {
+          "titre": "Cohesion",
+          "texte": "Sharing knowledge and team spirit, the drivers of our successes."
+        },
+        {
+          "titre": "Transparency",
+          "texte": "A collaborative, honest approach to running projects, from start to finish."
+        }
+      ]
+    },
+    {
+      "type": "cartes_texte",
+      "masquer": false,
+      "sans_marge_haute": false,
+      "presentation": "encadrees",
+      "fond": "blanc",
+      "colonnes": "4",
+      "surtitre": "The team",
+      "titre": "Our *experts*, a multi-talented team",
+      "sous_titre": "A good team is the engine that moves a company forward. Our roles complement each other to cover the whole lifecycle of a project, from framing to operations.",
+      "cartes": [
+        {
+          "titre": "Product Owner",
+          "texte": ""
+        },
+        {
+          "titre": "UI / UX Designer",
+          "texte": ""
+        },
+        {
+          "titre": "Software Engineer / Developer",
+          "texte": ""
+        },
+        {
+          "titre": "Technical Leader",
+          "texte": ""
+        },
+        {
+          "titre": "Quality Engineer",
+          "texte": ""
+        },
+        {
+          "titre": "Systems & Network Engineer",
+          "texte": ""
+        },
+        {
+          "titre": "Project Lead",
+          "texte": ""
+        }
+      ]
+    },
+    {
+      "type": "encart_bouton",
+      "masquer": false,
+      "sans_marge_haute": true,
+      "presentation": "encadre",
+      "titre": "4SH, a company that's hiring",
+      "texte": "People are our most precious asset. We support everyone in developing their skills and are actively looking for new talent to complete our teams.",
+      "bouton": {
+        "texte": "See our jobs and internships",
+        "lien": "https://www.welcometothejungle.com/fr/companies/4sh/jobs"
+      }
+    },
+    {
+      "type": "cartes_texte",
+      "masquer": false,
+      "sans_marge_haute": true,
+      "presentation": "encadrees",
+      "fond": "blanc",
+      "colonnes": "auto",
+      "surtitre": "Our offices",
+      "titre": "We are located *here*",
+      "sous_titre": "From our offices in Le Haillan, Bordeaux and Capbreton, our multidisciplinary teams work every day alongside our clients toward the success of their challenges.",
+      "cartes": [
+        {
+          "titre": "Le Haillan",
+          "texte": "2 rue Edmond Rostand\n33185 Le Haillan"
+        },
+        {
+          "titre": "Bordeaux",
+          "texte": "7 rue Esmangard\n33800 Bordeaux"
+        },
+        {
+          "titre": "Capbreton",
+          "texte": "2 rue du Barrasquit\n40130 Capbreton"
+        },
+        {
+          "titre": "Paris",
+          "texte": "6 place de la Madeleine\n75008 Paris"
+        }
+      ]
+    }
+  ]
+}

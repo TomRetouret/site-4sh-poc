@@ -1,0 +1,27 @@
+{# Bloc « cartes_numerotees » : cartes numérotées automatiquement (titre et texte), en grille ou en carrousel.
+   Spécification : docs/back-office/schema-pages.md. Styles : logiciel-metier.css (.atouts, .atout). #}
+{% from "composants/sections.njk" import carrousel %}
+{% from "composants/cartes.njk" import carte_atout %}
+{% macro bloc(b, ctx) %}
+<!-- CARTES NUMÉROTÉES -->
+<section{% if b.sans_marge_haute %} style="padding-top:0"{% endif %}>
+  <div class="container">
+    {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
+    <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
+    {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
+    {% if b.affichage == "carrousel" %}
+    {% call carrousel(b.surtitre or (b.titre | replace("*", "")), "car--blocs", auto=false) %}
+        {% for a in b.cartes %}
+        {{ carte_atout(a, loop.index) }}
+        {% endfor %}
+    {% endcall %}
+    {% else %}
+    <div class="atouts"{% if b.colonnes == "2" or b.colonnes == "3" or b.colonnes == "4" %} style="grid-template-columns:repeat({{ b.colonnes }},1fr)"{% endif %}>
+      {% for e in b.cartes %}
+      {{ carte_atout(e, loop.index) }}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endmacro %}

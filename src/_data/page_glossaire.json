@@ -1,11 +1,11 @@
 {
-  "meta_title": "Glossaire du développement logiciel et produit - 4SH",
-  "meta_description": "Le lexique 4SH : définitions claires des termes du développement web, mobile, DevOps, UX et de la méthode produit. Comprenez le vocabulaire de vos projets.",
-  "eyebrow": "Lexique",
-  "h1": "Glossaire",
-  "chapo": "Toutes les définitions clés du développement web, mobile, de l'infrastructure et de la méthode produit. Un lexique pratique pour mieux comprendre nos expertises et le vocabulaire de vos projets.",
-  "cta_titre": "Un projet, une question ?",
-  "cta_texte": "Application web, application mobile, logiciel métier : nos experts vous accompagnent de la stratégie au déploiement.",
-  "cta_label": "Parlons de votre projet",
-  "cta_url": "/contact/"
+  "seo": {
+    "meta_title": "Glossaire du développement logiciel et produit - 4SH",
+    "meta_description": "Le lexique 4SH : définitions claires des termes du développement web, mobile, DevOps, UX et de la méthode produit. Comprenez le vocabulaire de vos projets."
+  },
+  "hero": {
+    "surtitre": "Lexique",
+    "titre": "Glossaire",
+    "chapo": "Toutes les définitions clés du développement web, mobile, de l'infrastructure et de la méthode produit. Un lexique pratique pour mieux comprendre nos expertises et le vocabulaire de vos projets."
+  }
 }

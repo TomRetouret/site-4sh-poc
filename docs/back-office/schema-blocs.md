@@ -277,3 +277,8 @@ Les citations actuelles de l'accueil sont vides. La collection est amorcée avec
 - Rendu : gabarit `src/_includes/page-blocs.njk`, adresse `/demo/<nom-du-fichier>/`, jamais indexé, absent du plan du site.
 - Page d'amorce : `src/demo/exemple.md`, marquée [DÉMO].
 - Le dossier des données de l'accueil s'appelle `src/_data/contenus/` (et non `blocs/`) pour éviter un conflit de nom avec le champ `blocs` des pages de démonstration.
+
+## Blocs ajoutés lors de la généralisation
+
+- Prestations (profil `prestation`) : `section_texte`, `section_cartes`, `section_atouts`, `section_etapes`, `section_projets`. Détail dans `schema-prestations.md`.
+- Pages institutionnelles (profils `institutionnel` et `institutionnel_bilingue`) : `hero_institutionnel`, `chiffres_compteurs`, `frise_methode`, `cartes_numerotees`, `cartes_texte`, `encart_bouton`. Détail dans `schema-pages.md`.

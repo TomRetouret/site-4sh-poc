@@ -1,0 +1,67 @@
+# Bloc « encart_bouton » : Encart avec bouton
+# Composant du site : src/_includes/composants/blocs/encart_bouton.njk
+# Mode d'emploi : docs/back-office/schema-blocs.md (« Ajouter un bloc ») ; pages : docs/back-office/schema-pages.md.
+# Après modification : node scripts/generer-blocs.js puis node scripts/assembler-config.js
+
+profils:
+  institutionnel: 60
+  institutionnel_bilingue: 60
+  demo: 205
+
+type:
+  label: Encart avec bouton
+  name: encart_bouton
+  widget: object
+  summary: 'Encart : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+  fields:
+    - label: Masquer ce bloc (il reste enregistré)
+      name: masquer
+      widget: boolean
+      required: false
+      default: false
+      hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+    - label: Coller au bloc précédent
+      name: sans_marge_haute
+      widget: boolean
+      required: false
+      default: false
+      hint: Supprime l'espace au-dessus du bloc. À cocher quand le bloc précédent a le même fond blanc.
+    - label: Présentation
+      name: presentation
+      widget: select
+      required: true
+      default: encadre
+      hint: 'Encadré : centré sur fond crème, bouton plein (recrutement). Libre : aligné à gauche, sans fond, bouton contour (document à consulter).'
+      options:
+        - label: Encadré centré
+          value: encadre
+        - label: Libre, aligné à gauche
+          value: libre
+    - label: Titre
+      name: titre
+      widget: string
+      required: true
+      hint: 60 caractères maximum.
+    - label: Texte
+      name: texte
+      widget: text
+      required: false
+      hint: 40 mots maximum.
+    - label: Bouton
+      name: bouton
+      widget: object
+      required: true
+      collapsed: false
+      summary: '{{fields.texte}} ({{fields.lien}})'
+      fields:
+        - label: Texte du bouton
+          name: texte
+          widget: string
+          required: true
+          hint: 40 caractères maximum.
+        - label: 'Destination (adresse ou #ancre)'
+          name: lien
+          widget: string
+          required: true
+          default: '#contact'
+          hint: Une adresse commençant par https:// s'ouvre dans un nouvel onglet.

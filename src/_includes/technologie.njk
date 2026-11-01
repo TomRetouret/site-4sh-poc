@@ -49,8 +49,8 @@ layout: base.njk
     <p class="eyebrow">Références clients</p>
     <div class="sect-refs-inline">
       {% for r in references %}
-      {% set fiche = collections.references | ficheRef(r.lien) %}
-      {{ apercu_projet(r.titre, r.texte, fiche, r.lien) }}
+      {% set fiche = collections.references | ficheParSlug(r.fiche) %}
+      {{ apercu_projet(r.titre, r.texte, fiche, fiche.url if fiche else null) }}
       {% endfor %}
     </div>
   </div>
@@ -58,13 +58,15 @@ layout: base.njk
 {% endif %}
 
 <!-- CORPS MARKDOWN (communauté, écosystème, guide technologie) -->
-{% if content %}
+{# Sections du formulaire ; repli sur l'ancien corps de texte s'il en reste un #}{% set corps = sections | corpsSections -%}
+{%- if not corps %}{% set corps = content %}{% endif -%}
+{% if corps %}
 {% if corps_sombre %}
 <section class="section-sombre sur-sombre">
   <div class="container">
     <p class="eyebrow">{{ corps_eyebrow or "Communauté et écosystème" }}</p>
     {% if corps_titre %}<h2 class="sec-titre">{{ corps_titre | accent | safe }}</h2>{% endif %}
-    <div class="prose prose--sombre">{{ content | safe }}</div>
+    <div class="prose prose--sombre">{{ corps | safe }}</div>
   </div>
 </section>
 {% else %}
@@ -74,7 +76,7 @@ layout: base.njk
     {% if corps_titre %}<h2 class="sec-titre">{{ corps_titre | accent | safe }}</h2>{% endif %}
   </div>
 </section>
-{{ content | blocs | safe }}
+{{ corps | blocs | safe }}
 {% endif %}
 {% endif %}
 
@@ -84,8 +86,8 @@ layout: base.njk
   <div class="container">
     <p class="eyebrow">Nos formations</p>
     <div class="socle" style="grid-template-columns:repeat(3,1fr)">
-      {% for f in formations %}
-      <a class="socle-carte" href="{{ f.url or '#' }}"><h3>{{ f.titre }}</h3><span class="socle-lien">Découvrir →</span></a>
+      {% for f in formations %}{% set fiche_formation = collections.formations | ficheParSlug(f.formation) %}
+      <a class="socle-carte" href="{{ fiche_formation.url if fiche_formation else '#' }}"><h3>{{ f.titre }}</h3><span class="socle-lien">Découvrir →</span></a>
       {% endfor %}
     </div>
   </div>

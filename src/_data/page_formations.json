@@ -1,149 +1,169 @@
 {
-  "meta_title": "Formation informatique : nos formations par 4SH",
-  "meta_description": "Boostez votre entreprise et accompagnez vos collaborateurs dans leur montée en compétences avec les formations en informatique de 4SH, organisme certifié Qualiopi.",
-  "eyebrow": "4SH Learning",
-  "h1": "Nos formations en *informatique*",
-  "chapo": "Notre programme de formation 4SH Learning accompagne vos collaborateurs dans leur montée en compétences. Notre objectif : leur transférer les compétences qui vous permettent de reprendre la maîtrise de vos développements métier, avec une qualité uniforme en présentiel comme à distance.",
-  "note": "4,71 / 5",
-  "note_detail": "324 participant·e·s",
-  "hero_cta_principal_label": "Découvrir les formations",
-  "hero_cta_principal_url": "#catalogue",
-  "hero_cta_secondaire_label": "Devis sur mesure",
-  "hero_cta_secondaire_url": "#contact",
-  "hero_chips": [
-    "Présentiel & distanciel",
-    "Certifié Qualiopi"
-  ],
-  "hero_etapes": [
-    "Comprendre",
-    "Pratiquer",
-    "Maîtriser"
-  ],
-  "catalogue_titre": "Catalogue de *formations*",
-  "catalogue_sous": "Cherchez une technologie ou choisissez une catégorie.",
-  "agenda_titre": "Nos prochaines *sessions*",
-  "agenda_sous": "Les dates ouvertes à l'inscription, en présentiel ou à distance. Une autre date vous conviendrait mieux ? Demandez une session sur mesure.",
-  "agenda_cta_label": "Demander une autre date",
-  "agenda_cta_url": "#contact",
-  "agenda": [
-    {
-      "mois": "Septembre 2026",
-      "sessions": [
-        {
-          "jour": "15",
-          "mois_court": "Sept.",
-          "duree": "4 jours",
-          "logo": "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/angular.svg",
-          "titre": "Angular - Fondamental",
-          "categorie": "Develop",
-          "lieu": "Bordeaux",
-          "modalite": "Présentiel & distanciel",
-          "url": "/formations/angular-fondamental/"
-        },
-        {
-          "jour": "22",
-          "mois_court": "Sept.",
-          "duree": "2 jours",
-          "logo": "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/kubernetes.svg",
-          "titre": "Kubernetes - Fondamental",
-          "categorie": "DevOps",
-          "lieu": "Paris",
-          "modalite": "Présentiel",
-          "url": "/formations/kubernetes-fondamental/"
-        }
-      ]
+  "seo": {
+    "meta_title": "Formation informatique : nos formations par 4SH",
+    "meta_description": "Boostez votre entreprise et accompagnez vos collaborateurs dans leur montée en compétences avec les formations en informatique de 4SH, organisme certifié Qualiopi."
+  },
+  "hero": {
+    "surtitre": "4SH Learning",
+    "titre": "Nos formations en *informatique*",
+    "chapo": "Notre programme de formation 4SH Learning accompagne vos collaborateurs dans leur montée en compétences. Notre objectif : leur transférer les compétences qui vous permettent de reprendre la maîtrise de vos développements métier, avec une qualité uniforme en présentiel comme à distance.",
+    "note": "4,71 / 5",
+    "note_detail": "324 participant·e·s",
+    "bouton_principal": {
+      "texte": "Découvrir les formations",
+      "lien": "#catalogue"
     },
-    {
-      "mois": "Octobre 2026",
-      "sessions": [
-        {
-          "jour": "06",
-          "mois_court": "Oct.",
-          "duree": "1 jour",
-          "logo": "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/figma.svg",
-          "titre": "Figma - Essentiel",
-          "categorie": "Design",
-          "lieu": "À distance",
-          "modalite": "Distanciel",
-          "url": "/formations/figma-essentiel/"
-        },
-        {
-          "jour": "13",
-          "mois_court": "Oct.",
-          "duree": "4 jours",
-          "logo": "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/java.svg",
-          "titre": "Java - Fondamental",
-          "categorie": "Develop",
-          "lieu": "Bordeaux",
-          "modalite": "Présentiel & distanciel",
-          "url": "/formations/java-fondamental/"
-        }
-      ]
+    "bouton_secondaire": {
+      "texte": "Devis sur mesure",
+      "lien": "#contact"
     },
-    {
-      "mois": "Novembre 2026",
-      "sessions": [
-        {
-          "jour": "04",
-          "mois_court": "Nov.",
-          "duree": "1/2 j",
-          "logo": "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/git.svg",
-          "titre": "Git - Essentiel",
-          "categorie": "Outils",
-          "lieu": "Capbreton",
-          "modalite": "Présentiel",
-          "url": "/formations/git-essentiel/"
-        },
-        {
-          "jour": "18",
-          "mois_court": "Nov.",
-          "duree": "2 jours",
-          "logo": "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/docker.svg",
-          "titre": "Docker - Fondamental",
-          "categorie": "DevOps",
-          "lieu": "Paris",
-          "modalite": "Présentiel & distanciel",
-          "url": "/formations/docker-fondamental/"
-        }
-      ]
-    }
-  ],
-  "temoignages_titre": "Ils ont suivi *nos formations*",
-  "temoignages": [
-    {
-      "citation": "Formation très concrète, animée par un formateur qui code au quotidien. On repart avec des réflexes directement applicables.",
-      "initiales": "[XX]",
-      "nom": "[Prénom Nom]",
-      "detail": "[Société] · Formation Angular"
+    "etiquettes": [
+      "Présentiel & distanciel",
+      "Certifié Qualiopi"
+    ],
+    "etapes": [
+      "Comprendre",
+      "Pratiquer",
+      "Maîtriser"
+    ]
+  },
+  "pourquoi": {
+    "titre": "Pourquoi choisir *4SH Learning* ?",
+    "cartes": [
+      {
+        "titre": "Industrialisez votre production logicielle",
+        "texte": "Des formations orientées outils, pensées pour rendre vos équipes autonomes et productives."
+      },
+      {
+        "titre": "Apprenez avec nos experts métiers",
+        "texte": "Des formateurs expérimentés, en poste sur nos projets, qui transmettent des pratiques réelles."
+      },
+      {
+        "titre": "Construisons ensemble votre projet",
+        "texte": "Des ateliers collaboratifs adaptés à votre contexte, jusqu'au sur mesure en intra-entreprise."
+      }
+    ]
+  },
+  "catalogue": {
+    "titre": "Catalogue de *formations*",
+    "sous_titre": "Cherchez une technologie ou choisissez une catégorie."
+  },
+  "agenda": {
+    "titre": "Nos prochaines *sessions*",
+    "sous_titre": "Les dates ouvertes à l'inscription, en présentiel ou à distance. Une autre date vous conviendrait mieux ? Demandez une session sur mesure.",
+    "bouton": {
+      "texte": "Demander une autre date",
+      "lien": "#contact"
     },
-    {
-      "citation": "Le bon équilibre théorie / pratique, et une vraie capacité à adapter le contenu à notre contexte métier.",
-      "initiales": "[XX]",
-      "nom": "[Prénom Nom]",
-      "detail": "[Société] · Formation Kubernetes"
-    },
-    {
-      "citation": "Organisation sans faille, de l'inscription au certificat. Nous reformerons nos équipes avec 4SH.",
-      "initiales": "[XX]",
-      "nom": "[Prénom Nom]",
-      "detail": "[Société] · Formation Figma"
-    }
-  ],
-  "pourquoi_titre": "Pourquoi choisir *4SH Learning* ?",
-  "pourquoi": [
-    {
-      "titre": "Industrialisez votre production logicielle",
-      "texte": "Des formations orientées outils, pensées pour rendre vos équipes autonomes et productives."
-    },
-    {
-      "titre": "Apprenez avec nos experts métiers",
-      "texte": "Des formateurs expérimentés, en poste sur nos projets, qui transmettent des pratiques réelles."
-    },
-    {
-      "titre": "Construisons ensemble votre projet",
-      "texte": "Des ateliers collaboratifs adaptés à votre contexte, jusqu'au sur mesure en intra-entreprise."
-    }
-  ],
-  "qualiopi_titre": "4SH est un organisme de formation certifié *Qualiopi*",
-  "qualiopi_texte": "En sélectionnant 4SH, vous faites le choix d'un prestataire qui met un point d'honneur à se distinguer par son engagement envers l'excellence et la transparence. La certification Qualiopi témoigne de notre dévouement à dispenser des formations d'une qualité irréprochable, correspondant aux besoins actuels du marché de l'emploi. La certification qualité a été délivrée au titre de la catégorie « Actions de formation »."
+    "mois": [
+      {
+        "mois": "Septembre 2026",
+        "sessions": [
+          {
+            "jour": "15",
+            "mois_court": "Sept.",
+            "duree": "4 jours",
+            "logo": "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/angular.svg",
+            "titre": "Angular - Fondamental",
+            "categorie": "Develop",
+            "lieu": "Bordeaux",
+            "modalite": "Présentiel & distanciel",
+            "url": "/formations/angular-fondamental/"
+          },
+          {
+            "jour": "22",
+            "mois_court": "Sept.",
+            "duree": "2 jours",
+            "logo": "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/kubernetes.svg",
+            "titre": "Kubernetes - Fondamental",
+            "categorie": "DevOps",
+            "lieu": "Paris",
+            "modalite": "Présentiel",
+            "url": "/formations/kubernetes-fondamental/"
+          }
+        ]
+      },
+      {
+        "mois": "Octobre 2026",
+        "sessions": [
+          {
+            "jour": "06",
+            "mois_court": "Oct.",
+            "duree": "1 jour",
+            "logo": "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/figma.svg",
+            "titre": "Figma - Essentiel",
+            "categorie": "Design",
+            "lieu": "À distance",
+            "modalite": "Distanciel",
+            "url": "/formations/figma-essentiel/"
+          },
+          {
+            "jour": "13",
+            "mois_court": "Oct.",
+            "duree": "4 jours",
+            "logo": "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/java.svg",
+            "titre": "Java - Fondamental",
+            "categorie": "Develop",
+            "lieu": "Bordeaux",
+            "modalite": "Présentiel & distanciel",
+            "url": "/formations/java-fondamental/"
+          }
+        ]
+      },
+      {
+        "mois": "Novembre 2026",
+        "sessions": [
+          {
+            "jour": "04",
+            "mois_court": "Nov.",
+            "duree": "1/2 j",
+            "logo": "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/git.svg",
+            "titre": "Git - Essentiel",
+            "categorie": "Outils",
+            "lieu": "Capbreton",
+            "modalite": "Présentiel",
+            "url": "/formations/git-essentiel/"
+          },
+          {
+            "jour": "18",
+            "mois_court": "Nov.",
+            "duree": "2 jours",
+            "logo": "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/docker.svg",
+            "titre": "Docker - Fondamental",
+            "categorie": "DevOps",
+            "lieu": "Paris",
+            "modalite": "Présentiel & distanciel",
+            "url": "/formations/docker-fondamental/"
+          }
+        ]
+      }
+    ]
+  },
+  "qualiopi": {
+    "titre": "4SH est un organisme de formation certifié *Qualiopi*",
+    "texte": "En sélectionnant 4SH, vous faites le choix d'un prestataire qui met un point d'honneur à se distinguer par son engagement envers l'excellence et la transparence. La certification Qualiopi témoigne de notre dévouement à dispenser des formations d'une qualité irréprochable, correspondant aux besoins actuels du marché de l'emploi. La certification qualité a été délivrée au titre de la catégorie « Actions de formation »."
+  },
+  "temoignages": {
+    "titre": "Ils ont suivi *nos formations*",
+    "liste": [
+      {
+        "citation": "Formation très concrète, animée par un formateur qui code au quotidien. On repart avec des réflexes directement applicables.",
+        "initiales": "[XX]",
+        "nom": "[Prénom Nom]",
+        "detail": "[Société] · Formation Angular"
+      },
+      {
+        "citation": "Le bon équilibre théorie / pratique, et une vraie capacité à adapter le contenu à notre contexte métier.",
+        "initiales": "[XX]",
+        "nom": "[Prénom Nom]",
+        "detail": "[Société] · Formation Kubernetes"
+      },
+      {
+        "citation": "Organisation sans faille, de l'inscription au certificat. Nous reformerons nos équipes avec 4SH.",
+        "initiales": "[XX]",
+        "nom": "[Prénom Nom]",
+        "detail": "[Société] · Formation Figma"
+      }
+    ]
+  }
 }

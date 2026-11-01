@@ -5,15 +5,15 @@ ordre: 7
 h1: "Ma Rénov"
 sous_titre: "Refonte de la plateforme d'accompagnement à la rénovation énergétique de votre logement."
 resume: "Refonte de la plateforme d'accompagnement à la rénovation énergétique de votre logement."
-logo: "https://www.4sh.fr/assets/img/png/references/marenov/logo-marenov.png"
-image: "https://www.4sh.fr/assets/img/png/references/marenov/ref-marenov.png"
+logo: "/uploads/ancien-site/assets/img/png/references/marenov/logo-marenov.png"
+image: "/uploads/ancien-site/assets/img/png/references/marenov/ref-marenov.png"
 secteurs: ["Écologie", "Administratif"]
 technologies: ["Kotlin", "TypeScript", "Keycloak", "Drupal", "http4k", "Next.js", "React"]
 expertises: ["Design", "Develop", "Deploy", "4SH UX", "4SH Facility"]
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/marenov/ref-marenov-1.png"
-  - "https://www.4sh.fr/assets/img/png/references/marenov/ref-marenov-2.png"
-  - "https://www.4sh.fr/assets/img/png/references/marenov/ref-marenov-3.png"
+  - "/uploads/ancien-site/assets/img/png/references/marenov/ref-marenov-1.png"
+  - "/uploads/ancien-site/assets/img/png/references/marenov/ref-marenov-2.png"
+  - "/uploads/ancien-site/assets/img/png/references/marenov/ref-marenov-3.png"
 fiche_pdf: "https://drive.google.com/file/d/1bKiXyHAolnivEgjdFqp5jiQgRq2rsNJO/view?usp=share_link"
 maj: "18/08/2023"
 meta_title: "Refonte de la plateforme de rénovation de logement Ma Rénov par 4SH"

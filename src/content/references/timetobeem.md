@@ -5,8 +5,8 @@ ordre: 2
 h1: "Time To Beem"
 sous_titre: "Plateforme web dédiée à l'avenir de la construction durable."
 resume: "Refonte ergonomique et graphique d'une plateforme web dédiée à l'avenir de la construction durable et au pilotage de l'impact carbone."
-logo: "https://www.4sh.fr/assets/img/png/references/timetobeem/logo-timetobeem.png"
-image: "https://www.4sh.fr/assets/img/png/references/timetobeem/ref-timetobeem.png"
+logo: "/uploads/ancien-site/assets/img/png/references/timetobeem/logo-timetobeem.png"
+image: "/uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem.png"
 secteurs:
   - "Écologie"
   - "Immobilier"
@@ -21,9 +21,9 @@ expertises:
   - "UX"
   - "Studio"
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/timetobeem/ref-timetobeem-1.png"
-  - "https://www.4sh.fr/assets/img/png/references/timetobeem/ref-timetobeem-2.png"
-  - "https://www.4sh.fr/assets/img/png/references/timetobeem/ref-timetobeem-3.png"
+  - "/uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem-1.png"
+  - "/uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem-2.png"
+  - "/uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem-3.png"
 fiche_pdf: "https://drive.google.com/file/d/1lkb-FtNn46tzvlcuKXXF2Vh4_WkSirg-/view"
 maj: "02/08/2024"
 meta_title: "Création d'une plateforme web dédiée pour Time To Beem par 4SH"

@@ -13,7 +13,7 @@ participants: "1 à 8"
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/git-avance.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/git-avance.svg"
 sessions:
   - "Du 01/10/2026 au 02/10/2026"
 pour_qui: "La formation Git - Avancé s'adresse principalement aux personnes utilisant déjà Git et souhaitant parfaire et étendre leur compréhension de l'outil."
@@ -39,7 +39,7 @@ programme:
 formateur:
   nom: "Christophe"
   role: "Expert en conception technique, architecture et animation d'équipes"
-  photo: "https://www.4sh.fr/assets/img/png/team/cai.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/cai.png"
   bio:
     - "Développeur passionné, Christophe est expert en conception technique, architecture et animation d'équipes de développement. Son expérience pratique lui permet de transmettre une vision approfondie du développement logiciel."
     - "En tant que formateur, il aide les professionnels à exceller grâce à des formations alliant expertise technique et cas pratiques."

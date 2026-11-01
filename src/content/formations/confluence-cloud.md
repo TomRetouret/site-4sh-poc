@@ -13,7 +13,7 @@ participants: "1 à 8"
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/confluence-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/confluence-fondamental.svg"
 sessions:
   - "Le 24/09/2026"
 pour_qui: "Cette formation s'adresse à des personnes souhaitant s'équiper d'un outil de centralisation de la documentation inter et intra équipes."

@@ -2,7 +2,7 @@
 nom: "Java"
 ordre: 1
 famille: "build"
-logo: "https://www.4sh.fr/assets/img/svg/trainings/logo-technos/java.svg"
+logo: "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/java.svg"
 accroche_courte: "Un langage éprouvé, sécurisé et pérenne pour l'entreprise."
 h1: "Développement Java sur mesure : applications métier, SaaS et *API d'entreprise*"
 intro: "Le développement Java reste l'un des choix les plus sûrs pour une application d'entreprise appelée à durer. Nous concevons en Java vos logiciels métier, vos plateformes SaaS, vos applications web et vos API depuis plus de 15 ans, avec l'écosystème Spring Boot et une exigence constante sur la qualité du code."

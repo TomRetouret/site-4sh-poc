@@ -13,7 +13,7 @@ participants: "1 à 8"
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/html-essentiel.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/html-essentiel.svg"
 sessions:
   - "Le 15/09/2026"
 pour_qui: "Cette formation cible des profils désireux de se familiariser avec ces notions : webmasters, concepteurs web, développeurs, chefs de projets techniques."

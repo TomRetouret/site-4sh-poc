@@ -15,7 +15,7 @@ avis: 9
 depuis: "janvier 2023"
 theorie: 70
 pratique: 30
-image: "https://www.4sh.fr/assets/img/svg/trainings/java-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/java-fondamental.svg"
 sessions:
   - "Du 22/09/2026 au 25/09/2026"
 pour_qui: "Cette formation Java s'adresse à des développeurs d'application qui souhaitent ajouter une compétence sur Java et la programmation objet."
@@ -72,7 +72,7 @@ programme:
 formateur:
   nom: "Morgan"
   role: "Développeur, expert Java, Kotlin et Kubernetes"
-  photo: "https://www.4sh.fr/assets/img/png/team/mru.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/mru.png"
   bio:
     - "Morgan est un développeur passionné, animé par la recherche de solutions élégantes et la résolution de défis techniques complexes. Spécialiste reconnu des environnements Java, Kotlin et Kubernetes, il évolue dans une approche DevOps qu'il applique au quotidien dans ses projets."
     - "Il a notamment dirigé la refonte d'une solution majeure de fret en France et contribué à la création et au déploiement d'un outil dédié au secteur des assurances, visant à faciliter la conformité réglementaire."

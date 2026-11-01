@@ -15,7 +15,7 @@ avis: 9
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/maven-essentiel.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/maven-essentiel.svg"
 sessions:
   - "Le 07/09/2026"
 pour_qui: "Cette formation s'adresse à des personnes ne connaissant pas Maven."

@@ -15,7 +15,7 @@ avis: 2
 depuis: "janvier 2023"
 theorie: 55
 pratique: 45
-image: "https://www.4sh.fr/assets/img/svg/trainings/sql-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/sql-fondamental.svg"
 sessions:
   - "Le 30/09/2026"
 pour_qui: "Cette formation s'adresse à toute personne amenée à interagir avec une base de données relationnelle. Les profils peuvent être techniques (développeurs d'application, architectes techniques), mais aussi fonctionnels."

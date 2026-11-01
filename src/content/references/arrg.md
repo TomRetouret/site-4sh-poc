@@ -5,15 +5,15 @@ ordre: 10
 h1: "ARRG"
 sous_titre: "Système d'exploitation des entrepôts sous douane de l'aéroport de la Réunion."
 resume: "Système d'exploitation des entrepôts sous douane de l'aéroport de la Réunion."
-logo: "https://www.4sh.fr/assets/img/png/references/arrg/logo-arrg.png"
-image: "https://www.4sh.fr/assets/img/png/references/arrg/ref-arrg-1.png"
+logo: "/uploads/ancien-site/assets/img/png/references/arrg/logo-arrg.png"
+image: "/uploads/ancien-site/assets/img/png/references/arrg/ref-arrg-1.png"
 secteurs: ["Logistique"]
 technologies: ["Angular", "HTML", "Sass"]
 expertises: ["Discover", "Design", "Develop", "Deploy", "4SH Facility", "4SH UX", "4SH Learning", "4SH Studio", "4SH Data"]
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/arrg/ref-arrg-1.png"
-  - "https://www.4sh.fr/assets/img/png/references/arrg/ref-arrg-2.png"
-  - "https://www.4sh.fr/assets/img/png/references/arrg/ref-arrg-3.png"
+  - "/uploads/ancien-site/assets/img/png/references/arrg/ref-arrg-1.png"
+  - "/uploads/ancien-site/assets/img/png/references/arrg/ref-arrg-2.png"
+  - "/uploads/ancien-site/assets/img/png/references/arrg/ref-arrg-3.png"
 fiche_pdf: "https://drive.google.com/file/d/18bdpUqySgI1OlIJIiK5XmxkLfHcNGbCn/view?usp=sharing"
 maj: "05/02/2024"
 meta_title: "Gestion du système d'exploitation d'entrepôts de ARRG par 4SH"

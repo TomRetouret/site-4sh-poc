@@ -2,7 +2,7 @@
 nom: "Kubernetes"
 ordre: 4
 famille: "run"
-logo: "https://www.4sh.fr/assets/img/svg/trainings/logo-technos/kubernetes.svg"
+logo: "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/kubernetes.svg"
 accroche_courte: "Adaptez dynamiquement vos ressources en fonction de la demande."
 h1: "Kubernetes : l'incontournable pour une infrastructure *agile et performante*"
 intro: "Optimisez votre infrastructure avec nos solutions Kubernetes sur mesure."

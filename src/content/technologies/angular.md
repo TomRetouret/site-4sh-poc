@@ -2,7 +2,7 @@
 nom: "Angular"
 ordre: 3
 famille: "build"
-logo: "https://www.4sh.fr/assets/img/svg/trainings/logo-technos/angular.svg"
+logo: "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/angular.svg"
 accroche_courte: "Un framework complet avec un écosystème riche et supporté."
 h1: "Développement Angular : applications web et *interfaces métier* sur mesure"
 intro: "Le développement Angular est fait pour les applications web qui doivent tenir dans la durée : interfaces métier denses, portails clients, back-offices complexes. Chez 4SH, nous concevons des applications Angular sur mesure, avec la stack moderne du framework et un backend souvent en Java et Spring Boot."

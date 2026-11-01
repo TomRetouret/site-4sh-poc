@@ -12,7 +12,7 @@ duree: "<b>2 jours</b> (14h00)"
 participants: "1 à 8"
 theorie: 40
 pratique: 60
-image: "https://www.4sh.fr/assets/img/svg/trainings/product-owner-augmente-ia-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/product-owner-augmente-ia-fondamental.svg"
 sessions:
   - "Du 18/01/2027 au 19/01/2027"
 pour_qui: "Cette formation s’adresse à des Product Owners, Proxy PO, business analysts et chefs de projet fonctionnels souhaitant intégrer les assistants IA dans leur pratique quotidienne pour gagner en efficacité tout en continuant à produire des livrables précis, soignés et exploitables par les équipes de développement."

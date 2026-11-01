@@ -13,7 +13,7 @@ participants: "1 à 8"
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/jira-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/jira-fondamental.svg"
 sessions:
   - "Le 21/09/2026"
 pour_qui: "Cette formation est ouverte à tous les professionnels du développement, quels que soient leur poste ou leur niveau d'expérience : développeur, tech lead, product owner, scrum master ou chef de projet."

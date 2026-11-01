@@ -15,7 +15,7 @@ avis: 6
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/intro-kotlin-essentiel.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/intro-kotlin-essentiel.svg"
 sessions:
   - "Du 23/09/2026 au 24/09/2026"
 pour_qui: "Cette formation s'adresse aux développeurs Java souhaitant évoluer vers Kotlin, aux développeurs Android, aux architectes techniques et aux tech leads désireux de moderniser leurs pratiques de développement. Elle convient également aux développeurs d'autres langages (Swift, JavaScript, etc.) qui souhaitent découvrir Kotlin et ses possibilités."

@@ -5,15 +5,15 @@ ordre: 9
 h1: "InfoPort"
 sous_titre: "Hub communautaire pour la gestion et le suivi du fret maritime et aérien de La Réunion."
 resume: "Hub communautaire pour la gestion et le suivi du fret maritime et aérien de La Réunion."
-logo: "https://www.4sh.fr/assets/img/png/references/infoport/logo-infoport.png"
-image: "https://www.4sh.fr/assets/img/png/references/infoport/ref-infoport.png"
+logo: "/uploads/ancien-site/assets/img/png/references/infoport/logo-infoport.png"
+image: "/uploads/ancien-site/assets/img/png/references/infoport/ref-infoport.png"
 secteurs: ["Logistique"]
 technologies: ["Angular", "HTML", "Sass"]
 expertises: ["Discover", "Design", "Develop", "Deploy", "4SH Digital", "4SH UX", "4SH Studio", "4SH Facility", "4SH Learning", "4SH Data"]
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/infoport/ref-infoport-1.png"
-  - "https://www.4sh.fr/assets/img/png/references/infoport/ref-infoport-2.png"
-  - "https://www.4sh.fr/assets/img/png/references/infoport/ref-infoport-3.png"
+  - "/uploads/ancien-site/assets/img/png/references/infoport/ref-infoport-1.png"
+  - "/uploads/ancien-site/assets/img/png/references/infoport/ref-infoport-2.png"
+  - "/uploads/ancien-site/assets/img/png/references/infoport/ref-infoport-3.png"
 fiche_pdf: "https://drive.google.com/file/d/1cXyHaPtwzv4ePjIm4Lgk6TMU81P6vzyI/view?usp=sharing"
 maj: "04/11/2022"
 meta_title: "Hub communautaire de suivi de fret pour InfoPort par 4SH"

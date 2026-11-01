@@ -15,7 +15,7 @@ avis: 9
 depuis: "janvier 2023"
 theorie: 65
 pratique: 35
-image: "https://www.4sh.fr/assets/img/svg/trainings/js-ts-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/js-ts-fondamental.svg"
 sessions:
   - "Du 08/09/2026 au 11/09/2026"
 pour_qui: "Cette formation sur les fondamentaux de JavaScript et TypeScript s'adresse à des développeurs d'applications Web qui souhaitent apprendre le développement d'applications modernes dans le navigateur."
@@ -56,7 +56,7 @@ programme:
 formateur:
   nom: "Frédéric"
   role: "Tech Lead · 20 ans d'expérience"
-  photo: "https://www.4sh.fr/assets/img/png/team/fcr.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/fcr.png"
   bio:
     - "Frédéric, formateur de la session JavaScript / TypeScript Fondamentaux, cumule plus de 20 ans d'expérience dans le développement logiciel, avec une expertise affirmée en tant que Tech Lead. Son parcours, marqué par de nombreux projets dans le secteur de la logistique, lui a permis de développer une vision technique complète et pragmatique."
     - "Spécialiste reconnu de JavaScript, TypeScript, Git et Maven, il met son savoir-faire au service des apprenants pour transmettre des pratiques concrètes et éprouvées."

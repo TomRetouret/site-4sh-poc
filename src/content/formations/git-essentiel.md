@@ -15,7 +15,7 @@ avis: 9
 depuis: "janvier 2023"
 theorie: 55
 pratique: 45
-image: "https://www.4sh.fr/assets/img/svg/trainings/git-essentiel.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/git-essentiel.svg"
 sessions:
   - "Le 28/09/2026"
 pour_qui: "Cette formation s'adresse à des personnes ne connaissant pas Git, quel que soit leur niveau d'expérience. Elle concerne en particulier les développeurs et web designers, mais également toute personne souhaitant gérer du versionnement de fichier type texte."
@@ -46,7 +46,7 @@ programme:
 formateur:
   nom: "Damien"
   role: "Formateur et développeur depuis 2013"
-  photo: "https://www.4sh.fr/assets/img/png/team/dro.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/dro.png"
   bio:
     - "Damien, passionné de développement et de transmission de savoir, donne des formations depuis 2013. Actuellement, il travaille pour un acteur majeur de la mobilité électrique en France, avec plus de 170 000 utilisateurs et des collections de données dépassant les 10 millions de documents."
     - "Son expérience l'a amené à traiter des problématiques de gestion de la volumétrie des données et de conception de modèles de données. Damien dispense également la formation IntelliJ et les formations MongoDB."

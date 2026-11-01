@@ -15,7 +15,7 @@ avis: 6
 depuis: "janvier 2023"
 theorie: 55
 pratique: 45
-image: "https://www.4sh.fr/assets/img/svg/trainings/ts-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/ts-fondamental.svg"
 sessions:
   - "Du 02/09/2026 au 03/09/2026"
 pour_qui: "Cette formation s'adresse principalement aux développeurs JavaScript souhaitant renforcer leurs compétences en typage statique et améliorer la qualité de leur code. Elle est également destinée aux professionnels du développement logiciel, y compris les ingénieurs, les chefs de projet techniques, et les architectes logiciels, qui cherchent à intégrer TypeScript dans leurs projets existants ou à démarrer de nouveaux projets avec une base solide en TypeScript. Elle est particulièrement adaptée aux développeurs front-end et back-end désireux d'améliorer la maintenabilité et la robustesse de leur code, aux équipes de développement qui souhaitent adopter TypeScript, et aux professionnels de la QA ou Responsables Produit ayant une base en développement."

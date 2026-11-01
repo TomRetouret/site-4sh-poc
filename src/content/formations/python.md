@@ -13,7 +13,7 @@ participants: "1 à 8"
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/python-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/python-fondamental.svg"
 sessions:
   - "Du 13/10/2026 au 15/10/2026"
 pour_qui: "Cette formation s'adresse à tous les niveaux de développeurs souhaitant se former sur le langage Python."

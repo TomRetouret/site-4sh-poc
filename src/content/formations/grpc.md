@@ -13,7 +13,7 @@ participants: "1 à 8"
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/grpc-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/grpc-fondamental.svg"
 sessions:
   - "Le 10/09/2026"
 pour_qui: "Cette formation cible n'importe quel profil de développeur d'applications Web désireux de se familiariser avec la technologie gRPC pour améliorer leurs compétences dans le domaine de la communication inter-services."

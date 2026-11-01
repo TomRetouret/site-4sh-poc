@@ -5,15 +5,15 @@ ordre: 11
 h1: "Naxos"
 sous_titre: "Century 21 - Application mobile du conseiller."
 resume: "Century 21 - Application mobile du conseiller."
-logo: "https://www.4sh.fr/assets/img/png/references/c21/logo-naxos.png"
-image: "https://www.4sh.fr/assets/img/png/references/c21/ref-c21-1.png"
+logo: "/uploads/ancien-site/assets/img/png/references/c21/logo-naxos.png"
+image: "/uploads/ancien-site/assets/img/png/references/c21/ref-c21-1.png"
 secteurs: ["Immobilier"]
 technologies: ["Ionic", "Cordova"]
 expertises: ["Discover", "Design", "Develop", "Deploy", "4SH UX"]
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/c21/ref-c21-1.png"
-  - "https://www.4sh.fr/assets/img/png/references/c21/ref-c21-2.png"
-  - "https://www.4sh.fr/assets/img/png/references/c21/ref-c21-3.png"
+  - "/uploads/ancien-site/assets/img/png/references/c21/ref-c21-1.png"
+  - "/uploads/ancien-site/assets/img/png/references/c21/ref-c21-2.png"
+  - "/uploads/ancien-site/assets/img/png/references/c21/ref-c21-3.png"
 fiche_pdf: "https://drive.google.com/file/d/1CKUhtonqV5rXUMoEKNnz4pQ8aQ33gcEZ/view"
 maj: "24/11/2022"
 meta_title: "Application mobile du conseiller immobilier Century 21 par 4SH"

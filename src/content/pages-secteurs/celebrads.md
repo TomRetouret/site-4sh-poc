@@ -3,7 +3,7 @@ titre: "Celebrads"
 categorie: "Solution"
 h1: "Celebrads - La solution dédiée aux groupes de presse pour la publication des avis de décès"
 chapo: "Celebrads est une solution dédiée à la publication en ligne des avis de décès, conçue spécifiquement pour les groupes de presse. Ergonomique et intuitive, elle permet aux familles comme aux professionnels du funéraire de saisir et personnaliser leurs annonces en toute autonomie, dans le respect de l'image, des tarifs et des règles éditoriales de votre groupe de presse."
-logo: "https://www.4sh.fr/assets/img/svg/logo-celebrads-color.svg"
+logo: "/uploads/ancien-site/assets/img/svg/logo-celebrads-color.svg"
 meta_title: "Celebrads - Solution pour la publication d'avis de décès | Groupes de presse"
 meta_description: "Celebrads est la solution dédiée aux groupes de presse pour publier en ligne des avis de décès. Intuitive, sécurisée et déjà adoptée par de nombreux titres régionaux."
 ordre: 1

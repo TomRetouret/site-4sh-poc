@@ -15,7 +15,7 @@ avis: 3
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/kubernetes-admin-avance.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/kubernetes-admin-avance.svg"
 sessions:
   - "Du 22/09/2026 au 23/09/2026"
 pour_qui: "Cette formation s'adresse à des administrateurs système ou des architectes techniques souhaitant se former sur la technologie Kubernetes."

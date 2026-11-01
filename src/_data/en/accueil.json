@@ -82,7 +82,7 @@
     {
       "secteur": "Insurance",
       "client": "Filhet-Allard",
-      "image": "https://www.4sh.fr/assets/img/png/references/fa/ref-fa-1.png",
+      "image": "/uploads/ancien-site/assets/img/png/references/fa/ref-fa-1.png",
       "visuel_texte": "Visual and technical overhaul of the Health & Protection extranet: Policyholder, Company and Administrator areas for an insurance broker.",
       "citation": "",
       "auteur": "",
@@ -96,7 +96,7 @@
     {
       "secteur": "Press",
       "client": "Sud Ouest group",
-      "image": "https://www.4sh.fr/assets/img/png/references/sudouest/ref-sudouest-socoa.png",
+      "image": "/uploads/ancien-site/assets/img/png/references/sudouest/ref-sudouest-socoa.png",
       "visuel_texte": "A custom tool that automatically calculates the pay of freelance journalists and correspondents, with an engine that analyses published articles.",
       "citation": "",
       "auteur": "",

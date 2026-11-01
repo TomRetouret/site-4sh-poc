@@ -15,7 +15,7 @@ avis: 13
 depuis: "janvier 2023"
 theorie: 55
 pratique: 45
-image: "https://www.4sh.fr/assets/img/svg/trainings/angular-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/angular-fondamental.svg"
 sessions:
   - "Du 15/09/2026 au 18/09/2026"
 pour_qui: "Cette formation s'adresse à tous les niveaux de développeurs JavaScript et/ou TypeScript souhaitant se former au développement d'applications web riches et modernes."
@@ -54,7 +54,7 @@ programme:
 formateur:
   nom: "Frédéric"
   role: "Tech Lead · 20 ans d'expérience"
-  photo: "https://www.4sh.fr/assets/img/png/team/fcr.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/fcr.png"
   bio:
     - "Frédéric, formateur référent de la formation Angular Fondamentaux, cumule plus de 20 ans d'expérience dans le développement logiciel, où il endosse le rôle de Tech Lead. Son parcours dans la logistique lui a permis de bâtir une expertise solide et polyvalente (JavaScript, TypeScript, Git, Maven)."
     - "Très impliqué dans la communauté des développeurs, il contribue à des projets open source comme Voxxrin, a présidé le Bordeaux Java User Group pendant trois ans et est à l'origine de BDX I/O. Conférencier reconnu, il est intervenu à Devoxx et BordeauxJS."

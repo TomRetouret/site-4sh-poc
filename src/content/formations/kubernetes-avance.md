@@ -15,7 +15,7 @@ avis: 9
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/kubernetes-avance.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/kubernetes-avance.svg"
 sessions:
   - "Du 17/09/2026 au 18/09/2026"
 pour_qui: "Cette formation s'adresse à des développeurs ou ingénieurs cloud disposant déjà des connaissances fondamentales sur Kubernetes et qui désirent les approfondir et renforcer ainsi un profil DevOps."
@@ -55,7 +55,7 @@ programme:
 formateur:
   nom: "Cyril"
   role: "Architecte logiciel et Tech Lead"
-  photo: "https://www.4sh.fr/assets/img/png/team/cti.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/cti.png"
   bio:
     - "Cyril fait partie de l'équipe 4SH depuis 2009. Fort de plus de quinze ans d'expérience, il s'est imposé comme expert en conception technique, en architecture logicielle et en pilotage d'équipes de développement. Il a notamment assuré le rôle d'architecte sur une solution de gestion d'agréments dans le secteur de l'assurance et endossé la fonction de Tech Lead lors de la refonte d'une plateforme de fret utilisée quotidiennement par plus de 1000 utilisateurs."
     - "Il a également conduit avec succès une migration d'un système legacy vers une nouvelle solution, réalisée sans aucune interruption de service. Cyril dispense aussi les formations Spring Fondamentaux et Angular Avancé."

@@ -5,16 +5,16 @@ ordre: 15
 h1: "Cirad - CiO2"
 sous_titre: "Création d'une application web pour déclarer ses déplacements et calculer ses émissions de gaz à effet de serre."
 resume: "Création d'une application web pour déclarer ses déplacements et calculer ses émissions de gaz à effet de serre."
-logo: "https://www.4sh.fr/assets/img/png/references/cirad/logo-cirad.png"
-image: "https://www.4sh.fr/assets/img/png/references/cirad/ref-cirad.png"
+logo: "/uploads/ancien-site/assets/img/png/references/cirad/logo-cirad.png"
+image: "/uploads/ancien-site/assets/img/png/references/cirad/ref-cirad.png"
 secteurs: ["Mobilité", "Écologie"]
 technologies: ["Angular", "HTML", "Sass", "Java"]
 expertises: []
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/cirad/ref-cirad-1.png"
-  - "https://www.4sh.fr/assets/img/png/references/cirad/ref-cirad-2.png"
-  - "https://www.4sh.fr/assets/img/png/references/cirad/ref-cirad-3.png"
-  - "https://www.4sh.fr/assets/img/png/references/cirad/ref-cirad-4.png"
+  - "/uploads/ancien-site/assets/img/png/references/cirad/ref-cirad-1.png"
+  - "/uploads/ancien-site/assets/img/png/references/cirad/ref-cirad-2.png"
+  - "/uploads/ancien-site/assets/img/png/references/cirad/ref-cirad-3.png"
+  - "/uploads/ancien-site/assets/img/png/references/cirad/ref-cirad-4.png"
 fiche_pdf: "https://drive.google.com/file/d/1q7KPJllD6jX2kuUOsh0n4TYcQ4NEUHIP/view"
 maj: "03/08/2022"
 meta_title: "Application d'aide au calcul des déplacements pour Cirad par 4SH"

@@ -15,7 +15,7 @@ avis: 10
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/angular-avance.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/angular-avance.svg"
 sessions:
   - "Du 22/09/2026 au 24/09/2026"
 pour_qui: "Cette formation s'adresse à des développeurs disposant déjà des connaissances fondamentales sur Angular et qui désirent les approfondir."
@@ -71,7 +71,7 @@ programme:
 formateur:
   nom: "Cyril"
   role: "Développeur, architecte et Tech Lead"
-  photo: "https://www.4sh.fr/assets/img/png/team/cti.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/cti.png"
   bio:
     - "Cyril, développeur chez 4SH depuis 2009, est expert en conception technique, architecture et animation d'équipes de développement. Il a notamment été architecte pour une solution de gestion d'agréments dans le secteur de l'assurance et Tech Lead pour la refonte d'une plateforme de fret utilisée par plus de 1000 utilisateurs quotidiens."
     - "Il a aussi mené une migration sans interruption de service d'un ancien système legacy vers une nouvelle solution. Cyril dispense également les formations Kubernetes Avancé et Spring Fondamentaux."

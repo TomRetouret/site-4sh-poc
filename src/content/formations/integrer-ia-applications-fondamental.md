@@ -12,7 +12,7 @@ duree: "<b>3 jours</b> (21h00)"
 participants: "1 à 8"
 theorie: 40
 pratique: 60
-image: "https://www.4sh.fr/assets/img/svg/trainings/integrer-ia-applications-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/integrer-ia-applications-fondamental.svg"
 sessions:
   - "Du 25/01/2027 au 27/01/2027"
 pour_qui: "Cette formation s’adresse à des développeurs souhaitant intégrer des fonctionnalités basées sur les grands modèles de langage dans leurs applications : extraction de données, interfaces conversationnelles, agents, recherche sémantique, traitement de documents. Elle vise la construction de fonctionnalités IA fiables, testables et maîtrisées en coût."

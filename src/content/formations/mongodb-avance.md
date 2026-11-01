@@ -15,7 +15,7 @@ avis: 27
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/mongodb-avance.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/mongodb-avance.svg"
 sessions:
   - "Du 12/10/2026 au 16/10/2026"
 pour_qui: "Cette formation s'adresse à des développeurs connaissant déjà MongoDB, sachant lire et écrire de la donnée, et voulant aller vers des usages avancés de MongoDB."
@@ -46,7 +46,7 @@ programme:
 formateur:
   nom: "Damien"
   role: "Formateur et développeur depuis 2013"
-  photo: "https://www.4sh.fr/assets/img/png/team/dro.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/dro.png"
   bio:
     - "Damien, passionné de développement informatique et de transmission de connaissances, a débuté comme formateur en 2013 pour 4SH, une activité qui le motive toujours autant."
     - "Actuellement, il travaille pour un acteur majeur de la mobilité électrique en France, gérant des bases de données à grande échelle, avec plus de 170 000 utilisateurs et des collections dépassant 10 millions de documents. Grâce à cette expérience, il maîtrise des problématiques complexes comme la gestion de la volumétrie des données et la conception optimale de modèles en base."

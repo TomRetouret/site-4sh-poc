@@ -5,8 +5,8 @@ ordre: 1
 h1: "Développement complet et maintien de la solution BeCLM"
 sous_titre: "Le concept BeCLM propose aux entreprises de tous secteurs d'activité, une nouvelle façon de gérer leur conformité réglementaire."
 resume: "Développement complet et maintien de la solution BeCLM, avec des briques d'intelligence artificielle au service de la conformité réglementaire et du KYC."
-logo: "https://www.4sh.fr/assets/img/png/references/beclm/logo-beclm.png"
-image: "https://www.4sh.fr/assets/img/png/references/beclm/ref-beclm.png"
+logo: "/uploads/ancien-site/assets/img/png/references/beclm/logo-beclm.png"
+image: "/uploads/ancien-site/assets/img/png/references/beclm/ref-beclm.png"
 secteurs:
   - "Conformité réglementaire"
   - "Assurance"
@@ -19,9 +19,9 @@ technologies:
 expertises:
   - "Data"
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/beclm/ref-beclm-1.png"
-  - "https://www.4sh.fr/assets/img/png/references/beclm/ref-beclm-2.png"
-  - "https://www.4sh.fr/assets/img/png/references/beclm/ref-beclm-3.png"
+  - "/uploads/ancien-site/assets/img/png/references/beclm/ref-beclm-1.png"
+  - "/uploads/ancien-site/assets/img/png/references/beclm/ref-beclm-2.png"
+  - "/uploads/ancien-site/assets/img/png/references/beclm/ref-beclm-3.png"
 fiche_pdf: "https://drive.google.com/file/d/1gOq_dxcJMVZJOGhzYzrgxkX9MERGHhfL/view"
 meta_title: "Outil de mise en conformité pour BeCLM par l'agence 4SH"
 meta_description: "Projet 4SH où nos experts en développement ont pu mettre le digital au service de la conformité."

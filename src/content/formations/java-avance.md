@@ -15,7 +15,7 @@ avis: 7
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/java-avance.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/java-avance.svg"
 sessions:
   - "Du 06/10/2026 au 08/10/2026"
 pour_qui: "Cette formation s'adresse à des développeurs Java qui souhaitent parfaire leur maîtrise du langage, avec du code plus robuste et maintenable, notamment en s'appuyant sur les APIs incontournables et les dernières nouveautés du langage."
@@ -64,7 +64,7 @@ programme:
 formateur:
   nom: "Frédéric"
   role: "Tech Lead · 20 ans d'expérience"
-  photo: "https://www.4sh.fr/assets/img/png/team/fcr.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/fcr.png"
   bio:
     - "Frédéric, notre formateur pour la formation Java Avancé, possède plus de 20 ans d'expérience en développement logiciel, avec un focus particulier en tant que Tech Lead. Ses projets variés dans le secteur de la logistique lui ont permis d'acquérir une expertise solide et diversifiée. Il maîtrise de nombreuses technologies, notamment JavaScript, TypeScript, Git et Maven."
     - "Contributeur actif à la communauté des développeurs, il participe à des projets open source comme Voxxrin. Il a été président du Bordeaux Java User Group pendant trois ans et est le créateur de BDX I/O. Frédéric a également donné des conférences sur TypeScript à Devoxx et BordeauxJS."

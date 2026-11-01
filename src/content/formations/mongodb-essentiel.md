@@ -15,7 +15,7 @@ avis: 3
 depuis: "janvier 2023"
 theorie: 70
 pratique: 30
-image: "https://www.4sh.fr/assets/img/svg/trainings/mongodb-essentiel.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/mongodb-essentiel.svg"
 sessions:
   - "Le 05/10/2026"
 pour_qui: "Cette formation MongoDB s'adresse à tout public. Il n'est pas nécessaire d'avoir des connaissances techniques. Elle s'adresse principalement à une personne désireuse de faire des recherches et des consolidations simples (pour de l'analyse par exemple)."
@@ -39,7 +39,7 @@ programme:
 formateur:
   nom: "Damien"
   role: "Formateur depuis 2013"
-  photo: "https://www.4sh.fr/assets/img/png/team/dro.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/dro.png"
   bio:
     - "Damien, passionné de développement informatique et de transmission de connaissances, a débuté comme formateur en 2013 pour 4SH, une activité qui le motive toujours autant. Actuellement, il travaille pour un acteur majeur de la mobilité électrique en France, gérant des bases de données à grande échelle, avec plus de 170 000 utilisateurs et des collections dépassant 10 millions de documents. Grâce à cette expérience, il maîtrise des problématiques complexes comme la gestion de la volumétrie des données et la conception optimale de modèles en base."
     - "Damien dispense également la formation Intellij et la formation Git - Essentiels."

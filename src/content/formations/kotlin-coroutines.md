@@ -13,7 +13,7 @@ participants: "1 à 8"
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/kotlin-cor-avance.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/kotlin-cor-avance.svg"
 sessions:
   - "Du 12/10/2026 au 14/10/2026"
 pour_qui: "Cette formation informatique s'adresse à des développeurs Kotlin qui souhaitent parfaire leur maîtrise de l'API coroutine. Même si la majorité des concepts couverts est multi plateforme, certains exemples et cas d'usages s'adressent particulièrement à la cible JVM."

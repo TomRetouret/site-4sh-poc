@@ -15,7 +15,7 @@ avis: 11
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/git-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/git-fondamental.svg"
 sessions:
   - "Du 29/09/2026 au 30/09/2026"
 pour_qui: "La formation Git - Les fondamentaux vise des personnes travaillant à plusieurs sur un gestionnaire source. Elle ciblera majoritairement des développeurs et développeuses, mais elle peut aussi concerner d'autres métiers comme des designers, Product Owners ou encore rédacteurs de documentations."
@@ -46,7 +46,7 @@ programme:
 formateur:
   nom: "Frédéric"
   role: "Expert JavaScript, TypeScript, Git et Maven depuis plus de 10 ans"
-  photo: "https://www.4sh.fr/assets/img/png/team/fcr.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/fcr.png"
   bio:
     - "Frédéric est expert en JavaScript, TypeScript, Git et Maven depuis plus de 10 ans. Actif dans la communauté des développeurs, il contribue à des projets open source, a présidé le Bordeaux Java User Group pendant 3 ans, et a créé BDX I/O."
     - "Conférencier passionné, il partage ses connaissances sur TypeScript, son langage de cœur, lors de meetups et conférences comme Devoxx et BordeauxJS. Frédéric dispense également les formations TypeScript - Avancé et Java - Avancé."

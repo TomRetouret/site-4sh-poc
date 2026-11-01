@@ -12,7 +12,7 @@ duree: "<b>2 jours</b> (14h00)"
 participants: "1 à 8"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/docker-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/docker-fondamental.svg"
 sessions:
   - "Du 15/09/2026 au 16/09/2026"
 pour_qui: "Cette formation s'adresse aux développeurs d'application qui souhaitent utiliser Docker au quotidien pour simplifier leur environnement de travail, ainsi qu'aux ingénieurs système souhaitant déployer leur production dans un orchestrateur de conteneur."
@@ -51,7 +51,7 @@ programme:
 formateur:
   nom: "Frédéric"
   role: "Tech Lead · 20 ans d'expérience"
-  photo: "https://www.4sh.fr/assets/img/png/team/fcr.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/fcr.png"
   bio:
     - "Frédéric, notre formateur pour la formation Docker Fondamentaux, possède plus de 20 ans d'expérience en développement logiciel, avec un focus particulier en tant que Tech Lead. Ses projets variés dans le secteur de la logistique lui ont permis d'acquérir une expertise solide et diversifiée. Il maîtrise de nombreuses technologies, notamment JavaScript, TypeScript, Git et Maven."
     - "Contributeur actif à la communauté des développeurs, il participe à des projets open source comme Voxxrin. Il a été président du Bordeaux Java User Group pendant trois ans et est le créateur de BDX I/O. Frédéric dispense également les formations Java Avancé, JavaScript / TypeScript, Git Fondamentaux et Angular Fondamentaux."

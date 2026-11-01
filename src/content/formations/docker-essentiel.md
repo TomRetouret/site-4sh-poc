@@ -15,7 +15,7 @@ avis: 9
 depuis: "janvier 2023"
 theorie: 65
 pratique: 35
-image: "https://www.4sh.fr/assets/img/svg/trainings/docker-essentiel.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/docker-essentiel.svg"
 sessions:
   - "Le 14/09/2026"
 pour_qui: "Cette formation s'adresse à des développeurs d'application Web souhaitant débuter avec les technologies de conteneurisation."
@@ -38,7 +38,7 @@ programme:
 formateur:
   nom: "Morgan"
   role: "Développeur, expert Java, Kotlin et Kubernetes"
-  photo: "https://www.4sh.fr/assets/img/png/team/mru.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/mru.png"
   bio:
     - "Morgan est un développeur passionné par le code et les défis, qu'ils soient techniques, architecturaux ou organisationnels. Expert en Java, Kotlin et Kubernetes (notamment dans un contexte DevOps), il a mené des projets de grande envergure, comme la refonte complète de la solution communautaire de fret leader en France, incluant le design, le développement, les tests de charge et l'automatisation des vérifications entre l'ancien et le nouveau système."
     - "Il a également participé à la conception et au déploiement d'une solution pour aider les assurances à se conformer aux exigences réglementaires."

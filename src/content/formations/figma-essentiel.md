@@ -15,7 +15,7 @@ avis: 11
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/figma-essentiel.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/figma-essentiel.svg"
 sessions:
   - "Le 25/09/2026"
 pour_qui: "Cette formation de design s'adresse principalement aux Product Owners, Product Managers ou UI/UX/Product Designers souhaitant découvrir le fonctionnement de Figma."

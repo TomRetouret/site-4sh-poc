@@ -13,7 +13,7 @@ participants: "1 à 8"
 depuis: "janvier 2023"
 theorie: 55
 pratique: 45
-image: "https://www.4sh.fr/assets/img/svg/trainings/jira-avance.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/jira-avance.svg"
 sessions:
   - "Du 22/09/2026 au 23/09/2026"
 pour_qui: "Cette formation s'adresse à des personnes travaillant dans le domaine du développement, peu importe leur rôle (développeur, tech lead, product owner, scrum master, pilote de projet, ...)."

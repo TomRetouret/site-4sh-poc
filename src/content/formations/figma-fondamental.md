@@ -12,7 +12,7 @@ duree: "<b>2 jours</b> (14h00)"
 participants: "1 à 8"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/figma-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/figma-fondamental.svg"
 sessions:
   - "Du 29/09/2026 au 30/09/2026"
 pour_qui: "Cette formation s'adresse principalement aux Product Owners, Product Managers ou UI/UX/Product Designers souhaitant découvrir le fonctionnement de Figma."

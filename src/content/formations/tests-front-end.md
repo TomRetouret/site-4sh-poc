@@ -13,7 +13,7 @@ participants: "1 à 8"
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/tests-frontend-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/tests-frontend-fondamental.svg"
 sessions:
   - "Du 28/09/2026 au 30/09/2026"
 pour_qui: "Cette formation s'adresse aux développeurs front end et full stack, aux tech leads et aux architectes techniques souhaitant fiabiliser leurs interfaces web grâce à une stratégie de tests robuste, quel que soit leur framework (React, Vue, Angular)."

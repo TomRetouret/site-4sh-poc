@@ -15,7 +15,7 @@ avis: 52
 depuis: "janvier 2023"
 theorie: 55
 pratique: 45
-image: "https://www.4sh.fr/assets/img/svg/trainings/kubernetes-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/kubernetes-fondamental.svg"
 sessions:
   - "Du 15/09/2026 au 16/09/2026"
 pour_qui: "La formation Kubernetes s'adresse à des développeurs d'application Web, des Tech Leads, des architectes techniques souhaitant se former sur cette technologie."
@@ -52,7 +52,7 @@ programme:
 formateur:
   nom: "Morgan"
   role: "Développeur, expert Java, Kotlin et Kubernetes"
-  photo: "https://www.4sh.fr/assets/img/png/team/mru.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/mru.png"
   bio:
     - "Morgan, développeur passionné par le code et les défis techniques, est expert en Java, Kotlin et Kubernetes dans un contexte DevOps."
     - "Il a notamment mené la refonte d'une solution de fret leader en France et participé à la conception et au déploiement d'une solution pour aider les assurances à se conformer aux réglementations."

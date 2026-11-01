@@ -5,8 +5,8 @@ ordre: 5
 h1: "CIN"
 sous_titre: "Accompagnement à la dématérialisation des processus douaniers."
 resume: "Solution communautaire de dématérialisation et suivi des processus douaniers du fret aérien français."
-logo: "https://www.4sh.fr/assets/img/png/references/cin/logo-cin.png"
-image: "https://www.4sh.fr/assets/img/png/references/cin/ref-cin.png"
+logo: "/uploads/ancien-site/assets/img/png/references/cin/logo-cin.png"
+image: "/uploads/ancien-site/assets/img/png/references/cin/ref-cin.png"
 secteurs:
   - "Logistique"
 technologies:
@@ -23,11 +23,11 @@ expertises:
   - "Digital"
   - "Data"
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/cin/ref-cin-1.png"
-  - "https://www.4sh.fr/assets/img/png/references/cin/ref-cin-2.png"
-  - "https://www.4sh.fr/assets/img/png/references/cin/ref-cin-3.png"
-  - "https://www.4sh.fr/assets/img/png/references/cin/ref-cin-4.png"
-  - "https://www.4sh.fr/assets/img/png/references/cin/ref-cin-5.png"
+  - "/uploads/ancien-site/assets/img/png/references/cin/ref-cin-1.png"
+  - "/uploads/ancien-site/assets/img/png/references/cin/ref-cin-2.png"
+  - "/uploads/ancien-site/assets/img/png/references/cin/ref-cin-3.png"
+  - "/uploads/ancien-site/assets/img/png/references/cin/ref-cin-4.png"
+  - "/uploads/ancien-site/assets/img/png/references/cin/ref-cin-5.png"
 fiche_pdf: "https://drive.google.com/file/d/1EP2Mvv8tJwbniyKzKriT70C1e1xD3Byd/view"
 maj: "09/02/2022"
 meta_title: "Outil de dématéralisation de documents douaniers pour CIN par 4SH"

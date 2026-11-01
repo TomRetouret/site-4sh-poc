@@ -5,14 +5,14 @@ ordre: 18
 h1: "DianaTrans - Dialog"
 sous_titre: "Outil collaboratif pour fluidifier les informations échangées avec les interlocuteurs externes (clients / fournisseurs)."
 resume: "Outil collaboratif pour fluidifier les informations échangées avec les interlocuteurs externes (clients / fournisseurs)."
-logo: "https://www.4sh.fr/assets/img/png/references/dianatrans/logo-dianatrans.png"
-image: "https://www.4sh.fr/assets/img/png/references/dianatrans/ref-dianatrans4.png"
+logo: "/uploads/ancien-site/assets/img/png/references/dianatrans/logo-dianatrans.png"
+image: "/uploads/ancien-site/assets/img/png/references/dianatrans/ref-dianatrans4.png"
 secteurs: ["Logistique"]
 technologies: ["Java", "Angular", "PostgreSQL", "Keycloak", "Kubernetes"]
 expertises: []
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/dianatrans/ref-dianatrans1.png"
-  - "https://www.4sh.fr/assets/img/png/references/dianatrans/ref-dianatrans2.png"
+  - "/uploads/ancien-site/assets/img/png/references/dianatrans/ref-dianatrans1.png"
+  - "/uploads/ancien-site/assets/img/png/references/dianatrans/ref-dianatrans2.png"
 fiche_pdf: "https://drive.google.com/file/d/1stErURD9fWuccjeq4oq-1mTEzHvhoZtJ/view?usp=sharing"
 maj: "02/08/2024"
 meta_title: "Création d'un outil collaboratif pour DianaTrans - Dialog par 4SH"

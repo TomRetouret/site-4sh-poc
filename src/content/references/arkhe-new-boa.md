@@ -5,15 +5,15 @@ ordre: 14
 h1: "Arkhe - New Boa"
 sous_titre: "Accompagnement à la conception et la réalisation d'un outil de gestion administrative"
 resume: "Accompagnement à la conception et la réalisation d'un outil de gestion administrative"
-logo: "https://www.4sh.fr/assets/img/png/references/arkhe/logo-arkhe.png"
-image: "https://www.4sh.fr/assets/img/png/references/arkhe/ref-arkhe-newboa.png"
+logo: "/uploads/ancien-site/assets/img/png/references/arkhe/logo-arkhe.png"
+image: "/uploads/ancien-site/assets/img/png/references/arkhe/ref-arkhe-newboa.png"
 secteurs: ["Jeu"]
 technologies: ["Angular", "HTML", "Sass", "Kotlin", "http4k", "MongoDB", "Simatix-Invoice"]
 expertises: ["4SH UX", "4SH Digital Strategy", "4SH Facility"]
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/arkhe/ref-arkhe-newboa-1.png"
-  - "https://www.4sh.fr/assets/img/png/references/arkhe/ref-arkhe-newboa-2.png"
-  - "https://www.4sh.fr/assets/img/png/references/arkhe/ref-arkhe-newboa-3.png"
+  - "/uploads/ancien-site/assets/img/png/references/arkhe/ref-arkhe-newboa-1.png"
+  - "/uploads/ancien-site/assets/img/png/references/arkhe/ref-arkhe-newboa-2.png"
+  - "/uploads/ancien-site/assets/img/png/references/arkhe/ref-arkhe-newboa-3.png"
 fiche_pdf: "https://drive.google.com/file/d/14sSC6B2oW-iXTXqnJOKYvtd8KXo3hMLx/view?usp=sharing"
 maj: "20/06/2022"
 meta_title: "Création et mise en place d'un outil administratif de Arkhe par 4SH"

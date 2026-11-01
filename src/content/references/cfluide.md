@@ -5,15 +5,15 @@ ordre: 16
 h1: "C'Fluide"
 sous_titre: "Application dédiée à la gestion réglementaire des fluides frigorigènes pour les professionnels du froid et du génie climatique."
 resume: "Application dédiée à la gestion réglementaire des fluides frigorigènes pour les professionnels du froid et du génie climatique."
-logo: "https://www.4sh.fr/assets/img/png/references/cfluide/logo-cfluide.png"
-image: "https://www.4sh.fr/assets/img/png/references/cfluide/ref-cfluide4.png"
+logo: "/uploads/ancien-site/assets/img/png/references/cfluide/logo-cfluide.png"
+image: "/uploads/ancien-site/assets/img/png/references/cfluide/ref-cfluide4.png"
 secteurs: ["Écologie", "Administratif"]
 technologies: ["Angular", "Java", "MongoDB", "Apache Tomcat", "Kubernetes"]
 expertises: []
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/cfluide/ref-cfluide1.png"
-  - "https://www.4sh.fr/assets/img/png/references/cfluide/ref-cfluide2.png"
-  - "https://www.4sh.fr/assets/img/png/references/cfluide/ref-cfluide3.png"
+  - "/uploads/ancien-site/assets/img/png/references/cfluide/ref-cfluide1.png"
+  - "/uploads/ancien-site/assets/img/png/references/cfluide/ref-cfluide2.png"
+  - "/uploads/ancien-site/assets/img/png/references/cfluide/ref-cfluide3.png"
 fiche_pdf: "https://drive.google.com/file/d/1pT0bWJ_GPu6oH4CuXX3ktUPnM2Z9xGhx/view?usp=sharing"
 maj: "08/01/2024"
 meta_title: "Création d'App pour les professionnels du froid de C'Fluide par 4SH"

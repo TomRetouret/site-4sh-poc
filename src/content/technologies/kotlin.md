@@ -2,7 +2,7 @@
 nom: "Kotlin"
 ordre: 2
 famille: "build"
-logo: "https://www.4sh.fr/assets/img/svg/trainings/logo-technos/kotlin-logo-only.svg"
+logo: "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/kotlin-logo-only.svg"
 accroche_courte: "Exploitez tout le potentiel de Kotlin pour le back-end de vos solutions."
 h1: "Développement Kotlin : le langage moderne pour des applications *performantes*"
 intro: "Exploitez tout le potentiel de Kotlin pour le back-end de vos solutions. Grâce à notre expertise, vos solutions seront plus rapides, plus sûres et évolutives."

@@ -15,7 +15,7 @@ avis: 3
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/js-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/js-fondamental.svg"
 sessions:
   - "Du 16/09/2026 au 18/09/2026"
 pour_qui: "La formation JavaScript - Les Fondamentaux s'adresse aux développeurs débutants souhaitant acquérir une compréhension solide des concepts de base de JavaScript. Elle est également destinée aux professionnels du développement logiciel, y compris les ingénieurs, les chefs de projet techniques, et les architectes logiciels ayant besoin de compétences en développement web pour leurs projets. Cette formation est particulièrement adaptée pour les développeurs front-end et back-end en début de carrière cherchant à renforcer leurs compétences en JavaScript, et pour les équipes de développement souhaitant uniformiser les connaissances de base en JavaScript au sein de leur équipe."

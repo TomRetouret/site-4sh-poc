@@ -15,7 +15,7 @@ avis: 1
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/acc-devops-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/acc-devops-fondamental.svg"
 sessions:
   - "Du 20/10/2026 au 22/10/2026"
 pour_qui: "Cette formation s'adresse aux développeurs, ingénieurs Système/Cloud, responsables infrastructure IT et Tech Leads souhaitant se familiariser avec les pratiques DevOps et améliorer leurs processus de développement, de déploiement et de collaboration."

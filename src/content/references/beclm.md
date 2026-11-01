@@ -5,8 +5,8 @@ ordre: 6
 h1: "BeCLM"
 sous_titre: "Le digital au service de la conformité."
 resume: "Le digital au service de la conformité : une application web regroupant 9 modules pour la gestion de la conformité réglementaire."
-logo: "https://www.4sh.fr/assets/img/png/references/beclm/logo-beclm.png"
-image: "https://www.4sh.fr/assets/img/png/references/beclm/ref-beclm.png"
+logo: "/uploads/ancien-site/assets/img/png/references/beclm/logo-beclm.png"
+image: "/uploads/ancien-site/assets/img/png/references/beclm/ref-beclm.png"
 secteurs:
   - "Assurance"
   - "Conformité réglementaire"
@@ -23,9 +23,9 @@ expertises:
   - "Facility"
   - "Studio"
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/beclm/ref-beclm-1.png"
-  - "https://www.4sh.fr/assets/img/png/references/beclm/ref-beclm-2.png"
-  - "https://www.4sh.fr/assets/img/png/references/beclm/ref-beclm-3.png"
+  - "/uploads/ancien-site/assets/img/png/references/beclm/ref-beclm-1.png"
+  - "/uploads/ancien-site/assets/img/png/references/beclm/ref-beclm-2.png"
+  - "/uploads/ancien-site/assets/img/png/references/beclm/ref-beclm-3.png"
 fiche_pdf: "https://drive.google.com/file/d/1g5FuzNFZQNGfFQsOWI9pq4DYHcKqP7li/view"
 maj: "09/05/2022"
 meta_title: "Outil de mise en conformité pour BeCLM par l'agence 4SH"

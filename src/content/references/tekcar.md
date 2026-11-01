@@ -5,14 +5,14 @@ ordre: 17
 h1: "Tekcar"
 sous_titre: "Application de gestion d'interventions de pose et de dépose de matériels électroniques sur des véhicules particuliers et sur des flottes de véhicules."
 resume: "Application de gestion d'interventions de pose et de dépose de matériels électroniques sur des véhicules particuliers et sur des flottes de véhicules."
-logo: "https://www.4sh.fr/assets/img/png/references/tekcar/logo-tekcar.png"
-image: "https://www.4sh.fr/assets/img/png/references/tekcar/ref-tekcar3.png"
+logo: "/uploads/ancien-site/assets/img/png/references/tekcar/logo-tekcar.png"
+image: "/uploads/ancien-site/assets/img/png/references/tekcar/ref-tekcar3.png"
 secteurs: ["Logistique", "Mobilité"]
 technologies: ["Java", "RestX", "Angular", "MongoDB", "Kubernetes"]
 expertises: []
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/tekcar/ref-tekcar1.png"
-  - "https://www.4sh.fr/assets/img/png/references/tekcar/ref-tekcar2.png"
+  - "/uploads/ancien-site/assets/img/png/references/tekcar/ref-tekcar1.png"
+  - "/uploads/ancien-site/assets/img/png/references/tekcar/ref-tekcar2.png"
 fiche_pdf: "https://drive.google.com/file/d/1ncau01RZoGmZd4u4v5823Hw-frNA51mQ/view?usp=sharing"
 maj: "07/12/2023"
 meta_title: "Outil de gestion d'interventions pour Tekcar par 4SH"

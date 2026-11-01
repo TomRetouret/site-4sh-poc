@@ -13,7 +13,7 @@ participants: "1 à 8"
 depuis: "janvier 2023"
 theorie: 65
 pratique: 35
-image: "https://www.4sh.fr/assets/img/svg/trainings/mongodb-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/mongodb-fondamental.svg"
 sessions:
   - "Du 06/10/2026 au 08/10/2026"
 pour_qui: "Cette formation s'adresse à toute personne souhaitant débuter dans l'usage de Mongo, et, idéalement, ayant quelques notions sur les bases de données."
@@ -40,7 +40,7 @@ programme:
 formateur:
   nom: "Damien"
   role: "Formateur et développeur depuis 2013"
-  photo: "https://www.4sh.fr/assets/img/png/team/dro.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/dro.png"
   bio:
     - "Damien est un développeur passionné par son métier et profondément attaché à la transmission du savoir. Il a commencé à enseigner chez 4SH dès 2013, une activité qu'il poursuit aujourd'hui avec la même énergie et le même enthousiasme."
     - "Actuellement, il met son expertise au service d'un acteur majeur de la mobilité électrique en France, où il pilote la gestion de bases de données à grande échelle : plus de 170 000 utilisateurs et plus de 10 millions de documents au quotidien. Cette expérience lui a permis de développer une maîtrise approfondie des problématiques de volumétrie, d'optimisation des modèles de données et de conception d'architectures performantes et fiables."

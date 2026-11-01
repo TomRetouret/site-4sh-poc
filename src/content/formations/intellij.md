@@ -15,7 +15,7 @@ avis: 9
 depuis: "janvier 2023"
 theorie: 65
 pratique: 35
-image: "https://www.4sh.fr/assets/img/svg/trainings/intellij-essentiel.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/intellij-essentiel.svg"
 sessions:
   - "Le 07/09/2026"
 pour_qui: "Cette formation s'adresse à des développeurs ne connaissant pas IntelliJ Idea, quel que soit leur niveau d'expérience."
@@ -48,7 +48,7 @@ programme:
 formateur:
   nom: "Damien"
   role: "Développeur informatique, formateur chez 4SH depuis 2013"
-  photo: "https://www.4sh.fr/assets/img/png/team/dro.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/dro.png"
   bio:
     - "Damien, développeur informatique passionné, combine savoir-faire technique et goût pour la transmission. Formateur chez 4SH depuis 2013, il partage son expertise avec enthousiasme. Actuellement en poste chez un leader de la mobilité électrique en France, il accompagne un business en forte croissance, avec plus de 170 000 utilisateurs et des collections dépassant 10 millions de documents. Son expérience lui a permis d'aborder des problématiques complexes, telles que la gestion de la volumétrie des données et la conception optimisée de modèles en base."
     - "Damien dispense également la formation Git - Essentiel et les formations MongoDB."

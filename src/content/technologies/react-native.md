@@ -2,7 +2,7 @@
 nom: "React Native"
 ordre: 5
 famille: "build"
-logo: "https://www.4sh.fr/assets/img/svg/trainings/logo-technos/react-native.svg"
+logo: "/uploads/ancien-site/assets/img/svg/trainings/logo-technos/react-native.svg"
 accroche_courte: "Une seule base de code pour iOS et Android."
 h1: "Développement React Native : applications mobiles *cross-platform* iOS et Android"
 intro: "Le développement React Native permet de couvrir iOS et Android avec une seule base de code, sans sacrifier l'expérience utilisateur. Nous accompagnons les entreprises de la première version au produit installé sur des dizaines de milliers de téléphones."

@@ -15,7 +15,7 @@ avis: 6
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/kotlin-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/kotlin-fondamental.svg"
 sessions:
   - "Du 29/09/2026 au 02/10/2026"
 pour_qui: "Cette formation de développement s'adresse à des développeurs qui souhaitent apprendre le langage Kotlin afin de développer des applications s'exécutant sur la JVM."
@@ -75,7 +75,7 @@ programme:
 formateur:
   nom: "Morgan"
   role: "Développeur, expert Java, Kotlin et Kubernetes"
-  photo: "https://www.4sh.fr/assets/img/png/team/mru.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/mru.png"
   bio:
     - "Morgan, développeur passionné par le code et les défis techniques, est expert en Java, Kotlin et Kubernetes dans un contexte DevOps."
     - "Il a notamment mené la refonte d'une solution de fret leader en France et participé à la conception et au déploiement d'une solution pour aider les assurances à se conformer aux réglementations."

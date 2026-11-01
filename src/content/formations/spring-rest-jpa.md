@@ -15,7 +15,7 @@ avis: 9
 depuis: "janvier 2023"
 theorie: 55
 pratique: 45
-image: "https://www.4sh.fr/assets/img/svg/trainings/spring-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/spring-fondamental.svg"
 sessions:
   - "Du 21/09/2026 au 24/09/2026"
 pour_qui: "Cette formation s'adresse à des développeurs Java ou à des architectes."
@@ -82,7 +82,7 @@ programme:
 formateur:
   nom: "Cyril"
   role: "Développeur, expert en conception technique et architecture"
-  photo: "https://www.4sh.fr/assets/img/png/team/cti.png"
+  photo: "/uploads/ancien-site/assets/img/png/team/cti.png"
   bio:
     - "Cyril, développeur chez 4SH depuis 2009, est expert en conception technique, architecture, et animation d'équipes de développement. Il a notamment été architecte pour une solution de gestion d'agréments dans le secteur de l'assurance et Tech Lead pour la refonte d'une plateforme de fret utilisée par plus de 1000 utilisateurs quotidiens. Il a aussi mené une migration sans interruption de service d'un ancien système legacy vers une nouvelle solution."
     - "Cyril dispense également la formation Kubernetes - Avancé et la formation Angular - Avancé."

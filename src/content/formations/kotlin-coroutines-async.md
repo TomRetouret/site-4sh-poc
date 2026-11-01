@@ -15,7 +15,7 @@ avis: 6
 depuis: "janvier 2023"
 theorie: 60
 pratique: 40
-image: "https://www.4sh.fr/assets/img/svg/trainings/kotlin-asynchronicite-coroutines-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/kotlin-asynchronicite-coroutines-fondamental.svg"
 sessions:
   - "Le 25/09/2026"
 pour_qui: "Cette formation s'adresse aux développeurs Kotlin, aux architectes logiciels et aux leads techniques souhaitant approfondir leurs connaissances en programmation asynchrone avec Kotlin. Elle convient particulièrement aux professionnels travaillant sur des applications mobiles Android, des services backend, ou des applications réactives nécessitant une gestion efficace de la concurrence."

@@ -5,17 +5,17 @@ ordre: 8
 h1: "SUD OUEST - SOCOA"
 sous_titre: "Outil de calcul de la rémunération des pigistes et correspondants."
 resume: "Outil de calcul de la rémunération des pigistes et correspondants."
-logo: "https://www.4sh.fr/assets/img/png/references/sudouest/logo-socoa.png"
-image: "https://www.4sh.fr/assets/img/png/references/sudouest/ref-sudouest-socoa.png"
+logo: "/uploads/ancien-site/assets/img/png/references/sudouest/logo-socoa.png"
+image: "/uploads/ancien-site/assets/img/png/references/sudouest/ref-sudouest-socoa.png"
 secteurs: ["Presse"]
 technologies: ["Angular", "PostgreSQL", "Java", "RestX"]
 expertises: ["Design", "Develop", "Deploy", "4SH UX", "4SH Facility", "4SH Studio"]
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/sudouest/ref-sudouest-1.png"
-  - "https://www.4sh.fr/assets/img/png/references/sudouest/ref-sudouest-2.png"
-  - "https://www.4sh.fr/assets/img/png/references/sudouest/ref-sudouest-3.png"
-  - "https://www.4sh.fr/assets/img/png/references/sudouest/ref-sudouest-4.png"
-  - "https://www.4sh.fr/assets/img/png/references/sudouest/ref-sudouest-5.png"
+  - "/uploads/ancien-site/assets/img/png/references/sudouest/ref-sudouest-1.png"
+  - "/uploads/ancien-site/assets/img/png/references/sudouest/ref-sudouest-2.png"
+  - "/uploads/ancien-site/assets/img/png/references/sudouest/ref-sudouest-3.png"
+  - "/uploads/ancien-site/assets/img/png/references/sudouest/ref-sudouest-4.png"
+  - "/uploads/ancien-site/assets/img/png/references/sudouest/ref-sudouest-5.png"
 fiche_pdf: "https://drive.google.com/file/d/1lMFZUrN8fc2FiPVJV60bwGtYGW_-fq3P/view?usp=sharing"
 maj: "20/04/2022"
 meta_title: "Outil de calcul de la rémunération pour Sud Ouest par 4SH"

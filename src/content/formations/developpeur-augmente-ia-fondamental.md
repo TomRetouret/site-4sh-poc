@@ -12,7 +12,7 @@ duree: "<b>2 jours</b> (14h00)"
 participants: "1 à 8"
 theorie: 40
 pratique: 60
-image: "https://www.4sh.fr/assets/img/svg/trainings/developpeur-augmente-ia-fondamental.svg"
+image: "/uploads/ancien-site/assets/img/svg/trainings/developpeur-augmente-ia-fondamental.svg"
 sessions:
   - "Du 13/01/2027 au 14/01/2027"
 pour_qui: "Cette formation s’adresse à des développeurs souhaitant intégrer les agents de code IA dans leur pratique quotidienne pour gagner en efficacité tout en continuant à produire du code robuste et maintenable."

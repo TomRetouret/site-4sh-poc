@@ -5,15 +5,15 @@ ordre: 13
 h1: "Arkhe - Migration K8s"
 sous_titre: "Migration de leur solution d'une architecture à base de machines virtuelles VMWare vers une architecture conteneurisée sous Kubernetes"
 resume: "Migration de leur solution d'une architecture à base de machines virtuelles VMWare vers une architecture conteneurisée sous Kubernetes"
-logo: "https://www.4sh.fr/assets/img/png/references/arkhe/logo-arkhe.png"
-image: "https://www.4sh.fr/assets/img/png/references/arkhe/ref-arkhe-migration.png"
+logo: "/uploads/ancien-site/assets/img/png/references/arkhe/logo-arkhe.png"
+image: "/uploads/ancien-site/assets/img/png/references/arkhe/ref-arkhe-migration.png"
 secteurs: ["Jeu"]
 technologies: ["Angular", "HTML", "Sass", "Java", "RestX"]
 expertises: ["4SH UX", "4SH Digital Strategy", "4SH Facility"]
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/arkhe/ref-arkhe-newboa-1.png"
-  - "https://www.4sh.fr/assets/img/png/references/arkhe/ref-arkhe-newboa-2.png"
-  - "https://www.4sh.fr/assets/img/png/references/arkhe/ref-arkhe-newboa-3.png"
+  - "/uploads/ancien-site/assets/img/png/references/arkhe/ref-arkhe-newboa-1.png"
+  - "/uploads/ancien-site/assets/img/png/references/arkhe/ref-arkhe-newboa-2.png"
+  - "/uploads/ancien-site/assets/img/png/references/arkhe/ref-arkhe-newboa-3.png"
 fiche_pdf: "https://drive.google.com/file/d/19HgH5xyPlTt82wFL0LP7RkdfjVYAsp1P/view?usp=sharing"
 maj: "20/04/2022"
 meta_title: "Aide à la migration de Arkhe par 4SH expert en développement"

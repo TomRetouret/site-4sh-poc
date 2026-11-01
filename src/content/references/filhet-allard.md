@@ -5,15 +5,15 @@ ordre: 12
 h1: "Filhet-Allard"
 sous_titre: "Extranet pour la santé et la prévoyance des assurés."
 resume: "Extranet pour la santé et la prévoyance des assurés."
-logo: "https://www.4sh.fr/assets/img/png/references/fa/logo-fa.png"
-image: "https://www.4sh.fr/assets/img/png/references/fa/ref-fa-1.png"
+logo: "/uploads/ancien-site/assets/img/png/references/fa/logo-fa.png"
+image: "/uploads/ancien-site/assets/img/png/references/fa/ref-fa-1.png"
 secteurs: ["Assurance"]
 technologies: ["Angular", "HTML", "Sass"]
 expertises: ["Discover", "Design", "Develop", "Deploy", "4SH Facility", "4SH Studio"]
 galerie:
-  - "https://www.4sh.fr/assets/img/png/references/fa/ref-fa-1.png"
-  - "https://www.4sh.fr/assets/img/png/references/fa/ref-fa-2.png"
-  - "https://www.4sh.fr/assets/img/png/references/fa/ref-fa-3.png"
+  - "/uploads/ancien-site/assets/img/png/references/fa/ref-fa-1.png"
+  - "/uploads/ancien-site/assets/img/png/references/fa/ref-fa-2.png"
+  - "/uploads/ancien-site/assets/img/png/references/fa/ref-fa-3.png"
 fiche_pdf: "https://drive.google.com/file/d/1Fs9rFbJYN2CctzNbQAYLoNHXHGhCpLoO/view?usp=share_link"
 maj: "04/11/2022"
 meta_title: "Création d'un extranet santé et assurés pour Filhet-Allard par 4SH"

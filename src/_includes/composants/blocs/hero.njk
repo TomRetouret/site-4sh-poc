@@ -8,7 +8,7 @@
 <!-- HERO INTERNE (variante sobre) -->
 <div class="hero-interne">
   <div class="container">
-    {% if ctx.fil_ariane %}<nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">{{ ("commun.fil_ariane_accueil" | libelle(ctx.url_page)) or "Accueil" }}</a> &rsaquo; {{ ctx.fil_ariane }}</nav>{% endif %}
+    {% if ctx.fil_ariane %}<nav class="fil-ariane" aria-label="{{ (("commun.fil_ariane_aria" | libelle(ctx.url_page)) or "Fil d\'Ariane") | texteHtml | safe }}"><a href="{{ ("commun.accueil_url" | libelle(ctx.url_page)) or "/" }}">{{ ("commun.fil_ariane_accueil" | libelle(ctx.url_page)) or "Accueil" }}</a> &rsaquo; {{ ctx.fil_ariane }}</nav>{% endif %}
     {% if surtitre %}<span class="eyebrow eyebrow-offre"><span class="barre" aria-hidden="true"></span>{{ surtitre }}</span>{% endif %}
     <div class="hero-grille">
       <div>

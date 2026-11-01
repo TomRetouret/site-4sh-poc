@@ -8,9 +8,9 @@
       "type": "hero_institutionnel",
       "masquer": false,
       "fil_ariane": [
-        "Accueil",
-        "L'agence",
-        "Notre entreprise"
+        "Home",
+        "Company",
+        "Our company"
       ],
       "surtitre": "Our company",
       "titre_page": "4SH, technical skill with a *friendly touch*",

@@ -1,13 +1,24 @@
 {
   "commun": {
-    "fil_ariane_accueil": "Home"
+    "fil_ariane_accueil": "Home",
+    "fil_ariane_aria": "Breadcrumb",
+    "accueil_url": "/en/",
+    "fil_ariane_technologies": "Technical expertise",
+    "menu_ouvrir": "Open menu",
+    "menu_fermer": "Close menu",
+    "pied_signature": "Develop your ideas",
+    "carrousel_defiler": "scroll to browse"
   },
   "blocs": {
     "blog_titre": "Our latest *articles*",
     "blog_tout": "All articles",
     "equipe_bouton": "Our company",
     "technologies_lien": "Learn more →",
-    "projet_vedette_lien": "View the case study →"
+    "projet_vedette_lien": "View the case study →",
+    "projets_carrousel": "Case studies",
+    "secteurs_carrousel": "Industries",
+    "chiffres_aria": "Key figures",
+    "illustration_entreprise": "a growing community"
   },
   "formation": {
     "eyebrow": "Training · ",
@@ -66,6 +77,10 @@
     "vide": "No course matches your search. Try another keyword.",
     "cta_voir": "See the courses",
     "cta_devis": "Custom quote",
+    "recherche_aria": "Search for a course",
+    "onglets_aria": "Course categories",
+    "fil_ariane": "IT training courses",
+    "agenda_bouton": "Register",
     "chips": ["On-site & remote", "Qualiopi certified"]
   },
   "reference": {

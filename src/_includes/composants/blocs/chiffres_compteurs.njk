@@ -6,7 +6,7 @@
 <!-- CHIFFRES ANIMÉS -->
 <section style="padding:0">
   <div class="chiffres">
-    <div class="container"{% if b.chiffres and b.chiffres.length > 4 %} tabindex="0" role="group" aria-label="Chiffres clés"{% endif %}>
+    <div class="container"{% if b.chiffres and b.chiffres.length > 4 %} tabindex="0" role="group" aria-label="{{ ("blocs.chiffres_aria" | libelle(ctx.url_page)) or "Chiffres clés" }}"{% endif %}>
       {% for c in b.chiffres %}
       {%- set k = (c.valeur | compteurChiffre) if c.animer != false else null %}
       <div><b{% if k %} data-compte="{{ k.compte }}"{% if k.suffixe %} data-suffixe="{{ k.suffixe }}"{% endif %}{% endif %}>{{ c.valeur }}</b><span>{{ c.texte }}</span>{% if c.note %}<small>{{ c.note }}</small>{% endif %}</div>

@@ -15,7 +15,7 @@
 <!-- HERO INTERNE -->
 <div class="hero-interne">
   <div class="container">
-    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; Expertises techniques</nav>
+    <nav class="fil-ariane" aria-label="{{ (("commun.fil_ariane_aria" | libelle(url_page)) or "Fil d\'Ariane") | texteHtml | safe }}"><a href="{{ ("commun.accueil_url" | libelle(url_page)) or "/" }}">{{ ("commun.fil_ariane_accueil" | libelle(url_page)) or "Accueil" }}</a> &rsaquo; {{ ("commun.fil_ariane_technologies" | libelle(url_page)) or "Expertises techniques" }}</nav>
     <div class="hero-grille">
       <div>
         <p class="eyebrow">{{ p.hero.surtitre }}</p>
@@ -44,7 +44,7 @@
         {% if t.data.logo %}<span class="phare-logo"><img src="{{ t.data.logo }}" alt="{{ t.data.nom }}" loading="lazy" decoding="async"></span>{% endif %}
         <h3>{{ t.data.nom }}</h3>
         <p>{{ t.data.accroche_courte }}</p>
-        <a href="{{ t.url }}">En savoir plus →</a>
+        <a href="{{ t.url }}">{{ ("blocs.technologies_lien" | libelle(url_page)) or "En savoir plus →" }}</a>
       </article>
       {% endfor %}
     </div>

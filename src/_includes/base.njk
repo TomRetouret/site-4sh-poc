@@ -100,7 +100,8 @@
       {% if altUrl %}<a class="lang-switch" href="{{ altUrl }}" hreflang="{{ 'fr' if lang == 'en' else 'en' }}" aria-label="{{ 'Voir la version française' if lang == 'en' else 'View the English version' }}" title="{{ 'Version française' if lang == 'en' else 'English version' }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M8 3H16L21 8V16L16 21H8L3 16V8Z"/><path d="M3 12H21M12 3L8 7V17L12 21M12 3L16 7V17L12 21"/></svg><span>{{ 'FR' if lang == 'en' else 'EN' }}</span></a>{% endif %}
       {% for a in navigation.actions %}<a class="{{ a.style }}{% if a.label == rubrique %} actif{% endif %}" href="{{ a.url or '#' }}"{% if a.label == rubrique %} aria-current="page"{% endif %}>{{ a.label }}</a>{% endfor %}
     </div>
-    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7H20M4 12H20M4 17H20"/></svg><span aria-hidden="true">Menu</span></button>
+    {%- set menu_fermer = "commun.menu_fermer" | libelle(page.url) %}
+    <button class="burger" aria-label="{{ ("commun.menu_ouvrir" | libelle(page.url)) or "Ouvrir le menu" }}"{% if menu_fermer and menu_fermer != "Fermer le menu" %} data-libelle-fermer="{{ menu_fermer }}"{% endif %} aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7H20M4 12H20M4 17H20"/></svg><span aria-hidden="true">Menu</span></button>
   </div>
 </header>
 {% endif %}
@@ -112,7 +113,7 @@
     <div class="footer-grille">
       <div>
         <img class="footer-logo" src="/assets/img/logo-4sh-blanc.svg" alt="{{ site.nom }}" width="72" height="24">
-        <p class="footer-accroche">Développez vos idées</p>
+        <p class="footer-accroche">{{ ("commun.pied_signature" | libelle(page.url)) or "Développez vos idées" }}</p>
         <p>{{ site.footer_accroche }}<br>{{ site.villes }}<br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
       </div>
       {% for col in site.footer_colonnes %}

@@ -75,6 +75,10 @@
   var actions = nav.querySelector('.nav-actions');
 
   menu.id = menu.id || 'menu-principal';
+  // Libellés du bouton : celui d'ouverture est écrit dans la page (base.njk), celui de fermeture
+  // dans data-libelle-fermer quand il diffère du français (libellés commun.menu_ouvrir et commun.menu_fermer).
+  var libelleOuvrir = burger.getAttribute('aria-label') || 'Ouvrir le menu';
+  var libelleFermer = burger.getAttribute('data-libelle-fermer') || 'Fermer le menu';
   burger.setAttribute('aria-controls', menu.id);
   burger.setAttribute('aria-expanded', 'false');
 
@@ -94,12 +98,12 @@
   function ouvrir() {
     document.body.classList.add('menu-ouvert');
     burger.setAttribute('aria-expanded', 'true');
-    burger.setAttribute('aria-label', 'Fermer le menu');
+    burger.setAttribute('aria-label', libelleFermer);
   }
   function fermer() {
     document.body.classList.remove('menu-ouvert');
     burger.setAttribute('aria-expanded', 'false');
-    burger.setAttribute('aria-label', 'Ouvrir le menu');
+    burger.setAttribute('aria-label', libelleOuvrir);
     menu.querySelectorAll('li.ouvert').forEach(function (li) { li.classList.remove('ouvert'); });
   }
 

@@ -7,7 +7,7 @@
     {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
     <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
     {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
-    {% call carrousel("Secteurs", "car--secteurs", false) %}
+    {% call carrousel(("blocs.secteurs_carrousel" | libelle(ctx.url_page)) or "Secteurs", "car--secteurs", false, ("commun.carrousel_defiler" | libelle(ctx.url_page))) %}
         {% for s in b.cartes %}
         <div class="secteur-carte"><h3>{{ s.titre }}</h3>{% if s.texte %}<p>{{ s.texte }}</p>{% endif %}{% if s.lien and s.lien.texte %}<a href="{{ s.lien.lien or '#' }}">{{ s.lien.texte }}</a>{% endif %}</div>
         {% endfor %}

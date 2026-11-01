@@ -6,7 +6,7 @@
 <!-- HERO INTERNE (pages institutionnelles) -->
 <div class="hero-interne">
   <div class="container">
-    {% if b.fil_ariane and b.fil_ariane.length %}<nav class="fil-ariane" aria-label="Fil d'Ariane">{% for e in b.fil_ariane %}{% if loop.first %}<a href="/">{{ e | texteHtml | safe }}</a>{% else %} &rsaquo; {{ e | texteHtml | safe }}{% endif %}{% endfor %}</nav>{% endif %}
+    {% if b.fil_ariane and b.fil_ariane.length %}<nav class="fil-ariane" aria-label="{{ (("commun.fil_ariane_aria" | libelle(ctx.url_page)) or "Fil d\'Ariane") | texteHtml | safe }}">{% for e in b.fil_ariane %}{% if loop.first %}<a href="{{ ("commun.accueil_url" | libelle(ctx.url_page)) or "/" }}">{{ e | texteHtml | safe }}</a>{% else %} &rsaquo; {{ e | texteHtml | safe }}{% endif %}{% endfor %}</nav>{% endif %}
     <div class="hero-grille">
       <div>
         {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
@@ -56,7 +56,7 @@
           <path d="M144 60c10 14 22 30 34 46" stroke="#494849" stroke-width="1.6" stroke-linecap="square"/>
           <path d="M336 60c-10 14-22 30-34 46" stroke="#494849" stroke-width="1.6" stroke-linecap="square"/>
           <path d="M240 165v33" stroke="#494849" stroke-width="1.6" stroke-linecap="square"/>
-          <text x="240" y="20" text-anchor="middle" fill="#ea2631" font-size="15" font-family="Fraunces,Georgia,serif" font-style="italic">une communauté qui grandit</text>
+          <text x="240" y="20" text-anchor="middle" fill="#ea2631" font-size="15" font-family="Fraunces,Georgia,serif" font-style="italic">{{ ("blocs.illustration_entreprise" | libelle(ctx.url_page)) or "une communauté qui grandit" }}</text>
         </svg>
       </div>
 {% endif %}

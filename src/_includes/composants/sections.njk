@@ -85,7 +85,7 @@
 {%- endmacro %}
 
 {# ---------------------------------------------------------------------------
-   carrousel(libelle, variante="", auto=true)
+   carrousel(libelle, variante="", auto=true, defiler="")
    Enveloppe de carrousel, a utiliser en bloc :
 
      {% call carrousel("Secteurs", "car--secteurs") %}
@@ -94,10 +94,12 @@
 
    auto=false coupe le defilement automatique (corps de page, pour ne pas
    bouger sous les yeux du lecteur).
+   defiler : fin du libelle de la piste (libelle commun.carrousel_defiler),
+   « faites défiler » si vide.
 --------------------------------------------------------------------------- #}
-{% macro carrousel(libelle, variante="", auto=true) %}
+{% macro carrousel(libelle, variante="", auto=true, defiler="") %}
 <div class="carrousel{% if variante %} {{ variante }}{% endif %}" data-carrousel{% if not auto %} data-carrousel-auto="off"{% endif %} aria-label="{{ libelle }}">
-  <div class="car-piste" tabindex="0" role="group" aria-label="{{ libelle }}, faites défiler">
+  <div class="car-piste" tabindex="0" role="group" aria-label="{{ libelle }}, {{ defiler or 'faites défiler' }}">
     {{ caller() }}
   </div>
   <div class="car-dots"></div>

@@ -19,7 +19,7 @@
 {% macro corps(p, site, libelles, groupes, docs, url_page) %}
 <div class="hero-form">
   <div class="container">
-    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Formations en informatique</nav>
+    <nav class="fil-ariane" aria-label="{{ (libelles.commun.fil_ariane_aria or "Fil d\'Ariane") | texteHtml | safe }}"><a href="{{ libelles.commun.accueil_url or "/" }}">{{ libelles.commun.fil_ariane_accueil or "Accueil" }}</a> › {{ libelles.catalogue.fil_ariane or "Formations en informatique" }}</nav>
     <div class="hero-grille">
       <div>
         <span class="eyebrow eyebrow-offre"><span class="barre" aria-hidden="true"></span>{{ p.hero.surtitre }}</span>
@@ -92,7 +92,7 @@
             <div class="details"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M6 3H18V14L12 21L6 14Z"/><path d="M10 7H14V11H10Z"/></svg> {{ s.lieu }}</span><span>{{ s.modalite }}</span></div>
           </div>
         </div>
-        <a class="btn btn-learning btn-sm cta-session" href="{{ s.url or '#' }}">S'inscrire</a>
+        <a class="btn btn-learning btn-sm cta-session" href="{{ s.url or '#' }}">{{ (libelles.catalogue.agenda_bouton or "S\'inscrire") | texteHtml | safe }}</a>
       </div>
       {% endfor %}
       {% endfor %}

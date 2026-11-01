@@ -8,7 +8,7 @@
     {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
     <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
     {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
-    {% call carrousel("Réalisations", "car--real", false) %}
+    {% call carrousel(("blocs.projets_carrousel" | libelle(ctx.url_page)) or "Réalisations", "car--real", false, ("commun.carrousel_defiler" | libelle(ctx.url_page))) %}
         {% for r in b.projets %}
         {% set img = r.image or {} %}
         {% set t = ctx.temoignages[r.temoignage] if (r.temoignage and ctx.temoignages) %}

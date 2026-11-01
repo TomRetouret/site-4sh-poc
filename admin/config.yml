@@ -9279,7 +9279,14 @@ collections:
             required: false
             collapsed: true
             fields:
-              - { label: "Fil d'Ariane · premier lien", name: "fil_ariane_accueil", widget: "string", hint: "Premier lien du fil d'Ariane, vers la page d'accueil (fiches formation, fiches référence, page Logiciel métier).", required: false }
+              - { label: "Fil d'Ariane · premier lien", name: "fil_ariane_accueil", widget: "string", hint: "Premier lien du fil d'Ariane, vers la page d'accueil (fiches formation, fiches référence, page Logiciel métier, catalogue des formations, page Expertises techniques, pages Notre entreprise et Company).", required: false }
+              - { label: "Fil d'Ariane · adresse du premier lien", name: "accueil_url", widget: "string", hint: "Page d'accueil vers laquelle renvoie le premier lien du fil d'Ariane : / pour le site français, /en/ pour le site anglais.", required: false }
+              - { label: "Fil d'Ariane · nom lu par les lecteurs d'écran", name: "fil_ariane_aria", widget: "string", hint: "Non affiché : nom donné au fil d'Ariane pour les lecteurs d'écran, sur toutes les pages qui en ont un. Ex. : Fil d'Ariane", required: false }
+              - { label: "Fil d'Ariane · page Expertises techniques", name: "fil_ariane_technologies", widget: "string", hint: "Dernier élément du fil d'Ariane de la page Expertises techniques (Tech expertise en anglais).", required: false }
+              - { label: "En-tête · bouton menu (ouvrir)", name: "menu_ouvrir", widget: "string", hint: "Non affiché : nom du bouton menu sur téléphone, lu par les lecteurs d'écran quand le menu est fermé. Toutes les pages.", required: false }
+              - { label: "En-tête · bouton menu (fermer)", name: "menu_fermer", widget: "string", hint: "Non affiché : nom du même bouton quand le menu est ouvert. Toutes les pages.", required: false }
+              - { label: "Pied de page · signature", name: "pied_signature", widget: "string", hint: "Phrase sous le logo, en haut à gauche du pied de page de toutes les pages. Ex. : Développez vos idées", required: false }
+              - { label: "Carrousels · consigne de défilement", name: "carrousel_defiler", widget: "string", hint: "Non affiché : ajouté après le nom de chaque carrousel pour les lecteurs d'écran (Secteurs, Réalisations, cartes numérotées). Ex. : faites défiler", required: false }
           - label: "Blocs de page"
             name: "blocs"
             widget: "object"
@@ -9290,8 +9297,12 @@ collections:
               - { label: "Derniers articles · titre par défaut", name: "blog_titre", widget: "string", hint: "Titre du bloc Derniers articles quand son champ Titre est vide. Pour mettre un mot en avant (rouge, italique), encadrez-le d'astérisques. Ex. : votre *projet*", required: false }
               - { label: "Derniers articles · lien vers le blog", name: "blog_tout", widget: "string", hint: "Lien en haut à droite du bloc Derniers articles, quand le texte du lien n'est pas saisi dans le bloc.", required: false }
               - { label: "Équipe · bouton par défaut", name: "equipe_bouton", widget: "string", hint: "Bouton du bloc Équipe quand son texte n'est pas saisi dans le bloc.", required: false }
-              - { label: "Technologies (cartes) · lien de carte", name: "technologies_lien", widget: "string", hint: "Lien sous chaque carte du bloc Technologies en affichage cartes (page Logiciel métier). Ex. : En savoir plus →", required: false }
+              - { label: "Technologies (cartes) · lien de carte", name: "technologies_lien", widget: "string", hint: "Lien sous chaque carte du bloc Technologies en affichage cartes (page Logiciel métier) et sous chaque carte de technologie de la page Expertises techniques. Ex. : En savoir plus →", required: false }
               - { label: "Projet vedette · lien des autres références", name: "projet_vedette_lien", widget: "string", hint: "Lien de chaque carte « autre référence » sous le projet vedette (page Logiciel métier). Ex. : Voir la référence →", required: false }
+              - { label: "Réalisations · nom du carrousel", name: "projets_carrousel", widget: "string", hint: "Non affiché : nom du carrousel du bloc Réalisations (accueil), lu par les lecteurs d'écran. Ex. : Réalisations", required: false }
+              - { label: "Secteurs · nom du carrousel", name: "secteurs_carrousel", widget: "string", hint: "Non affiché : nom du carrousel du bloc Secteurs (accueil), lu par les lecteurs d'écran. Ex. : Secteurs", required: false }
+              - { label: "Chiffres animés · nom du bandeau", name: "chiffres_aria", widget: "string", hint: "Non affiché : nom du bandeau de chiffres quand il compte plus de 4 chiffres (pages Notre entreprise et Company), lu par les lecteurs d'écran. Ex. : Chiffres clés", required: false }
+              - { label: "Haut de page institutionnel · légende de l'illustration Entreprise", name: "illustration_entreprise", widget: "string", hint: "Phrase en italique rouge en haut du schéma des agences (illustration « entreprise » du haut de page, pages Notre entreprise et Company). Ex. : une communauté qui grandit", required: false }
           - label: "Fiche formation"
             name: "formation"
             widget: "object"
@@ -9366,6 +9377,10 @@ collections:
               - { label: "Message vide", name: "vide", widget: "text", required: false }
               - { label: "Bouton Voir les formations", name: "cta_voir", widget: "string", required: false }
               - { label: "Bouton Devis", name: "cta_devis", widget: "string", required: false }
+              - { label: "Recherche · nom du champ", name: "recherche_aria", widget: "string", hint: "Non affiché : nom du champ de recherche du catalogue (page Formations et pages catégories), lu par les lecteurs d'écran. Ex. : Rechercher une formation", required: false }
+              - { label: "Onglets · nom de la liste", name: "onglets_aria", widget: "string", hint: "Non affiché : nom de la rangée d'onglets de catégories du catalogue, lu par les lecteurs d'écran. Ex. : Catégories de formation", required: false }
+              - { label: "Fil d'Ariane · page Formations", name: "fil_ariane", widget: "string", hint: "Dernier élément du fil d'Ariane de la page Formations (Training en anglais). Ex. : Formations en informatique", required: false }
+              - { label: "Agenda · bouton de session", name: "agenda_bouton", widget: "string", hint: "Bouton à droite de chaque session de l'agenda « Prochaines sessions » de la page Formations. Ex. : S'inscrire", required: false }
               - label: "Puces (chips)"
                 name: "chips"
                 widget: "list"

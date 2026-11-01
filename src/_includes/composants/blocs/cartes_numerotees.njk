@@ -10,7 +10,7 @@
     <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
     {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
     {% if b.affichage == "carrousel" %}
-    {% call carrousel(b.surtitre or (b.titre | replace("*", "")), "car--blocs", auto=false) %}
+    {% call carrousel(b.surtitre or (b.titre | replace("*", "")), "car--blocs", auto=false, defiler=("commun.carrousel_defiler" | libelle(ctx.url_page))) %}
         {% for a in b.cartes %}
         {{ carte_atout(a, loop.index) }}
         {% endfor %}

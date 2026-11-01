@@ -1,13 +1,24 @@
 {
   "commun": {
-    "fil_ariane_accueil": "Accueil"
+    "fil_ariane_accueil": "Accueil",
+    "fil_ariane_aria": "Fil d'Ariane",
+    "accueil_url": "/",
+    "fil_ariane_technologies": "Expertises techniques",
+    "menu_ouvrir": "Ouvrir le menu",
+    "menu_fermer": "Fermer le menu",
+    "pied_signature": "Développez vos idées",
+    "carrousel_defiler": "faites défiler"
   },
   "blocs": {
     "blog_titre": "Nos derniers *articles*",
     "blog_tout": "Tout le blog",
     "equipe_bouton": "Notre entreprise",
     "technologies_lien": "En savoir plus →",
-    "projet_vedette_lien": "Voir la référence →"
+    "projet_vedette_lien": "Voir la référence →",
+    "projets_carrousel": "Réalisations",
+    "secteurs_carrousel": "Secteurs",
+    "chiffres_aria": "Chiffres clés",
+    "illustration_entreprise": "une communauté qui grandit"
   },
   "formation": {
     "eyebrow": "Formations · ",
@@ -77,6 +88,10 @@
     "vide": "Aucune formation ne correspond à votre recherche. Essayez un autre mot-clé.",
     "cta_voir": "Voir les formations",
     "cta_devis": "Devis sur mesure",
+    "recherche_aria": "Rechercher une formation",
+    "onglets_aria": "Catégories de formation",
+    "fil_ariane": "Formations en informatique",
+    "agenda_bouton": "S'inscrire",
     "chips": [
       "Présentiel & distanciel",
       "Certifié Qualiopi"

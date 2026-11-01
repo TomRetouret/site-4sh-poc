@@ -33,22 +33,25 @@ export function misePage(blocs) {
   });
 }
 
-// Markdown des sections : paragraphes, listes (classe sect-liste), gras, italique, liens.
-function enLigne(s) {
+// Markdown des sections : paragraphes, listes (classe sect-liste), gras, emphase, liens.
+// Emphase (*mot*) : <em> dans un texte (affiché droit, en graisse, par charte.css) ; dans un titre
+// (enTitre), mot mis en valeur <em class="accent">, comme le filtre mdTitre du site.
+function enLigne(s, accent) {
   const morceaux = [];
   const re = /\*\*([^*]+)\*\*|\*([^*\n]+)\*|_([^_\n]+)_|\[([^\]]+)\]\(([^)\s]*)\)/g;
   let dernier = 0, m;
   while ((m = re.exec(s))) {
     morceaux.push(s.slice(dernier, m.index));
     if (m[1] !== undefined) morceaux.push(el('strong', null, m[1]));
-    else if (m[2] !== undefined || m[3] !== undefined) morceaux.push(el('em', null, m[2] || m[3]));
+    else if (m[2] !== undefined || m[3] !== undefined) morceaux.push(el('em', accent ? { className: 'accent' } : null, m[2] || m[3]));
     else morceaux.push(el('a', propsLien(m[5]), m[4]));
     dernier = re.lastIndex;
   }
   morceaux.push(s.slice(dernier));
   return morceaux;
 }
-export { enLigne };
+const enTitre = (s) => enLigne(s, true);
+export { enLigne, enTitre };
 export function mdSection(source) {
   const blocs = texte(source).replace(/\r/g, '').split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
   return blocs.map((b) => {
@@ -66,7 +69,7 @@ export function numero(ctx, i) {
   return m.numero && el('p', { className: 'eyebrow eyebrow--rang' }, m.numero);
 }
 export function titre(b, p) {
-  return b.titre && el('h2', cle(p + '.titre'), enLigne(texte(b.titre)));
+  return b.titre && el('h2', cle(p + '.titre'), enTitre(texte(b.titre)));
 }
 export function chapeau(b, p) {
   return texte(b.texte).trim() && el('div', Object.assign({ className: 'sect-prose' }, cle(p + '.texte')), mdSection(b.texte));
@@ -97,10 +100,10 @@ export function grille(cartes, variante) {
 export function carte(e, classe, chemin) {
   if (e.lien) {
     return el('a', Object.assign({ className: classe + ' sect-defi--lien' }, propsLien(e.lien), cle(chemin + '.titre')),
-      el('h3', null, enLigne(texte(e.titre))), el('span', { className: 'socle-lien' }, 'Découvrir →'));
+      el('h3', null, enTitre(texte(e.titre))), el('span', { className: 'socle-lien' }, 'Découvrir →'));
   }
   return el('div', { className: classe },
-    e.titre && el('h3', cle(chemin + '.titre'), enLigne(texte(e.titre))),
+    e.titre && el('h3', cle(chemin + '.titre'), enTitre(texte(e.titre))),
     el('div', Object.assign({ style: { display: 'contents' } }, cle(chemin + '.texte')), mdSection(e.texte)));
 }
 

@@ -96,7 +96,7 @@
                 name: titre
                 widget: string
                 required: false
-                hint: Laissez vide uniquement pour le texte d'introduction en haut de page.
+                hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide uniquement pour le texte d'introduction en haut de page.
               - label: Disposition
                 name: disposition
                 widget: select
@@ -114,10 +114,9 @@
                 name: texte
                 widget: markdown
                 required: false
-                hint: Gras, italique, liens et listes (affichées en liste à cocher). Laissez une ligne vide entre deux paragraphes.
+                hint: Gras, liens et listes (affichées en liste à cocher). Laissez une ligne vide entre deux paragraphes.
                 buttons:
                   - bold
-                  - italic
                   - link
                   - bulleted-list
                   - numbered-list
@@ -160,15 +159,14 @@
                 name: titre
                 widget: string
                 required: false
-                hint: Laissez vide uniquement pour le texte d'introduction en haut de page.
+                hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide uniquement pour le texte d'introduction en haut de page.
               - label: Texte d'introduction
                 name: texte
                 widget: markdown
                 required: false
-                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, italique, liens et listes. Laissez une ligne vide entre deux paragraphes.
+                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, liens et listes. Laissez une ligne vide entre deux paragraphes.
                 buttons:
                   - bold
-                  - italic
                   - link
                   - bulleted-list
                   - numbered-list
@@ -189,15 +187,14 @@
                     name: titre
                     widget: string
                     required: false
-                    hint: Facultatif. 60 caractères maximum.
+                    hint: Facultatif. 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
                   - label: Texte
                     name: texte
                     widget: markdown
                     required: false
-                    hint: Gras, italique, liens et listes. Ignoré si la destination ci-dessous est remplie.
+                    hint: Gras, liens et listes. Ignoré si la destination ci-dessous est remplie.
                     buttons:
                       - bold
-                      - italic
                       - link
                       - bulleted-list
                       - numbered-list
@@ -245,15 +242,14 @@
                 name: titre
                 widget: string
                 required: false
-                hint: Laissez vide uniquement pour le texte d'introduction en haut de page.
+                hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide uniquement pour le texte d'introduction en haut de page.
               - label: Texte d'introduction
                 name: texte
                 widget: markdown
                 required: false
-                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, italique, liens et listes. Laissez une ligne vide entre deux paragraphes.
+                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, liens et listes. Laissez une ligne vide entre deux paragraphes.
                 buttons:
                   - bold
-                  - italic
                   - link
                   - bulleted-list
                   - numbered-list
@@ -274,15 +270,14 @@
                     name: titre
                     widget: string
                     required: false
-                    hint: Facultatif. 60 caractères maximum.
+                    hint: Facultatif. 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
                   - label: Texte
                     name: texte
                     widget: markdown
                     required: false
-                    hint: Gras, italique, liens et listes. Ignoré si la destination ci-dessous est remplie.
+                    hint: Gras, liens et listes. Ignoré si la destination ci-dessous est remplie.
                     buttons:
                       - bold
-                      - italic
                       - link
                       - bulleted-list
                       - numbered-list
@@ -330,15 +325,14 @@
                 name: titre
                 widget: string
                 required: false
-                hint: Laissez vide uniquement pour le texte d'introduction en haut de page.
+                hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide uniquement pour le texte d'introduction en haut de page.
               - label: Texte d'introduction
                 name: texte
                 widget: markdown
                 required: false
-                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, italique, liens et listes. Laissez une ligne vide entre deux paragraphes.
+                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, liens et listes. Laissez une ligne vide entre deux paragraphes.
                 buttons:
                   - bold
-                  - italic
                   - link
                   - bulleted-list
                   - numbered-list
@@ -359,15 +353,14 @@
                     name: titre
                     widget: string
                     required: true
-                    hint: 60 caractères maximum.
+                    hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
                   - label: Texte
                     name: texte
                     widget: markdown
                     required: false
-                    hint: Gras, italique, liens et listes. Laissez une ligne vide entre deux paragraphes.
+                    hint: Gras, liens et listes. Laissez une ligne vide entre deux paragraphes.
                     buttons:
                       - bold
-                      - italic
                       - link
                       - bulleted-list
                       - numbered-list
@@ -410,15 +403,14 @@
                 name: titre
                 widget: string
                 required: false
-                hint: Laissez vide uniquement pour le texte d'introduction en haut de page.
+                hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide uniquement pour le texte d'introduction en haut de page.
               - label: Texte d'introduction
                 name: texte
                 widget: markdown
                 required: false
-                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, italique, liens et listes. Laissez une ligne vide entre deux paragraphes.
+                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, liens et listes. Laissez une ligne vide entre deux paragraphes.
                 buttons:
                   - bold
-                  - italic
                   - link
                   - bulleted-list
                   - numbered-list
@@ -439,15 +431,14 @@
                     name: titre
                     widget: string
                     required: true
-                    hint: 'Client et secteur, par exemple : IZIVIA, électromobilité.'
+                    hint: 'Client et secteur, par exemple : IZIVIA, électromobilité. Mettez un mot entre *astérisques* pour l''afficher en rouge.'
                   - label: Texte
                     name: texte
                     widget: markdown
                     required: false
-                    hint: Ce que nous avons fait. Gras, italique et liens.
+                    hint: Ce que nous avons fait. Gras et liens.
                     buttons:
                       - bold
-                      - italic
                       - link
                       - bulleted-list
                       - numbered-list
@@ -527,8 +518,8 @@
         summary: "{{fields.meta_title}}"
         hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. N'apparaît pas dans la page."
         fields:
-          - { label: Titre SEO, name: meta_title, widget: string, required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « Nom court de la prestation - 4SH »." }
-          - { label: Description SEO, name: meta_description, widget: text, required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : le chapô est utilisé." }
+          - { label: Titre SEO, name: meta_title, widget: string, required: false, hint: "50 à 60 caractères conseillés. Vide : « Nom court de la prestation - 4SH »." }
+          - { label: Description SEO, name: meta_description, widget: text, required: false, hint: "150 à 160 caractères conseillés. Vide : le chapô est utilisé." }
           - { label: Afficher dans les moteurs de recherche, name: indexation, widget: boolean, required: false, default: true, hint: "Laisser coché en temps normal. Décocher masque la page dans Google et la retire du plan du site." }
       - { label: "Mémo : adresse sur l'ancien site (non affiché)", name: source_url, widget: string, required: false }
       - { label: "Mémo : page Confluence de rédaction (non affiché)", name: source_confluence, widget: string, required: false }

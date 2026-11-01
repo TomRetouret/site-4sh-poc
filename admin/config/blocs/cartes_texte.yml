@@ -98,7 +98,7 @@ type:
           name: texte
           widget: text
           required: false
-          hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Laissez vide pour une carte avec son seul titre.
+          hint: "35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide pour une carte avec son seul titre."
         - label: Lien
           name: lien
           widget: object

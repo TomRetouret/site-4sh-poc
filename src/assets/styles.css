@@ -3,7 +3,7 @@
    Couleurs du site actuel conservées, échelle typographique
    et micro-interactions inspirées des références agences.
    ============================================================ */
-@import url(https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap);
+/* Fraunces (ancienne direction « craft ») n'est plus chargée depuis Google Fonts : la charte v1.1 utilise Asap et Manrope (src/assets/polices.css). */
 
 :root{
   --rouge:#ea2631;         /* rouge 4SH, CTA primaires */

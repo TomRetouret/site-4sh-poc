@@ -1,28 +1,27 @@
-import { Meta } from "@storybook/addon-docs/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as EnTete from "./EnTete.stories.js";
+import * as PiedDePage from "./PiedDePage.stories.js";
 
 <Meta title="Composants/En-tête et pied de page" />
 
 # En-tête et pied de page
 
-Pas de story pour ces deux éléments : leur gabarit n'est **pas isolable** aujourd'hui.
+L'en-tête et le pied de page de toutes les pages sont deux macros de `src/_includes/composants/`, appelées par
+`src/_includes/base.njk` autour du contenu de la page :
 
-## Pourquoi
+```njk
+{% from "composants/en-tete.njk" import en_tete %}
+{% from "composants/pied-de-page.njk" import pied_de_page %}
+{{ en_tete(navigation, rubrique, lang, altUrl, page.url) }}
+{{ pied_de_page(site, page.url) }}
+```
 
-- L'en-tête (`<header>`, menu, méga-menus, sélecteur de langue, bouton « Menu ») et le pied de page (`<footer>`)
-  sont écrits **en ligne dans `src/_includes/base.njk`**, autour de `{{ content }}`. Ce ne sont pas des macros
-  de `src/_includes/composants/`.
-- Le Storybook ne précompile que `src/_includes/composants/**` (`.storybook/4sh/plugin-vite.mjs`). `base.njk` est
-  un gabarit de page complet (`<html>`, `<head>`, métadonnées, scripts globaux) : le rendre ici reviendrait soit à
-  recopier son balisage, ce que ce Storybook s'interdit, soit à rendre une page entière.
-- L'en-tête dépend aussi de l'adresse de la page (`page.url` : rubrique active, losange du menu), de la langue
-  et des scripts globaux (`script.js` pour le menu mobile, `mouvement.js` pour le losange qui glisse), non chargés ici.
+Les stories les rendent avec les données réelles du site, en français et en anglais : **Composants/En-tête**
+(`navigation.json`) et **Composants/Pied de page** (`site.json`).
 
-## Ce qu'il faudrait pour les montrer
+<Canvas of={EnTete.Francais} />
 
-Sortir le balisage de `base.njk` dans deux macros, par exemple `en_tete(navigation, rubrique, url_page, alt_url, lang)`
-et `pied_de_page(site, url_page)` dans `src/_includes/composants/chrome.njk`, puis les appeler depuis `base.njk`. Le
-Storybook pourrait alors les rendre avec `navigation.json` et `site.json`, comme les autres composants.
-Ce changement touche toutes les pages du site : il est à décider et à recetter à part.
+<Canvas of={PiedDePage.Francais} />
 
 ## Règles de la charte qui s'y appliquent
 
@@ -36,6 +35,13 @@ Relevées dans `src/assets/charte.css` (sections « en-tête » et « pied de pa
 | Bouton « Menu » | Contour encre de 2 px, 44 px de haut, affiché sous 961 px. |
 | Pied de page | Fond nuit, texte `--sur-nuit` ; titres de colonne Manrope 700, 13 px, capitales, blancs ; liens de 32 px de haut (44 px sur mobile). |
 
+## Ce que le Storybook ne montre pas
+
+- `script.js` (menu mobile, bouton « Menu ») et `mouvement.js` (losange qui glisse d'une entrée à l'autre) ne sont
+  pas chargés : les méga-menus s'ouvrent au survol par la seule CSS.
+- L'entrée active est un argument de la story ; sur le site, `base.njk` la calcule d'après l'adresse de la page.
+
 Les pictos du méga-menu sont documentés dans **Fondations/Pictos**.
 
-Source : `src/_includes/base.njk`, `src/assets/charte.css`, `src/assets/mouvement.css` (losange du menu, ouverture des méga-menus).
+Source : `src/_includes/composants/en-tete.njk`, `src/_includes/composants/pied-de-page.njk`, `src/_includes/base.njk`,
+`src/assets/charte.css`, `src/assets/mouvement.css`.

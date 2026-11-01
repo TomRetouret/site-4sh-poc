@@ -24,8 +24,8 @@
             summary: "{{fields.meta_title}}"
             hint: Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur.
             fields:
-              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: false, hint: 60 caractères maximum., i18n: true }
-              - { label: Description SEO, name: meta_description, widget: text, required: false, hint: 155 caractères maximum., i18n: true }
+              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: false, hint: 50 à 60 caractères conseillés., i18n: true }
+              - { label: Description SEO, name: meta_description, widget: text, required: false, hint: 150 à 160 caractères conseillés., i18n: true }
             i18n: true
           - label: Blocs de la page
             name: blocs

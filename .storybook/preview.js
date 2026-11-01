@@ -1,7 +1,8 @@
 // Aperçu du Storybook 4SH : feuilles de styles et polices du site, chargées comme dans
 // src/_includes/base.njk (même ordre). Les adresses /assets/... sont celles du site :
 // servies par Storybook en développement, par le site lui-même une fois publié sous /storybook/.
-const POLICES = "https://fonts.googleapis.com/css2?family=Asap:wght@400;600&family=Manrope:wght@700;800&display=swap";
+// Polices auto-hébergées du site (src/assets/polices.css) : aucun appel à Google Fonts.
+const POLICES = "/assets/polices.css";
 const AVANT = ["/assets/styles.css"];
 const APRES = ["/assets/charte.css", "/assets/mouvement.css"];
 

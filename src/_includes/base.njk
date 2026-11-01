@@ -1,4 +1,5 @@
-{%- from "composants/icones.njk" import navicone -%}
+{%- from "composants/en-tete.njk" import en_tete -%}
+{%- from "composants/pied-de-page.njk" import pied_de_page -%}
 {%- if lang == "en" -%}{% set navigation = en.navigation %}{% set site = en.site %}{% set seo = en.seo %}{%- endif -%}
 {%- set offre = offre or ("build" if famille_label == "Concevoir & développer" else ("run" if famille_label == "Faire vivre & auditer" else ("learning" if bodyClass == "learning" else ""))) -%}
 {%- set u = page.url or "" -%}
@@ -29,9 +30,14 @@
 <meta property="og:url" content="{{ seo.url }}{{ page.url }}">
 <meta property="og:image" content="{{ seo.og_image }}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+{# Polices auto-hébergées (src/assets/polices.css, fichiers sous src/assets/polices/) : aucun appel
+   à Google Fonts. Pour une éventuelle politique de contenu (CSP, netlify.toml) : font-src 'self' et
+   style-src 'self' suffisent pour les polices ; fonts.googleapis.com et fonts.gstatic.com ne sont plus
+   nécessaires. Les deux préchargements (Asap 400, Manrope 800) gardent l'attribut crossorigin, exigé
+   pour les polices même servies par le site. -#}
+<link rel="preload" href="/assets/polices/asap-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/polices/manrope-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/polices.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"4SH","url":"https://www.4sh.fr/","foundingDate":"2007","address":[{"@type":"PostalAddress","addressLocality":"Le Haillan","postalCode":"33185"},{"@type":"PostalAddress","addressLocality":"Capbreton","postalCode":"40130"},{"@type":"PostalAddress","addressLocality":"Paris","postalCode":"75008"}],"telephone":"+33963286273"}
 </script>
@@ -45,92 +51,12 @@
 <body class="{{ bodyClass }}{% if offre %} famille-{{ 'formation' if offre == 'learning' else offre }}{% endif %}">
 
 {% if not hideHeader %}
-<header>
-  <div class="container nav">
-    <a class="logo" href="{{ '/en/' if lang == 'en' else '/' }}" aria-label="4SH"><img src="/assets/img/logo-4sh.svg" alt="4SH" width="72" height="24"></a>
-    <ul class="menu">
-      {% for item in navigation.items %}
-      {% if item.type == "lien" %}
-      <li><a href="{{ item.url or '#' }}"{% if item.label == rubrique %} class="actif" aria-current="page"{% endif %}>{{ item.label }}</a></li>
-      {% elif item.type == "menu_simple" %}
-      <li>
-        <a href="#"{% if item.label == rubrique %} class="actif" aria-current="true"{% endif %}>{{ item.label }}</a>
-        <div class="deroulant simple">
-          {% if item.titre_col %}<p class="deroulant-titre">{{ item.titre_col }}</p>{% endif %}
-          <ul>
-            {% for l in item.liens %}<li><a href="{{ l.url or '#' }}">{{ l.label }}{% if l.sous_texte %} <small>{{ l.sous_texte }}</small>{% endif %}</a></li>{% endfor %}
-          </ul>
-        </div>
-      </li>
-      {% elif item.type == "megamenu" %}
-      <li class="a-panneau">
-        <a href="#"{% if item.label == rubrique %} class="actif" aria-current="true"{% endif %}>{{ item.label }}</a>
-        <div class="deroulant menu-services{% if item.variant %} {{ item.variant }}{% endif %}" aria-label="{{ item.label }}">
-          {% if item.promo %}
-          <a class="promo-services" href="{{ item.promo.url or '#' }}">
-            <div class="promo-txt">
-              <h4>{{ item.promo.titre | accent | safe }}</h4>
-              <p>{{ item.promo.texte }}</p>
-            </div>
-            {% if item.promo.kpi %}<div class="promo-kpi"><b>{{ item.promo.kpi.valeur | accent | safe }}</b><span>{{ item.promo.kpi.label }}</span></div>{% endif %}
-            {% if item.promo.stats %}<div class="promo-stats">{% for s in item.promo.stats %}<div><b>{{ s.valeur | accent | safe }}</b><span>{{ s.label }}</span></div>{% endfor %}</div>{% endif %}
-            {% if item.promo.lien_libelle %}<span class="promo-lien">{{ item.promo.lien_libelle }} →</span>{% endif %}
-          </a>
-          {% endif %}
-          {% for col in item.colonnes %}
-          <div class="col-svc{% if col.classe %} {{ col.classe }}{% endif %}">
-            <p class="deroulant-titre">{{ col.titre }}</p>
-            <ul class="svc-list">
-              {% for l in col.liens %}<li><a class="svc-item" href="{{ l.url or '#' }}">{% if l.image or l.icone %}<span class="svc-ico">{% if l.image %}<img src="{{ l.image }}" alt="" width="24" height="24">{% else %}{{ navicone(l.icone) }}{% endif %}</span>{% endif %}<span><b>{{ l.label }}</b>{% if l.sous_texte %}<small>{{ l.sous_texte }}</small>{% endif %}</span></a></li>{% endfor %}
-            </ul>
-          </div>
-          {% endfor %}
-          {% if item.bas %}
-          <div class="services-bas">
-            <div><b>{{ item.bas.titre }}</b><span>{{ item.bas.texte }}</span></div>
-            {% if item.bas.cta_label %}<a class="btn btn-sm btn-contact" href="{{ item.bas.cta_url or '#' }}">{{ item.bas.cta_label }}</a>{% endif %}
-          </div>
-          {% endif %}
-        </div>
-      </li>
-      {% endif %}
-      {% endfor %}
-    </ul>
-    <div class="nav-actions">
-      {% if altUrl %}<a class="lang-switch" href="{{ altUrl }}" hreflang="{{ 'fr' if lang == 'en' else 'en' }}" aria-label="{{ 'Voir la version française' if lang == 'en' else 'View the English version' }}" title="{{ 'Version française' if lang == 'en' else 'English version' }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M8 3H16L21 8V16L16 21H8L3 16V8Z"/><path d="M3 12H21M12 3L8 7V17L12 21M12 3L16 7V17L12 21"/></svg><span>{{ 'FR' if lang == 'en' else 'EN' }}</span></a>{% endif %}
-      {% for a in navigation.actions %}<a class="{{ a.style }}{% if a.label == rubrique %} actif{% endif %}" href="{{ a.url or '#' }}"{% if a.label == rubrique %} aria-current="page"{% endif %}>{{ a.label }}</a>{% endfor %}
-    </div>
-    {%- set menu_fermer = "commun.menu_fermer" | libelle(page.url) %}
-    <button class="burger" aria-label="{{ ("commun.menu_ouvrir" | libelle(page.url)) or "Ouvrir le menu" }}"{% if menu_fermer and menu_fermer != "Fermer le menu" %} data-libelle-fermer="{{ menu_fermer }}"{% endif %} aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7H20M4 12H20M4 17H20"/></svg><span aria-hidden="true">Menu</span></button>
-  </div>
-</header>
+{{ en_tete(navigation, rubrique, lang, altUrl, page.url) }}
 {% endif %}
 
 {{ content | safe }}
 
-<footer>
-  <div class="container">
-    <div class="footer-grille">
-      <div>
-        <img class="footer-logo" src="/assets/img/logo-4sh-blanc.svg" alt="{{ site.nom }}" width="72" height="24">
-        <p class="footer-accroche">{{ ("commun.pied_signature" | libelle(page.url)) or "Développez vos idées" }}</p>
-        <p>{{ site.footer_accroche }}<br>{{ site.villes }}<br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
-      </div>
-      {% for col in site.footer_colonnes %}
-      <div>
-        <p class="footer-titre">{{ col.titre }}</p>
-        <ul>
-          {% for l in col.liens %}<li><a href="{{ l.url or '#' }}">{{ l.label }}</a></li>{% endfor %}
-        </ul>
-      </div>
-      {% endfor %}
-    </div>
-    <div class="footer-bas">
-      <span>{{ site.footer_legal }}{% for l in site.footer_liens_legaux %} &middot; <a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</span>
-      <span>{% for r in site.footer_reseaux %}{% if not loop.first %} · {% endif %}<a href="{{ r.url or '#' }}" target="_blank" rel="noopener">{{ r.label }}</a>{% endfor %}{% if site.footer_formations_liens and site.footer_formations_liens.length %} &middot; {{ site.footer_formations_titre }} {% for l in site.footer_formations_liens %}{% if not loop.first %}, {% endif %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a>{% endfor %}{% endif %}</span>
-    </div>
-  </div>
-</footer>
+{{ pied_de_page(site, page.url) }}
 
 <script src="/assets/script.js"></script>
 <script src="/assets/mouvement.js"></script>

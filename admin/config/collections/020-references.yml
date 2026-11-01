@@ -46,16 +46,16 @@
         required: true
         hint: "Quatre rubriques fixes, affichées dans cet ordre avec leur intertitre. Une rubrique vide n'est pas affichée."
         fields:
-          - { label: "1. Entreprise et activité", name: "entreprise", widget: "markdown", required: true, buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Qui est le client, son métier, sa taille. 100 à 250 mots." }
-          - { label: "2. Nos missions", name: "missions", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Ce que 4SH a fait pour le client, de préférence en liste. 100 à 250 mots." }
+          - { label: "1. Entreprise et activité", name: "entreprise", widget: "markdown", required: true, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Qui est le client, son métier, sa taille. 100 à 250 mots." }
+          - { label: "2. Nos missions", name: "missions", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Ce que 4SH a fait pour le client, de préférence en liste. 100 à 250 mots." }
           - label: "3. Enjeux et objectifs"
             name: "enjeux_objectifs"
             widget: "object"
             required: false
             fields:
               - { label: "Phrase d'introduction", name: "intro", widget: "text", required: false, hint: "Facultatif. Une phrase avant les enjeux. Ex. : Refonte du système de gestion de fret." }
-              - { label: "Les enjeux", name: "enjeux", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list"], editor_components: [], hint: "Liste à puces des enjeux du client." }
-              - { label: "Les objectifs", name: "objectifs", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list"], editor_components: [], hint: "Liste à puces des objectifs, éventuellement suivie d'une phrase de conclusion." }
+              - { label: "Les enjeux", name: "enjeux", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list"], editor_components: [], hint: "Liste à puces des enjeux du client." }
+              - { label: "Les objectifs", name: "objectifs", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list"], editor_components: [], hint: "Liste à puces des objectifs, éventuellement suivie d'une phrase de conclusion." }
           - label: "4. Points clés"
             name: "points_cles"
             widget: "object"
@@ -68,9 +68,9 @@
                 default: "Les points clés de l'application"
                 options: ["Les points clés de l'application", "Les points clés de l'application mobile", "Les points clés de la solution", "Les points clés de kubernetes", "Les points clés"]
                 hint: "Choisissez ce que décrivent les points clés."
-              - { label: "Points clés de la solution", name: "texte", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "heading-three", "bulleted-list"], editor_components: [], hint: "Liste à puces. Des sous-titres (Titre 3) sont possibles, par exemple « Côté utilisateur » et « Côté entreprise »." }
-              - { label: "Les points clés du projet", name: "projet", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list"], editor_components: [], hint: "Facultatif. Liste à puces sur la conduite du projet (équipe, méthode, durée)." }
-          - { label: "Compléments", name: "complements", widget: "markdown", required: false, maxlength: 2500, buttons: ["bold", "italic", "link", "heading-two", "heading-three", "bulleted-list"], editor_components: [], hint: "À n'utiliser que si le contenu ne rentre pas dans les 4 rubriques. Affiché après les points clés. Chaque partie commence par un Titre 2. 2 500 caractères maximum." }
+              - { label: "Points clés de la solution", name: "texte", widget: "markdown", required: false, buttons: ["bold", "link", "heading-three", "bulleted-list"], editor_components: [], hint: "Liste à puces. Des sous-titres (Titre 3) sont possibles, par exemple « Côté utilisateur » et « Côté entreprise »." }
+              - { label: "Les points clés du projet", name: "projet", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list"], editor_components: [], hint: "Facultatif. Liste à puces sur la conduite du projet (équipe, méthode, durée)." }
+          - { label: "Compléments", name: "complements", widget: "markdown", required: false, maxlength: 2500, buttons: ["bold", "link", "heading-two", "heading-three", "bulleted-list"], editor_components: [], hint: "À n'utiliser que si le contenu ne rentre pas dans les 4 rubriques. Affiché après les points clés. Chaque partie commence par un Titre 2. 2 500 caractères maximum." }
 
       # --- Identité du projet ---
       - { label: "Identité du projet · Secteurs", name: "secteurs", widget: "relation", required: true, multiple: true, min: 1, max: 3, collection: "listes", file: "listes", value_field: "secteurs.*.nom", search_fields: ["secteurs.*.nom"], display_fields: ["secteurs.*.nom"], hint: "1 à 3. Le premier s'affiche dans le surtitre de la fiche et sur la carte. Pour ajouter un secteur, modifiez « Listes de référence »." }
@@ -103,6 +103,6 @@
         required: false
         collapsed: true
         fields:
-          - { label: "Titre SEO", name: "meta_title", widget: "string", required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « Nom du projet - Référence 4SH »." }
-          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : le sous-titre est utilisé." }
+          - { label: "Titre SEO", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « Nom du projet - Référence 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : le sous-titre est utilisé." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher masque la fiche dans Google." }

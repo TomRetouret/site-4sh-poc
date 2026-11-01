@@ -10,16 +10,126 @@
   # Cache des images optimisées dans node_modules, que Netlify conserve entre deux builds.
   IMAGES_CACHE_DIR = "node_modules/.cache/eleventy-img"
 
-# Empêche l'indexation par les moteurs pendant la préprod (double sécurité avec la balise meta noindex).
-# À RETIRER lors de la mise en production réelle (et passer "indexation" à true dans src/_data/seo.json).
+# Fonctions : les listes de sujets du formulaire (src/_data/site.json et en/site.json)
+# sont lues par submission-created.js ; on les déclare pour qu'elles soient toujours embarquées.
+[functions]
+  included_files = ["src/_data/site.json", "src/_data/en/site.json"]
+
+# =========================================================================
+#  En-têtes de sécurité (détail, raisons et passage en mode bloquant :
+#  docs/securite.md). Les valeurs longues utilisent la continuation TOML
+#  (barre oblique inverse en fin de ligne) : Netlify reçoit une seule ligne.
+#
+#  Règle de conception : deux règles [[headers]] peuvent viser la même URL
+#  (/* et /admin/*). Pour qu'aucune fusion ou priorité de Netlify ne casse
+#  le back-office, chaque en-tête bloquant n'est posé QUE par la règle /*,
+#  sauf Content-Security-Policy de /storybook/*, conçue pour fonctionner que
+#  Netlify la combine avec celle de /* ou la substitue. Les autres doublons
+#  (X-Robots-Tag, même valeur, et Content-Security-Policy-Report-Only, qui ne
+#  bloque jamais rien) sont sans risque.
+# =========================================================================
+
 [[headers]]
   for = "/*"
   [headers.values]
+    # Empêche l'indexation par les moteurs pendant la préprod (double sécurité avec la balise meta noindex).
+    # À RETIRER lors de la mise en production réelle (et passer "indexation" à true dans src/_data/seo.json).
     X-Robots-Tag = "noindex, nofollow"
 
+    # HTTPS obligatoire pendant un an (le site est servi uniquement en HTTPS par Netlify).
+    # Ne pas ajouter "preload" sans décision explicite (engagement difficile à défaire).
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # Le site, Storybook et l'aperçu de Sveltia ne s'affichent qu'en iframe du même site.
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), hid=(), bluetooth=(), midi=(), browsing-topics=()"
+
+    # Politique BLOQUANTE minimale, valable pour toutes les pages, admin et Storybook compris :
+    # pas de plugin, pas de <base> détourné, pas d'encadrement par un autre site,
+    # formulaires envoyés au site seulement.
+    Content-Security-Policy = "object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self'"
+
+    # Politique STRICTE du site public, en observation (rien n'est bloqué, les écarts
+    # s'affichent dans la console du navigateur). Les empreintes sha256 sont celles des
+    # 6 scripts en ligne et des 3 gestionnaires onclick des gabarits au 1er novembre 2026 :
+    # à recalculer si ces scripts changent (docs/securite.md). Les polices Google ne
+    # sont volontairement PAS autorisées : elles sont en cours de remplacement par des
+    # polices auto-hébergées.
+    Content-Security-Policy-Report-Only = """\
+      default-src 'self'; \
+      script-src 'self' 'unsafe-hashes' \
+        'sha256-GW0xOJpT9zthZ1AmaGmgTp3kMsFqKkXnhOuMESqAuTE=' \
+        'sha256-eZ2wbbEFKQ4OeejbQuLSCL2m05ERPH4IiklgRRHic1s=' \
+        'sha256-kcyORe918BpdFRH6VXEu1t407MCKw23edVwWXkYRK90=' \
+        'sha256-n/eFZdd2/GHmtvp3TBv6sO4QWN1Tx3B6gDVWQ/BO8Cg=' \
+        'sha256-/xRtsmazFMx5klEx4nyCKuRsPy069AMXJhKhSu30lPg=' \
+        'sha256-eseD1wO2H715NpS9pP1au/R9+NDQRWxbdZ1ttpalj3E=' \
+        'sha256-f+Rk7AUptCKavPgD7brnhJ4DNbk3p0sYg1eGW19v/kk=' \
+        'sha256-0lXn4nSV1KAgtKdIi4m8XKR+6q5RRl6vbkNH7IdQABE=' \
+        'sha256-uxkTIt0lPLiXO10gObFSAGL28jrE7ZF3wgh4mYe+Hbc='; \
+      style-src 'self' 'unsafe-inline'; \
+      img-src 'self' data: https://www.4sh.fr https://secure.gravatar.com https://i0.wp.com; \
+      font-src 'self'; \
+      connect-src 'self'; \
+      media-src 'self'; \
+      frame-src 'self'; \
+      worker-src 'self'; \
+      manifest-src 'self'; \
+      object-src 'none'; \
+      base-uri 'self'; \
+      form-action 'self'; \
+      frame-ancestors 'self'\
+      """
+
 # Storybook du design system (publié avec le site sous /storybook/) : jamais indexé.
-# À CONSERVER après la mise en production, contrairement à l'en-tête global ci-dessus.
+# Note : X-Robots-Tag est déjà posé par /* tant que la préprod dure ; à la mise en production,
+# retirer X-Robots-Tag de la règle /* mais CONSERVER celui-ci.
 [[headers]]
   for = "/storybook/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+    # Politique BLOQUANTE propre à Storybook (testée sur 41 stories et le gestionnaire, sans
+    # violation) : Storybook a besoin de scripts en ligne et d'eval (gabarits Nunjucks compilés
+    # dans le navigateur). Il ne manipule aucun jeton : ce relâchement est acceptable ici.
+    Content-Security-Policy = """\
+      default-src 'self'; \
+      script-src 'self' 'unsafe-inline' 'unsafe-eval'; \
+      style-src 'self' 'unsafe-inline'; \
+      img-src 'self' data: blob: https:; \
+      font-src 'self' data:; \
+      connect-src 'self'; \
+      frame-src 'self'; \
+      worker-src 'self' blob:; \
+      object-src 'none'; \
+      base-uri 'self'; \
+      form-action 'self'; \
+      frame-ancestors 'self'\
+      """
+
+# Back-office Sveltia CMS (/admin/) et page des versions (/admin/versions/).
+# En observation d'abord : vérifier la console du navigateur pendant une séance complète
+# (connexion, édition, aperçu, dépôt d'image, PDF, publication, page Versions), puis passer
+# en bloquant en renommant l'en-tête en Content-Security-Policy (docs/securite.md).
+# Origines : unpkg.com (Sveltia et les modules qu'il charge à la demande : WebAssembly
+# de conversion d'images, coloration, cartes, PDF), api.github.com, le Worker OAuth,
+# l'état de GitHub, les vidéos YouTube de l'aperçu. Polices Google : seulement le temps
+# que admin-shared/apercus.js passe aux polices auto-hébergées.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Content-Security-Policy-Report-Only = """\
+      default-src 'self'; \
+      script-src 'self' https://unpkg.com 'wasm-unsafe-eval'; \
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
+      font-src 'self' data: https://fonts.gstatic.com; \
+      img-src 'self' data: blob: https:; \
+      media-src 'self' data: blob: https:; \
+      connect-src 'self' blob: data: https://api.github.com https://sveltia-cms-auth.tom-retouret.workers.dev https://unpkg.com https://www.githubstatus.com; \
+      worker-src 'self' blob:; \
+      frame-src 'self' blob: https://www.youtube-nocookie.com https://www.youtube.com; \
+      object-src 'none'; \
+      base-uri 'self'; \
+      form-action 'self'; \
+      frame-ancestors 'self'\
+      """

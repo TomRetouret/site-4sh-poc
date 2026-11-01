@@ -89,7 +89,7 @@
           - { label: "Part de théorie (%)", name: "theorie", widget: "number", value_type: "int", min: 0, max: 100, required: false, hint: "Nombre entre 0 et 100. Ex. : 60. La part de pratique est calculée (100 moins la théorie)." }
 
       # --- Description (corps de la fiche) -------------------------------------
-      - { label: "Description", name: "body", widget: "markdown", required: true, hint: "Paragraphes de présentation, en haut de la section Description. 150 à 300 mots. Intertitres de niveau 3 au plus." }
+      - { label: "Description", name: "body", widget: "markdown", required: true, buttons: ["bold", "link", "heading-three", "bulleted-list", "numbered-list"], editor_components: [], hint: "Paragraphes de présentation, en haut de la section Description. 150 à 300 mots. Intertitres de niveau 3 au plus." }
 
       # --- Public visé et prérequis ---------------------------------------------
       - label: "Public visé et prérequis"
@@ -183,6 +183,6 @@
         summary: "{{fields.meta_title}}"
         hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
         fields:
-          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères. Vide : « Formation <nom> - 4SH »." }
-          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "140 à 160 caractères. Vide : l'accroche est reprise." }
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « Formation <nom> - 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'accroche est reprise." }
           - { label: "Afficher cette page dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }

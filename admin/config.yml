@@ -158,7 +158,7 @@ collections:
           - { label: "Part de théorie (%)", name: "theorie", widget: "number", value_type: "int", min: 0, max: 100, required: false, hint: "Nombre entre 0 et 100. Ex. : 60. La part de pratique est calculée (100 moins la théorie)." }
 
       # --- Description (corps de la fiche) -------------------------------------
-      - { label: "Description", name: "body", widget: "markdown", required: true, hint: "Paragraphes de présentation, en haut de la section Description. 150 à 300 mots. Intertitres de niveau 3 au plus." }
+      - { label: "Description", name: "body", widget: "markdown", required: true, buttons: ["bold", "link", "heading-three", "bulleted-list", "numbered-list"], editor_components: [], hint: "Paragraphes de présentation, en haut de la section Description. 150 à 300 mots. Intertitres de niveau 3 au plus." }
 
       # --- Public visé et prérequis ---------------------------------------------
       - label: "Public visé et prérequis"
@@ -252,8 +252,8 @@ collections:
         summary: "{{fields.meta_title}}"
         hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
         fields:
-          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères. Vide : « Formation <nom> - 4SH »." }
-          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "140 à 160 caractères. Vide : l'accroche est reprise." }
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « Formation <nom> - 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'accroche est reprise." }
           - { label: "Afficher cette page dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
 
   # -----------------------------------------------------------------------
@@ -328,16 +328,16 @@ collections:
         required: true
         hint: "Quatre rubriques fixes, affichées dans cet ordre avec leur intertitre. Une rubrique vide n'est pas affichée."
         fields:
-          - { label: "1. Entreprise et activité", name: "entreprise", widget: "markdown", required: true, buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Qui est le client, son métier, sa taille. 100 à 250 mots." }
-          - { label: "2. Nos missions", name: "missions", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Ce que 4SH a fait pour le client, de préférence en liste. 100 à 250 mots." }
+          - { label: "1. Entreprise et activité", name: "entreprise", widget: "markdown", required: true, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Qui est le client, son métier, sa taille. 100 à 250 mots." }
+          - { label: "2. Nos missions", name: "missions", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Ce que 4SH a fait pour le client, de préférence en liste. 100 à 250 mots." }
           - label: "3. Enjeux et objectifs"
             name: "enjeux_objectifs"
             widget: "object"
             required: false
             fields:
               - { label: "Phrase d'introduction", name: "intro", widget: "text", required: false, hint: "Facultatif. Une phrase avant les enjeux. Ex. : Refonte du système de gestion de fret." }
-              - { label: "Les enjeux", name: "enjeux", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list"], editor_components: [], hint: "Liste à puces des enjeux du client." }
-              - { label: "Les objectifs", name: "objectifs", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list"], editor_components: [], hint: "Liste à puces des objectifs, éventuellement suivie d'une phrase de conclusion." }
+              - { label: "Les enjeux", name: "enjeux", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list"], editor_components: [], hint: "Liste à puces des enjeux du client." }
+              - { label: "Les objectifs", name: "objectifs", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list"], editor_components: [], hint: "Liste à puces des objectifs, éventuellement suivie d'une phrase de conclusion." }
           - label: "4. Points clés"
             name: "points_cles"
             widget: "object"
@@ -350,9 +350,9 @@ collections:
                 default: "Les points clés de l'application"
                 options: ["Les points clés de l'application", "Les points clés de l'application mobile", "Les points clés de la solution", "Les points clés de kubernetes", "Les points clés"]
                 hint: "Choisissez ce que décrivent les points clés."
-              - { label: "Points clés de la solution", name: "texte", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "heading-three", "bulleted-list"], editor_components: [], hint: "Liste à puces. Des sous-titres (Titre 3) sont possibles, par exemple « Côté utilisateur » et « Côté entreprise »." }
-              - { label: "Les points clés du projet", name: "projet", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list"], editor_components: [], hint: "Facultatif. Liste à puces sur la conduite du projet (équipe, méthode, durée)." }
-          - { label: "Compléments", name: "complements", widget: "markdown", required: false, maxlength: 2500, buttons: ["bold", "italic", "link", "heading-two", "heading-three", "bulleted-list"], editor_components: [], hint: "À n'utiliser que si le contenu ne rentre pas dans les 4 rubriques. Affiché après les points clés. Chaque partie commence par un Titre 2. 2 500 caractères maximum." }
+              - { label: "Points clés de la solution", name: "texte", widget: "markdown", required: false, buttons: ["bold", "link", "heading-three", "bulleted-list"], editor_components: [], hint: "Liste à puces. Des sous-titres (Titre 3) sont possibles, par exemple « Côté utilisateur » et « Côté entreprise »." }
+              - { label: "Les points clés du projet", name: "projet", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list"], editor_components: [], hint: "Facultatif. Liste à puces sur la conduite du projet (équipe, méthode, durée)." }
+          - { label: "Compléments", name: "complements", widget: "markdown", required: false, maxlength: 2500, buttons: ["bold", "link", "heading-two", "heading-three", "bulleted-list"], editor_components: [], hint: "À n'utiliser que si le contenu ne rentre pas dans les 4 rubriques. Affiché après les points clés. Chaque partie commence par un Titre 2. 2 500 caractères maximum." }
 
       # --- Identité du projet ---
       - { label: "Identité du projet · Secteurs", name: "secteurs", widget: "relation", required: true, multiple: true, min: 1, max: 3, collection: "listes", file: "listes", value_field: "secteurs.*.nom", search_fields: ["secteurs.*.nom"], display_fields: ["secteurs.*.nom"], hint: "1 à 3. Le premier s'affiche dans le surtitre de la fiche et sur la carte. Pour ajouter un secteur, modifiez « Listes de référence »." }
@@ -385,8 +385,8 @@ collections:
         required: false
         collapsed: true
         fields:
-          - { label: "Titre SEO", name: "meta_title", widget: "string", required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « Nom du projet - Référence 4SH »." }
-          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : le sous-titre est utilisé." }
+          - { label: "Titre SEO", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « Nom du projet - Référence 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : le sous-titre est utilisé." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher masque la fiche dans Google." }
 
   # -----------------------------------------------------------------------
@@ -451,7 +451,7 @@ collections:
       - { label: "En-tête · Introduction", name: "intro", widget: "text", required: true, hint: "Paragraphe sous le grand titre, 60 à 100 mots. Sert aussi de description pour Google si celle du Référencement est vide." }
 
       # --- Texte de présentation (sous le catalogue) ---
-      - { label: "Texte de présentation", name: "body", widget: "markdown", required: true, buttons: ["bold", "italic", "link", "heading-two", "heading-three", "bulleted-list", "numbered-list"], editor_components: [], hint: "Affiché sous le catalogue, en colonne de lecture. Commencez par un Titre 2, puis un Titre 3 par question traitée. 300 à 1 500 mots." }
+      - { label: "Texte de présentation", name: "body", widget: "markdown", required: true, buttons: ["bold", "link", "heading-two", "heading-three", "bulleted-list", "numbered-list"], editor_components: [], hint: "Affiché sous le catalogue, en colonne de lecture. Commencez par un Titre 2, puis un Titre 3 par question traitée. 300 à 1 500 mots." }
 
       # --- Questions fréquentes ---
       - label: "Questions fréquentes"
@@ -475,8 +475,8 @@ collections:
         summary: "{{fields.meta_title}}"
         hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
         fields:
-          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « Formations <catégorie> - 4SH »." }
-          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : l'introduction est reprise." }
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « Formations <catégorie> - 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'introduction est reprise." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
 
   # -----------------------------------------------------------------------
@@ -582,8 +582,8 @@ collections:
         summary: "{{fields.meta_title}}"
         hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
         fields:
-          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « <nom du secteur> - Logiciel métier sur mesure | 4SH »." }
-          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : l'accroche est reprise." }
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « <nom du secteur> - Logiciel métier sur mesure | 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'accroche est reprise." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
 
   # -----------------------------------------------------------------------
@@ -697,8 +697,8 @@ collections:
         summary: "{{fields.meta_title}}"
         hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
         fields:
-          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « <nom de la page> - 4SH »." }
-          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : l'accroche est reprise." }
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « <nom de la page> - 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'accroche est reprise." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
 
       # --- Suivi interne (non affiché) ---
@@ -802,7 +802,7 @@ collections:
                 name: titre
                 widget: string
                 required: false
-                hint: Laissez vide uniquement pour le texte d'introduction en haut de page.
+                hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide uniquement pour le texte d'introduction en haut de page.
               - label: Disposition
                 name: disposition
                 widget: select
@@ -820,10 +820,9 @@ collections:
                 name: texte
                 widget: markdown
                 required: false
-                hint: Gras, italique, liens et listes (affichées en liste à cocher). Laissez une ligne vide entre deux paragraphes.
+                hint: Gras, liens et listes (affichées en liste à cocher). Laissez une ligne vide entre deux paragraphes.
                 buttons:
                   - bold
-                  - italic
                   - link
                   - bulleted-list
                   - numbered-list
@@ -866,15 +865,14 @@ collections:
                 name: titre
                 widget: string
                 required: false
-                hint: Laissez vide uniquement pour le texte d'introduction en haut de page.
+                hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide uniquement pour le texte d'introduction en haut de page.
               - label: Texte d'introduction
                 name: texte
                 widget: markdown
                 required: false
-                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, italique, liens et listes. Laissez une ligne vide entre deux paragraphes.
+                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, liens et listes. Laissez une ligne vide entre deux paragraphes.
                 buttons:
                   - bold
-                  - italic
                   - link
                   - bulleted-list
                   - numbered-list
@@ -895,15 +893,14 @@ collections:
                     name: titre
                     widget: string
                     required: false
-                    hint: Facultatif. 60 caractères maximum.
+                    hint: Facultatif. 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
                   - label: Texte
                     name: texte
                     widget: markdown
                     required: false
-                    hint: Gras, italique, liens et listes. Ignoré si la destination ci-dessous est remplie.
+                    hint: Gras, liens et listes. Ignoré si la destination ci-dessous est remplie.
                     buttons:
                       - bold
-                      - italic
                       - link
                       - bulleted-list
                       - numbered-list
@@ -951,15 +948,14 @@ collections:
                 name: titre
                 widget: string
                 required: false
-                hint: Laissez vide uniquement pour le texte d'introduction en haut de page.
+                hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide uniquement pour le texte d'introduction en haut de page.
               - label: Texte d'introduction
                 name: texte
                 widget: markdown
                 required: false
-                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, italique, liens et listes. Laissez une ligne vide entre deux paragraphes.
+                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, liens et listes. Laissez une ligne vide entre deux paragraphes.
                 buttons:
                   - bold
-                  - italic
                   - link
                   - bulleted-list
                   - numbered-list
@@ -980,15 +976,14 @@ collections:
                     name: titre
                     widget: string
                     required: false
-                    hint: Facultatif. 60 caractères maximum.
+                    hint: Facultatif. 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
                   - label: Texte
                     name: texte
                     widget: markdown
                     required: false
-                    hint: Gras, italique, liens et listes. Ignoré si la destination ci-dessous est remplie.
+                    hint: Gras, liens et listes. Ignoré si la destination ci-dessous est remplie.
                     buttons:
                       - bold
-                      - italic
                       - link
                       - bulleted-list
                       - numbered-list
@@ -1036,15 +1031,14 @@ collections:
                 name: titre
                 widget: string
                 required: false
-                hint: Laissez vide uniquement pour le texte d'introduction en haut de page.
+                hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide uniquement pour le texte d'introduction en haut de page.
               - label: Texte d'introduction
                 name: texte
                 widget: markdown
                 required: false
-                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, italique, liens et listes. Laissez une ligne vide entre deux paragraphes.
+                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, liens et listes. Laissez une ligne vide entre deux paragraphes.
                 buttons:
                   - bold
-                  - italic
                   - link
                   - bulleted-list
                   - numbered-list
@@ -1065,15 +1059,14 @@ collections:
                     name: titre
                     widget: string
                     required: true
-                    hint: 60 caractères maximum.
+                    hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
                   - label: Texte
                     name: texte
                     widget: markdown
                     required: false
-                    hint: Gras, italique, liens et listes. Laissez une ligne vide entre deux paragraphes.
+                    hint: Gras, liens et listes. Laissez une ligne vide entre deux paragraphes.
                     buttons:
                       - bold
-                      - italic
                       - link
                       - bulleted-list
                       - numbered-list
@@ -1116,15 +1109,14 @@ collections:
                 name: titre
                 widget: string
                 required: false
-                hint: Laissez vide uniquement pour le texte d'introduction en haut de page.
+                hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide uniquement pour le texte d'introduction en haut de page.
               - label: Texte d'introduction
                 name: texte
                 widget: markdown
                 required: false
-                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, italique, liens et listes. Laissez une ligne vide entre deux paragraphes.
+                hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, liens et listes. Laissez une ligne vide entre deux paragraphes.
                 buttons:
                   - bold
-                  - italic
                   - link
                   - bulleted-list
                   - numbered-list
@@ -1145,15 +1137,14 @@ collections:
                     name: titre
                     widget: string
                     required: true
-                    hint: 'Client et secteur, par exemple : IZIVIA, électromobilité.'
+                    hint: 'Client et secteur, par exemple : IZIVIA, électromobilité. Mettez un mot entre *astérisques* pour l''afficher en rouge.'
                   - label: Texte
                     name: texte
                     widget: markdown
                     required: false
-                    hint: Ce que nous avons fait. Gras, italique et liens.
+                    hint: Ce que nous avons fait. Gras et liens.
                     buttons:
                       - bold
-                      - italic
                       - link
                       - bulleted-list
                       - numbered-list
@@ -1233,8 +1224,8 @@ collections:
         summary: "{{fields.meta_title}}"
         hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. N'apparaît pas dans la page."
         fields:
-          - { label: Titre SEO, name: meta_title, widget: string, required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « Nom court de la prestation - 4SH »." }
-          - { label: Description SEO, name: meta_description, widget: text, required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : le chapô est utilisé." }
+          - { label: Titre SEO, name: meta_title, widget: string, required: false, hint: "50 à 60 caractères conseillés. Vide : « Nom court de la prestation - 4SH »." }
+          - { label: Description SEO, name: meta_description, widget: text, required: false, hint: "150 à 160 caractères conseillés. Vide : le chapô est utilisé." }
           - { label: Afficher dans les moteurs de recherche, name: indexation, widget: boolean, required: false, default: true, hint: "Laisser coché en temps normal. Décocher masque la page dans Google et la retire du plan du site." }
       - { label: "Mémo : adresse sur l'ancien site (non affiché)", name: source_url, widget: string, required: false }
       - { label: "Mémo : page Confluence de rédaction (non affiché)", name: source_confluence, widget: string, required: false }
@@ -1301,7 +1292,7 @@ collections:
 
       # --- Pourquoi ---
       - { label: "Pourquoi · Surtitre", name: "pourquoi_eyebrow", widget: "string", required: false, maxlength: 40, hint: "Facultatif, 40 caractères maximum. Vide : « Pourquoi <nom> ? »." }
-      - { label: "Pourquoi · Titre", name: "pourquoi_titre", widget: "string", required: false, maxlength: 90, hint: "90 caractères maximum. Ex. : Pourquoi utiliser *Kubernetes* ? Vide : pas de titre." }
+      - { label: "Pourquoi · Titre", name: "pourquoi_titre", widget: "string", required: false, maxlength: 90, hint: "90 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge. Ex. : Pourquoi utiliser *Kubernetes* ? Vide : pas de titre." }
       - { label: "Pourquoi · Sous-titre", name: "pourquoi_intro", widget: "text", required: false, hint: "Facultatif. Une ou deux phrases sous le titre." }
       - label: "Pourquoi · Atouts"
         name: "atouts"
@@ -1340,7 +1331,7 @@ collections:
 
       # --- Contenu détaillé ---
       - { label: "Contenu détaillé · Surtitre", name: "corps_eyebrow", widget: "string", required: false, maxlength: 40, hint: "Facultatif, 40 caractères maximum. Ex. : Guide. Vide : « Communauté et écosystème »." }
-      - { label: "Contenu détaillé · Titre", name: "corps_titre", widget: "string", required: false, maxlength: 90, hint: "Facultatif, 90 caractères maximum. Ex. : Comprendre *Kubernetes*" }
+      - { label: "Contenu détaillé · Titre", name: "corps_titre", widget: "string", required: false, maxlength: 90, hint: "Facultatif, 90 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge. Ex. : Comprendre *Kubernetes*" }
       - { label: "Contenu détaillé · Texte continu sur fond sombre", name: "corps_sombre", widget: "boolean", required: false, default: false, hint: "Coché : les sections s'affichent en un seul texte sur fond sombre, sans mise en page automatique (pour un contenu court). Décoché : une section par grand thème." }
       - label: "Contenu détaillé · Sections"
         name: "sections"
@@ -1387,7 +1378,7 @@ collections:
             hint: "La carte mène à cette fiche."
 
       # --- Questions fréquentes ---
-      - { label: "Questions fréquentes · Titre", name: "faq_titre", widget: "string", required: false, maxlength: 90, hint: "Facultatif, 90 caractères maximum. Vide : « Questions fréquentes sur <nom> »." }
+      - { label: "Questions fréquentes · Titre", name: "faq_titre", widget: "string", required: false, maxlength: 90, hint: "Facultatif, 90 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge. Vide : « Questions fréquentes sur <nom> »." }
       - label: "Questions fréquentes · Questions"
         name: "faq"
         widget: "list"
@@ -1413,8 +1404,8 @@ collections:
         summary: "{{fields.meta_title}}"
         hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
         fields:
-          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « <nom> - Expertise technique 4SH »." }
-          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : l'introduction est reprise." }
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « <nom> - Expertise technique 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'introduction est reprise." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
 
       # --- Suivi interne (non affiché) ---
@@ -1449,8 +1440,8 @@ collections:
             summary: "{{fields.meta_title}}"
             hint: Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur.
             fields:
-              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: false, hint: 60 caractères maximum., i18n: true }
-              - { label: Description SEO, name: meta_description, widget: text, required: false, hint: 155 caractères maximum., i18n: true }
+              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: false, hint: 50 à 60 caractères conseillés., i18n: true }
+              - { label: Description SEO, name: meta_description, widget: text, required: false, hint: 150 à 160 caractères conseillés., i18n: true }
             i18n: true
           - label: Blocs de la page
             name: blocs
@@ -2401,8 +2392,8 @@ collections:
         summary: "{{fields.meta_title}}"
         hint: Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur.
         fields:
-          - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: false, hint: 60 caractères maximum. }
-          - { label: Description SEO, name: meta_description, widget: text, required: false, hint: 155 caractères maximum. }
+          - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: false, hint: 50 à 60 caractères conseillés. }
+          - { label: Description SEO, name: meta_description, widget: text, required: false, hint: 150 à 160 caractères conseillés. }
       - label: Blocs de la page
         name: blocs
         widget: list
@@ -3661,7 +3652,7 @@ collections:
                     name: texte
                     widget: text
                     required: false
-                    hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Laissez vide pour une carte avec son seul titre.
+                    hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide pour une carte avec son seul titre.
                   - label: Lien
                     name: lien
                     widget: object
@@ -4141,7 +4132,7 @@ collections:
                 name: titre
                 widget: string
                 required: true
-                hint: 60 caractères maximum.
+                hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
               - label: Texte
                 name: texte
                 widget: text
@@ -4194,8 +4185,8 @@ collections:
             summary: "{{fields.meta_title}}"
             hint: Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. N'apparaît pas dans la page.
             fields:
-              - { label: Titre SEO, name: meta_title, widget: string, required: true, hint: 50 à 60 caractères. Mot-clé principal en tête. Affiché dans l'onglet du navigateur et dans Google. }
-              - { label: Méta-description, name: meta_description, widget: text, required: true, hint: 140 à 160 caractères. Une phrase qui donne envie de cliquer. }
+              - { label: Titre SEO, name: meta_title, widget: string, required: true, hint: 50 à 60 caractères conseillés. Mot-clé principal en tête. Affiché dans l'onglet du navigateur et dans Google. }
+              - { label: Méta-description, name: meta_description, widget: text, required: true, hint: 150 à 160 caractères conseillés. Une phrase qui donne envie de cliquer. }
           - { label: Nom de la page (fil d'Ariane), name: nom, widget: string, required: true, hint: "Nom court affiché dans le fil d'Ariane du haut de page, après « Accueil ». Par exemple : Logiciel métier." }
           - { label: Bouton flottant, name: bouton_flottant, widget: relation, required: false, collection: appels_action, value_field: "{{slug}}", display_fields: ["{{intitule}}"], search_fields: [intitule, texte], hint: "Bouton qui reste visible en bas d'écran sur mobile. Choisissez un appel à l'action partagé. Vide : pas de bouton flottant." }
           - label: Blocs de la page
@@ -5411,8 +5402,8 @@ collections:
             summary: "{{fields.meta_title}}"
             hint: "Ce qui s'affiche dans les résultats de Google et dans l'onglet du navigateur. N'apparaît pas dans la page."
             fields:
-              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, hint: "60 caractères maximum. Vide : le titre par défaut des Réglages SEO s'affiche." }
-              - { label: Description SEO, name: meta_description, widget: text, required: true, hint: "155 caractères maximum. Résumé affiché sous le titre dans Google." }
+              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, hint: "50 à 60 caractères conseillés. Vide : le titre par défaut des Réglages SEO s'affiche." }
+              - { label: Description SEO, name: meta_description, widget: text, required: true, hint: "150 à 160 caractères conseillés. Résumé affiché sous le titre dans Google." }
           - label: Blocs de la page
             name: blocs
             widget: list
@@ -6101,7 +6092,7 @@ collections:
                         name: texte
                         widget: text
                         required: false
-                        hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Laissez vide pour une carte avec son seul titre.
+                        hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide pour une carte avec son seul titre.
                       - label: Lien
                         name: lien
                         widget: object
@@ -6331,7 +6322,7 @@ collections:
                     name: titre
                     widget: string
                     required: true
-                    hint: 60 caractères maximum.
+                    hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
                   - label: Texte
                     name: texte
                     widget: text
@@ -6851,8 +6842,8 @@ collections:
             hint: "Ce qui s'affiche dans les résultats de Google et dans l'onglet du navigateur. N'apparaît pas dans la page."
             i18n: true
             fields:
-              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, i18n: true, hint: "60 caractères maximum. Vide : le titre par défaut des Réglages SEO s'affiche." }
-              - { label: Description SEO, name: meta_description, widget: text, required: true, i18n: true, hint: "155 caractères maximum. Résumé affiché sous le titre dans Google." }
+              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, i18n: true, hint: "50 à 60 caractères conseillés. Vide : le titre par défaut des Réglages SEO s'affiche." }
+              - { label: Description SEO, name: meta_description, widget: text, required: true, i18n: true, hint: "150 à 160 caractères conseillés. Résumé affiché sous le titre dans Google." }
           - label: Blocs de la page
             name: blocs
             widget: list
@@ -7639,7 +7630,7 @@ collections:
                         name: texte
                         widget: text
                         required: false
-                        hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Laissez vide pour une carte avec son seul titre.
+                        hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide pour une carte avec son seul titre.
                         i18n: true
                       - label: Lien
                         name: lien
@@ -7900,7 +7891,7 @@ collections:
                     name: titre
                     widget: string
                     required: true
-                    hint: 60 caractères maximum.
+                    hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
                     i18n: true
                   - label: Texte
                     name: texte
@@ -8494,8 +8485,8 @@ collections:
             summary: "{{fields.meta_title}}"
             hint: "Ce qui s'affiche dans les résultats de Google et dans l'onglet du navigateur. N'apparaît pas dans la page."
             fields:
-              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, hint: "60 caractères maximum. Vide : le titre par défaut des Réglages SEO s'affiche." }
-              - { label: Description SEO, name: meta_description, widget: text, required: true, hint: "155 caractères maximum. Résumé affiché sous le titre dans Google." }
+              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, hint: "50 à 60 caractères conseillés. Vide : le titre par défaut des Réglages SEO s'affiche." }
+              - { label: Description SEO, name: meta_description, widget: text, required: true, hint: "150 à 160 caractères conseillés. Résumé affiché sous le titre dans Google." }
           - { label: Nom de la page (fil d'Ariane), name: titre, widget: string, required: true, hint: "Dernier mot du petit chemin tout en haut de la page, après Accueil. 30 caractères maximum." }
           - label: Haut de page
             name: hero
@@ -9278,7 +9269,7 @@ collections:
               - { label: "Réalisations · nom du carrousel", name: "projets_carrousel", widget: "string", hint: "Non affiché : nom du carrousel du bloc Réalisations (accueil), lu par les lecteurs d'écran. Ex. : Réalisations", required: false }
               - { label: "Secteurs · nom du carrousel", name: "secteurs_carrousel", widget: "string", hint: "Non affiché : nom du carrousel du bloc Secteurs (accueil), lu par les lecteurs d'écran. Ex. : Secteurs", required: false }
               - { label: "Chiffres animés · nom du bandeau", name: "chiffres_aria", widget: "string", hint: "Non affiché : nom du bandeau de chiffres quand il compte plus de 4 chiffres (pages Notre entreprise et Company), lu par les lecteurs d'écran. Ex. : Chiffres clés", required: false }
-              - { label: "Haut de page institutionnel · légende de l'illustration Entreprise", name: "illustration_entreprise", widget: "string", hint: "Phrase en italique rouge en haut du schéma des agences (illustration « entreprise » du haut de page, pages Notre entreprise et Company). Ex. : une communauté qui grandit", required: false }
+              - { label: "Haut de page institutionnel · légende de l'illustration Entreprise", name: "illustration_entreprise", widget: "string", hint: "Phrase en rouge en haut du schéma des agences (illustration « entreprise » du haut de page, pages Notre entreprise et Company). Ex. : une communauté qui grandit", required: false }
           - label: "Fiche formation"
             name: "formation"
             widget: "object"
@@ -9475,8 +9466,8 @@ collections:
         fields: &f_seo
           - { label: Adresse du site en production, name: url, widget: string, required: true, pattern: ['^https?://[^/]+$', "Adresse complète sans barre oblique finale, par exemple https://www.4sh.fr."], hint: "Sans barre oblique finale. Sert aux liens canoniques, au plan du site et au robots.txt. Par exemple : https://www.4sh.fr." }
           - { label: Autoriser l'indexation par les moteurs de recherche, name: indexation, widget: boolean, required: false, default: false, hint: "Décoché : tout le site est masqué aux moteurs (préproduction). À cocher à la mise en production." }
-          - { label: Titre par défaut, name: titre_defaut, widget: string, required: true, hint: "Onglet du navigateur et résultats Google, pour une page sans titre SEO propre. 60 caractères maximum." }
-          - { label: Description par défaut, name: description_defaut, widget: text, required: true, hint: "Pour une page sans description SEO propre. 155 caractères maximum." }
+          - { label: Titre par défaut, name: titre_defaut, widget: string, required: true, hint: "Onglet du navigateur et résultats Google, pour une page sans titre SEO propre. 50 à 60 caractères conseillés." }
+          - { label: Description par défaut, name: description_defaut, widget: text, required: true, hint: "Pour une page sans description SEO propre. 150 à 160 caractères conseillés." }
           - { label: Image de partage sur les réseaux sociaux, name: og_image, widget: image, required: false, choose_url: true, hint: "Image affichée quand une page est partagée (LinkedIn, X...). 1200 x 630 px conseillés." }
           - { label: Contenu du robots.txt, name: robots_txt, widget: text, required: true, hint: "Règles pour les robots des moteurs. La ligne Sitemap est ajoutée automatiquement." }
 

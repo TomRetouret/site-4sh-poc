@@ -82,7 +82,7 @@ const NOMS_TEMOIGNAGES = ['temoignages', 'temoignages_fr', 'temoignages_en'];
 // Feuilles du site, dans l'ordre de src/_includes/base.njk pour l'accueil
 // (learning.css, catalogue.css et extraCss ne sont pas chargées sur l'accueil).
 const FEUILLES_SITE = [
-  'https://fonts.googleapis.com/css2?family=Asap:wght@400;600&family=Manrope:wght@700;800&display=swap',
+  '/assets/polices.css', // polices auto-hébergées (Asap, Manrope), comme base.njk
   '/assets/styles.css',
   '/assets/charte.css',
   '/assets/mouvement.css',

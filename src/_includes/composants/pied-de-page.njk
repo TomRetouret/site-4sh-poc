@@ -1,0 +1,35 @@
+{#
+  PIED DE PAGE DU SITE
+  Logo blanc, signature, coordonnées, colonnes de liens, mentions légales et réseaux.
+  Appelé par base.njk ; rendu aussi par le Storybook (Composants/En-tête et pied de page).
+  Voir composants/README.md pour les conventions.
+
+  pied_de_page(site, url_page)
+    site     : réglages du site (src/_data/site.json, ou en/site.json)
+    url_page : page.url, pour les libellés (filtre libelle : langue lue dans l'adresse)
+#}
+{% macro pied_de_page(site, url_page) -%}
+<footer>
+  <div class="container">
+    <div class="footer-grille">
+      <div>
+        <img class="footer-logo" src="/assets/img/logo-4sh-blanc.svg" alt="{{ site.nom }}" width="72" height="24">
+        <p class="footer-accroche">{{ ("commun.pied_signature" | libelle(url_page)) or "Développez vos idées" }}</p>
+        <p>{{ site.footer_accroche }}<br>{{ site.villes }}<br><a href="tel:{{ site.telephone_lien }}">{{ site.telephone_affiche }}</a></p>
+      </div>
+      {% for col in site.footer_colonnes %}
+      <div>
+        <p class="footer-titre">{{ col.titre }}</p>
+        <ul>
+          {% for l in col.liens %}<li><a href="{{ l.url or '#' }}">{{ l.label }}</a></li>{% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="footer-bas">
+      <span>{{ site.footer_legal }}{% for l in site.footer_liens_legaux %} &middot; <a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</span>
+      <span>{% for r in site.footer_reseaux %}{% if not loop.first %} · {% endif %}<a href="{{ r.url or '#' }}" target="_blank" rel="noopener">{{ r.label }}</a>{% endfor %}{% if site.footer_formations_liens and site.footer_formations_liens.length %} &middot; {{ site.footer_formations_titre }} {% for l in site.footer_formations_liens %}{% if not loop.first %}, {% endif %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a>{% endfor %}{% endif %}</span>
+    </div>
+  </div>
+</footer>
+{%- endmacro %}

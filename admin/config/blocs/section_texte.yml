@@ -25,7 +25,7 @@ type:
       name: titre
       widget: string
       required: false
-      hint: 'Laissez vide uniquement pour le texte d''introduction en haut de page.'
+      hint: 'Mettez un mot entre *astérisques* pour l''afficher en rouge. Laissez vide uniquement pour le texte d''introduction en haut de page.'
     - label: Disposition
       name: disposition
       widget: select
@@ -40,8 +40,8 @@ type:
       name: texte
       widget: markdown
       required: false
-      hint: Gras, italique, liens et listes (affichées en liste à cocher). Laissez une ligne vide entre deux paragraphes.
-      buttons: [bold, italic, link, bulleted-list, numbered-list]
+      hint: Gras, liens et listes (affichées en liste à cocher). Laissez une ligne vide entre deux paragraphes.
+      buttons: [bold, link, bulleted-list, numbered-list]
       editor_components: []
       modes: [rich_text]
     - label: Boutons

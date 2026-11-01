@@ -62,7 +62,10 @@ layout: base.njk
 {%- if not corps %}{% set corps = content %}{% endif -%}
 {% if corps %}
 {% if corps_sombre %}
-<section class="section-sombre sur-sombre">
+{# Fond nuit (.section-nuit, charte.css) : .section-sombre est en fond clair depuis la charte v1.1
+   (Méthode 4D). Contrastes sur nuit #0B0D10 : texte --sur-nuit 10,6:1, titre et surtitre blancs 19,5:1,
+   liens blancs soulignés (.sur-sombre). -#}
+<section class="section-nuit sur-sombre">
   <div class="container">
     <p class="eyebrow">{{ corps_eyebrow or "Communauté et écosystème" }}</p>
     {% if corps_titre %}<h2 class="sec-titre">{{ corps_titre | accent | safe }}</h2>{% endif %}

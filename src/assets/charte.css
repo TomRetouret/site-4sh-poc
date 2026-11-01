@@ -648,6 +648,11 @@ html.mv .mv-bloc{clip-path:none!important}
 .section-nuit .socle-carte,.section-nuit .col-carte{background:none!important;border-color:#3A4048!important}
 .section-nuit .socle-carte h3,.section-nuit .col-carte h3{color:#fff}
 .section-nuit .socle-carte a,.section-nuit .col-carte a,.section-nuit .socle-lien{color:#fff!important}
+/* Les fiches technologie à corps sombre (corps_sombre, ex. Kotlin) portent aussi .section-nuit : texte
+   --sur-nuit (10,6:1), surtitre blanc, liens blancs soulignés de .sur-sombre (19,5:1, distingués du texte
+   par le soulignement), puces de .prose--sombre en couleur d'offre (Build 6,4:1). Le gras du texte passe
+   en blanc (19,5:1) : la règle .prose strong de styles.css le mettait en nuit sur nuit, invisible. */
+.section-nuit .prose strong,.section-nuit .prose b{color:#fff}
 
 /* ---------- Technologies en cartes : logos en encre sur fond clair ----------
    Les logos fournis sont blancs (ancien fond sombre) : sur le fond clair de la charte,
@@ -659,3 +664,11 @@ html.mv .mv-bloc{clip-path:none!important}
    Blanc sur violet #7C4DDB : 5,33:1 (AA texte courant, tableau des contrastes de la charte). */
 .learning .formulaire .btn-learning,.learning .sur-sombre .formulaire .btn-learning{background:var(--learning)!important;border-color:var(--learning)!important;color:#fff!important}
 .learning .formulaire .btn-learning:hover,.learning .sur-sombre .formulaire .btn-learning:hover{background:var(--learning-texte)!important;border-color:var(--learning-texte)!important;color:#fff!important}
+
+/* ---------- Emphase dans le texte courant : droite, en graisse ----------
+   La charte interdit l'italique et l'éditeur ne propose plus le bouton Italique. Un <em> venu du
+   Markdown d'un texte (*mot* ou _mot_ tapé à la main) s'affiche droit, en Asap 600, sans couleur :
+   le rouge reste réservé au mot mis en valeur des titres (em.accent, règles plus haut) et aux liens.
+   Dans un intertitre, il garde la graisse du titre. */
+em:not(.accent){font-style:normal;font-weight:600}
+:is(h1,h2,h3,h4,h5,h6) em:not(.accent){font-weight:inherit}

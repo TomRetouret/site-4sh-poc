@@ -3,13 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <title>4SH · Administration du contenu</title>
 </head>
 <body>
   <!-- Interface d'administration du contenu (Sveltia CMS, successeur de Decap CMS).
        Lit la configuration dans config.yml (dans ce même dossier /admin).
-       Version figée pour la preuve de concept : monter de version volontairement, après essai. -->
-  <script src="https://unpkg.com/@sveltia/cms@0.256.1/dist/sveltia-cms.js" type="module"></script>
+       Version figée pour la preuve de concept : monter de version volontairement, après essai.
+       integrity : empreinte SHA-384 du fichier dist/sveltia-cms.js du paquet npm @sveltia/cms@0.256.1.
+       À recalculer à chaque montée de version (commande dans docs/securite.md), sinon l'admin ne se charge plus.
+       Sveltia charge ensuite lui-même d'autres modules depuis unpkg.com (sans intégrité possible) :
+       voir docs/securite.md. -->
+  <script src="https://unpkg.com/@sveltia/cms@0.256.1/dist/sveltia-cms.js" type="module" integrity="sha384-LPT86oZkLhmoF84O1jKZBSaFJOVvKv8sjXDKap1SOaSwzbC8F6HH7rTJWekmAzG9" crossorigin="anonymous"></script>
   <!-- Gabarits d'aperçu partagés avec Decap (/admin-decap/). -->
   <script type="module" src="/admin-shared/apercus.js"></script>
   <script type="module" src="/admin-shared/apercus-logiciel-metier.js"></script>

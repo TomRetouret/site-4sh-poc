@@ -1,0 +1,43 @@
+# Dependabot : mises à jour des dépendances (docs/securite.md, section GitHub).
+# Une seule demande de fusion groupée par écosystème et par semaine, le lundi matin.
+# Les alertes et correctifs de sécurité (Dependabot security updates) s'activent
+# dans Settings, Code security ; ils arrivent dès qu'une faille est publiée.
+# IMPORTANT : ne jamais fusionner automatiquement ces demandes. Relire, attendre
+# l'aperçu Netlify (deploy preview), vérifier le build, puis fusionner à la main.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:17"
+      timezone: "Europe/Paris"
+    open-pull-requests-limit: 5
+    # Le projet fige des versions exactes : Dependabot met à jour la version exacte.
+    versioning-strategy: "increase"
+    commit-message:
+      prefix: "deps"
+    groups:
+      npm-mineures:
+        update-types:
+          - "minor"
+          - "patch"
+      npm-majeures:
+        update-types:
+          - "major"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:17"
+      timezone: "Europe/Paris"
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: "ci"
+    groups:
+      actions:
+        patterns:
+          - "*"

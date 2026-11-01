@@ -76,7 +76,16 @@ qu'un niveau d'indirection.
 | Macro | Rôle | Utilisé par |
 | --- | --- | --- |
 | `grille(groupes, libelles, categorie)` | Recherche, onglets et grille du catalogue de formations | catalogue, pages de catégorie |
-| `navicone(nom)` | Le jeu d'icônes du mégamenu | base |
+| `navicone(nom)` | Le jeu d'icônes du mégamenu | `en-tete.njk` |
+
+### `en-tete.njk` et `pied-de-page.njk` - en-tête et pied de page du site
+
+| Macro | Rôle | Utilisé par |
+| --- | --- | --- |
+| `en_tete(navigation, rubrique, lang, alt_url, url_page)` | Logo, menu et méga-menus, sélecteur de langue, actions, bouton « Menu » | base (toutes les pages, sauf `hideHeader`) |
+| `pied_de_page(site, url_page)` | Logo blanc, signature, coordonnées, colonnes de liens, mentions et réseaux | base (toutes les pages) |
+
+Stories : Composants/En-tête et Composants/Pied de page (données de `navigation.json` et `site.json`, français et anglais).
 
 ### `pages/` - corps partagés entre le français et l'anglais
 

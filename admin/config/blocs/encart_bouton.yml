@@ -41,7 +41,7 @@ type:
       name: titre
       widget: string
       required: true
-      hint: 60 caractères maximum.
+      hint: "60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge."
     - label: Texte
       name: texte
       widget: text

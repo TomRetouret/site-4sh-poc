@@ -4,3 +4,6 @@ dist/
 *.log
 .cache/
 debug-storybook.log
+
+# Dossier de travail local de Claude (hors dépôt)
+Claude outputs/

@@ -40,7 +40,7 @@
 
       # --- Pourquoi ---
       - { label: "Pourquoi · Surtitre", name: "pourquoi_eyebrow", widget: "string", required: false, maxlength: 40, hint: "Facultatif, 40 caractères maximum. Vide : « Pourquoi <nom> ? »." }
-      - { label: "Pourquoi · Titre", name: "pourquoi_titre", widget: "string", required: false, maxlength: 90, hint: "90 caractères maximum. Ex. : Pourquoi utiliser *Kubernetes* ? Vide : pas de titre." }
+      - { label: "Pourquoi · Titre", name: "pourquoi_titre", widget: "string", required: false, maxlength: 90, hint: "90 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge. Ex. : Pourquoi utiliser *Kubernetes* ? Vide : pas de titre." }
       - { label: "Pourquoi · Sous-titre", name: "pourquoi_intro", widget: "text", required: false, hint: "Facultatif. Une ou deux phrases sous le titre." }
       - label: "Pourquoi · Atouts"
         name: "atouts"
@@ -79,7 +79,7 @@
 
       # --- Contenu détaillé ---
       - { label: "Contenu détaillé · Surtitre", name: "corps_eyebrow", widget: "string", required: false, maxlength: 40, hint: "Facultatif, 40 caractères maximum. Ex. : Guide. Vide : « Communauté et écosystème »." }
-      - { label: "Contenu détaillé · Titre", name: "corps_titre", widget: "string", required: false, maxlength: 90, hint: "Facultatif, 90 caractères maximum. Ex. : Comprendre *Kubernetes*" }
+      - { label: "Contenu détaillé · Titre", name: "corps_titre", widget: "string", required: false, maxlength: 90, hint: "Facultatif, 90 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge. Ex. : Comprendre *Kubernetes*" }
       - { label: "Contenu détaillé · Texte continu sur fond sombre", name: "corps_sombre", widget: "boolean", required: false, default: false, hint: "Coché : les sections s'affichent en un seul texte sur fond sombre, sans mise en page automatique (pour un contenu court). Décoché : une section par grand thème." }
       - label: "Contenu détaillé · Sections"
         name: "sections"
@@ -126,7 +126,7 @@
             hint: "La carte mène à cette fiche."
 
       # --- Questions fréquentes ---
-      - { label: "Questions fréquentes · Titre", name: "faq_titre", widget: "string", required: false, maxlength: 90, hint: "Facultatif, 90 caractères maximum. Vide : « Questions fréquentes sur <nom> »." }
+      - { label: "Questions fréquentes · Titre", name: "faq_titre", widget: "string", required: false, maxlength: 90, hint: "Facultatif, 90 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge. Vide : « Questions fréquentes sur <nom> »." }
       - label: "Questions fréquentes · Questions"
         name: "faq"
         widget: "list"
@@ -152,8 +152,8 @@
         summary: "{{fields.meta_title}}"
         hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
         fields:
-          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « <nom> - Expertise technique 4SH »." }
-          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : l'introduction est reprise." }
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « <nom> - Expertise technique 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'introduction est reprise." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
 
       # --- Suivi interne (non affiché) ---

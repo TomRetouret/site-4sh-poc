@@ -24,8 +24,8 @@
         summary: "{{fields.meta_title}}"
         hint: Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur.
         fields:
-          - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: false, hint: 60 caractères maximum. }
-          - { label: Description SEO, name: meta_description, widget: text, required: false, hint: 155 caractères maximum. }
+          - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: false, hint: 50 à 60 caractères conseillés. }
+          - { label: Description SEO, name: meta_description, widget: text, required: false, hint: 150 à 160 caractères conseillés. }
       - label: Blocs de la page
         name: blocs
         widget: list
@@ -1284,7 +1284,7 @@
                     name: texte
                     widget: text
                     required: false
-                    hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Laissez vide pour une carte avec son seul titre.
+                    hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide pour une carte avec son seul titre.
                   - label: Lien
                     name: lien
                     widget: object
@@ -1764,7 +1764,7 @@
                 name: titre
                 widget: string
                 required: true
-                hint: 60 caractères maximum.
+                hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
               - label: Texte
                 name: texte
                 widget: text

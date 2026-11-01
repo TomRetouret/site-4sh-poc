@@ -4,7 +4,7 @@
  * Définition : admin/config/blocs/section_projets.yml ; morceaux communs : apercus-prestations.js
  */
 import { enregistrerBloc, outils } from './apercus.js';
-import { section, grille, enLigne, mdSection } from './apercus-prestations.js';
+import { section, grille, enTitre, mdSection } from './apercus-prestations.js';
 
 const { el, cle, tableau, texte, chargeur, premiereEntree, propsLien } = outils;
 
@@ -21,7 +21,7 @@ function carteProjet(pr, chemin, ctx) {
           : d.client && el('div', { className: 'ref-cartouche' }, el('span', { className: 'ref-cartouche-txt' }, d.client))),
       el('div', { className: 'sect-ref-corps' },
         el('span', { className: 'sect-ref-label' }, (d.secteurs && d.secteurs[0]) || 'Projet'),
-        el('h3', cle(chemin + '.titre'), enLigne(texte(pr.titre))),
+        el('h3', cle(chemin + '.titre'), enTitre(texte(pr.titre))),
         el('div', Object.assign({ className: 'sect-ref-texte' }, cle(chemin + '.texte')), mdSection(pr.texte)),
         lien && el('a', Object.assign({ className: 'socle-lien' }, propsLien(lien), cle(chemin + '.lien_texte')), (pr.lien_texte || 'Voir la référence') + ' →')));
   };

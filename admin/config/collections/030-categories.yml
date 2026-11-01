@@ -23,7 +23,7 @@
       - { label: "En-tête · Introduction", name: "intro", widget: "text", required: true, hint: "Paragraphe sous le grand titre, 60 à 100 mots. Sert aussi de description pour Google si celle du Référencement est vide." }
 
       # --- Texte de présentation (sous le catalogue) ---
-      - { label: "Texte de présentation", name: "body", widget: "markdown", required: true, buttons: ["bold", "italic", "link", "heading-two", "heading-three", "bulleted-list", "numbered-list"], editor_components: [], hint: "Affiché sous le catalogue, en colonne de lecture. Commencez par un Titre 2, puis un Titre 3 par question traitée. 300 à 1 500 mots." }
+      - { label: "Texte de présentation", name: "body", widget: "markdown", required: true, buttons: ["bold", "link", "heading-two", "heading-three", "bulleted-list", "numbered-list"], editor_components: [], hint: "Affiché sous le catalogue, en colonne de lecture. Commencez par un Titre 2, puis un Titre 3 par question traitée. 300 à 1 500 mots." }
 
       # --- Questions fréquentes ---
       - label: "Questions fréquentes"
@@ -47,6 +47,6 @@
         summary: "{{fields.meta_title}}"
         hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
         fields:
-          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, maxlength: 90, hint: "50 à 60 caractères. Vide : « Formations <catégorie> - 4SH »." }
-          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, maxlength: 170, hint: "140 à 160 caractères. Vide : l'introduction est reprise." }
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « Formations <catégorie> - 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'introduction est reprise." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }

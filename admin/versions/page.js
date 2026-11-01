@@ -1,5 +1,8 @@
 // Page « Versions publiées » : interface (navigateur).
-import * as jsyaml from 'https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.mjs';
+// js-yaml auto-hébergé (copie exacte de dist/js-yaml.mjs du paquet npm js-yaml@4.3.2, licence MIT
+// dans vendor/js-yaml-LICENSE.txt) : plus de script tiers sur une page qui manipule le jeton GitHub.
+// Empreinte SHA-256 du fichier : zqJ2x+FfQJoa2+XRd6ungkOYpHT3z3Ar1Xlix9VwY28= (voir docs/securite.md).
+import * as jsyaml from './vendor/js-yaml-4.3.2.js';
 import {
   LIBELLES_STATUT,
   analyserContenu,

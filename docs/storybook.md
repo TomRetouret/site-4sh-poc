@@ -78,7 +78,7 @@ Vérifier ensuite avec `npm run storybook`, puis `npm run build`.
 - **Formulaire de contact final** : ajouté par l'aiguilleur après les blocs, il n'apparaît pas dans les stories.
 - **Styles du site publiés à part.** Le Storybook statique lit `/assets/...` à la racine du domaine : il
   fonctionne publié avec le site, pas ouvert seul.
-- **Polices** chargées depuis Google Fonts, comme le site : sans réseau, police de repli.
+- **Polices** auto-hébergées, comme le site (`/assets/polices.css`, fichiers sous `src/assets/polices/`) : aucun appel à Google Fonts.
 
 ## Publication et indexation
 

@@ -32,8 +32,8 @@
             summary: "{{fields.meta_title}}"
             hint: "Ce qui s'affiche dans les résultats de Google et dans l'onglet du navigateur. N'apparaît pas dans la page."
             fields:
-              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, hint: "60 caractères maximum. Vide : le titre par défaut des Réglages SEO s'affiche." }
-              - { label: Description SEO, name: meta_description, widget: text, required: true, hint: "155 caractères maximum. Résumé affiché sous le titre dans Google." }
+              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, hint: "50 à 60 caractères conseillés. Vide : le titre par défaut des Réglages SEO s'affiche." }
+              - { label: Description SEO, name: meta_description, widget: text, required: true, hint: "150 à 160 caractères conseillés. Résumé affiché sous le titre dans Google." }
           - label: Blocs de la page
             name: blocs
             widget: list
@@ -722,7 +722,7 @@
                         name: texte
                         widget: text
                         required: false
-                        hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Laissez vide pour une carte avec son seul titre.
+                        hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide pour une carte avec son seul titre.
                       - label: Lien
                         name: lien
                         widget: object
@@ -952,7 +952,7 @@
                     name: titre
                     widget: string
                     required: true
-                    hint: 60 caractères maximum.
+                    hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
                   - label: Texte
                     name: texte
                     widget: text
@@ -1472,8 +1472,8 @@
             hint: "Ce qui s'affiche dans les résultats de Google et dans l'onglet du navigateur. N'apparaît pas dans la page."
             i18n: true
             fields:
-              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, i18n: true, hint: "60 caractères maximum. Vide : le titre par défaut des Réglages SEO s'affiche." }
-              - { label: Description SEO, name: meta_description, widget: text, required: true, i18n: true, hint: "155 caractères maximum. Résumé affiché sous le titre dans Google." }
+              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, i18n: true, hint: "50 à 60 caractères conseillés. Vide : le titre par défaut des Réglages SEO s'affiche." }
+              - { label: Description SEO, name: meta_description, widget: text, required: true, i18n: true, hint: "150 à 160 caractères conseillés. Résumé affiché sous le titre dans Google." }
           - label: Blocs de la page
             name: blocs
             widget: list
@@ -2260,7 +2260,7 @@
                         name: texte
                         widget: text
                         required: false
-                        hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Laissez vide pour une carte avec son seul titre.
+                        hint: 35 mots maximum. Un retour à la ligne crée une nouvelle ligne (pratique pour une adresse). Mettez un mot entre *astérisques* pour l'afficher en rouge. Laissez vide pour une carte avec son seul titre.
                         i18n: true
                       - label: Lien
                         name: lien
@@ -2521,7 +2521,7 @@
                     name: titre
                     widget: string
                     required: true
-                    hint: 60 caractères maximum.
+                    hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
                     i18n: true
                   - label: Texte
                     name: texte
@@ -3115,8 +3115,8 @@
             summary: "{{fields.meta_title}}"
             hint: "Ce qui s'affiche dans les résultats de Google et dans l'onglet du navigateur. N'apparaît pas dans la page."
             fields:
-              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, hint: "60 caractères maximum. Vide : le titre par défaut des Réglages SEO s'affiche." }
-              - { label: Description SEO, name: meta_description, widget: text, required: true, hint: "155 caractères maximum. Résumé affiché sous le titre dans Google." }
+              - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, hint: "50 à 60 caractères conseillés. Vide : le titre par défaut des Réglages SEO s'affiche." }
+              - { label: Description SEO, name: meta_description, widget: text, required: true, hint: "150 à 160 caractères conseillés. Résumé affiché sous le titre dans Google." }
           - { label: Nom de la page (fil d'Ariane), name: titre, widget: string, required: true, hint: "Dernier mot du petit chemin tout en haut de la page, après Accueil. 30 caractères maximum." }
           - label: Haut de page
             name: hero

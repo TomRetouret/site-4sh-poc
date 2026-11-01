@@ -25,13 +25,13 @@ type:
       name: titre
       widget: string
       required: false
-      hint: 'Laissez vide uniquement pour le texte d''introduction en haut de page.'
+      hint: 'Mettez un mot entre *astérisques* pour l''afficher en rouge. Laissez vide uniquement pour le texte d''introduction en haut de page.'
     - label: Texte d'introduction
       name: texte
       widget: markdown
       required: false
-      hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, italique, liens et listes. Laissez une ligne vide entre deux paragraphes.
-      buttons: [bold, italic, link, bulleted-list, numbered-list]
+      hint: Facultatif. Affiché sous le titre, avant les éléments. Gras, liens et listes. Laissez une ligne vide entre deux paragraphes.
+      buttons: [bold, link, bulleted-list, numbered-list]
       editor_components: []
       modes: [rich_text]
     - label: Atouts
@@ -48,13 +48,13 @@ type:
           name: titre
           widget: string
           required: false
-          hint: Facultatif. 60 caractères maximum.
+          hint: "Facultatif. 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge."
         - label: Texte
           name: texte
           widget: markdown
           required: false
-          hint: Gras, italique, liens et listes. Ignoré si la destination ci-dessous est remplie.
-          buttons: [bold, italic, link, bulleted-list, numbered-list]
+          hint: Gras, liens et listes. Ignoré si la destination ci-dessous est remplie.
+          buttons: [bold, link, bulleted-list, numbered-list]
           editor_components: []
           modes: [rich_text]
         - label: Destination (carte cliquable)

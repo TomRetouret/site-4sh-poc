@@ -12,8 +12,8 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-img": "^6.0.4",
+    "@11ty/eleventy": "3.1.6",
+    "@11ty/eleventy-img": "6.0.4",
     "@storybook/addon-docs": "10.6.2",
     "@storybook/html-vite": "10.6.2",
     "nunjucks": "3.2.4",

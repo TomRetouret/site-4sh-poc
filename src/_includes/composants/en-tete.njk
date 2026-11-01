@@ -1,0 +1,77 @@
+{#
+  EN-TÊTE DU SITE
+  Logo, menu principal (liens, menus simples, méga-menus), sélecteur de langue,
+  actions (Contact...) et bouton « Menu » du mobile.
+  Appelé par base.njk ; rendu aussi par le Storybook (Composants/En-tête et pied de page).
+  Voir composants/README.md pour les conventions.
+
+  en_tete(navigation, rubrique, lang, alt_url, url_page)
+    navigation : données du menu (src/_data/navigation.json, ou en/navigation.json)
+    rubrique   : libellé de l'entrée active du menu (losange), calculé par base.njk
+                 d'après l'adresse de la page ; "" si aucune
+    lang       : "en" pour la version anglaise, sinon français
+    alt_url    : adresse de la page dans l'autre langue (sélecteur FR / EN) ; vide : pas de sélecteur
+    url_page   : page.url, pour les libellés (filtre libelle : langue lue dans l'adresse)
+#}
+{%- from "composants/icones.njk" import navicone -%}
+{% macro en_tete(navigation, rubrique, lang, alt_url, url_page) -%}
+<header>
+  <div class="container nav">
+    <a class="logo" href="{{ '/en/' if lang == 'en' else '/' }}" aria-label="4SH"><img src="/assets/img/logo-4sh.svg" alt="4SH" width="72" height="24"></a>
+    <ul class="menu">
+      {% for item in navigation.items %}
+      {% if item.type == "lien" %}
+      <li><a href="{{ item.url or '#' }}"{% if item.label == rubrique %} class="actif" aria-current="page"{% endif %}>{{ item.label }}</a></li>
+      {% elif item.type == "menu_simple" %}
+      <li>
+        <a href="#"{% if item.label == rubrique %} class="actif" aria-current="true"{% endif %}>{{ item.label }}</a>
+        <div class="deroulant simple">
+          {% if item.titre_col %}<p class="deroulant-titre">{{ item.titre_col }}</p>{% endif %}
+          <ul>
+            {% for l in item.liens %}<li><a href="{{ l.url or '#' }}">{{ l.label }}{% if l.sous_texte %} <small>{{ l.sous_texte }}</small>{% endif %}</a></li>{% endfor %}
+          </ul>
+        </div>
+      </li>
+      {% elif item.type == "megamenu" %}
+      <li class="a-panneau">
+        <a href="#"{% if item.label == rubrique %} class="actif" aria-current="true"{% endif %}>{{ item.label }}</a>
+        <div class="deroulant menu-services{% if item.variant %} {{ item.variant }}{% endif %}" aria-label="{{ item.label }}">
+          {% if item.promo %}
+          <a class="promo-services" href="{{ item.promo.url or '#' }}">
+            <div class="promo-txt">
+              <h4>{{ item.promo.titre | accent | safe }}</h4>
+              <p>{{ item.promo.texte }}</p>
+            </div>
+            {% if item.promo.kpi %}<div class="promo-kpi"><b>{{ item.promo.kpi.valeur | accent | safe }}</b><span>{{ item.promo.kpi.label }}</span></div>{% endif %}
+            {% if item.promo.stats %}<div class="promo-stats">{% for s in item.promo.stats %}<div><b>{{ s.valeur | accent | safe }}</b><span>{{ s.label }}</span></div>{% endfor %}</div>{% endif %}
+            {% if item.promo.lien_libelle %}<span class="promo-lien">{{ item.promo.lien_libelle }} →</span>{% endif %}
+          </a>
+          {% endif %}
+          {% for col in item.colonnes %}
+          <div class="col-svc{% if col.classe %} {{ col.classe }}{% endif %}">
+            <p class="deroulant-titre">{{ col.titre }}</p>
+            <ul class="svc-list">
+              {% for l in col.liens %}<li><a class="svc-item" href="{{ l.url or '#' }}">{% if l.image or l.icone %}<span class="svc-ico">{% if l.image %}<img src="{{ l.image }}" alt="" width="24" height="24">{% else %}{{ navicone(l.icone) }}{% endif %}</span>{% endif %}<span><b>{{ l.label }}</b>{% if l.sous_texte %}<small>{{ l.sous_texte }}</small>{% endif %}</span></a></li>{% endfor %}
+            </ul>
+          </div>
+          {% endfor %}
+          {% if item.bas %}
+          <div class="services-bas">
+            <div><b>{{ item.bas.titre }}</b><span>{{ item.bas.texte }}</span></div>
+            {% if item.bas.cta_label %}<a class="btn btn-sm btn-contact" href="{{ item.bas.cta_url or '#' }}">{{ item.bas.cta_label }}</a>{% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    <div class="nav-actions">
+      {% if alt_url %}<a class="lang-switch" href="{{ alt_url }}" hreflang="{{ 'fr' if lang == 'en' else 'en' }}" aria-label="{{ 'Voir la version française' if lang == 'en' else 'View the English version' }}" title="{{ 'Version française' if lang == 'en' else 'English version' }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M8 3H16L21 8V16L16 21H8L3 16V8Z"/><path d="M3 12H21M12 3L8 7V17L12 21M12 3L16 7V17L12 21"/></svg><span>{{ 'FR' if lang == 'en' else 'EN' }}</span></a>{% endif %}
+      {% for a in navigation.actions %}<a class="{{ a.style }}{% if a.label == rubrique %} actif{% endif %}" href="{{ a.url or '#' }}"{% if a.label == rubrique %} aria-current="page"{% endif %}>{{ a.label }}</a>{% endfor %}
+    </div>
+    {%- set menu_fermer = "commun.menu_fermer" | libelle(url_page) %}
+    <button class="burger" aria-label="{{ ("commun.menu_ouvrir" | libelle(url_page)) or "Ouvrir le menu" }}"{% if menu_fermer and menu_fermer != "Fermer le menu" %} data-libelle-fermer="{{ menu_fermer }}"{% endif %} aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7H20M4 12H20M4 17H20"/></svg><span aria-hidden="true">Menu</span></button>
+  </div>
+</header>
+{%- endmacro %}

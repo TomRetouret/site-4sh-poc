@@ -350,7 +350,7 @@
               - { label: "Réalisations · nom du carrousel", name: "projets_carrousel", widget: "string", hint: "Non affiché : nom du carrousel du bloc Réalisations (accueil), lu par les lecteurs d'écran. Ex. : Réalisations", required: false }
               - { label: "Secteurs · nom du carrousel", name: "secteurs_carrousel", widget: "string", hint: "Non affiché : nom du carrousel du bloc Secteurs (accueil), lu par les lecteurs d'écran. Ex. : Secteurs", required: false }
               - { label: "Chiffres animés · nom du bandeau", name: "chiffres_aria", widget: "string", hint: "Non affiché : nom du bandeau de chiffres quand il compte plus de 4 chiffres (pages Notre entreprise et Company), lu par les lecteurs d'écran. Ex. : Chiffres clés", required: false }
-              - { label: "Haut de page institutionnel · légende de l'illustration Entreprise", name: "illustration_entreprise", widget: "string", hint: "Phrase en italique rouge en haut du schéma des agences (illustration « entreprise » du haut de page, pages Notre entreprise et Company). Ex. : une communauté qui grandit", required: false }
+              - { label: "Haut de page institutionnel · légende de l'illustration Entreprise", name: "illustration_entreprise", widget: "string", hint: "Phrase en rouge en haut du schéma des agences (illustration « entreprise » du haut de page, pages Notre entreprise et Company). Ex. : une communauté qui grandit", required: false }
           - label: "Fiche formation"
             name: "formation"
             widget: "object"
@@ -547,7 +547,7 @@
         fields: &f_seo
           - { label: Adresse du site en production, name: url, widget: string, required: true, pattern: ['^https?://[^/]+$', "Adresse complète sans barre oblique finale, par exemple https://www.4sh.fr."], hint: "Sans barre oblique finale. Sert aux liens canoniques, au plan du site et au robots.txt. Par exemple : https://www.4sh.fr." }
           - { label: Autoriser l'indexation par les moteurs de recherche, name: indexation, widget: boolean, required: false, default: false, hint: "Décoché : tout le site est masqué aux moteurs (préproduction). À cocher à la mise en production." }
-          - { label: Titre par défaut, name: titre_defaut, widget: string, required: true, hint: "Onglet du navigateur et résultats Google, pour une page sans titre SEO propre. 60 caractères maximum." }
-          - { label: Description par défaut, name: description_defaut, widget: text, required: true, hint: "Pour une page sans description SEO propre. 155 caractères maximum." }
+          - { label: Titre par défaut, name: titre_defaut, widget: string, required: true, hint: "Onglet du navigateur et résultats Google, pour une page sans titre SEO propre. 50 à 60 caractères conseillés." }
+          - { label: Description par défaut, name: description_defaut, widget: text, required: true, hint: "Pour une page sans description SEO propre. 150 à 160 caractères conseillés." }
           - { label: Image de partage sur les réseaux sociaux, name: og_image, widget: image, required: false, choose_url: true, hint: "Image affichée quand une page est partagée (LinkedIn, X...). 1200 x 630 px conseillés." }
           - { label: Contenu du robots.txt, name: robots_txt, widget: text, required: true, hint: "Règles pour les robots des moteurs. La ligne Sitemap est ajoutée automatiquement." }

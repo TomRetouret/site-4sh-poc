@@ -21,7 +21,7 @@ blocs:
       texte: Nous contacter
       lien: "#contact"
     chapo: Texte de démonstration, à modifier pendant les tests.
-    titre_page: "[DÉMO] Page d'exemple"
+    titre_page: "[DÉMO] Page d'exemple 123"
   - type: faq
     masquer: false
     titre: Questions de démonstration

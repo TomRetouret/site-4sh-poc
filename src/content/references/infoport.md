@@ -77,6 +77,11 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/infoport/ref-infoport-3.png
     alt: InfoPort, visuel 3
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/infoport/illu-infoport.svg
+    intertitre: Les objectifs
+    alt: ''
+    decorative: true
 resume: Hub communautaire pour la gestion et le suivi du frêt maritime et aérien de La Réunion
 ordre: 9
 referencement:

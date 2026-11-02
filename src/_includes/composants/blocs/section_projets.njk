@@ -1,7 +1,7 @@
 {# Bloc « section_projets » : Section de projets (pages de prestation).
    Spécification : docs/back-office/schema-prestations.md
    Une carte par projet : texte saisi ; visuel, logo et secteur lus dans la fiche référence reliée
-   (ctx.references). Les fiches reliées ne sont pas répétées dans les références de bas de page. #}
+   (ctx.references). Les champs image et logo du projet, s'ils sont remplis, remplacent ceux de la fiche. Les fiches reliées ne sont pas répétées dans les références de bas de page. #}
 {% import "composants/blocs/_section.njk" as s %}
 {% macro bloc(b, ctx, serre) %}
 {% set projets = b.projets or [] %}
@@ -9,11 +9,17 @@
 {%- set ref = (ctx.references | ficheReference(p.reference)) if ctx else null %}
 {%- set d = ref.data if ref else {} %}
 {%- set lien = p.lien or (ref.url if ref else "") %}
-<div class="sect-ref-carte"><div class="sect-ref-visuel{% if not d.image %} ref-visuel--vide{% endif %}">
-{%- if d.image %}<img src="{{ d.image | echappeSection | safe }}" alt="{{ d.titre | echappeSection | safe }}" loading="lazy" decoding="async">
+{#- Visuel et logo propres au projet (champs image et logo, facultatifs) : prioritaires sur ceux de la fiche. #}
+{%- set pi = p.image or {} %}{% set pl = p.logo or {} %}
+{%- set visuel = pi.fichier or d.image %}
+{%- set visuel_alt = (("" if pi.decorative else pi.alt) if pi.fichier else d.titre) %}
+{%- set logo = pl.fichier or d.logo %}
+{%- set logo_alt = ((pl.alt or d.client) if pl.fichier else d.client) %}
+<div class="sect-ref-carte"><div class="sect-ref-visuel{% if not visuel %} ref-visuel--vide{% endif %}">
+{%- if visuel %}<img src="{{ visuel | echappeSection | safe }}" alt="{{ visuel_alt | echappeSection | safe }}" loading="lazy" decoding="async">
 {%- elif d.client %}<span class="ref-vide-nom">{{ d.client | echappeSection | safe }}</span>
 {%- else %}<span class="ref-vide-nom">{{ p.titre | nomProjetSection | safe }}</span>{% endif %}
-{%- if d.logo %}<div class="ref-cartouche"><img src="{{ d.logo | echappeSection | safe }}" alt="{{ d.client | echappeSection | safe }}" loading="lazy" decoding="async"></div>
+{%- if logo %}<div class="ref-cartouche"><img src="{{ logo | echappeSection | safe }}" alt="{{ logo_alt | echappeSection | safe }}" loading="lazy" decoding="async"></div>
 {%- elif d.client %}<div class="ref-cartouche"><span class="ref-cartouche-txt">{{ d.client | echappeSection | safe }}</span></div>{% endif -%}
 </div><div class="sect-ref-corps"><span class="sect-ref-label">{% if d.secteurs and d.secteurs.length %}{{ d.secteurs[0] | echappeSection | safe }}{% else %}Projet{% endif %}</span><h3>{{ p.titre | mdTitre | safe }}</h3><div class="sect-ref-texte">{{ p.texte | mdSection | safe }}</div>
 {%- if lien %}<a class="socle-lien" href="{{ lien | echappeSection | safe }}"{% if lien | adresseExterne %} target="_blank" rel="noopener"{% endif %}>{{ (p.lien_texte or "Voir la référence") | echappeSection | safe }} &rarr;</a>{% endif -%}

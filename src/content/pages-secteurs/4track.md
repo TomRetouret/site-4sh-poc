@@ -40,7 +40,10 @@ sections:
   - titre: Analyse de la charge et détection des dépassements
     texte: Identifiez immédiatement les dérives, comparez RAF et réalisé, et sécurisez votre rentabilité projet.
   - titre: Intégration avec vos outils de gestion existants
-    texte: 4Track s'intègre dans votre écosystème, notamment avec votre [logiciel métier sur mesure](/prestations/logiciel-metier/), pour éviter les doubles saisies et garantir la cohérence des données.
+    texte: |-
+      4Track s'intègre dans votre écosystème, notamment avec votre [logiciel métier sur mesure](/prestations/logiciel-metier/), pour éviter les doubles saisies et garantir la cohérence des données.
+
+      ![Capture d'écran 4Track - suivi du temps par projet et par collaborateur](/uploads/ancien-site/assets/img/png/4track-screen.png)
 - titre: '4Track + 4PM : la combinaison gagnante'
   texte: |-
     4Track prend tout son sens lorsqu'il est connecté à **4PM**.
@@ -53,6 +56,8 @@ sections:
     - Vous ajustez immédiatement vos décisions
 
     Avec 4Track + 4PM, vous maîtrisez vos projets.
+
+    ![Schéma 4Track + 4PM - combinaison time tracking et gestion de projet](/uploads/ancien-site/assets/img/png/four-track-pm.png)
 
     [Découvrir 4PM](/secteurs/4pm/)
 - titre: Pourquoi choisir 4Track plutôt qu'un autre outil de time tracking ?

@@ -72,6 +72,11 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/beclm/ref-beclm-3.png
     alt: BeCLM, visuel 3
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/beclm/beclm-illustration.png
+    intertitre: Les objectifs
+    alt: ''
+    decorative: true
 resume: Le digital au service de la conformité
 ordre: 6
 referencement:

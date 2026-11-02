@@ -103,7 +103,7 @@ layout: base.njk
     {% if formations_intro %}<p class="sec-sous">{{ formations_intro }}</p>{% endif %}
     <div class="socle" style="grid-template-columns:repeat(3,1fr)">
       {% for f in formations %}{% set fiche_formation = collections.formations | ficheParSlug(f.formation) %}
-      <a class="socle-carte" href="{{ fiche_formation.url if fiche_formation else '#' }}"><h3>{{ f.titre }}</h3><span class="socle-lien">Découvrir →</span></a>
+      <a class="socle-carte" href="{{ fiche_formation.url if fiche_formation else '#' }}">{% if fiche_formation and fiche_formation.data.image %}{% image fiche_formation.data.image, "", { loading: "lazy" } %}{% endif %}<h3>{{ f.titre }}</h3><span class="socle-lien">Découvrir →</span></a>
       {% endfor %}
     </div>
   </div>

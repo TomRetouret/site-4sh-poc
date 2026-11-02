@@ -60,7 +60,10 @@ sections:
 - titre: Références clients
   sous_parties:
   - titre: EDF business services - App Mobile
-    texte: Solution de promotion et commercialisation des solutions de recharges électriques [Voir la référence](/references/izivia-app-mobile/)
+    texte: |-
+      ![Référence EDF business services Mobile](/uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile-sm.png)
+
+      Solution de promotion et commercialisation des solutions de recharges électriques [Voir la référence](/references/izivia-app-mobile/)
   - titre: Borne Recharge Service
 appel:
   titre: Vous avez un projet ?

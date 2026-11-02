@@ -13,6 +13,8 @@ sections:
 
     Il vous aide à planifier, suivre et réussir vos projets, du plus simple au plus complexe.
 
+    ![Capture d'écran 4PM - tableau de bord de gestion de projet collaboratif](/uploads/ancien-site/assets/img/png/4pm-screen.png)
+
     [Demandez une démo](/contact/)
   sous_parties:
   - titre: 'Les fonctionnalités de notre outil collaboratif de gestion de projet :'
@@ -28,7 +30,10 @@ sections:
 
       Résultat : une meilleure visibilité sur vos projets et une organisation sans faille.
 - titre: 4Track – Le suivi du temps de travail intégré à vos projets
-  texte: '**4Track** est le module de suivi du temps directement connecté à vos projets. Il permet de mesurer précisément le temps passé sur chaque tâche, d’optimiser la facturation et d’améliorer la rentabilité.'
+  texte: |-
+    **4Track** est le module de suivi du temps directement connecté à vos projets. Il permet de mesurer précisément le temps passé sur chaque tâche, d’optimiser la facturation et d’améliorer la rentabilité.
+
+    ![Capture d'écran 4Track - suivi du temps par projet et par collaborateur](/uploads/ancien-site/assets/img/png/4track-screen.png)
   sous_parties:
   - titre: 'Les fonctionnalités proposées :'
     texte: |-
@@ -50,7 +55,10 @@ sections:
 
     [Demandez une démo](/contact/)
 - titre: 4Desk - Centralisez vos demandes de support
-  texte: Pour compléter la gestion de vos projets et du temps, **4Desk** vous aide à centraliser vos demandes de support.
+  texte: |-
+    Pour compléter la gestion de vos projets et du temps, **4Desk** vous aide à centraliser vos demandes de support.
+
+    ![Capture d'écran 4Desk - gestion des tickets et demande de support](/uploads/ancien-site/assets/img/png/4desk-screen.png)
   sous_parties:
   - titre: Gestion des tickets et suivi en temps réel
     texte: |-
@@ -74,7 +82,9 @@ sections:
   texte: '[Voir toutes nos références](/references/)'
   sous_parties:
   - titre: '[BeCLM - Conformité réglementaire](/references/beclm/)'
+    texte: '<!-- Carte de la fiche référence (visuel et logo) : /references/beclm/ -->'
   - titre: '[CIN - Fret aérien](/references/cin/)'
+    texte: '<!-- Carte de la fiche référence (visuel et logo) : /references/cin/ -->'
 - titre: Pourquoi choisir nos outils plutôt qu'un outil généraliste ?
   sous_parties:
   - titre: Un outil pensé pour la rentabilité projet, pas seulement l'organisation

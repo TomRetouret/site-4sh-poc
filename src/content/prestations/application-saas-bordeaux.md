@@ -51,12 +51,21 @@ blocs:
   projets:
   - titre: 'Ma Rénov (Bordeaux Métropole) : le SaaS de la rénovation énergétique'
     reference: marenov
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/marenov/ref-marenov.png
+      alt: Référence Bordeaux Ma Rénov
     texte: '[Ma Rénov](/references/marenov/) est un service public qui facilite et sécurise les projets de rénovation énergétique des particuliers. Un cas d’école de plateforme qui doit rester simple pour l’usager tout en outillant des professionnels et des collectivités.'
   - titre: 'C’Fluide : gestion réglementaire des fluides frigorigènes'
     reference: cfluide
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/cfluide/ref-cfluide4.png
+      alt: Référence C'Fluide
     texte: '[C’Fluide](/references/cfluide/) accompagne les professionnels du froid et du génie climatique dans leur gestion réglementaire. Un métier où la traçabilité n’est pas une option, et où une saisie oubliée devient un problème de conformité.'
   - titre: 'Time To Beem : plateforme web de la construction durable'
     reference: timetobeem
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem.png
+      alt: Référence Time To Beem
     texte: '[Time To Beem](/references/timetobeem/) est une plateforme web dédiée à l’avenir de la construction durable. Un secteur en pleine structuration, où l’outil doit suivre des usages qui bougent vite.'
   boutons:
   - texte: Voir toutes nos références

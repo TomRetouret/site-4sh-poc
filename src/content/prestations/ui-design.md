@@ -8,6 +8,9 @@ entete:
   bouton:
     texte: Contactez-nous
     lien: /contact/
+  illustration:
+    fichier: /uploads/ancien-site/assets/img/svg/offers/illu-build-design.svg
+    decorative: true
 blocs:
 - type: section_texte
   disposition: empile

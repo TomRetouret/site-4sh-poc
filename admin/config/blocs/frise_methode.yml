@@ -72,3 +72,27 @@ type:
           widget: text
           required: true
           hint: 35 mots maximum.
+        - label: Illustration
+          name: image
+          widget: object
+          required: false
+          collapsed: true
+          summary: '{{fields.fichier}}'
+          hint: Illustration facultative affichée en entier au-dessus du numéro de l'étape. Si aucune étape n'en a, la frise garde son rendu habituel.
+          fields:
+            - label: Image
+              name: fichier
+              widget: image
+              required: false
+              hint: PNG transparent ou SVG de préférence, carré, 800 px environ.
+            - label: Texte alternatif
+              name: alt
+              widget: string
+              required: false
+              hint: 'Obligatoire sauf si l''image est décorative. Pour un logo : le nom de l''organisation. 120 caractères maximum.'
+            - label: Image décorative (aucune information à transmettre)
+              name: decorative
+              widget: boolean
+              required: false
+              default: false
+              hint: Cochez pour une illustration d'ambiance qui n'apporte rien au texte. Le texte alternatif est alors ignoré.

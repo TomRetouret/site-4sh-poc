@@ -1,0 +1,18 @@
+/* Images remises de l'ancien site sur les pages de prestation (2 novembre 2026).
+   Chargée par src/_includes/prestation.njk seulement si la page a une illustration d'en-tête
+   ou une illustration de carte. Couleurs et marges de la charte : ni ombre ni coin arrondi.
+   Spécification : docs/back-office/schema-prestations.md */
+
+/* Illustration de l'en-tête : à droite du texte sur ordinateur, masquée en dessous de 1024 px
+   (comme sur l'ancien site, qui la masquait sur téléphone). */
+.presta-hero-illu{display:none;margin:0}
+@media (min-width:1024px){
+  .sect-hero--illu .container{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,38%);column-gap:56px;align-items:center}
+  .sect-hero--illu .presta-hero-illu{display:block}
+  .presta-hero-illu img{display:block;width:100%;height:auto;max-height:400px;object-fit:contain}
+}
+
+/* Illustration en tête de carte (section_cartes) */
+.sect-defi-illu{display:block;margin:0 0 18px}
+.sect-defi-illu img{display:block;width:auto;max-width:100%;height:auto;max-height:140px;object-fit:contain}
+@media (max-width:767px){.sect-defi-illu img{max-height:110px}}

@@ -60,6 +60,11 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/tekcar/ref-tekcar2.png
     alt: Tekcar, visuel 2
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/tekcar/tekcar-illustration.svg
+    intertitre: Les objectifs
+    alt: ''
+    decorative: true
 resume: Order - Application de gestion d'interventions
 ordre: 17
 referencement:

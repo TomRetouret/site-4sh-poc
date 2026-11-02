@@ -8,6 +8,9 @@ entete:
   bouton:
     texte: Demander un audit de sécurité informatique
     lien: /contact/
+  illustration:
+    fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run-securite.svg
+    decorative: true
 blocs:
 - type: section_texte
   disposition: empile
@@ -183,11 +186,17 @@ blocs:
       Notre service de data vous aide à collecter, gérer et exploiter vos données de manière sécurisée pour des analyses précises et des décisions stratégiques.
 
       [Découvrir](/prestations/data/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run-data.svg
+      decorative: true
   - titre: Maintenance corrective
     texte: |-
       Notre pôle maintenance s’engage à garantir la fiabilité et la sécurité de votre solution. Notre service de maintenance corrective fait partie intégrante de l’offre 4SH RUN, prestataire d’infogérance logicielle.
 
       [Découvrir](/prestations/maintenance-corrective/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run-maintenance-corrective.svg
+      decorative: true
 faq_titre: FAQ - Audit de sécurité informatique pour entreprises
 faq:
 - question: À quoi sert un audit de sécurité informatique ?

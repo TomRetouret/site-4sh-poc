@@ -82,15 +82,34 @@ image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile.png
 image_alt: EDF business service - App Mobile
 image_decorative: false
 galerie:
-  - image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile-1.png
-    alt: EDF business service - App Mobile, visuel 1
-    decorative: false
   - image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile-slide-2.png
-    alt: EDF business service - App Mobile, visuel 2
+    alt: Itinéraire avec étapes de recharge dans l'application mobile EDF business services
     decorative: false
   - image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile-slide-3.png
-    alt: EDF business service - App Mobile, visuel 3
+    alt: Suivi d'une charge et carte des bornes dans l'application mobile EDF business services
     decorative: false
+  - image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile-slide-4.png
+    alt: Tableau de bord des charges dans l'application mobile EDF business services
+    decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/edfbs/illu-edfbs-car.png
+    intertitre: Nos missions & Objectifs
+    alt: ''
+    decorative: true
+  - image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile-1.png
+    intertitre: Nos missions & Objectifs
+    alt: Itinéraire et recherche de bornes dans l'application mobile EDF business services
+    decorative: false
+  - image: /uploads/ancien-site/assets/img/png/references/edfbs/illu-edfbs-particuliers.png
+    intertitre: Les points clés du projet
+    alt: ''
+    decorative: true
+  - image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile-4.png
+    intertitre: Les points clés du projet
+    alt: Suivi d'une charge et carte des bornes en Europe dans l'application mobile
+    decorative: false
+image_carte: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile-sm.png
+image_carte_alt: 'Écrans de l''application mobile EDF business services : carte et itinéraire de recharge'
 resume: Solution de promotion et commercialisation des solutions de recharges électriques
 ordre: 3
 referencement:

@@ -62,6 +62,28 @@ type:
           widget: string
           required: false
           hint: 'Facultatif. Si rempli, toute la carte devient un lien « Découvrir » vers cette adresse et seul le titre est affiché.'
+        - label: Illustration
+          name: illustration
+          widget: object
+          required: false
+          collapsed: true
+          summary: '{{fields.fichier}}'
+          hint: "Facultatif. Petite illustration affichée en tête de la carte (SVG ou PNG). Pas de pictogramme décoratif : la charte les fournit."
+          fields:
+            - label: Image
+              name: fichier
+              widget: image
+              required: false
+            - label: Texte alternatif
+              name: alt
+              widget: string
+              required: false
+              hint: Obligatoire sauf si l'image est décorative. Une phrase, 120 caractères maximum.
+            - label: Image décorative (aucune information à transmettre)
+              name: decorative
+              widget: boolean
+              required: false
+              default: false
     - label: Boutons
       name: boutons
       widget: list

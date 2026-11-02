@@ -69,6 +69,11 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-3.png
     alt: EDF business service - Professionnel, visuel 3
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/edfbs/illu-edfbs.png
+    intertitre: Les objectifs
+    alt: ''
+    decorative: true
 resume: Application sous forme de portail professionnel pour la gestion de parc de voitures électriques
 ordre: 4
 referencement:

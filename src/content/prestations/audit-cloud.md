@@ -187,20 +187,30 @@ blocs:
   projets:
   - titre: BECLM
     reference: beclm
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/beclm/ref-beclm.png
+      alt: Référence BeCLM
   - titre: Infoport - Fret maritime
     reference: infoport
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/infoport/ref-infoport.png
+      alt: Référence Infoport
   boutons:
   - texte: Découvrez nos références
     lien: /references/
-- type: section_texte
+- type: texte_image
   titre: Planifiez votre audit Cloud
   texte: |-
     Un environnement Cloud à optimiser, sécuriser ou rationaliser ?
 
     4SH vous accompagne avec une expertise Cloud, DevOps et FinOps pour une infrastructure fiable, performante et évolutive.
-  disposition: empile
-  boutons:
-  - texte: Planifier un audit maintenant
+  image:
+    fichier: /uploads/ancien-site/assets/img/png/picture-audit-cloud.png
+    alt: Un expert 4SH concentré devant ses écrans
+    cadrage: centre
+  position_image: gauche
+  bouton:
+    texte: Planifier un audit maintenant
     lien: /contact/
 faq_titre: FAQ - Audit Cloud
 faq:

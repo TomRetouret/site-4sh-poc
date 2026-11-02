@@ -65,6 +65,11 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/c21/ref-c21-3.png
     alt: Naxos - Century 21, visuel 3
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/c21/illu-ref-c21.png
+    intertitre: Les objectifs
+    alt: ''
+    decorative: true
 resume: Century 21 - Application mobile du conseiller
 ordre: 11
 referencement:

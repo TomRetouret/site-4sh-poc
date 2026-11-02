@@ -65,6 +65,7 @@ sections:
     [Découvrez nos références](/references/)
   sous_parties:
   - titre: '[EDF business services](/references/izivia-portail/)'
+    texte: '![Référence EDF business services](/uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-2.png)'
 faq_titre: 'FAQ : Simulateur borne de recharge'
 faq:
 - question: Qu'est-ce qu'un simulateur de borne de recharge ?

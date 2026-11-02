@@ -38,10 +38,16 @@
 {%- else %}<div class="{{ 'sect-refs-inline' if variante == 'refs' else 'sect-defis' }}">{{ caller() }}</div>{% endif %}
 {%- endmacro %}
 
+{# Illustration facultative en tête de carte (champ illustration de section_cartes, ajouté pour
+   remettre les illustrations de l'ancien site). Sans illustration : rien, balisage inchangé. #}
+{% macro illustration(e) -%}
+{% set i = e.illustration or {} %}{% if i.fichier %}<span class="sect-defi-illu">{% image i.fichier, ('' if i.decorative else i.alt), { sizes: "240px" } %}</span>{% endif %}
+{%- endmacro %}
+
 {# Carte (section_cartes) ou atout (section_atouts). Avec un lien, toute la carte est cliquable. #}
 {% macro carte(e, classe) -%}
-{% if e.lien %}<a class="{{ classe }} sect-defi--lien" href="{{ e.lien | echappeSection | safe }}"><h3>{{ e.titre | mdTitre | safe }}</h3><span class="socle-lien">Découvrir &rarr;</span></a>
-{%- else %}<div class="{{ classe }}">{% if e.titre %}<h3>{{ e.titre | mdTitre | safe }}</h3>{% endif %}{{ e.texte | mdSection | safe }}</div>{% endif %}
+{% if e.lien %}<a class="{{ classe }} sect-defi--lien" href="{{ e.lien | echappeSection | safe }}">{{ illustration(e) }}<h3>{{ e.titre | mdTitre | safe }}</h3><span class="socle-lien">Découvrir &rarr;</span></a>
+{%- else %}<div class="{{ classe }}">{{ illustration(e) }}{% if e.titre %}<h3>{{ e.titre | mdTitre | safe }}</h3>{% endif %}{{ e.texte | mdSection | safe }}</div>{% endif %}
 {%- endmacro %}
 
 {# Enveloppe d'une section ordinaire : numéro, titre, introduction, contenu (caller), boutons #}

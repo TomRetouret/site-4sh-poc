@@ -9,7 +9,17 @@
     {% if b.surtitre %}<p class="eyebrow">{{ b.surtitre }}</p>{% endif %}
     <h2 class="sec-titre">{{ b.titre | accent | safe }}</h2>
     {% if b.sous_titre %}<p class="sec-sous">{{ b.sous_titre }}</p>{% endif %}
+    {%- set fichiers_etapes %}{% for e in b.etapes %}{% if e.image %}{{ e.image.fichier }}{% endif %}{% endfor %}{% endset %}
+    {% if fichiers_etapes | trim %}
+    {# Même balisage que frise_etapes (composants/sections.njk), avec l'illustration facultative de chaque étape au-dessus du numéro. #}
+    <div class="etapes">
+      {% for e in b.etapes | etapesFrise %}{% set im = b.etapes[loop.index0].image or {} %}
+      <div class="etape">{% if im.fichier %}<div style="height:160px;margin-bottom:20px">{% image im.fichier, ('' if im.decorative else im.alt), { sizes: "320px", style: "width:100%;height:100%;object-fit:contain;object-position:left center" } %}</div>{% endif %}<span class="num">{{ e.num }}</span><span class="num-label">{{ e.label }}</span><h3>{{ e.titre }}</h3><p>{{ e.texte }}</p></div>
+      {% endfor %}
+    </div>
+    {% else %}
     {{ frise_etapes(b.etapes | etapesFrise) }}
+    {% endif %}
   </div>
 </section>
 {% endmacro %}

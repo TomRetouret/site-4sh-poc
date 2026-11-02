@@ -50,12 +50,24 @@ blocs:
   projets:
   - titre: 'EDF Business Services : portail SaaS de gestion de parc électrique'
     reference: izivia-portail
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-portail.png
+      alt: Référence EDF business services Portail
     texte: 'Pour [EDF Business Services](/references/izivia-portail/), nous avons développé un portail professionnel de gestion de parc de véhicules électriques. Un cas typique de grand compte : beaucoup d’utilisateurs, des profils très différents, une intégration au système d’information existant.'
   - titre: 'BeCLM : plateforme SaaS de conformité réglementaire (KYC, LAB-FT)'
     reference: beclm
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/beclm/ref-beclm.png
+      alt: Référence BeCLM
     texte: '[BeCLM](/references/beclm/) met le digital au service de la conformité : KYC, lutte anti-blanchiment, gestion des personnes politiquement exposées. Un domaine où l’erreur se paie en sanction réglementaire, et où la traçabilité de chaque décision compte autant que la fonctionnalité.'
   - titre: 'Acteos : SaaS de gestion logistique (TMS)'
     texte: Acteos édite des solutions de gestion logistique, dont un TMS que nous avons co-produit. La logistique est l’un de nos [secteurs historiques](/secteurs/logistique/), avec des contraintes de volume et de temps réel qui ne pardonnent pas l’à-peu-près.
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/acteos/ref-acteos.png
+      alt: Référence Acteos
+    logo:
+      fichier: /uploads/ancien-site/assets/img/svg/acteos.svg
+      alt: Logo Acteos
   boutons:
   - texte: Voir toutes nos références
     lien: /references/

@@ -101,8 +101,21 @@
           - { label: "Image", name: "image", widget: "image", required: true, choose_url: true }
           - { label: "Texte alternatif", name: "alt", widget: "string", required: false, maxlength: 120, hint: "Obligatoire sauf image décorative : ce que montre l'écran, 120 caractères maximum." }
           - { label: "Image décorative", name: "decorative", widget: "boolean", required: false, default: false, hint: "Cochez seulement si l'image n'apporte aucune information." }
+      - label: "Visuels · Images dans l'étude de cas"
+        name: "illustrations"
+        widget: "list"
+        required: false
+        hint: "Facultatif. Chaque image s'affiche dans l'étude de cas, à la fin de la partie qui suit l'intertitre indiqué (avant l'intertitre suivant)."
+        summary: "{{intertitre}} : {{alt}}"
+        fields:
+          - { label: "Image", name: "image", widget: "image", required: true, choose_url: true }
+          - { label: "Après l'intertitre", name: "intertitre", widget: "string", required: false, hint: "Intertitre exact de l'étude de cas (ex. : Les objectifs). Vide ou introuvable : l'image s'affiche à la fin de l'étude de cas." }
+          - { label: "Texte alternatif", name: "alt", widget: "string", required: false, maxlength: 120, hint: "Obligatoire sauf image décorative : ce que montre l'image, 120 caractères maximum." }
+          - { label: "Image décorative", name: "decorative", widget: "boolean", required: false, default: false, hint: "Cochez pour une illustration sans information (le texte alternatif est alors ignoré). Une image décorative s'affiche à 420 px de large au plus." }
 
       # --- Carte de liste ---
+      - { label: "Carte de liste · Visuel de la carte", name: "image_carte", widget: "image", required: false, choose_url: true, hint: "Facultatif. Visuel de la carte sur la page Nos réussites, s'il doit différer du visuel principal. Vide : le visuel principal est utilisé." }
+      - { label: "Carte de liste · Texte alternatif du visuel de la carte", name: "image_carte_alt", widget: "string", required: false, maxlength: 120, hint: "Ce que montre le visuel de la carte. Vide : le nom du projet." }
       - { label: "Carte de liste · Résumé", name: "resume", widget: "text", required: true, maxlength: 160, hint: "160 caractères maximum. Affiché sur la carte de la page Nos réussites (et sur la fiche si le sous-titre est vide)." }
       - { label: "Carte de liste · Position", name: "ordre", widget: "number", required: false, value_type: "int", min: 1, hint: "Nombre entier : le plus petit s'affiche en premier. Sert aussi à la navigation entre projets." }
 

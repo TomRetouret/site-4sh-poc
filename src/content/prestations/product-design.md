@@ -59,6 +59,9 @@ blocs:
   projets:
   - titre: TIME TO BEEM Plateforme web dédiée à l’avenir de la construction durable.
     reference: timetobeem
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem.png
+      alt: Référence Time To Beem
   - titre: Viniclip Console tactile mettant à la disposition des vinificateurs une solution de régulation conviviale.
     lien: https://www.behance.net/gallery/215130787/Branding-Viniclip
 - type: section_texte

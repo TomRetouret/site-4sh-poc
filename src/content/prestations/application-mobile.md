@@ -46,17 +46,35 @@ blocs:
     texte: Capacitor est un outil moderne de création d’applications hybrides qui exploite vos composants web dans des conteneurs natifs. Flexible et puissant, il est parfaitement adapté aux projets de **création logiciel sur mesure** avec des exigences mobiles.
   - titre: PWA
     texte: Nous utilisons les dernières technologies web pour développer des Progressive Web Apps responsives, rapides et fiables. Les PWA représentent une solution agile et économique pour votre stratégie mobile.
-- type: section_atouts
+- type: section_projets
   titre: Réalisations clients
-  atouts:
+  projets:
   - titre: '[EDF business services - Électromobilité](https://play.google.com/store/apps/details?id=com.izivia.izivia)'
     texte: L'application mobile edfbs simplifie vos déplacements en véhicule électrique en vous donnant accès à plus de 300 000 points de recharge à travers l'Europe, dont plus de 100 000 en France. Elle offre des fonctionnalités telles que la géolocalisation, la gestion des sessions de recharge et le suivi de la consommation.
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-portail.png
+      alt: Référence edfbs Portail
+    logo:
+      fichier: /uploads/ancien-site/assets/img/png/references/edfbs/logo-edfbs.png
+      alt: Logo edfbs
   - titre: '[Filhet-Allard - Assurance](https://play.google.com/store/apps/details?id=com.filhetallard.adp.extranet)'
     texte: Filhet-Allard et Moi est une application mobile sécurisée dédiée aux assurés de la complémentaire santé Filhet-Allard. Gratuite et compatible avec les appareils Apple et Android, elle offre une gestion simplifiée de vos démarches santé.
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/fa/ref-fa-1.png
+      alt: Référence Filhet-Allard
+    logo:
+      fichier: /uploads/ancien-site/assets/img/png/references/fa/logo-fa.png
+      alt: Logo Filhet Allard
   - titre: '[CHEP - Logistique](https://play.google.com/store/apps/details?id=com.chep.bluecode.mobile)'
     texte: BlueCode est une application mobile qui facilite la localisation et le signalement des palettes hors circuit. En optimisant la récupération de plus de 400 millions d’unités, elle contribue à réduire déchets, émissions de carbone et gaspillage des ressources.
   - titre: '[Naxos - Immobilier](https://play.google.com/store/apps/details?id=fr.naxos.marguerite.guyhoquet.mobile)'
     texte: Marguerite Mobile est une application conçue spécifiquement pour les conseillers immobiliers du réseau Guy Hoquet, visant à faciliter leur prospection et la gestion de leurs biens.
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/naxos/ref-marguerite-1.png
+      alt: Référence Marguerite
+    logo:
+      fichier: /uploads/ancien-site/assets/img/png/references/c21/logo-naxos.png
+      alt: Logo Naxos
 - type: section_atouts
   atouts:
   - titre: Développement d’application mobile à Paris

@@ -2,6 +2,9 @@
    Fond sombre : .section-nuit (fond nuit de la charte, charte.css) ; .section-sombre reste en fond clair pour la Méthode 4D.
    Retour à la ligne dans le texte = nouvelle ligne (adresses). Mot entre *astérisques* en rouge.
    Spécification : docs/back-office/schema-pages.md. Styles : charte du site (.socle, .offres-liees). #}
+{# Image facultative de carte (illustration ou logo) : affichée entière et centrée (comme le texte des cartes), au-dessus du titre ;
+   rien n'est produit sans fichier (rendu des cartes sans image inchangé). #}
+{% macro image_carte(c) %}{% set im = c.image or {} %}{% if im.fichier %}<div style="height:{{ '72px' if im.format == 'logo' else '180px' }};margin-bottom:20px">{% image im.fichier, ('' if im.decorative else im.alt), { sizes: "320px", style: "width:100%;height:100%;object-fit:contain" } %}</div>{% endif %}{% endmacro %}
 {% macro bloc(b, ctx) %}
 {%- set sombre = b.fond == "sombre" %}
 <!-- CARTES TEXTE -->
@@ -13,13 +16,13 @@
     {% if b.presentation == "colonnes" %}
     <div class="offres-liees">
       {% for c in b.cartes %}
-      <div class="col-carte"><h3>{{ c.titre }}</h3>{% if c.texte %}<p style="font-size:15px;color:var({{ '--sur-nuit' if sombre else '--texte-2' }})">{{ c.texte | escape | replace("\n", "<br>") | accent | safe }}</p>{% endif %}{% if c.lien and c.lien.lien and c.lien.texte %}<a class="socle-lien" href="{{ c.lien.lien }}"{% if "://" in c.lien.lien %} target="_blank" rel="noopener"{% endif %}>{{ c.lien.texte }} &rarr;</a>{% endif %}</div>
+      <div class="col-carte">{{ image_carte(c) }}<h3>{{ c.titre }}</h3>{% if c.texte %}<p style="font-size:15px;color:var({{ '--sur-nuit' if sombre else '--texte-2' }})">{{ c.texte | escape | replace("\n", "<br>") | accent | safe }}</p>{% endif %}{% if c.lien and c.lien.lien and c.lien.texte %}<a class="socle-lien" href="{{ c.lien.lien }}"{% if "://" in c.lien.lien %} target="_blank" rel="noopener"{% endif %}>{{ c.lien.texte }} &rarr;</a>{% endif %}</div>
       {% endfor %}
     </div>
     {% else %}
     <div class="socle"{% if b.colonnes == "2" or b.colonnes == "3" or b.colonnes == "4" %} style="grid-template-columns:repeat({{ b.colonnes }},1fr)"{% endif %}>
       {% for c in b.cartes %}
-      <div class="socle-carte"><h3>{{ c.titre }}</h3>{% if c.texte %}<p style="font-size:14.5px;color:var({{ '--sur-nuit' if sombre else '--texte-2' }})">{{ c.texte | escape | replace("\n", "<br>") | accent | safe }}</p>{% endif %}{% if c.lien and c.lien.lien and c.lien.texte %}<a class="socle-lien" href="{{ c.lien.lien }}"{% if "://" in c.lien.lien %} target="_blank" rel="noopener"{% endif %}>{{ c.lien.texte }} &rarr;</a>{% endif %}</div>
+      <div class="socle-carte">{{ image_carte(c) }}<h3>{{ c.titre }}</h3>{% if c.texte %}<p style="font-size:14.5px;color:var({{ '--sur-nuit' if sombre else '--texte-2' }})">{{ c.texte | escape | replace("\n", "<br>") | accent | safe }}</p>{% endif %}{% if c.lien and c.lien.lien and c.lien.texte %}<a class="socle-lien" href="{{ c.lien.lien }}"{% if "://" in c.lien.lien %} target="_blank" rel="noopener"{% endif %}>{{ c.lien.texte }} &rarr;</a>{% endif %}</div>
       {% endfor %}
     </div>
     {% endif %}

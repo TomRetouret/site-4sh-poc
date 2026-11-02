@@ -21,7 +21,10 @@ sections:
   - titre: Des clients qui relancent parce qu'ils n'ont aucun retour
     texte: Un client qui relance, c'est un client qui doute. Sans accusé de réception ni visibilité sur l'avancement, il rappelle, réécrit, s'impatiente. Vous répondez deux fois à la même chose. Le temps file, la relation se tend.
 - titre: Ce que fait 4Desk
-  texte: '4Desk fait une chose et la fait bien : la gestion des tickets, du premier contact jusqu''à la résolution. Voici concrètement ce que vous y gagnez.'
+  texte: |-
+    4Desk fait une chose et la fait bien : la gestion des tickets, du premier contact jusqu'à la résolution. Voici concrètement ce que vous y gagnez.
+
+    ![Capture d'écran 4Desk - Outil de ticketing](/uploads/ancien-site/assets/img/png/4desk-screen.png)
   sous_parties:
   - titre: Centralisation de toutes les demandes dans une interface unique
     texte: Toutes vos sollicitations atterrissent dans une seule interface, quel que soit leur canal d'origine. Fini le système de ticketing éparpillé entre boîtes mail et fichiers partagés. Un centre d'aide unique, où rien ne se perd.

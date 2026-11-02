@@ -108,14 +108,16 @@ blocs:
       **Planifier et déployer les correctifs**
 
       Nous vous aidons à mettre en œuvre les améliorations et à mesurer l’impact sur vos utilisateurs.
-- type: section_texte
-  disposition: bandeau
-  texte: |-
-    Une interface à repenser, des obligations à respecter ou un parcours utilisateur à fluidifier ?
-
-    4SH vous accompagne avec une approche centrée utilisateur, accessible et sur mesure.
-  boutons:
-  - texte: Planifier un audit maintenant
+- type: texte_image
+  titre: Une interface à repenser, des obligations à respecter ou un parcours utilisateur à fluidifier ?
+  texte: 4SH vous accompagne avec une approche centrée utilisateur, accessible et sur mesure.
+  image:
+    fichier: /uploads/ancien-site/assets/img/png/audit-ux-picture.png
+    alt: Deux membres de l'équipe 4SH analysent une interface sur un ordinateur portable
+    cadrage: centre
+  position_image: gauche
+  bouton:
+    texte: Planifier un audit maintenant
     lien: /contact/
 referencement:
   meta_title: Audit UX et accessibilité numérique - 4SH

@@ -85,6 +85,17 @@ Sur les blocs visibles, dans l'ordre : le fond est blanc, puis gris clair une se
 - Les projets : avant, détectés par les liens `/references/...` du texte. Désormais la relation « Fiche référence reliée ».
 - Non repris (aucune page ne l'utilisait) : la section qui met en avant une seule référence à côté du texte (`sect-bloc--ref`). Le script de migration la signale s'il la rencontre.
 
+## Images (remise des images de l'ancien site, 2 novembre 2026)
+
+Toutes facultatives ; sans elles, le rendu est inchangé. Fichiers sous `/uploads/ancien-site/`.
+- **Illustration de l'en-tête** (`entete.illustration` : `fichier`, `alt`, `decorative`, cochée par défaut) : ajoutée par `prestation.njk` dans le hero (classe `sect-hero--illu`, `figure.presta-hero-illu`), à droite du texte à partir de 1024 px, masquée en dessous (comme sur l'ancien site). Le macro `hero` de `composants/page.njk` n'est pas modifié.
+- **Illustration de carte** (`section_cartes`, champ `illustration` de chaque carte, même forme) : `span.sect-defi-illu` en tête de la carte (macro `carte` de `_section.njk`), aussi dans une carte cliquable.
+- **Visuel et logo de projet** (`section_projets`, champs `image` et `logo` de chaque projet, même forme) : remplacent le visuel et le logo de la fiche reliée ; utiles pour un projet sans fiche ou quand l'ancienne page montrait un autre visuel que la fiche.
+- **Texte et image** (`texte_image`, ajouté au profil `prestation`) : pour une section dont l'ancienne page avait une photo. `prestation.njk` charge sa feuille (`/assets/blocs.css`) comme l'aiguilleur. Il compte dans l'alternance des fonds mais garde son propre fond blanc et n'a pas de numéro.
+- Styles : `src/assets/prestations-images.css`, chargée seulement si la page a une illustration d'en-tête ou de carte.
+- Non repris (charte) : les motifs de fond du hero (`design-logo.svg`, `dev-logo.svg`, `management-logo.svg`, aplats rose pâle) et les petites illustrations « étoile » (`illu-ourOffers.svg`, `illu-note.svg`) ; les logos d'outils et d'hébergeurs (aucun emplacement à logos dans le gabarit).
+- Aperçus Sveltia (`apercus-prestations.js`, `apercus-bloc-section_*.js`) : ces nouveaux champs n'y sont pas encore dessinés.
+
 ## Collection « Prestations » dans Sveltia
 
 Ordre du formulaire : Nom court, Ordre, En-tête de page, Chiffres clés, Sections de la page (liste de blocs, `typeKey: type`), Références en bas de page, Questions fréquentes, Référencement (replié), mémos non affichés. Résumé : `{{titre}}` ; tri par ordre ou nom. Plus de champ « Contenu » (corps Markdown). Les types de sections sont recopiés par `node scripts/generer-blocs.js` puis `node scripts/assembler-config.js` (jamais `admin/config.yml` à la main).

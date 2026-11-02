@@ -71,31 +71,73 @@
       "cartes": [
         {
           "titre": "Product Owner",
-          "texte": ""
+          "texte": "",
+          "image": {
+            "fichier": "/uploads/ancien-site/assets/img/png/illu-discover.png",
+            "alt": "",
+            "decorative": true,
+            "format": "illustration"
+          }
         },
         {
           "titre": "UI/UX Designer",
-          "texte": ""
+          "texte": "",
+          "image": {
+            "fichier": "/uploads/ancien-site/assets/img/png/illu-design.png",
+            "alt": "",
+            "decorative": true,
+            "format": "illustration"
+          }
         },
         {
           "titre": "Ingénieur·e Développeur·se",
-          "texte": ""
+          "texte": "",
+          "image": {
+            "fichier": "/uploads/ancien-site/assets/img/png/illu-develop.png",
+            "alt": "",
+            "decorative": true,
+            "format": "illustration"
+          }
         },
         {
           "titre": "Technical Leader",
-          "texte": ""
+          "texte": "",
+          "image": {
+            "fichier": "/uploads/ancien-site/assets/img/png/illu-technicalLeader.png",
+            "alt": "",
+            "decorative": true,
+            "format": "illustration"
+          }
         },
         {
           "titre": "Ingénieur·e Qualité",
-          "texte": ""
+          "texte": "",
+          "image": {
+            "fichier": "/uploads/ancien-site/assets/img/png/illu-quality.png",
+            "alt": "",
+            "decorative": true,
+            "format": "illustration"
+          }
         },
         {
           "titre": "Ingénieur·e Système & Réseaux",
-          "texte": ""
+          "texte": "",
+          "image": {
+            "fichier": "/uploads/ancien-site/assets/img/png/illu-deploy.png",
+            "alt": "",
+            "decorative": true,
+            "format": "illustration"
+          }
         },
         {
           "titre": "Pilote de projet",
-          "texte": ""
+          "texte": "",
+          "image": {
+            "fichier": "/uploads/ancien-site/assets/img/png/illu-pilote.png",
+            "alt": "",
+            "decorative": true,
+            "format": "illustration"
+          }
         }
       ]
     }

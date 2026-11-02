@@ -88,19 +88,30 @@ expertises:
   - Deploy
   - 4SH Facility
   - 4SH Studio
-image: /uploads/ancien-site/assets/img/png/references/fa/ref-fa-1.png
-image_alt: Filhet-Allard
+image: /uploads/ancien-site/assets/img/png/new-references/fa/ref-fa.png
+image_alt: 'Espace assuré Filhet-Allard sur ordinateur portable : derniers remboursements et actualités'
 image_decorative: false
 galerie:
-  - image: /uploads/ancien-site/assets/img/png/references/fa/ref-fa-1.png
-    alt: Filhet-Allard, visuel 1
+  - image: /uploads/ancien-site/assets/img/png/new-references/fa/ref-fa-1.png
+    alt: Page d'accueil de l'espace assuré Filhet-Allard sur ordinateur portable
     decorative: false
-  - image: /uploads/ancien-site/assets/img/png/references/fa/ref-fa-2.png
-    alt: Filhet-Allard, visuel 2
+  - image: /uploads/ancien-site/assets/img/png/new-references/fa/ref-fa-2.png
+    alt: Suivi des remboursements de l'espace assuré Filhet-Allard sur smartphone
     decorative: false
-  - image: /uploads/ancien-site/assets/img/png/references/fa/ref-fa-3.png
-    alt: Filhet-Allard, visuel 3
+  - image: /uploads/ancien-site/assets/img/png/new-references/fa/ref-fa-3.png
+    alt: Dossier personnel de l'assuré dans l'espace Filhet-Allard
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/new-references/fa/ref-fa-2.png
+    intertitre: Nos missions & Objectifs
+    alt: Suivi des remboursements de l'espace assuré Filhet-Allard sur smartphone
+    decorative: false
+  - image: /uploads/ancien-site/assets/img/png/new-references/fa/ref-fa-3.png
+    intertitre: Les points clés du projet
+    alt: Dossier personnel de l'assuré dans l'espace Filhet-Allard
+    decorative: false
+image_carte: /uploads/ancien-site/assets/img/png/new-references/fa/ref-fa-1.png
+image_carte_alt: Page d'accueil de l'espace assuré Filhet-Allard sur ordinateur portable
 resume: Extranet santé pour les entreprises et les salariés
 ordre: 12
 referencement:

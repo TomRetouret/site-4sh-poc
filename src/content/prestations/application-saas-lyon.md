@@ -51,11 +51,23 @@ blocs:
   projets:
   - titre: 'Acteos : SaaS de gestion logistique (TMS)'
     texte: Acteos édite des solutions de gestion logistique, dont un TMS que nous accompagnons. La [logistique](/secteurs/logistique/) est l’un de nos secteurs historiques, avec ses volumes, ses flux et ses interfaces à n’en plus finir.
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/acteos/ref-acteos.png
+      alt: Référence Acteos
+    logo:
+      fichier: /uploads/ancien-site/assets/img/svg/acteos.svg
+      alt: Logo Acteos
   - titre: 'C’Fluide : gestion réglementaire des fluides frigorigènes'
     reference: cfluide
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/cfluide/ref-cfluide4.png
+      alt: Référence C'Fluide
     texte: '[C’Fluide](/references/cfluide/) accompagne les professionnels du froid et du génie climatique dans leur gestion réglementaire. Des techniciens sur le terrain, une réglementation qui bouge, et une traçabilité qui doit tenir en cas de contrôle.'
   - titre: 'Time To Beem : plateforme web de la construction durable'
     reference: timetobeem
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem.png
+      alt: Référence Time To Beem
     texte: '[Time To Beem](/references/timetobeem/) est une plateforme web dédiée à l’avenir de la construction durable. Un secteur en structuration, où le produit doit suivre des usages qui évoluent vite.'
   boutons:
   - texte: Voir toutes nos références

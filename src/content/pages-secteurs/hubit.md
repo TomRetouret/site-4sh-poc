@@ -6,7 +6,10 @@ chapo: Hubit.io, une solution EAI robuste pour la traçabilité, la performance 
 cta_label: Demandez une démo
 cta_url: /contact/
 sections:
-- texte: 'Notre mission : **Connecter vos systèmes. Maîtriser vos données. Gagner en agilité.**'
+- texte: |-
+    Notre mission : **Connecter vos systèmes. Maîtriser vos données. Gagner en agilité.**
+
+    ![Mockup Hubit.io](/uploads/ancien-site/assets/img/png/references/ref-hubit.png)
 - titre: Vos systèmes ne se parlent pas assez bien ?
   texte: |-
     Dans un système d'information moderne, les entreprises doivent orchestrer des flux toujours plus nombreux entre ERP, CRM, APIs, IoT et bases de données. Pourtant, ces échanges reposent encore souvent sur des solutions d’intégration rigides ou peu visibles.

@@ -45,25 +45,45 @@
           "numero": "1",
           "phase": "",
           "titre": "Discover",
-          "texte": "Nous commençons par écouter votre idée pour ensuite élaborer ensemble les grands principes de la solution et sa roadmap"
+          "texte": "Nous commençons par écouter votre idée pour ensuite élaborer ensemble les grands principes de la solution et sa roadmap",
+          "image": {
+            "fichier": "/uploads/ancien-site/assets/img/png/illu-etienne.png",
+            "alt": "",
+            "decorative": true
+          }
         },
         {
           "numero": "2",
           "phase": "",
           "titre": "Design",
-          "texte": "Nous élaborons ensuite les spécifications UX et UI"
+          "texte": "Nous élaborons ensuite les spécifications UX et UI",
+          "image": {
+            "fichier": "/uploads/ancien-site/assets/img/png/illu-design.png",
+            "alt": "",
+            "decorative": true
+          }
         },
         {
           "numero": "3",
           "phase": "",
           "titre": "Develop",
-          "texte": "C’est là que la magie opère, chuuut nous développons votre application !"
+          "texte": "C’est là que la magie opère, chuuut nous développons votre application !",
+          "image": {
+            "fichier": "/uploads/ancien-site/assets/img/png/illu-develop.png",
+            "alt": "",
+            "decorative": true
+          }
         },
         {
           "numero": "4",
           "phase": "",
           "titre": "Deploy",
-          "texte": "C’est le grand jour, nous validons et ajustons les derniers détails avec vous avant la mise en production de la solution. C'est parti, votre application est prête !"
+          "texte": "C’est le grand jour, nous validons et ajustons les derniers détails avec vous avant la mise en production de la solution. C'est parti, votre application est prête !",
+          "image": {
+            "fichier": "/uploads/ancien-site/assets/img/png/illu-deploy.png",
+            "alt": "",
+            "decorative": true
+          }
         }
       ]
     },

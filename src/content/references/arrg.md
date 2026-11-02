@@ -72,6 +72,11 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/arrg/ref-arrg-3.png
     alt: ARRG, visuel 3
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/arrg/illu-arrg.png
+    intertitre: Les objectifs
+    alt: ''
+    decorative: true
 resume: Système d’exploitation des entrepôts sous douane de l’aéroport de la Réunion
 ordre: 10
 referencement:

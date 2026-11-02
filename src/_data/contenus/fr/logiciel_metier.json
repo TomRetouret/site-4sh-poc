@@ -147,6 +147,13 @@
           "bouton": {
             "texte": "Voir la référence",
             "lien": "/references/infoport/"
+          },
+          "image": {
+            "fichier": "/uploads/ancien-site/assets/img/png/references/infoport/ref-infoport.png",
+            "alt": "Référence Infoport",
+            "decorative": false,
+            "credit": "",
+            "cadrage": "centre"
           }
         },
         {
@@ -157,6 +164,13 @@
           "bouton": {
             "texte": "Voir la référence",
             "lien": "/references/cin/"
+          },
+          "image": {
+            "fichier": "/uploads/ancien-site/assets/img/png/references/cin/ref-cin.png",
+            "alt": "Référence CIN",
+            "decorative": false,
+            "credit": "",
+            "cadrage": "centre"
           }
         }
       ],

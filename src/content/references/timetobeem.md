@@ -51,19 +51,30 @@ expertises:
   - Product Design
   - 4SH UX
   - 4SH Studio
-image: /uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem.png
-image_alt: Time To Beem
+image: /uploads/ancien-site/assets/img/png/new-references/ttb/ref-ttb-1.png
+image_alt: 'Tableau de bord Time To Beem sur ordinateur portable : projets récents et indicateurs'
 image_decorative: false
 galerie:
-  - image: /uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem-1.png
-    alt: Time To Beem, visuel 1
+  - image: /uploads/ancien-site/assets/img/png/new-references/ttb/ref-ttb-1.png
+    alt: 'Tableau de bord Time To Beem sur ordinateur portable : projets récents et indicateurs'
     decorative: false
-  - image: /uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem-2.png
-    alt: Time To Beem, visuel 2
+  - image: /uploads/ancien-site/assets/img/png/new-references/ttb/ref-ttb-2.png
+    alt: Liste des projets et de leur bilan carbone dans Time To Beem
     decorative: false
-  - image: /uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem-3.png
-    alt: Time To Beem, visuel 3
+  - image: /uploads/ancien-site/assets/img/png/new-references/ttb/ref-ttb-3.png
+    alt: Maquette 3D d'un bâtiment et analyse carbone dans Time To Beem
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/new-references/ttb/ref-ttb-4.png
+    intertitre: Enjeux principaux
+    alt: Liste des projets dans l'application Time To Beem
+    decorative: false
+  - image: /uploads/ancien-site/assets/img/png/new-references/ttb/ref-ttb-2.png
+    intertitre: Nos missions & Objectifs
+    alt: Liste des projets et de leur bilan carbone dans Time To Beem
+    decorative: false
+image_carte: /uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem.png
+image_carte_alt: Application Time To Beem sur ordinateur portable
 resume: Plateforme web dédiée à l’avenir de la construction durable.
 ordre: 2
 referencement:

@@ -280,5 +280,5 @@ Les citations actuelles de l'accueil sont vides. La collection est amorcée avec
 
 ## Blocs ajoutés lors de la généralisation
 
-- Prestations (profil `prestation`) : `section_texte`, `section_cartes`, `section_atouts`, `section_etapes`, `section_projets`. Détail dans `schema-prestations.md`.
+- Prestations (profil `prestation`) : `section_texte`, `section_cartes`, `section_atouts`, `section_etapes`, `section_projets`. Détail dans `schema-prestations.md`. Depuis le 2 novembre 2026, `texte_image` est aussi proposé dans ce profil (photos de l'ancien site).
 - Pages institutionnelles (profils `institutionnel` et `institutionnel_bilingue`) : `hero_institutionnel`, `chiffres_compteurs`, `frise_methode`, `cartes_numerotees`, `cartes_texte`, `encart_bouton`. Détail dans `schema-pages.md`.

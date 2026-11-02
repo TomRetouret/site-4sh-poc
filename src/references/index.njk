@@ -5,14 +5,15 @@ extraCss: /assets/references.css
 ---
 {#- Carte locale : celle de composants/cartes.njk (carte_ref) sans le secteur ni les
     technologies affichés, comme les cartes de l'ancienne page 4sh.fr/references.html.
+    Visuel : image_carte s'il est rempli (visuel propre à cette page), sinon le visuel principal.
     Les attributs data-* restent, pour la recherche et les filtres. -#}
 {% macro carte(ref, une=false) %}
 <article class="ref-carte{% if une %} ref-carte--une{% endif %}"
   data-secteurs="{{ ref.data.secteurs | join(',') | lower }}"
   data-technologies="{{ ref.data.technologies | join(',') | lower }}"
   data-nom="{{ (ref.data.titre ~ ' ' ~ ref.data.client ~ ' ' ~ ref.data.resume ~ ' ' ~ (ref.data.technologies | join(' ')) ~ ' ' ~ (ref.data.secteurs | join(' '))) | lower }}">
-  <div class="ref-visuel{% if not ref.data.image %} ref-visuel--vide{% endif %}">
-    {% if ref.data.image %}{% image ref.data.image, ('' if ref.data.image_decorative else (ref.data.image_alt or ref.data.titre)), { sizes: "(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 600px", width: 600, height: 450 } %}{% else %}<span class="ref-vide-nom">{{ ref.data.client }}</span>{% endif %}
+  <div class="ref-visuel{% if not (ref.data.image_carte or ref.data.image) %} ref-visuel--vide{% endif %}">
+    {% if ref.data.image_carte %}{% image ref.data.image_carte, (ref.data.image_carte_alt or ref.data.titre), { sizes: "(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 600px", width: 600, height: 450 } %}{% elif ref.data.image %}{% image ref.data.image, ('' if ref.data.image_decorative else (ref.data.image_alt or ref.data.titre)), { sizes: "(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 600px", width: 600, height: 450 } %}{% else %}<span class="ref-vide-nom">{{ ref.data.client }}</span>{% endif %}
     <div class="ref-cartouche">{% if ref.data.logo %}<img src="{{ ref.data.logo }}" alt="{{ ref.data.client }}" loading="lazy" decoding="async">{% else %}<span class="ref-cartouche-txt">{{ ref.data.client }}</span>{% endif %}</div>
   </div>
   <div class="ref-carte-corps">

@@ -8,6 +8,9 @@ entete:
   bouton:
     texte: Contactez-nous
     lien: /contact/
+  illustration:
+    fichier: /uploads/ancien-site/assets/img/svg/offers/illu-build-ux.svg
+    decorative: true
 blocs:
 - type: section_texte
   disposition: empile
@@ -137,6 +140,9 @@ blocs:
       - Tests utilisateurs
       - Design System
     reference: timetobeem
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem.png
+      alt: Référence Time To Beem
   - titre: INVOICE
     texte: |-
       - Audit UX
@@ -145,6 +151,12 @@ blocs:
       - Entretien semi-directif
       - Observations terrains
     lien: https://www.behance.net/gallery/236771341/Limpact-dun-audit-UX
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/invoice/ref-invoice.png
+      alt: Référence Invoice
+    logo:
+      fichier: /uploads/ancien-site/assets/img/svg/logo_invoice.svg
+      alt: Logo Invoice
 - type: section_texte
   titre: Contactez notre agence UX design
   texte: |-

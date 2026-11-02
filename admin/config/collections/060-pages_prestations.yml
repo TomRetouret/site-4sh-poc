@@ -58,6 +58,17 @@
             fields:
               - { label: Nom de la page parente, name: texte, widget: string, required: false, hint: "Par exemple : Application mobile." }
               - { label: Adresse de la page parente, name: lien, widget: string, required: false, hint: "Par exemple : /prestations/application-mobile/." }
+          - label: Illustration de l'en-tête
+            name: illustration
+            widget: object
+            required: false
+            collapsed: true
+            summary: "{{fields.fichier}}"
+            hint: "Facultatif. Affichée à droite du grand titre sur ordinateur, masquée sur téléphone. Illustration au format SVG ou PNG."
+            fields:
+              - { label: Image, name: fichier, widget: image, required: false, hint: "Illustration de l'offre, par exemple /uploads/ancien-site/assets/img/svg/offers/illu-build.svg." }
+              - { label: Texte alternatif, name: alt, widget: string, required: false, hint: "Obligatoire sauf si l'illustration est décorative. Une phrase, 120 caractères maximum." }
+              - { label: Image décorative (aucune information à transmettre), name: decorative, widget: boolean, required: false, default: true, hint: "Cochée par défaut : une illustration d'ambiance n'est pas lue par les lecteurs d'écran." }
       - label: Chiffres clés
         name: chiffres
         widget: list
@@ -206,6 +217,28 @@
                     widget: string
                     required: false
                     hint: Facultatif. Si rempli, toute la carte devient un lien « Découvrir » vers cette adresse et seul le titre est affiché.
+                  - label: Illustration
+                    name: illustration
+                    widget: object
+                    required: false
+                    collapsed: true
+                    summary: '{{fields.fichier}}'
+                    hint: 'Facultatif. Petite illustration affichée en tête de la carte (SVG ou PNG). Pas de pictogramme décoratif : la charte les fournit.'
+                    fields:
+                      - label: Image
+                        name: fichier
+                        widget: image
+                        required: false
+                      - label: Texte alternatif
+                        name: alt
+                        widget: string
+                        required: false
+                        hint: Obligatoire sauf si l'image est décorative. Une phrase, 120 caractères maximum.
+                      - label: Image décorative (aucune information à transmettre)
+                        name: decorative
+                        widget: boolean
+                        required: false
+                        default: false
               - label: Boutons
                 name: boutons
                 widget: list
@@ -310,6 +343,113 @@
                     required: true
                     default: /contact/
                     hint: Adresse d'une page du site (/contact/) ou adresse complète (https://...), ouverte alors dans un nouvel onglet.
+          - label: Texte et image
+            name: texte_image
+            widget: object
+            summary: 'Texte et image : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+            fields:
+              - label: Masquer ce bloc (il reste enregistré)
+                name: masquer
+                widget: boolean
+                required: false
+                default: false
+                hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+              - label: Surtitre
+                name: surtitre
+                widget: string
+                required: false
+                hint: Petit texte au-dessus du titre. 30 caractères maximum.
+              - label: Titre
+                name: titre
+                widget: string
+                required: true
+                hint: 60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge.
+              - label: Texte
+                name: texte
+                widget: markdown
+                required: true
+                hint: Gras, liens et listes uniquement. Laissez une ligne vide entre deux paragraphes. 150 mots maximum.
+                buttons:
+                  - bold
+                  - link
+                  - bulleted-list
+                  - numbered-list
+                editor_components: []
+                modes:
+                  - rich_text
+              - label: Image
+                name: image
+                widget: object
+                required: true
+                collapsed: false
+                summary: '{{fields.fichier}}'
+                fields:
+                  - label: Image
+                    name: fichier
+                    widget: image
+                    required: true
+                    hint: Format paysage, 1600 px de large minimum. Affichée en 4:3 à côté du texte.
+                  - label: Texte alternatif
+                    name: alt
+                    widget: string
+                    required: false
+                    hint: 'Obligatoire sauf si l''image est décorative. Décrivez ce que montre l''image en une phrase, 120 caractères maximum. Par exemple : Deux développeurs devant un tableau blanc couvert de maquettes.'
+                  - label: Image décorative (aucune information à transmettre)
+                    name: decorative
+                    widget: boolean
+                    required: false
+                    default: false
+                    hint: Cochez seulement si l'image n'apporte rien au texte (ambiance, texture). Le texte alternatif est alors ignoré.
+                  - label: Crédit photo
+                    name: credit
+                    widget: string
+                    required: false
+                    hint: 'Affiché en petit sous l''image. Par exemple : Photo Studio Nantes. Vide : pas de crédit.'
+                  - label: Cadrage
+                    name: cadrage
+                    widget: select
+                    required: true
+                    default: centre
+                    hint: Partie de l'image conservée quand elle est recadrée.
+                    options:
+                      - label: Centre
+                        value: centre
+                      - label: Haut
+                        value: haut
+                      - label: Bas
+                        value: bas
+                      - label: Gauche
+                        value: gauche
+                      - label: Droite
+                        value: droite
+              - label: Position de l'image
+                name: position_image
+                widget: select
+                required: true
+                default: gauche
+                hint: Sur ordinateur. Sur téléphone, l'image passe toujours au-dessus du texte.
+                options:
+                  - label: À gauche du texte
+                    value: gauche
+                  - label: À droite du texte
+                    value: droite
+              - label: Bouton
+                name: bouton
+                widget: object
+                required: false
+                collapsed: false
+                summary: '{{fields.texte}} ({{fields.lien}})'
+                fields:
+                  - label: Texte du bouton
+                    name: texte
+                    widget: string
+                    required: false
+                    hint: '25 caractères maximum, commence par un verbe. Vide : pas de bouton.'
+                  - label: 'Destination (adresse ou #ancre)'
+                    name: lien
+                    widget: string
+                    required: false
+                    hint: Adresse commençant par / pour une page du site, https:// pour un site externe.
           - label: Section en étapes
             name: section_etapes
             widget: object
@@ -457,6 +597,50 @@
                     display_fields:
                       - titre
                     hint: Facultatif. Fournit le visuel, le logo et le secteur de la carte, et la destination par défaut du lien.
+                  - label: Visuel du projet
+                    name: image
+                    widget: object
+                    required: false
+                    collapsed: true
+                    summary: '{{fields.fichier}}'
+                    hint: Facultatif. Remplace le visuel de la fiche reliée (format paysage, affiché en 4:3).
+                    fields:
+                      - label: Image
+                        name: fichier
+                        widget: image
+                        required: false
+                      - label: Texte alternatif
+                        name: alt
+                        widget: string
+                        required: false
+                        hint: Obligatoire sauf si l'image est décorative. Une phrase, 120 caractères maximum.
+                      - label: Image décorative (aucune information à transmettre)
+                        name: decorative
+                        widget: boolean
+                        required: false
+                        default: false
+                  - label: Logo du client
+                    name: logo
+                    widget: object
+                    required: false
+                    collapsed: true
+                    summary: '{{fields.fichier}}'
+                    hint: Facultatif. Remplace le logo de la fiche reliée (affiché dans le cartouche du visuel).
+                    fields:
+                      - label: Image
+                        name: fichier
+                        widget: image
+                        required: false
+                      - label: Texte alternatif
+                        name: alt
+                        widget: string
+                        required: false
+                        hint: Obligatoire sauf si l'image est décorative. Une phrase, 120 caractères maximum.
+                      - label: Image décorative (aucune information à transmettre)
+                        name: decorative
+                        widget: boolean
+                        required: false
+                        default: false
                   - label: Texte du lien
                     name: lien_texte
                     widget: string

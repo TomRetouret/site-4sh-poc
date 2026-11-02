@@ -74,6 +74,11 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/sudouest/ref-sudouest-5.png
     alt: Sud Ouest - Socoa, visuel 5
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/sudouest/sud-ouest-illustration.png
+    intertitre: Les objectifs
+    alt: ''
+    decorative: true
 resume: Solution collaborative de gestion et suivi des correspondants
 ordre: 8
 referencement:

@@ -77,6 +77,11 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/marenov/ref-marenov-3.png
     alt: Ma Rénov - Bordeaux Métropole, visuel 3
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/marenov/marenov-illustration.svg
+    intertitre: Les objectifs
+    alt: ''
+    decorative: true
 resume: Ma Rénov - Le service public qui facilite et sécurise votre projet de rénovation énergétique
 ordre: 7
 referencement:

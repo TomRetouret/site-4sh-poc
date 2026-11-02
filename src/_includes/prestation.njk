@@ -12,12 +12,33 @@ extraCss: /assets/secteurs.css
     Le fond alterné, le temps fort sombre et le
     numéro de chaque section sont calculés (filtre misePageSections, eleventy/prestations.js).
     Couleur d'offre (offre), titre et description : prestations.11tydata.js.
+    Images (remise des images de l'ancien site, 2 novembre 2026) : illustration facultative de l'en-tête
+    (entete.illustration), illustration de carte (section_cartes), visuel et logo de projet
+    (section_projets), bloc texte_image ; styles dans /assets/prestations-images.css et /assets/blocs.css.
     Retour arrière : ancien gabarit et anciens fichiers dans l'historique Git (filtre « blocs »). -#}
 {% from "composants/page.njk" import hero, bandeau_chiffres %}
 {% from "composants/sections.njk" import faq_section, bloc_references %}
 {% from "composants/formulaires.njk" import contact_final as bloc_contact %}
 {%- set e = entete or {} -%}
 {%- set familles = { build: "Concevoir & développer", run: "Faire vivre & auditer" } -%}
+{%- set mise = blocs | misePageSections %}
+{#- Feuilles de styles propres aux blocs présents, chacune une seule fois (comme l'aiguilleur) :
+    /assets/blocs.css pour texte_image ; /assets/prestations-images.css pour l'illustration
+    de l'en-tête et les illustrations de cartes. -#}
+{%- set feuilles = [] %}
+{%- if e.illustration and e.illustration.fichier %}{% if feuilles.push("/assets/prestations-images.css") %}{% endif %}{% endif %}
+{%- for b in (blocs or []) %}{% if mise[loop.index0] %}
+{%- import "composants/blocs/" + b.type + ".njk" as composant %}
+{%- if composant.feuille and not (composant.feuille in feuilles) %}{% if feuilles.push(composant.feuille) %}{% endif %}{% endif %}
+{%- for c in (b.cartes or []) %}{% if c.illustration and c.illustration.fichier and not ("/assets/prestations-images.css" in feuilles) %}{% if feuilles.push("/assets/prestations-images.css") %}{% endif %}{% endif %}{% endfor %}
+{%- endif %}{% endfor %}
+{%- for f in feuilles %}
+<link rel="stylesheet" href="{{ f }}">
+{%- endfor %}
+{#- Illustration de l'en-tête (entete.illustration, facultative) : ajoutée dans le hero, à droite du
+    texte sur ordinateur, masquée sur téléphone comme sur l'ancien site. Sans illustration, hero inchangé. -#}
+{%- set illu = e.illustration or {} -%}
+{%- set heroHtml -%}
 {{ hero(titre,
         h1=e.titre_h1,
         eyebrow=familles[offre] or "Prestation",
@@ -25,10 +46,15 @@ extraCss: /assets/secteurs.css
         parents=[{ "label": e.parent.texte, "url": e.parent.lien }] if (e.parent and e.parent.texte) else [],
         ctas=[{ "label": (e.bouton.texte if e.bouton) or "Parlons de votre projet", "url": (e.bouton.lien if e.bouton) or "/contact/" }],
         offre=offre) }}
+{%- endset -%}
+{%- if illu.fichier %}
+{%- set figure -%}<figure class="presta-hero-illu">{% image illu.fichier, ('' if illu.decorative else illu.alt), { sizes: "(max-width: 1023px) 0px, 40vw", loading: "eager" } %}</figure>{%- endset %}
+{{ heroHtml | replace('<section class="sect-hero">', '<section class="sect-hero sect-hero--illu">') | replace('<div class="container">', '<div class="container"><div class="presta-hero-texte">') | replace('</div>\n</section>', '</div>' + figure + '</div>\n</section>') | safe }}
+{%- else %}
+{{ heroHtml | safe }}
+{%- endif %}
 
 {{ bandeau_chiffres(chiffres) }}
-
-{%- set mise = blocs | misePageSections %}
 {% for b in (blocs or []) %}
 {% if mise[loop.index0] %}
 {% import "composants/blocs/" + b.type + ".njk" as composant %}

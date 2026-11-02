@@ -92,10 +92,19 @@ blocs:
   projets:
   - titre: ARKHÉ - NEW BOA Jeux de simulation d'entreprise
     reference: arkhe-new-boa
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/arkhe/ref-arkhe-newboa.png
+      alt: Référence Arkhé NewBoa
   - titre: CIRAD - CiO2 Calculette des émissions de gaz à effet de serre.
     reference: cirad
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/cirad/ref-cirad.png
+      alt: Référence CIRAD
   - titre: SUD OUEST - SOCOA Solution collaborative de gestion et suivi des correspondants
     reference: sud-ouest-socoa
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/sudouest/ref-sudouest-socoa.png
+      alt: Référence Sud Ouest Socoa
   boutons:
   - texte: Voir nos références clients
     lien: /references/

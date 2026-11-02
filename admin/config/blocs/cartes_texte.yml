@@ -117,3 +117,38 @@ type:
               widget: string
               required: false
               hint: Une adresse commençant par https:// s'ouvre dans un nouvel onglet.
+        - label: Image
+          name: image
+          widget: object
+          required: false
+          collapsed: true
+          summary: '{{fields.fichier}}'
+          hint: Illustration ou logo affiché en entier au-dessus du titre de la carte, sans recadrage. Laissez vide pour une carte sans image.
+          fields:
+            - label: Image
+              name: fichier
+              widget: image
+              required: false
+              hint: 'PNG transparent ou SVG de préférence. Illustration : carrée, 800 px environ. Logo : 400 px de large au plus.'
+            - label: Texte alternatif
+              name: alt
+              widget: string
+              required: false
+              hint: 'Obligatoire sauf si l''image est décorative. Pour un logo : le nom de l''organisation. 120 caractères maximum.'
+            - label: Image décorative (aucune information à transmettre)
+              name: decorative
+              widget: boolean
+              required: false
+              default: false
+              hint: Cochez pour une illustration d'ambiance qui n'apporte rien au texte. Le texte alternatif est alors ignoré.
+            - label: Format
+              name: format
+              widget: select
+              required: false
+              default: illustration
+              hint: 'Illustration : 180 px de haut. Logo : 72 px de haut.'
+              options:
+                - label: Illustration
+                  value: illustration
+                - label: Logo
+                  value: logo

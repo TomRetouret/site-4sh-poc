@@ -49,19 +49,29 @@ technologies:
   - Apache Tomcat
   - Kubernetes
 expertises: []
-image: /uploads/ancien-site/assets/img/png/references/cfluide/ref-cfluide4.png
-image_alt: C'fluide
+image: /uploads/ancien-site/assets/img/png/new-references/cfluide/ref-cfluide.png
+image_alt: 'Écrans de l''application C''Fluide sur smartphone : saisie d''une intervention et signature'
 image_decorative: false
 galerie:
-  - image: /uploads/ancien-site/assets/img/png/references/cfluide/ref-cfluide1.png
-    alt: C'fluide, visuel 1
+  - image: /uploads/ancien-site/assets/img/png/new-references/cfluide/ref-cfluide-4.png
+    alt: Tableau de bord de C'Fluide sur ordinateur portable
     decorative: false
-  - image: /uploads/ancien-site/assets/img/png/references/cfluide/ref-cfluide2.png
-    alt: C'fluide, visuel 2
+  - image: /uploads/ancien-site/assets/img/png/new-references/cfluide/ref-cfluide-2.png
+    alt: Liste des interventions et détail d'une fiche dans C'Fluide
     decorative: false
-  - image: /uploads/ancien-site/assets/img/png/references/cfluide/ref-cfluide3.png
-    alt: C'fluide, visuel 3
+  - image: /uploads/ancien-site/assets/img/png/new-references/cfluide/ref-cfluide-3.png
+    alt: Tableau des interventions et de leur statut dans C'Fluide
     decorative: false
+  - image: /uploads/ancien-site/assets/img/png/new-references/cfluide/ref-cfluide-1.png
+    alt: Saisie d'une intervention et signature sur smartphone dans C'Fluide
+    decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/new-references/cfluide/ref-cfluide-2.png
+    intertitre: Nos missions & Objectifs
+    alt: Liste des interventions et détail d'une fiche dans C'Fluide
+    decorative: false
+image_carte: /uploads/ancien-site/assets/img/png/references/cfluide/ref-cfluide4.png
+image_carte_alt: Tableau de bord de C'Fluide sur ordinateur portable et tablette
 resume: CraftView - Application dédiée à la gestion réglementaire pour les professionnels du froid et du génie climatique.
 ordre: 16
 referencement:

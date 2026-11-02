@@ -80,6 +80,19 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/beclm/ref-beclm-3.png
     alt: BeCLM - KYC Focus IA, visuel 3
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/new-references/ai-robot.png
+    intertitre: Rôle de 4SH
+    alt: ''
+    decorative: true
+  - image: /uploads/ancien-site/assets/img/png/new-references/beclm/beclm-screen-1.png
+    intertitre: Enrichissement des données d’entreprise
+    alt: Questionnaire de lutte anti-blanchiment et indicateurs de risque dans BeCLM
+    decorative: false
+  - image: /uploads/ancien-site/assets/img/png/new-references/beclm/beclm-screen-2.png
+    intertitre: Résultats et bénéfices
+    alt: Liste des personnes à risques et score des avertissements dans BeCLM
+    decorative: false
 resume: KYC - Focus IA
 ordre: 1
 referencement:

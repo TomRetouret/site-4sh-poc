@@ -37,10 +37,14 @@ blocs:
       - Suivi des KPIs clés pour évaluer la performance produit
       - Feedbacks utilisateurs
       - Maintenance corrective et évolutive
-- type: section_texte
+- type: texte_image
   titre: Créer de la synergie
   texte: Le Product Manager renforce la collaboration entre les équipes métiers, techniques et design, en assurant une vision claire. Nos Product Managers travaillent étroitement avec nos Product Owners. Une collaboration fluide au sein des équipes est un véritable levier stratégique pour améliorer la qualité et assurer la pérennité de votre produit numérique et ainsi renforcer la satisfaction des utilisateurs.
-  disposition: empile
+  image:
+    fichier: /uploads/ancien-site/assets/img/png/picture-meeting.png
+    alt: Deux collaborateurs 4SH échangent devant un ordinateur portable
+    cadrage: centre
+  position_image: droite
 - type: section_cartes
   titre: Nos offres au service du Product Management
   texte: Notre agence propose des offres pensées pour vous accompagner à chaque étape du cycle de vie de votre produit. Cette approche globale nous permet de prendre en charge l’ensemble du processus, de l’idéation à l’optimisation continue.
@@ -63,8 +67,14 @@ blocs:
   projets:
   - titre: EDF business services - Professionnel Application sous forme de portail professionnel pour la gestion de parc de voitures électriques
     reference: izivia-portail
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-portail.png
+      alt: Référence EDF business services Portail
   - titre: BECLM Le digital au service de la conformité
     reference: beclm
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/beclm/ref-beclm.png
+      alt: Référence BeCLM
 - type: section_texte
   disposition: bandeau
   texte: Besoin d'accompagnement en conception produit ?

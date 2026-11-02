@@ -8,6 +8,9 @@ entete:
   bouton:
     texte: Demander un devis
     lien: /contact/
+  illustration:
+    fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run-maintenance-corrective.svg
+    decorative: true
 blocs:
 - type: section_texte
   disposition: empile
@@ -154,11 +157,17 @@ blocs:
       Nous assurons la pérennité de la solution en appliquant les mises à jour indispensables à votre infrastructure, en surveillant et analysant l'évolution du fonctionnement de votre application et nous vous conseillons sur les opérations préventives à mettre en œuvre.
 
       [Découvrir](/prestations/hebergement/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run-hebergement.svg
+      decorative: true
   - titre: Sécurité
     texte: |-
       Notre service d’audit sécurité évalue et renforce la protection de vos systèmes pour prévenir les risques et garantir la conformité.
 
       [Découvrir](/prestations/securite/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run-securite.svg
+      decorative: true
 faq_titre: FAQ - Maintenance web & maintenance logicielle
 faq:
 - question: Qu’est-ce qu’une maintenance corrective ?

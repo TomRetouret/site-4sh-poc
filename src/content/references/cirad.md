@@ -61,6 +61,11 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/cirad/ref-cirad-4.png
     alt: CIRAD - CiO2, visuel 4
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/cirad/cirad-illustration.svg
+    intertitre: Les objectifs
+    alt: ''
+    decorative: true
 resume: Calculette des émissions de gaz à effet de serre.
 ordre: 15
 referencement:

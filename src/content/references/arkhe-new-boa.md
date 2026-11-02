@@ -67,6 +67,11 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/arkhe/ref-arkhe-newboa-3.png
     alt: Arkhé - New BOA, visuel 3
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/arkhe/arkhe-illustration.png
+    intertitre: Les objectifs
+    alt: ''
+    decorative: true
 resume: Jeux de simulation d'entreprise
 ordre: 14
 referencement:

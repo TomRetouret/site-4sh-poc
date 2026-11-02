@@ -35,7 +35,26 @@ extraCss: /assets/references.css
   <div class="container">
     <div class="ref-fiche-grille">
       <div class="ref-corps">
-        {{ etude | etudeDeCas | safe }}{{ content | safe }}
+        {#- Images dans l'étude de cas (champ illustrations) : chaque image est placée à la fin
+            de la partie qui suit l'intertitre choisi (avant l'intertitre suivant, H2 ou H3),
+            ou à la fin de l'étude de cas si l'intertitre n'est pas trouvé. Une image décorative
+            (illustration) est limitée à 420 px de large, comme dans la demi-colonne de l'ancien site. -#}
+        {%- set corpsEtude = [etude | etudeDeCas] -%}
+        {%- for il in illustrations or [] %}{% if il and il.image -%}
+          {%- set figIl -%}<figure class="ref-illustration" style="margin:8px 0 24px{% if il.decorative %};max-width:420px{% endif %}">{% image il.image, ('' if il.decorative else il.alt), { sizes: "(max-width: 1023px) 100vw, 760px", style: "height:auto" } %}</figure>{%- endset -%}
+          {%- set htmlEtude = corpsEtude | last -%}
+          {%- set marqueIl = '>' ~ ((il.intertitre or '') | replace('&', '&amp;') | replace('<', '&lt;') | replace('>', '&gt;') | replace('"', '&quot;')) ~ '</h' -%}
+          {%- set posIl = htmlEtude.indexOf(marqueIl) if il.intertitre else -1 -%}
+          {%- if posIl > -1 -%}
+            {%- set debutIl = posIl + marqueIl.length + 2 -%}
+            {%- set finIl = htmlEtude.slice(debutIl).search(r/<h[23][ >]/) -%}
+            {%- set coupeIl = (debutIl + finIl) if finIl > -1 else htmlEtude.length -%}
+            {%- set _ = corpsEtude.push(htmlEtude.slice(0, coupeIl) ~ figIl ~ htmlEtude.slice(coupeIl)) -%}
+          {%- else -%}
+            {%- set _ = corpsEtude.push(htmlEtude ~ figIl) -%}
+          {%- endif -%}
+        {%- endif %}{% endfor %}
+        {{ corpsEtude | last | safe }}{{ content | safe }}
       </div>
       <aside class="ref-identite">
         {% if client %}<div class="bloc"><b>{{ libelles.reference.client }}</b><span>{{ client }}</span></div>{% endif %}

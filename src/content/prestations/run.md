@@ -5,6 +5,9 @@ entete:
   offre: run
   titre_h1: 'Prestataire d’infogérance logicielle : hébergez, maintenez, sécurisez'
   chapo: '4SH Run est une offre complète pour optimiser la gestion de vos infrastructures et services techniques. Elle inclut : l''hébergement sécurisé, le MCO pour assurer la disponibilité de vos systèmes, la maintenance corrective pour une réactivité optimale.'
+  illustration:
+    fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run.svg
+    decorative: true
 blocs:
 - type: section_texte
   disposition: empile
@@ -27,21 +30,33 @@ blocs:
       Notre service d’hébergement & Maintien en Condition Opérationnelle (MCO) vous offre une infrastructure informatique fiable et évolutive, spécialement conçue pour garantir la performance et la disponibilité de vos applications.
 
       [Découvrir](/prestations/hebergement/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run-hebergement.svg
+      decorative: true
   - titre: Data management et pilotage
     texte: |-
       Nous vous aidons à collecter, gérer et exploiter vos données de manière sécurisée, grâce à des outils adaptés à vos besoins métier, pour des analyses précises et des décisions stratégiques éclairées.
 
       [Découvrir](/prestations/data/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run-data.svg
+      decorative: true
   - titre: Maintenance corrective
     texte: |-
       Notre service de maintenance corrective résout rapidement les incidents techniques afin de garantir la stabilité, la sécurité et la continuité de vos solutions informatiques.
 
       [Découvrir](/prestations/maintenance-corrective/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run-maintenance-corrective.svg
+      decorative: true
   - titre: Audit sécurité informatique
     texte: |-
       Notre service d’audit sécurité évalue et renforce la protection de vos systèmes informatiques, afin de prévenir les risques, répondre aux obligations de conformité, et renforcer votre politique de sécurité.
 
       [Découvrir](/prestations/securite/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run-securite.svg
+      decorative: true
 - type: section_cartes
   titre: Notre méthodologie et engagements de service
   texte: |-

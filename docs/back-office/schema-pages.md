@@ -43,7 +43,7 @@ Libellé du type entre guillemets ; puis champs `nom` : « Libellé » (widget) 
 
 **frise_methode : « Frise de méthode (fond sombre) »** (`section.section-sombre`, macro `frise_etapes`)
 - `ancre` (motif `^[a-z0-9-]*$`) [non] : `id` de la section, cible d'un bouton `#ancre` ; `surtitre`, `titre` [oui], `sous_titre`
-- `etapes` (3 à 6) [oui] de `numero` [oui], `phase` [non], `titre` [oui], `texte` [oui]. Distinct de `methode_4d` : pas de tracé décoratif ni de lien avec le hero expressif.
+- `etapes` (3 à 6) [oui] de `numero` [oui], `phase` [non], `titre` [oui], `texte` [oui], `image` « Illustration » [non] { `fichier`, `alt`, `decorative` } : affichée entière (160 px de haut, `object-fit: contain`) au-dessus du numéro ; si aucune étape n'a d'image, la frise passe par la macro `frise_etapes` (rendu inchangé), sinon le composant écrit le même balisage avec l'illustration. Distinct de `methode_4d` : pas de tracé décoratif ni de lien avec le hero expressif.
 
 **cartes_numerotees : « Cartes numérotées »** (`.atouts`, macro `carte_atout`)
 - `sans_marge_haute` « Coller au bloc précédent » (boolean) ; `surtitre`, `titre` [oui], `sous_titre`
@@ -56,7 +56,7 @@ Libellé du type entre guillemets ; puis champs `nom` : « Libellé » (widget) 
 - `presentation` (select fermé) [oui, défaut `encadrees`] : `encadrees` (`.socle` de `.socle-carte`, texte 14,5 px) ou `colonnes` (`.offres-liees` de `.col-carte`, texte 15 px)
 - `fond` (select fermé) [oui, défaut `blanc`] : `blanc`, `sombre` (`section-nuit sur-sombre` : fond nuit de la charte, texte `--sur-nuit` ; `.section-sombre` reste en fond clair pour la Méthode 4D)
 - `colonnes` (select fermé) [oui, défaut `auto`] : cartes encadrées seulement
-- `cartes` (1 à 12) [oui] de `titre` [oui], `texte` (text) [non, retour à la ligne = `<br>`, accent], `lien` { `texte`, `lien` } [non] : `a.socle-lien` « texte → », nouvel onglet si `://`.
+- `cartes` (1 à 12) [oui] de `titre` [oui], `texte` (text) [non, retour à la ligne = `<br>`, accent], `lien` { `texte`, `lien` } [non] : `a.socle-lien` « texte → », nouvel onglet si `://` ; `image` « Image » [non] { `fichier`, `alt`, `decorative`, `format` (`illustration` 180 px de haut, `logo` 72 px) } : affichée entière et centrée au-dessus du titre (styles en ligne, sans feuille ajoutée) ; carte sans image : rendu inchangé.
 
 **encart_bouton : « Encart avec bouton »**
 - `sans_marge_haute` ; `presentation` (select fermé) [oui, défaut `encadre`] : `encadre` (`.col-carte` centrée sur fond crème, bouton plein) ou `libre` (`.sect-libre` de 820 px, bouton contour)
@@ -66,14 +66,16 @@ Marges : ces blocs ne participent pas au calcul automatique `blocsSerres` (liste
 
 ### Correspondance avec les anciennes pages
 
+Images de l'ancien site (2 novembre 2026) : fichiers sous `/uploads/ancien-site/assets/img/`.
+
 Depuis la reprise du 2 novembre 2026, chaque page reprend une seule ancienne page, texte mot pour mot ; les blocs de la refonte sans équivalent ancien sont masqués (`masquer: true`), pas supprimés.
 
-- Notre démarche (ancienne `/methode.html`) : hero ; texte_simple (surtitre « Vous avez une idée ? », « 4SH est là pour vous aider ! ») ; frise_methode (ancre `methode`, étapes Discover, Design, Develop, Deploy). Masqués : chiffres_compteurs, cartes Démarche UX, Engagements, Dispositifs.
+- Notre démarche (ancienne `/methode.html`) : hero ; texte_simple (surtitre « Vous avez une idée ? », « 4SH est là pour vous aider ! ») ; frise_methode (ancre `methode`, étapes Discover, Design, Develop, Deploy, avec les illustrations de l'ancien site). Masqués : chiffres_compteurs, cartes Démarche UX, Engagements, Dispositifs.
 - Conception UX (`/conception-ux.html`) : hero ; texte_simple ; cartes_numerotees grille 3 colonnes (6 étapes) ; encart_bouton encadré.
 - Engagements (`/engagements.html`) : hero ; cartes_numerotees grille (7 engagements) ; cartes_texte colonnes (Nos dispositifs).
-- Notre entreprise FR (`/nous-connaitre.html`) : hero ; texte_simple (À propos, un paragraphe par ancien paragraphe) ; chiffres_compteurs ; cartes_texte encadrées 3 colonnes (société technique), fond sombre (4 valeurs) ; texte_simple (Notre démarche RSE, lien vers la charte). Masqués : Métiers, Recrutement, Agences, ancien encart RSE. Company (EN) inchangée.
-- Équipe (`/nous-connaitre/equipe.html`) : hero ; texte_image (photo d'équipe) ; encart_bouton encadré (recrutement) ; cartes_texte 4 colonnes (Nos métiers).
-- Agences (`/nous-connaitre/agences.html`) : hero ; texte_simple (présentation, adresses avec lien vers la carte, liens vers les pages Application mobile et SaaS par ville).
+- Notre entreprise FR (`/nous-connaitre.html`) : hero ; texte_image (À propos, un paragraphe par ancien paragraphe, illustration à droite) ; chiffres_compteurs ; cartes_texte encadrées 3 colonnes (société technique, logos BordeauxJUG et BDX I/O), fond sombre (4 valeurs) ; texte_image (Notre démarche RSE, lien vers la charte, illustration à droite). Masqués : Métiers, Recrutement, Agences, ancien encart RSE. Company (EN) inchangée.
+- Équipe (`/nous-connaitre/equipe.html`) : hero ; texte_image (photo d'équipe) ; encart_bouton encadré (recrutement) ; cartes_texte 4 colonnes (Nos métiers, une illustration par métier).
+- Agences (`/nous-connaitre/agences.html`) : hero ; texte_image (photo des locaux du Haillan à droite ; présentation, adresses avec lien vers la carte, liens vers les pages Application mobile et SaaS par ville).
 
 ## Fiches structurées
 

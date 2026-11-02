@@ -60,6 +60,11 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/arkhe/ref-arkhe-newboa-3.png
     alt: Arkhé - Migration K8S, visuel 3
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/arkhe/arkhe-illustration-2.png
+    intertitre: Les objectifs
+    alt: ''
+    decorative: true
 resume: Jeux de simulation d'entreprise
 ordre: 13
 referencement:

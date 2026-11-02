@@ -8,6 +8,9 @@ entete:
   bouton:
     texte: Contactez-nous
     lien: /contact/
+  illustration:
+    fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run-hebergement.svg
+    decorative: true
 blocs:
 - type: section_texte
   disposition: empile
@@ -164,11 +167,17 @@ blocs:
       Notre service d’audit sécurité évalue et renforce la protection de vos systèmes pour prévenir les risques et garantir la conformité.
 
       [Découvrir](/prestations/securite/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run-securite.svg
+      decorative: true
   - titre: Data
     texte: |-
       Notre service de data vous aide à collecter, gérer et exploiter vos données de manière sécurisée pour des analyses précises et des décisions stratégiques.
 
       [Découvrir](/prestations/data/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-run-data.svg
+      decorative: true
 - type: section_cartes
   titre: Ressources et articles liés
   cartes:

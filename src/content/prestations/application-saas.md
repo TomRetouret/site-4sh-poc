@@ -43,17 +43,41 @@ blocs:
   - titre: Kotlin
     texte: '[En savoir plus](/expertises-techniques/kotlin/)'
   - titre: Typescript
-- type: section_atouts
+- type: section_projets
   titre: 'Développement SaaS : réalisations clients'
-  atouts:
+  projets:
   - titre: '[Acteos (TMS) - Logistique](https://drive.google.com/file/d/1C13ZJqw_53kF-0quH0imaVHmkX-Rs1XB/view)'
     texte: Acteos est une suite logicielle française spécialisée dans l'optimisation de la chaîne d'approvisionnement. Elle couvre l'ensemble des processus logistiques, tels que la planification de la demande, l'approvisionnement, la gestion des transports (TMS) et des entrepôts (WMS).
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/acteos/ref-acteos.png
+      alt: Référence Acteos
+    logo:
+      fichier: /uploads/ancien-site/assets/img/svg/acteos.svg
+      alt: Logo Acteos
   - titre: '[Bordeaux Métropole - Accompagnement à la rénovation énergétique](/references/marenov/)'
     texte: L'application Ma Rénov est un service public gratuit qui accompagne les ménages dans la rénovation énergétique de leur logement. Elle offre des conseils personnalisés et des aides financières pour améliorer le confort thermique et réduire les factures énergétiques.
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/marenov/ref-marenov.png
+      alt: Référence Bordeaux Ma Rénov
+    logo:
+      fichier: /uploads/ancien-site/assets/img/png/references/marenov/logo-marenov.png
+      alt: Logo Ma Rénov
   - titre: '[CraftView - Réglementation des fluides frigorigènes](/references/cfluide/)'
     texte: C'Fluide est une application web destinée aux professionnels du froid et du génie climatique, simplifiant la gestion réglementaire des fluides frigorigènes. Elle dématérialise les documents CERFA 15497 FI, facilite la traçabilité des interventions et optimise les processus administratifs, contribuant ainsi à une conformité accrue et à une réduction des tâches papier.
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/cfluide/ref-cfluide4.png
+      alt: Référence C'Fluide
+    logo:
+      fichier: /uploads/ancien-site/assets/img/png/references/cfluide/logo-cfluide.png
+      alt: Logo C'Fluide
   - titre: '[BeCLM - Conformité réglementaire](/references/beclm/)'
     texte: Spécialisée dans la digitalisation de la conformité réglementaire pour les secteurs de l'assurance, de la banque et de la finance. BeCLM propose des solutions pour le screening AML, le KYC, la cartographie des risques et la gestion documentaire, permettant aux entreprises de réduire leur exposition aux risques et le temps consacré aux obligations réglementaires.
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/beclm/ref-beclm.png
+      alt: Référence BeCLM
+    logo:
+      fichier: /uploads/ancien-site/assets/img/png/references/beclm/logo-beclm.png
+      alt: Logo BeCLM
 - type: section_atouts
   atouts:
   - titre: Développement d’application SaaS à Paris

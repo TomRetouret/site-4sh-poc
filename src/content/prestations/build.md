@@ -8,6 +8,9 @@ entete:
   bouton:
     texte: Contactez-nous
     lien: /contact/
+  illustration:
+    fichier: /uploads/ancien-site/assets/img/svg/offers/illu-build.svg
+    decorative: true
 blocs:
 - type: section_texte
   disposition: empile
@@ -45,11 +48,17 @@ blocs:
       Que ce soit pour optimiser vos processus internes ou offrir une expérience utilisateur exceptionnelle, nous vous accompagnons de A à Z : de l'idée au déploiement, en passant par le design et le développement.
 
       [Découvrez notre méthode](/notre-demarche/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-build-methode.svg
+      decorative: true
   - titre: Des composants technologiques
     texte: |-
       Des composants technologiques et des briques fonctionnelles pour accélérer le développement de votre solution.
 
       [Découvrez nos expertises techniques](/expertises-techniques/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-build-expertises.svg
+      decorative: true
 - type: section_cartes
   titre: Des services packagés
   cartes:
@@ -58,11 +67,17 @@ blocs:
       Accompagner votre réflexion de création ou de modernisation de votre solution numérique, en vous conseillant sur l'ensemble du cycle de vie : les spécifications, le développement, l'hébergement et le maintien en conditions opérationnelles.
 
       [Découvrir](/prestations/digital-strategy/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-build-digital-strategy.svg
+      decorative: true
   - titre: UX Research & UX Design
     texte: |-
       Comprendre les besoins utilisateurs et concevoir des expériences engageantes guidées par la recherche utilisateur tout au long du cycle de vie du produit numérique.
 
       [Découvrir](/prestations/ux-design/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-build-ux.svg
+      decorative: true
   - titre: UI Design
     texte: |-
       Concevoir des interfaces numériques intuitives pour offrir une expérience interactive immersive.
@@ -70,11 +85,17 @@ blocs:
       Un prototype interactif est un outil puissant pour tester et affiner une interface avant sa réalisation.
 
       [Découvrir](/prestations/ui-design/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-build-design.svg
+      decorative: true
   - titre: Maintenance évolutive
     texte: |-
       Faire évoluer votre solution, améliorer ses fonctionnalités, apporter des modifications pour l'adapter à de nouvelles exigences et aligner constamment le produit sur les besoins réels des utilisateurs.
 
       [Découvrir](/prestations/maintenance-evolutive/)
+    illustration:
+      fichier: /uploads/ancien-site/assets/img/svg/offers/illu-build-maintenance-evolutive.svg
+      decorative: true
 - type: section_texte
   titre: Nos engagements
   texte: |-

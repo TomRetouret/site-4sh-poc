@@ -130,6 +130,8 @@ sections:
   sous_parties:
   - titre: Filhet-Allard
     texte: |-
+      ![Logo Filhet-Allard](/uploads/ancien-site/assets/img/png/fa-logo.png)
+
       [Filhet-Allard](/references/filhet-allard/) a confié à 4SH la conception et le développement d'un extranet santé destiné aux entreprises et aux salariés.
 
       Le projet s'inscrit dans un contexte métier exigeant, avec des enjeux d'accès sécurisé, de consultation d'informations contractuelles, de fluidité des parcours utilisateurs et d'intégration avec l'écosystème existant.
@@ -137,6 +139,8 @@ sections:
       L'objectif : proposer une solution digitale claire, fiable et adaptée aux usages des bénéficiaires comme des équipes de gestion.
   - titre: Harmonie Mutuelle
     texte: |-
+      ![Logo Harmonie Mutuelle](/uploads/ancien-site/assets/img/png/harmonie-mutuelle-logo.png)
+
       4SH accompagne également Harmonie Mutuelle sur des projets digitaux liés à l'assurance, à la santé et à la protection sociale.
 
       Ces projets mobilisent des compétences à la fois techniques, métier et réglementaires : sécurisation des données, qualité des parcours, intégration au système d'information, performance applicative et évolutivité des solutions.

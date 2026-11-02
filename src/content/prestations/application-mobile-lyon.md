@@ -58,12 +58,18 @@ blocs:
   projets:
   - titre: EDF business services - Électromobilité
     reference: izivia-app-mobile
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile.png
+      alt: Référence application mobile EDF business services
     lien_texte: Découvrir l’application EDF business services
     texte: Pour EDF business services, dans l’électromobilité, nous avons développé une application grand public qui donne accès à plus de 300 000 points de recharge, avec un rendu cartographique avancé.
   - titre: Filhet-Allard - Assurance
     reference: filhet-allard
     lien_texte: Découvrir l’application Filhet-Allard et moi
     texte: Dans l’assurance, l’application Filhet-Allard et Moi donne aux assurés santé un accès sécurisé à leurs garanties et à leurs démarches, sur mobile.
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/new-references/fa/ref-fa-2.png
+      alt: Référence application mobile Filhet-Allard et moi
   - titre: CHEP - Logistique
     lien_texte: Découvrir l’application BlueCode
     lien: https://play.google.com/store/apps/details?id=com.chep.bluecode.mobile
@@ -72,6 +78,9 @@ blocs:
     reference: naxos
     lien_texte: Découvrir l’application Marguerite
     texte: Pour le réseau immobilier Century 21, l’application Marguerite outille les conseillers au quotidien, directement sur le terrain.
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/naxos/ref-marguerite-1.png
+      alt: Référence application mobile Marguerite
   boutons:
   - texte: Voir toutes nos références
     lien: /references/

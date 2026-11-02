@@ -76,6 +76,11 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/cin/ref-cin-5.png
     alt: CIN, visuel 5
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/cin/cin-illustration.png
+    intertitre: Les objectifs
+    alt: ''
+    decorative: true
 resume: Solution communautaire de déclaration et suivi du frêt aérien français
 ordre: 5
 referencement:

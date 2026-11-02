@@ -61,6 +61,11 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/dianatrans/ref-dianatrans2.png
     alt: DianaTrans, visuel 2
     decorative: false
+illustrations:
+  - image: /uploads/ancien-site/assets/img/png/references/dianatrans/dianatrans-illustration.svg
+    intertitre: Les objectifs
+    alt: ''
+    decorative: true
 resume: Dialog - Outil collaboratif pour fluidifier les informations
 ordre: 18
 referencement:

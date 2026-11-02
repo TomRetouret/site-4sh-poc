@@ -8,6 +8,9 @@ entete:
   bouton:
     texte: Contactez-nous
     lien: /contact/
+  illustration:
+    fichier: /uploads/ancien-site/assets/img/svg/offers/illu-build-digital-strategy.svg
+    decorative: true
 blocs:
 - type: section_texte
   disposition: empile
@@ -104,12 +107,21 @@ blocs:
   - titre: Time To Beem Plateforme web dédiée à l’avenir de la construction durable.
     texte: Dans la construction durable, nous avons travaillé sur la refonte de la plateforme web Time To Beem afin d'améliorer l'expérience utilisateur actuelle.
     reference: timetobeem
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/timetobeem/ref-timetobeem.png
+      alt: Référence Time To Beem
   - titre: BeCLM Le digital au service de la conformité
     texte: Nous travaillons avec BeCLM autour de la conformité réglementaire (LAB-FT, GDA, PPE, KYC), un partenariat qui enrichit notre couverture sur ces sujets.
     reference: beclm
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/references/beclm/ref-beclm.png
+      alt: Référence BeCLM
   - titre: Filhet-Allard Extranet santé pour les entreprises et les salariés
     texte: Dans l'assurance, nous avons modernisé le portail assuré de Filhet-Allard.
     reference: filhet-allard
+    image:
+      fichier: /uploads/ancien-site/assets/img/png/new-references/fa/ref-fa-1.png
+      alt: Référence Filhet-Allard
   boutons:
   - texte: Découvrir toutes nos références
     lien: /references/

@@ -66,6 +66,50 @@ type:
           search_fields: [titre, client]
           display_fields: [titre]
           hint: Facultatif. Fournit le visuel, le logo et le secteur de la carte, et la destination par défaut du lien.
+        - label: Visuel du projet
+          name: image
+          widget: object
+          required: false
+          collapsed: true
+          summary: '{{fields.fichier}}'
+          hint: Facultatif. Remplace le visuel de la fiche reliée (format paysage, affiché en 4:3).
+          fields:
+            - label: Image
+              name: fichier
+              widget: image
+              required: false
+            - label: Texte alternatif
+              name: alt
+              widget: string
+              required: false
+              hint: Obligatoire sauf si l'image est décorative. Une phrase, 120 caractères maximum.
+            - label: Image décorative (aucune information à transmettre)
+              name: decorative
+              widget: boolean
+              required: false
+              default: false
+        - label: Logo du client
+          name: logo
+          widget: object
+          required: false
+          collapsed: true
+          summary: '{{fields.fichier}}'
+          hint: Facultatif. Remplace le logo de la fiche reliée (affiché dans le cartouche du visuel).
+          fields:
+            - label: Image
+              name: fichier
+              widget: image
+              required: false
+            - label: Texte alternatif
+              name: alt
+              widget: string
+              required: false
+              hint: Obligatoire sauf si l'image est décorative. Une phrase, 120 caractères maximum.
+            - label: Image décorative (aucune information à transmettre)
+              name: decorative
+              widget: boolean
+              required: false
+              default: false
         - label: Texte du lien
           name: lien_texte
           widget: string

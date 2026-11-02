@@ -31,6 +31,8 @@ Les champs lus par les cartes des autres pages (`titre`, `client`, `resume`, `lo
 | Visuels | `image` | image | oui | visuel de l'en-tête et des cartes |
 | Visuels | `image_alt`, `image_decorative` | string 120 car., case | non (voir plus bas) | alt du visuel (fiche et cartes) |
 | Visuels | `galerie[]` (`image`, `alt`, `decorative`) | liste | non | galerie |
+| Visuels | `illustrations[]` (`image`, `intertitre`, `alt`, `decorative`) | liste | non | images dans l'étude de cas, à la fin de la partie qui suit l'intertitre indiqué (avant l'intertitre H2 ou H3 suivant ; introuvable ou vide : fin de l'étude de cas). Image décorative limitée à 420 px de large |
+| Carte de liste | `image_carte`, `image_carte_alt` | image, string 120 car. | non | visuel de la carte de la page Nos réussites seulement (repli : `image`) ; les cartes des autres pages lisent toujours `image` |
 | Carte de liste | `resume` | text, 160 car. | oui | carte de la page Nos réussites |
 | Carte de liste | `ordre` | nombre entier | non | tri des cartes et navigation |
 | Référencement | `referencement.meta_title`, `.meta_description`, `.indexation` | objet replié | non | `<title>`, description, robots |
@@ -89,3 +91,10 @@ Plan suivi : 15 fiches sur 18 ont exactement la suite « Entreprise et activité
 - Page liste (`src/references/index.njk`) : bandeau de chiffres retiré, cartes sans secteur ni technologies (macro locale), surtitre affiché seulement s'il est rempli.
 - `admin-shared/apercus-references.js` n'affiche pas encore `type_projet` ni `lien_externe`.
 
+
+## Images de l'ancien site (novembre 2026)
+
+- Champs ajoutés : `illustrations[]` (rendu dans `reference.njk`, insertion après l'intertitre choisi, sans changer `eleventy/references.js`) et `image_carte` / `image_carte_alt` (lus seulement par `src/references/index.njk`). Config : `020-references.yml` (assembler-config à relancer).
+- 13 fiches au plan classique : illustration de l'ancienne rubrique « Enjeux & Objectifs » remise après « Les objectifs », cochée décorative.
+- 5 fiches de l'ancien gabarit « reference » : visuel d'en-tête, galerie (= carrousel de l'ancienne page, dans l'ordre) et images des sections (`illustrations`) repris de l'ancienne page ; le visuel de la carte de la page liste (`image_carte`) garde celui de l'ancienne page liste quand il diffère.
+- Non repris faute d'emplacement : logos de technologies colorés (les technologies sont des pastilles texte), logos clients blancs de l'ancien en-tête sombre, second logo Century 21 (Naxos), logos des projets voisins (la navigation précédent / suivant n'a pas de logo).

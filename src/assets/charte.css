@@ -707,3 +707,7 @@ em:not(.accent){font-style:normal;font-weight:600}
   .menu>li.ouvert>.deroulant.menu-services{padding:4px 0 14px!important}
 }
 .menu-services .col-mere ~ .svc-list small{display:none}
+/* Bandeau bas des méga-menus : contenu centré verticalement (styles.css laissait 16px en haut, 4px en bas) */
+.menu-services .services-bas{padding:20px 24px!important;align-items:center!important}
+.menu-services .services-bas b{margin-bottom:2px}
+@media (max-width:1024px){.menu-services .services-bas{padding:16px!important;align-items:flex-start!important}}

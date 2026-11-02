@@ -10,8 +10,8 @@ entete:
 inscription:
   prix: 1200
   sessions:
-    - debut: "2026-09-30"
-      fin: "2026-10-01"
+    - debut: '2026-11-16'
+      fin: '2026-11-17'
   programme_pdf: https://drive.google.com/file/d/1MwCrTIsAbzEyB2ABezMcJn4dngDNT0HX/view
   programme_pdf_poids: 729 Ko
 chiffres:
@@ -19,30 +19,36 @@ chiffres:
   duree_heures: 14
   participants_min: 1
   participants_max: 8
-  note: 4.9
-  avis: 40
+  note: 4.67
+  avis: 46
   depuis: janvier 2023
   theorie: 55
 public:
   pour_qui: La formation Kafka s'adresse à des développeurs d'application Web, des Tech Leads, des architectes techniques souhaitant se former sur la technologie Apache Kafka.
   prerequis:
-    - Être familiarisé avec la programmation, idéalement Java
+    - Être familiarisé avec la programmation, idéalement Java.
 objectifs:
-  - Comprendre les concepts fondamentaux de l'architecture de Kafka
+  - Comprendre les concepts fondamentaux de l’architecture de Kafka
   - Savoir écrire un producteur de données
   - Savoir écrire un consommateur de données
-  - Savoir prendre des décisions de configuration comme les partitions, la rétention, la réplication, la confirmation, afin d'adapter kafka au cas d'usage
+  - Savoir prendre des décisions de configuration comme les partitions, la rétention, la réplication, la confirmation, afin d’adapter kafka au cas d’usage
   - Maîtriser une stratégie de gestion de schémas de données
-  - Savoir traiter des flux de données en s'appuyant sur les outils Kafka Connect, Kafka Streams et KsqlDB
+  - Savoir traiter des flux de données en s’appuyant sur les outils Kafka Connect, Kafka Streams et KsqlDB
 programme:
   - titre: Introduction
     points: []
   - titre: Fondamentaux
     points:
-      - Concept et historique
-      - Composants de base (Record, Brokers, Topics/partitions/segments, Producer, Consumer)
-      - Synchronisation des brokers (Zookeeper et Kraft)
-      - Sérialisation/Désérialisation
+      - Concert et historique
+      - Composants de base
+      - '- Record'
+      - '- Brokers'
+      - '- Topics/partitions/segments'
+      - '- Producer'
+      - '- Consumer'
+      - Synchronisation des brokers
+      - '- Zookeeper et Kraft'
+      - Sérialisation/Deserialization
       - Format des données
       - Rétention et réplication
       - Sécurité
@@ -55,13 +61,15 @@ programme:
       - Délivrer un message
       - Transaction
       - Dimensions des messages
+      - Transaction
       - API
   - titre: Consommer des messages
     points:
       - Gestion des offsets et de leur commit
       - Groupes de consommation
       - Favoriser le débit ou la latence
-      - Gestion d'erreur
+      - Translation
+      - Gestion d’erreur
       - API
   - titre: Gestion des schémas
     points:
@@ -71,7 +79,7 @@ programme:
       - Nommage
   - titre: Kafka Connect
     points:
-      - Composants d'un cluster
+      - Composants d’un cluster
       - Connecteurs
       - Transformations
   - titre: REST Proxy
@@ -93,22 +101,36 @@ programme:
     points: []
 formateur:
   personne: morgan
+  presentation: |-
+    Morgan, développeur passionné par le code et les défis techniques, est expert en Java, Kotlin et Kubernetes dans un contexte DevOps. Il a notamment mené la refonte d'une solution de fret leader en France et participé à la conception et au déploiement d’une solution pour aider les assurances à se conformer aux réglementations.
+
+    Morgan dispense également la formation Kubernetes - Fondamentaux, la formation Docker - Essentiel, la formation Java - Fondamental et les formations Kotlin.
 faq:
-  - question: La formation inclut-elle des bonnes pratiques pour l'utilisation de Kafka dans un environnement DevOps ?
+  - question: La formation inclut-elle des bonnes pratiques pour l’utilisation de Kafka dans un environnement DevOps ?
     reponse: Oui, la formation Kafka aborde les meilleures pratiques pour intégrer Kafka dans un environnement DevOps, en mettant l'accent sur l'automatisation et la gestion de la scalabilité pour des flux de données en temps réel.
-  - question: Les participants auront-ils l'occasion de travailler sur des cas concrets avec Kafka ?
-    reponse: Absolument, la formation inclut des exercices pratiques basés sur des cas d'usage réels, pour permettre aux participants de comprendre et appliquer les concepts clés de Kafka dans des conditions proches de la production.
+  - question: Les participants auront-ils l’occasion de travailler sur des cas concrets avec Kafka ?
+    reponse: Absolument, la formation inclut des exercices pratiques basés sur des cas d’usage réels, pour permettre aux participants de comprendre et appliquer les concepts clés de Kafka dans des conditions proches de la production.
   - question: Comment se déroule la formation Kafka en termes de durée et de format ?
-    reponse: La formation Kafka se déroule sur une durée de 2 jours (soit 14 heures) et combine 55 % de théorie et 45 % de pratique. Elle peut être suivie en présentiel dans vos locaux ou à distance via des sessions en ligne en visio.
+    reponse: La formation Kafka se déroule sur une durée de 2 jours (soit 14 heures) et combine 55 % de théorie et 45 % de pratique. Elle est flexible et peut être suivie en présentiel dans vos locaux, directement au sein de votre entreprise, ou à distance via des sessions en ligne en visio. Cette approche vous permet de choisir le format qui convient le mieux à vos besoins professionnels tout en garantissant une mise en application immédiate des concepts grâce à des cas d’usage concrets et adaptés à la gestion des données.
+formations_liees:
+  - maven
+  - spring-rest-jpa
+intertitres:
+  description: Description formation *Kafka*
+  programme: Programme formation *Kafka*
+  formateur: Formateur Formation *Kafka* - Les fondamentaux
+  faq: Vos questions
 referencement:
-  meta_title: "Formation Kafka : formation et développement de compétences Kafka"
+  meta_title: 'Formation Kafka : formation et développement de compétences Kafka'
   meta_description: Formez-vous à la technologie Kafka avec nos experts en développement et gérez vos événements en temps réel avec cette solution open source.
   indexation: true
 ---
 Apache Kafka est une solution open source créée pour les besoins de LinkedIn en 2011 comme réponse technique à la problématique d'ingestion des données en temps réel.
 
-Ce système de gestion d'événements en temps réel est capable de traiter des millions de messages par seconde.
+Ce système de gestion d'événements en temps réel est capable de traiter des millions de messages par secondes.
 
-Cette formation de développement a pour objectif de permettre à des développeurs et architectes de découvrir les services, l'architecture et les APIs mises à leur disposition par Apache Kafka pour créer des applications scalables leur permettant de gérer de très grandes quantités de données. L'expérimentation sur la base de cas concrets issus d'applications en production permet d'illustrer les principes exposés.
+Cette [formation de développement](/formations/develop/) a pour objectif de permettre à des développeurs/architectes de découvrir les services, l'architecture et les APIs mises à leur disposition par Apache Kafka pour créer des applications scalables leur permettant de gérer de très grandes quantités de données.
 
-Aujourd'hui, Apache Kafka est largement utilisé dans des domaines variés tels que le e-commerce, la finance et les réseaux sociaux pour construire des pipelines de données robustes.
+L'expérimentation sur la base de cas concrets issus d'applications en production permettra d'illustrer les principes exposés précédemment.
+
+Aujourd’hui, Apache Kafka est largement utilisé dans des domaines variés tels que le e-commerce, la finance, et les réseaux sociaux pour construire des pipelines de données robustes. Nous dispensons également une formation complémentaire : la [formation Spring/REST/JPA](/formations/spring-rest-jpa/) qui vous aidera dans le développement de vos applications Java.

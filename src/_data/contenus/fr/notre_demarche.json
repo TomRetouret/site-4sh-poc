@@ -12,28 +12,64 @@
         "L'agence",
         "Notre démarche"
       ],
-      "surtitre": "Notre démarche",
-      "titre_page": "De votre idée à votre logiciel, une *méthode* qui sécurise chaque étape",
-      "chapo": "Nous structurons chaque projet autour de trois piliers : une méthode agile en quatre temps, une conception centrée sur vos utilisateurs, et des engagements clairs sur la qualité et les délais.",
+      "surtitre": "",
+      "titre_page": "Notre méthode *4D*",
+      "chapo": "4D : discover, design, develop, deploy",
       "bouton_principal": {
-        "texte": "Parlons de votre projet",
+        "texte": "Nous contacter",
         "lien": "#contact"
       },
       "bouton_secondaire": {
-        "texte": "Découvrir la méthode 4D",
-        "lien": "#methode"
+        "texte": "",
+        "lien": ""
       },
-      "etiquettes": [
-        "Découvrir",
-        "Dessiner",
-        "Développer",
-        "Déployer"
-      ],
+      "etiquettes": [],
       "illustration": "demarche"
     },
     {
-      "type": "chiffres_compteurs",
+      "type": "texte_simple",
       "masquer": false,
+      "surtitre": "Vous avez une idée ? Nous la transformons en réalité !",
+      "titre": "4SH est là pour vous aider !",
+      "texte": "**Vous avez une super idée** qui vous permettrait **d’accélérer votre business** mais n’avez ni le temps ni les ressources pour vous en occuper ?\n\nDe **l’idée à la création de votre application**, il n’y a pas de rêve trop grand pour nous !\n\nEt parce que nous sommes soucieux de la qualité, nous suivons **le processus des 4D**."
+    },
+    {
+      "type": "frise_methode",
+      "masquer": false,
+      "ancre": "methode",
+      "surtitre": "",
+      "titre": "Découvrez notre secret de fabrication « les *4D* »",
+      "sous_titre": "",
+      "etapes": [
+        {
+          "numero": "1",
+          "phase": "",
+          "titre": "Discover",
+          "texte": "Nous commençons par écouter votre idée pour ensuite élaborer ensemble les grands principes de la solution et sa roadmap"
+        },
+        {
+          "numero": "2",
+          "phase": "",
+          "titre": "Design",
+          "texte": "Nous élaborons ensuite les spécifications UX et UI"
+        },
+        {
+          "numero": "3",
+          "phase": "",
+          "titre": "Develop",
+          "texte": "C’est là que la magie opère, chuuut nous développons votre application !"
+        },
+        {
+          "numero": "4",
+          "phase": "",
+          "titre": "Deploy",
+          "texte": "C’est le grand jour, nous validons et ajustons les derniers détails avec vous avant la mise en production de la solution. C'est parti, votre application est prête !"
+        }
+      ]
+    },
+    {
+      "type": "chiffres_compteurs",
+      "masquer": true,
       "chiffres": [
         {
           "valeur": "2007",
@@ -62,42 +98,8 @@
       ]
     },
     {
-      "type": "frise_methode",
-      "masquer": false,
-      "ancre": "methode",
-      "surtitre": "Méthode 4D",
-      "titre": "Notre secret de fabrication, les *4D*",
-      "sous_titre": "Vous avez une super idée qui vous permettrait d'accélérer votre business, mais ni le temps ni les ressources pour vous en occuper ? De l'idée à la création de votre application, nous suivons un processus en quatre temps, gage de qualité.",
-      "etapes": [
-        {
-          "numero": "1",
-          "phase": "Découvrir",
-          "titre": "On écoute votre idée",
-          "texte": "Nous commençons par comprendre votre idée, puis nous élaborons ensemble les grands principes de la solution et sa roadmap."
-        },
-        {
-          "numero": "2",
-          "phase": "Dessiner",
-          "titre": "On conçoit l'expérience",
-          "texte": "Nous élaborons les spécifications UX et UI, pour définir la solution avant d'écrire la moindre ligne de code."
-        },
-        {
-          "numero": "3",
-          "phase": "Développer",
-          "titre": "On développe",
-          "texte": "C'est là que la magie opère : nos équipes développent votre application selon les principes validés ensemble."
-        },
-        {
-          "numero": "4",
-          "phase": "Déployer",
-          "titre": "On met en production",
-          "texte": "Le grand jour. Nous validons et ajustons les derniers détails avec vous, puis nous mettons la solution en production. Votre application est prête !"
-        }
-      ]
-    },
-    {
       "type": "cartes_numerotees",
-      "masquer": false,
+      "masquer": true,
       "sans_marge_haute": true,
       "affichage": "grille",
       "colonnes": "3",
@@ -133,7 +135,7 @@
     },
     {
       "type": "cartes_numerotees",
-      "masquer": false,
+      "masquer": true,
       "sans_marge_haute": true,
       "affichage": "carrousel",
       "colonnes": "auto",
@@ -173,7 +175,7 @@
     },
     {
       "type": "cartes_texte",
-      "masquer": false,
+      "masquer": true,
       "sans_marge_haute": true,
       "presentation": "colonnes",
       "fond": "blanc",

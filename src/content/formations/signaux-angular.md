@@ -10,8 +10,10 @@ entete:
 inscription:
   prix: 800
   sessions:
-    - debut: "2026-09-25"
-      fin: "2026-09-25"
+    - debut: '2026-12-01'
+      fin: '2026-12-01'
+    - debut: '2027-01-07'
+      fin: '2027-01-07'
   programme_pdf: https://drive.google.com/file/d/1Mf6hifu2mhmpuDxeDONdlkMBqaTa6RKC/view
   programme_pdf_poids: 720 Ko
 chiffres:
@@ -28,7 +30,7 @@ public:
   prerequis:
     - Connaissance approfondie des concepts de programmation.
     - Connaissance approfondie de JavaScript et de TypeScript.
-    - Connaissance fondamentale d'Angular
+    - Connaissance fondamentale d’Angular
     - Notions sur les mécanismes asynchrones (observables, promesses, etc.).
 objectifs:
   - Comprendre les raisons de l'arrivée des signaux et leur utilité dans la programmation réactive.
@@ -61,18 +63,23 @@ programme:
   - titre: Fonctionnalités avancées des signaux
     points:
       - Nettoyage des effets et utilisation de onCleanup.
-      - Signaux readonly avec .asReadonly().
+      - Signaux readonly avec.asReadonly().
       - Utilisation des signaux hors composants.
       - Rappel sur OnPush et détection des changements.
   - titre: Nouvelle manière de récupérer des données de manière asynchrone
     points:
       - Présentation de ressources pour les opérations asynchrones.
-      - Utilisation de .reload() pour demander explicitement l'exécution.
+      - Utilisation de.reload() pour demander explicitement l'exécution.
   - titre: Alternative à computed()
     points:
       - Présentation de LinkedSignal() et cas d'utilisation.
       - Exemples de code avec et sans LinkedSignal().
 faq: []
+formations_liees:
+  - angular-fondamental
+intertitres:
+  description: Description formation Angular
+  programme: Programme formation Angular avancé
 referencement:
   meta_title: Formation Les signaux avec Angular en présentiel ou à distance
   meta_description: Allez plus loin dans votre expertise du développement de framework Angular avec 4SH et créez des applications web encore plus dynamiques, modernes et complexes.
@@ -83,3 +90,5 @@ Les signaux avec Angular sont une fonctionnalité avancée qui permet de gérer 
 Cette formation a pour objectif de permettre aux développeurs de maîtriser les signaux dans Angular, en leur fournissant les connaissances et les compétences nécessaires pour les intégrer efficacement dans leurs projets.
 
 La formation comprend des présentations théoriques, des démonstrations pratiques, des exercices et des travaux pratiques pour illustrer les concepts et les meilleures pratiques liées aux signaux dans Angular.
+
+[En savoir plus sur Angular](/expertises-techniques/angular/)

@@ -6,4 +6,4 @@ catalogueStyles: true
 permalink: /formations/
 ---
 {% from "composants/pages/formations.njk" import corps %}
-{{ corps(page_formations, site, libelles, collections.formationsParGroupe, site.documents, page.url) }}
+{{ corps(page_formations, site, libelles, collections.formationsParGroupe, site.documents, page.url, collections.formations) }}

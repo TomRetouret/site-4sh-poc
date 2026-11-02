@@ -39,6 +39,8 @@ Choix : ces pages n'ont pas été passées dans la bibliothèque de blocs (`sche
 
 ## Secteurs (`secteur.njk`)
 
+Deux mises en page dans le même gabarit : **à sections libres** dès que `sections` est rempli (rendu identique aux pages Clients & Solutions : filtre `blocs`, puis références, FAQ, appel final, formulaire), sinon **gabarit fixe** (défis, opportunités, pourquoi, étapes). Assurance, Logistique et Électromobilité sont en sections libres depuis la reprise du contenu de l'ancien site (leurs intertitres ne rentraient pas dans les titres communs du gabarit fixe) ; les champs du gabarit fixe restent disponibles pour une nouvelle fiche.
+
 | Groupe | Clé | Widget | Obligatoire | Rendu |
 |---|---|---|---|---|
 | En-tête | `titre` Nom du secteur | string, 40 car. | oui | fil d'Ariane, surtitre « Secteur · nom », titre par défaut |
@@ -48,7 +50,10 @@ Choix : ces pages n'ont pas été passées dans la bibliothèque de blocs (`sche
 | Opportunités | `opportunites_intro`, `opportunites[]` | text, liste de string (gras) | non | section « Les opportunités... » |
 | Pourquoi 4SH | `pourquoi[]` { `titre`, `paras[]` } | liste | non | atouts sur deux colonnes |
 | Notre approche | `comment_intro`, `etapes[]` { `titre`, `texte` } | text, liste | non | étapes sur fond sombre |
-| Références clients | `references` | relation multiple vers Références | non | cartes de références |
+| Sections (sections libres) | `sections[]` { `titre`, `texte`, `sous_parties[]` } | liste (comme Clients & Solutions) | non | remplie : mise en page à sections libres, les groupes Défis à Notre approche ne sont plus affichés |
+| Références clients | `references` | relation multiple vers Références | non | cartes de références (en sections libres : sans celles déjà présentées dans les sections) |
+| Questions fréquentes (sections libres) | `faq_titre`, `faq[]` { `question`, `reponse` } | string, liste | non | accordéon (repli titre : `libelles.secteur.faq_titre`) |
+| Appel final (sections libres) | `appel` { `titre`, `texte`, `bouton`, `url` } | objet | non | bandeau centré après la FAQ (repli destination : `/#contact`) |
 | Back-office | `ordre` | entier | non | tri du back-office uniquement |
 | Référencement | `referencement` | objet | non | repli titre : « nom - Logiciel métier sur mesure \| 4SH », description : accroche |
 
@@ -67,10 +72,13 @@ Surtitres et titres des sections : collection Libellés (`libelles.secteur.*`), 
 | Sections | `sections[]` | liste (voir plus haut) | non | contenu principal |
 | Chiffres clés | `chiffres[]` { `chiffre`, `label` } | liste, 4 max. | non | bandeau |
 | Références | `references` | relation multiple | non | cartes, sans celles déjà présentées dans les sections |
-| Questions fréquentes | `faq[]` | liste | non | accordéon |
+| Questions fréquentes | `faq_titre`, `faq[]` | string, liste | non | accordéon (repli titre : `libelles.secteur.faq_titre`) |
+| Appel final | `appel` { `titre`, `texte`, `bouton`, `url` } | objet | non | bandeau centré après la FAQ, avant le formulaire (repli destination : `/#contact`) |
 | Back-office | `ordre` | entier | non | tri du back-office |
 | Référencement | `referencement` | objet | non | repli titre : « nom - 4SH », description : accroche |
 | Suivi interne | `source_url` | string | non | non affiché |
+
+Titre de sous-partie : 160 caractères maximum (110 conseillés) ; il peut être un lien Markdown `[Nom](/references/...)` pour une carte de projet sans texte. `faq_titre` et `appel` reprennent le titre de FAQ et le bandeau final propres à chaque page de l'ancien site.
 
 `cta_titre` et `cta_texte` figuraient dans l'ancien formulaire mais n'étaient lus par aucun gabarit : retirés.
 
@@ -84,16 +92,33 @@ Surtitres et titres des sections : collection Libellés (`libelles.secteur.*`), 
 | Identité | `famille` | select build / run / formation | oui | couleur (`famille-<valeur>` sur le body et la carte) |
 | Identité | `logo` | image | non | en-tête et carte |
 | En-tête | `h1`, `intro` | string accent, text | oui | H1, chapô, description par défaut |
+| Mise en page | `sans_surtitres` | boolean | non | coché : les surtitres par défaut (« Pourquoi nom ? », « Communauté et écosystème ») sont masqués |
 | Pourquoi | `pourquoi_eyebrow`, `pourquoi_titre`, `pourquoi_intro`, `atouts[]` { `titre`, `texte` } | | atouts oui | section Pourquoi (repli surtitre : « Pourquoi nom ? ») |
-| Références clients | `references[]` { `fiche` (relation vers Références, facultative), `titre`, `texte` } | liste | non | cartes ; visuel, logo, secteur et lien viennent de la fiche |
+| Références clients | `references_titre`, `references_intro`, `references[]` { `fiche` (relation vers Références, facultative), `titre`, `texte` }, `references_bouton`, `references_apres_section` | | non | cartes ; visuel, logo, secteur et lien viennent de la fiche. Titre vide : surtitre « Références clients ». `references_bouton` : bouton vers /references/. `references_apres_section` (entier N) : bloc placé après la N-ième section du contenu détaillé au lieu de juste après « Pourquoi » |
 | Contenu détaillé | `corps_eyebrow`, `corps_titre`, `corps_sombre`, `sections[]` | | non | bloc détaillé (repli surtitre : « Communauté et écosystème ») ; `corps_sombre` : texte continu sur fond sombre, sans mise en page automatique |
-| Formations liées | `formations[]` { `titre`, `formation` (relation vers Formations) } | liste | non | cartes et bouton « Nos formations » |
+| Formations liées | `formations_titre`, `formations_intro`, `formations[]` { `titre`, `formation` (relation vers Formations) } | string, text, liste | non | cartes et bouton « Nos formations » ; titre vide : simple surtitre « Nos formations » |
+| Appel à l'action final | `cta_titre`, `cta_texte` | string | non | bloc titre + phrase + bouton « Contactez-nous » avant le formulaire de contact ; masqué si les deux sont vides |
 | Questions fréquentes | `faq_titre`, `faq[]` | | non | accordéon (repli titre : « Questions fréquentes sur nom ») |
 | Carte de la page mère | `accroche_courte`, `ordre` | text 90 car., entier | accroche oui | carte de la page Expertises techniques |
 | Référencement | `referencement` | objet | non | repli titre : « nom - Expertise technique 4SH », description : intro |
 | Suivi interne | `requete_cible`, `source_url`, `source_confluence`, `guide_source_url` | string | non | non affichés |
 
 Anciennement, `pourquoi_eyebrow`, `faq_titre` et `faq` étaient affichés mais absents du formulaire, et les références et formations se saisissaient par adresse (`lien`, `url`) : elles passent en relations (`fiche`, `formation`), l'adresse est calculée.
+
+Pages « formation par technologie » de l'ancien site : elles ne sont pas des fiches technologie (voir Guides technologie ci-dessous). Les fiches `figma`, `javascript` et `mongodb` avaient été rédigées à partir de ces pages.
+
+## Guides technologie (`guide-technologie.njk`)
+
+Collection `guides_technologies` (`admin/config/collections/085-guides-technologies.yml`), dossier `src/content/guides-technologies/`, adresse `/formations/<nom du fichier>/` (`guides-technologies.11tydata.js`). Ce sont les anciennes pages « En savoir plus sur <techno> » (`/learning/formations/<catégorie>/<techno>/`). Gabarit dérivé de `technologie.njk` (même en-tête et logo), sans carte sur la page Expertises techniques : la collection `technologies` ne lit que `src/content/technologies/`. Le nom de fichier ne doit pas être celui d'une fiche formation ni d'une catégorie (même préfixe `/formations/`).
+
+| Groupe | Clé | Widget | Obligatoire | Rendu |
+|---|---|---|---|---|
+| Identité | `nom`, `famille` (défaut `formation`), `logo` | string, select, image | nom, famille | H1 par défaut, couleur, logo de l'en-tête |
+| Fil d'Ariane | `categorie` (relation Catégories), `formation` (relation Formations), `formation_titre` | | non | Accueil › Formations › catégorie › formation › surtitre + nom |
+| En-tête | `surtitre`, `h1`, `intro` | string, string accent, text | intro | surtitre, H1 (repli : `nom`), chapô, description par défaut |
+| Contenu | `sommaire_titre`, `sections[]` { `titre`, `texte`, `sous_parties[]` { `titre`, `texte` } } | | sections | sommaire automatique (titres des sections, ancres `#section-N`) et texte continu |
+| Référencement | `referencement` | objet | non | repli titre : « nom : en savoir plus - 4SH », description : intro |
+| Suivi interne | `source_url` | string | non | non affiché |
 
 ## Catégories de formation (`categorie.njk`)
 

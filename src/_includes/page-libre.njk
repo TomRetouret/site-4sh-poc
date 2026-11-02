@@ -3,7 +3,7 @@ layout: base.njk
 extraCss: /assets/secteurs.css
 ---
 {#- Page libre (aujourd'hui : Intelligence artificielle). Front matter : titre, hero { surtitre, titre, chapo,
-    bouton }, references, faq, contact_final, referencement ; corps Markdown réparti en sections par le filtre blocs.
+    bouton }, references, faq_titre, faq, contact_final, referencement ; corps Markdown réparti en sections par le filtre blocs.
     Spécification : docs/back-office/schema-pages.md -#}
 {% from "composants/page.njk" import hero as hero_page, bandeau_chiffres %}
 {% from "composants/sections.njk" import faq_section, bloc_references %}
@@ -24,6 +24,6 @@ extraCss: /assets/secteurs.css
 {{ bloc_references(references | sansRefs(refs_haut), collections.references,
                    libelles.secteur.refs_eyebrow, libelles.secteur.refs_titre) }}
 
-{{ faq_section(faq, libelles.secteur.faq_titre, creme=true) }}
+{{ faq_section(faq, faq_titre or libelles.secteur.faq_titre, creme=true) }}
 
 {% if contact_final %}{{ bloc_contact(site, page.url) }}{% endif %}

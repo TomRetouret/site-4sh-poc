@@ -1,14 +1,15 @@
   # -----------------------------------------------------------------------
   # 4) SECTEURS  (pages métier /secteurs/logistique/, electromobilite, assurance)
-  # Gabarit fixe : src/_includes/secteur.njk. Champs dans l'ordre de la page (préfixe
-  # du libellé = section) : En-tête, Défis, Opportunités, Pourquoi 4SH, Notre approche,
-  # Références, puis Référencement. Surtitres et titres des sections : collection
+  # Gabarit : src/_includes/secteur.njk. Deux mises en page : à sections libres dès que
+  # « Sections de la page » est rempli (En-tête, Sections, Références, Questions fréquentes,
+  # Appel à l'action final), sinon gabarit fixe (En-tête, Défis, Opportunités, Pourquoi 4SH,
+  # Notre approche, Références). Puis Référencement. Surtitres et titres des sections : collection
   # Libellés (communs aux trois secteurs). Spécification : docs/back-office/schema-collections.md
   # -----------------------------------------------------------------------
   - name: "secteurs"
     label: "Secteurs"
     label_singular: "Secteur"
-    description: "Pages métier. Les titres des sections (Les défis de votre métier, Pourquoi 4SH ?...) se règlent dans Libellés. Le menu du site se règle dans Navigation."
+    description: "Pages métier. Avec des « Sections de la page », la page suit ses propres intertitres ; sans, elle suit le gabarit fixe dont les titres (Les défis de votre métier, Pourquoi 4SH ?...) se règlent dans Libellés. Le menu du site se règle dans Navigation."
     folder: "src/content/secteurs"
     preview_path: "secteurs/{{slug}}/"
     create: true
@@ -23,7 +24,31 @@
       - { label: "En-tête · Grand titre", name: "h1", widget: "string", required: true, maxlength: 70, hint: "70 caractères maximum. Ex. : Maîtrisez chaque étape de votre Supply Chain. Mettez un mot entre *astérisques* pour l'afficher en rouge." }
       - { label: "En-tête · Accroche", name: "accroche", widget: "text", required: true, hint: "Une ou deux phrases sous le grand titre, 40 mots maximum. Sert aussi de description pour Google si celle du Référencement est vide." }
 
-      # --- Défis ---
+      # --- Sections de la page (mise en page à sections libres) ---
+      - label: "Sections de la page"
+        name: "sections"
+        widget: "list"
+        required: false
+        label_singular: "Section"
+        summary: "{{fields.titre}}"
+        collapsed: true
+        hint: "Facultatif. Dès qu'une section est saisie, la page passe en mise en page à sections libres (comme les pages Clients & Solutions) : les champs Défis, Opportunités, Pourquoi 4SH et Notre approche ne sont plus affichés. Le contenu principal, entre l'en-tête et les références. Une section par grand thème, dans l'ordre de la page : fonds alternés blanc et crème, la première section en étapes passe sur fond sombre. Une dernière section courte avec un seul lien devient un bandeau d'appel à l'action centré."
+        fields:
+          - { label: "Titre de la section", name: "titre", widget: "string", required: false, maxlength: 110, hint: "Intertitre de la section, 110 caractères maximum. Laisser vide seulement pour un texte d'introduction placé en tout premier. Le titre décide aussi de la mise en page des sous-parties : « approche », « méthode », « démarche », « comment »... donne des étapes numérotées (3 sous-parties minimum) ; « pourquoi », « choisir », « atout », « engagement »... donne des atouts sur deux colonnes ; sinon des cartes." }
+          - { label: "Texte d'introduction", name: "texte", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Paragraphes sous le titre. Sans sous-partie, une liste de 3 puces ou plus devient une grille de cartes (« **Titre** : texte » donne une carte titrée). Un paragraphe qui ne contient qu'un lien devient un bouton. Un lien vers une fiche (/references/...) affiche l'aperçu de cette référence à côté du texte." }
+          - label: "Sous-parties"
+            name: "sous_parties"
+            widget: "list"
+            required: false
+            label_singular: "Sous-partie"
+            summary: "{{fields.titre}}"
+            collapsed: true
+            hint: "Facultatif. 2 à 8 sous-parties de même nature, affichées en cartes, atouts ou étapes selon le titre de la section. Au-delà de 3 cartes, elles défilent en carrousel."
+            fields:
+              - { label: "Titre de la sous-partie", name: "titre", widget: "string", required: true, maxlength: 160, hint: "110 caractères conseillés, 160 maximum. Ex. : Centralisation de toutes les demandes dans une interface unique. Un titre peut être un lien : [Nom du projet](/references/...)" }
+              - { label: "Texte", name: "texte", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "60 mots environ (au-delà de 420 caractères en moyenne, les cartes passent en atouts). Listes à puces possibles." }
+
+      # --- Défis (gabarit fixe, utilisé seulement si « Sections de la page » est vide) ---
       - { label: "Défis · Phrase d'introduction", name: "defis_intro", widget: "text", required: false, hint: "Facultatif. Une phrase avant la liste. Ex. : La logistique fait face à des défis structurants :" }
       - label: "Défis · Liste des défis"
         name: "defis"
@@ -88,6 +113,34 @@
         search_fields: ["titre", "client"]
         display_fields: ["titre"]
         hint: "Fiches de la collection Références, dans l'ordre d'affichage (recherche par nom). Vide : la section n'est pas affichée."
+
+      # --- Questions fréquentes (mise en page à sections libres seulement) ---
+      - { label: "Questions fréquentes · Titre", name: "faq_titre", widget: "string", required: false, maxlength: 110, hint: "Facultatif. Titre au-dessus des questions. Vide : « Questions fréquentes » (Libellés)." }
+      - label: "Questions fréquentes"
+        name: "faq"
+        widget: "list"
+        required: false
+        label_singular: "Question"
+        summary: "{{fields.question}}"
+        collapsed: true
+        hint: "Facultatif, mise en page à sections libres seulement. 3 à 8 questions, affichées en accordéon avant le formulaire de contact."
+        fields:
+          - { label: "Question", name: "question", widget: "string", required: true, maxlength: 120, hint: "120 caractères maximum." }
+          - { label: "Réponse", name: "reponse", widget: "text", required: true, hint: "80 mots maximum, sans mise en forme." }
+
+      # --- Appel à l'action final ---
+      - label: "Appel à l'action final"
+        name: "appel"
+        widget: "object"
+        required: false
+        collapsed: true
+        summary: "{{fields.titre}}"
+        hint: "Facultatif, mise en page à sections libres seulement. Bandeau centré affiché après les questions fréquentes, avant le formulaire de contact. Vide : pas de bandeau."
+        fields:
+          - { label: "Titre", name: "titre", widget: "string", required: false, maxlength: 110, hint: "110 caractères maximum. Ex. : Vous avez un projet logistique ?" }
+          - { label: "Texte", name: "texte", widget: "text", required: false, hint: "Une ou deux phrases, sans mise en forme sauf **gras**." }
+          - { label: "Texte du bouton", name: "bouton", widget: "string", required: false, maxlength: 30, hint: "30 caractères maximum. Ex. : Contactez-nous. Vide : pas de bouton." }
+          - { label: "Destination du bouton", name: "url", widget: "string", required: false, hint: "Adresse d'une page du site (/contact/) ou d'une ancre. Vide : /#contact." }
 
       # --- Back-office ---
       - { label: "Rang dans la liste du back-office", name: "ordre", widget: "number", required: false, value_type: "int", min: 1, hint: "Nombre entier, classe les fiches dans cette liste uniquement. L'ordre du menu du site se règle dans Navigation." }

@@ -10,18 +10,19 @@ entete:
 inscription:
   prix: 2190
   sessions:
-    - debut: "2027-01-25"
-      fin: "2027-01-27"
+    - debut: '2027-01-25'
+      fin: '2027-01-27'
   programme_pdf: https://drive.google.com/file/d/1BVtqsbqiKMiW3q5U-OEUNDr18epuY8RF/view
   programme_pdf_poids: 680 Ko
 chiffres:
-  duree_jours: 3
-  duree_heures: 21
   participants_min: 1
   participants_max: 8
   theorie: 40
+  duree_texte: 3 jours (21h)
+  avis: 0
+  depuis: janvier 2023
 public:
-  pour_qui: "Cette formation s’adresse à des développeurs souhaitant intégrer des fonctionnalités basées sur les grands modèles de langage dans leurs applications : extraction de données, interfaces conversationnelles, agents, recherche sémantique, traitement de documents. Elle vise la construction de fonctionnalités IA fiables, testables et maîtrisées en coût."
+  pour_qui: 'Cette formation s’adresse à des développeurs souhaitant intégrer des fonctionnalités basées sur les grands modèles de langage dans leurs applications : extraction de données, interfaces conversationnelles, agents, recherche sémantique, traitement de documents. Elle vise la construction de fonctionnalités IA fiables, testables et maîtrisées en coût.'
   prerequis:
     - Maîtriser les bases de la programmation et d’au moins un langage (Java, Kotlin, TypeScript, Python…)
     - Connaître les principes des API HTTP/REST et le format JSON
@@ -29,70 +30,73 @@ public:
 objectifs:
   - Comprendre le fonctionnement des LLM et l’écosystème des API d’IA
   - Savoir choisir un modèle selon la qualité, la latence et le coût
-  - "Maîtriser les fondamentaux de l’intégration : appels API, prompt système, conversation"
+  - 'Maîtriser les fondamentaux de l’intégration : appels API, prompt système, conversation'
   - Savoir obtenir des sorties structurées fiables et les valider
   - Savoir connecter le modèle au système avec le tool use
   - Savoir concevoir une boucle agentique et des workflows multi-étapes
-  - "Savoir ancrer le modèle dans les données de l’application : RAG et recherche"
-  - "Savoir traiter des entrées multimodales : documents, images, audio"
+  - 'Savoir ancrer le modèle dans les données de l’application : RAG et recherche'
+  - 'Savoir traiter des entrées multimodales : documents, images, audio'
   - Savoir évaluer une fonctionnalité IA et prévenir les régressions
-  - "Savoir fiabiliser et sécuriser : garde-fous, prompt injection, données sensibles"
-  - "Comprendre les enjeux de production : coûts, latence, observabilité"
+  - 'Savoir fiabiliser et sécuriser : garde-fous, prompt injection, données sensibles'
+  - 'Comprendre les enjeux de production : coûts, latence, observabilité'
 programme:
   - titre: Introduction
     points:
-      - "Panorama de l’écosystème : fournisseurs d’API, modèles ouverts, SDK"
-      - "Fonctionnement d’un LLM : modèle, contexte, tokens"
-      - "Choisir un modèle : qualité, latence, coût"
-      - "Cas d’usage et anti-patterns : ce que l’IA apporte (ou pas) à une application"
+      - 'Panorama de l’écosystème : fournisseurs d’API, modèles ouverts, SDK'
+      - 'Fonctionnement d’un LLM : modèle, contexte, tokens'
+      - 'Choisir un modèle : qualité, latence, coût'
+      - 'Cas d’usage et anti-patterns : ce que l’IA apporte (ou pas) à une application'
   - titre: Les fondamentaux de l’intégration
     points:
-      - "Premier appel API : messages, rôles, prompt système"
-      - "Paramètres de génération : température, longueur, streaming"
-      - "Gérer une conversation : historique, fenêtre de contexte"
-      - "Le prompt comme du code : templates, versionnement, revue"
+      - 'Premier appel API : messages, rôles, prompt système'
+      - 'Paramètres de génération : température, longueur, streaming'
+      - 'Gérer une conversation : historique, fenêtre de contexte'
+      - 'Le prompt comme du code : templates, versionnement, revue'
   - titre: Des sorties exploitables
     points:
-      - "Sorties structurées : JSON, schémas, validation"
-      - "Extraction de données à partir de documents : PDF, fichiers structurés, images"
+      - 'Sorties structurées : JSON, schémas, validation'
+      - 'Extraction de données à partir de documents : PDF, fichiers structurés, images'
       - Classification, résumé et transformation de contenu
-      - "Gérer les sorties non conformes : correction, rejeu, repli"
+      - 'Gérer les sorties non conformes : correction, rejeu, repli'
   - titre: Connecter le modèle au système
     points:
-      - "Tool use : exposer les fonctions de l’application au modèle"
-      - "La boucle agentique : raisonnement, actions, observations"
-      - "Workflows multi-étapes : chaînage, parallélisation, orchestration"
-      - "Workflow déterministe ou agent autonome : critères de choix"
-      - "MCP côté application : consommer et exposer des outils"
+      - 'Tool use : exposer les fonctions de l’application au modèle'
+      - 'La boucle agentique : raisonnement, actions, observations'
+      - 'Workflows multi-étapes : chaînage, parallélisation, orchestration'
+      - 'Workflow déterministe ou agent autonome : critères de choix'
+      - 'MCP côté application : consommer et exposer des outils'
   - titre: Ancrer le modèle dans les données
     points:
       - Les limites du contexte et le besoin d’ancrage
       - Embeddings et recherche sémantique
       - Chunking, indexation et bases vectorielles
-      - "Assembler un RAG : contexte, citations des sources, limites"
-      - "Alternatives et compléments : recherche agentique, contexte long"
+      - 'Assembler un RAG : contexte, citations des sources, limites'
+      - 'Alternatives et compléments : recherche agentique, contexte long'
   - titre: Le multimodal
     points:
-      - "Vision : analyse d’images et de documents"
-      - "Audio : transcription, dictée vocale et pipelines STT"
+      - 'Vision : analyse d’images et de documents'
+      - 'Audio : transcription, dictée vocale et pipelines STT'
       - Arbitrer entre traitement natif du modèle et service dédié
   - titre: Évaluer et fiabiliser
     points:
-      - "Hallucinations, dérives et non-déterminisme : tester l’imprévisible"
-      - "Les évals : jeu de cas, assertions, LLM juge"
+      - 'Hallucinations, dérives et non-déterminisme : tester l’imprévisible'
+      - 'Les évals : jeu de cas, assertions, LLM juge'
       - Non-régression sur les prompts et les changements de modèle
-      - "Garde-fous : validation, repli, intervention humaine"
-      - "Sécurité : prompt injection, usages détournés, modération"
+      - 'Garde-fous : validation, repli, intervention humaine'
+      - 'Sécurité : prompt injection, usages détournés, modération'
   - titre: Mettre en production
     points:
-      - "Maîtriser les coûts : choix du modèle, cache de prompt, traitement par lots"
-      - "Latence et expérience utilisateur : streaming, affichage progressif"
-      - "Observabilité : journalisation, traces, suivi de la qualité en production"
-      - "Confidentialité : données client, conformité, conditions des fournisseurs"
+      - 'Maîtriser les coûts : choix du modèle, cache de prompt, traitement par lots'
+      - 'Latence et expérience utilisateur : streaming, affichage progressif'
+      - 'Observabilité : journalisation, traces, suivi de la qualité en production'
+      - 'Confidentialité : données client, conformité, conditions des fournisseurs'
   - titre: Conclusion
     points: []
+intertitres:
+  description: Description formation *Intégrer l’IA dans ses applications*
+  programme: Programme formation *Intégrer l’IA dans ses applications*
 referencement:
-  meta_title: "Formation Intégrer l'IA dans ses applications : les fondamentaux"
+  meta_title: 'Formation Intégrer l''IA dans ses applications : les fondamentaux'
   meta_description: Ajoutez des fonctionnalités basées sur les LLM à vos applications, fiables, testables et maîtrisées en coût, avec la formation Intégrer l'IA dans ses applications de 4SH.
   indexation: true
 ---

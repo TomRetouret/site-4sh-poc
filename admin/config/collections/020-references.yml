@@ -19,9 +19,10 @@
     fields:
       # --- En-tête ---
       - { label: "En-tête · Nom du projet", name: "titre", widget: "string", required: true, maxlength: 50, hint: "Client et produit, 50 caractères maximum. Ex. : Izivia - App Mobile. Affiché dans le fil d'Ariane, sur les cartes et dans la navigation entre projets." }
-      - { label: "En-tête · Titre de la fiche (grand titre)", name: "h1", widget: "string", required: true, maxlength: 60, hint: "60 caractères maximum. Ex. : L'application mobile. Mettez un mot entre *astérisques* pour l'afficher en rouge." }
-      - { label: "En-tête · Sous-titre", name: "sous_titre", widget: "text", required: true, hint: "Une ou deux phrases sous le grand titre, 40 mots maximum. Sert aussi de description pour Google si celle du Référencement est vide." }
+      - { label: "En-tête · Titre de la fiche (grand titre)", name: "h1", widget: "string", required: true, maxlength: 140, hint: "60 caractères conseillés (140 maximum, pour les fiches reprises de l'ancien site). Ex. : L'application mobile. Mettez un mot entre *astérisques* pour l'afficher en rouge." }
+      - { label: "En-tête · Sous-titre", name: "sous_titre", widget: "text", required: false, hint: "Une ou deux phrases sous le grand titre, 40 mots maximum. Un retour à la ligne est conservé. Facultatif : si le champ est absent, le résumé de la carte est affiché ; s'il est vide, rien n'est affiché. Sert aussi de description pour Google si celle du Référencement est vide." }
       - { label: "En-tête · Client", name: "client", widget: "string", required: true, hint: "Nom de l'entreprise tel qu'elle l'écrit. Ex. : Bordeaux Métropole." }
+      - { label: "En-tête · Type", name: "type_projet", widget: "text", required: false, hint: "Facultatif. Affiché sous « Client » dans la colonne de droite (ex. : Courtier et assurance). Un retour à la ligne est conservé." }
       - { label: "En-tête · Logo du client", name: "logo", widget: "image", required: true, choose_url: true, hint: "SVG ou PNG sur fond transparent, 400 px de large minimum. Le texte alternatif est le nom du client (automatique)." }
       - label: "En-tête · Chiffres clés"
         name: "stats"
@@ -36,6 +37,15 @@
 
       # --- Téléchargement ---
       - { label: "Téléchargement · Fiche projet (PDF)", name: "fiche_pdf", widget: "string", required: false, hint: "Lien de partage public du PDF (Google Drive...). Le bouton « Télécharger la fiche » s'affiche dans l'en-tête et dans la colonne de droite." }
+      - label: "Téléchargement · Second bouton (lien externe)"
+        name: "lien_externe"
+        widget: "object"
+        required: false
+        collapsed: true
+        hint: "Facultatif. Bouton affiché à côté de « Télécharger la fiche », ouvert dans un nouvel onglet (ex. : Découvrir l'étude de cas)."
+        fields:
+          - { label: "Libellé du bouton", name: "libelle", widget: "string", required: false }
+          - { label: "Adresse (URL)", name: "url", widget: "string", required: false }
       - { label: "Téléchargement · Date de mise à jour", name: "maj", widget: "datetime", required: false, time_format: false, date_format: "DD/MM/YYYY", format: "YYYY-MM-DD", picker_utc: true, hint: "Date de la dernière mise à jour de la fiche, affichée « Dernière mise à jour : JJ/MM/AAAA »." }
       - { label: "Téléchargement · Date (ancienne saisie à reprendre)", name: "maj_repli", widget: "string", required: false, hint: "Rempli seulement si une ancienne date n'a pas pu être convertie. Saisissez la date ci-dessus puis videz ce champ." }
 
@@ -46,7 +56,7 @@
         required: true
         hint: "Quatre rubriques fixes, affichées dans cet ordre avec leur intertitre. Une rubrique vide n'est pas affichée."
         fields:
-          - { label: "1. Entreprise et activité", name: "entreprise", widget: "markdown", required: true, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Qui est le client, son métier, sa taille. 100 à 250 mots." }
+          - { label: "1. Entreprise et activité", name: "entreprise", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Qui est le client, son métier, sa taille. 100 à 250 mots." }
           - { label: "2. Nos missions", name: "missions", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Ce que 4SH a fait pour le client, de préférence en liste. 100 à 250 mots." }
           - label: "3. Enjeux et objectifs"
             name: "enjeux_objectifs"

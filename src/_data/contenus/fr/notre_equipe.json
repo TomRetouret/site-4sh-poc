@@ -1,0 +1,103 @@
+{
+  "seo": {
+    "meta_title": "Équipe - Nous connaitre",
+    "meta_description": ""
+  },
+  "blocs": [
+    {
+      "type": "hero_institutionnel",
+      "masquer": false,
+      "fil_ariane": [
+        "Accueil",
+        "L'agence",
+        "Notre entreprise",
+        "Équipe"
+      ],
+      "surtitre": "",
+      "titre_page": "Nos *expert·es*",
+      "chapo": "Un aperçu de notre équipe multi-talents",
+      "bouton_principal": {
+        "texte": "Nous contacter",
+        "lien": "#contact"
+      },
+      "bouton_secondaire": {
+        "texte": "",
+        "lien": ""
+      },
+      "etiquettes": [],
+      "illustration": "aucune"
+    },
+    {
+      "type": "texte_image",
+      "masquer": false,
+      "surtitre": "",
+      "titre": "Une bonne équipe, c’est le moteur d’une entreprise pour bien avancer.",
+      "texte": "**Nous sommes fiers de pouvoir dire que nous avons LA meilleure !**",
+      "image": {
+        "fichier": "/uploads/equipe-4sh.jpg",
+        "alt": "Photo de l'équipe 4SH",
+        "decorative": false,
+        "credit": "",
+        "cadrage": "centre"
+      },
+      "position_image": "gauche",
+      "bouton": {
+        "texte": "",
+        "lien": ""
+      }
+    },
+    {
+      "type": "encart_bouton",
+      "masquer": false,
+      "sans_marge_haute": false,
+      "presentation": "encadre",
+      "titre": "4SH une entreprise qui recrute !",
+      "texte": "L’humain est notre bien le plus précieux et c’est pour cela que nous accompagnons l’ensemble de nos collaborateurs et collaboratrices à développer leurs compétences et à évoluer dans nos équipes selon leurs motivations. Nous recherchons activement de nouveaux talents pour compléter nos équipes.",
+      "bouton": {
+        "texte": "Voir nos offres d’emploi et stage",
+        "lien": "https://www.welcometothejungle.com/fr/companies/4sh/jobs"
+      }
+    },
+    {
+      "type": "cartes_texte",
+      "masquer": false,
+      "sans_marge_haute": false,
+      "presentation": "encadrees",
+      "fond": "blanc",
+      "colonnes": "4",
+      "surtitre": "",
+      "titre": "Nos *métiers*",
+      "sous_titre": "",
+      "cartes": [
+        {
+          "titre": "Product Owner",
+          "texte": ""
+        },
+        {
+          "titre": "UI/UX Designer",
+          "texte": ""
+        },
+        {
+          "titre": "Ingénieur·e Développeur·se",
+          "texte": ""
+        },
+        {
+          "titre": "Technical Leader",
+          "texte": ""
+        },
+        {
+          "titre": "Ingénieur·e Qualité",
+          "texte": ""
+        },
+        {
+          "titre": "Ingénieur·e Système & Réseaux",
+          "texte": ""
+        },
+        {
+          "titre": "Pilote de projet",
+          "texte": ""
+        }
+      ]
+    }
+  ]
+}

@@ -12,31 +12,26 @@
         "L'agence",
         "Notre entreprise"
       ],
-      "surtitre": "Notre entreprise",
-      "titre_page": "4SH, la technicité dans la *convivialité*",
-      "chapo": "Depuis 2007, une passion nous rassemble : le développement. Nous mettons en synergie nos expertises pour concevoir des logiciels sur mesure, en équipe et en toute transparence.",
+      "surtitre": "",
+      "titre_page": "À propos de *4SH*",
+      "chapo": "",
       "bouton_principal": {
-        "texte": "Nous rencontrer",
+        "texte": "Nous contacter",
         "lien": "#contact"
       },
       "bouton_secondaire": {
-        "texte": "Voir nos offres d'emploi",
-        "lien": "https://www.welcometothejungle.com/fr/companies/4sh/jobs"
+        "texte": "",
+        "lien": ""
       },
-      "etiquettes": [
-        "Excellence",
-        "Engagement",
-        "Cohésion",
-        "Transparence"
-      ],
+      "etiquettes": [],
       "illustration": "entreprise"
     },
     {
       "type": "texte_simple",
       "masquer": false,
-      "surtitre": "À propos",
-      "titre": "Une passion, le *développement*",
-      "texte": "Chez 4SH, c'est une passion, le développement, qui depuis 2007 nous rassemble autour d'une vision partagée de l'excellence technique.\n\nNotre mission ? Mettre en synergie nos expertises et compétences pour satisfaire nos clients qui, peu à peu, nous ont confié des projets de plus en plus divers et ambitieux. Nous avons enrichi l'équipe avec des profils variés et, comme chez nous tout le monde se plaît, la communauté ne fait que grandir. Nous travaillons ensemble au quotidien, en équipe, en toute transparence.\n\nPour rester à la pointe des technologies et des méthodes, nous progressons en continu, individuellement et collectivement, via des formations, des meetups et bien d'autres occasions. La dynamique de groupe se poursuit le midi et le soir, autour de tournois, apéros et divertissements. L'épanouissement de chacun passe aussi par la flexibilité et le confort, avec des aménagements sur les horaires et les postes de travail.\n\nPoursuivant notre développement, nous sommes en quête permanente de nouveaux talents pour venir partager notre passion."
+      "surtitre": "",
+      "titre": "4SH, la technicité dans la *convivialité*",
+      "texte": "Chez 4SH, c’est **une passion, le développement**, qui depuis 2007 nous rassemble autour d’une vision partagée de l’excellence technique.\n\nNotre mission ? Mettre en synergie nos expertises et compétences pour satisfaire nos clients qui, peu à peu, nous ont confié des projets de plus en plus divers et ambitieux.\n\nNous avons donc enrichi l’équipe avec des profils variés. Et comme chez nous, tout le monde se plait, **la communauté ne fait que grandir**. Nous travaillons **ensemble au quotidien, en équipe**, en toute transparence.\n\nPour être à la pointe en termes de technologies et de méthodes, nous veillons à **progresser en continu, individuellement et collectivement**, via des formations, des meetups, etc.\n\nEt la dynamique de groupe se poursuit même le midi et le soir pour des tournois, apéros et autres divertissements.\n\nQuand on aime, on ne compte pas ! L’épanouissement de chacun au sein de l’entreprise passe également par la flexibilité et le confort, avec des aménagements sur les horaires, les postes de travail, etc.\n\nPoursuivant notre développement, **nous sommes en quête permanente de nouveaux talents** pour venir partager notre passion !"
     },
     {
       "type": "chiffres_compteurs",
@@ -61,14 +56,14 @@
           "animer": true
         },
         {
-          "valeur": "98",
-          "texte": "Collaborateur·rices",
+          "valeur": "29",
+          "texte": "Age moyen des collaborateur·rices",
           "note": "",
           "animer": true
         },
         {
-          "valeur": "29",
-          "texte": "Âge moyen des collaborateur·rices",
+          "valeur": "98",
+          "texte": "Collaborateur·rices",
           "note": "",
           "animer": true
         },
@@ -87,21 +82,21 @@
       "presentation": "encadrees",
       "fond": "blanc",
       "colonnes": "3",
-      "surtitre": "Une société technique",
-      "titre": "Riche de l'expérience de ses *collaborateur·rices*",
-      "sous_titre": "Chez nous, 80% des membres de l'entreprise sont développeur·ses ou ont fait du développement. Et parmi eux, on compte des figures reconnues de l'écosystème tech bordelais.",
+      "surtitre": "",
+      "titre": "4SH, une société technique riche de l'expérience de ses *collaborateur·rices*",
+      "sous_titre": "Chez nous, 80% des membres de l’entreprise sont développeur·ses ou ont fait du développement et parmi eux, il y a :",
       "cartes": [
         {
-          "titre": "Open source",
-          "texte": "Des créateurs et contributeurs de projets open source au sein de l'équipe."
+          "titre": "Des créateurs ou contributeurs open source",
+          "texte": ""
         },
         {
-          "titre": "BordeauxJUG",
-          "texte": "Le créateur et plusieurs ex-lead du Java User Group de Bordeaux."
+          "titre": "Le créateur et plusieurs ex-lead du BordeauxJUG",
+          "texte": ""
         },
         {
-          "titre": "BDX I/O",
-          "texte": "Le créateur et de nombreux membres de l'organisation de la conférence BDX I/O."
+          "titre": "Le créateur et de nombreux membres de l’orga BDX I/O",
+          "texte": ""
         }
       ]
     },
@@ -112,31 +107,38 @@
       "presentation": "encadrees",
       "fond": "sombre",
       "colonnes": "auto",
-      "surtitre": "Nos valeurs",
-      "titre": "Une entreprise qui gravite autour de *4 valeurs*",
+      "surtitre": "",
+      "titre": "4SH est une entreprise qui gravite autour de *4 valeurs* :",
       "sous_titre": "",
       "cartes": [
         {
           "titre": "Excellence",
-          "texte": "La recherche permanente de la qualité technique, projet après projet."
+          "texte": ""
         },
         {
           "titre": "Engagement",
-          "texte": "Une implication de chaque instant aux côtés de nos clients et de leurs enjeux."
+          "texte": ""
         },
         {
           "titre": "Cohésion",
-          "texte": "Le partage des savoirs et l'esprit d'équipe, moteurs de nos réussites."
+          "texte": ""
         },
         {
           "titre": "Transparence",
-          "texte": "Une vision collaborative et honnête du pilotage de projet, du début à la fin."
+          "texte": ""
         }
       ]
     },
     {
-      "type": "cartes_texte",
+      "type": "texte_simple",
       "masquer": false,
+      "surtitre": "",
+      "titre": "Notre démarche *RSE*",
+      "texte": "Chez 4SH, la **Responsabilité Sociétale des Entreprises** ne se limite pas à une déclaration d'intention. Nous souhaitons la traduire concrètement dans notre manière de travailler, de concevoir des solutions numériques, d'accompagner nos clients et de faire évoluer notre organisation.\n\nNotre démarche s'articule autour de **cinq engagements**. Un numérique sobre et durable, la réduction de notre impact environnemental, l'inclusion et la qualité de vie au travail, des relations responsables avec nos partenaires, et une amélioration continue pilotée dans la durée.\n\nElle **avance avec méthode et transparence**, de manière progressive et concrète.\n\n[Consulter notre charte RSE](https://drive.google.com/file/d/1JOFetCo1BX1ivMkoVkspNnBN1SN0zlCs/view?usp=sharing)"
+    },
+    {
+      "type": "cartes_texte",
+      "masquer": true,
       "sans_marge_haute": false,
       "presentation": "encadrees",
       "fond": "blanc",
@@ -177,7 +179,7 @@
     },
     {
       "type": "encart_bouton",
-      "masquer": false,
+      "masquer": true,
       "sans_marge_haute": true,
       "presentation": "encadre",
       "titre": "4SH, une entreprise qui recrute",
@@ -189,7 +191,7 @@
     },
     {
       "type": "cartes_texte",
-      "masquer": false,
+      "masquer": true,
       "sans_marge_haute": true,
       "presentation": "encadrees",
       "fond": "blanc",
@@ -234,7 +236,7 @@
     },
     {
       "type": "encart_bouton",
-      "masquer": false,
+      "masquer": true,
       "sans_marge_haute": true,
       "presentation": "libre",
       "titre": "Notre engagement RSE",

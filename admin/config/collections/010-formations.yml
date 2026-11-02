@@ -42,6 +42,7 @@
             search_fields: ["nom"]
             display_fields: ["nom"]
             hint: "Choisir dans la liste (Develop, Design, DevOps, Outils, IA). Affichée dans le fil d'Ariane, le surtitre et « Autres formations »."
+          - { label: "Nom sur les cartes (facultatif)", name: "titre_carte", widget: "string", required: false, hint: "Remplace le nom de la formation sur les cartes « Formation(s) liée(s) » et « Les autres formations » des fiches. Vide : le nom de la formation. Ex. : Introduction au langage Kotlin - Débutant" }
           - { label: "Accroche", name: "chapo", widget: "text", required: true, hint: "Une phrase sous le titre, 40 mots maximum. Sert aussi de description Google par défaut et de texte de la carte au catalogue." }
           - { label: "Logo ou illustration", name: "image", widget: "image", required: false, choose_url: true, hint: "SVG de préférence, carré, fond transparent. Un lien vers une image déjà en ligne est accepté." }
 
@@ -99,7 +100,7 @@
         collapsed: false
         hint: "Suite de la section Description. Informations attendues par Qualiopi."
         fields:
-          - { label: "Public visé", name: "pour_qui", widget: "text", required: true, hint: "À qui s'adresse la formation, 50 mots maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge." }
+          - { label: "Public visé", name: "pour_qui", widget: "text", required: true, hint: "À qui s'adresse la formation, 50 mots maximum. Mise en forme Markdown acceptée : paragraphes séparés par une ligne vide, liste avec « - » en début de ligne, lien [texte](/adresse/). Mettez un mot entre *astérisques* pour l'afficher en rouge." }
           - label: "Prérequis"
             name: "prerequis"
             widget: "list"
@@ -120,6 +121,7 @@
         field: { label: "Objectif", name: "item", widget: "string", required: true }
 
       # --- Programme -----------------------------------------------------------------
+      - { label: "Note sur le programme", name: "programme_note", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list"], editor_components: [], hint: "Facultatif. Texte affiché sous le titre Programme, avant les chapitres (ex. formation en modules à la carte)." }
       - label: "Programme"
         name: "programme"
         widget: "list"
@@ -130,15 +132,28 @@
         summary: "{{fields.titre}}"
         hint: "Un chapitre par demi-journée environ, affiché en accordéon (le premier est ouvert). Attendu par Qualiopi."
         fields:
+          - { label: "Intertitre au-dessus du chapitre (facultatif)", name: "partie", widget: "string", required: false, hint: "Regroupe ce chapitre et les suivants sous un intertitre. Ex. : Jour 1 - Matin, Module 2" }
           - { label: "Titre du chapitre", name: "titre", widget: "string", required: true, hint: "60 caractères maximum. Ex. : Architecture d'Angular" }
           - label: "Points abordés"
             name: "points"
             widget: "list"
-            required: true
-            min: 1
+            required: false
             label_singular: "Point"
-            hint: "Une ligne par point, 120 caractères maximum."
+            hint: "Une ligne par point, 120 caractères maximum. Un point qui commence par « - » (tiret puis espace) est un sous-point du point précédent."
             field: { label: "Point abordé", name: "point", widget: "string", required: true }
+
+      # --- Compléments (sections propres à la fiche) ------------------------------------
+      - label: "Sections complémentaires"
+        name: "complements"
+        widget: "list"
+        required: false
+        label_singular: "Section"
+        summary: "{{fields.titre}}"
+        collapsed: true
+        hint: "Facultatif. Sections affichées après le programme (ex. Évaluation et certification)."
+        fields:
+          - { label: "Titre", name: "titre", widget: "string", required: true }
+          - { label: "Texte", name: "texte", widget: "markdown", required: true, buttons: ["bold", "link", "bulleted-list"], editor_components: [] }
 
       # --- Formateur -------------------------------------------------------------------
       - label: "Formateur"
@@ -173,6 +188,31 @@
         fields:
           - { label: "Question", name: "question", widget: "string", required: true, hint: "100 caractères maximum." }
           - { label: "Réponse", name: "reponse", widget: "text", required: true, hint: "80 mots maximum." }
+
+      # --- Formations liées ---------------------------------------------------------------
+      - label: "Formations liées"
+        name: "formations_liees"
+        widget: "relation"
+        required: false
+        multiple: true
+        collection: "formations"
+        value_field: "{{slug}}"
+        search_fields: ["entete.titre"]
+        display_fields: ["{{entete.titre}} - {{entete.niveau}}"]
+        hint: "Facultatif. Cartes « Formation(s) liée(s) » affichées avant « Les autres formations ». Choisir une fiche par formation (la carte reprend tous ses niveaux)."
+
+      # --- Intertitres propres à la fiche --------------------------------------------------
+      - label: "Intertitres de la page"
+        name: "intertitres"
+        widget: "object"
+        required: false
+        collapsed: true
+        hint: "Facultatif. Remplace les titres de section par défaut (« Description de la formation <nom> »...). Mettez un mot entre *astérisques* pour l'afficher en rouge."
+        fields:
+          - { label: "Description", name: "description", widget: "string", required: false, hint: "Ex. : Description formation *Kotlin*" }
+          - { label: "Programme", name: "programme", widget: "string", required: false, hint: "Ex. : Programme formation *Kotlin*" }
+          - { label: "Formateur", name: "formateur", widget: "string", required: false, hint: "Ex. : Formateur formation *Kotlin*" }
+          - { label: "Questions fréquentes", name: "faq", widget: "string", required: false, hint: "Ex. : Vos questions" }
 
       # --- Référencement (séparé du contenu de la page) ----------------------------------
       - label: "Référencement"

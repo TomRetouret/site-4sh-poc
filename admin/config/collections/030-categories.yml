@@ -1,7 +1,8 @@
   # -----------------------------------------------------------------------
   # 3) CATÉGORIES DE FORMATION  (pages /formations/develop/, design, devops, outils, ia)
   # Gabarit fixe : src/_includes/categorie.njk. Champs dans l'ordre de la page :
-  # En-tête, (catalogue automatique), Texte de présentation, Questions fréquentes,
+  # En-tête (avec note), (catalogue automatique), Prochaines sessions, Encart Qualiopi,
+  # Texte de présentation, Questions fréquentes, Témoignages (titre),
   # puis Référencement. Spécification : docs/back-office/schema-collections.md
   # « nom » est lu par les fiches formation (relation Catégorie) : ne pas le renommer.
   # -----------------------------------------------------------------------
@@ -21,6 +22,21 @@
       # --- En-tête ---
       - { label: "En-tête · Grand titre", name: "h1", widget: "string", required: false, maxlength: 70, hint: "70 caractères maximum. Ex. : Nos formations de développeur full stack. Mettez un mot entre *astérisques* pour l'afficher en rouge. Vide : « Formations <catégorie> »." }
       - { label: "En-tête · Introduction", name: "intro", widget: "text", required: true, hint: "Paragraphe sous le grand titre, 60 à 100 mots. Sert aussi de description pour Google si celle du Référencement est vide." }
+      - { label: "En-tête · Note moyenne", name: "note", widget: "string", required: false, hint: "Facultatif. Affichée sous l'introduction. Ex. : 4.68 / 5" }
+      - { label: "En-tête · Détail de la note", name: "note_detail", widget: "string", required: false, hint: "Facultatif. Ex. : 225 participant·e·s" }
+
+      # --- Sections sous le catalogue (facultatives, dans l'ordre de la page) ---
+      - { label: "Prochaines sessions · Titre", name: "agenda_titre", widget: "string", required: false, hint: "Facultatif. Rempli : affiche la liste des prochaines sessions des formations de la catégorie (dates lues dans les fiches formation). Mettez un mot entre *astérisques* pour l'afficher en rouge. Ex. : Nos prochaines *sessions*" }
+      - label: "Encart Qualiopi"
+        name: "qualiopi"
+        widget: "object"
+        required: false
+        collapsed: true
+        hint: "Facultatif. Encart avec le logo Qualiopi, sous les prochaines sessions."
+        fields:
+          - { label: "Titre", name: "titre", widget: "string", required: false, hint: "Mot entre *astérisques* en rouge." }
+          - { label: "Texte", name: "texte", widget: "text", required: false }
+      - { label: "Témoignages · Titre", name: "temoignages_titre", widget: "string", required: false, hint: "Facultatif. Titre de section affiché sous le texte de présentation. Ex. : Ils ont suivi *nos formations*" }
 
       # --- Texte de présentation (sous le catalogue) ---
       - { label: "Texte de présentation", name: "body", widget: "markdown", required: true, buttons: ["bold", "link", "heading-two", "heading-three", "bulleted-list", "numbered-list"], editor_components: [], hint: "Affiché sous le catalogue, en colonne de lecture. Commencez par un Titre 2, puis un Titre 3 par question traitée. 300 à 1 500 mots." }

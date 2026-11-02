@@ -2,7 +2,7 @@
   # 5) CLIENTS & SOLUTIONS  (pages sous /secteurs/ : profils clients et produits 4SH)
   # Gabarit fixe : src/_includes/secteur-libre.njk. Champs dans l'ordre de la page :
   # En-tête, Sections (mises en page automatiquement par le filtre « blocs »),
-  # Chiffres clés, Références, Questions fréquentes, puis Référencement.
+  # Chiffres clés, Références, Questions fréquentes, Appel à l'action final, puis Référencement.
   # Spécification : docs/back-office/schema-collections.md
   # -----------------------------------------------------------------------
   - name: "pages_secteurs"
@@ -55,7 +55,7 @@
             collapsed: true
             hint: "Facultatif. 2 à 8 sous-parties de même nature, affichées en cartes, atouts ou étapes selon le titre de la section. Au-delà de 3 cartes, elles défilent en carrousel."
             fields:
-              - { label: "Titre de la sous-partie", name: "titre", widget: "string", required: true, maxlength: 110, hint: "110 caractères maximum. Ex. : Centralisation de toutes les demandes dans une interface unique" }
+              - { label: "Titre de la sous-partie", name: "titre", widget: "string", required: true, maxlength: 160, hint: "110 caractères conseillés, 160 maximum. Ex. : Centralisation de toutes les demandes dans une interface unique. Un titre peut être un lien : [Nom du projet](/references/...)" }
               - { label: "Texte", name: "texte", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "60 mots environ (au-delà de 420 caractères en moyenne, les cartes passent en atouts). Listes à puces possibles." }
 
       # --- Chiffres clés ---
@@ -85,6 +85,7 @@
         hint: "Fiches de la collection Références, dans l'ordre d'affichage (recherche par nom). Une référence déjà présentée dans une section n'est pas répétée ici. Vide : la section n'est pas affichée."
 
       # --- Questions fréquentes ---
+      - { label: "Questions fréquentes · Titre", name: "faq_titre", widget: "string", required: false, maxlength: 110, hint: "Facultatif. Titre au-dessus des questions. Vide : « Questions fréquentes » (Libellés)." }
       - label: "Questions fréquentes"
         name: "faq"
         widget: "list"
@@ -96,6 +97,20 @@
         fields:
           - { label: "Question", name: "question", widget: "string", required: true, maxlength: 120, hint: "120 caractères maximum." }
           - { label: "Réponse", name: "reponse", widget: "text", required: true, hint: "80 mots maximum, sans mise en forme." }
+
+      # --- Appel à l'action final ---
+      - label: "Appel à l'action final"
+        name: "appel"
+        widget: "object"
+        required: false
+        collapsed: true
+        summary: "{{fields.titre}}"
+        hint: "Facultatif. Bandeau centré affiché après les questions fréquentes, avant le formulaire de contact. Vide : pas de bandeau."
+        fields:
+          - { label: "Titre", name: "titre", widget: "string", required: false, maxlength: 110, hint: "110 caractères maximum. Ex. : Vous avez un projet logistique ?" }
+          - { label: "Texte", name: "texte", widget: "text", required: false, hint: "Une ou deux phrases, sans mise en forme sauf **gras**." }
+          - { label: "Texte du bouton", name: "bouton", widget: "string", required: false, maxlength: 30, hint: "30 caractères maximum. Ex. : Contactez-nous. Vide : pas de bouton." }
+          - { label: "Destination du bouton", name: "url", widget: "string", required: false, hint: "Adresse d'une page du site (/contact/) ou d'une ancre. Vide : /#contact." }
 
       # --- Back-office ---
       - { label: "Rang dans la liste du back-office", name: "ordre", widget: "number", required: false, value_type: "int", min: 1, hint: "Nombre entier, classe les pages dans cette liste uniquement. L'ordre du menu du site se règle dans Navigation." }

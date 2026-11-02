@@ -1,0 +1,38 @@
+{
+  "seo": {
+    "meta_title": "Les bureaux de 4SH : nous rencontrer",
+    "meta_description": ""
+  },
+  "blocs": [
+    {
+      "type": "hero_institutionnel",
+      "masquer": false,
+      "fil_ariane": [
+        "Accueil",
+        "L'agence",
+        "Notre entreprise",
+        "Agences"
+      ],
+      "surtitre": "",
+      "titre_page": "Nous sommes localisés *ici* !",
+      "chapo": "",
+      "bouton_principal": {
+        "texte": "Nous contacter",
+        "lien": "#contact"
+      },
+      "bouton_secondaire": {
+        "texte": "",
+        "lien": ""
+      },
+      "etiquettes": [],
+      "illustration": "aucune"
+    },
+    {
+      "type": "texte_simple",
+      "masquer": false,
+      "surtitre": "",
+      "titre": "4SH, se trouve dans différentes régions de France",
+      "texte": "Depuis nos agences situées au **Haillan, Bordeaux** et **Capbreton,** nos équipes pluridisciplinaires s’impliquent au quotidien aux côtés de nos clients dans la réussite de leurs challenges.\n\n- **Le Haillan** : [2 rue Edmond Rostand 33185 Le Haillan](https://maps.app.goo.gl/3y16XjW6fmYh425F9)\n- **Bordeaux gare** : [7 Rue Esmangard 33800 Bordeaux](https://maps.app.goo.gl/xZtfUb2nE8CJKTWa8)\n- **Capbreton** : [2 Rue du Barrasquit 40130 Capbreton](https://maps.app.goo.gl/NKgwXZ4hie75ep8M8)\n- **Paris** : [6 place de la madeleine 75008 Paris](https://goo.gl/maps/Fw7vuuGnaLpK7n9dA)\n\n[Application mobile à Paris](/prestations/application-mobile-paris/)\n\n[Application mobile à Lyon et en Auvergne-Rhône-Alpes](/prestations/application-mobile-lyon/)\n\n[Développement d’application SaaS à Paris](/prestations/application-saas-paris/)\n\n[Développement d’application SaaS à Bordeaux](/prestations/application-saas-bordeaux/)\n\n[Développement d’application SaaS à Lyon](/prestations/application-saas-lyon/)"
+    }
+  ]
+}

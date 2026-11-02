@@ -181,6 +181,10 @@ function ApercuPageLegale(props) {
 const GABARITS = {
   notre_demarche: ApercuPageBlocs,
   notre_entreprise: ApercuPageBlocs,
+  notre_equipe: ApercuPageBlocs,
+  nos_agences: ApercuPageBlocs,
+  conception_ux: ApercuPageBlocs,
+  engagements: ApercuPageBlocs,
   page_ia: ApercuPageLibre,
   page_podcasts: ApercuPodcasts,
   contact: ApercuContact,

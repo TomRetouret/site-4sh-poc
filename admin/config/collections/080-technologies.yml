@@ -40,6 +40,7 @@
 
       # --- Pourquoi ---
       - { label: "Pourquoi · Surtitre", name: "pourquoi_eyebrow", widget: "string", required: false, maxlength: 40, hint: "Facultatif, 40 caractères maximum. Vide : « Pourquoi <nom> ? »." }
+      - { label: "Surtitres automatiques masqués", name: "sans_surtitres", widget: "boolean", required: false, default: false, hint: "Coché : les surtitres par défaut (« Pourquoi <nom> ? », « Communauté et écosystème ») ne s'affichent pas ; seuls les surtitres saisis restent. Décoché : comportement habituel." }
       - { label: "Pourquoi · Titre", name: "pourquoi_titre", widget: "string", required: false, maxlength: 90, hint: "90 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge. Ex. : Pourquoi utiliser *Kubernetes* ? Vide : pas de titre." }
       - { label: "Pourquoi · Sous-titre", name: "pourquoi_intro", widget: "text", required: false, hint: "Facultatif. Une ou deux phrases sous le titre." }
       - label: "Pourquoi · Atouts"
@@ -56,6 +57,8 @@
           - { label: "Texte", name: "texte", widget: "text", required: true, hint: "50 mots maximum, sans mise en forme." }
 
       # --- Références clients ---
+      - { label: "Références clients · Titre", name: "references_titre", widget: "string", required: false, maxlength: 90, hint: "Facultatif, 90 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge. Ex. : Nos références en développement Java. Vide : simple surtitre « Références clients »." }
+      - { label: "Références clients · Sous-titre", name: "references_intro", widget: "text", required: false, hint: "Facultatif. Une phrase sous le titre." }
       - label: "Références clients"
         name: "references"
         widget: "list"
@@ -76,6 +79,8 @@
             hint: "Facultatif. Vide : carte sans visuel ni lien (projet sans fiche publiée)."
           - { label: "Titre de la carte", name: "titre", widget: "string", required: true, maxlength: 60, hint: "Client et secteur, 60 caractères maximum. Ex. : Filhet-Allard - Assurance" }
           - { label: "Texte", name: "texte", widget: "text", required: true, hint: "Le rôle de la technologie dans le projet, 60 mots maximum, sans mise en forme." }
+      - { label: "Références clients · Bouton vers toutes les références", name: "references_bouton", widget: "string", required: false, maxlength: 40, hint: "Facultatif. Texte du bouton sous les cartes, qui mène à la page Références. Ex. : Voir toutes nos références. Vide : pas de bouton." }
+      - { label: "Références clients · Position dans la page", name: "references_apres_section", widget: "number", required: false, value_type: "int", min: 1, hint: "Facultatif. Vide : juste après « Pourquoi ». Un nombre N : les références s'affichent après la N-ième section du contenu détaillé (ex. 2 : entre la 2e et la 3e section)." }
 
       # --- Contenu détaillé ---
       - { label: "Contenu détaillé · Surtitre", name: "corps_eyebrow", widget: "string", required: false, maxlength: 40, hint: "Facultatif, 40 caractères maximum. Ex. : Guide. Vide : « Communauté et écosystème »." }
@@ -105,6 +110,8 @@
               - { label: "Texte", name: "texte", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "60 mots environ (au-delà de 420 caractères en moyenne, les cartes passent en atouts). Listes à puces possibles." }
 
       # --- Formations liées ---
+      - { label: "Formations liées · Titre", name: "formations_titre", widget: "string", required: false, maxlength: 90, hint: "Facultatif, 90 caractères maximum. Ex. : Se former au développement Java avec 4SH Learning. Vide : simple surtitre « Nos formations »." }
+      - { label: "Formations liées · Texte d'introduction", name: "formations_intro", widget: "text", required: false, hint: "Facultatif. Un paragraphe sous le titre, sans mise en forme." }
       - label: "Formations liées"
         name: "formations"
         widget: "list"
@@ -138,6 +145,10 @@
         fields:
           - { label: "Question", name: "question", widget: "string", required: true, maxlength: 120, hint: "120 caractères maximum." }
           - { label: "Réponse", name: "reponse", widget: "text", required: true, hint: "80 mots maximum, sans mise en forme." }
+
+      # --- Appel à l'action final ---
+      - { label: "Appel à l'action final · Titre", name: "cta_titre", widget: "string", required: false, maxlength: 90, hint: "Facultatif, 90 caractères maximum. Ex. : Un projet de développement Java ? Affiché avec le bouton « Contactez-nous » avant le formulaire de contact. Titre et texte vides : bloc masqué." }
+      - { label: "Appel à l'action final · Texte", name: "cta_texte", widget: "string", required: false, maxlength: 90, hint: "Facultatif. Une phrase sous le titre. Ex. : Echangeons sur votre projet !" }
 
       # --- Carte de la page Expertises techniques ---
       - { label: "Carte de la page mère · Accroche courte", name: "accroche_courte", widget: "text", required: true, maxlength: 90, hint: "Une phrase, 90 caractères maximum, affichée sur la carte de la page Expertises techniques (française et anglaise)." }

@@ -14,12 +14,13 @@ extraCss: /assets/references.css
         <span class="eyebrow">{{ libelles.reference.eyebrow }}{% if secteurs and secteurs.length %} · {{ secteurs[0] }}{% endif %}</span>
         {% if logo %}<div class="ref-logo-detail"><img src="{{ logo }}" alt="{{ client }}" decoding="async"></div>{% endif %}
         <h1>{{ (h1 or titre) | accent | safe }}{{ doodle("vague") }}</h1>
-        {% if sous_titre %}<p class="chapo">{{ sous_titre }}</p>{% elif resume %}<p class="chapo">{{ resume }}</p>{% endif %}
+        {% if sous_titre %}<p class="chapo">{{ sous_titre | escape | nl2br | safe }}</p>{% elif resume and sous_titre == null %}<p class="chapo">{{ resume }}</p>{% endif %}
         {% if stats and stats.length %}
         <div class="ref-preuve">{% for s in stats %}<div class="stat"><b>{{ s.chiffre }}</b><span>{{ s.label }}</span></div>{% endfor %}</div>
         {% endif %}
         <div class="ref-hero-actions">
           {% if fiche_pdf %}<a class="btn btn-ghost btn-sm" href="{{ fiche_pdf }}" target="_blank" rel="noopener">{{ libelles.reference.telecharger }}</a>{% endif %}
+          {% if lien_externe and lien_externe.url and lien_externe.libelle %}<a class="btn btn-ghost btn-sm" href="{{ lien_externe.url }}" target="_blank" rel="noopener">{{ lien_externe.libelle }}</a>{% endif %}
           {% set majTexte = (maj | dateMaj) if maj else maj_repli %}{% if majTexte %}<span class="ref-maj">{{ libelles.reference.maj }} {{ majTexte }}</span>{% endif %}
         </div>
       </div>
@@ -38,6 +39,7 @@ extraCss: /assets/references.css
       </div>
       <aside class="ref-identite">
         {% if client %}<div class="bloc"><b>{{ libelles.reference.client }}</b><span>{{ client }}</span></div>{% endif %}
+        {% if type_projet %}<div class="bloc"><b>{{ libelles.reference.type or "Type" }}</b><span>{{ type_projet | escape | nl2br | safe }}</span></div>{% endif %}
         {% if secteurs and secteurs.length %}<div class="bloc"><b>{{ libelles.reference.secteur }}</b><div class="pills">{% for s in secteurs %}<span>{{ s }}</span>{% endfor %}</div></div>{% endif %}
         {% if expertises and expertises.length %}<div class="bloc"><b>{{ libelles.reference.expertises }}</b><div class="pills">{% for e in expertises %}<span>{{ e }}</span>{% endfor %}</div></div>{% endif %}
         {% if technologies and technologies.length %}<div class="bloc"><b>{{ libelles.reference.technologies }}</b><div class="pills">{% for t in technologies %}<span>{{ t }}</span>{% endfor %}</div></div>{% endif %}

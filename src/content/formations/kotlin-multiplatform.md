@@ -7,22 +7,22 @@ entete:
   categorie: Develop
   chapo: Maîtrisez les fondamentaux de Kotlin Multiplatform (KMP).
   image: /uploads/ancien-site/assets/img/svg/trainings/kotlin-multiplatform-fondamental.svg
+  titre_carte: Introduction Kotlin Multiplatform - Intermédiaire
 inscription:
   prix: 3500
   sessions:
-    - debut: "2026-09-29"
-      fin: "2026-09-29"
+    - debut: '2026-12-03'
+      fin: '2026-12-03'
   programme_pdf: https://drive.google.com/file/d/1Rmk9t8pWBwdyPcQIG5G7IrPYKefSXEY4/view
   programme_pdf_poids: 680 Ko
 chiffres:
-  duree_jours: 1
-  duree_heures: 7
   participants_min: 1
   participants_max: 8
   note: 4.59
   avis: 21
   depuis: janvier 2023
   theorie: 60
+  duree_texte: 1 jour (7 heures)
 public:
   pour_qui: Cette formation s'adresse à des développeurs d'applications mobiles (Android, iOS), des développeurs full stack, des tech leads et des architectes techniques souhaitant étendre leurs compétences vers le développement multiplateforme avec Kotlin. Elle est particulièrement pertinente pour les équipes cherchant à partager du code entre différentes plateformes et à optimiser leur processus de développement.
   prerequis:
@@ -76,8 +76,14 @@ programme:
       - Gestion des dates avec KotlinX DateTime
       - Bases de données avec SQLDelight
       - Opérations sur les fichiers avec KotlinX IO
+formations_liees:
+  - intro-kotlin
+  - kotlin-coroutines-async
+intertitres:
+  description: Description formation Kotlin
+  programme: Programme formation Kotlin
 referencement:
-  meta_title: "Formation Kotlin Multiplatform : développez des applications cross-platform"
+  meta_title: 'Formation Kotlin Multiplatform : développez des applications cross-platform'
   meta_description: Développez des applications multiplateformes efficaces avec Kotlin Multiplatform. Partagez votre code entre Android, iOS et JS, tout en intégrant tests, asynchronicité et bibliothèques essentielles.
   indexation: true
 ---

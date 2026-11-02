@@ -24,6 +24,17 @@ extraCss: /assets/secteurs.css
 {{ bloc_references(references | sansRefs(refs_haut), collections.references,
                    libelles.secteur.refs_eyebrow, libelles.secteur.refs_titre) }}
 
-{{ faq_section(faq, libelles.secteur.faq_titre, creme=true) }}
+{{ faq_section(faq, faq_titre or libelles.secteur.faq_titre, creme=true) }}
+
+{#- Appel à l'action final de l'ancienne page (titre, texte, bouton), après la FAQ -#}
+{% if appel and appel.titre %}
+<section class="sect-bloc sect-bloc--cta">
+  <div class="container">
+    <h2>{{ appel.titre | accent | safe }}</h2>
+    {% if appel.texte %}<div class="sect-prose"><p>{{ appel.texte | escape | gras | safe }}</p></div>{% endif %}
+    {% if appel.bouton %}<div class="hero-cta" style="margin-top:30px"><a class="btn btn-primary" href="{{ appel.url or '/#contact' }}">{{ appel.bouton }}</a></div>{% endif %}
+  </div>
+</section>
+{% endif %}
 
 {{ bloc_contact(site, page.url) }}

@@ -1,0 +1,14 @@
+---
+layout: base.njk
+permalink: /notre-demarche/conception-ux/
+extraCss: /assets/logiciel-metier.css
+---
+{#- Page institutionnelle « Conception UX » rendue à partir des blocs (src/_data/contenus/fr/conception_ux.json, profil institutionnel).
+    Ancienne page reprise : voir docs/back-office/schema-pages.md. Titre et description : notre-demarche-conception-ux.11tydata.js. -#}
+{% from "composants/blocs/aiguilleur.njk" import rendre_blocs %}
+{%- set d = contenus.fr.conception_ux -%}
+{{ rendre_blocs(d.blocs, site, blog, temoignages.fr, page.url, {
+  gabarit: "offre",
+  references: collections.references,
+  appels_action: appels_action
+}) }}

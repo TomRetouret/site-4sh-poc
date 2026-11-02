@@ -1,39 +1,39 @@
 ---
 titre: CIRAD - CiO2
 h1: Cirad - CiO2
-sous_titre: Création d'une application web pour déclarer ses déplacements et calculer ses émissions de gaz à effet de serre.
+sous_titre: Création d’une application web pour déclarer ses déplacements et calculer ses émissions de gaz à effet de serre.
 client: CIRAD
 logo: /uploads/ancien-site/assets/img/png/references/cirad/logo-cirad.png
 fiche_pdf: https://drive.google.com/file/d/1q7KPJllD6jX2kuUOsh0n4TYcQ4NEUHIP/view
 maj: "2022-08-03"
 etude:
   entreprise: |-
-    Le CIRAD est un organisme français de Coopération Internationale en Recherche Agronomique pour le Développement. Présent sur tous les continents dans une cinquantaine de pays, le CIRAD s'appuie sur les compétences de ses 1 650 salariés, dont 1 140 scientifiques, ainsi que sur un réseau mondial d'environ 200 partenaires.
+    Le [CIRAD](https://www.cirad.fr/) est un organisme français de Coopération Internationale en Recherche Agronomique pour le Développement. Présent sur tous les continents dans une cinquantaine de pays, le CIRAD s’appuie sur les compétences de ses 1 650 salariés, dont 1 140 scientifiques, ainsi que sur un réseau mondial d’environ 200 partenaires.
 
-    Ses principales missions sont le développement durable des territoires ruraux et leur résilience face au changement climatique, la protection de la biodiversité, la santé ou encore la durabilité des systèmes alimentaires durables. Ces objectifs de développement durable sont atteints par le CIRAD au travers de la science, l'innovation et la formation.
+    Ses principales missions sont le développement durable des territoires ruraux et leur résilience face au changement climatique, la protection de la biodiversité, la santé ou encore la durabilité des systèmes alimentaires durables. Ces objectifs de développement durable sont atteints par le CIRAD au travers de la science, l’innovation et la formation.
 
-    Aujourd'hui, l'application CiO2 compte plus de 300 utilisateurs.
+    Aujourd’hui, l’application CiO2 compte plus de 300 utilisateurs.
   missions: |-
     Depuis 2022, 4SH a collaboré avec le CIRAD sur :
 
-    - Conception, développement et validation de l'application web - CiO2, selon la méthodologie 4D : Discover, Design, Develop, Deploy.
+    - Conception, développement et validation de l’application web - CiO2 (Discover, Design, Develop, Deploy).
   enjeux_objectifs:
     enjeux: |-
       - Avoir un bilan des émissions CO2 du CIRAD liées aux déplacements de ses salariés.
-      - Motiver les utilisateurs à déclarer régulièrement et sérieusement leurs déplacements afin d'obtenir les résultats les plus précis possibles.
+      - Motiver les utilisateurs à déclarer régulièrement et sérieusement leurs déplacements afin d’obtenir les résultats les plus précis possibles.
     objectifs: |-
       - Déclaration des déplacements professionnels et déplacements Domicile/Travail.
       - Simulation des déplacements pour connaître le moyen de transport le moins émetteur possible.
-      - Simulation des réunions pour définir le lieu le plus optimal en fonction des émissions CO2 des participants pour s'y rendre.
+      - Simulation des réunions pour définir le lieu le plus optimal en fonction des émissions CO2 des participants pour s’y rendre.
   points_cles:
     intertitre: Les points clés de l'application
     texte: |-
       - Calcul des émissions CO2 pour les simulations et déclarations de déplacements.
       - Résultats personnels pour comprendre ses émissions.
-      - Mise en place d'un système de Gamification pour inciter l'utilisation régulière.
-      - Proposition d'astuces et objectifs pour réduire ses émissions.
+      - Mise en place d’un système de budgétaires du projet Gamification pour inciter l’utilisation régulière.
+      - Proposition d’astuces et objectifs pour réduire ses émissions.
     projet: |-
-      - Création, développement et validation de l'application au forfait en 12 mois.
+      - Création, développement et validation de l’application au forfait en 12 mois.
       - Atelier utilisateurs pour la définition des besoins.
       - Maîtrise de la qualité et des coûts budgétaires du projet.
 secteurs:
@@ -61,7 +61,7 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/cirad/ref-cirad-4.png
     alt: CIRAD - CiO2, visuel 4
     decorative: false
-resume: Création d'une application web pour déclarer ses déplacements et calculer ses émissions de gaz à effet de serre.
+resume: Calculette des émissions de gaz à effet de serre.
 ordre: 15
 referencement:
   meta_title: Application d'aide au calcul des déplacements pour Cirad par 4SH

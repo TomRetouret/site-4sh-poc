@@ -4,15 +4,39 @@ permalink: "/secteurs/{{ page.fileSlug }}/"
 extraCss: /assets/secteurs.css
 ---
 {% from "composants/page.njk" import hero %}
-{% from "composants/sections.njk" import bloc_references %}
+{% from "composants/sections.njk" import faq_section, bloc_references %}
 {% from "composants/formulaires.njk" import contact_final as bloc_contact %}
 {{ hero(titre,
         h1=h1,
         eyebrow="Secteur · " ~ titre,
-        chapo=accroche,
+        chapo=(accroche | escape | gras | safe),
         parents=[{ "label": "Secteurs", "url": "/" }],
         ctas=[{ "label": libelles.secteur.cta_bouton, "url": "/#contact" }]) }}
 
+{#- Mise en page à sections libres (même rendu que les pages Clients & Solutions) :
+    utilisée dès que la liste « Sections » est remplie ; sinon, gabarit fixe ci-dessous. -#}
+{% if sections and sections.length %}
+{{ sections | corpsSections | blocs(collections.references, page.url) | safe }}
+
+{% set refs_haut = page.url | refsMisesEnAvant %}
+{{ bloc_references(references | sansRefs(refs_haut), collections.references,
+                   libelles.secteur.refs_eyebrow, libelles.secteur.refs_titre) }}
+
+{{ faq_section(faq, faq_titre or libelles.secteur.faq_titre, creme=true) }}
+
+{#- Appel à l'action final de l'ancienne page (titre, texte, bouton), après la FAQ -#}
+{% if appel and appel.titre %}
+<section class="sect-bloc sect-bloc--cta">
+  <div class="container">
+    <h2>{{ appel.titre | accent | safe }}</h2>
+    {% if appel.texte %}<div class="sect-prose"><p>{{ appel.texte | escape | gras | safe }}</p></div>{% endif %}
+    {% if appel.bouton %}<div class="hero-cta" style="margin-top:30px"><a class="btn btn-primary" href="{{ appel.url or '/#contact' }}">{{ appel.bouton }}</a></div>{% endif %}
+  </div>
+</section>
+{% endif %}
+
+{{ bloc_contact(site, page.url) }}
+{% else %}
 {% if defis and defis.length %}
 <section class="sect-bloc">
   <div class="container">
@@ -82,3 +106,4 @@ extraCss: /assets/secteurs.css
                    libelles.secteur.refs_eyebrow, libelles.secteur.refs_titre) }}
 
 {{ bloc_contact(site, page.url) }}
+{% endif %}

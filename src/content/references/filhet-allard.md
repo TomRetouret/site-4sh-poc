@@ -1,49 +1,80 @@
 ---
 titre: Filhet-Allard
 h1: Filhet-Allard
-sous_titre: Extranet pour la santé et la prévoyance des assurés.
+sous_titre: ''
 client: Filhet-Allard
+type_projet: Courtier et assurance
 logo: /uploads/ancien-site/assets/img/png/references/fa/logo-fa.png
 fiche_pdf: https://drive.google.com/file/d/1Fs9rFbJYN2CctzNbQAYLoNHXHGhCpLoO/view?usp=share_link
-maj: "2022-11-04"
 etude:
   entreprise: |-
-    Le groupe Filhet-Allard est courtier en assurance. En 2017 Filhet-Allard lance un projet de refonte de leur Extranet Santé, composé d'un espace Assuré, un espace Entreprise et un espace Gestionnaire. La refonte est à la fois graphique et technique.
+    Le groupe Filhet-Allard, courtier en assurance, a initié en 2017 la refonte technique et graphique de son Extranet Santé (espaces Assuré, Entreprise et Gestionnaire).
 
-    Aujourd'hui, l'extranet compte plus de 600 000 assurés.
-  missions: |-
-    Depuis 2017, 4SH a collaboré avec Filhet-Allard sur :
+    En 2024, une nouvelle phase de modernisation a été menée via un projet de refonte UI/UX visant à améliorer le confort d'utilisation et à moderniser les interfaces.
+  complements: |-
+    ## Enjeux principaux
 
-    - Conception, développement et validation d'applications web et mobiles (Discover, Design, Develop, Deploy).
-    - Maintenance corrective et évolutive (4SH Facility).
-    - Création de vidéos promotionnelles (4SH Studio).
-  enjeux_objectifs:
-    enjeux: |-
-      - Contraintes planning fortes (en lien avec un autre projet dont les jalons sont déjà fixés).
-      - Mise en place d'un socle technique pour l'avenir : open-source, maintenabilité, productivité.
-      - Marquer le renouveau (UI).
-    objectifs: |-
-      - Redonner une jeunesse à l'extranet (nouvelle interface, modernité).
-      - Amélioration de l'expérience utilisateur.
-      - Disponibilité sur une gamme étendue - responsive design.
-  points_cles:
-    intertitre: Les points clés de la solution
-    texte: |-
-      ### Côté utilisateur
+    - Contraintes planning fortes (en lien avec un autre projet dont les jalons sont déjà fixés)
+    - Mise en place d'un socle technique pour l'avenir : open-source, maintenabilité, productivité
+    - Marquer le renouveau (UI)
 
-      - GED = Gestion Electronique des Documents.
-      - CMS = Content Management System.
-      - Demande de prise en charge et devis.
-      - Dossier personnel.
-      - Tiers payant.
+    ## Nos missions & Objectifs
 
-      ### Côté entreprise
+    - Refonte UX de l'extranet
+    - Développement
+    - Formation Jira/Confluence
+    - Création de vidéos promotionnelles
+    - Conception
+    - Déploiement de lˇapplication web et mobile
+    - Maintenance corrective
+    - Maintenance évolutive
 
-      - Historique des cotisations collectives.
-      - Gestion du personnel.
-      - Demande d'affiliation en ligne.
-      - Gestion des sinistres (invalidité, décès).
-      - Délégation des accès de gestion des comptes et sous-comptes.
+    * Redonner une jeunesse à l'extranet (nouvelle interface, modernité)
+    * Amélioration de l'expérience utilisateur
+    * Disponibilité sur une gamme étendue - responsive design
+
+    ## Les points clés de l’application
+
+    ### Espace assuré
+
+    - GED = Gestion Electronique des Documents
+    - Historique des remboursements
+    - Demande de prise en charge et devis
+    - Dossier personnel
+    - Tiers payant
+
+    ### Espace entreprise
+
+    - Historique que des cotisations collectives
+    - Gestion du personnel
+    - Demande d affiliation en ligne
+    - Gestion des sinistres (invalidité, décès)
+    - Délégation des accès de gestion des comptes et sous-compte
+
+    ## Les points clés du projet
+
+    - Méthode de travail itérative et collaborative
+    - Organisation de tests croisés entre recette 4SH et recette utilisateur
+
+    ## Le projet en chiffres
+
+    ### Projet initial
+
+    - 6 mois entre démarrage et mise en production
+    - 180 jours
+    - Équipe : 5 personnes (2 développeurs, 1 UI/UX Designer, 1 consultant fonctionnel, 1 pilote projet)
+
+    ### Projet Refonte 2024
+
+    - 15 mois entre le démarrage des ateliers de co-conception et la mise en production
+    - 255 jours
+    - Équipe : 4 personnes (1 développeur, 1 UI/UX designer, 1 product owner, 1 pilote de projet)
+
+    ### Maintenance évolutive en 2025
+
+    - 8 versions livrées
+    - Une 10aine de projets au forfait
+    - 55 jours de maintenance évolutive
 secteurs:
   - Assurance
 technologies:
@@ -70,7 +101,7 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/fa/ref-fa-3.png
     alt: Filhet-Allard, visuel 3
     decorative: false
-resume: Extranet pour la santé et la prévoyance des assurés.
+resume: Extranet santé pour les entreprises et les salariés
 ordre: 12
 referencement:
   meta_title: Création d'un extranet santé et assurés pour Filhet-Allard par 4SH

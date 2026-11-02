@@ -1,17 +1,20 @@
 ---
 entete:
-  titre: "Kotlin : asynchronicité avec les coroutines"
+  titre: 'Kotlin : asynchronicité avec les coroutines'
   sous_titre: Intermédiaire
   niveau: Intermédiaire
   groupe: kotlin-coroutines-async
   categorie: Develop
-  chapo: Maîtrisez l'asynchronicité en Kotlin grâce aux coroutines.
+  chapo: Maîtrisez l’asynchronicité en Kotlin grâce aux coroutines.
   image: /uploads/ancien-site/assets/img/svg/trainings/kotlin-asynchronicite-coroutines-fondamental.svg
+  titre_carte: 'Kotlin : asynchronicité avec les coroutines - Intermédiaire'
 inscription:
   prix: 3500
   sessions:
-    - debut: "2026-09-25"
-      fin: "2026-09-25"
+    - debut: '2026-12-07'
+      fin: '2026-12-07'
+    - debut: '2027-01-11'
+      fin: '2027-01-11'
   programme_pdf: https://drive.google.com/file/d/1Mp33DjpiL0TjbmMngU4wSm40p6EXGl0q/view
   programme_pdf_poids: 675 Ko
 chiffres:
@@ -57,7 +60,7 @@ programme:
       - Cas d'utilisation pratiques
   - titre: L'API pour créer et exécuter une coroutine
     points:
-      - "Coroutine builders : launch, async, runBlocking"
+      - 'Coroutine builders : launch, async, runBlocking'
       - Différences et cas d'utilisation appropriés
       - Gestion des retours de résultats avec Deferred
   - titre: Les scopes et la cancelability
@@ -84,8 +87,14 @@ programme:
       - Simulation du temps avec runBlockingTest
       - Techniques avancées pour tester le code asynchrone
       - Bonnes pratiques et pièges à éviter
+formations_liees:
+  - intro-kotlin
+  - kotlin-multiplatform
+intertitres:
+  description: Description formation Kotlin
+  programme: Programme formation Kotlin
 referencement:
-  meta_title: "Formation Kotlin Coroutines : Maîtrisez l'asynchronicité en Kotlin"
+  meta_title: 'Formation Kotlin Coroutines : Maîtrisez l''asynchronicité en Kotlin'
   meta_description: Maîtrisez l'asynchronicité en Kotlin grâce aux coroutines. Formation intermédiaire pour créer un code fluide, réactif et performant.
   indexation: true
 ---
@@ -93,4 +102,4 @@ Les coroutines Kotlin constituent une solution pour la programmation asynchrone,
 
 Cette formation a pour objectif de permettre aux développeurs de maîtriser les concepts fondamentaux et avancés des coroutines en Kotlin. Au terme de cette formation, les développeurs seront en mesure de combiner efficacement coroutines, flows et autres composants de l'architecture moderne pour créer des applications performantes, maintenables et réactives. Ils disposeront des compétences nécessaires pour transformer des opérations complexes comme les appels réseau, les accès à la base de données ou tout autre code asynchrone en code lisible, robuste et facile à déboguer.
 
-La formation alterne entre exposés théoriques, démonstrations pratiques et exercices hands-on. Les participants travailleront sur des cas concrets tels que le développement d'applications réactives, la gestion des appels API asynchrones, et la mise en œuvre de traitements parallèles. Chaque module théorique est suivi par un atelier pratique permettant de mettre en application les concepts étudiés. Cette formation sera focalisée sur l'utilisation des coroutines dans un environnement JVM.
+La formation alterne entre exposés théoriques, démonstrations pratiques et exercices hands-on. Les participants travailleront sur des cas concrets tels que le développement d'applications réactives, la gestion des appels API asynchrones, et la mise en œuvre de traitements parallèles. Chaque module théorique est suivi par un atelier pratique permettant de mettre en application les concepts étudiés. Cette formation sera focalisée sur l’utilisation des coroutines dans un environnement JVM.

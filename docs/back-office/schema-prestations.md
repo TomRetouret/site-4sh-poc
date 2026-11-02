@@ -1,6 +1,6 @@
 # Pages de prestation en blocs
 
-Ce fichier fait foi pour les 21 pages `/prestations/<nom>/` tirées de `src/content/prestations/*.md` (la page Logiciel métier, elle, suit `schema-logiciel-metier.md`). Style : aucun tiret cadratin ni demi-cadratin dans les libellés.
+Ce fichier fait foi pour les pages `/prestations/<nom>/` (21 à l'origine, plus les 5 pages d'offre ajoutées le 2 novembre 2026 : `build`, `run`, `developpement-sur-mesure`, `expertise-produit`, `audits`) tirées de `src/content/prestations/*.md` (la page Logiciel métier, elle, suit `schema-logiciel-metier.md`). Style : aucun tiret cadratin ni demi-cadratin dans les libellés.
 
 ## En bref
 
@@ -35,6 +35,7 @@ entete:
 chiffres: [ { chiffre: "+15 ans", label: "d'expertise" } ]                         # facultatif
 blocs: [ { type: section_texte, ... }, ... ]
 references: [ timetobeem ]
+faq_titre: "FAQ - ..."            # facultatif : titre des questions fréquentes
 faq: [ { question: "...", reponse: "..." } ]
 referencement: { meta_title: "...", meta_description: "...", indexation: true }
 source_url: ...                  # mémos non affichés : source_url, source_confluence, requete_cible, slug_prevu
@@ -48,7 +49,7 @@ Toutes les pages ont la même ossature, dans le même ordre : en-tête, bandeau 
 - Rendu : macro `hero` de `composants/page.njk`, inchangée (fil d'Ariane « Accueil › [parent ›] titre », surtitre, h1, chapô, bouton). Sans offre reconnue, surtitre « Prestation ».
 - **Chiffres clés** (`chiffres`, 4 au maximum) : `chiffre` et `label` [oui]. Macro `bandeau_chiffres`, inchangée. Aucune page n'en a aujourd'hui.
 - **Références en bas de page** (`references`, relation multiple vers `references`) : macro `bloc_references`, sans les fiches déjà reliées dans une section Projets visible (filtre `refsDesSections`, qui remplace la mémoire `refsMisesEnAvant` du filtre `blocs`).
-- **Questions fréquentes** (`faq`) : `question` et `reponse` [oui]. Macro `faq_section` (accordéon et JSON-LD), titre tiré des libellés (`libelles.secteur.faq_titre`).
+- **Questions fréquentes** (`faq`) : `question` et `reponse` [oui]. Macro `faq_section` (accordéon et JSON-LD). Titre : `faq_titre` « Titre des questions fréquentes » [non] (ajouté le 2 novembre 2026 pour reprendre les titres de l'ancien site), sinon les libellés (`libelles.secteur.faq_titre`). La réponse est du texte simple : une liste y reste affichée avec ses tirets.
 - **Référencement** (`referencement`, groupe replié) : `meta_title`, `meta_description`, `indexation` « Afficher dans les moteurs de recherche » (case cochée par défaut). Nommé `referencement` et non `seo` : une donnée de page `seo` masquerait la donnée globale `seo` lue par `base.njk` (`seo.indexation`, `seo.url`). Même convention que les fiches références. `prestations.11tydata.js` calcule `title`, `description` (repli sur le chapô) et `noindex` (vrai si `noindex: true` est présent ou si la case est décochée), lu par `base.njk` et le plan du site.
 - **Formulaire de contact** : automatique en fin de page (macro `contact_final`).
 
@@ -63,6 +64,8 @@ Champs communs : `masquer` (booléen), `titre` « Titre de la section » [non : 
 | `section_atouts` | Section d'atouts (deux colonnes) | `atouts` [oui], mêmes champs que les cartes | `.sect-atouts` de `.sect-atout` |
 | `section_etapes` | Section en étapes | `etapes` [oui] de `titre` [oui], `texte` [non] | `.sect-etapes` de `.sect-etape` |
 | `section_projets` | Section de projets | `projets` [oui] de `titre` [oui], `texte` [non], `reference` (relation vers `references`) [non], `lien_texte` [non], `lien` [non] | `.sect-refs-inline` (ou carrousel `car--refs` à partir de 4) de `.sect-ref-carte` |
+
+Autre bloc proposé dans le profil `prestation` (depuis le 2 novembre 2026) : **Derniers articles du blog** (`derniers_articles`, composant partagé inchangé). `prestation.njk` lui transmet `ctx.blog` (articles récupérés au build). Il garde son propre balisage (`section.blog-accueil`) : il compte dans l'alternance des fonds mais n'affiche ni fond calculé ni numéro.
 
 Détails de rendu :
 - Le texte d'introduction s'affiche dans `div.sect-prose` ; les listes reçoivent la classe `sect-liste` (liste à cocher). Markdown rendu avec le même moteur qu'Eleventy (`mdSection`), titres en Markdown en ligne (`mdTitre`).

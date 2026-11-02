@@ -9,15 +9,17 @@ Les champs lus par les cartes des autres pages (`titre`, `client`, `resume`, `lo
 | Groupe | Champ (clé) | Widget | Obligatoire | Rendu |
 |---|---|---|---|---|
 | En-tête | `titre` Nom du projet | string, 50 car. | oui | fil d'Ariane, cartes, navigation entre projets |
-| En-tête | `h1` Titre de la fiche | string, 60 car., *accent* | oui | grand titre (repli : `titre`) |
-| En-tête | `sous_titre` | text | oui | chapô (repli : `resume`) |
+| En-tête | `h1` Titre de la fiche | string, 140 car. max. (60 conseillés), *accent* | oui | grand titre (repli : `titre`) |
+| En-tête | `sous_titre` | text | non | chapô, retours à la ligne conservés (repli sur `resume` seulement si le champ est absent ; vide = pas de chapô) |
+| En-tête | `type_projet` | text | non | bloc « Type » sous « Client » dans la colonne de droite |
 | En-tête | `client` | string | oui | colonne Client, alt du logo |
 | En-tête | `logo` | image | oui | logo de l'en-tête et des cartes |
 | En-tête | `stats[]` (`chiffre`, `label`) | liste, 4 max. | non | bandeau de chiffres |
 | Téléchargement | `fiche_pdf` | string (lien) | non | bouton de l'en-tête et de la colonne |
+| Téléchargement | `lien_externe` (`libelle`, `url`) | objet replié | non | second bouton de l'en-tête, nouvel onglet |
 | Téléchargement | `maj` | datetime, stocké AAAA-MM-JJ | non | « Dernière mise à jour : JJ/MM/AAAA » (filtre `dateMaj`) |
 | Téléchargement | `maj_repli` | string | non | affiché tel quel si `maj` est vide (ancienne date non convertible) |
-| Étude de cas | `etude.entreprise` | markdown | oui | « Entreprise et activité » |
+| Étude de cas | `etude.entreprise` | markdown | non | « Entreprise et activité » |
 | Étude de cas | `etude.missions` | markdown | non | « Nos missions » |
 | Étude de cas | `etude.enjeux_objectifs.intro` / `.enjeux` / `.objectifs` | text / markdown / markdown | non | « Enjeux & Objectifs », « Les enjeux », « Les objectifs » |
 | Étude de cas | `etude.points_cles.intertitre` | select (5 intertitres) | non | intertitre de la rubrique 4 |
@@ -77,3 +79,13 @@ Plan suivi : 15 fiches sur 18 ont exactement la suite « Entreprise et activité
 - Les chiffres clés (`stats`) sont vides sur les 18 fiches : le bandeau n'apparaît donc jamais.
 - Les textes alternatifs repris (« titre » pour le visuel, « titre, visuel N » pour la galerie) ne décrivent rien : à réécrire fiche par fiche.
 - `beclm-ia` n'a pas de date de mise à jour.
+
+## Reprise du contenu de l'ancien site (novembre 2026)
+
+- Textes des 18 fiches repris mot pour mot de www.4sh.fr (ponctuation et coquilles comprises), liens vers les sites clients rétablis dans « Entreprise et activité ».
+- Les 5 fiches de l'ancien gabarit « reference » (beclm-ia, cfluide, filhet-allard, izivia-app-mobile, timetobeem) : grand titre et chapô = titre et paragraphe d'en-tête de l'ancienne page, `type_projet` = ancien « Type », tout le corps dans « Compléments » (intertitres d'origine), pas de date de mise à jour (absente de l'ancienne page). Filhet-Allard n'a pas de chapô (`sous_titre: ""`).
+- `resume` = texte de la carte de l'ancienne page Nos réussites.
+- Navigation précédent / suivant en boucle (`references.11tydata.js`), dans l'ordre du champ `ordre` (= ordre de l'ancienne page).
+- Page liste (`src/references/index.njk`) : bandeau de chiffres retiré, cartes sans secteur ni technologies (macro locale), surtitre affiché seulement s'il est rempli.
+- `admin-shared/apercus-references.js` n'affiche pas encore `type_projet` ni `lien_externe`.
+

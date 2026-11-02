@@ -1,0 +1,108 @@
+{
+  "seo": {
+    "meta_title": "Nos engagements projet : transparence, qualité, agilité – 4SH",
+    "meta_description": "Découvrez les engagements 4SH pour sécuriser vos projets numériques : respect des délais, transparence, agilité, accompagnement humain."
+  },
+  "blocs": [
+    {
+      "type": "hero_institutionnel",
+      "masquer": false,
+      "fil_ariane": [
+        "Accueil",
+        "L'agence",
+        "Notre démarche",
+        "Engagements"
+      ],
+      "surtitre": "",
+      "titre_page": "Nos *engagements*",
+      "chapo": "",
+      "bouton_principal": {
+        "texte": "Nous contacter",
+        "lien": "#contact"
+      },
+      "bouton_secondaire": {
+        "texte": "",
+        "lien": ""
+      },
+      "etiquettes": [],
+      "illustration": "aucune"
+    },
+    {
+      "type": "cartes_numerotees",
+      "masquer": false,
+      "sans_marge_haute": false,
+      "affichage": "grille",
+      "colonnes": "auto",
+      "surtitre": "",
+      "titre": "Les grands engagements nécessitent une réalisation digitale de *qualité*",
+      "sous_titre": "",
+      "cartes": [
+        {
+          "titre": "Le travail au forfait",
+          "texte": "Dès le début nous établissons ensemble un forfait en adéquation avec vos objectifs."
+        },
+        {
+          "titre": "Les délais",
+          "texte": "96% de nos projets respectent les délais prévus (statistiques 4PM® - 4SH Project Management)"
+        },
+        {
+          "titre": "La qualité",
+          "texte": "Plus de 60% de nos projets d’accompagnement naissent d’une recommandation client"
+        },
+        {
+          "titre": "La réussite de votre projet",
+          "texte": "Nous sécurisons votre retour sur investissement"
+        },
+        {
+          "titre": "La transparence",
+          "texte": "Nos clients apprécient cette vision collaborative et transparente du pilotage de projets numériques"
+        },
+        {
+          "titre": "La propriété",
+          "texte": "De la réussite du projet aux codes sources du logiciel, nous vous restituons toutes les propriétés"
+        },
+        {
+          "titre": "L'expertise technologique",
+          "texte": "Nous nous assurons de rester toujours à la pointe des dernières avancées technologiques"
+        }
+      ]
+    },
+    {
+      "type": "cartes_texte",
+      "masquer": false,
+      "sans_marge_haute": false,
+      "presentation": "colonnes",
+      "fond": "blanc",
+      "colonnes": "auto",
+      "surtitre": "",
+      "titre": "Nos *dispositifs*",
+      "sous_titre": "",
+      "cartes": [
+        {
+          "titre": "Forfait",
+          "texte": "Engagement sur un périmètre, un budget et des délais définis. 4SH est responsable de la livraison complète du projet selon les exigences et le périmètre contractuel."
+        },
+        {
+          "titre": "Centre de Services",
+          "texte": "Structure mutualisée dédiée à certaines activités (développement, maintenance, support) avec des engagements de résultats et des indicateurs de performance (SLA)."
+        },
+        {
+          "titre": "BOT (Build, Operate, Transfer)",
+          "texte": "Construction d'une équipe dédiée au client, construisant et exploitant pendant une période donnée l'outil et le système, puis intégrant un transfert complet vers le client (transfert contractualisé)"
+        },
+        {
+          "titre": "Assistance Technique (AT)",
+          "texte": "Mise à disposition de ressources qui travaillent sous la responsabilité du client, facturés au temps passé. Il est possible de distinguer :\nun dispositif sans aucun engagement de résultat, mais avec une obligation de moyen\nun dispositif intégrant un pilotage des temps passés par rapport à un budget global."
+        },
+        {
+          "titre": "Tierce Maintenance Applicative/Tierce Recette Applicative (TMA/TRA)",
+          "texte": "Prise en charge de la maintenance et/ou des tests d'applications existantes, souvent avec des engagements de niveaux de service."
+        },
+        {
+          "titre": "Managed Services",
+          "texte": "Gestion complète d'un service IT avec engagement de résultats et facturation selon un modèle d'unités d'œuvre (forfait mensuel ou UO de travaux)."
+        }
+      ]
+    }
+  ]
+}

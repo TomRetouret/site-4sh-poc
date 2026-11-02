@@ -31,7 +31,7 @@ layout: base.njk
 <!-- POURQUOI -->
 <section>
   <div class="container">
-    <p class="eyebrow">{{ pourquoi_eyebrow or ("Pourquoi " + nom + " ?") }}</p>
+    {% if pourquoi_eyebrow or not sans_surtitres %}<p class="eyebrow">{{ pourquoi_eyebrow or ("Pourquoi " + nom + " ?") }}</p>{% endif %}
     {% if pourquoi_titre %}<h2 class="sec-titre">{{ pourquoi_titre | accent | safe }}</h2>{% endif %}
     {% if pourquoi_intro %}<p class="sec-sous">{{ pourquoi_intro }}</p>{% endif %}
     <div class="atouts" style="grid-template-columns:repeat(4,1fr)">
@@ -43,22 +43,30 @@ layout: base.njk
 </section>
 
 <!-- RÉFÉRENCES CLIENTS -->
+{# Position : juste après « Pourquoi », ou après la section n° references_apres_section du contenu détaillé #}
+{% set bloc_refs %}
 {% if references and references.length %}
-<section style="padding-top:0">
+<section{% if not references_titre %} style="padding-top:0"{% endif %}>
   <div class="container">
-    <p class="eyebrow">Références clients</p>
+    {% if references_titre %}<h2 class="sec-titre">{{ references_titre | accent | safe }}</h2>{% else %}<p class="eyebrow">Références clients</p>{% endif %}
+    {% if references_intro %}<p class="sec-sous">{{ references_intro }}</p>{% endif %}
     <div class="sect-refs-inline">
       {% for r in references %}
       {% set fiche = collections.references | ficheParSlug(r.fiche) %}
       {{ apercu_projet(r.titre, r.texte, fiche, fiche.url if fiche else null) }}
       {% endfor %}
     </div>
+    {% if references_bouton %}<p style="margin-top:28px"><a class="btn btn-ghost" href="/references/">{{ references_bouton }}</a></p>{% endif %}
   </div>
 </section>
 {% endif %}
+{% endset %}
+{% set refs_rang = references_apres_section if (references_apres_section and sections and sections.length > references_apres_section) else 0 %}
+{% if not refs_rang %}{{ bloc_refs | safe }}{% endif %}
 
 <!-- CORPS MARKDOWN (communauté, écosystème, guide technologie) -->
-{# Sections du formulaire ; repli sur l'ancien corps de texte s'il en reste un #}{% set corps = sections | corpsSections -%}
+{# Sections du formulaire ; repli sur l'ancien corps de texte s'il en reste un.
+   Avec references_apres_section, le contenu est coupé en deux autour des références. #}{% set corps = (sections.slice(0, refs_rang) if refs_rang else sections) | corpsSections -%}
 {%- if not corps %}{% set corps = content %}{% endif -%}
 {% if corps %}
 {% if corps_sombre %}
@@ -67,7 +75,7 @@ layout: base.njk
    liens blancs soulignés (.sur-sombre). -#}
 <section class="section-nuit sur-sombre">
   <div class="container">
-    <p class="eyebrow">{{ corps_eyebrow or "Communauté et écosystème" }}</p>
+    {% if corps_eyebrow or not sans_surtitres %}<p class="eyebrow">{{ corps_eyebrow or "Communauté et écosystème" }}</p>{% endif %}
     {% if corps_titre %}<h2 class="sec-titre">{{ corps_titre | accent | safe }}</h2>{% endif %}
     <div class="prose prose--sombre">{{ corps | safe }}</div>
   </div>
@@ -75,19 +83,24 @@ layout: base.njk
 {% else %}
 <section style="padding-bottom:0">
   <div class="container">
-    <p class="eyebrow">{{ corps_eyebrow or "Communauté et écosystème" }}</p>
+    {% if corps_eyebrow or not sans_surtitres %}<p class="eyebrow">{{ corps_eyebrow or "Communauté et écosystème" }}</p>{% endif %}
     {% if corps_titre %}<h2 class="sec-titre">{{ corps_titre | accent | safe }}</h2>{% endif %}
   </div>
 </section>
 {{ corps | blocs | safe }}
 {% endif %}
 {% endif %}
+{% if refs_rang %}
+{{ bloc_refs | safe }}
+{{ sections.slice(refs_rang) | corpsSections | blocs | safe }}
+{% endif %}
 
 <!-- NOS FORMATIONS -->
 {% if formations and formations.length %}
 <section id="formations">
   <div class="container">
-    <p class="eyebrow">Nos formations</p>
+    {% if formations_titre %}<h2 class="sec-titre">{{ formations_titre | accent | safe }}</h2>{% else %}<p class="eyebrow">Nos formations</p>{% endif %}
+    {% if formations_intro %}<p class="sec-sous">{{ formations_intro }}</p>{% endif %}
     <div class="socle" style="grid-template-columns:repeat(3,1fr)">
       {% for f in formations %}{% set fiche_formation = collections.formations | ficheParSlug(f.formation) %}
       <a class="socle-carte" href="{{ fiche_formation.url if fiche_formation else '#' }}"><h3>{{ f.titre }}</h3><span class="socle-lien">Découvrir →</span></a>
@@ -105,6 +118,17 @@ layout: base.njk
       <h2 class="sec-titre">{{ (faq_titre or ("Questions fréquentes sur " + nom)) | accent | safe }}</h2>
       {{ faq_accordeon(faq, "margin-top:20px") }}
     </div>
+  </div>
+</section>
+{% endif %}
+
+{% if cta_titre or cta_texte %}
+<!-- APPEL À L'ACTION FINAL -->
+<section style="text-align:center">
+  <div class="container">
+    {% if cta_titre %}<h2 class="sec-titre" style="margin-left:auto;margin-right:auto">{{ cta_titre | accent | safe }}</h2>{% endif %}
+    {% if cta_texte %}<p class="sec-sous" style="margin-left:auto;margin-right:auto">{{ cta_texte }}</p>{% endif %}
+    <p style="margin-top:20px"><a class="btn btn-primary" href="/contact/">Contactez-nous</a></p>
   </div>
 </section>
 {% endif %}

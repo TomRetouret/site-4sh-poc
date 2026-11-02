@@ -3,26 +3,33 @@ layout: base.njk
 permalink: /references/
 extraCss: /assets/references.css
 ---
-{% from "composants/cartes.njk" import carte_ref as carte %}
+{#- Carte locale : celle de composants/cartes.njk (carte_ref) sans le secteur ni les
+    technologies affichés, comme les cartes de l'ancienne page 4sh.fr/references.html.
+    Les attributs data-* restent, pour la recherche et les filtres. -#}
+{% macro carte(ref, une=false) %}
+<article class="ref-carte{% if une %} ref-carte--une{% endif %}"
+  data-secteurs="{{ ref.data.secteurs | join(',') | lower }}"
+  data-technologies="{{ ref.data.technologies | join(',') | lower }}"
+  data-nom="{{ (ref.data.titre ~ ' ' ~ ref.data.client ~ ' ' ~ ref.data.resume ~ ' ' ~ (ref.data.technologies | join(' ')) ~ ' ' ~ (ref.data.secteurs | join(' '))) | lower }}">
+  <div class="ref-visuel{% if not ref.data.image %} ref-visuel--vide{% endif %}">
+    {% if ref.data.image %}{% image ref.data.image, ('' if ref.data.image_decorative else (ref.data.image_alt or ref.data.titre)), { sizes: "(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 600px", width: 600, height: 450 } %}{% else %}<span class="ref-vide-nom">{{ ref.data.client }}</span>{% endif %}
+    <div class="ref-cartouche">{% if ref.data.logo %}<img src="{{ ref.data.logo }}" alt="{{ ref.data.client }}" loading="lazy" decoding="async">{% else %}<span class="ref-cartouche-txt">{{ ref.data.client }}</span>{% endif %}</div>
+  </div>
+  <div class="ref-carte-corps">
+    <h3><a href="{{ ref.url }}">{{ ref.data.titre }}</a></h3>
+    <p class="resume">{{ ref.data.resume }}</p>
+  </div>
+</article>
+{% endmacro %}
 <div class="ref-hero">
   <div class="container">
-    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Références</nav>
-    <p class="eyebrow">{{ page_references.hero.surtitre }}</p>
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › Nos réussites</nav>
+    {% if page_references.hero.surtitre %}<p class="eyebrow">{{ page_references.hero.surtitre }}</p>{% endif %}
     <h1>{{ page_references.hero.titre | accent | safe }}</h1>
     <p class="chapo">{{ page_references.hero.chapo }}</p>
   </div>
 </div>
 
-<!-- PREUVE CHIFFRÉE (bande signature) -->
-<section style="padding:0">
-  <div class="chiffres">
-    <div class="container ref-chiffres">
-      <div><b>{{ collections.references.length }}</b><span>{{ libelles.references_index.stat_projets }}</span></div>
-      <div><b>{{ collections.referenceFiltres.secteurs.length }}</b><span>{{ libelles.references_index.stat_secteurs }}</span></div>
-      <div><b><i>{{ libelles.references_index.stat_depuis_valeur }}</i></b><span>{{ libelles.references_index.stat_depuis }}</span></div>
-    </div>
-  </div>
-</section>
 
 <section>
   <div class="container">

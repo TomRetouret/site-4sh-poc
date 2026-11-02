@@ -6,9 +6,9 @@
   "hero": {
     "surtitre": "4SH Learning",
     "titre": "Nos formations en *informatique*",
-    "chapo": "Notre programme de formation 4SH Learning accompagne vos collaborateurs dans leur montée en compétences. Notre objectif : leur transférer les compétences qui vous permettent de reprendre la maîtrise de vos développements métier, avec une qualité uniforme en présentiel comme à distance.",
-    "note": "4,71 / 5",
-    "note_detail": "324 participant·e·s",
+    "chapo": "Notre programme de formation en informatique 4SH Learning vise à accompagner vos collaborateurs dans leur montée en compétences dans le domaine informatique.",
+    "note": "4.69 / 5",
+    "note_detail": "361 participant·e·s",
     "bouton_principal": {
       "texte": "Découvrir les formations",
       "lien": "#catalogue"
@@ -17,42 +17,40 @@
       "texte": "Devis sur mesure",
       "lien": "#contact"
     },
-    "etiquettes": [
-      "Présentiel & distanciel",
-      "Certifié Qualiopi"
-    ],
+    "etiquettes": [],
     "etapes": [
       "Comprendre",
       "Pratiquer",
       "Maîtriser"
-    ]
+    ],
+    "chapo_suite": "Notre objectif est de transférer à vos collaborateurs et salariés les compétences vous permettant de reprendre la maîtrise de vos développements métier en entreprise. Nous garantissons une qualité uniforme de nos formations, qu’elles soient dispensées en présentiel dans notre centre ou à distance."
   },
   "pourquoi": {
     "titre": "Pourquoi choisir *4SH Learning* ?",
     "cartes": [
       {
         "titre": "Industrialisez votre production logicielle",
-        "texte": "Des formations orientées outils, pensées pour rendre vos équipes autonomes et productives."
+        "texte": "Des formations orientées outils"
       },
       {
         "titre": "Apprenez avec nos experts métiers",
-        "texte": "Des formateurs expérimentés, en poste sur nos projets, qui transmettent des pratiques réelles."
+        "texte": "Des formateurs expérimentés"
       },
       {
         "titre": "Construisons ensemble votre projet",
-        "texte": "Des ateliers collaboratifs adaptés à votre contexte, jusqu'au sur mesure en intra-entreprise."
+        "texte": "Des ateliers collaboratifs adaptés"
       }
     ]
   },
   "catalogue": {
-    "titre": "Catalogue de *formations*",
-    "sous_titre": "Cherchez une technologie ou choisissez une catégorie."
+    "titre": "Catalogue de *formation*",
+    "sous_titre": ""
   },
   "agenda": {
     "titre": "Nos prochaines *sessions*",
-    "sous_titre": "Les dates ouvertes à l'inscription, en présentiel ou à distance. Une autre date vous conviendrait mieux ? Demandez une session sur mesure.",
+    "sous_titre": "",
     "bouton": {
-      "texte": "Demander une autre date",
+      "texte": "",
       "lien": "#contact"
     },
     "mois": [
@@ -140,30 +138,12 @@
     ]
   },
   "qualiopi": {
-    "titre": "4SH est un organisme de formation certifié *Qualiopi*",
-    "texte": "En sélectionnant 4SH, vous faites le choix d'un prestataire qui met un point d'honneur à se distinguer par son engagement envers l'excellence et la transparence. La certification Qualiopi témoigne de notre dévouement à dispenser des formations d'une qualité irréprochable, correspondant aux besoins actuels du marché de l'emploi. La certification qualité a été délivrée au titre de la catégorie « Actions de formation »."
+    "titre": "4SH est un organisme de formation, certifié *Qualiopi*.",
+    "texte": "En sélectionnant 4SH, vous faites le choix d'un prestataire de formation qui met un point d'honneur à se distinguer par son engagement envers l'excellence et la transparence. La certification Qualiopi que nous avons obtenue témoigne de notre dévouement absolu à dispenser des formations d'une qualité irréprochable, correspondant aux besoins actuels du marché de l'emploi ainsi qu'aux attentes spécifiques de nos apprenants. Que vous soyez un professionnel désireux d'acquérir de nouvelles compétences ou une entreprise à la recherche de moyens pour former ses équipes, 4SH se tient à vos côtés en vous proposant des solutions sur mesure."
   },
+  "texte": "## Pourquoi se former avec 4SH ?\n\nGrâce à notre expérience de 17 ans dans le domaine du développement et du design informatique, nous avons pu développer une expertise et un savoir-faire sans égal, acquis auprès de nos clients. Bien que notre spécialité soit la conception numérique, nous avons maintenant le désir de partager nos connaissances et de contribuer à la formation et au perfectionnement technique des professionnels du digital.Nous excellons dans la création numérique, c’est pourquoi notre objectif actuel est de partager nos connaissances pour aider les professionnels du digital et du web à se former et à se perfectionner.\n\n### Quels sont les sujets couverts par nos formations en informatique ?\n\n[4SH agence de développement de logiciels métiers](/) vous propose une gamme complète de formation informatique pour vous permettre de maîtriser les [outils de développement](/formations/develop/) de type [Angular](/formations/angular-fondamental/), les langages de programmation les plus courants comme le [HTML, CSS](/formations/html-css/), [Java](/formations/java-avance/), les méthodes de [DevOps](/formations/devops/) type [Kubernetes](/formations/kubernetes-avance/) mais aussi des [outils de design](/formations/design/) comme [notre formation Figma](/formations/figma-essentiel/).\n\nSe former dans le secteur de l’informatique et plus particulièrement du développement est essentiel dans le contexte actuel de notre société. En tant qu’organisme de formation certifié Qualiopi, 4SH propose des formations en informatique complètes et adaptées aux besoins du marché.\n\nNotre catalogue de formation informatique comporte aussi bien des formations dans le développement applicatif que dans le design ou de la [formation sur des outils](/formations/outils/) comme [Git](/formations/git-essentiel/) ou [Gradle](/formations/gradle/), [Jira](/formations/jira-avance/) afin d’augmenter la productivité de vos collaborateurs.\n\n### Quel est le niveau requis pour nos sessions de formation informatique ?\n\nLa plupart de nos formations informatiques sont accessibles pour vos jeunes salariés diplômés avec quelques notions du sujet, dans les niveaux plus intermédiaires et avancés, il vous faudra de plus amples connaissances sur les sujets.\n\nDans tous les cas, nous indiquons dans la partie “prérequis” des pages de nos formations, les connaissances demandées pour pouvoir suivre la formation dans les meilleures conditions.\n\nUn projet pour vos juniors ou ingénieurs ? N’hésitez pas à explorer notre catalogue et découvrez nos formations en informatique !\n\n### Comment identifier les besoins en formation informatique dans votre entreprise ?\n\nPour identifier les besoins en compétences informatiques au sein de votre entreprise et mieux cibler les formations à mettre en place, réalisez un audit des compétences actuelles via des auto-évaluations, des entretiens et des tests, analysez les objectifs stratégiques de l'entreprise pour déterminer les compétences nécessaires, consultez les managers pour comprendre les lacunes observées, recueillez les retours des employés sur leurs besoins en formation, étudiez les tendances technologiques pour anticiper les besoins futurs, analysez les performances des projets passés pour identifier les domaines à améliorer, comparez les compétences de votre entreprise avec celles de concurrents pour repérer les écarts, et élaborez un plan de formation personnalisé basé sur ces besoins identifiés.\n\n### Comment puis-je financer ma formation informatique ?\n\nÉtant un organisme de formation certifié Qualiopi, nos formations informatiques sont éligibles à une prise en charge par un organisme de financement de formations.\n\nLa prise en charge de votre formation se fera donc par le biais d’un organisme en fonction de votre situation.\n\n- Si vous êtes salarié·e, un OPCO pourra prendre en charge les frais de formations.\n- Demandeur·se d’emploi ou en reconversion ? Votre conseiller France Travail (anciennement Pôle Emploi) pourra vous renseigner.\n\n### Pourquoi choisir un organisme de formation certifié Qualiopi ?\n\nChoisir un centre de formation certifié Qualiopi présente plusieurs avantages pour votre entreprise :\n\n- Garantie de qualité : La certification assure que l'organisme respecte des critères de qualité stricts.\n- Financement : Les formations dispensées par des organismes certifiés Qualiopi sont éligibles au financement public ou mutualisé, ce qui peut inclure des fonds comme les OPCO (Opérateurs de Compétences).\n- Reconnaissance : La certification est un gage de sérieux et de professionnalisme, reconnue par l'État et les entreprises.\n\n### Quelle est la politique d’accessibilité ?\n\n4SH s’engage à garantir l’accessibilité de ses formations à tous les apprenants, quels que soient leurs besoins spécifiques. Nous considérons l’accessibilité comme un élément fondamental de notre mission visant à offrir un apprentissage inclusif et équitable.\n\n[Télécharger la politique d’accessibilité de 4SH (PDF)](https://drive.google.com/file/d/1wdF44lBtUmr39Kx5KA2jXBRqy8zqERbL/view)",
   "temoignages": {
     "titre": "Ils ont suivi *nos formations*",
-    "liste": [
-      {
-        "citation": "Formation très concrète, animée par un formateur qui code au quotidien. On repart avec des réflexes directement applicables.",
-        "initiales": "[XX]",
-        "nom": "[Prénom Nom]",
-        "detail": "[Société] · Formation Angular"
-      },
-      {
-        "citation": "Le bon équilibre théorie / pratique, et une vraie capacité à adapter le contenu à notre contexte métier.",
-        "initiales": "[XX]",
-        "nom": "[Prénom Nom]",
-        "detail": "[Société] · Formation Kubernetes"
-      },
-      {
-        "citation": "Organisation sans faille, de l'inscription au certificat. Nous reformerons nos équipes avec 4SH.",
-        "initiales": "[XX]",
-        "nom": "[Prénom Nom]",
-        "detail": "[Société] · Formation Figma"
-      }
-    ]
+    "liste": []
   }
 }

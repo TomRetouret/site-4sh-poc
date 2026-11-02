@@ -1,0 +1,86 @@
+{
+  "seo": {
+    "meta_title": "Démarche UX : concevoir des services centrés utilisateur – 4SH",
+    "meta_description": "4SH structure votre démarche UX : recherches utilisateurs, tests, maquettes, conception fonctionnelle et design d’interfaces efficaces."
+  },
+  "blocs": [
+    {
+      "type": "hero_institutionnel",
+      "masquer": false,
+      "fil_ariane": [
+        "Accueil",
+        "L'agence",
+        "Notre démarche",
+        "Conception UX"
+      ],
+      "surtitre": "",
+      "titre_page": "Une approche centrée sur *l'utilisateur*.",
+      "chapo": "",
+      "bouton_principal": {
+        "texte": "Contactez-nous",
+        "lien": "#contact"
+      },
+      "bouton_secondaire": {
+        "texte": "",
+        "lien": ""
+      },
+      "etiquettes": [],
+      "illustration": "aucune"
+    },
+    {
+      "type": "texte_simple",
+      "masquer": false,
+      "surtitre": "",
+      "titre": "Définir un cadre méthodologique commun.",
+      "texte": "La démarche UX 4SH garantit une meilleure expérience pour l'utilisateur final et une optimisation continue du produit à travers des tests réguliers. Nous vous accompagnons tout au long du cycle de conception qui favorise la génération d'idées et améliore la synergie entre les équipes de conception.\n\n**Développer une démarche UX au sein des équipes est un véritable levier stratégique pour améliorer la qualité et assurer la pérennité de votre produit numérique et ainsi renforcer la satisfaction des utilisateurs.**"
+    },
+    {
+      "type": "cartes_numerotees",
+      "masquer": false,
+      "sans_marge_haute": false,
+      "affichage": "grille",
+      "colonnes": "3",
+      "surtitre": "",
+      "titre": "Une approche créative *sur-mesure*",
+      "sous_titre": "Le cycle de conception UX suit une approche itérative en 6 étapes, permettant de s’adapter aux besoins spécifiques de chaque client. Un réel atout ! Nous vous aidons à garder aligné votre produit sur les besoins réels des utilisateurs en collectant du feedback régulier.",
+      "cartes": [
+        {
+          "titre": "Comprendre les besoins pour mieux concevoir",
+          "texte": "Nous vous aidons à définir et planifier la démarche UX. Notre approche débute par une bonne compréhension et une analyse approfondie de vos besoins, des objectifs business et du marché concurrentiel."
+        },
+        {
+          "titre": "Écouter vos utilisateurs",
+          "texte": "Prendre le temps de comprendre les comportements, les besoins et les motivations de vos utilisateurs par des méthodes qualitatives et quantitatives vous fournissent des connaissances précises pour guider la conception de vos produits numériques."
+        },
+        {
+          "titre": "Imaginer des solutions sur mesure",
+          "texte": "Autour d’ateliers de co-création, nous concevons des solutions qui répondent aux besoins identifiés, où chaque interaction est pensée pour simplifier la vie de l'utilisateur et maximiser sa satisfaction. On définit la manière dont les utilisateurs vont interagir avec la solution."
+        },
+        {
+          "titre": "Donner vie aux idées",
+          "texte": "Designer des interfaces accessibles en garantissant une cohérence visuelle, technique et fonctionnelle, c’est grâce à notre équipe de designers qui vous accompagne tout au long du processus de product design."
+        },
+        {
+          "titre": "Garantir la cohérence visuelle, fonctionnelle et technique",
+          "texte": "Notre processus intègre la création et le maintien d’un Design System qui garantit une cohérence des interfaces."
+        },
+        {
+          "titre": "Tester et réitérer !",
+          "texte": "Chaque retour utilisateur est une opportunité d’amélioration. Nous nous assurons de la cohérence et de la bonne compréhension des interfaces grâce au prototype interactif Figma. Les tests d’utilisabilité permettent d’identifier les problèmes d’ergonomie, de navigation ou de fonctionnalités avant de lancer le produit."
+        }
+      ]
+    },
+    {
+      "type": "encart_bouton",
+      "masquer": false,
+      "sans_marge_haute": false,
+      "presentation": "encadre",
+      "titre": "Vous souhaitez concevoir un projet numérique ?",
+      "texte": "Notre équipe d'expert·es vous guide à travers chaque étape du processus de conception.",
+      "bouton": {
+        "texte": "Contactez-nous",
+        "lien": "/contact/"
+      }
+    }
+  ]
+}

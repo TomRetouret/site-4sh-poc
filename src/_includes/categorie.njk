@@ -7,6 +7,7 @@ permalink: "/formations/{{ page.fileSlug }}/"
 ---
 {% from "composants/catalogue.njk" import grille as catalogue %}
 {% from "composants/formulaires.njk" import devis %}
+{% from "composants/pages/formations.njk" import agenda_auto %}
 <div class="hero-form">
   <div class="container">
     <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <a href="/formations/">Formations</a> › {{ nom }}</nav>
@@ -15,6 +16,7 @@ permalink: "/formations/{{ page.fileSlug }}/"
         <span class="eyebrow eyebrow-offre"><span class="barre" aria-hidden="true"></span>4SH Learning</span>
         <h1>{{ (h1 or ('Formations ' + nom)) | accent | safe }}</h1>
         {% if intro %}<p class="chapo">{{ intro }}</p>{% endif %}
+        {% if note %}<div class="meta-form"><span class="note-etoiles">{{ note }}{% if note_detail %} <small>· {{ note_detail }}</small>{% endif %}</span></div>{% endif %}
         {% if site.documents.catalogue_url %}<p style="font-size:14.5px;margin:0 0 24px"><a href="{{ site.documents.catalogue_url }}" target="_blank" rel="noopener">{{ site.documents.catalogue_label }}</a></p>{% endif %}
         <div class="hero-cta">
           <a class="btn btn-learning" href="#catalogue">{{ libelles.catalogue.cta_voir }}</a>
@@ -36,6 +38,31 @@ permalink: "/formations/{{ page.fileSlug }}/"
   </div>
 </section>
 
+{% if agenda_titre %}
+<!-- PROCHAINES SESSIONS DE LA CATÉGORIE (calculées depuis les fiches) -->
+<section id="agenda" style="padding-top:0">
+  <div class="container">
+    <h2 class="sec-titre">{{ agenda_titre | accent | safe }}</h2>
+    <div class="agenda">{{ agenda_auto(collections.formations, libelles, nom) }}</div>
+  </div>
+</section>
+{% endif %}
+
+{% if qualiopi and qualiopi.titre %}
+<!-- QUALIOPI -->
+<section style="padding-top:0">
+  <div class="container">
+    <div class="qualiopi">
+      <div class="logo-q"><img src="/uploads/ancien-site/assets/img/png/logo-qualiopi.png" alt="Logo Qualiopi"></div>
+      <div>
+        <h2>{{ qualiopi.titre | accent | safe }}</h2>
+        <p>{{ qualiopi.texte }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <!-- TEXTE SEO + FAQ -->
 <section style="padding-top:0">
   <div class="container">
@@ -54,6 +81,15 @@ permalink: "/formations/{{ page.fileSlug }}/"
     {% endif %}
   </div>
 </section>
+
+{% if temoignages_titre %}
+<!-- TÉMOIGNAGES (titre seul : les avis de l'ancien site étaient chargés dynamiquement) -->
+<section style="padding-top:0">
+  <div class="container">
+    <h2 class="sec-titre">{{ temoignages_titre | accent | safe }}</h2>
+  </div>
+</section>
+{% endif %}
 
 <!-- CONTACT / DEVIS (mutualisé) -->
 {{ devis(libelles.devis, site.formulaire, page.url, sujet_defaut=site.formulaire.sujet_defaut_formation) }}

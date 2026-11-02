@@ -10,16 +10,17 @@ entete:
 inscription:
   prix: 1490
   sessions:
-    - debut: "2027-01-13"
-      fin: "2027-01-14"
+    - debut: '2027-01-13'
+      fin: '2027-01-14'
   programme_pdf: https://drive.google.com/file/d/1xhHAuVyp_qsALjSgsN2ux_eNzWk_QwXd/view
   programme_pdf_poids: 680 Ko
 chiffres:
-  duree_jours: 2
-  duree_heures: 14
   participants_min: 1
   participants_max: 8
   theorie: 40
+  duree_texte: 2 jours (14h)
+  avis: 0
+  depuis: janvier 2023
 public:
   pour_qui: Cette formation s’adresse à des développeurs souhaitant intégrer les agents de code IA dans leur pratique quotidienne pour gagner en efficacité tout en continuant à produire du code robuste et maintenable.
   prerequis:
@@ -28,27 +29,27 @@ public:
     - Aucune expérience préalable des outils d’IA n’est requise
 objectifs:
   - Comprendre le fonctionnement des LLM et des agents de code IA
-  - "Maîtriser les fondamentaux de l’interaction avec un agent : prompt, itération, autonomie"
+  - 'Maîtriser les fondamentaux de l’interaction avec un agent : prompt, itération, autonomie'
   - Savoir démarrer un nouveau projet en s’appuyant sur un agent IA
   - Savoir structurer le contexte d’un projet pour guider l’agent
-  - "Maîtriser les workflows de développement augmenté : explorer, planifier, implémenter, valider"
+  - 'Maîtriser les workflows de développement augmenté : explorer, planifier, implémenter, valider'
   - Savoir garantir la qualité du code généré
   - Savoir onboarder un agent sur un projet existant volumineux
   - Maîtriser les rules pour capitaliser l’architecture et les conventions d’une base de code
   - Savoir gérer le contexte sur une grande base de code
   - Savoir étendre les capacités de l’agent
-  - "Comprendre les enjeux d’équipe : partage des pratiques, sécurité, confidentialité et coûts"
+  - 'Comprendre les enjeux d’équipe : partage des pratiques, sécurité, confidentialité et coûts'
 programme:
   - titre: Introduction
     points:
-      - "Panorama des outils : complétion, chat, agents de code"
-      - "Fonctionnement d’un LLM : modèle, contexte, tokens"
-      - "Anatomie d’un agent : boucle d’exécution et outils"
+      - 'Panorama des outils : complétion, chat, agents de code'
+      - 'Fonctionnement d’un LLM : modèle, contexte, tokens'
+      - 'Anatomie d’un agent : boucle d’exécution et outils'
       - Forces, limites et pièges
   - titre: Interagir avec un agent
     points:
       - Installation et configuration
-      - "Le prompt : clarté, contexte, contraintes"
+      - 'Le prompt : clarté, contexte, contraintes'
       - Itération et correction
       - Niveaux d’autonomie et validation des actions
   - titre: Développer un nouveau projet avec l’IA
@@ -61,26 +62,26 @@ programme:
       - Le mode plan
       - TDD assisté par l’agent
       - Revue du code généré
-      - "Git : commits et pull requests avec l’agent"
+      - 'Git : commits et pull requests avec l’agent'
   - titre: Intervenir sur un projet existant volumineux
     points:
       - Onboarding de l’agent sur la base de code
       - Cartographie de l’architecture avec l’agent
-      - "Les rules : capitaliser l’architecture et les conventions"
-      - "Rules hiérarchiques : par module, par répertoire"
+      - 'Les rules : capitaliser l’architecture et les conventions'
+      - 'Rules hiérarchiques : par module, par répertoire'
       - Implémenter une évolution en respectant l’existant
       - Refactoring et migrations assistés
       - Debug assisté par l’agent
   - titre: Gérer le contexte sur une grande base de code
     points:
-      - "La fenêtre de contexte : compaction et sessions"
+      - 'La fenêtre de contexte : compaction et sessions'
       - Découper les tâches
       - Les sous-agents pour l’exploration et les tâches parallèles
   - titre: Étendre l’agent
     points:
       - Commandes personnalisées et skills
-      - "MCP : connecter l’agent à son écosystème"
-      - "Hooks : automatiser les contrôles"
+      - 'MCP : connecter l’agent à son écosystème'
+      - 'Hooks : automatiser les contrôles'
       - L’agent en mode headless et en intégration continue
   - titre: L’IA en équipe
     points:
@@ -90,8 +91,11 @@ programme:
       - Coûts, quotas et suivi de l’usage
   - titre: Conclusion
     points: []
+intertitres:
+  description: Description formation *Développeur augmenté par l’IA*
+  programme: Programme formation *Développeur augmenté par l’IA*
 referencement:
-  meta_title: "Formation Développeur augmenté par l'IA : les fondamentaux"
+  meta_title: 'Formation Développeur augmenté par l''IA : les fondamentaux'
   meta_description: Intégrez les agents de code IA à votre quotidien de développeur, sans sacrifier la qualité du code, avec la formation Développeur augmenté par l'IA de 4SH.
   indexation: true
 ---

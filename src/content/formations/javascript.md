@@ -10,8 +10,10 @@ entete:
 inscription:
   prix: 1500
   sessions:
-    - debut: "2026-09-16"
-      fin: "2026-09-18"
+    - debut: '2026-11-23'
+      fin: '2026-11-25'
+    - debut: '2026-12-14'
+      fin: '2026-12-16'
   programme_pdf: https://drive.google.com/file/d/1HnFTTna7szDej_Ul4QtJhaZnfQ4Lv468/view
   programme_pdf_poids: 723 Ko
 chiffres:
@@ -24,10 +26,16 @@ chiffres:
   depuis: janvier 2023
   theorie: 60
 public:
-  pour_qui: La formation JavaScript - Les Fondamentaux s'adresse aux développeurs débutants souhaitant acquérir une compréhension solide des concepts de base de JavaScript. Elle est également destinée aux professionnels du développement logiciel, y compris les ingénieurs, les chefs de projet techniques, et les architectes logiciels ayant besoin de compétences en développement web pour leurs projets. Cette formation est particulièrement adaptée pour les développeurs front-end et back-end en début de carrière cherchant à renforcer leurs compétences en JavaScript, et pour les équipes de développement souhaitant uniformiser les connaissances de base en JavaScript au sein de leur équipe.
+  pour_qui: |-
+    La formation JavaScript - Les Fondamentaux s'adresse aux développeurs débutants souhaitant acquérir une compréhension solide des concepts de base de JavaScript. Elle est également destinée aux professionnels du développement logiciel, y compris les ingénieurs, les chefs de projet techniques, et les architectes logiciels ayant besoin de compétences en développement web pour leurs projets.
+
+    Cette formation est particulièrement adaptée pour :
+
+    - Les développeurs front-end et back-end en début de carrière cherchant à renforcer leurs compétences en JavaScript.
+    - Les équipes de développement souhaitant uniformiser les connaissances de base en JavaScript au sein de leur équipe.
   prerequis:
-    - Connaissance de base sur les concepts de programmation
-    - Compréhension basique des principes du Web (HTML, CSS)
+    - Connaissance de base sur les concepts de programmation;
+    - Compréhension basique des principes du Web (HTML, CSS).
 objectifs:
   - Écrire, lire et comprendre du code JavaScript
   - Concevoir et mettre en œuvre des fonctions & classes JavaScript
@@ -75,6 +83,12 @@ programme:
       - Dates
       - Manipulation du DOM
 faq: []
+formations_liees:
+  - js-ts-fondamental
+  - ts-fondamental
+intertitres:
+  description: Description formation *JavaScript*
+  programme: Programme formation *JavaScript*
 referencement:
   meta_title: Formation JavaScript présentiel ou en ligne avec 4SH
   meta_description: Apprenez les bases de JavaScript en 3 jours avec 4SH. Formation pratique en présentiel ou à distance pour créer des applications web interactives.
@@ -86,4 +100,6 @@ Découvrez les bases solides du langage, maîtrisez les concepts clés tels que 
 
 À travers des exercices pratiques, vous développerez les compétences nécessaires pour créer des applications web interactives et performantes. Que vous soyez débutant ou que vous cherchiez à renforcer vos compétences, cette formation vous offre une base solide pour réussir en JavaScript.
 
-Nos formations informatiques se déroulent en présentiel ou à distance.
+Nos [formations informatiques](/formations/) se déroulent en présentiel ou à distance.
+
+[En savoir plus sur JavaScript](/expertises-techniques/javascript/)

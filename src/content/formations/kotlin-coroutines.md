@@ -10,8 +10,10 @@ entete:
 inscription:
   prix: 1800
   sessions:
-    - debut: "2026-10-12"
-      fin: "2026-10-14"
+    - debut: '2026-11-30'
+      fin: '2026-12-02'
+    - debut: '2027-01-18'
+      fin: '2027-01-20'
   programme_pdf: https://drive.google.com/file/d/15ALfacgzs98WWOJsaypBivKMmWgDfzhN/view
   programme_pdf_poids: 703 Ko
 chiffres:
@@ -21,14 +23,15 @@ chiffres:
   participants_max: 8
   depuis: janvier 2023
   theorie: 60
+  avis: 0
 public:
-  pour_qui: Cette formation informatique s'adresse à des développeurs Kotlin qui souhaitent parfaire leur maîtrise de l'API coroutine. Même si la majorité des concepts couverts est multi plateforme, certains exemples et cas d'usages s'adressent particulièrement à la cible JVM.
+  pour_qui: Cette [formation informatique](/formations/) s’adresse à des développeurs Kotlin qui souhaitent parfaire leur maîtrise de l’API coroutine. Même si la majorité des concepts couverts est multi plateforme, certains exemples et cas d’usages s’adressent particulièrement à la cible JVM.
   prerequis:
     - Maîtriser les bases de la programmation objet
-    - Maîtriser les bases de la programmation concurrente (notion de Thread et d'accès concurrent à la mémoire)
+    - Maîtriser les bases de la programmation concurrente (notion de Thread et d’accès concurrent à la mémoire)
     - Maîtriser le langage Kotlin
 objectifs:
-  - Maîtriser l'usage des coroutines
+  - Maîtriser l’usage des coroutines
   - Comprendre le modèle de concurrence sous jacent
   - Comprendre la structured concurrency et son application
   - Maîtriser les CoroutineScope et leurs usages
@@ -37,16 +40,16 @@ objectifs:
   - Savoir interopérer les CoroutineContext et les Threads de la JVM
   - Comprendre et maîtriser la gestion des erreurs et leur propagation
   - Savoir traiter des flux de données asynchrones
-  - Appréhender l'implémentation interne des coroutines et son implication
+  - Appréhender l’implémentation interne des coroutines et son implication
 programme:
   - titre: Introduction
     points: []
-  - titre: "Coroutines Basics : introduction à l'utilisation des coroutines"
+  - titre: 'Coroutines Basics : introduction à l’utilisation des coroutines'
     points:
-      - "Coroutine : définition et API de base"
+      - 'Coroutine : définition et API de base'
       - Appels non bloquants et mot clef suspend
-      - Les bases de l'API Flow
-      - Utilisation de l'API Job pour synchroniser des coroutines
+      - Les bases de l’API Flow
+      - Utilisation de l’API Job pour synchroniser des coroutines
   - titre: Orchestration de coroutines Basics
     points:
       - Async / Await
@@ -56,22 +59,22 @@ programme:
       - Quelles threads pour exécuter les coroutines ?
       - Quelles implications pour les coroutines ?
       - La notion de Dispatcher et son usage
-  - titre: "Job : cancel et timeout"
+  - titre: 'Job : cancel et timeout'
     points:
-      - Comprendre le mécanisme d'annulation de coroutine
+      - Comprendre le mécanisme d’annulation de coroutine
       - Modèle coopératif
       - Gestion du NonCancellable
       - Exécution avec timeout
   - titre: CoroutineContext
     points:
-      - Qu'est-ce qu'un CoroutineContext ?
-      - Comment y accéder et s'en servir ?
+      - Qu'est-ce qu’un CoroutineContext ?
+      - Comment y accéder et s’en servir ?
       - Comment définir ses propres clés ?
       - Quelles informations y sont disponibles ?
-      - Comment modifier le contexte d'une coroutine
+      - Comment modifier le contexte d’une coroutine
   - titre: Structured Concurrency
     points:
-      - Qu'est-ce qu'un CoroutineScope ?
+      - Qu'est-ce qu’un CoroutineScope ?
       - Lien avec un CoroutineContext et un Job
       - Différence entre coroutineScope, CoroutineScope et CoroutineScope()
       - Utilisation de GlobalScope
@@ -80,14 +83,14 @@ programme:
     points:
       - Approche par confinement de Thread ou de coroutine
       - Utilisation de Mutex
-      - "Utilisation de Channel : les bases"
+      - 'Utilisation de Channel : les bases'
   - titre: Les Flow
     points:
       - Comprendre la notion de cold Flow
       - Flow builders, opérations intermédiaires et terminales
       - Flow builder et suspend function, les recommandations
-      - "Invariants de Flow : context preservation et exception transparency"
-      - Les bases d'utilisation des buffers
+      - 'Invariants de Flow : context preservation et exception transparency'
+      - Les bases d’utilisation des buffers
   - titre: Plus loin avec les Job
     points:
       - Maîtriser le cycle de vie
@@ -105,13 +108,13 @@ programme:
       - Fan in / fan out
       - Gestion des buffers
       - Paramétrer le fonctionnement quand le buffer est plein
-      - Initiation à l'utilisation du Select
+      - Initiation à l’utilisation du Select
   - titre: Plus loin avec les Flow
     points:
-      - "Hot flows : SharedFlow"
-      - "Hot flows : StateFlow"
+      - 'Hot flows : SharedFlow'
+      - 'Hot flows : StateFlow'
       - Gestion du replayable cache
-      - Comprendre l'implémentation du shareIn
+      - Comprendre l’implémentation du shareIn
   - titre: Les tests
     points:
       - Bien tester les coroutines
@@ -119,16 +122,21 @@ programme:
   - titre: Fonctionnement interne des coroutines
     points:
       - Coroutine, continuation et state machine
-      - Comprendre le fonctionnement des continuation par l'exemple
-      - "Les implications sur le quotidien : debug et profiling"
+      - Comprendre le fonctionnement des continuation par l’exemple
+      - 'Les implications sur le quotidien : debug et profiling'
 faq: []
+formations_liees:
+  - java-fondamental
+intertitres:
+  description: Description formation Kotlin Avancé
+  programme: Programme formation *Kotlin Coroutines*
 referencement:
   meta_title: Formation Kotlin Coroutines présentiel ou à distance avec 4SH
-  meta_description: "Maîtrisez les coroutines Kotlin en 3 jours avec 4SH : asynchrone, flows, jobs, contextes. Formation avancée en présentiel ou à distance."
+  meta_description: 'Maîtrisez les coroutines Kotlin en 3 jours avec 4SH : asynchrone, flows, jobs, contextes. Formation avancée en présentiel ou à distance.'
   indexation: true
 ---
-Kotlin est un langage de programmation moderne développé par JetBrains. Ce langage statiquement typé peut être exécuté sur la JVM et est complètement interopérable avec Java. Il offre une syntaxe concise et des fonctionnalités modernes qui facilitent le développement d'applications, comme une meilleure gestion de la nullité, des capacités d'extensions et une API très riche sur les collections.
+Kotlin est un langage de programmation moderne développé par JetBrains. Ce langage statiquement typé peut être exécuté sur la JVM et est complètement interopérable avec [Java](/formations/java-fondamental/). Il offre une syntaxe concise et des fonctionnalités modernes qui facilitent le développement d'applications, comme une meilleure gestion de la nullité, des capacités d’extensions et une API très riche sur les collections...
 
-La formation Kotlin Coroutines Avancé est conçue pour les personnes maîtrisant déjà le langage Kotlin, mais n'ayant que des connaissances superficielles des coroutines et souhaitant approfondir leurs compétences. Elle couvre une variété de sujets sur l'utilisation des coroutines allant de la maîtrise des concepts au coeur de l'API (CoroutineScope, CoroutineContext, Job, Dispatcher, coroutines builders, ...) jusqu'à leur fonctionnement interne et leur implémentation sous forme de continuation.
+La formation Kotlin Coroutines Avancé est conçue pour les personnes maîtrisant déjà le langage [Kotlin](/formations/kotlin-fondamental/), mais n’ayant que des connaissances superficielles des coroutines et souhaitant approfondir leurs compétences. Elle couvre une variété de sujets sur l’utilisation des coroutines allant de la maîtrise des concepts au coeur de l’API (CoroutineScope, CoroutineContext, Job, Dispatcher, coroutines builders,…) jusqu’à leur fonctionnement interne et leur implémentation sous forme de continuation.
 
-La formation s'appuie sur des éléments théoriques mais également des démonstrations et des travaux pratiques pour assurer une maîtrise complète des concepts avancés de cette API.
+La [formation](/formations/develop/) s’appuie sur des éléments théoriques mais également des démonstrations et des travaux pratiques pour assurer une maîtrise complète des concepts avancés de cette API.

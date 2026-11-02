@@ -7,7 +7,9 @@ extraCss: /assets/secteurs.css
     Spécification : docs/back-office/schema-prestations.md
     Ordre fixe : en-tête (champ entete), bandeau de chiffres (chiffres), sections choisies par le
     contributeur (blocs « section_* », dans l'ordre), références de bas de page (references),
-    questions fréquentes (faq), formulaire de contact. Le fond alterné, le temps fort sombre et le
+    questions fréquentes (faq, titre facultatif faq_titre), formulaire de contact. Le bloc
+    « derniers_articles » (articles du blog) est aussi proposé : ctx.blog lui est transmis.
+    Le fond alterné, le temps fort sombre et le
     numéro de chaque section sont calculés (filtre misePageSections, eleventy/prestations.js).
     Couleur d'offre (offre), titre et description : prestations.11tydata.js.
     Retour arrière : ancien gabarit et anciens fichiers dans l'historique Git (filtre « blocs »). -#}
@@ -30,7 +32,7 @@ extraCss: /assets/secteurs.css
 {% for b in (blocs or []) %}
 {% if mise[loop.index0] %}
 {% import "composants/blocs/" + b.type + ".njk" as composant %}
-{{ composant.bloc(b, { references: collections.references, url_page: page.url, fond: mise[loop.index0].fond, numero: mise[loop.index0].numero }, false) }}
+{{ composant.bloc(b, { references: collections.references, blog: blog, url_page: page.url, fond: mise[loop.index0].fond, numero: mise[loop.index0].numero }, false) }}
 {% endif %}
 {% endfor %}
 
@@ -38,6 +40,6 @@ extraCss: /assets/secteurs.css
 {{ bloc_references(references | sansRefs(blocs | refsDesSections), collections.references,
                    libelles.secteur.refs_eyebrow, libelles.secteur.refs_titre) }}
 
-{{ faq_section(faq, libelles.secteur.faq_titre) }}
+{{ faq_section(faq, faq_titre or libelles.secteur.faq_titre) }}
 
 {{ bloc_contact(site, page.url) }}

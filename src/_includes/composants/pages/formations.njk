@@ -16,7 +16,38 @@
 {% from "composants/catalogue.njk" import grille as catalogue %}
 {% from "composants/formulaires.njk" import devis %}
 
-{% macro corps(p, site, libelles, groupes, docs, url_page) %}
+
+{# ---------------------------------------------------------------------------
+   agenda_auto(formations, libelles, categorie=null)
+   Lignes de l'agenda calculées depuis les fiches formation (collections.formations) :
+   toutes les sessions à venir, triées par date, groupées par mois. categorie : filtre
+   facultatif (pages de catégorie). À placer dans un conteneur <div class="agenda">.
+--------------------------------------------------------------------------- #}
+{% macro agenda_auto(formations, libelles, categorie=null) %}
+      {# Agenda calculé : toutes les sessions à venir des fiches formation (les sessions passées
+         sont déjà retirées par formations.11tydata.js), triées par date de début. #}
+      {% set liste = [] %}
+      {% for f in formations %}{% if not categorie or f.data.categorie == categorie %}{% for s in f.data.sessions %}{% set _ajout = liste.push({ cle: s.slice(9, 13) ~ s.slice(6, 8) ~ s.slice(3, 5), texte: s, f: f }) %}{% endfor %}{% endif %}{% endfor %}
+      {% set triee = liste | sort(false, true, "cle") %}
+      {% set mois_longs = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"] %}
+      {% set mois_courts = ["Janv.", "Févr.", "Mars", "Avr.", "Mai", "Juin", "Juil.", "Août", "Sept.", "Oct.", "Nov.", "Déc."] %}
+      {% for it in triee %}
+      {% if loop.first or triee[loop.index0 - 1].cle.slice(0, 6) != it.cle.slice(0, 6) %}<p class="agenda-mois">{{ mois_longs[(it.cle.slice(4, 6) | int) - 1] }} {{ it.cle.slice(0, 4) }}</p>{% endif %}
+      <div class="session-ligne">
+        <div class="date-bloc"><div class="jour">{{ it.cle.slice(6, 8) }}</div><div class="mois">{{ mois_courts[(it.cle.slice(4, 6) | int) - 1] }}</div><div class="duree">{{ it.f.data.duree | striptags | replace(r/\s*\(.*\)$/, "") }}</div></div>
+        <div class="session-info">
+          <span class="logo-mini">{% if it.f.data.image %}<img src="{{ it.f.data.image }}" alt="{{ it.f.data.titre }}">{% endif %}</span>
+          <div>
+            <b>{{ it.f.data.titre }}{% if it.f.data.niveau %} - {{ it.f.data.niveau }}{% endif %} <span class="pastille-cat">{{ it.f.data.categorie }}</span></b>
+            <div class="details"><span>{{ it.texte }}</span></div>
+          </div>
+        </div>
+        <a class="btn btn-learning btn-sm cta-session" href="{{ it.f.url }}">{{ (libelles.catalogue.agenda_bouton or "S\'inscrire") | texteHtml | safe }}</a>
+      </div>
+      {% endfor %}
+{% endmacro %}
+
+{% macro corps(p, site, libelles, groupes, docs, url_page, formations=null) %}
 <div class="hero-form">
   <div class="container">
     <nav class="fil-ariane" aria-label="{{ (libelles.commun.fil_ariane_aria or "Fil d\'Ariane") | texteHtml | safe }}"><a href="{{ libelles.commun.accueil_url or "/" }}">{{ libelles.commun.fil_ariane_accueil or "Accueil" }}</a> › {{ libelles.catalogue.fil_ariane or "Formations en informatique" }}</nav>
@@ -28,6 +59,7 @@
         <div class="meta-form">
           <span class="note-etoiles">{{ p.hero.note }} <small>· {{ p.hero.note_detail }}</small></span>
         </div>
+        {% if p.hero.chapo_suite %}<p class="chapo">{{ p.hero.chapo_suite }}</p>{% endif %}
         <div class="hero-cta">
           <a class="btn btn-primary" href="{{ p.hero.bouton_principal.lien or '#catalogue' }}">{{ p.hero.bouton_principal.texte }}</a>
           <a class="btn btn-ghost" href="{{ p.hero.bouton_secondaire.lien or '#contact' }}">{{ p.hero.bouton_secondaire.texte }}</a>
@@ -67,7 +99,7 @@
 <section id="catalogue" style="padding-top:80px">
   <div class="container">
     <h2 class="sec-titre">{{ p.catalogue.titre | accent | safe }}</h2>
-    <p class="sec-sous">{{ p.catalogue.sous_titre }}</p>
+    {% if p.catalogue.sous_titre %}<p class="sec-sous">{{ p.catalogue.sous_titre }}</p>{% endif %}
     {% if docs.catalogue_url %}<p class="sec-sous" style="margin-top:-6px"><a href="{{ docs.catalogue_url }}" target="_blank" rel="noopener">{{ docs.catalogue_label }}</a></p>{% endif %}
     {{ catalogue(groupes, libelles, null, p.catalogue.titre | replace("*", "")) }}
   </div>
@@ -77,9 +109,12 @@
 <section id="agenda" style="padding-top:0">
   <div class="container">
     <h2 class="sec-titre">{{ p.agenda.titre | accent | safe }}</h2>
-    <p class="sec-sous">{{ p.agenda.sous_titre }}</p>
+    {% if p.agenda.sous_titre %}<p class="sec-sous">{{ p.agenda.sous_titre }}</p>{% endif %}
 
     <div class="agenda">
+      {% if formations %}
+      {{ agenda_auto(formations, libelles) }}
+      {% else %}
       {% for groupe in p.agenda.mois %}
       <p class="agenda-mois">{{ groupe.mois }}</p>
       {% for s in groupe.sessions %}
@@ -96,8 +131,9 @@
       </div>
       {% endfor %}
       {% endfor %}
+      {% endif %}
     </div>
-    <div class="centre" style="margin-top:34px"><a class="btn btn-ghost" href="{{ p.agenda.bouton.lien or '#contact' }}" style="border-color:var(--violet);color:var(--violet)">{{ p.agenda.bouton.texte }}</a></div>
+    {% if p.agenda.bouton.texte %}<div class="centre" style="margin-top:34px"><a class="btn btn-ghost" href="{{ p.agenda.bouton.lien or '#contact' }}" style="border-color:var(--violet);color:var(--violet)">{{ p.agenda.bouton.texte }}</a></div>{% endif %}
   </div>
 </section>
 
@@ -121,18 +157,27 @@
   </div>
 </section>
 
+<!-- TEXTE (questions fréquentes de l'ancien site, Markdown) -->
+{% if p.texte %}
+<section style="padding-top:0">
+  <div class="container">
+    <div class="prose" style="max-width:820px;font-size:16.5px">{{ p.texte | texteRiche | safe }}</div>
+  </div>
+</section>
+{% endif %}
+
 <!-- TÉMOIGNAGES -->
 <section style="padding-top:0">
   <div class="container">
     <h2 class="sec-titre">{{ p.temoignages.titre | accent | safe }}</h2>
-    <div class="temoins">
+    {% if p.temoignages.liste and p.temoignages.liste.length %}<div class="temoins">
       {% for t in p.temoignages.liste %}
       <div class="temoin">
         <blockquote>{{ t.citation }}</blockquote>
         <div class="qui"><span class="pastille">{{ t.initiales }}</span><div><b>{{ t.nom }}</b><span>{{ t.detail }}</span></div></div>
       </div>
       {% endfor %}
-    </div>
+    </div>{% endif %}
   </div>
 </section>
 

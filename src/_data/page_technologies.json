@@ -4,11 +4,11 @@
     "meta_description": "Maîtrise de Java, Angular, Kubernetes, React Native… 4SH mobilise des technologies de pointe pour vos apps métiers sur mesure."
   },
   "hero": {
-    "surtitre": "Expertises techniques",
+    "surtitre": "Nos expertises techniques",
     "titre": "Notre savoir-faire au service de votre *performance*",
     "intro": "Notre expertise technique repose sur une maîtrise avancée des technologies de pointe et des méthodologies modernes. Nous utilisons des frameworks robustes, des langages de programmation performants et des outils d'intégration continue pour concevoir des applications à la fois fiables et évolutives.",
     "bouton": {
-      "texte": "Parlons de votre projet",
+      "texte": "",
       "lien": "/contact/"
     }
   },

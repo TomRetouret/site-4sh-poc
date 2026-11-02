@@ -10,6 +10,7 @@ profils:
   offre: 120
   institutionnel: 98
   institutionnel_bilingue: 98
+  prestation: 60
 
 # Définition du type de bloc pour le CMS (sans i18n : le générateur l'ajoute pour l'accueil).
 type:

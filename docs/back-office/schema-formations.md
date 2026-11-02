@@ -29,6 +29,7 @@ Obligatoire = exigé pour passer en relecture ou publier. Un brouillon incomplet
 | | Famille (`groupe`) | texte, minuscules sans espace | non | regroupe les niveaux au catalogue |
 | | Catégorie (`categorie`) | relation vers Catégories | oui | fil d'Ariane, surtitre, autres formations |
 | | Accroche (`chapo`) | texte long | oui | sous le titre, description SEO par défaut, carte du catalogue |
+| | Nom sur les cartes (`titre_carte`) | texte | non | remplace le nom sur les cartes « Formation(s) liée(s) » et « Les autres formations » des fiches |
 | | Logo ou illustration (`image`) | image ou lien | non | visuel de la fiche et du catalogue |
 | Inscription (`inscription`) | Prix par participant (`prix`) | nombre entier, € HT | oui | « 1500 € HT » ; « à partir de » au catalogue |
 | | Afficher « À partir de » (`prix_a_partir`) | case | non | « À partir de 700 € HT » |
@@ -48,11 +49,15 @@ Obligatoire = exigé pour passer en relecture ou publier. Un brouillon incomplet
 | Public visé et prérequis (`public`) | Public visé (`pour_qui`) | texte long | oui (Qualiopi) | « Pour qui ? » |
 | | Prérequis (`prerequis[]`) | liste de textes, au moins 1 | oui (Qualiopi) | « Prérequis » |
 | Objectifs pédagogiques (`objectifs[]`) | | liste de textes, au moins 1 | oui (Qualiopi) | section Objectifs |
-| Programme (`programme[]`) | Titre du chapitre (`titre`), Points abordés (`points[]`) | liste | oui (Qualiopi) | accordéon, premier chapitre ouvert |
+| Note sur le programme (`programme_note`) | | Markdown | non | sous le titre Programme, avant les chapitres |
+| Programme (`programme[]`) | Intertitre (`partie`, facultatif), Titre du chapitre (`titre`), Points abordés (`points[]`) | liste | oui (Qualiopi) | accordéon, premier chapitre ouvert ; `partie` affiche un intertitre (« Jour 1 - Matin », « Module 2 ») avant le chapitre ; un point qui commence par « - » est un sous-point du point précédent |
+| Sections complémentaires (`complements[]`) | `titre`, `texte` (Markdown) | liste | non | sections après le programme (ex. « Évaluation et certification ») |
 | Formateur (`formateur`) | Personne (`personne`) | relation vers Équipe (slug) | non | section Formateur (absente si vide) |
 | | Fonction propre à cette formation (`fonction`) | texte | non | remplace la fonction de la fiche Équipe |
 | | Présentation propre à cette formation (`presentation`) | texte, paragraphes séparés par une ligne vide | non | remplace la présentation de la fiche Équipe |
 | Questions fréquentes (`faq[]`) | `question`, `reponse` | liste | non | accordéon |
+| Formations liées (`formations_liees[]`) | slugs de fiches | relation multiple | non | cartes « Formation(s) liée(s) » (tous les niveaux de la formation) avant « Les autres formations » |
+| Intertitres (`intertitres`) | `description`, `programme`, `formateur`, `faq` | textes | non | remplacent les titres de section par défaut ; *astérisques* = rouge |
 | Référencement (`referencement`, replié) | Titre SEO (`meta_title`) | texte | non | onglet ; vide = « Formation <nom> - 4SH » |
 | | Description SEO (`meta_description`) | texte long | non | vide = accroche |
 | | Afficher dans les moteurs de recherche (`indexation`) | case, cochée par défaut | non | décochée = `noindex` et absente du plan du site |
@@ -88,3 +93,11 @@ Formateurs : pour chaque personne, la fiche Équipe reprend la fonction, la phot
 - Chemins à point (`entete.titre`) dans `identifier_field`, `summary` et `sortable_fields` (la documentation ne les mentionne que pour les slugs).
 - Écriture des dates de session : Sveltia les écrit sans guillemets en YAML ; le rendu accepte les deux formes.
 - Suppression d'une fiche Équipe reliée (bloquée selon la documentation).
+
+## Remise du contenu de l'ancien site (novembre 2026)
+
+Les 48 fiches, les 5 catégories et la page `/formations/` reprennent le texte de www.4sh.fr (script de reprise lisant l'ancien HTML). Champs ajoutés à cette occasion :
+
+- Fiches : `titre_carte`, `programme_note`, `programme[].partie`, sous-points « - », `complements`, `formations_liees`, `intertitres` (voir tableau). `points` n'est plus obligatoire (certains chapitres de l'ancien site n'ont pas de sous-points). Le prix des cartes « Formation(s) liée(s) » et « Les autres formations » est celui du premier niveau, comme sur l'ancien site.
+- Catégories (`admin/config/collections/030-categories.yml`, gabarit `categorie.njk`) : `note` et `note_detail` (sous l'introduction), `agenda_titre` (prochaines sessions de la catégorie, calculées depuis les fiches), `qualiopi.titre` / `qualiopi.texte`, `temoignages_titre` (titre seul : les avis de l'ancien site étaient chargés dynamiquement).
+- Page `/formations/` (`src/_data/page_formations.json`, composant `composants/pages/formations.njk`) : `hero.chapo_suite` (second paragraphe d'introduction), `texte` (questions de l'ancien site, Markdown, après l'encart Qualiopi). L'agenda de la page française est désormais calculé depuis les sessions des fiches (macro `agenda_auto`) ; `agenda.mois` ne sert plus qu'à la page anglaise. Sous-titres et bouton vides = non affichés ; liste de témoignages vide = titre seul. Ces deux champs restent à déclarer dans `admin/config/collections/120-pages.yml`.

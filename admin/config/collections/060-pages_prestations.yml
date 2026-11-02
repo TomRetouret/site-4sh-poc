@@ -488,6 +488,40 @@
                     required: true
                     default: /contact/
                     hint: Adresse d'une page du site (/contact/) ou adresse complète (https://...), ouverte alors dans un nouvel onglet.
+          - label: Derniers articles du blog
+            name: derniers_articles
+            widget: object
+            summary: 'Derniers articles : {{fields.titre}}{{fields.masquer | ternary('' (masqué)'', '''')}}'
+            fields:
+              - label: Masquer ce bloc (il reste enregistré)
+                name: masquer
+                widget: boolean
+                required: false
+                default: false
+                hint: Le bloc n'apparaît plus sur le site, mais son contenu est conservé.
+              - label: Titre
+                name: titre
+                widget: string
+                required: false
+                hint: Mettez un mot entre *astérisques* pour l'afficher en rouge. Les articles sont repris automatiquement du blog.
+                default: Nos derniers *articles*
+              - label: Lien vers le blog
+                name: lien_tout
+                widget: object
+                required: false
+                collapsed: false
+                summary: '{{fields.texte}} ({{fields.lien}})'
+                fields:
+                  - label: Texte du bouton
+                    name: texte
+                    widget: string
+                    required: false
+                    default: Tout le blog
+                  - label: 'Destination (adresse ou #ancre)'
+                    name: lien
+                    widget: string
+                    required: false
+                    default: https://blog.4sh.fr/
         # <<< BLOCS
       - label: Références en bas de page
         name: references
@@ -499,6 +533,7 @@
         search_fields: [titre, client]
         display_fields: [titre]
         hint: "Facultatif. Fiches références affichées en cartes avant les questions fréquentes. Une fiche déjà reliée dans une section Projets n'est pas répétée."
+      - { label: Titre des questions fréquentes, name: faq_titre, widget: string, required: false, hint: "Facultatif. Vide : « Questions fréquentes »." }
       - label: Questions fréquentes
         name: faq
         widget: list

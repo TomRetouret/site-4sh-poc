@@ -1,7 +1,7 @@
 ---
 entete:
   titre: Git
-  sous_titre: Perfectionnement
+  sous_titre: Avancé
   niveau: Avancé
   groupe: git
   categorie: Outils
@@ -10,8 +10,8 @@ entete:
 inscription:
   prix: 1500
   sessions:
-    - debut: "2026-10-01"
-      fin: "2026-10-02"
+    - debut: '2026-11-25'
+      fin: '2026-11-26'
   programme_pdf: https://drive.google.com/file/d/1l8XTu1lxvpwwckw2Voj-bVAWLXgU56Qb/view
   programme_pdf_poids: 709 Ko
 chiffres:
@@ -21,10 +21,11 @@ chiffres:
   participants_max: 8
   depuis: janvier 2023
   theorie: 60
+  avis: 0
 public:
-  pour_qui: La formation Git - Avancé s'adresse principalement aux personnes utilisant déjà Git et souhaitant parfaire et étendre leur compréhension de l'outil.
+  pour_qui: La formation Git - Avancé s’adresse principalement aux personnes utilisant déjà Git et souhaitant parfaire et étendre leur compréhension de l'outil.
   prerequis:
-    - "Maîtriser les fondamentaux de Git : structure de données, initialisation et configuration d'un dépôt, fonctionnement des branches, parcourir et se déplacer dans le graphe Git, partager et intégrer les changements avec les autres membres d'un projet."
+    - 'Maîtriser les fondamentaux de Git : structure de données, initialisation et configuration d''un dépôt, fonctionnement des branches, parcourir et se déplacer dans le graphe Git, partager et intégrer les changements avec les autres membres d''un projet.'
 objectifs:
   - Maîtriser l'ensemble des concepts de Git
   - Savoir construire et retravailler ses commits de manière atomique et lisible
@@ -65,13 +66,22 @@ programme:
       - Bisect
 formateur:
   personne: christophe
+  presentation: Développeur passionné, Christophe est expert en conception technique, architecture et animation d'équipes de développement. Son expérience pratique lui permet de transmettre une vision approfondie du développement logiciel. En tant que formateur, il aide les professionnels à exceller grâce à des formations alliant expertise technique et cas pratiques.
 faq:
-  - question: À qui s'adresse la formation Git avancé ?
-    reponse: La formation Git avancé est conçue pour les utilisateurs ayant déjà une maîtrise des fondamentaux de Git, comme la configuration d'un dépôt, le fonctionnement des branches et la navigation dans le graphe Git. Elle s'adresse à des professionnels ou équipes cherchant à perfectionner leurs pratiques pour améliorer leur collaboration et leur productivité au travail.
+  - question: À qui s’adresse la formation Git avancé ?
+    reponse: La formation Git avancé est conçue pour les utilisateurs ayant déjà une maîtrise des fondamentaux de Git, comme la configuration d’un dépôt, le fonctionnement des branches et la navigation dans le graphe Git. Elle s’adresse à des professionnels ou équipes cherchant à perfectionner leurs pratiques pour améliorer leur collaboration et leur productivité au travail.
   - question: Quelle est la différence entre les niveaux de formation proposés ?
-    reponse: "4SH propose plusieurs niveaux de formations Git : Essentiel, Fondamental et Avancé. La formation Git avancé se concentre sur des fonctionnalités et stratégies complexes, comme les workflows collaboratifs, le rebase interactif ou encore la gestion avancée des dépôts. Elle s'adresse aux participants souhaitant aller au-delà des notions de base pour adopter des pratiques adaptées aux projets en entreprise."
+    reponse: '4SH propose plusieurs niveaux de formations Git : Essentiel, Git : Fondamental et Avancé. La formation Git avancé se concentre sur des fonctionnalités et stratégies complexes, comme les workflows collaboratifs, le rebase interactif ou encore la gestion avancée des dépôts. Elle s''adresse aux participants souhaitant aller au-delà des notions de base pour adopter des pratiques adaptées aux projets en entreprise.'
+formations_liees:
+  - docker-essentiel
+  - maven
+intertitres:
+  description: Description formation *Git*
+  programme: Programme formation *Git*
+  formateur: Formateur formation *Git* - Avancé
+  faq: Vos questions
 referencement:
-  meta_title: "Formation Git avancé : développement de compétences Git avancé"
+  meta_title: 'Formation Git avancé : développement de compétences Git avancé'
   meta_description: Devenez un expert de Git, ce puissant outil de versionning open-source pour vos projets grâce à la formation des experts de l'agence de développement 4SH
   indexation: true
 ---
@@ -79,4 +89,6 @@ La formation Git - Avancé offre une compréhension approfondie des concepts et 
 
 Elle revient sur les commandes du quotidien, ainsi que des commandes avancées pour développer un workflow efficace et des bonnes pratiques qui améliorent la productivité individuelle et d'équipe. Elle traite notamment de l'organisation avancée des dépôts, l'exploitation approfondie de l'historique et les différentes stratégies offertes par l'outil pour gérer le flux de développement d'une solution applicative.
 
-Les participants pourront adopter des pratiques qui facilitent la maintenance dans la durée et permettent une appropriation collective des changements sur la codebase. Cette formation avancée est idéale pour perfectionner vos connaissances, améliorer vos processus au sein de votre équipe et relever les défis liés à des projets d'entreprise complexes. Nous proposons pour les plus novices une formation Git - Les Fondamentaux.
+Les participants pourront adopter des pratiques qui facilitent la maintenance dans la durée et permettent une appropriation collective des changements sur la codebase. Cette formation avancée est idéale pour perfectionner vos connaissances, améliorer vos processus au sein de votre équipe et relever les défis liés à des projets d’entreprise complexes.
+
+Nous proposons pour les plus novices une [formation Git - Les Fondamentaux](/formations/git-fondamental/).

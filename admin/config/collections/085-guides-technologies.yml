@@ -1,0 +1,102 @@
+  # -----------------------------------------------------------------------
+  # 5 ter) GUIDES TECHNOLOGIE  (« En savoir plus sur <techno> », pages /formations/<slug>/)
+  # Anciennes pages /learning/formations/<catégorie>/<techno>/ de www.4sh.fr.
+  # Gabarit fixe : src/_includes/guide-technologie.njk (dérivé de technologie.njk).
+  # Pas de carte sur la page Expertises techniques. Champs dans l'ordre de la page :
+  # Identité, Fil d'Ariane, En-tête, Sommaire et sections, Référencement, Suivi interne.
+  # Spécification : docs/back-office/schema-collections.md
+  # -----------------------------------------------------------------------
+  - name: "guides_technologies"
+    label: "Guides technologie"
+    label_singular: "Guide technologie"
+    description: "Pages « En savoir plus sur » une technologie (Angular, Java, JavaScript, MongoDB, Kubernetes, Figma), publiées sous /formations/<nom du fichier>/. Elles n'apparaissent pas sur la page Expertises techniques."
+    folder: "src/content/guides-technologies"
+    preview_path: "formations/{{slug}}/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{nom}}"
+    sortable_fields: ["nom"]
+    fields:
+      # --- Identité ---
+      - { label: "Identité · Nom de la technologie", name: "nom", widget: "string", required: true, maxlength: 30, hint: "30 caractères maximum. Ex. : Angular. Grand titre de la page et fin du fil d'Ariane. Le nom du fichier donne l'adresse /formations/<nom>/ : il ne doit pas être celui d'une fiche formation ni d'une catégorie (develop, design, devops, outils, ia)." }
+      - label: "Identité · Famille d'offre (couleur)"
+        name: "famille"
+        widget: "select"
+        required: true
+        default: "formation"
+        options:
+          - { label: "4SH Learning : formation (violet)", value: "formation" }
+          - { label: "4SH Build : développement (rouge)", value: "build" }
+          - { label: "4SH Run : infrastructure (cyan)", value: "run" }
+        hint: "Donne la couleur d'accent de la page."
+      - { label: "Identité · Logo", name: "logo", widget: "image", required: false, choose_url: true, hint: "Facultatif. SVG carré sur fond transparent, affiché dans l'en-tête. Le texte alternatif est le nom de la technologie (automatique)." }
+
+      # --- Fil d'Ariane ---
+      - label: "Fil d'Ariane · Catégorie de formation"
+        name: "categorie"
+        widget: "relation"
+        required: false
+        collection: "categories"
+        value_field: "{{slug}}"
+        search_fields: ["nom"]
+        display_fields: ["nom"]
+        hint: "Facultatif. Page catégorie affichée dans le fil d'Ariane (ex. Develop)."
+      - label: "Fil d'Ariane · Formation liée"
+        name: "formation"
+        widget: "relation"
+        required: false
+        collection: "formations"
+        value_field: "{{slug}}"
+        search_fields: ["entete.titre", "entete.niveau"]
+        display_fields: ["{{entete.titre}} {{entete.sous_titre}} ({{entete.niveau}})"]
+        hint: "Facultatif. Fiche formation affichée dans le fil d'Ariane, avec le libellé ci-dessous."
+      - { label: "Fil d'Ariane · Libellé de la formation", name: "formation_titre", widget: "string", required: false, maxlength: 70, hint: "Ex. : Formation Angular - Les fondamentaux. Vide : la formation n'apparaît pas dans le fil d'Ariane." }
+
+      # --- En-tête ---
+      - { label: "En-tête · Surtitre", name: "surtitre", widget: "string", required: false, maxlength: 40, hint: "Facultatif. Ex. : En savoir plus sur. Repris aussi dans le fil d'Ariane devant le nom." }
+      - { label: "En-tête · Grand titre", name: "h1", widget: "string", required: false, maxlength: 110, hint: "Facultatif. Vide : le nom de la technologie. Mettez un mot entre *astérisques* pour l'afficher en couleur." }
+      - { label: "En-tête · Introduction", name: "intro", widget: "text", required: true, hint: "Paragraphe sous le grand titre, 60 mots maximum. Sert aussi de description pour Google si celle du Référencement est vide." }
+
+      # --- Contenu ---
+      - { label: "Sommaire · Titre", name: "sommaire_titre", widget: "string", required: false, maxlength: 40, hint: "Ex. : Sommaire :. Le sommaire liste automatiquement les titres des sections, avec un lien vers chacune." }
+      - label: "Sections"
+        name: "sections"
+        widget: "list"
+        required: true
+        min: 1
+        label_singular: "Section"
+        summary: "{{fields.titre}}"
+        collapsed: true
+        hint: "Une section par grand thème, dans l'ordre de la page, en texte continu. Chaque titre de section apparaît dans le sommaire."
+        fields:
+          - { label: "Titre de la section", name: "titre", widget: "string", required: true, maxlength: 110, hint: "Intertitre (et entrée du sommaire), 110 caractères maximum. Ex. : Angular, c'est quoi ?" }
+          - { label: "Texte d'introduction", name: "texte", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Paragraphes et listes sous le titre." }
+          - label: "Sous-parties"
+            name: "sous_parties"
+            widget: "list"
+            required: false
+            label_singular: "Sous-partie"
+            summary: "{{fields.titre}}"
+            collapsed: true
+            hint: "Facultatif. Intertitres de niveau 3 et leur texte, à la suite de l'introduction."
+            fields:
+              - { label: "Titre de la sous-partie", name: "titre", widget: "string", required: true, maxlength: 110 }
+              - { label: "Texte", name: "texte", widget: "markdown", required: false, buttons: ["bold", "link", "bulleted-list", "numbered-list"], editor_components: [] }
+
+      # --- Référencement ---
+      - label: "Référencement"
+        name: "referencement"
+        widget: "object"
+        required: false
+        collapsed: true
+        summary: "{{fields.meta_title}}"
+        hint: "Ce qui s'affiche dans les résultats de Google et l'onglet du navigateur. Rien n'apparaît sur la page."
+        fields:
+          - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « <nom> : en savoir plus - 4SH »." }
+          - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'introduction est reprise." }
+          - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
+
+      # --- Suivi interne (non affiché) ---
+      - { label: "Suivi interne · Page d'origine (non affichée)", name: "source_url", widget: "string", required: false, hint: "Pour mémoire : page de l'ancien site dont le contenu est repris." }

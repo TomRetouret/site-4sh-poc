@@ -1,26 +1,26 @@
 ---
 titre: Sud Ouest - Socoa
 h1: SUD OUEST - SOCOA
-sous_titre: Outil de calcul de la rémunération des pigistes et correspondants.
+sous_titre: Outil de calcul de la rémunération des pigistes et correspondants
 client: Sud Ouest
 logo: /uploads/ancien-site/assets/img/png/references/sudouest/logo-socoa.png
 fiche_pdf: https://drive.google.com/file/d/1lMFZUrN8fc2FiPVJV60bwGtYGW_-fq3P/view?usp=sharing
 maj: "2022-04-20"
 etude:
   entreprise: |-
-    Le Groupe Sud Ouest est l'un des principaux éditeurs de presse quotidienne régionale en France, créé en 1944 et basé à Bordeaux. Le groupe possède 3 hebdomadaires départementaux et 5 quotidiens payants. Il édite aussi une gamme complète de magazines, sur papier et support numérique, sur la gastronomie, le vin, l'art de vivre et le rugby.
+    Le [Groupe Sud Ouest](https://www.groupesudouest.com/) est l’un des principaux éditeurs de presse quotidienne régionale en France, créé en 1944 et basé à Bordeaux. Le groupe possède 3 hebdomadaires départementaux et 5 quotidiens payants. Il édite aussi une gamme complète de magazines, sur papier et support numérique, sur la gastronomie, le vin, l’art de vivre et le rugby.
 
-    En 2015, le groupe fait confiance à 4SH pour le projet de calcul de la rémunération des pigistes et des correspondants. Il s'agit d'un outil contribuant à la modernisation et à l'optimisation des échanges entre le journal et ses collaborateurs.
+    En 2015, le groupe fait confiance à 4SH pour le projet de calcul de la rénumération des pigistes et des correspondants. Il s’agit d’un outil contribuant à la modernisation et à l’optimisation des échanges entre le journal et ses collaborateurs.
 
     Le Groupe Sud Ouest compte une diffusion totale de près de 300.000 exemplaires par jour, pour une audience quotidienne supérieure à 2,2 millions de lecteurs. Sur le web, ses sites affichent environ 35 millions de visites et près de 130 millions de pages vues par mois.
   missions: |-
     Depuis 2016, 4SH a collaboré avec Sud Ouest sur :
 
     - Conception, développement et validation de la solution - une application WEB moderne et sécurisée (Design, Develop, Deploy).
-    - Mise en place d'ateliers UX pour élaborer l'ergonomie de la solution avec les utilisateurs finaux (4SH UX).
+    - Mise en place d’ateliers UX pour élaborer l’ergonomie de la solution avec les utilisateurs finaux (4SH UX).
     - Maintenance corrective et évolutive de la solution (4SH Facility).
-    - Déploiement et maintien en conditions opérationnelles de l'application dans une infrastructure K8S (Deploy).
-    - Élaboration d'une charte graphique spécifique pour la solution, permettant de valoriser l'image du groupe Sud-Ouest (4SH Studio).
+    - Déploiement et maintien en conditions opérationnelles de l’application dans une infrastructure K8S (Deploy).
+    - Élaboration d’une charte graphique spécifique pour la solution, permettant de valoriser l’image du groupe Sud-Ouest (4SH Studio).
   enjeux_objectifs:
     enjeux: |-
       - Digitaliser les processus de qualification des copies en proposant un outil efficace de communication entre les différents acteurs.
@@ -29,6 +29,8 @@ etude:
     objectifs: |-
       - Développer rapidement un outil parfaitement adapté aux besoins et le faire évoluer ensuite par rapport aux retours des utilisateurs.
       - Maitriser le coût du projet via un engagement fort du prestataire.
+
+      Création d’un système de calcul automatique pour la rémunération des pigistes et correspondants.
   points_cles:
     intertitre: Les points clés de l'application
     texte: |-
@@ -36,9 +38,9 @@ etude:
       - Mécanisme de reconnaissance entre le journal et la copie.
       - Algorithme de rapprochement entre un article et les copies.
     projet: |-
-      - La construction d'une solution sur mesure, en impliquant les utilisateurs finaux pour obtenir l'application la plus adaptée aux besoins.
-      - L'implémentation de la méthode 4D pour permettre un engagement forfaitaire sur le coût et le délai, tout en assurant l'agilité dans la construction du système.
-      - Un engagement sur l'ensemble des phases pour réussir le déploiement en production et assurer le bon fonctionnement de la solution (performance et sécurité).
+      - La construction d’une solution sur mesure, en impliquant les utilisateurs finaux pour obtenir l’application la plus adaptée aux besoins.
+      - L’implémentation de la méthode 4D pour permettre un engagement forfaitaire sur le coût et le délai, tout en assurant l’agilité dans la construction du système.
+      - Un engagement sur l’ensemble des phases pour réussir le déploiement en production et assurer le bon fonctionnement de la solution (performance et sécurité).
 secteurs:
   - Presse
 technologies:
@@ -72,7 +74,7 @@ galerie:
   - image: /uploads/ancien-site/assets/img/png/references/sudouest/ref-sudouest-5.png
     alt: Sud Ouest - Socoa, visuel 5
     decorative: false
-resume: Outil de calcul de la rémunération des pigistes et correspondants.
+resume: Solution collaborative de gestion et suivi des correspondants
 ordre: 8
 referencement:
   meta_title: Outil de calcul de la rémunération pour Sud Ouest par 4SH

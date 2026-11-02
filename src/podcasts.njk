@@ -10,14 +10,14 @@ extraCss: /assets/secteurs.css
         eyebrow=p.hero.surtitre,
         chapo=p.hero.chapo,
         trace=false,
-        ctas=p.hero.plateformes | boutons("Écouter sur ")) }}
+        ctas=p.hero.plateformes | boutons("Découvrir nos podcasts sur ")) }}
 
 <section class="sect-bloc">
   <div class="container">
     <div class="sect-defis">
       {% for e in p.episodes %}
       <article class="sect-defi">
-        <p class="eyebrow">{{ e.date }} &middot; {{ e.duree }}</p>
+        <p class="eyebrow">{{ e.date }} | {{ e.duree }}</p>
         <h2>{{ e.titre }}</h2>
         <p>{{ e.resume }}</p>
         <p>

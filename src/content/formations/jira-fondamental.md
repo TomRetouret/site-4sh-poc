@@ -10,8 +10,8 @@ entete:
 inscription:
   prix: 600
   sessions:
-    - debut: "2026-09-21"
-      fin: "2026-09-21"
+    - debut: '2026-11-16'
+      fin: '2026-11-16'
   programme_pdf: https://drive.google.com/file/d/1wIbxD8QEX7oDS3lAMgpMz3OIMugPdF-e/view
   programme_pdf_poids: 702 Ko
 chiffres:
@@ -21,27 +21,36 @@ chiffres:
   participants_max: 8
   depuis: janvier 2023
   theorie: 60
+  avis: 0
 public:
-  pour_qui: "Cette formation est ouverte à tous les professionnels du développement, quels que soient leur poste ou leur niveau d'expérience : développeur, tech lead, product owner, scrum master ou chef de projet."
+  pour_qui: 'Cette formation est ouverte à tous les professionnels du développement, quels que soient leur poste ou leur niveau d’expérience : développeur, tech lead, product owner, scrum master ou chef de projet.'
   prerequis:
     - Aucun prérequis.
 objectifs:
-  - Comprendre quelles sont les entités principales manipulées dans l'outil
+  - Comprendre quelles sont les entités principales manipulées dans l’outil
   - Savoir gérer et suivre des tickets
   - Savoir mettre en place des filtres de recherche
-  - Savoir configurer des tableaux accessibles aux membres d'un projet
+  - Savoir configurer des tableaux accessibles aux membres d’un projet
   - Savoir mettre en place du reporting sur un ou plusieurs projet(s)
 programme:
   - titre: Introduction
     points:
-      - Qu'est-ce que Jira ? À qui s'adresse-t-il ? Pourquoi l'utiliser ?
-      - Présentation de l'interface
+      - Qu’est-ce que Jira ? À qui s’adresse-t-il ? Pourquoi l’utiliser ?
+      - Présentation de l’interface
   - titre: Présentation des entités principales
     points:
       - Projet
       - Ticket
-      - "Filtres : faire une recherche ponctuelle, enregistrer un filtre, sauvegarder la configuration des colonnes, exporter les résultats d'un filtre, modifier des tickets en masse"
-      - "Boards : créer un board Jira, configurer un board (Kanban ou Scrum), utiliser la vue chronologie"
+      - Filtres
+      - '- Faire une recherche ponctuelle'
+      - '- Enregistrer un filtre'
+      - '- Sauvegarder la configuration des colonnes'
+      - '- Exporter les résultats d’un filtre'
+      - '- Modifier des tickets en masse'
+      - Boards
+      - '- Créer un board Jira'
+      - '- Configurer un board (Kanban ou Scrum)'
+      - '- Utiliser la vue chronologie'
   - titre: Mettre en place des tableaux de bord pour du reporting
     points: []
   - titre: Versionner ses tickets
@@ -52,14 +61,22 @@ programme:
     points: []
 faq:
   - question: Cette formation Jira est-elle finançable par votre OPCO ?
-    reponse: Oui, la formation Jira est finançable par votre OPCO (Opérateur de Compétences), car elle est certifiée Qualiopi. Ce dispositif vous permet de bénéficier d'un financement adapté en fonction de votre branche professionnelle et de vos besoins en formation. Que vous soyez salarié en entreprise ou employeur, rapprochez-vous de votre OPCO pour connaître les modalités de prise en charge et optimiser le coût de cette formation.
+    reponse: Oui, la formation Jira est finançable par votre OPCO (Opérateur de Compétences), car elle est certifiée Qualiopi. Ce dispositif vous permet de bénéficier d’un financement adapté en fonction de votre branche professionnelle et de vos besoins en formation. Que vous soyez salarié en entreprise ou employeur, rapprochez-vous de votre OPCO pour connaître les modalités de prise en charge et optimiser le coût de cette formation.
   - question: Jira peut-il être utilisé avec Confluence pour une gestion de projet encore plus efficace ?
-    reponse: Absolument. Jira, en complément de Confluence, forme un duo puissant pour les équipes pratiquant le management agile. Lors de la formation, vous découvrirez comment ces outils s'intègrent pour centraliser la documentation et faciliter le suivi des tâches. Vous apprendrez à exploiter ces synergies pour optimiser la collaboration au sein de votre entreprise et gérer vos projets de manière encore plus fluide. La durée d'une journée suffit pour aborder les fondamentaux de cet outil.
+    reponse: Absolument. Jira, en complément de Confluence, forme un duo puissant pour les équipes pratiquant le management agile. Lors de la formation, vous découvrirez comment ces outils s’intègrent pour centraliser la documentation et faciliter le suivi des tâches. Vous apprendrez à exploiter ces synergies pour optimiser la collaboration au sein de votre entreprise et gérer vos projets de manière encore plus fluide. La durée d’une journée suffit pour aborder les fondamentaux de cet outil.
+formations_liees:
+  - confluence-cloud
+intertitres:
+  description: Description formation *Jira Cloud*
+  programme: Programme formation *Jira Cloud*
+  faq: Vos questions
 referencement:
-  meta_title: "Formation Jira : formation et développement de compétences Jira Cloud"
+  meta_title: 'Formation Jira : formation et développement de compétences Jira Cloud'
   meta_description: Progressez sur le logiciel Jira avec la formation 4SH, un outil de ticketing incontournable pour votre gestion de projet agile.
   indexation: true
 ---
 Jira, conçu par Atlassian, est un outil de gestion des tickets destiné aux équipes de développement dans un sens large. Il regroupe tous les éléments nécessaires à la gestion de projets, incluant la planification, le suivi, les livraisons et les rapports. Son objectif est d'aider les équipes à adopter une approche agile.
 
-La formation Jira a pour but de vous familiariser avec toutes les fonctionnalités essentielles de Jira, que vous soyez développeur, product owner ou scrum master. Vous apprendrez à créer et configurer des projets, à gérer les tickets, et à tirer parti des tableaux Kanban ou Scrum pour structurer efficacement vos workflows. L'alternance entre explications, démonstrations et expérimentations sur des cas pratiques vous permettra d'acquérir une initiation solide de Jira, adaptée à votre environnement de travail. Disponible en présentiel ou à distance, cette formation Jira s'adresse à tous les niveaux, sans prérequis, et constitue un atout majeur pour améliorer la gestion de vos projets.
+La formation Jira, proposée dans le cadre de nos [formations outils](/formations/outils/), a pour but de vous familiariser avec toutes les fonctionnalités essentielles de Jira, que vous soyez développeur, product owner ou scrum master. Vous apprendrez à créer et configurer des projets, à gérer les tickets, et à tirer parti des tableaux Kanban ou Scrum pour structurer efficacement vos workflows. L'alternance entre explications, démonstrations et expérimentations sur des cas pratiques vous permettra d'acquérir une initiation solide de Jira, adaptée à votre environnement de travail. Disponible en présentiel ou à distance, cette formation Jira s’adresse à tous les niveaux, sans prérequis, et constitue un atout majeur pour améliorer la gestion de vos projets.
+
+Nous proposons également une [formation Confluence](/formations/confluence-cloud/), autre outil Atlassian.

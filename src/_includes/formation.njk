@@ -99,9 +99,9 @@ permalink: "/formations/{{ page.fileSlug }}/"
         <!-- DESCRIPTION -->
         <section id="description" style="padding:44px 0 0">
           <div class="bloc-detail">
-            <h2>{{ libelles.formation.description_titre }} <em class="accent">{{ titre }}</em></h2>
+            <h2>{% if intertitres.description %}{{ intertitres.description | accent | safe }}{% else %}{{ libelles.formation.description_titre }} <em class="accent">{{ titre }}</em>{% endif %}</h2>
             {{ content | safe }}
-            {% if pour_qui %}<h3>{{ libelles.formation.pour_qui_titre }}</h3><p>{{ pour_qui | accent | safe }}</p>{% endif %}
+            {% if pour_qui %}<h3>{{ libelles.formation.pour_qui_titre }}</h3>{{ pour_qui | texteRiche | safe }}{% endif %}
             {% if prerequis and prerequis.length %}
             <h3>{{ libelles.formation.prerequis_titre }}</h3>
             <ul class="liste-prereq">
@@ -127,12 +127,18 @@ permalink: "/formations/{{ page.fileSlug }}/"
         {% if programme and programme.length %}
         <section id="programme" style="padding:48px 0 0">
           <div class="bloc-detail">
-            <h2>{{ libelles.formation.programme_titre }} <em class="accent">{{ titre }}</em></h2>
+            <h2>{% if intertitres.programme %}{{ intertitres.programme | accent | safe }}{% else %}{{ libelles.formation.programme_titre }} <em class="accent">{{ titre }}</em>{% endif %}</h2>
+            {% if programme_note %}<div class="programme-note" style="margin-bottom:18px">{{ programme_note | texteRiche | safe }}</div>{% endif %}
             <div class="programme">
               {% for chap in programme %}
+              {# « partie » : intertitre facultatif qui regroupe les chapitres suivants (ex. « Jour 1 - Matin », « Module 2 ») #}
+              {% if chap.partie %}<div class="programme-partie" style="padding:14px 24px 10px;font-weight:700;font-size:13px;letter-spacing:.6px;text-transform:uppercase;color:var(--violet);background:var(--fond);border-bottom:1px solid var(--bordure)">{{ chap.partie }}</div>{% endif %}
               <details{% if loop.first %} open{% endif %}>
                 <summary>{{ chap.titre }}</summary>
-                <ul class="contenu">{% for item in chap.points %}<li>{{ item }}</li>{% endfor %}</ul>
+                {% if chap.points and chap.points.length %}
+                {# un point qui commence par « - » est un sous-point du point précédent #}
+                <ul class="contenu">{% for item in chap.points %}{% set sous = (item | string).slice(0, 2) == "- " %}{% set suivant = chap.points[loop.index] if not loop.last else "" %}{% set sous_suivant = (suivant | string).slice(0, 2) == "- " %}{% if sous and not loop.first %}<li style="list-style:circle">{{ (item | string).slice(2) }}</li>{% if not sous_suivant %}</ul></li>{% endif %}{% else %}<li>{{ (item | string).replace(r/^- /, "") }}{% if sous_suivant %}<ul style="margin:4px 0 0">{% else %}</li>{% endif %}{% endif %}{% endfor %}</ul>
+                {% endif %}
               </details>
               {% endfor %}
             </div>
@@ -140,11 +146,21 @@ permalink: "/formations/{{ page.fileSlug }}/"
         </section>
         {% endif %}
 
+        <!-- COMPLÉMENTS (sections propres à une fiche, ex. Évaluation et certification) -->
+        {% for comp in complements %}
+        <section style="padding:48px 0 0">
+          <div class="bloc-detail">
+            <h2>{{ comp.titre | accent | safe }}</h2>
+            {{ comp.texte | texteRiche | safe }}
+          </div>
+        </section>
+        {% endfor %}
+
         <!-- FORMATEUR -->{# fiche Équipe reliée : formateur_vue est calculé dans formations.11tydata.js #}
         {% if formateur_vue %}
         <section id="formateur" style="padding:48px 0 0">
           <div class="bloc-detail" style="max-width:none">
-            <h2 style="max-width:820px">{{ libelles.formation.formateur_titre | accent | safe }}</h2>
+            <h2 style="max-width:820px">{{ (intertitres.formateur or libelles.formation.formateur_titre) | accent | safe }}</h2>
             <div class="formateur">
               <div class="portrait">
                 {% if formateur_vue.photo %}{% image formateur_vue.photo, formateur_vue.nom ~ ", formateur " ~ titre ~ " chez 4SH", { sizes: "130px" } %}{% endif %}
@@ -163,7 +179,7 @@ permalink: "/formations/{{ page.fileSlug }}/"
         {% if faq and faq.length %}
         <section style="padding:48px 0 0">
           <div class="bloc-detail">
-            <h2>{{ libelles.formation.faq_titre }} <em class="accent">{{ titre }}</em></h2>
+            <h2>{% if intertitres.faq %}{{ intertitres.faq | accent | safe }}{% else %}{{ libelles.formation.faq_titre }} <em class="accent">{{ titre }}</em>{% endif %}</h2>
             <div class="faq" style="margin-top:8px">
               {% for item in faq %}
               <details{% if loop.first %} open{% endif %}>
@@ -193,13 +209,47 @@ permalink: "/formations/{{ page.fileSlug }}/"
           </div>
         </section>
 
+        <!-- FORMATIONS LIÉES (choisies sur la fiche) -->
+        {% if formations_liees and formations_liees.length %}
+        <section id="formations-liees" style="padding:48px 0 0">
+          <div class="bloc-detail" style="max-width:none">
+            <h2 style="max-width:820px">{{ libelles.formation.liees_titre or "Formation(s) liée(s)" }}</h2>
+            <div class="liees">
+              {% for slug in formations_liees %}{% for grp in collections.formationsParGroupe %}{% for n in grp.niveaux %}{% if n.url == "/formations/" ~ slug ~ "/" %}
+              <article class="liee">
+                <div class="haut">{% if grp.image %}<img src="{{ grp.image }}" alt="{{ grp.titre }}">{% endif %}<span class="prix"><small>{{ libelles.formation.a_partir_de }}</small><b>{{ (grp.niveaux[0].prix or grp.prixMin) | replace(" € HT", "") | replace("À partir de ", "") }} €</b>{% if grp.avis %} <small>({{ grp.avis }})</small>{% endif %}</span></div>
+                <h3><a href="{{ grp.url }}">{% for f in collections.formations %}{% if f.url == grp.url %}{{ f.data.entete.titre_carte or grp.titre }}{% endif %}{% endfor %}</a></h3>
+                <span class="cat">{{ grp.categorie }}</span>
+                <p class="desc">{{ grp.chapo }}</p>
+                <div class="niveaux-liee">{% for nv in grp.niveaux %}<a href="{{ nv.url }}"><b>{{ nv.niveau }}</b> <span>{{ libelles.formation.duree_label or "Durée :" }} {{ nv.duree | striptags | replace(r/\s*\(.*\)$/, "") }}</span></a>{% endfor %}</div>
+              </article>
+              {% endif %}{% endfor %}{% endfor %}{% endfor %}
+            </div>
+          </div>
+          <style>
+            .liees{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+            .liee{background:#fff;border:1px solid var(--bordure);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:6px}
+            .liee .haut{display:flex;justify-content:space-between;align-items:flex-start}
+            .liee .haut img{height:40px;width:40px;object-fit:contain}
+            .liee .prix{text-align:right}.liee .prix small{display:block;font-size:11.5px;color:var(--muted)}.liee .prix b{font-size:18px;color:var(--sombre)}
+            .liee h3{font-size:17px;margin:4px 0 0}.liee h3 a{color:var(--sombre)}
+            .liee .cat{font-size:11.5px;text-transform:uppercase;letter-spacing:1px;color:var(--violet);font-weight:600}
+            .liee .desc{font-size:14.5px;color:var(--texte-2);margin:0}
+            .niveaux-liee{display:flex;flex-direction:column;margin-top:8px;border-top:1px solid var(--bordure)}
+            .niveaux-liee a{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--bordure);font-size:14px;color:var(--texte-2)}
+            .niveaux-liee a b{color:var(--sombre)}
+            @media (max-width:640px){.liees{grid-template-columns:1fr}}
+          </style>
+        </section>
+        {% endif %}
+
         <!-- AUTRES FORMATIONS DE LA CATÉGORIE -->
         <section id="liees" style="padding:48px 0 0">
           <div class="bloc-detail" style="max-width:none">
             <h2 style="max-width:820px">{{ libelles.formation.autres_titre }} <em class="accent">{{ categorie }}</em></h2>
             <div class="autres">
               {% for grp in collections.formationsParGroupe %}{% if grp.categorie == categorie and grp.groupe != groupe %}
-              <a class="mini-form" href="{{ grp.url }}">{% if grp.image %}<img src="{{ grp.image }}" alt="{{ grp.titre }}">{% endif %}<b>{{ grp.titre }}</b><span>{{ libelles.formation.a_partir_de }} {{ grp.prixMin }} €</span></a>
+              <a class="mini-form" href="{{ grp.url }}">{% if grp.image %}<img src="{{ grp.image }}" alt="{{ grp.titre }}">{% endif %}<b>{% for f in collections.formations %}{% if f.url == grp.url %}{{ f.data.entete.titre_carte or grp.titre }}{% endif %}{% endfor %}</b><span>{{ libelles.formation.a_partir_de }} {{ (grp.niveaux[0].prix or grp.prixMin) | replace(" € HT", "") | replace("À partir de ", "") }} €</span></a>
               {% endif %}{% endfor %}
             </div>
             <div class="centre" style="margin-top:34px"><a class="btn btn-ghost" href="/formations/">{{ libelles.formation.voir_toutes }}</a></div>

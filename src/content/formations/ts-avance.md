@@ -1,7 +1,7 @@
 ---
 entete:
   titre: TypeScript
-  sous_titre: Perfectionnement
+  sous_titre: Avancé
   niveau: Avancé
   groupe: typescript
   categorie: Develop
@@ -10,8 +10,8 @@ entete:
 inscription:
   prix: 1300
   sessions:
-    - debut: "2026-09-07"
-      fin: "2026-09-08"
+    - debut: '2026-11-25'
+      fin: '2026-11-26'
   programme_pdf: https://drive.google.com/file/d/1_Zg99-MiqQZTYvBJjQZjNCCrUpJnuYzJ/view
   programme_pdf_poids: 723 Ko
 chiffres:
@@ -21,11 +21,20 @@ chiffres:
   participants_max: 8
   depuis: janvier 2023
   theorie: 60
+  note: 4.45
+  avis: 1
 public:
-  pour_qui: La formation TypeScript - Avancé est destinée aux développeurs ayant déjà une expérience avec TypeScript et souhaitant approfondir leurs compétences en typage avancé. Elle s'adresse également aux ingénieurs logiciels, chefs de projet techniques et architectes logiciels qui travaillent sur des projets complexes nécessitant une maîtrise avancée de TypeScript.
+  pour_qui: |-
+    La formation TypeScript - Avancé est destinée aux développeurs ayant déjà une expérience avec TypeScript et souhaitant approfondir leurs compétences en typage avancé. Elle s'adresse également aux ingénieurs logiciels, chefs de projet techniques, et architectes logiciels qui travaillent sur des projets complexes nécessitant une maîtrise avancée de TypeScript.
+
+    Cette formation est particulièrement adaptée pour :
+
+    - Les développeurs front-end et back-end cherchant à optimiser leur code avec des techniques de typage avancées.
+    - Les équipes de développement qui souhaitent intégrer des fonctionnalités avancées de TypeScript dans leurs projets.
+    - Les professionnels de la QA ou les Responsables Produit ayant une base solide en développement et souhaitant comprendre les avantages des fonctionnalités avancées de TypeScript pour leurs projets.
   prerequis:
     - Connaissance de base sur les concepts de programmation
-    - "Notions fondamentales de JavaScript : fonctions, variables, structures de contrôle, types et opérateurs, objets, classes, event loop & asynchronisme, modules ESM"
+    - 'Notions fondamentales de Javascript : Fonctions, Variables, Structures de contrôle, Types et opérateurs, Objets, Classes, Event loop & Asynchronisme, modules ESM'
     - Utilisation de TypeScript au quotidien pendant au moins 6 mois
     - Acquis de la formation TypeScript - Les Fondamentaux
 objectifs:
@@ -35,7 +44,7 @@ objectifs:
   - Savoir tirer parti de l'outillage et de l'écosystème TypeScript
   - Dériver efficacement les types à l'aide de Types avancés
 programme:
-  - titre: Introduction à TypeScript
+  - titre: Introduction à Typescript
     points:
       - Historique & Principes de TypeScript
       - Types vs Interfaces
@@ -45,7 +54,7 @@ programme:
     points:
       - Types paramétrés
       - Transformer des Types & Types utilitaires
-  - titre: Écosystème
+  - titre: Ecosystème
     points:
       - Zod
       - ts-pattern
@@ -54,7 +63,7 @@ programme:
     points:
       - Fichiers de déclaration, declaration merging
       - Function overloading
-      - Triple slash references
+      - triple slash references
       - tsconfig (sourcemaps, strictness levels, target, project reference, etc.)
   - titre: Typage avancé
     points:
@@ -66,6 +75,12 @@ programme:
       - Decorators
       - JSX/TSX
       - enums
+formations_liees:
+  - js-ts-fondamental
+  - javascript
+intertitres:
+  description: Description formation *TypeScript*
+  programme: Programme formation JavaScript
 referencement:
   meta_title: Formation TypeScript avancé présentiel ou en ligne avec 4SH
   meta_description: Maîtrisez le typage avancé en TypeScript avec 4SH. Formation de 2 jours pour optimiser vos projets complexes. Présentiel ou à distance.
@@ -73,6 +88,10 @@ referencement:
 ---
 La formation TypeScript - Avancé est un programme intensif de deux jours conçu pour les développeurs ayant déjà une expérience avec TypeScript et souhaitant approfondir leurs compétences en typage avancé et en intégration avec des projets complexes.
 
-Cette formation explore des concepts avancés tels que les types conditionnels, les types récursifs, ainsi que l'utilisation du mot-clé infer. Les participants apprendront à optimiser leur code TypeScript pour des applications robustes et maintenables, tout en utilisant des outils puissants comme Zod et ts-pattern.
+Cette formation explore des concepts avancés tels que les types conditionnels, les types récursifs, ainsi que l'utilisation du mot-clé infer.
 
-Nos formations informatiques se déroulent en présentiel ou à distance.
+Les participants apprendront à optimiser leur code TypeScript pour des applications robustes et maintenables, tout en utilisant des outils puissants comme Zod et ts-pattern.
+
+Nos [formations informatiques](/formations/) se déroulent en présentiel ou à distance.
+
+[En savoir plus sur JavaScript](/expertises-techniques/javascript/)

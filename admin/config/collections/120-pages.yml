@@ -14,7 +14,7 @@
   - name: pages_institutionnelles
     label: Pages institutionnelles
     label_singular: Page institutionnelle
-    description: "Pages de présentation de 4SH. Notre démarche et Notre entreprise se composent de blocs, comme l'accueil ; Notre entreprise a sa version anglaise (Company) dans le même écran."
+    description: "Pages de présentation de 4SH. Notre démarche, Notre entreprise et leurs sous-pages (Équipe, Agences, Conception UX, Engagements) se composent de blocs, comme l'accueil ; Notre entreprise a sa version anglaise (Company) dans le même écran."
     i18n: true
     files:
       - name: notre_demarche
@@ -34,7 +34,8 @@
             fields:
               - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, hint: "50 à 60 caractères conseillés. Vide : le titre par défaut des Réglages SEO s'affiche." }
               - { label: Description SEO, name: meta_description, widget: text, required: true, hint: "150 à 160 caractères conseillés. Résumé affiché sous le titre dans Google." }
-          - label: Blocs de la page
+          - &f_blocs_institutionnel
+            label: Blocs de la page
             name: blocs
             widget: list
             required: true
@@ -3098,6 +3099,46 @@
                     i18n: true
             # <<< BLOCS
 
+      # Reprise de l'ancienne page /nous-connaitre/equipe.html (blocs du profil institutionnel, mêmes types que Notre démarche).
+      - name: notre_equipe
+        label: Notre entreprise · Équipe
+        file: src/_data/contenus/fr/notre_equipe.json
+        format: json
+        preview_path: notre-entreprise/equipe/
+        fields:
+          - *f_seo_page
+          - *f_blocs_institutionnel
+
+      # Reprise de l'ancienne page /nous-connaitre/agences.html (blocs du profil institutionnel, mêmes types que Notre démarche).
+      - name: nos_agences
+        label: Notre entreprise · Agences
+        file: src/_data/contenus/fr/nos_agences.json
+        format: json
+        preview_path: notre-entreprise/agences/
+        fields:
+          - *f_seo_page
+          - *f_blocs_institutionnel
+
+      # Reprise de l'ancienne page /conception-ux.html (blocs du profil institutionnel, mêmes types que Notre démarche).
+      - name: conception_ux
+        label: Notre démarche · Conception UX
+        file: src/_data/contenus/fr/conception_ux.json
+        format: json
+        preview_path: notre-demarche/conception-ux/
+        fields:
+          - *f_seo_page
+          - *f_blocs_institutionnel
+
+      # Reprise de l'ancienne page /engagements.html (blocs du profil institutionnel, mêmes types que Notre démarche).
+      - name: engagements
+        label: Notre démarche · Engagements
+        file: src/_data/contenus/fr/engagements.json
+        format: json
+        preview_path: notre-demarche/engagements/
+        fields:
+          - *f_seo_page
+          - *f_blocs_institutionnel
+
       - name: page_ia
         label: Intelligence artificielle
         file: src/intelligence-artificielle.md
@@ -3154,6 +3195,7 @@
             search_fields: [titre, client]
             display_fields: [titre]
             hint: Fiches Références affichées en cartes après le contenu.
+          - { label: Titre des questions fréquentes, name: faq_titre, widget: string, required: false, hint: "Titre au-dessus des questions. Vide : le titre commun des Textes récurrents (« Questions fréquentes »)." }
           - label: Questions fréquentes
             name: faq
             widget: list
@@ -3201,7 +3243,7 @@
                 label_singular: Plateforme
                 summary: "{{fields.label}}"
                 max: 4
-                hint: "Un bouton par plateforme, sous le chapô. « Écouter sur » est ajouté devant le nom. Le premier bouton est plein, les suivants en contour ; tous s'ouvrent dans un nouvel onglet."
+                hint: "Un bouton par plateforme, sous le chapô. « Découvrir nos podcasts sur » est ajouté devant le nom. Le premier bouton est plein, les suivants en contour ; tous s'ouvrent dans un nouvel onglet."
                 fields:
                   - { label: Nom de la plateforme, name: label, widget: string, required: true, hint: "Par exemple : Spotify." }
                   - { label: Adresse du podcast sur la plateforme, name: url, widget: string, required: true }
@@ -3263,6 +3305,7 @@
               - { label: Surtitre, name: surtitre, widget: string, required: false, hint: "Petit texte coloré au-dessus du titre, par exemple : 4SH Learning." }
               - { label: Titre principal (H1), name: titre, widget: string, required: true, hint: "60 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge." }
               - { label: Chapô, name: chapo, widget: text, required: true, hint: 45 mots maximum. }
+              - { label: Chapô (suite), name: chapo_suite, widget: text, required: false, hint: "Second paragraphe sous le chapô (facultatif)." }
               - { label: Note moyenne, name: note, widget: string, required: false, hint: "Affichée sous le chapô, par exemple : 4,71 / 5." }
               - { label: Détail de la note, name: note_detail, widget: string, required: false, hint: "À droite de la note, par exemple : 324 participant·e·s." }
               - label: Bouton principal
@@ -3380,6 +3423,7 @@
             fields:
               - { label: Titre, name: titre, widget: string, required: true, hint: "70 caractères maximum. Mettez un mot entre *astérisques* pour l'afficher en rouge." }
               - { label: Texte, name: texte, widget: text, required: true, hint: 50 mots maximum. }
+          - { label: Texte de présentation, name: texte, widget: markdown, required: false, buttons: [heading-two, heading-three, bold, link, bulleted-list], editor_components: [], hint: "Texte affiché sous la section Qualiopi (titres de niveau 2 et 3, gras, liens, listes)." }
           - label: Témoignages de stagiaires
             name: temoignages
             widget: object

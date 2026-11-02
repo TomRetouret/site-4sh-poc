@@ -1,0 +1,72 @@
+---
+layout: base.njk
+---
+{#
+  GUIDE TECHNOLOGIE (« En savoir plus sur <techno> ») : /formations/<slug>/
+  Collection « guides_technologies » (src/content/guides-technologies/*.md).
+  Gabarit dérivé de technologie.njk (même en-tête, même logo), sans carte sur la
+  page Expertises techniques. Corps : sections (titre, texte, sous-parties) en texte
+  continu, avec un sommaire automatique (ancres sur les titres de section).
+  Spécification : docs/back-office/schema-collections.md (Guides technologie)
+#}
+{%- set cat_url = "/formations/" + categorie + "/" if categorie else null -%}
+{%- set cat_nom = null -%}
+{%- if cat_url %}{% for e in collections.all %}{% if e.url == cat_url %}{% set cat_nom = e.data.nom %}{% endif %}{% endfor %}{% endif -%}
+{%- set fiche_formation = collections.formations | ficheParSlug(formation) if formation else null -%}
+<!-- HERO INTERNE -->
+<div class="hero-interne">
+  <div class="container">
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">Accueil</a> &rsaquo; <a href="/formations/">Formations</a>{% if cat_nom %} &rsaquo; <a href="{{ cat_url }}">{{ cat_nom }}</a>{% endif %}{% if fiche_formation and formation_titre %} &rsaquo; <a href="{{ fiche_formation.url }}">{{ formation_titre }}</a>{% endif %} &rsaquo; {{ surtitre }} {{ nom }}</nav>
+    <div class="hero-grille">
+      <div>
+        {% if surtitre %}<p class="eyebrow">{{ surtitre }}</p>{% endif %}
+        <h1>{{ (h1 or nom) | accent | safe }}</h1>
+        {% if intro %}<p class="chapo" style="font-size:18px;color:var(--texte-2);margin-bottom:26px">{{ intro }}</p>{% endif %}
+      </div>
+      {% if logo %}
+      <div class="techno-blason" aria-hidden="true">
+        <img src="{{ logo }}" alt="{{ nom }}" loading="eager" decoding="async">
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+.guide-grille{display:grid;grid-template-columns:260px minmax(0,1fr);gap:56px;align-items:start}
+.guide-sommaire{position:sticky;top:110px;border-left:3px solid var(--accent);padding:4px 0 4px 18px}
+.guide-sommaire-titre{font-size:15px;font-weight:700;margin:0 0 10px;letter-spacing:0}
+.guide-sommaire ol{list-style:none;margin:0;padding:0}
+.guide-sommaire li{margin:0 0 8px;font-size:14.5px;line-height:1.4}
+.guide-sommaire a{color:var(--texte-2);text-decoration:none}
+.guide-sommaire a:hover,.guide-sommaire a:focus-visible{color:var(--accent-texte);text-decoration:underline}
+.guide-corps{max-width:780px}
+.guide-section{scroll-margin-top:110px;margin-bottom:40px}
+.guide-section h2{font-size:clamp(24px,2.2vw,30px);margin:0 0 16px}
+.guide-section h3{font-size:19px;margin:24px 0 10px}
+.guide-section ul,.guide-section ol{margin:0 0 16px 1.2em;line-height:1.7;color:var(--texte-2)}
+.guide-section p{color:var(--texte-2);line-height:1.7}
+@media (max-width:900px){.guide-grille{grid-template-columns:1fr;gap:28px}.guide-sommaire{position:static}}
+</style>
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="guide-grille">
+      {% if sections and sections.length %}
+      <div class="guide-sommaire" role="navigation" aria-label="{{ sommaire_titre or 'Sommaire' }}">
+        {% if sommaire_titre %}<p class="guide-sommaire-titre">{{ sommaire_titre }}</p>{% endif %}
+        <ol>
+          {% for s in sections %}{% if s.titre %}<li><a href="#section-{{ loop.index }}">{{ s.titre }}</a></li>{% endif %}{% endfor %}
+        </ol>
+      </div>
+      {% endif %}
+      <div class="guide-corps prose">
+        {% for s in sections %}
+        <div class="guide-section" id="section-{{ loop.index }}">
+          {{ [s] | corpsSections | safe }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

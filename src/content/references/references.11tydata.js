@@ -13,9 +13,11 @@ module.exports = {
         (a, b) => (a.data.ordre || 99) - (b.data.ordre || 99)
       );
       const i = all.findIndex((r) => r.url === data.page.url);
+      // Boucle comme sur 4sh.fr : la première fiche a la dernière pour précédente, et inversement.
+      if (i < 0 || all.length < 2) return { precedent: null, suivant: null };
       return {
-        precedent: i > 0 ? all[i - 1] : null,
-        suivant: i >= 0 && i < all.length - 1 ? all[i + 1] : null
+        precedent: all[(i - 1 + all.length) % all.length],
+        suivant: all[(i + 1) % all.length]
       };
     }
   }

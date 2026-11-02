@@ -34,19 +34,20 @@ Ce fichier fait foi pour la page `/prestations/logiciel-metier/` : données, con
 
 ## Blocs de la page, dans l'ordre
 
-| Rang | Bloc | Reprend |
+Contenu repris mot pour mot de l'ancienne page `/developpement-sur-mesure/logiciel-metier.html` (remise à l'identique du 2 novembre 2026) ; les ajouts de la refonte (étiquettes et bouton secondaire du hero, chiffres clés, surtitres, phases des étapes, bandeau clients, bouton flottant) ont été retirés.
+
+| Rang | Bloc | Reprend (ancienne page) |
 |---|---|---|
-| 1 | hero, variante sobre, offre `build` | `hero_h1`, `hero_chapo`, boutons, `hero_chips` ; le surtitre codé en dur devient l'offre Build |
-| 2 | chiffres_cles | `chiffres` (sans `compte` ni `suffixe`, jamais lus) |
-| 3 | texte_simple (Pourquoi) | `pourquoi_*` ; paragraphes fusionnés et HTML converti en Markdown |
-| 4 | etapes | `methode_*` ; `num` supprimé (calculé), `label` devient `phase` |
-| 5 | technologies, affichage cartes | `socle_*` ; `lien_label` supprimé (libellé commun), `lien_url` devient `lien` |
-| 6 | texte_simple (Pour qui) | `pour_qui_*` ; HTML converti en Markdown |
-| 7 | benefices | `atouts_*`, `atouts` |
-| 8 | projet_vedette, ancre `realisations` | `realisations_eyebrow`, `realisations_titre`, `realisations_vedette` ; citation vers le témoignage partagé `infoport` ; cartes vers les fiches `cin` et `izivia-portail` |
-| 9 | logos_clients | `realisations_clients_titre` ; les noms viennent des réglages du site |
-| 10 | derniers_articles | `blog_titre` ; articles récupérés automatiquement, lien « Tout le blog » |
-| 11 | faq | `faq_titre`, `faq_sous`, `faq` |
+| 1 | hero, variante sobre, offre `build` | H1 et chapô ; bouton « Contactez-nous » vers `#contact` (le bouton principal est obligatoire dans le bloc) |
+| 2 | texte_simple | « Pourquoi opter pour un logiciel métier ? » |
+| 3 | etapes | « Un accompagnement sur mesure » : les deux phrases d'introduction en sous-titre, 5 étapes sans phase |
+| 4 | technologies, affichage cartes | « Un socle technologique » |
+| 5 | texte_simple | « Pour qui ? » |
+| 6 | benefices | « Pourquoi choisir 4SH ? », la phrase de conclusion en sous-titre |
+| 7 | projets | « Réalisations clients : logiciels métiers » (Infoport, CIN) |
+| 8 | derniers_articles | « Nos experts vous parlent » (articles récupérés automatiquement) |
+| 9 | faq | « Logiciel métier - Vos questions » |
+| 10 | appel_action | « Besoin d'un logiciel métier ? », appel partagé `contactez-nous` (vers `/contact/`) |
 
 Le formulaire de contact final reste commun au site (hors blocs). Le bouton flottant suit, s'il est relié.
 

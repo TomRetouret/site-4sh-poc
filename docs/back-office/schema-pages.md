@@ -6,7 +6,7 @@ Ce fichier fait foi pour les pages uniques du site (pages institutionnelles, pag
 
 | Collection (nom technique) | Fichiers (nom technique : chemin) | Configuration |
 |---|---|---|
-| Pages institutionnelles (`pages_institutionnelles`, multilingue activé) | `notre_demarche` : `src/_data/contenus/fr/notre_demarche.json` ; `notre_entreprise` (FR et EN dans le même écran) : `src/_data/contenus/{fr,en}/notre_entreprise.json` ; `page_ia` : `src/intelligence-artificielle.md` ; `page_podcasts` : `src/_data/page_podcasts.json` ; `contact` : `src/_data/contact.json` | `admin/config/collections/120-pages.yml` |
+| Pages institutionnelles (`pages_institutionnelles`, multilingue activé) | `notre_demarche` : `src/_data/contenus/fr/notre_demarche.json` ; `notre_entreprise` (FR et EN dans le même écran) : `src/_data/contenus/{fr,en}/notre_entreprise.json` ; `notre_equipe`, `nos_agences`, `conception_ux`, `engagements` : `src/_data/contenus/fr/<nom>.json` ; `page_ia` : `src/intelligence-artificielle.md` ; `page_podcasts` : `src/_data/page_podcasts.json` ; `contact` : `src/_data/contact.json` | `admin/config/collections/120-pages.yml` |
 | Pages mères (`pages_meres`) | `page_formations`, `page_references`, `page_technologies`, `page_glossaire` : `src/_data/<nom>.json` | idem |
 | Pages légales (`pages_legales`) | `page_mentions_legales` : `src/mentions-legales.md` ; `page_rgpd` : `src/rgpd.md` | idem |
 | Réglages (`reglages`) | `site` : `src/_data/site.json` ; `menu` : `src/_data/navigation.json` ; `libelles` : `src/_data/libelles.json` ; `seo` : `src/_data/seo.json` | `130-seo.yml` (`140-navigation.yml` et `150-libelles.yml` ne contiennent plus qu'un commentaire) |
@@ -19,6 +19,7 @@ Conventions communes : groupe **Référencement** replié en tête (`seo` dans u
 ## Pages institutionnelles en blocs
 
 - Notre démarche : `src/notre-demarche.njk`, données `contenus.fr.notre_demarche` (`{ seo, blocs }`), profil de blocs `institutionnel` (français seul).
+- Sous-pages reprises de l'ancien site (2 novembre 2026), même gabarit que Notre démarche (profil `institutionnel`, français seul ; formulaire de blocs partagé par l'ancre YAML `&f_blocs_institutionnel`) : Équipe `/notre-entreprise/equipe/` (`src/notre-entreprise-equipe.njk`, `contenus.fr.notre_equipe`), Agences `/notre-entreprise/agences/` (`src/notre-entreprise-agences.njk`, `contenus.fr.nos_agences`), Conception UX `/notre-demarche/conception-ux/` (`src/notre-demarche-conception-ux.njk`, `contenus.fr.conception_ux`), Engagements `/notre-demarche/engagements/` (`src/notre-demarche-engagements.njk`, `contenus.fr.engagements`). Titre et description : le `.11tydata.js` de même nom, lu dans le groupe Référencement.
 - Notre entreprise et Company : corps commun `src/_includes/composants/pages/entreprise.njk`, données `contenus.fr.notre_entreprise` et `contenus.en.notre_entreprise`, profil `institutionnel_bilingue` (`i18n: true` sur chaque champ, comme l'accueil). Chaque langue a sa propre liste de blocs : Company n'a pas l'encart Charte RSE.
 - Rendu par l'aiguilleur commun (`rendre_blocs`, gabarit « offre » : balisage des pages intérieures), formulaire de contact final automatique. Titre et description : `notre-demarche.11tydata.js`, `notre-entreprise.11tydata.js`, et pour Company `src/en/en.11tydata.js` (clé de front matter `contenusKey: notre_entreprise`).
 - Profils (`admin/config/blocs/_profils.yml`) : les deux profils proposent les blocs ci-dessous et les blocs éditoriaux de la bibliothèque (hero, texte_simple, chiffres_cles, etapes, benefices, texte_image, image_pleine, appel_action, portraits, equipe, logos_clients, projet_vedette, technologies, telechargement, faq, derniers_articles). Les six blocs ajoutés sont aussi proposés dans le profil `demo`.
@@ -65,7 +66,14 @@ Marges : ces blocs ne participent pas au calcul automatique `blocsSerres` (liste
 
 ### Correspondance avec les anciennes pages
 
-Notre démarche : hero (illustration `demarche`) ; chiffres_compteurs ; frise_methode (ancre `methode`) ; cartes_numerotees grille 3 colonnes (Démarche UX) ; cartes_numerotees carrousel (Engagements) ; cartes_texte colonnes (Dispositifs). Notre entreprise : hero (`entreprise`) ; texte_simple (À propos, un paragraphe par ancien élément) ; chiffres_compteurs ; cartes_texte encadrées 3 colonnes (Culture tech), fond sombre (Valeurs), 4 colonnes sans texte (Métiers) ; encart_bouton encadré (Recrutement) ; cartes_texte (Agences, adresse en texte, lien « Voir sur la carte ») ; encart_bouton libre (Charte RSE, page française seulement).
+Depuis la reprise du 2 novembre 2026, chaque page reprend une seule ancienne page, texte mot pour mot ; les blocs de la refonte sans équivalent ancien sont masqués (`masquer: true`), pas supprimés.
+
+- Notre démarche (ancienne `/methode.html`) : hero ; texte_simple (surtitre « Vous avez une idée ? », « 4SH est là pour vous aider ! ») ; frise_methode (ancre `methode`, étapes Discover, Design, Develop, Deploy). Masqués : chiffres_compteurs, cartes Démarche UX, Engagements, Dispositifs.
+- Conception UX (`/conception-ux.html`) : hero ; texte_simple ; cartes_numerotees grille 3 colonnes (6 étapes) ; encart_bouton encadré.
+- Engagements (`/engagements.html`) : hero ; cartes_numerotees grille (7 engagements) ; cartes_texte colonnes (Nos dispositifs).
+- Notre entreprise FR (`/nous-connaitre.html`) : hero ; texte_simple (À propos, un paragraphe par ancien paragraphe) ; chiffres_compteurs ; cartes_texte encadrées 3 colonnes (société technique), fond sombre (4 valeurs) ; texte_simple (Notre démarche RSE, lien vers la charte). Masqués : Métiers, Recrutement, Agences, ancien encart RSE. Company (EN) inchangée.
+- Équipe (`/nous-connaitre/equipe.html`) : hero ; texte_image (photo d'équipe) ; encart_bouton encadré (recrutement) ; cartes_texte 4 colonnes (Nos métiers).
+- Agences (`/nous-connaitre/agences.html`) : hero ; texte_simple (présentation, adresses avec lien vers la carte, liens vers les pages Application mobile et SaaS par ville).
 
 ## Fiches structurées
 
@@ -78,8 +86,8 @@ Migration : `node scripts/migrer-pages-uniques.js` (idempotent : un fichier qui 
 | Références | `seo` ; `hero` { surtitre, titre, chapo } | `src/references/index.njk` |
 | Glossaire | `seo` ; `hero` { surtitre, titre, chapo } | `src/glossaire.njk` |
 | Contact | `seo` ; `hero` { titre, chapo } (arguments, téléphone, villes, formulaire : Réglages du site) | `src/contact.njk` |
-| Podcasts | `seo` ; `hero` { surtitre, titre, chapo, plateformes [ { label, url } ] } ; `episodes` | `src/podcasts.njk` |
-| Intelligence artificielle (front matter) | `referencement` ; `titre` (fil d'Ariane) ; `hero` { surtitre, titre, chapo, bouton } ; corps Markdown ; `references` ; `faq` ; `contact_final` ; `suivi` (notes internes) | `src/_includes/page-libre.njk` |
+| Podcasts | `seo` ; `hero` { surtitre, titre, chapo, plateformes [ { label, url } ] } (bouton « Découvrir nos podcasts sur » + nom) ; `episodes` (date et durée séparées par une barre verticale) | `src/podcasts.njk` |
+| Intelligence artificielle (front matter) | `referencement` ; `titre` (fil d'Ariane) ; `hero` { surtitre, titre, chapo, bouton } ; corps Markdown ; `references` ; `faq_titre` (vide : libellé commun) ; `faq` ; `contact_final` ; `suivi` (notes internes) | `src/_includes/page-libre.njk` |
 | Mentions légales, RGPD (front matter) | `referencement` ; `titre` ; `h1` ; `maj` ; corps Markdown ; `suivi` | `src/_includes/page-legale.njk` |
 
 Textes alternatifs : logos de l'agenda (alt = titre de la formation) et tuiles « Autres technologies » (alt = nom) sont générés ; les aides le disent. Champs retirés car jamais affichés : `page_glossaire.cta_*`, `page_technologies.cta_*` (valeurs dans l'historique Git). Le bouton du haut de page Expertises techniques, écrit en dur, devient `hero.bouton` (même texte, y compris en anglais).

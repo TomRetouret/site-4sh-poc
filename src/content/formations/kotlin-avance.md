@@ -1,17 +1,19 @@
 ---
 entete:
   titre: Kotlin
-  sous_titre: Perfectionnement
+  sous_titre: Avancé
   niveau: Avancé
   groupe: kotlin
   categorie: Develop
-  chapo: Apprenez l'utilisation de ce langage de programmation orienté objet.
+  chapo: Apprenez l’utilisation de ce langage de programmation orienté objet.
   image: /uploads/ancien-site/assets/img/svg/trainings/kotlin-avance.svg
 inscription:
   prix: 2400
   sessions:
-    - debut: "2026-10-06"
-      fin: "2026-10-09"
+    - debut: '2026-11-24'
+      fin: '2026-11-27'
+    - debut: '2027-01-11'
+      fin: '2027-01-14'
   programme_pdf: https://drive.google.com/file/d/1nNgS-uFIMbwbOv2YY4E-iaoWVCVa4XXu/view
   programme_pdf_poids: 710 Ko
 chiffres:
@@ -19,31 +21,30 @@ chiffres:
   duree_heures: 28
   participants_min: 1
   participants_max: 8
-  note: 4.58
-  avis: 23
+  note: 4.59
+  avis: 38
   depuis: janvier 2023
   theorie: 60
 public:
-  pour_qui: Cette formation s'adresse à des développeurs Kotlin qui souhaitent parfaire leur maîtrise du langage en produisant du code plus robuste et maintenable.
+  pour_qui: Cette [formation informatique](/formations/) s’adresse à des développeurs Kotlin qui souhaitent parfaire leur maîtrise du langage en produisant du code plus robuste et maintenable.
   prerequis:
     - Maîtriser les bases de la programmation objet
     - Maîtriser les bases du langage Kotlin
 objectifs:
   - Maîtriser les idioms Kotlin
-  - Savoir optimiser une fonction Kotlin en utilisant la tail recursion ou inline
+  - Savoir optimiser une fonction Kotlin en utilisant la “tail recursion” ou “inline”
   - Savoir utiliser les interfaces fonctionnelles
   - Maîtriser les fonctionnalités avancées de Kotlin pour exprimer un DSL
-  - Comprendre l'interopérabilité avec Java
-  - Maîtriser l'usage des coroutines
+  - Comprendre l’interopérabilité avec Java
+  - Maîtriser l’usage des coroutines
   - Savoir faire communiquer des coroutines
   - Savoir traiter des flux de données asynchrones
-  - Maîtriser l'écriture de code générique
+  - Maîtriser l’écriture de code générique
   - Comprendre la délégation pour favoriser la composition
-  - Savoir utiliser la méta-programmation
+  - Savoir utiliser la méta programmation
 programme:
   - titre: Introduction
-    points:
-      - Présentation de la formation
+    points: []
   - titre: Retours sur les idioms Kotlin
     points:
       - Class et constructeurs
@@ -52,32 +53,32 @@ programme:
       - Null Safety
       - Paramètres nommés, par défaut
       - Data class
-      - Interpolation et chaînes de caractères multiples
+      - Interpolation et chaines de caractère multiples
       - Lambda
       - Collections read-only et mutables
-      - API Collections
+      - Api Collections
       - Range
       - Séquence ou Iterable
       - Scope Function
   - titre: Plus loin avec les fonctions et les lambdas
     points:
-      - Tail recursion
-      - Fonctions locales
+      - Tail recurcion
+      - Les fonctions locales
       - Inline
       - Interface fonctionnelle
   - titre: Créer un DSL
     points:
-      - infix
-      - Exprimer des types avec type alias
+      - “infix”
+      - Exprimer des type avec “type alias”
       - Extension des fonctions et des propriétés
-      - Surcharge d'opérateur
-      - La lambda comme dernier paramètre
-      - Le receveur de lambda
+      - Surcharge d’opérateur
+      - La “Lambda” comme dernier paramètre
+      - Le receveur de “Lambda”
   - titre: Interopérabilité avec Java
     points:
       - Propriétés synthétiques
       - Gestion de la nullabilité
-      - Le mapping des types Java
+      - La mapping des types Java
       - Exception, héritage, annotation
       - La réflexion Java
       - Interface SAM
@@ -87,7 +88,7 @@ programme:
       - Travailler avec du non bloquant
       - Concurrence structurée
       - Le Coroutine Builder
-      - Les fonctions suspend
+      - Les fonctions “suspend”
   - titre: Contrôler les coroutines
     points:
       - Scope
@@ -104,7 +105,7 @@ programme:
       - Opérations intermédiaires et terminales
       - Composition
       - shareIn
-      - Gestion d'erreur
+      - Gestion d’erreur
   - titre: Les génériques
     points:
       - Déclarer un type générique
@@ -122,33 +123,40 @@ programme:
       - KClass
       - Les références de fonctions
       - Les références de propriétés
-  - titre: "Bonus : méta-programmation"
+  - titre: 'Bonus : Meta programmation'
     points:
       - Annotation processor
       - Kotlin Symbol Processor
       - Kotlin Compiler Plugins
   - titre: Conclusion
-    points:
-      - Synthèse et perspectives
+    points: []
 formateur:
   personne: morgan
   fonction: Développeur Java, Kotlin et Kubernetes
   presentation: |-
-    Morgan, développeur passionné par le code et les défis techniques, est expert en Java, Kotlin et Kubernetes dans un contexte DevOps. Il a notamment mené la refonte d'une solution de fret leader en France et participé à la conception et au déploiement d'une solution pour aider les assurances à se conformer aux réglementations.
+    Morgan, développeur passionné par le code et les défis techniques, est expert en Java, Kotlin et Kubernetes dans un contexte DevOps. Il a notamment mené la refonte d'une solution de fret leader en France et participé à la conception et au déploiement d’une solution pour aider les assurances à se conformer aux réglementations.
 
-    Morgan dispense également les formations Kubernetes Fondamentaux, Docker Essentiel, Kafka Fondamentaux et Java Fondamentaux.
+    Morgan dispense également la formation Kubernetes - Fondamentaux, la formation Docker - Essentiel, la formation Kafka - Fondamentaux et la formation Java - Fondamentaux.
 faq:
   - question: La formation aborde-t-elle des aspects pratiques du développement logiciel ?
-    reponse: Oui, la formation Kotlin avancé inclut des cas pratiques et des exercices concrets pour appliquer les concepts techniques, permettant aux participants d'acquérir des compétences directement utiles dans leur travail.
-  - question: La formation convient-elle à des développeurs de différents niveaux d'expérience ?
+    reponse: Oui, la formation Kotlin avancé inclut des cas pratiques et des exercices concrets pour appliquer les concepts techniques, permettant aux participants d’acquérir des compétences directement utiles dans leur travail.
+  - question: La formation Kotlin avancé convient-elle à des développeurs de différents niveaux d'expérience ?
     reponse: La formation Kotlin avancé est adaptée aux développeurs ayant déjà des bases techniques et souhaitant approfondir leurs connaissances en architecture et conception technique.
+formations_liees:
+  - java-fondamental
+  - kotlin-coroutines
+intertitres:
+  description: Description formation *Kotlin* Avancé
+  programme: Programme formation *Kotlin*
+  formateur: Formateur formation *Kotlin* - avancé
+  faq: Vos questions
 referencement:
   meta_title: Formation Kotlin avancé - 4SH
-  meta_description: "Approfondissez Kotlin en 4 jours avec 4SH : coroutines, DSL, typage avancé. Formation pratique en présentiel ou à distance pour développeurs expérimentés, certifiée Qualiopi."
+  meta_description: 'Approfondissez Kotlin en 4 jours avec 4SH : coroutines, DSL, typage avancé. Formation pratique en présentiel ou à distance pour développeurs expérimentés, certifiée Qualiopi.'
   indexation: true
 ---
-Kotlin est un langage de programmation moderne développé par JetBrains. Ce langage statiquement typé peut être exécuté sur la JVM et est complètement interopérable avec Java. Il offre une syntaxe concise et des fonctionnalités modernes qui facilitent le développement d'applications, comme une meilleure gestion de la nullité, des capacités d'extensions et une API très riche sur les collections.
+Kotlin est un langage de programmation moderne développé par JetBrains. Ce langage statiquement typé peut être exécuté sur la JVM et est complètement interopérable avec [Java](/formations/java-fondamental/). Il offre une syntaxe concise et des fonctionnalités modernes qui facilitent le développement d'applications, comme une meilleure gestion de la nullité, des capacités d’extensions et une API très riche sur les collections...
 
-La formation Kotlin Avancé est conçue pour les personnes ayant déjà une initiation à Kotlin et souhaitant approfondir leurs connaissances. Elle couvre une variété de sujets avancés comme la création d'un DSL, l'interopérabilité avec Java, les coroutines, les génériques, la délégation et la méta-programmation.
+La formation Kotlin Avancé est conçue pour les personnes ayant déjà une [initiation à Kotlin](/formations/kotlin-fondamental/) et souhaitant approfondir leurs connaissances. Elle couvre une variété de sujets avancés comme la création d’un dsl, l’interopérabilité avec Java, les coroutines, les génériques, la délégation et la méta-programmation.
 
-Cette formation de développement s'appuie sur des éléments théoriques mais également des démonstrations et des travaux pratiques pour assurer une maîtrise complète des concepts avancés de ce langage.
+Cette [formation de développement](/formations/develop/) s’appuie sur des éléments théoriques mais également des démonstrations et des travaux pratiques pour assurer une maîtrise complète des concepts avancés de ce langage.

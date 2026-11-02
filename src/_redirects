@@ -13,12 +13,12 @@
 /contact/question.html                               /contact/                                  301!
 /contact/demo.html                                   /contact/                                  301!
 
-# --- Anciens hubs d'offre (il n'y a plus de page /prestations/) ---------
-/build.html                                          /prestations/logiciel-metier/              301!
-/run.html                                            /prestations/hebergement/                  301!
-/developpement-sur-mesure.html                       /prestations/logiciel-metier/              301!
-/expertise-produit.html                              /prestations/product-management/           301!
-/audits.html                                         /prestations/audit-ux/                     301!
+# --- Anciens hubs d'offre (pages rétablies le 2 nov. 2026) --------------
+/build.html                                          /prestations/build/                        301!
+/run.html                                            /prestations/run/                          301!
+/developpement-sur-mesure.html                       /prestations/developpement-sur-mesure/     301!
+/expertise-produit.html                              /prestations/expertise-produit/            301!
+/audits.html                                         /prestations/audits/                       301!
 
 # --- Prestations : concevoir & développer --------------------------------
 /developpement-sur-mesure/logiciel-metier.html       /prestations/logiciel-metier/              301!
@@ -82,12 +82,12 @@
 /expertises-techniques/react-native.html             /expertises-techniques/react-native/       301!
 
 # --- Guides éditoriaux techno (fusionnés dans les fiches expertises) -----
-/learning/formations/develop/angular/                /expertises-techniques/angular/            301!
-/learning/formations/develop/java/                   /expertises-techniques/java/               301!
-/learning/formations/develop/js/                     /expertises-techniques/javascript/         301!
-/learning/formations/develop/mongo/                  /expertises-techniques/mongodb/            301!
-/learning/formations/devops/kubernetes/              /expertises-techniques/kubernetes/         301!
-/learning/formations/design/figma/                   /expertises-techniques/figma/              301!
+/learning/formations/develop/angular/                /formations/angular/                       301!
+/learning/formations/develop/java/                   /formations/java/                          301!
+/learning/formations/develop/js/                     /formations/js/                            301!
+/learning/formations/develop/mongo/                  /formations/mongo/                         301!
+/learning/formations/devops/kubernetes/              /formations/kubernetes/                    301!
+/learning/formations/design/figma/                   /formations/figma/                         301!
 
 # --- Formations : catalogue et catégories -------------------------------
 /learning/formations/                                /formations/                               301!
@@ -171,12 +171,12 @@
 
 # --- L'agence (pages fusionnées) ----------------------------------------
 /methode.html                                        /notre-demarche/                           301!
-/conception-ux.html                                  /notre-demarche/                           301!
-/engagements.html                                    /notre-demarche/                           301!
+/conception-ux.html                                  /notre-demarche/conception-ux/             301!
+/engagements.html                                    /notre-demarche/engagements/               301!
 /nous-connaitre.html                                 /notre-entreprise/                         301!
-/nous-connaitre/equipe.html                          /notre-entreprise/                         301!
-/nous-connaitre/agences.html                         /notre-entreprise/                         301!
-/carriere.html                                       /notre-entreprise/                         301!
+/nous-connaitre/equipe.html                          /notre-entreprise/equipe/                  301!
+/nous-connaitre/agences.html                         /notre-entreprise/agences/                 301!
+/carriere.html                                       /notre-entreprise/equipe/                  301!
 
 # --- Éditorial ----------------------------------------------------------
 /podcasts.html                                       /podcasts/                                 301!

@@ -69,4 +69,4 @@ Cette [formation de design](/formations/design/) a pour objectif de permettre à
 
 Le contenu est un mélange d’explications, basées sur notre expérience sur des cas concrets, de démonstrations et de manipulations pour vous plonger au mieux dans Figma. Pour une première découverte de Figma, nous recommandons de suivre la [formation Figma : les Essentiels.](/formations/figma-essentiel/)
 
-[En savoir plus sur Figma](/expertises-techniques/figma/)
+[En savoir plus sur Figma](/formations/figma/)

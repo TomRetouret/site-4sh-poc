@@ -94,4 +94,4 @@ Les participants apprendront à optimiser leur code TypeScript pour des applicat
 
 Nos [formations informatiques](/formations/) se déroulent en présentiel ou à distance.
 
-[En savoir plus sur JavaScript](/expertises-techniques/javascript/)
+[En savoir plus sur JavaScript](/formations/js/)

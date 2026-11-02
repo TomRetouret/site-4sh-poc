@@ -91,4 +91,4 @@ Cette formation a pour objectif de permettre aux développeurs de maîtriser les
 
 La formation comprend des présentations théoriques, des démonstrations pratiques, des exercices et des travaux pratiques pour illustrer les concepts et les meilleures pratiques liées aux signaux dans Angular.
 
-[En savoir plus sur Angular](/expertises-techniques/angular/)
+[En savoir plus sur Angular](/formations/angular/)

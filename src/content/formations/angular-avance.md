@@ -159,4 +159,4 @@ Cette [formation de développement](/formations/develop/) a pour objectif d’ap
 
 La formation Angular Avancé s’appuie sur des éléments théoriques essentiels, des exercices pratiques et des quiz interactifs qui s’articulent autour du développement itératif d’une application web permettant d’illustrer des cas concrets, issus d’applications en production.
 
-[En savoir plus sur Angular](/expertises-techniques/angular/)
+[En savoir plus sur Angular](/formations/angular/)

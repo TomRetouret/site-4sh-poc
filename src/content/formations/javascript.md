@@ -102,4 +102,4 @@ Découvrez les bases solides du langage, maîtrisez les concepts clés tels que 
 
 Nos [formations informatiques](/formations/) se déroulent en présentiel ou à distance.
 
-[En savoir plus sur JavaScript](/expertises-techniques/javascript/)
+[En savoir plus sur JavaScript](/formations/js/)

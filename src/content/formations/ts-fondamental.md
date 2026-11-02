@@ -88,4 +88,4 @@ Les participants apprendront à intégrer TypeScript dans des projets existants 
 
 Nos [formations informatiques](/formations/) se déroulent en présentiel ou à distance.
 
-[En savoir plus sur JavaScript](/expertises-techniques/javascript/)
+[En savoir plus sur JavaScript](/formations/js/)

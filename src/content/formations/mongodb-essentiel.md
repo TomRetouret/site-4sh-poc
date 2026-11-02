@@ -87,4 +87,4 @@ La formation MongoDB commence par une introduction à MongoDB et son architectur
 
 Nos formations se tiennent en présentiel ou à distance, offrant une flexibilité maximale pour les participants.
 
-[En savoir plus sur MongoDB](/expertises-techniques/mongodb/)
+[En savoir plus sur MongoDB](/formations/mongo/)

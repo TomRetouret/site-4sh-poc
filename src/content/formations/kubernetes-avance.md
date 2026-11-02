@@ -126,4 +126,4 @@ L'expérimentation complète la théorie générale applicable pour tout cluster
 
 En explorant des scénarios avancés, les participants apprendront à gérer des déploiements complexes à travers la compréhension de l'architecture de Kubernetes, y compris le “control plane“ et les nœuds de travail. Les participants maîtriseront l'utilisation avancée de kubectl et d'autres outils tels que k9s, popeye et kubent pour identifier, corriger et maintenir les ressources. La gestion avancée des Pods et des services mesh avec Linkerd sera également couverte, ainsi que la planification de la maintenance et le contrôle de la planification des pods.
 
-[En savoir plus sur Kubernetes](/expertises-techniques/kubernetes/)
+[En savoir plus sur Kubernetes](/formations/kubernetes/)

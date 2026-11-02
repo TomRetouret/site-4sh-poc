@@ -203,4 +203,4 @@ La formation Java s’appuie sur des éléments théoriques mais également des 
 
 Nos [formations informatiques](/formations/) Java sont disponibles en présentiel ou à distance
 
-[En savoir plus sur Java](/expertises-techniques/java/)
+[En savoir plus sur Java](/formations/java/)

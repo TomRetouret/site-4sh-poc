@@ -199,4 +199,4 @@ Cette [formation de développement](/formations/develop/) a pour objectif d’ai
 
 Le programme Angular de [4SH](/) combine apports théoriques, démonstrations concrètes et exercices interactifs, avec une approche progressive centrée sur la construction d’une application web, inspirée de cas réels issus de la production.
 
-[En savoir plus sur Angular](/expertises-techniques/angular/)
+[En savoir plus sur Angular](/formations/angular/)

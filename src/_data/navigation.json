@@ -65,9 +65,15 @@
               "icone": "mobile"
             },
             {
+              "label": "Développement sur mesure",
+              "sous_texte": "Des solutions conçues pour vos besoins",
+              "url": "/prestations/developpement-sur-mesure/",
+              "icone": "code"
+            },
+            {
               "label": "Product & design UX / UI",
               "sous_texte": "Des écrans que vos équipes adoptent",
-              "url": "/prestations/product-design/",
+              "url": "/prestations/expertise-produit/",
               "icone": "design"
             },
             {
@@ -75,6 +81,12 @@
               "sous_texte": "Vos outils au service du métier",
               "url": "/prestations/transformation-digitale/",
               "icone": "refonte"
+            },
+            {
+              "label": "Toute l'offre 4SH Build",
+              "sous_texte": "Concevez, développez, faites évoluer",
+              "url": "/prestations/build/",
+              "icone": "graph"
             }
           ]
         },
@@ -103,8 +115,14 @@
             {
               "label": "Audits UX, sécurité & cloud",
               "sous_texte": "Un état des lieux, des actions concrètes",
-              "url": "/prestations/audit-ux/",
+              "url": "/prestations/audits/",
               "icone": "audit"
+            },
+            {
+              "label": "Toute l'offre 4SH Run",
+              "sous_texte": "Hébergez, maintenez, sécurisez",
+              "url": "/prestations/run/",
+              "icone": "graph"
             }
           ]
         }
@@ -298,13 +316,33 @@
       "liens": [
         {
           "label": "Notre démarche",
-          "sous_texte": "Méthode 4D, UX, engagements",
+          "sous_texte": "Méthode 4D",
           "url": "/notre-demarche/"
         },
         {
+          "label": "Démarche UX",
+          "sous_texte": "Une approche centrée utilisateur",
+          "url": "/notre-demarche/conception-ux/"
+        },
+        {
+          "label": "Nos engagements",
+          "sous_texte": "Transparence, qualité, agilité",
+          "url": "/notre-demarche/engagements/"
+        },
+        {
           "label": "Notre entreprise",
-          "sous_texte": "Histoire, équipe, valeurs, agences",
+          "sous_texte": "Histoire, culture, valeurs",
           "url": "/notre-entreprise/"
+        },
+        {
+          "label": "L'équipe 4SH",
+          "sous_texte": "Nos métiers, nous rejoindre",
+          "url": "/notre-entreprise/equipe/"
+        },
+        {
+          "label": "Nos agences",
+          "sous_texte": "Le Haillan, Bordeaux, Capbreton, Paris",
+          "url": "/notre-entreprise/agences/"
         },
         {
           "label": "Le blog",

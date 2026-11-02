@@ -120,4 +120,4 @@ L'expérimentation sur Google Kubernetes Engine complète la théorie générale
 
 Kubernetes offre une flexibilité inégalée pour la gestion des conteneurs, permettant l'automatisation du déploiement, la mise à l'échelle et les opérations des applications conteneurisées. Ce cadre robuste assure que les applications sont disponibles et performantes, même sous des charges variables. En apprenant à configurer et gérer des clusters Kubernetes, les participants seront équipés pour utiliser au mieux cette technologie, réduisant ainsi les coûts opérationnels et augmentant l'efficacité de leurs équipes de développement. Les retours d'expérience fournis pendant la formation sont basés sur des implémentations réelles, garantissant une compréhension pratique et approfondie de Kubernetes dans divers environnements de production.
 
-[En savoir plus sur Kubernetes](/expertises-techniques/kubernetes/)
+[En savoir plus sur Kubernetes](/formations/kubernetes/)

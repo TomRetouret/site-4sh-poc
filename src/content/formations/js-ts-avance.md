@@ -115,4 +115,4 @@ TypeScript, le complément parfait à Javascript, offre un typage statique optio
 
 Cette [formation de développement](/formations/develop/) vise à équiper les participants des compétences avancées pour exceller dans le développement web moderne. La formation JavaScript/Typescript avancé s’appuie sur des éléments théoriques mais également des démonstrations et des travaux pratiques pour assurer une maîtrise complète des concepts avancés de ce langage. Pour ceux désireux d’apprendre les bases de ce langage nous proposons également une [formation JavaScript / TypeScript - Les fondamentaux](/formations/js-ts-fondamental/)
 
-[En savoir plus sur JavaScript](/expertises-techniques/javascript/)
+[En savoir plus sur JavaScript](/formations/js/)

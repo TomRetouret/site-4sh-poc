@@ -175,4 +175,4 @@ Nos formations en développement peuvent être suivies en présentiel ou à dist
 
 Nos [formations informatiques](/formations/) sont disponibles en présentiel ou à distance.
 
-[En savoir plus sur Java](/expertises-techniques/java/)
+[En savoir plus sur Java](/formations/java/)

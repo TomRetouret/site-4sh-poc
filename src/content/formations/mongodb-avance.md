@@ -129,4 +129,4 @@ La formation MongoDB avancé offre une maîtrise approfondie des fonctionnalité
 
 À travers des travaux pratiques et des cas concrets, ils apprennent à configurer des architectures robustes, analyser les plans d’exécution et garantir l’intégrité des données pour des projets exigeants en scalabilité et en fiabilité. Pour les débutants, découvrez également notre [formation MongoDB - Les fondamentaux](/formations/mongodb-fondamental/), idéale pour apprendre les bases de cette technologie incontournable.
 
-[En savoir plus sur MongoDB](/expertises-techniques/mongodb/)
+[En savoir plus sur MongoDB](/formations/mongo/)

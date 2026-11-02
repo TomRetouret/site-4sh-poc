@@ -94,4 +94,4 @@ referencement:
 ---
 MongoDB est une base de données orientée document, éditée par MongoDB Inc. C’est aujourd’hui l’une des bases de données les plus utilisées au monde. L’approche orientée document diffère de l’approche classique des bases de données relationnelles. Cette formation a pour objectif de permettre de découvrir cette technologie, en présentant les concepts et en manipulant les données au travers des opérations de base. La formation s’appuie sur des éléments théoriques essentiels, des travaux pratiques pour manipuler données et des quiz pour s’assurer de la bonne compréhension des points d’apprentissage. Pour les débutants, découvrez également notre [formation MongoDB - Les essentiels](/formations/mongodb-essentiel/), idéale pour apprendre les bases de cette technologie incontournable.
 
-[En savoir plus sur MongoDB](/expertises-techniques/mongodb/)
+[En savoir plus sur MongoDB](/formations/mongo/)

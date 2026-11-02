@@ -65,4 +65,4 @@ Figma est un outil de conception graphique et de prototypage en ligne utilisé p
 
 La formation Figma par [4SH](/) vous apprendra les essentiels de l’outil. Vous découvrirez également les notions de composants, variants et instances mais aussi comment bien organiser vos fichiers Figma. Cette formation Figma est dédiée à la découverte de l'outil. Pour aller plus loin et acquérir les bases de Figma, 4SH recommande de prendre la [formation Figma : les fondamentaux](/formations/figma-fondamental/).
 
-[En savoir plus sur Figma](/expertises-techniques/figma/)
+[En savoir plus sur Figma](/formations/figma/)

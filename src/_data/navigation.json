@@ -338,14 +338,14 @@
               "url": "#"
             }
           ]
-        },
-        {
-          "titre": "Le blog",
-          "url": "https://blog.4sh.fr/",
-          "sous_texte": "Nos articles et retours d'expérience",
-          "liens": []
         }
-      ]
+      ],
+      "bas": {
+        "titre": "Le blog",
+        "texte": "Nos articles et retours d'expérience.",
+        "cta_label": "Lire le blog",
+        "cta_url": "https://blog.4sh.fr/"
+      }
     }
   ],
   "actions": [

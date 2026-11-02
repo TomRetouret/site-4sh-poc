@@ -35,7 +35,7 @@
       {% elif item.type == "megamenu" %}
       <li class="a-panneau">
         <a href="#"{% if item.label == rubrique %} class="actif" aria-current="true"{% endif %}>{{ item.label }}</a>
-        <div class="deroulant menu-services{% if item.variant %} {{ item.variant }}{% endif %}" aria-label="{{ item.label }}">
+        <div class="deroulant menu-services{% if item.variant %} {{ item.variant }}{% endif %}{% if not item.promo %} sans-promo{% endif %}" aria-label="{{ item.label }}" style="--nb-col:{{ item.colonnes | length }}">
           {% if item.promo %}
           <a class="promo-services" href="{{ item.promo.url or '#' }}">
             <div class="promo-txt">
@@ -49,10 +49,16 @@
           {% endif %}
           {% for col in item.colonnes %}
           <div class="col-svc{% if col.classe %} {{ col.classe }}{% endif %}">
+            {% if col.url is defined %}
+            <a class="col-mere" href="{{ col.url or '#' }}"><span class="deroulant-titre">{{ col.titre }}</span>{% if col.sous_texte %}<small>{{ col.sous_texte }}</small>{% endif %}</a>
+            {% else %}
             <p class="deroulant-titre">{{ col.titre }}</p>
+            {% endif %}
+            {% if col.liens and col.liens.length %}
             <ul class="svc-list">
               {% for l in col.liens %}<li><a class="svc-item" href="{{ l.url or '#' }}">{% if l.image or l.icone %}<span class="svc-ico">{% if l.image %}<img src="{{ l.image }}" alt="" width="24" height="24">{% else %}{{ navicone(l.icone) }}{% endif %}</span>{% endif %}<span><b>{{ l.label }}</b>{% if l.sous_texte %}<small>{{ l.sous_texte }}</small>{% endif %}</span></a></li>{% endfor %}
             </ul>
+            {% endif %}
           </div>
           {% endfor %}
           {% if item.bas %}

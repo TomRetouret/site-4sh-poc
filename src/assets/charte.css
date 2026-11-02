@@ -672,3 +672,38 @@ html.mv .mv-bloc{clip-path:none!important}
    Dans un intertitre, il garde la graisse du titre. */
 em:not(.accent){font-style:normal;font-weight:600}
 :is(h1,h2,h3,h4,h5,h6) em:not(.accent){font-weight:inherit}
+
+/* ============================================================
+   Méga-menus · arborescence validée avec le design (nov. 2026)
+   Chaque colonne s'ouvre sur sa page mère (.col-mere : titre + phrase),
+   les sous-pages suivent en liste compacte, sans texte secondaire.
+   Panneaux sans encart promo : autant de colonnes égales que de rubriques (--nb-col).
+   ============================================================ */
+.menu-services .col-mere{display:block;position:relative;padding:12px 40px 14px 12px;margin:0 -12px 10px;border-bottom:1px solid var(--bordure);color:var(--encre);text-decoration:none}
+.menu-services .col-mere .deroulant-titre{font-family:var(--titre);font-weight:800;font-size:17px;line-height:1.25;letter-spacing:0;text-transform:none;color:var(--encre)!important;margin:0}
+.menu-services .col-mere small{display:block;margin-top:4px;font-family:var(--corps);font-size:13.5px;line-height:1.4;color:var(--texte-2)}
+.menu-services .col-mere::after{content:"→";position:absolute;right:12px;top:12px;font-family:var(--titre);font-weight:700;font-size:17px;line-height:1.25;color:var(--muted)}
+.menu-services .col-mere:hover,.menu-services .col-mere:focus-visible{background:var(--fond-doux)}
+.menu-services .col-mere:hover .deroulant-titre,.menu-services .col-mere:hover::after{color:var(--rouge)!important}
+.menu > li:first-child .menu-services .col-mere .deroulant-titre::after{font-size:13px;font-weight:700}
+.menu-services .col-mere .deroulant-titre::before{align-self:center}
+.menu-services .col-ia{border-right:0!important;padding-right:0!important}
+.menu-services .svc-list{gap:0!important}
+.menu-services .svc-item{padding:9px 12px!important;min-height:40px;align-items:center}
+.menu-services .svc-item b{font-size:15px;font-weight:600;line-height:1.3}
+.menu-services .svc-item[href="#"] b{color:var(--texte-2)}
+@media (min-width:1025px){
+  .a-panneau .deroulant.menu-services.sans-promo{grid-template-columns:repeat(var(--nb-col,3),minmax(0,1fr))!important;gap:8px 40px!important;align-items:start}
+  .menu-services.sans-promo .col-svc{grid-row:1;align-self:stretch}
+  .menu-services.sans-promo .col-svc + .col-svc{border-left:1px solid var(--bordure);padding-left:28px;margin-left:-20px}
+  .menu-services.sans-promo .services-bas{grid-column:1 / -1;grid-row:2;margin-top:24px}
+}
+@media (max-width:1024px){
+  .menu-services .col-mere{margin:4px 0 4px;padding:12px 36px 12px 8px}
+  .menu-services .col-mere::after{right:8px}
+  .menu-services .col-svc + .col-svc{margin-top:14px}
+  /* Accordéon : le panneau fermé ne laisse rien dépasser (le padding de la couche charte l'emportait sur max-height:0) */
+  .a-panneau .deroulant.menu-services{padding:0!important;border:0!important}
+  .menu>li.ouvert>.deroulant.menu-services{padding:4px 0 14px!important}
+}
+.menu-services .col-mere ~ .svc-list small{display:none}

@@ -243,6 +243,8 @@
                     summary: "{{fields.titre}}"
                     fields:
                       - { label: Titre de la colonne, name: titre, widget: string, required: true }
+                      - { label: Page mère (destination du titre), name: url, widget: string, required: false, hint: "Chaque rubrique s'ouvre sur sa page. Mettez # tant que la page n'existe pas. Laissez vide pour un simple intertitre." }
+                      - { label: Phrase sous le titre, name: sous_texte, widget: string, required: false, hint: "Une ligne courte, affichée sous le titre de la colonne." }
                       - label: Couleur de la colonne
                         name: classe
                         widget: select
@@ -255,11 +257,11 @@
                       - label: Liens
                         name: liens
                         widget: list
-                        required: true
+                        required: false
                         summary: "{{fields.label}}"
                         fields:
                           - { label: Texte du lien, name: label, widget: string, required: true }
-                          - { label: Petit texte dessous, name: sous_texte, widget: string, required: false }
+                          - { label: Petit texte dessous, name: sous_texte, widget: string, required: false, hint: "Non affiché quand la colonne a une page mère." }
                           - { label: Destination, name: url, widget: string, required: true }
                           - label: Icône
                             name: icone

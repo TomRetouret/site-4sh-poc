@@ -3,10 +3,23 @@
 {%- if lang == "en" -%}{% set navigation = en.navigation %}{% set site = en.site %}{% set seo = en.seo %}{%- endif -%}
 {%- set offre = offre or ("build" if famille_label == "Concevoir & développer" else ("run" if famille_label == "Faire vivre & auditer" else ("learning" if bodyClass == "learning" else ""))) -%}
 {%- set u = page.url or "" -%}
-{%- set rubrique = "" -%}
-{%- if u.startsWith("/prestations/") or u.startsWith("/intelligence-artificielle") -%}{% set rubrique = "Prestations & IA" %}
+{#- Rubrique active (losange du menu) : d'abord l'entrée du menu qui contient l'adresse exacte de la page
+    (lien, page mère de colonne ou sous-lien), sinon par préfixe d'adresse. -#}
+{%- set rubriques_trouvees = [] -%}
+{%- for item in navigation.items -%}
+  {%- set adresses = [item.url] -%}
+  {%- for l in item.liens or [] %}{% set _x = adresses.push(l.url) %}{% endfor -%}
+  {%- for col in item.colonnes or [] -%}
+    {%- set _x = adresses.push(col.url) -%}
+    {%- for l in col.liens or [] %}{% set _x = adresses.push(l.url) %}{% endfor -%}
+  {%- endfor -%}
+  {%- if u in adresses %}{% set _x = rubriques_trouvees.push(item.label) %}{% endif -%}
+{%- endfor -%}
+{%- set rubrique = rubriques_trouvees[0] or "" -%}
+{%- if rubrique -%}
+{%- elif u.startsWith("/prestations/") or u.startsWith("/intelligence-artificielle") -%}{% set rubrique = "Prestations & IA" %}
 {%- elif u.startsWith("/secteurs/") -%}{% set rubrique = "Secteurs" %}
-{%- elif u.startsWith("/expertises-techniques") -%}{% set rubrique = "Technologies" %}
+{%- elif u.startsWith("/expertises-techniques") -%}{% set rubrique = "Expertises" %}
 {%- elif u.startsWith("/references/") -%}{% set rubrique = "Réalisations" %}
 {%- elif u.startsWith("/notre-") -%}{% set rubrique = "L'agence" %}
 {%- elif u.startsWith("/formations/") -%}{% set rubrique = "Formations" %}

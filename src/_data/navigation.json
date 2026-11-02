@@ -7,122 +7,76 @@
       "colonnes": [
         {
           "titre": "Concevoir avec l'IA",
+          "url": "/intelligence-artificielle/",
+          "sous_texte": "L'IA là où elle sert vraiment",
           "classe": "col-ia",
           "liens": [
             {
               "label": "Notre approche de l'IA",
-              "sous_texte": "Par où commencer",
-              "url": "/intelligence-artificielle/",
-              "icone": "graph"
-            }
-          ],
-          "_liens_a_venir": [
-            {
-              "label": "Logiciel métier avec IA",
-              "sous_texte": "L'IA là où elle sert vraiment",
-              "url": "/intelligence-artificielle/logiciel-metier-ia/",
-              "icone": "hub"
+              "url": "#"
             },
             {
-              "label": "Application IA sur mesure",
-              "sous_texte": "Web, mobile, SaaS",
-              "url": "/intelligence-artificielle/developpement-application-ia/",
-              "icone": "code"
+              "label": "Dev app IA",
+              "url": "#"
             },
             {
-              "label": "Agent IA métier",
-              "sous_texte": "Autonome, jamais sans contrôle",
-              "url": "/intelligence-artificielle/agent-ia/",
-              "icone": "reseau"
-            },
-            {
-              "label": "Recherche documentaire & RAG",
-              "sous_texte": "Vos documents, sans invention",
-              "url": "/intelligence-artificielle/rag-recherche-documentaire/",
-              "icone": "audit"
+              "label": "Concevoir un logiciel métier avec IA",
+              "url": "#"
             }
           ]
         },
         {
           "titre": "Concevoir & développer",
+          "url": "/prestations/build/",
+          "sous_texte": "Concevez, développez, faites évoluer",
           "liens": [
             {
               "label": "Logiciel métier sur mesure",
-              "sous_texte": "Votre outil, vos processus",
-              "url": "/prestations/logiciel-metier/",
-              "icone": "ecran"
+              "url": "/prestations/logiciel-metier/"
             },
             {
-              "label": "Application SaaS",
-              "sous_texte": "Plateforme web évolutive",
-              "url": "/prestations/application-saas/",
-              "icone": "cloud"
+              "label": "App SaaS",
+              "url": "/prestations/application-saas/"
             },
             {
-              "label": "Application mobile",
-              "sous_texte": "iOS, Android, cross-platform",
-              "url": "/prestations/application-mobile/",
-              "icone": "mobile"
+              "label": "App mobile",
+              "url": "/prestations/application-mobile/"
             },
             {
-              "label": "Développement sur mesure",
-              "sous_texte": "Des solutions conçues pour vos besoins",
-              "url": "/prestations/developpement-sur-mesure/",
-              "icone": "code"
-            },
-            {
-              "label": "Product & design UX / UI",
-              "sous_texte": "Des écrans que vos équipes adoptent",
-              "url": "/prestations/expertise-produit/",
-              "icone": "design"
-            },
-            {
-              "label": "Transformation digitale",
-              "sous_texte": "Vos outils au service du métier",
-              "url": "/prestations/transformation-digitale/",
-              "icone": "refonte"
-            },
-            {
-              "label": "Toute l'offre 4SH Build",
-              "sous_texte": "Concevez, développez, faites évoluer",
-              "url": "/prestations/build/",
-              "icone": "graph"
+              "label": "Dév sur mesure",
+              "url": "/prestations/developpement-sur-mesure/"
             }
           ]
         },
         {
           "titre": "Faire vivre & auditer",
+          "url": "/prestations/run/",
+          "sous_texte": "Hébergez, maintenez, sécurisez",
           "classe": "col-run",
           "liens": [
             {
+              "label": "Maintenance évolutive",
+              "url": "/prestations/maintenance-evolutive/"
+            },
+            {
+              "label": "Maintenance corrective",
+              "url": "/prestations/maintenance-corrective/"
+            },
+            {
               "label": "Hébergement & MCO",
-              "sous_texte": "Maintien en condition opérationnelle",
-              "url": "/prestations/hebergement/",
-              "icone": "serveurs"
+              "url": "/prestations/hebergement/"
             },
             {
               "label": "Sécurité",
-              "sous_texte": "Protection et conformité",
-              "url": "/prestations/securite/",
-              "icone": "bouclier"
+              "url": "/prestations/securite/"
+            },
+            {
+              "label": "Audits",
+              "url": "/prestations/audits/"
             },
             {
               "label": "Data",
-              "sous_texte": "Pipelines, pilotage, valeur",
-              "url": "/prestations/data/",
-              "icone": "data"
-            },
-            {
-              "label": "Audits UX, sécurité & cloud",
-              "sous_texte": "Un état des lieux, des actions concrètes",
-              "url": "/prestations/audits/",
-              "icone": "audit"
-            },
-            {
-              "label": "Toute l'offre 4SH Run",
-              "sous_texte": "Hébergez, maintenez, sécurisez",
-              "url": "/prestations/run/",
-              "icone": "graph"
+              "url": "/prestations/data/"
             }
           ]
         }
@@ -138,96 +92,97 @@
       "type": "megamenu",
       "label": "Secteurs",
       "variant": "menu-secteurs",
-      "promo": {
-        "titre": "Votre métier a ses *règles*. Nos logiciels aussi.",
-        "texte": "On connaît déjà le vocabulaire, les contraintes et les enjeux de votre secteur.",
-        "lien_libelle": "Voir le cas EDF business service",
-        "url": "/references/izivia-portail/",
-        "kpi": {
-          "valeur": "200 000",
-          "label": "bornes supervisées, EDF business service"
-        }
-      },
       "colonnes": [
         {
           "titre": "Votre secteur",
+          "url": "#",
+          "sous_texte": "Votre métier a ses règles, nos logiciels aussi",
           "liens": [
             {
               "label": "Logistique & supply chain",
-              "sous_texte": "Traçabilité, flux, entrepôts",
-              "url": "/secteurs/logistique/",
-              "icone": "logistique"
+              "url": "/secteurs/logistique/"
             },
             {
               "label": "Électromobilité",
-              "sous_texte": "Recharge, supervision, mobilité",
-              "url": "/secteurs/electromobilite/",
-              "icone": "eclair"
+              "url": "/secteurs/electromobilite/"
             },
             {
               "label": "Assurance",
-              "sous_texte": "Souscription, gestion, sinistre",
-              "url": "/secteurs/assurance/",
-              "icone": "bouclier"
+              "url": "/secteurs/assurance/"
             },
             {
-              "label": "Édition de logiciel",
-              "sous_texte": "Renfort produit, outillage réseau",
-              "url": "/secteurs/edition-de-logiciel/",
-              "icone": "editeur"
+              "label": "Industrie",
+              "url": "#"
             },
             {
-              "label": "Fournisseur de services technologiques",
-              "sous_texte": "Plateformes et services connectés",
-              "url": "/secteurs/fournisseur-de-services-technologiques/",
-              "icone": "hub"
+              "label": "Santé",
+              "url": "#"
             },
             {
-              "label": "Franchise",
-              "sous_texte": "Réseau, pilotage, cohérence",
-              "url": "/secteurs/franchise/",
-              "icone": "editeur"
+              "label": "Finance",
+              "url": "#"
+            },
+            {
+              "label": "Environnement",
+              "url": "#"
             }
           ]
         },
         {
-          "titre": "Nos solutions 4SH",
+          "titre": "Nos solutions",
+          "url": "#",
+          "sous_texte": "Nos produits et plateformes",
           "liens": [
             {
               "label": "Celebrads",
-              "sous_texte": "Communication et campagnes",
-              "url": "/secteurs/celebrads/",
-              "icone": "megaphone"
+              "url": "/secteurs/celebrads/"
             },
             {
               "label": "Hubit",
-              "sous_texte": "Plateforme de services connectés",
-              "url": "/secteurs/hubit/",
-              "icone": "hub"
+              "url": "/secteurs/hubit/"
             },
             {
               "label": "4PM / 4Track",
-              "sous_texte": "Pilotage et suivi de projet",
-              "url": "/secteurs/4pm/",
-              "icone": "graph"
+              "url": "/secteurs/4pm/"
             },
             {
               "label": "Simulateur de bornes",
-              "sous_texte": "Dimensionner la recharge",
-              "url": "/secteurs/simulateur-de-bornes/",
-              "icone": "batterie"
+              "url": "/secteurs/simulateur-de-bornes/"
             },
             {
               "label": "4Track",
-              "sous_texte": "Suivi des temps et rentabilité",
-              "url": "/secteurs/4track/",
-              "icone": "graph"
+              "url": "/secteurs/4track/"
             },
             {
               "label": "4Desk",
-              "sous_texte": "Ticketing et support client",
-              "url": "/secteurs/4desk/",
-              "icone": "audit"
+              "url": "/secteurs/4desk/"
+            }
+          ]
+        },
+        {
+          "titre": "Vos logiciels",
+          "url": "#",
+          "sous_texte": "Intégrer et faire évoluer vos outils",
+          "liens": [
+            {
+              "label": "ERP",
+              "url": "#"
+            },
+            {
+              "label": "TMS",
+              "url": "#"
+            },
+            {
+              "label": "CRM",
+              "url": "#"
+            },
+            {
+              "label": "EDI",
+              "url": "#"
+            },
+            {
+              "label": "LMS",
+              "url": "#"
             }
           ]
         }
@@ -241,58 +196,75 @@
     },
     {
       "type": "megamenu",
-      "label": "Technologies",
+      "label": "Expertises",
       "variant": "",
-      "promo": {
-        "titre": "Les bonnes *technos*, pour les bonnes raisons",
-        "texte": "On choisit chaque technologie selon votre projet, jamais par habitude.",
-        "lien_libelle": "Toutes nos expertises techniques",
-        "url": "/expertises-techniques/"
-      },
       "colonnes": [
         {
-          "titre": "Langages & back",
+          "titre": "Technologies",
+          "url": "/expertises-techniques/",
+          "sous_texte": "Langages, outils, cloud, data",
           "liens": [
             {
               "label": "Java",
-              "sous_texte": "Robuste, éprouvé, pérenne",
-              "url": "/expertises-techniques/java/",
-              "icone": "code"
+              "url": "/expertises-techniques/java/"
             },
             {
               "label": "Kotlin",
-              "sous_texte": "Moderne, concis, sûr",
-              "url": "/expertises-techniques/kotlin/",
-              "icone": "code"
+              "url": "/expertises-techniques/kotlin/"
             },
             {
               "label": "Kubernetes",
-              "sous_texte": "Déploiement scalable",
-              "url": "/expertises-techniques/kubernetes/",
-              "icone": "cloud"
+              "url": "/expertises-techniques/kubernetes/"
+            },
+            {
+              "label": "Angular",
+              "url": "/expertises-techniques/angular/"
+            },
+            {
+              "label": "React Native",
+              "url": "/expertises-techniques/react-native/"
             }
           ]
         },
         {
-          "titre": "Front & mobile",
+          "titre": "Product Management",
+          "url": "/prestations/product-management/",
+          "sous_texte": "Stratégie, cadrage, pilotage produit",
           "liens": [
             {
-              "label": "Angular",
-              "sous_texte": "Interfaces web dynamiques",
-              "url": "/expertises-techniques/angular/",
-              "icone": "code"
+              "label": "Démarche",
+              "url": "/notre-demarche/"
             },
             {
-              "label": "React Native",
-              "sous_texte": "Mobile iOS et Android",
-              "url": "/expertises-techniques/react-native/",
-              "icone": "mobile"
+              "label": "Design strategy / Transformation digitale",
+              "url": "/prestations/digital-strategy/"
+            }
+          ]
+        },
+        {
+          "titre": "Product Design",
+          "url": "/prestations/product-design/",
+          "sous_texte": "UX, UI et co-conception",
+          "liens": [
+            {
+              "label": "Démarche",
+              "url": "/notre-demarche/conception-ux/"
             },
             {
-              "label": "Toutes nos technologies",
-              "sous_texte": "Langages, outils, cloud, data",
-              "url": "/expertises-techniques/",
-              "icone": "graph"
+              "label": "User experience design",
+              "url": "/prestations/ux-design/"
+            },
+            {
+              "label": "Design system",
+              "url": "#"
+            },
+            {
+              "label": "Interface design",
+              "url": "/prestations/ui-design/"
+            },
+            {
+              "label": "Motion design",
+              "url": "#"
             }
           ]
         }
@@ -310,44 +282,68 @@
       "url": "/references/"
     },
     {
-      "type": "menu_simple",
+      "type": "megamenu",
       "label": "L'agence",
-      "titre_col": "La méthode & l'agence",
-      "liens": [
+      "variant": "menu-agence",
+      "colonnes": [
         {
-          "label": "Notre démarche",
-          "sous_texte": "Méthode 4D",
-          "url": "/notre-demarche/"
-        },
-        {
-          "label": "Démarche UX",
-          "sous_texte": "Une approche centrée utilisateur",
-          "url": "/notre-demarche/conception-ux/"
-        },
-        {
-          "label": "Nos engagements",
-          "sous_texte": "Transparence, qualité, agilité",
-          "url": "/notre-demarche/engagements/"
-        },
-        {
-          "label": "Notre entreprise",
+          "titre": "À propos",
+          "url": "/notre-entreprise/",
           "sous_texte": "Histoire, culture, valeurs",
-          "url": "/notre-entreprise/"
+          "liens": [
+            {
+              "label": "Notre vision",
+              "url": "#"
+            },
+            {
+              "label": "Notre équipe",
+              "url": "/notre-entreprise/equipe/"
+            },
+            {
+              "label": "Nos agences",
+              "url": "/notre-entreprise/agences/"
+            },
+            {
+              "label": "Nos engagements",
+              "url": "/notre-demarche/engagements/"
+            }
+          ]
         },
         {
-          "label": "L'équipe 4SH",
-          "sous_texte": "Nos métiers, nous rejoindre",
-          "url": "/notre-entreprise/equipe/"
+          "titre": "Certifications",
+          "url": "#",
+          "sous_texte": "Nos labels et certifications",
+          "liens": [
+            {
+              "label": "Accessibilité",
+              "url": "#"
+            },
+            {
+              "label": "Qualiopi",
+              "url": "#"
+            }
+          ]
         },
         {
-          "label": "Nos agences",
-          "sous_texte": "Le Haillan, Bordeaux, Capbreton, Paris",
-          "url": "/notre-entreprise/agences/"
+          "titre": "Charte RSE",
+          "url": "#",
+          "sous_texte": "Notre démarche responsable",
+          "liens": [
+            {
+              "label": "Démarche RSE",
+              "url": "#"
+            },
+            {
+              "label": "Nos actions en interne",
+              "url": "#"
+            }
+          ]
         },
         {
-          "label": "Le blog",
+          "titre": "Le blog",
+          "url": "https://blog.4sh.fr/",
           "sous_texte": "Nos articles et retours d'expérience",
-          "url": "https://blog.4sh.fr/"
+          "liens": []
         }
       ]
     }
@@ -364,5 +360,5 @@
       "style": "btn btn-primary btn-sm"
     }
   ],
-  "_note": "_liens_a_venir : liens du cocon IA dont la page n'est pas encore rédigée. Les remettre dans 'liens' au fur et à mesure de la publication (vague 1 du cocon sémantique IA)."
+  "_note": "Arborescence validée avec le design (Confluence 4SHWEB « Nouvelle Arborescence », nov. 2026). Chaque colonne pointe vers sa page mère (champ url) ; « # » = page pas encore créée, à remplacer à sa publication."
 }

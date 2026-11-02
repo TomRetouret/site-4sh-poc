@@ -711,3 +711,6 @@ em:not(.accent){font-style:normal;font-weight:600}
 .menu-services .services-bas{padding:20px 24px!important;align-items:center!important}
 .menu-services .services-bas b{margin-bottom:2px}
 @media (max-width:1024px){.menu-services .services-bas{padding:16px!important;align-items:flex-start!important}}
+/* Pied de page : 4 colonnes de liens alignées sur le menu (Prestations & IA, Secteurs & expertises, Formations, L'agence) */
+@media (min-width:1200px){.footer-grille{grid-template-columns:1.3fr repeat(4,minmax(0,1fr));gap:32px}}
+@media (min-width:961px) and (max-width:1199px){.footer-grille{grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}.footer-grille>:first-child{grid-column:1 / -1}}

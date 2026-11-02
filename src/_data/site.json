@@ -93,10 +93,22 @@
   },
   "footer_colonnes": [
     {
-      "titre": "Services",
+      "titre": "Prestations & IA",
       "liens": [
         {
-          "label": "Logiciel métier",
+          "label": "Concevoir avec l'IA",
+          "url": "/intelligence-artificielle/"
+        },
+        {
+          "label": "Concevoir & développer",
+          "url": "/prestations/build/"
+        },
+        {
+          "label": "Faire vivre & auditer",
+          "url": "/prestations/run/"
+        },
+        {
+          "label": "Logiciel métier sur mesure",
           "url": "/prestations/logiciel-metier/"
         },
         {
@@ -108,12 +120,37 @@
           "url": "/prestations/application-mobile/"
         },
         {
-          "label": "Hébergement & MCO",
-          "url": "/prestations/hebergement/"
+          "label": "Maintenance évolutive",
+          "url": "/prestations/maintenance-evolutive/"
+        }
+      ]
+    },
+    {
+      "titre": "Secteurs & expertises",
+      "liens": [
+        {
+          "label": "Logistique & supply chain",
+          "url": "/secteurs/logistique/"
         },
         {
-          "label": "Audits",
-          "url": "/prestations/audit-ux/"
+          "label": "Électromobilité",
+          "url": "/secteurs/electromobilite/"
+        },
+        {
+          "label": "Assurance",
+          "url": "/secteurs/assurance/"
+        },
+        {
+          "label": "Technologies",
+          "url": "/expertises-techniques/"
+        },
+        {
+          "label": "Product Management",
+          "url": "/prestations/product-management/"
+        },
+        {
+          "label": "Product Design",
+          "url": "/prestations/product-design/"
         }
       ]
     },
@@ -150,16 +187,24 @@
       "titre": "L'agence",
       "liens": [
         {
-          "label": "Comment se passe un projet",
-          "url": "/notre-demarche/"
-        },
-        {
-          "label": "Références",
-          "url": "/references/"
-        },
-        {
-          "label": "L'équipe",
+          "label": "À propos",
           "url": "/notre-entreprise/"
+        },
+        {
+          "label": "Notre équipe",
+          "url": "/notre-entreprise/equipe/"
+        },
+        {
+          "label": "Nos agences",
+          "url": "/notre-entreprise/agences/"
+        },
+        {
+          "label": "Nos engagements",
+          "url": "/notre-demarche/engagements/"
+        },
+        {
+          "label": "Réalisations",
+          "url": "/references/"
         },
         {
           "label": "Blog",

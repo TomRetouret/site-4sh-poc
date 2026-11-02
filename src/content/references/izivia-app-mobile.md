@@ -6,7 +6,7 @@ sous_titre: |-
   EDF business services propose 200 000 bornes de recharge pour environ 766 000 charges en 1 an.
 client: EDF business services
 type_projet: Solution de recharges électriques
-logo: https://www.4sh.fr/assets/img/png/references/izivia/logo-izivia.png
+logo: /uploads/ancien-site/assets/img/png/references/edfbs/logo-edfbs.png
 fiche_pdf: https://drive.google.com/file/d/1I1iP5QeRR2FFx2iDh2c924QmoDDV4pOz/view
 etude:
   complements: |-
@@ -78,17 +78,17 @@ expertises:
   - 4SH Facility
   - 4SH Digital
   - 4SH UX
-image: https://www.4sh.fr/assets/img/png/references/izivia/ref-izivia-mobile.png
+image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile.png
 image_alt: EDF business service - App Mobile
 image_decorative: false
 galerie:
-  - image: https://www.4sh.fr/assets/img/png/references/izivia/ref-izivia-mobile-1.png
+  - image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile-1.png
     alt: EDF business service - App Mobile, visuel 1
     decorative: false
-  - image: https://www.4sh.fr/assets/img/png/references/izivia/ref-izivia-mobile-2.png
+  - image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile-slide-2.png
     alt: EDF business service - App Mobile, visuel 2
     decorative: false
-  - image: https://www.4sh.fr/assets/img/png/references/izivia/ref-izivia-mobile-3.png
+  - image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-mobile-slide-3.png
     alt: EDF business service - App Mobile, visuel 3
     decorative: false
 resume: Solution de promotion et commercialisation des solutions de recharges électriques

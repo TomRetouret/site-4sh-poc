@@ -3,7 +3,7 @@ titre: EDF business services - Professionnel
 h1: Professionnel
 sous_titre: Application sous forme de portail professionnel pour la gestion de parc de voitures électriques
 client: EDF business services
-logo: https://www.4sh.fr/assets/img/png/references/izivia/logo-izivia.png
+logo: /uploads/ancien-site/assets/img/png/references/edfbs/logo-edfbs.png
 fiche_pdf: https://drive.google.com/file/d/1l0Ds6ZXikNIhebY6Vrk14OuHi2fmtI4j/view
 maj: "2022-06-20"
 etude:
@@ -56,17 +56,17 @@ expertises:
   - 4SH Facility
   - 4SH Digital
   - 4SH UX
-image: https://www.4sh.fr/assets/img/png/references/izivia/ref-izivia-portail.png
+image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-portail.png
 image_alt: EDF business service - Professionnel
 image_decorative: false
 galerie:
-  - image: https://www.4sh.fr/assets/img/png/references/izivia/ref-izivia-1.png
+  - image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-1.png
     alt: EDF business service - Professionnel, visuel 1
     decorative: false
-  - image: https://www.4sh.fr/assets/img/png/references/izivia/ref-izivia-2.png
+  - image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-2.png
     alt: EDF business service - Professionnel, visuel 2
     decorative: false
-  - image: https://www.4sh.fr/assets/img/png/references/izivia/ref-izivia-3.png
+  - image: /uploads/ancien-site/assets/img/png/references/edfbs/ref-edfbs-3.png
     alt: EDF business service - Professionnel, visuel 3
     decorative: false
 resume: Application sous forme de portail professionnel pour la gestion de parc de voitures électriques

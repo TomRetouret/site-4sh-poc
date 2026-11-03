@@ -553,3 +553,55 @@
           - { label: Description par défaut, name: description_defaut, widget: text, required: true, hint: "Pour une page sans description SEO propre. 150 à 160 caractères conseillés." }
           - { label: Image de partage sur les réseaux sociaux, name: og_image, widget: image, required: false, choose_url: true, hint: "Image affichée quand une page est partagée (LinkedIn, X...). 1200 x 630 px conseillés." }
           - { label: Contenu du robots.txt, name: robots_txt, widget: text, required: true, hint: "Règles pour les robots des moteurs. La ligne Sitemap est ajoutée automatiquement." }
+
+      - name: donnees_structurees
+        label: Données structurées (schema.org)
+        file: src/_data/donnees_structurees.json
+        format: json
+        description: "Balisage lu par les moteurs de recherche, invisible sur les pages. Généré automatiquement à chaque construction du site. Les réglages page par page sont dans le groupe « Données structurées » du Référencement de chaque page. Guide : docs/back-office/donnees-structurees.md."
+        fields:
+          - label: Schémas générés sur tout le site
+            name: activer
+            widget: object
+            required: true
+            collapsed: false
+            hint: "Décocher un schéma le retire de toutes les pages."
+            fields:
+              - { label: "Organisation (toutes les pages)", name: organisation, widget: boolean, required: false, default: true }
+              - { label: "Fil d'Ariane (pages qui en affichent un)", name: fil_ariane, widget: boolean, required: false, default: true }
+              - { label: "FAQ (pages qui affichent des questions fréquentes)", name: faq, widget: boolean, required: false, default: true }
+              - { label: "Cours (fiches formation)", name: cours, widget: boolean, required: false, default: true }
+              - { label: "Étude de cas (fiches référence)", name: etudes_de_cas, widget: boolean, required: false, default: true }
+          - label: Organisation
+            name: organisation
+            widget: object
+            required: true
+            collapsed: true
+            hint: "Fiche de l'entreprise déclarée sur toutes les pages."
+            fields:
+              - { label: Type, name: type, widget: select, required: true, default: Organization, options: [{ label: "Organisation (Organization)", value: Organization }, { label: "Prestataire de services (ProfessionalService)", value: ProfessionalService }, { label: "Entreprise locale (LocalBusiness)", value: LocalBusiness }], hint: "Organization convient dans la plupart des cas. À valider avec l'agence SEO." }
+              - { label: Nom, name: nom, widget: string, required: true }
+              - { label: Description courte, name: description, widget: text, required: false, hint: "Une phrase." }
+              - { label: Logo, name: logo, widget: image, required: false, choose_url: true, hint: "Logo carré ou horizontal, au moins 112 px de large." }
+              - { label: Année de création, name: date_creation, widget: string, required: false, pattern: ['^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$', "Année (2007) ou date (2007-05-01)."] }
+              - { label: Téléphone (format international), name: telephone, widget: string, required: false, hint: "Par exemple : +33963286273." }
+              - { label: E-mail de contact, name: email, widget: string, required: false }
+              - label: Adresses
+                name: adresses
+                widget: list
+                required: false
+                summary: "{{fields.ville}} · {{fields.rue}}"
+                fields:
+                  - { label: Rue, name: rue, widget: string, required: false }
+                  - { label: Code postal, name: code_postal, widget: string, required: false }
+                  - { label: Ville, name: ville, widget: string, required: true }
+                  - { label: Pays (code ISO), name: pays, widget: string, required: false, default: FR }
+              - { label: "Réseaux sociaux et profils (adresses)", name: reseaux, widget: list, required: false, hint: "Une adresse par ligne (LinkedIn, YouTube...). Déclarées comme profils officiels de l'entreprise." }
+          - label: Formations
+            name: formations
+            widget: object
+            required: true
+            collapsed: true
+            fields:
+              - { label: Modalités des cours, name: modes, widget: select, multiple: true, required: true, default: [Onsite, Online], options: [{ label: "Présentiel (Onsite)", value: Onsite }, { label: "À distance (Online)", value: Online }, { label: "Mixte (Blended)", value: Blended }] }
+              - { label: Devise des prix, name: devise, widget: string, required: true, default: EUR }

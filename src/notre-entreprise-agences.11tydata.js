@@ -3,6 +3,7 @@
 module.exports = {
   eleventyComputed: {
     title: (data) => data.contenus.fr.nos_agences.seo.meta_title,
-    description: (data) => data.contenus.fr.nos_agences.seo.meta_description
+    description: (data) => data.contenus.fr.nos_agences.seo.meta_description,
+    donnees_structurees_page: (data) => (data.contenus.fr.nos_agences.seo || {}).donnees_structurees
   }
 };

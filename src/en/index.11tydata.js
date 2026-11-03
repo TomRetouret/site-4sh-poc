@@ -2,6 +2,7 @@
 module.exports = {
   eleventyComputed: {
     title: (data) => data.contenus.en.accueil.seo.meta_title,
-    description: (data) => data.contenus.en.accueil.seo.meta_description
+    description: (data) => data.contenus.en.accueil.seo.meta_description,
+    donnees_structurees_page: (data) => (data.contenus.en.accueil.seo || {}).donnees_structurees
   }
 };

@@ -51,9 +51,13 @@
 <link rel="preload" href="/assets/polices/asap-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/polices/manrope-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/polices.css">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"4SH","url":"https://www.4sh.fr/","foundingDate":"2007","address":[{"@type":"PostalAddress","addressLocality":"Le Haillan","postalCode":"33185"},{"@type":"PostalAddress","addressLocality":"Capbreton","postalCode":"40130"},{"@type":"PostalAddress","addressLocality":"Paris","postalCode":"75008"}],"telephone":"+33963286273"}
-</script>
+{#- Données structurées (schema.org) : filtre donneesStructurees (eleventy/donnees-structurees.js),
+    réglages globaux dans src/_data/donnees_structurees.json, réglages de page dans le groupe
+    « Données structurées » du Référencement (referencement.donnees_structurees ou seo.donnees_structurees,
+    exposé par les .11tydata.js sous donnees_structurees_page). Les JSON-LD écrits dans le corps de page
+    sont retirés (filtre sansJsonLd) : tout est regroupé ici. Doc : docs/back-office/donnees-structurees.md -#}
+{%- set dsPage = (referencement.donnees_structurees if (referencement and referencement.donnees_structurees)) or donnees_structurees_page or {} %}
+{{ content | donneesStructurees({ url: page.url, lang: lang or 'fr', base: seo.url, reglages: donnees_structurees, page: dsPage, description: description, donnees: { entete: entete, inscription: inscription, chiffres: chiffres, titre: titre, h1: h1, sous_titre: sous_titre, resume: resume, image: image, logo: logo, client: client, maj: maj } }) | safe }}
 <link rel="stylesheet" href="/assets/styles.css">
 {% if learningStyles %}<link rel="stylesheet" href="/assets/learning.css">{% endif %}
 {% if catalogueStyles %}<link rel="stylesheet" href="/assets/catalogue.css">{% endif %}
@@ -67,7 +71,7 @@
 {{ en_tete(navigation, rubrique, lang, altUrl, page.url) }}
 {% endif %}
 
-{{ content | safe }}
+{{ content | sansJsonLd | safe }}
 
 {{ pied_de_page(site, page.url) }}
 

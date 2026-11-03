@@ -8,7 +8,7 @@ permalink: "/formations/{{ page.fileSlug }}/"
 <!-- HERO DÉTAIL + CARTE INSCRIPTION (colonne latérale sticky sur tout le scroll) -->
 <div class="hero-detail">
   <div class="container">
-    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">{{ libelles.commun.fil_ariane_accueil or "Accueil" }}</a> › <a href="/formations/">{{ libelles.formation.fil_parent or "Formations" }}</a> › <a href="/formations/">{{ categorie }}</a> › {{ libelles.formation.prefixe_titre or "Formation" }} {{ titre }}{% if sous_titre %} {{ sous_titre }}{% endif %}</nav>
+    <nav class="fil-ariane" aria-label="Fil d'Ariane"><a href="/">{{ libelles.commun.fil_ariane_accueil or "Accueil" }}</a> › <a href="/formations/">{{ libelles.formation.fil_parent or "Formations" }}</a> › <a href="/formations/{{ categorie | lower }}/">{{ categorie }}</a> › {{ libelles.formation.prefixe_titre or "Formation" }} {{ titre }}{% if sous_titre %} {{ sous_titre }}{% endif %}</nav>
 
     <div class="detail-tete">
       <span class="eyebrow">{{ libelles.formation.eyebrow }}{{ categorie }}</span>

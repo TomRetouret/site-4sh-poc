@@ -226,3 +226,17 @@
           - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « Formation <nom> - 4SH »." }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'accroche est reprise." }
           - { label: "Afficher cette page dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
+          # Groupe « Données structurées », défini ici (premier morceau assemblé) et réutilisé par alias
+          # (*f_donnees_structurees) dans les autres collections. Doc : docs/back-office/donnees-structurees.md
+          - &f_donnees_structurees
+            label: "Données structurées (schema.org)"
+            name: donnees_structurees
+            widget: object
+            required: false
+            collapsed: true
+            hint: "Balisage lu par les moteurs de recherche, invisible sur la page. Tout est généré automatiquement (organisation, fil d'Ariane, FAQ, cours, étude de cas) : ne toucher qu'en cas de besoin. Guide : docs/back-office/donnees-structurees.md."
+            fields:
+              - { label: "FAQ : générer le schéma des questions fréquentes", name: faq, widget: boolean, required: false, default: true, hint: "Décocher pour ne pas déclarer la FAQ de cette page aux moteurs de recherche (elle reste affichée)." }
+              - { label: "Fil d'Ariane : générer le schéma", name: fil_ariane, widget: boolean, required: false, default: true, hint: "Décrit le chemin Accueil › ... de la page." }
+              - { label: "Schéma propre à la page (cours pour une formation, étude de cas pour une référence)", name: schema_page, widget: boolean, required: false, default: true, hint: "Calculé à partir des champs de la fiche (prix, sessions, note, client...). Sans effet sur les autres pages." }
+              - { label: "JSON-LD personnalisé (réservé à l'agence SEO)", name: json_ld, widget: text, required: false, hint: "Un objet JSON ou une liste d'objets schema.org, sans balise <script>. Exemple : {\"@type\": \"Event\", \"name\": \"...\"}. Vérifié à la construction du site : un JSON invalide est ignoré et signalé." }

@@ -18,6 +18,7 @@ module.exports = {
   lang: "en",
   eleventyComputed: {
     title: (data) => (seoDe(data) ? seoDe(data).meta_title : data.title),
-    description: (data) => (seoDe(data) ? seoDe(data).meta_description : data.description)
+    description: (data) => (seoDe(data) ? seoDe(data).meta_description : data.description),
+    donnees_structurees_page: (data) => (seoDe(data) || {}).donnees_structurees
   }
 };

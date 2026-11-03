@@ -27,6 +27,7 @@
             fields:
               - { label: Titre SEO, name: meta_title, widget: string, required: true, hint: 50 à 60 caractères conseillés. Mot-clé principal en tête. Affiché dans l'onglet du navigateur et dans Google. }
               - { label: Méta-description, name: meta_description, widget: text, required: true, hint: 150 à 160 caractères conseillés. Une phrase qui donne envie de cliquer. }
+              - *f_donnees_structurees
           - { label: Nom de la page (fil d'Ariane), name: nom, widget: string, required: true, hint: "Nom court affiché dans le fil d'Ariane du haut de page, après « Accueil ». Par exemple : Logiciel métier." }
           - { label: Bouton flottant, name: bouton_flottant, widget: relation, required: false, collection: appels_action, value_field: "{{slug}}", display_fields: ["{{intitule}}"], search_fields: [intitule, texte], hint: "Bouton qui reste visible en bas d'écran sur mobile. Choisissez un appel à l'action partagé. Vide : pas de bouton flottant." }
           - label: Blocs de la page

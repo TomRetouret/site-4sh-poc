@@ -157,3 +157,4 @@
           - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « <nom du secteur> - Logiciel métier sur mesure | 4SH »." }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'accroche est reprise." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
+          - *f_donnees_structurees

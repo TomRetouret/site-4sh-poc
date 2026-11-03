@@ -129,3 +129,4 @@
           - { label: "Titre SEO", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « Nom du projet - Référence 4SH »." }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : le sous-titre est utilisé." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher masque la fiche dans Google." }
+          - *f_donnees_structurees

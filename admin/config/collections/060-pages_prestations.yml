@@ -740,6 +740,7 @@
           - { label: Titre SEO, name: meta_title, widget: string, required: false, hint: "50 à 60 caractères conseillés. Vide : « Nom court de la prestation - 4SH »." }
           - { label: Description SEO, name: meta_description, widget: text, required: false, hint: "150 à 160 caractères conseillés. Vide : le chapô est utilisé." }
           - { label: Afficher dans les moteurs de recherche, name: indexation, widget: boolean, required: false, default: true, hint: "Laisser coché en temps normal. Décocher masque la page dans Google et la retire du plan du site." }
+          - *f_donnees_structurees
       - { label: "Mémo : adresse sur l'ancien site (non affiché)", name: source_url, widget: string, required: false }
       - { label: "Mémo : page Confluence de rédaction (non affiché)", name: source_confluence, widget: string, required: false }
       - { label: "Mémo : requête Google visée (non affiché)", name: requete_cible, widget: string, required: false }

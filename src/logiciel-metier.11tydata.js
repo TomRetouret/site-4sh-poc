@@ -6,6 +6,7 @@ module.exports = {
   eleventyComputed: {
     title: (data) => data.contenus.fr.logiciel_metier.seo.meta_title,
     description: (data) => data.contenus.fr.logiciel_metier.seo.meta_description,
+    donnees_structurees_page: (data) => (data.contenus.fr.logiciel_metier.seo || {}).donnees_structurees,
     // Offre choisie dans le hero sobre : donne la classe famille-<offre> du gabarit de base.
     offre: (data) => {
       const hero = (data.contenus.fr.logiciel_metier.blocs || []).find((b) => b && b.type === "hero" && !b.masquer);

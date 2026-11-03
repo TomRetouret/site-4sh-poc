@@ -295,6 +295,20 @@ collections:
           - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « Formation <nom> - 4SH »." }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'accroche est reprise." }
           - { label: "Afficher cette page dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
+          # Groupe « Données structurées », défini ici (premier morceau assemblé) et réutilisé par alias
+          # (*f_donnees_structurees) dans les autres collections. Doc : docs/back-office/donnees-structurees.md
+          - &f_donnees_structurees
+            label: "Données structurées (schema.org)"
+            name: donnees_structurees
+            widget: object
+            required: false
+            collapsed: true
+            hint: "Balisage lu par les moteurs de recherche, invisible sur la page. Tout est généré automatiquement (organisation, fil d'Ariane, FAQ, cours, étude de cas) : ne toucher qu'en cas de besoin. Guide : docs/back-office/donnees-structurees.md."
+            fields:
+              - { label: "FAQ : générer le schéma des questions fréquentes", name: faq, widget: boolean, required: false, default: true, hint: "Décocher pour ne pas déclarer la FAQ de cette page aux moteurs de recherche (elle reste affichée)." }
+              - { label: "Fil d'Ariane : générer le schéma", name: fil_ariane, widget: boolean, required: false, default: true, hint: "Décrit le chemin Accueil › ... de la page." }
+              - { label: "Schéma propre à la page (cours pour une formation, étude de cas pour une référence)", name: schema_page, widget: boolean, required: false, default: true, hint: "Calculé à partir des champs de la fiche (prix, sessions, note, client...). Sans effet sur les autres pages." }
+              - { label: "JSON-LD personnalisé (réservé à l'agence SEO)", name: json_ld, widget: text, required: false, hint: "Un objet JSON ou une liste d'objets schema.org, sans balise <script>. Exemple : {\"@type\": \"Event\", \"name\": \"...\"}. Vérifié à la construction du site : un JSON invalide est ignoré et signalé." }
 
   # -----------------------------------------------------------------------
   # 1 bis) ÉQUIPE  (contenu partagé : une personne = un fichier JSON)
@@ -451,6 +465,7 @@ collections:
           - { label: "Titre SEO", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « Nom du projet - Référence 4SH »." }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : le sous-titre est utilisé." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher masque la fiche dans Google." }
+          - *f_donnees_structurees
 
   # -----------------------------------------------------------------------
   # 2 bis) LISTES DE RÉFÉRENCE  (valeurs proposées dans les fiches références)
@@ -557,6 +572,7 @@ collections:
           - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « Formations <catégorie> - 4SH »." }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'introduction est reprise." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
+          - *f_donnees_structurees
 
   # -----------------------------------------------------------------------
   # 4) SECTEURS  (pages métier /secteurs/logistique/, electromobilite, assurance)
@@ -717,6 +733,7 @@ collections:
           - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « <nom du secteur> - Logiciel métier sur mesure | 4SH »." }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'accroche est reprise." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
+          - *f_donnees_structurees
 
   # -----------------------------------------------------------------------
   # 5) CLIENTS & SOLUTIONS  (pages sous /secteurs/ : profils clients et produits 4SH)
@@ -847,6 +864,7 @@ collections:
           - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « <nom de la page> - 4SH »." }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'accroche est reprise." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
+          - *f_donnees_structurees
 
       # --- Suivi interne (non affiché) ---
       - { label: "Suivi interne · Page d'origine (non affichée)", name: "source_url", widget: "string", required: false, hint: "Pour mémoire : adresse de la page de l'ancien site dont le contenu est repris." }
@@ -1593,6 +1611,7 @@ collections:
           - { label: Titre SEO, name: meta_title, widget: string, required: false, hint: "50 à 60 caractères conseillés. Vide : « Nom court de la prestation - 4SH »." }
           - { label: Description SEO, name: meta_description, widget: text, required: false, hint: "150 à 160 caractères conseillés. Vide : le chapô est utilisé." }
           - { label: Afficher dans les moteurs de recherche, name: indexation, widget: boolean, required: false, default: true, hint: "Laisser coché en temps normal. Décocher masque la page dans Google et la retire du plan du site." }
+          - *f_donnees_structurees
       - { label: "Mémo : adresse sur l'ancien site (non affiché)", name: source_url, widget: string, required: false }
       - { label: "Mémo : page Confluence de rédaction (non affiché)", name: source_confluence, widget: string, required: false }
       - { label: "Mémo : requête Google visée (non affiché)", name: requete_cible, widget: string, required: false }
@@ -1784,6 +1803,7 @@ collections:
           - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « <nom> - Expertise technique 4SH »." }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'introduction est reprise." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
+          - *f_donnees_structurees
 
       # --- Suivi interne (non affiché) ---
       - { label: "Suivi interne · Requête visée (non affichée)", name: "requete_cible", widget: "string", required: false, hint: "Pour mémoire : expression recherchée dans Google que la fiche cible. Ex. : développement Angular" }
@@ -1890,6 +1910,7 @@ collections:
           - { label: "Titre SEO (onglet du navigateur)", name: "meta_title", widget: "string", required: false, hint: "50 à 60 caractères conseillés. Vide : « <nom> : en savoir plus - 4SH »." }
           - { label: "Description SEO", name: "meta_description", widget: "text", required: false, hint: "150 à 160 caractères conseillés. Vide : l'introduction est reprise." }
           - { label: "Afficher dans les moteurs de recherche", name: "indexation", widget: "boolean", required: false, default: true, hint: "Laisser coché en temps normal. Décocher retire la page de Google et du plan du site." }
+          - *f_donnees_structurees
 
       # --- Suivi interne (non affiché) ---
       - { label: "Suivi interne · Page d'origine (non affichée)", name: "source_url", widget: "string", required: false, hint: "Pour mémoire : page de l'ancien site dont le contenu est repris." }
@@ -1922,6 +1943,19 @@ collections:
             fields:
               - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: false, hint: 50 à 60 caractères conseillés., i18n: true }
               - { label: Description SEO, name: meta_description, widget: text, required: false, hint: 150 à 160 caractères conseillés., i18n: true }
+              - &f_donnees_structurees_i18n
+                label: "Données structurées (schema.org)"
+                name: donnees_structurees
+                widget: object
+                required: false
+                collapsed: true
+                i18n: true
+                hint: "Balisage lu par les moteurs de recherche, invisible sur la page. Tout est généré automatiquement (organisation, fil d'Ariane, FAQ, cours, étude de cas) : ne toucher qu'en cas de besoin. Guide : docs/back-office/donnees-structurees.md."
+                fields:
+                  - { label: "FAQ : générer le schéma des questions fréquentes", name: faq, widget: boolean, required: false, default: true, i18n: true, hint: "Décocher pour ne pas déclarer la FAQ de cette page aux moteurs de recherche (elle reste affichée)." }
+                  - { label: "Fil d'Ariane : générer le schéma", name: fil_ariane, widget: boolean, required: false, default: true, i18n: true, hint: "Décrit le chemin Accueil › ... de la page." }
+                  - { label: "Schéma propre à la page (cours pour une formation, étude de cas pour une référence)", name: schema_page, widget: boolean, required: false, default: true, i18n: true, hint: "Calculé à partir des champs de la fiche (prix, sessions, note, client...). Sans effet sur les autres pages." }
+                  - { label: "JSON-LD personnalisé (réservé à l'agence SEO)", name: json_ld, widget: text, required: false, i18n: true, hint: "Un objet JSON ou une liste d'objets schema.org, sans balise <script>. Exemple : {\"@type\": \"Event\", \"name\": \"...\"}. Vérifié à la construction du site : un JSON invalide est ignoré et signalé." }
             i18n: true
           - label: Blocs de la page
             name: blocs
@@ -4726,6 +4760,7 @@ collections:
             fields:
               - { label: Titre SEO, name: meta_title, widget: string, required: true, hint: 50 à 60 caractères conseillés. Mot-clé principal en tête. Affiché dans l'onglet du navigateur et dans Google. }
               - { label: Méta-description, name: meta_description, widget: text, required: true, hint: 150 à 160 caractères conseillés. Une phrase qui donne envie de cliquer. }
+              - *f_donnees_structurees
           - { label: Nom de la page (fil d'Ariane), name: nom, widget: string, required: true, hint: "Nom court affiché dans le fil d'Ariane du haut de page, après « Accueil ». Par exemple : Logiciel métier." }
           - { label: Bouton flottant, name: bouton_flottant, widget: relation, required: false, collection: appels_action, value_field: "{{slug}}", display_fields: ["{{intitule}}"], search_fields: [intitule, texte], hint: "Bouton qui reste visible en bas d'écran sur mobile. Choisissez un appel à l'action partagé. Vide : pas de bouton flottant." }
           - label: Blocs de la page
@@ -5943,6 +5978,7 @@ collections:
             fields:
               - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, hint: "50 à 60 caractères conseillés. Vide : le titre par défaut des Réglages SEO s'affiche." }
               - { label: Description SEO, name: meta_description, widget: text, required: true, hint: "150 à 160 caractères conseillés. Résumé affiché sous le titre dans Google." }
+              - *f_donnees_structurees
           - &f_blocs_institutionnel
             label: Blocs de la page
             name: blocs
@@ -7443,6 +7479,7 @@ collections:
             fields:
               - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, i18n: true, hint: "50 à 60 caractères conseillés. Vide : le titre par défaut des Réglages SEO s'affiche." }
               - { label: Description SEO, name: meta_description, widget: text, required: true, i18n: true, hint: "150 à 160 caractères conseillés. Résumé affiché sous le titre dans Google." }
+              - *f_donnees_structurees_i18n
           - label: Blocs de la page
             name: blocs
             widget: list
@@ -9194,6 +9231,7 @@ collections:
             fields:
               - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, hint: "50 à 60 caractères conseillés. Vide : le titre par défaut des Réglages SEO s'affiche." }
               - { label: Description SEO, name: meta_description, widget: text, required: true, hint: "150 à 160 caractères conseillés. Résumé affiché sous le titre dans Google." }
+              - *f_donnees_structurees
           - { label: Nom de la page (fil d'Ariane), name: titre, widget: string, required: true, hint: "Dernier mot du petit chemin tout en haut de la page, après Accueil. 30 caractères maximum." }
           - label: Haut de page
             name: hero
@@ -10182,6 +10220,58 @@ collections:
           - { label: Description par défaut, name: description_defaut, widget: text, required: true, hint: "Pour une page sans description SEO propre. 150 à 160 caractères conseillés." }
           - { label: Image de partage sur les réseaux sociaux, name: og_image, widget: image, required: false, choose_url: true, hint: "Image affichée quand une page est partagée (LinkedIn, X...). 1200 x 630 px conseillés." }
           - { label: Contenu du robots.txt, name: robots_txt, widget: text, required: true, hint: "Règles pour les robots des moteurs. La ligne Sitemap est ajoutée automatiquement." }
+
+      - name: donnees_structurees
+        label: Données structurées (schema.org)
+        file: src/_data/donnees_structurees.json
+        format: json
+        description: "Balisage lu par les moteurs de recherche, invisible sur les pages. Généré automatiquement à chaque construction du site. Les réglages page par page sont dans le groupe « Données structurées » du Référencement de chaque page. Guide : docs/back-office/donnees-structurees.md."
+        fields:
+          - label: Schémas générés sur tout le site
+            name: activer
+            widget: object
+            required: true
+            collapsed: false
+            hint: "Décocher un schéma le retire de toutes les pages."
+            fields:
+              - { label: "Organisation (toutes les pages)", name: organisation, widget: boolean, required: false, default: true }
+              - { label: "Fil d'Ariane (pages qui en affichent un)", name: fil_ariane, widget: boolean, required: false, default: true }
+              - { label: "FAQ (pages qui affichent des questions fréquentes)", name: faq, widget: boolean, required: false, default: true }
+              - { label: "Cours (fiches formation)", name: cours, widget: boolean, required: false, default: true }
+              - { label: "Étude de cas (fiches référence)", name: etudes_de_cas, widget: boolean, required: false, default: true }
+          - label: Organisation
+            name: organisation
+            widget: object
+            required: true
+            collapsed: true
+            hint: "Fiche de l'entreprise déclarée sur toutes les pages."
+            fields:
+              - { label: Type, name: type, widget: select, required: true, default: Organization, options: [{ label: "Organisation (Organization)", value: Organization }, { label: "Prestataire de services (ProfessionalService)", value: ProfessionalService }, { label: "Entreprise locale (LocalBusiness)", value: LocalBusiness }], hint: "Organization convient dans la plupart des cas. À valider avec l'agence SEO." }
+              - { label: Nom, name: nom, widget: string, required: true }
+              - { label: Description courte, name: description, widget: text, required: false, hint: "Une phrase." }
+              - { label: Logo, name: logo, widget: image, required: false, choose_url: true, hint: "Logo carré ou horizontal, au moins 112 px de large." }
+              - { label: Année de création, name: date_creation, widget: string, required: false, pattern: ['^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$', "Année (2007) ou date (2007-05-01)."] }
+              - { label: Téléphone (format international), name: telephone, widget: string, required: false, hint: "Par exemple : +33963286273." }
+              - { label: E-mail de contact, name: email, widget: string, required: false }
+              - label: Adresses
+                name: adresses
+                widget: list
+                required: false
+                summary: "{{fields.ville}} · {{fields.rue}}"
+                fields:
+                  - { label: Rue, name: rue, widget: string, required: false }
+                  - { label: Code postal, name: code_postal, widget: string, required: false }
+                  - { label: Ville, name: ville, widget: string, required: true }
+                  - { label: Pays (code ISO), name: pays, widget: string, required: false, default: FR }
+              - { label: "Réseaux sociaux et profils (adresses)", name: reseaux, widget: list, required: false, hint: "Une adresse par ligne (LinkedIn, YouTube...). Déclarées comme profils officiels de l'entreprise." }
+          - label: Formations
+            name: formations
+            widget: object
+            required: true
+            collapsed: true
+            fields:
+              - { label: Modalités des cours, name: modes, widget: select, multiple: true, required: true, default: [Onsite, Online], options: [{ label: "Présentiel (Onsite)", value: Onsite }, { label: "À distance (Online)", value: Online }, { label: "Mixte (Blended)", value: Blended }] }
+              - { label: Devise des prix, name: devise, widget: string, required: true, default: EUR }
 
   # -----------------------------------------------------------------------
   # MENU : regroupé dans la collection « Réglages » (130-seo.yml, fichier « menu »).

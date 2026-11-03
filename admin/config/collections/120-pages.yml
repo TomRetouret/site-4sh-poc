@@ -34,6 +34,7 @@
             fields:
               - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, hint: "50 à 60 caractères conseillés. Vide : le titre par défaut des Réglages SEO s'affiche." }
               - { label: Description SEO, name: meta_description, widget: text, required: true, hint: "150 à 160 caractères conseillés. Résumé affiché sous le titre dans Google." }
+              - *f_donnees_structurees
           - &f_blocs_institutionnel
             label: Blocs de la page
             name: blocs
@@ -1534,6 +1535,7 @@
             fields:
               - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, i18n: true, hint: "50 à 60 caractères conseillés. Vide : le titre par défaut des Réglages SEO s'affiche." }
               - { label: Description SEO, name: meta_description, widget: text, required: true, i18n: true, hint: "150 à 160 caractères conseillés. Résumé affiché sous le titre dans Google." }
+              - *f_donnees_structurees_i18n
           - label: Blocs de la page
             name: blocs
             widget: list
@@ -3285,6 +3287,7 @@
             fields:
               - { label: Titre SEO (onglet du navigateur), name: meta_title, widget: string, required: true, hint: "50 à 60 caractères conseillés. Vide : le titre par défaut des Réglages SEO s'affiche." }
               - { label: Description SEO, name: meta_description, widget: text, required: true, hint: "150 à 160 caractères conseillés. Résumé affiché sous le titre dans Google." }
+              - *f_donnees_structurees
           - { label: Nom de la page (fil d'Ariane), name: titre, widget: string, required: true, hint: "Dernier mot du petit chemin tout en haut de la page, après Accueil. 30 caractères maximum." }
           - label: Haut de page
             name: hero

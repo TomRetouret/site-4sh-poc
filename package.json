@@ -12,12 +12,12 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
-    "@11ty/eleventy": "3.1.6",
+    "@11ty/eleventy": "3.1.8",
     "@11ty/eleventy-img": "6.0.4",
-    "@storybook/addon-docs": "10.6.2",
-    "@storybook/html-vite": "10.6.2",
+    "@storybook/addon-docs": "10.6.6",
+    "@storybook/html-vite": "10.6.6",
     "nunjucks": "3.2.4",
-    "storybook": "10.6.2",
-    "vite": "8.3.4"
+    "storybook": "10.6.6",
+    "vite": "8.3.6"
   }
 }
